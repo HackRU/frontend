@@ -1,0 +1,19 @@
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 86 86">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #1e9e3a;
+      }
+
+      .cls-2 {
+        fill: none;
+        stroke: #fff;
+        stroke-miterlimit: 10;
+        stroke-width: 10px;
+      }
+    </style>
+  </defs>
+  <title>hackru-sp-16-template</title>
+  <circle class="cls-1" cx="43" cy="43" r="43"/>
+  <polyline class="cls-2" points="65 28 35.5 57.5 22 44"/>
+</svg>

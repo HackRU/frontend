@@ -1,0 +1,82 @@
+.learn-more-arrow{
+	animation: animationFrames ease-in-out 1s;
+	animation-iteration-count: infinite;
+	transform-origin: 50% 50%;
+	animation-fill-mode:forwards; /*when the spec is finished*/
+	-webkit-animation: animationFrames ease-in-out 1s;
+	-webkit-animation-iteration-count: infinite;
+	-webkit-transform-origin: 50% 50%;
+	-webkit-animation-fill-mode:forwards; /*Chrome 16+, Safari 4+*/
+	-moz-animation: animationFrames ease-in-out 1s;
+	-moz-animation-iteration-count: infinite;
+	-moz-transform-origin: 50% 50%;
+	-moz-animation-fill-mode:forwards; /*FF 5+*/
+	-o-animation: animationFrames ease-in-out 1s;
+	-o-animation-iteration-count: infinite;
+	-o-transform-origin: 50% 50%;
+	-o-animation-fill-mode:forwards; /*Not implemented yet*/
+	-ms-animation: animationFrames ease-in-out 1s;
+	-ms-animation-iteration-count: infinite;
+	-ms-transform-origin: 50% 50%;
+	-ms-animation-fill-mode:forwards; /*IE 10+*/
+}
+
+@keyframes animationFrames{
+	0% {
+		transform:  translate(0px,0px)  ;
+	}
+	50% {
+		transform:  translate(0px,15px)  ;
+	}
+	100% {
+		transform:  translate(0px,0px)  ;
+	}
+}
+
+@-moz-keyframes animationFrames{
+	0% {
+		-moz-transform:  translate(0px,0px)  ;
+	}
+	50% {
+		-moz-transform:  translate(0px,15px)  ;
+	}
+	100% {
+		-moz-transform:  translate(0px,0px)  ;
+	}
+}
+
+@-webkit-keyframes animationFrames {
+	0% {
+		-webkit-transform:  translate(0px,0px)  ;
+	}
+	50% {
+		-webkit-transform:  translate(0px,15px)  ;
+	}
+	100% {
+		-webkit-transform:  translate(0px,0px)  ;
+	}
+}
+
+@-o-keyframes animationFrames {
+	0% {
+		-o-transform:  translate(0px,0px)  ;
+	}
+	50% {
+		-o-transform:  translate(0px,15px)  ;
+	}
+	100% {
+		-o-transform:  translate(0px,0px)  ;
+	}
+}
+
+@-ms-keyframes animationFrames {
+	0% {
+		-ms-transform:  translate(0px,0px)  ;
+	}
+	50% {
+		-ms-transform:  translate(0px,15px)  ;
+	}
+	100% {
+		-ms-transform:  translate(0px,0px)  ;
+	}
+}

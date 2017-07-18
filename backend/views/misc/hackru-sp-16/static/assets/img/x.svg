@@ -1,0 +1,22 @@
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 86 86">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #dd2626;
+      }
+
+      .cls-2 {
+        fill: none;
+        stroke: #fff;
+        stroke-miterlimit: 10;
+        stroke-width: 10px;
+      }
+    </style>
+  </defs>
+  <title>hackru-sp-16-template</title>
+  <circle class="cls-1" cx="43" cy="43" r="43"/>
+  <g>
+    <line class="cls-2" x1="25.5" y1="25.87729" x2="60.5" y2="60.87729"/>
+    <line class="cls-2" x1="25.5" y1="60.87729" x2="60.5" y2="25.87729"/>
+  </g>
+</svg>

@@ -1,0 +1,24 @@
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 86.57993 86.57993">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #dd2626;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 7px;
+      }
+
+      .cls-2 {
+        fill: #dd2626;
+      }
+    </style>
+  </defs>
+  <title>hackru-sp-16-template</title>
+  <g>
+    <circle class="cls-1" cx="43.28997" cy="43.28997" r="39.78" transform="translate(-9.84461 73.69983) rotate(-74.78327)"/>
+    <path class="cls-2" d="M36.16256,45.72005a3.81415,3.81415,0,0,0-3.48679,5.362,12.56307,12.56307,0,0,0,22.74986-.2088,3.814,3.814,0,0,0-3.58789-5.29262Z"/>
+    <circle class="cls-2" cx="30.01927" cy="33.97022" r="4.7174" transform="translate(-0.31487 0.28087) rotate(-0.53327)"/>
+    <circle class="cls-2" cx="57.49283" cy="33.7044" r="4.7174" transform="translate(-0.3112 0.53656) rotate(-0.53327)"/>
+  </g>
+</svg>

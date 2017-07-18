@@ -1,0 +1,40 @@
+module.exports =
+{
+  'devmode': false,
+  'SemesterID': 'Spring2017',
+  'event_date': 'yyyy-mm-dd',
+  'SPARKPOST_KEY': 'key',
+  'MYMLH_CLIENT_ID': 'id',
+  'MYMLH_SECRET': 'secret',
+  'MYMLH_CALLBACK': 'http://localhost:8080/callback/mymlh',
+  'session': {
+    'options': {
+      'host': 'localhost',
+      'port': '6379'
+    },
+    'secret': 'secret',
+    'maxAge': 2 * 24 * 60 * 60 * 1000
+  },
+  'db': {
+    'url': 'mongodb://path/to/db'
+  },
+  'resume': {
+    'filetypes': ['pdf', 'doc', 'docx', 'txt', 'jpg', 'rtf'],
+    'validMIMEtypes': ['application/pdf', 'application/msword', 'application/rtf', 'text/rtf', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', 'text/plain'],
+    'maxSize': 2 * 1024 * 1024
+  },
+  'capacity': 600,
+  'waitlist': 200
+  'maxSize': '5mb'
+  }
+  'twitter':{
+    'consumer_key':'MY_CONSUMER_KEY',
+    'consumer_secret':'MY_CONSUMER_SECRET',
+    'access_token_key':'MY_ACCESS_TOKEN_KEY',
+    'access_token_secret':'MY_ACCESS_TOKEN_SECRET'
+  }
+  'slack':{
+    'token':'SLACK_LEGACY_TOKEN',
+    'channel:'C43KDNGR0'
+  }
+}

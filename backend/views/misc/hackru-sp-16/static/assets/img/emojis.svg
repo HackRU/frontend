@@ -1,0 +1,39 @@
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" width="94.43" height="62.35" viewBox="0 0 94.43 62.35">
+  <defs>
+    <style>
+      .cls-1, .cls-4 {
+        fill: none;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 4px;
+      }
+
+      .cls-1 {
+        stroke: #ffc933;
+      }
+
+      .cls-2 {
+        fill: #fff;
+      }
+
+      .cls-3 {
+        fill: #ffc933;
+      }
+
+      .cls-4 {
+        stroke: #fff;
+      }
+    </style>
+  </defs>
+  <title>emojis</title>
+  <g>
+    <circle class="cls-1" cx="25.78" cy="25.78" r="23.78"/>
+    <path class="cls-2" d="M683.35,1182.68a2.28,2.28,0,0,0-1.17,3.64,7.51,7.51,0,0,0,13.09-3.69,2.28,2.28,0,0,0-2.9-2.49Z" transform="translate(-661.3 -1154.38)"/>
+    <circle class="cls-2" cx="677.93" cy="1176.89" r="2.82" transform="translate(-955.27 -926.2) rotate(-15.75)"/>
+    <circle class="cls-2" cx="693.74" cy="1172.43" r="2.82" transform="translate(-953.47 -922.08) rotate(-15.75)"/>
+    <circle class="cls-3" cx="721.72" cy="1185.63" r="2.82" transform="translate(-1255.56 472.57) rotate(-77.21)"/>
+    <circle class="cls-3" cx="737.74" cy="1189.26" r="2.82" transform="translate(-1246.64 491.02) rotate(-77.21)"/>
+    <path class="cls-4" d="M721.87,1168.58a23.78,23.78,0,1,1-10.71,36.94" transform="translate(-661.3 -1154.38)"/>
+    <path class="cls-3" d="M723.93,1193.73a2.28,2.28,0,0,0-2.74,2.66,7.51,7.51,0,0,0,13.29,2.9,2.28,2.28,0,0,0-1.39-3.56Z" transform="translate(-661.3 -1154.38)"/>
+  </g>
+</svg>

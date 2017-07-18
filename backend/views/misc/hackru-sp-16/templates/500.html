@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<!--Connie is the best. She wasn't here-->
+	<head lang="en">
+		<meta name="description" content="Sign up for Rutgers University Spring 2016 hackathon, HackRU! April 16th to 17th.">
+		<meta name="title" content="HackRU">
+		<meta property="og:title" content="HackRU Spring 2016"/>
+		<meta property="og:description" content="Get hyped for the best hackathon Rutgers has to offer! HackRU's 10th hackathon is coming this Spring 2016! April 16th to 17th."/>
+		<meta property="og:image" content="http://yuzu.s-ul.eu/CafRwagJ"/>
+		<link href="../static/assets/icon/fav.png" rel="shortcut icon" type="image/png"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link href='https://fonts.googleapis.com/css?family=Work+Sans' rel='stylesheet' type='text/css'>
+		<link href='https://fonts.googleapis.com/css?family=Montserrat:700' rel='stylesheet' type='text/css'>
+		<link href='../static/stylesheets/sign-up.css' rel='stylesheet' type="text/css">
+	</head>
+	<body>
+		<nav>
+			<div class="container">
+				<ul class="logo">
+					<a href="{{ url_for('index') }}"><img src="../static/assets/img/hack-ru-logo-rel.svg"></a>
+				</ul>
+				<ul class="items">
+					<span class="divide">
+						<li><a href="./index.html#1">about</a></li>
+						<li><a href="./index.html#2">faq</a></li>
+					</span>
+					<li><a href="./index.html#3">schedule</a></li>
+					<li><a href="./index.html#4">sponsors</a></li>
+				</ul>
+			</div>
+		</nav>
+		<section id="main">
+			<div class="banner" style="background-image: url('../static/assets/img/faq.jpg')">
+				<div class="wrapper faq">
+					<h1>500: Internal Server Error</h1>
+				</div>
+			</div>
+		</section>
+		<section id="active-area">
+			<div class="main-container">
+				<p>
+				{% if error %}
+				      {{ error }}
+				{% endif %}
+				</p>
+				<a href="{{ url_for('dash') }}">
+					<button class="btn-ru">Back</button>
+				</a>
+			</div>
+		</section>
+	</body>
+	</html>

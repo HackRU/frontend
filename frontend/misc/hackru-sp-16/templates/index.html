@@ -1,0 +1,413 @@
+<html>
+	<!--
+I tried to be edgy and cool by finding some neat ascii art to put in of like an anime girl or some typography, but none if it looks good in comments. So you all get this accurate representation of me right now as a result...
+
+
+
+(;~;)
+
+
+
+Front-end by PJ Rosa :: http://pjrosa.com
+-->
+<head lang="en">
+	<meta name="description" content="Sign up for Rutgers University Spring 2016 hackathon, HackRU! April 16th to 17th.">
+	<meta name="title" content="HackRU">
+	<meta property="og:title" content="HackRU Spring 2016"/>
+	<meta property="og:description" content="Get hyped for the best hackathon Rutgers has to offer! HackRU's 10th hackathon is coming this Spring 2016! April 16th to 17th."/>
+	<meta property="og:image" content="http://yuzu.s-ul.eu/CafRwagJ"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="../static/assets/icon/fav.png" rel="shortcut icon" type="image/png"/>
+	<link href='https://fonts.googleapis.com/css?family=Work+Sans' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Montserrat:700' rel='stylesheet' type='text/css'>
+	<link href='../static/stylesheets/base.css' rel='stylesheet' type="text/css">
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script type="text/javascript" src="../static/js/functions.js"></script>
+</head>
+<body>
+	<nav>
+		<div class="container">
+			<ul class="logo">
+				<a href="#landing"><img src="../static/assets/img/hack-ru-logo-rel.svg"></a>
+			</ul>
+			<ul class="items">
+				<span class="divide">
+					<li><a href="#1">about</a></li>
+					<li><a href="#2">faq</a></li>
+				</span>
+				<li><a href="#3">schedule</a></li>
+				<li><a href="#4">sponsors</a></li>
+			</ul>
+		</div>
+	</nav>
+	<section id="landing">
+		<div class="red-fill"></div>
+		<div class="container address-fix">
+			<a id="mlh-trust-badge" href="https://mlh.io/seasons/s2016/events?utm_source=s2016&utm_medium=TrustBadge&utm_campaign=s2016" target="_blank"><img src="https://s3.amazonaws.com/logged-assets/trust-badge/s2016.png" alt="MLH Official - Spring 2016" style="width:100%;"></a>
+			<div class="landing-nav">
+				<ul class="items">
+					<li><a href="#1">about</a></li>
+					<li><a href="#2">faq</a></li>
+					<li><a href="#3">schedule</a></li>
+					<li><a href="#4">sponsors</a></li>
+				</ul>
+			</div>
+			<div class="landing-content">
+				<div class="logo">
+					<div class="spacer"></div>
+					<img src="../static/assets/img/10.svg">
+				</div>
+				<div class="landing-text">
+					<p>Join us for our 10<sup>th</sup> hackathon!</p>
+					<p>April 16 &#8212; 17, 2016</p>
+					<p>Rutgers Athletic Center</p>
+				</div>
+				<div class="spacer"></div>
+
+				<div class="sign-up">
+				<!--
+					<div class="sign-up-btn inactive">
+						<a href="#" style="font-size: .8em">
+							<img class="svg" src="../static/assets/icon/pencil.svg">
+							Registration Coming Soon...
+
+						</a>
+					</div>
+					-->
+
+						<div class="sign-up-btn">
+                            {% for message in get_flashed_messages() %}
+                                <div class="landing-text">
+                                  <p><b>Error</b>: {{ message }}</p><br><br>
+                                </div>
+                            {% endfor %}
+                            {% if not current_user.is_authenticated %}
+                                <p><a href="{{ url_for('oauth_authorize', provider='mlh') }}">Login with MyMLH</a></p>
+                            {% else %}
+                                <!--<h2>Hi {{ current_user.name }}!</h2>=-->
+                                <a href="{{ url_for('dash') }}"> Dashboard </a>
+                            {% endif %}
+
+						</div>
+
+            <div class="sign-up-btn">
+                {% if current_user.is_authenticated %}
+                    <a href="{{ url_for('logout') }}"> Logout </a>
+                {% endif %}
+            </div>
+
+					<!--
+						<input class="email-input" placeholder="Enter your email for updates!">
+						<a class="email-btn" href="#">Send Me Updates</a>
+					-->
+						<!--
+						<p class="subtext">Want to sponsor? <a href="mailto:sponsorship@hackru.org" data-email="sponsorship@hackru.org">Email us!</a></p>
+					-->
+				</div>
+					<div class="bottom-landing">
+						<div class="social-media">
+							<a href="https://www.facebook.com/theHackRU" target="_blank"><img class="svg" src="../static/assets/icon/fb.svg"></a>
+							<a href="https://twitter.com/thehackru" target="_blank"><img class="svg" src="../static/assets/icon/twitter.svg"></a>
+						</div>
+						<a class="learn-more-link" href="#1">
+							<div class="learn-more">
+								<span>Learn more</span>
+								<img class="learn-more-arrow" src="../static/assets/icon/arrow.svg">
+							</div>
+						</a>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section id="about">
+			<div class="anchor-fix" id="1"></div>
+			<div class="bg-pattern">
+				<div class="container">
+					<div class="text-box">
+						<div class="icon"><img src="../static/assets/img/emojis.svg"></div>
+						<h1>What's HackRU?</h1>
+						<p>HackRU is a 24-hour student hackathon at Rutgers University, New Brunswick. </p>
+					</div>
+					<!--
+					<div class="text-box">
+								<div class="icon"><img src="../static/assets/img/brain.svg"></div>
+								<h1>What's the goal?</h1>
+								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sit amet ipsum vel leo fringilla sollicitudin. Ut volutpat, nulla tempor gravida convallis, ante enim feugiat elit, sit amet consectetur orci tortor quis dolor. Pellentesque sagittis arcu vitae elementum rhoncus.
+								</p>
+								<p>Donec id lacus ac libero interdum varius vitae quis nisl.</p>
+					</div>
+					<div class="text-box">
+								<div class="icon"><img src="../static/assets/img/cap.svg"></div>
+								<h1>Why HackRU?</h1>
+								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sit amet ipsum vel leo fringilla sollicitudin. Ut volutpat, nulla tempor gravida convallis, ante enim feugiat elit, sit amet consectetur orci tortor quis dolor. Pellentesque sagittis arcu vitae elementum rhoncus.
+								</p>
+								<p>Donec id lacus ac libero interdum varius vitae quis nisl.</p>
+					</div>
+					-->
+					<div class="text-box">
+						<div class="icon"><img src="../static/assets/img/pointer.svg"></div>
+						<h1>Sounds fun! <br>When and where is it?</h1>
+						<p>HackRU will be taking place April 16-17, 2016 at the Rutgers Athletic Center in Piscataway, NJ.</p>
+					</div>
+					<div class="map">
+						<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d619.402422583461!2d-74.44110770521334!3d40.52552845234861!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xc1b21b4e9a6fa334!2sRutgers+Athletic+Center!5e0!3m2!1sen!2sus!4v1456611983827" height="300" allowfullscreen></iframe>
+					</div>
+					<div class="btn-wrapper">
+						<div class="btn">
+							<a href="http://hackruf15.devpost.com/submissions" target="_blank">
+								See Last Year's Projects
+							</a>
+						</div>
+					</div>
+					<p class="subtext">Also make sure to check out MLH's <a href="http://static.mlh.io/docs/mlh-code-of-conduct.pdf" target="_blank">code of conduct</a></p>
+				</div>
+			</div>
+		</section>
+		<section id="faq">
+			<div class="anchor-fix" id="2"></div>
+			<div class="banner" style="background-image: url('../static/assets/img/faq.jpg')"><div class="wrapper faq"><span class="icon"><img src="../static/assets/img/question.svg"></span><h1>Frequently Asked Questions</h1></div></div>
+			<div class="container">
+				<div class="q-row">
+					<div class="q-block collapse">
+						<div class="icon">
+							<img src="../static/assets/icon/clock.svg">
+						</div>
+						<div class="q-text">
+							<h1>What's the application process?</h1>
+							<p class="hide">
+								We believe that everyone should have the opportunity to hack, so HackRU runs registration on a first-come-first-serve basis rather than through application evaluations. That means registration fills up quickly, so make sure to register early!
+							</p>
+						</div>
+					</div>
+					<div class="q-block collapse">
+						<div class="icon">
+							<img src="../static/assets/icon/vip.svg">
+						</div>
+						<div class="q-text">
+							<h1>Who can come?</h1>
+							<p>
+								HackRU welcomes undergraduate, graduate, and high school students of all majors, backgrounds, and skill levels to come create. Unfortunately, if you are not a student you will not be able to attend.
+							</p>
+						</div>
+					</div>
+					<div class="q-block collapse">
+						<div class="icon">
+							<img src="../static/assets/icon/new.svg">
+						</div>
+						<div class="q-text">
+							<h1>I'm new, what should I do?</h1>
+							<p>
+								That's great! We'd love to have you at HackRU. Throughout the weekend there will be workshops for you to get your feet wet, project ideas for you to try out, and mentors to guide you through the process.
+							</p>
+						</div>
+					</div>
+					<div class="q-block collapse">
+						<div class="icon">
+							<img src="../static/assets/icon/dolla.svg">
+						</div>
+						<div class="q-text">
+							<h1>How much does it cost to attend?</h1>
+							<p>
+								Like the best things in life, HackRU is completely free to attend, you just have to show up. We will be providing meals, snacks, and drinks for the entire event along with swag on swag on swag.
+							</p>
+						</div>
+					</div>
+					<div class="q-block collapse">
+						<div class="icon">
+							<img src="../static/assets/icon/aeroplane.svg">
+						</div>
+						<div class="q-text">
+							<h1>Travel Reimbursements?</h1>
+							<p>
+								Unfortunately due to university regulations, HackRU is unable to issue travel reimbursements. However, we will be sending buses to areas with lost of participants! If you want your school considered but a bus route, email info@hackru.org.
+							</p>
+						</div>
+					</div>
+					<div class="q-block collapse">
+						<div class="icon">
+							<img src="../static/assets/icon/chat.svg">
+						</div>
+						<div class="q-text">
+							<h1>Can I work with others?</h1>
+							<p>
+								Hackers can (and are encouraged to!) work in teams of up to 4 humans. The knowledge you can gain from teammates is invaluable, not to mention you might leave with a new best friend. We will be having a team-building after opening ceremonies for people who are looking for teammates.
+							</p>
+						</div>
+					</div>
+					<div class="q-block collapse">
+						<div class="icon">
+							<img src="../static/assets/icon/loot.svg">
+						</div>
+						<div class="q-text">
+							<h1>What should I bring?</h1>
+							<p>
+								Yourself, your ingenuity, hacking gear (laptop, monitor, hardware), photo ID, toiletries, sleeping gear, a change of clothes.
+							</p>
+						</div>
+					</div>
+					<div class="q-block collapse">
+						<div class="icon">
+							<img src="../static/assets/icon/no.svg">
+						</div>
+						<div class="q-text">
+							<h1>What shouldn't I bring?</h1>
+							<p>
+								Weapons or anything that can be construed as a weapon, alcohol, illegal drugs, animals. Use your common sense - if you wouldn't bring it on a plane or to school, don't bring it here.
+							</p>
+						</div>
+					</div>
+					<div class="q-block collapse">
+						<div class="icon">
+							<img src="../static/assets/icon/wrench.svg">
+						</div>
+						<div class="q-text">
+							<h1>Do you have any hardware?</h1>
+							<p>
+								Hardware will be provided by the MLH Hardware labs and a full list of available hardware will be posted here the week of the event.
+							</p>
+						</div>
+					</div>
+					<div class="q-block collapse">
+						<div class="icon">
+							<img src="../static/assets/icon/medal.svg">
+						</div>
+						<div class="q-text">
+							<h1>Can I win anything?</h1>
+							<p>
+								Yes! We'll release more information about prizes as the event draws near.
+							</p>
+						</div>
+					</div>
+				</div>
+				<p class="subtext">Help! I still have questions! <a href="mailto:info@hackru.org" data-email="info@hackru.org">Email us!</a></p>
+			</div>
+		</section>
+		<section id="schedule">
+			<div class="anchor-fix" id="3"></div>
+			<div class="banner" style="background-image: url('../static/assets/img/schedule.jpg')">
+				<div class="wrapper schedule">
+					<span class="icon">
+						<img src="../static/assets/icon/schedule.svg">
+					</span>
+					<h1>Schedule</h1>
+				</div>
+			</div>
+			<div class="container">
+				<div class="dates">
+					<div class="sat">
+						<h1>Saturday</h1>
+						<ul class="schedule-wrapper">
+							<li><span>11:00AM</span><span>Registration opens</span></li>
+							<li><span>12:00PM</span><span>Lunch served</span></li>
+							<li><span>1:00PM</span><span>Opening ceremony</span></li>
+							<li><span>1:00PM</span><span>Hacking commences</span></li>
+							<li><span>7:00PM</span><span>Dinner served</span></li>
+						</ul>
+					</div>
+					<div class="sun">
+						<h1>Sunday</h1>
+						<ul class="schedule-wrapper">
+							<li><span>12:00AM</span><span>Midnight surprise</span></li>
+							<li><span>7:00AM</span><span>Breakfast served</span></li>
+							<li><span>11:00AM</span><span>Hacking ends</span></li>
+							<li><span>12:00PM</span><span>Lunch served</span></li>
+							<li><span>1:00PM</span><span>Closing ceremony</span></li>
+						</ul>
+					</div>
+				</div>
+				<!--
+				<div class="btn-wrapper">
+					<div class="btn">
+						<a href="#">
+							Download Full Schedule
+							<img class="svg" src="../static/assets/icon/download.svg">
+						</a>
+					</div>
+				</div>
+				-->
+			</div>
+		</section>
+		<section id="sponsors">
+			<div class="anchor-fix" id="4"></div>
+			<div class="container">
+				<div class="title">
+					<span class="one">We'd be nothing without our</span>
+					<span class="two">Sponsors</span>
+					<img src="../static/assets/icon/heart.svg">
+				</div>
+				<!--
+				<div class="first">
+									<a href="#">
+														<img src="../static/assets/img/sponsors/morgan-stanley.svg">
+									</a>
+				</div>
+				-->
+				<!--
+				<div class="second">
+									<h1>Gold Sponsors</h1>
+									<a href="#">
+														<img src="../static/assets/img/sponsors/morgan-stanley.svg">
+									</a>
+									<a href="#">
+														<img src="../static/assets/img/sponsors/att.svg">
+									</a>
+									<a href="#">
+														<img src="../static/assets/img/sponsors/twilio.svg">
+									</a>
+									<a href="#">
+														<img src="../static/assets/img/sponsors/bloomberg.svg">
+									</a>
+				</div>
+				-->
+				<!--
+				<div class="third">
+									<h1>Silver Sponsors</h1>
+									<a href="#">
+														<img src="../static/assets/img/sponsors/google.svg">
+									</a>
+									<a href="#">
+														<img src="../static/assets/img/sponsors/digital-ocean.svg">
+									</a>
+									<a href="#">
+														<img src="../static/assets/img/sponsors/merck.svg">
+									</a>
+									<a href="#">
+														<img src="../static/assets/img/sponsors/behance.svg">
+									</a>
+									<a href="#">
+														<img src="../static/assets/img/sponsors/linode.svg">
+									</a>
+									<a href="#">
+														<img src="../static/assets/img/sponsors/sendgrid.svg">
+									</a>
+				</div>
+				-->
+				<div class="third">
+					<h1>Bronze Sponsors</h1>
+					<a href="https://www.mongodb.org/" target="_blank">
+						<img src="../static/assets/img/sponsors/mongodb.svg">
+					</a>
+					<a href="https://twilio.com/" target="_blank">
+						<img src="../static/assets/img/sponsors/twilio.svg">
+					</a>
+				</div>
+				<div class="third partners">
+					<h1>In partnership with:</h1>
+					<a href="#">
+						<img src="../static/assets/img/mlh.svg">
+					</a>
+				</div>
+				<p class="subtext">Want to sponsor? <a href="mailto:sponsorship@hackru.org" data-email="sponsorship@hackru.org">Email us!</a></p>
+			</div>
+		</section>
+		<section id="footer">
+			<div class="container">
+				<span>
+					<a href="mailto:info@hackru.org"><img src="../static/assets/icon/mail.svg"></a>
+					<a href="https://www.facebook.com/theHackRU" target="_blank"><img src="../static/assets/icon/fb.svg"></a>
+					<a href="https://twitter.com/thehackru" target="_blank"><img src="../static/assets/icon/twitter.svg"></a>
+				</span>
+			</div>
+		</section>
+	</body>
+</html>
