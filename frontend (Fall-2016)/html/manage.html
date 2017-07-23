@@ -1,0 +1,133 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+
+	<head lang="en">
+		<meta name="description" content="Sign up for Rutgers University Fall 2016 hackathon, HackRU! October 22nd - 23rd.">
+		<meta name="title" content="HackRU Fall 2016">
+		<meta property="og:title" content="HackRU Fall 2016" />
+		<meta property="og:description" content="Get hyped for the best hackathon Rutgers has to offer! HackRU's 11th hackathon is coming this Fall 2016! October 22nd - 23rd." />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>HackRU Fall 2016</title>
+		<meta property="og:image" content="http://yuzu.s-ul.eu/MYZAoh2v.png" />
+		<link href="../assets/icon/fav.png" rel="shortcut icon" type="image/png" />
+		<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+		<script type="text/javascript" src="../js/bootstrap-filestyle.min.js"></script>
+		<link rel="stylesheet" href="../css/common.css">
+		<link rel="stylesheet" href="../css/sign-up.css">
+        <script type="text/javascript" src="../js/footer-fixer.js"></script>
+	</head>
+
+	<body>
+		<nav>
+			<div class="container">
+				<div class="row">
+					<a href="./index.html">
+						<ul class="logo open">
+							<img src="../assets/img/logo.svg">
+						</ul>
+					</a>
+					<ul class="links">
+						<a href="./index.html#2">
+							<li>about</li>
+						</a>
+						<a href="./index.html#3">
+							<li>faq</li>
+						</a>
+						<a href="./index.html#4">
+							<li>schedule</li>
+						</a>
+						<a href="./index.html#5">
+							<li>sponsors</li>
+						</a>
+					</ul>
+				</div>
+			</div>
+		</nav>
+		<section id="active-area">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-3"></div>
+					<div class="col-md-6">
+						<h1>Manage Account</h1>
+						<p class="default">Need to change your info? No problem. You're at the right place.</p>
+						<div class="input-wrapper" label="Github Username">
+							<input id="github" name="github" value="{{ github }}" class="inpt normal">
+						</div>
+
+						<div class="btn-wrapper" style="color: #ff4040 !important" label="Resume">
+							<input type="hidden" name="MAX_FILE_SIZE" value=2048 />
+							<!-- 2MB limit -->
+							<input id="resume" type="file" class="filestyle" name="resume" data-buttonBefore="true" />
+							<p class="fine-print">Upload a .pdf, .txt, .doc or .docx &lt; 2MB.</p>
+						</div>
+						<button class="btn-ru long" value="Submit" type="submit" style="margin-bottom: 35px;">Save</button>
+						<button class="btn-ru long" value="Submit" type="submit" style="margin-bottom: 65px;">Back</button>
+					</div>
+					<div class="col-md-3"></div>
+				</div>
+			</div>
+		</section>
+		<section id="footer">
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-6">
+						<div class="left-foot">
+							<a href="#">MLH's Code of Conduct</a>
+							<a href="mailto:info@hackru.org" data-email="info@hackru.org" style="margin-bottom: 20px;">info@hackru.org</a>
+							<p>Photography provided by
+								<br> Major League Hacking</p>
+							<div class="social-media">
+								<ul>
+									<a href="https://www.facebook.com/theHackRU">
+										<li><img src="../assets/img/fb-w.svg"></li>
+									</a>
+									<a href="https://www.instagram.com/thehackru/">
+										<li><img src="../assets/img/insta-w.svg"> </li>
+									</a>
+									<a href="https://medium.com/the-hackru">
+										<li><img src="../assets/img/medium-w.svg"> </li>
+									</a>
+									<a href="https://twitter.com/thehackru">
+										<li><img src="../assets/img/twitter-w.svg"> </li>
+									</a>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="col-xs-6">
+						<div class="right-foot">
+							<span>In partnership with:</span>
+							<a href="https://mlh.io/">
+								<img src="../assets/img/mlh.svg">
+							</a>
+							<a href="http://usacs.rutgers.edu/">
+								<img src="../assets/img/usacs.svg">
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</body>
+
+	<script>
+		(function (i, s, o, g, r, a, m) {
+			i['GoogleAnalyticsObject'] = r;
+			i[r] = i[r] || function () {
+				(i[r].q = i[r].q || []).push(arguments)
+			}, i[r].l = 1 * new Date();
+			a = s.createElement(o),
+				m = s.getElementsByTagName(o)[0];
+			a.async = 1;
+			a.src = g;
+			m.parentNode.insertBefore(a, m)
+		})(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+		ga('create', 'UA-74499803-1', 'auto');
+		ga('send', 'pageview');
+	</script>
+
+</html>

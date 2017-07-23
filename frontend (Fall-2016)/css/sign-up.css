@@ -1,0 +1,216 @@
+img {
+    text-align: center;
+    margin: 0 auto;
+    display: block;
+}
+
+h1 {
+    font-size: 2.75rem;
+    font-family: 'Circular Black';
+    text-align: center;
+    padding: 10px 20px 20px;
+    position: relative;
+    z-index: 2;
+    color: #ff4040;
+    margin-bottom: 75px;
+}
+h1::before{
+    content: '';
+    background-image: url('../assets/img/header-bg.svg');
+    background-position: center;
+    background-size: contain;
+    top: 0;
+    display: block;
+    position: absolute;
+    z-index: -1;
+    width: calc(100% - 40px);
+    height: 100%;
+    background-repeat: no-repeat;
+}
+h2 {
+    text-align: center;
+    font-family: 'Circular Black';
+    color: #ff4040;
+}
+h3 {
+    color: #ff4040;
+    font-size: 1.625rem;
+    margin-top: 50px;
+    text-align: center;
+}
+p.default {
+    color: #ff4040;
+    font-size: 1.3125rem;
+    text-align: center;
+    line-height: 2.125rem;
+}
+#active-area {
+    padding: 150px 0px 50px;
+    margin-bottom: 200px;
+}
+.input-wrapper, .btn-wrapper {
+    margin: 40px auto;
+}
+.btn-ru {
+    margin: 0 auto;
+    display: block;
+}
+.long {
+    max-width: 320px;
+}
+.checkbox, .small {
+    font-size: 0.9375rem !important;
+    line-height: 1.4375rem !important;
+}
+input[type="checkbox"] {
+    visibility: hidden;
+    width: 25px;
+    height: 25px;
+}
+
+.checkbox {
+    margin: 0 auto;
+    width: 460px;
+    height: auto;
+    padding-left: 120px;
+    display: inline-block;
+    text-align: left !important;
+    margin: 50px 0px;
+}
+@media only screen and (max-width: 570px) {
+    /* line 304, ../sass/sign-up.sass */
+    .checkbox {
+        width: 100%;
+        display: block;
+        text-align: center;
+    }
+}
+
+/* line 315, ../sass/sign-up.sass */
+.squaredThree {
+    width: 20px;
+    margin: 0px auto;
+    position: relative;
+    display: inline-block;
+    z-index: 5;
+    right: 0;
+    margin-right: 20px;
+}
+
+
+/* line 324, ../sass/sign-up.sass */
+.squaredThree label {
+    cursor: pointer;
+    position: relative;
+    width: 23px;
+    height: 23px;
+    background-color: #d3d3d3;
+    border-radius: 4px;
+    border: 1px solid #BFBFBF;
+    transition: border-color 0.2s ease-in-out;
+    max-width: initial;
+}
+
+/* line 335, ../sass/sign-up.sass */
+.squaredThree label:hover {
+    border: 1px solid #9d9d9d;
+}
+
+/* line 338, ../sass/sign-up.sass */
+.squaredThree label:after {
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    filter: alpha(opacity=0);
+    opacity: 0;
+    content: "";
+    position: absolute;
+    width: 8px;
+    height: 4px;
+    background: transparent;
+    top: 6px;
+    left: 6px;
+    border: 2px solid #dd2626;
+    border-top: none;
+    border-right: none;
+    box-sizing: initial;
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    transition: opacity 0.2s ease-in-out;
+}
+
+/* line 362, ../sass/sign-up.sass */
+.squaredThree label:hover::after {
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
+    filter: alpha(opacity=30);
+    opacity: 0.3;
+}
+
+/* line 367, ../sass/sign-up.sass */
+.squaredThree input[type=checkbox]:checked + label:after {
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+    filter: alpha(opacity=100);
+    opacity: 1;
+    border-color: 1px solid #898989;
+}
+.chisai {
+    max-width: 167px;
+    font-size: 0.875rem;
+    display: inline-block;
+}
+.button-group > button:first-child {
+    margin-right: 10px;
+}
+.green {
+    background-color: #3fc97d;
+}
+.button-group {
+    width: 354px;
+    margin: 0 auto;
+    margin-bottom: 70px;
+}
+#footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+.squaredThree {
+    bottom: 0px;
+    left: 0px;
+    position: absolute;
+    right: auto;
+    margin-left: auto;
+    height: 100%;
+    top: 25px;
+}
+.default.checkbox {
+    padding-left: 0px;
+}
+.check-wrapper {
+    padding-left: 50px;
+    height: 200px;
+    width: 100%;
+    max-width: 350px;
+    margin: 0 auto;
+    position: relative;
+}
+.checkbox {
+    width: auto;
+}
+@media only screen and (max-width: 570px) {
+    /* line 315, ../sass/sign-up.sass */
+    .squaredThree {
+        top: -10px;
+    }
+    .chisai {
+        display: block;
+    }
+    .button-group {
+        width: 100%;    
+    }
+    .button-group > button:first-child {
+        margin-right: auto;
+        margin-bottom: 10px;
+    }
+}
