@@ -2,7 +2,9 @@ const express = require('express');
 const ejs = require('ejs'); // Templating Engine
 const app = express();
 
-app.get('/testejs', function (req, res) {
+app.use(express.static(__dirname + '/views'));
+
+app.get('/', function (req, res) {
     res.render('testejs.ejs');
 });
 
