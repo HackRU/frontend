@@ -1,1 +1,45 @@
 /* HackRU Fall 2017 Custom Stylesheet */
+@font-face {
+  font-family: "Circular Std Bold";
+  src: url(../fonts/CircularStd-Bold.otf); }
+@font-face {
+  font-family: "Circular Std Book";
+  src: url(../fonts/CircularStd-Book.otf); }
+@font-face {
+  font-family: "Circular Std Book Italic";
+  src: url(../fonts/CircularStd-BookItalic.otf); }
+.bg-gradient, #hero {
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#7b4397+0,dc2430+100 */
+  background: #7B4397;
+  /* Old browsers */
+  background: -moz-linear-gradient(-45deg, #7B4397 0%, #DC2430 100%);
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(-45deg, #7B4397 0%, #DC2430 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(135deg, #7B4397 0%, #DC2430 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$color-purple', endColorstr='$color-red',GradientType=1 );
+  /* IE6-9 fallback on horizontal gradient */ }
+
+.full-height {
+  height: 100vh; }
+
+* {
+  font-family: "Circular Std Book", sans-serif; }
+
+#hero {
+  background-size: cover; }
+  #hero .season-text, #hero .season-location {
+    font-family: "Circular Std Bold", sans-serif; }
+
+#nav-bar {
+  height: 10vh;
+  line-height: 10vh; }
+  #nav-bar .nav-bar-link, #nav-bar .nav-bar-logo {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0; }
+  #nav-bar .nav-bar-logo {
+    max-height: 65%; }
+
+/*# sourceMappingURL=style.css.map */

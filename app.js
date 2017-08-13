@@ -5,15 +5,10 @@ const app = express();
 app.use(express.static(__dirname + '/views'));
 
 app.get('/', function (req, res) {
-    res.render('testejs.ejs');
+    res.render('index.ejs');
 });
-
-app.listen(3000, function () {
-    console.log('Example app listening on port 3000!')
-});
-
 
 // Launch
-var port = process.env.PORT || 8080; // Determine Port to listen on
+var port = process.env.PORT || 8080;
 app.listen(port);
 console.log('Listening on port: %d', port);
