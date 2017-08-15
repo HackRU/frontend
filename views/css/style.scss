@@ -17,6 +17,38 @@
 $color-red: #DC2430;
 $color-purple: #7B4397;
 
+$color-bronze: #C96F0D;
+$color-silver: #B7B7B7;
+$color-gold: #F9DC62;
+$color-plat: #D8D8D8;
+
+
+.bronze {
+	color: $color-bronze;
+}
+.silver {
+	color: $color-silver;
+}
+.gold {
+	color: $color-gold;
+}
+.plat {
+	color: $color-plat;
+}
+
+
+.theme-purple {
+	color: $color-purple;
+}
+
+.theme-red {
+	color: $color-red;
+}
+
+.text-black {
+	color: black;
+}
+
 .bg-gradient {
 	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#7b4397+0,dc2430+100 */
 	background: $color-purple; /* Old browsers */
@@ -26,25 +58,101 @@ $color-purple: #7B4397;
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$color-purple', endColorstr='$color-red',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 }
 
+.bg-splash {
+	background-image: url(../assets/bg-splash.jpg);
+	background-size: cover;
+
+	@extend .bg-gradient;
+}
+
+$skew-angle: 4;
+
+a {
+	color: $color-purple;
+
+	&:hover, &:focus {
+		color: $color-red;
+	}
+}
+
+.z-top {
+	z-index: 999;
+}
+
+.skew {
+	transform: skew(0deg, -#{$skew-angle}deg);
+	margin-top: 50px;
+}
+
+.unskew {
+	transform: skew(0deg, #{$skew-angle}deg);
+}
+
 .full-height {
 	height: 100vh;
+}
+
+.min-full-height {
+	min-height: 100vh;
+}
+
+.min-half-height {
+	min-height: 50vh;
+}
+
+.min-quarter-height {
+	min-height: 25vh;
+}
+
+.bold-text {
+	font-family: "Circular Std Bold", sans-serif;
+
 }
 
 * {
 	font-family: "Circular Std Book", sans-serif;
 }
 
-#hero {
-	@extend .bg-gradient;
-	background-size: cover;
+.btn {
+	color: white;
+	border-color: white;
+}
 
-	.season-text, .season-location {
-		font-family: "Circular Std Bold", sans-serif;
+.row {
+	&.min-full-height, &.min-half-height, &.min-quarter-height {
+		padding-bottom: 50px;
 	}
 }
 
+.row-title-box {
+	text-align: center;
+	padding-top: 50px;
+	padding-bottom: 30px;
+
+	.row-title {
+		@extend .bold-text;
+		color: inherit;
+		margin: 0;
+		padding: 10px 20px;
+		display: inline-block;
+		border: 1px solid;
+		border-radius: 10px;
+	}
+}
+
+.row-content-box {
+	color: black;
+}
+
+#hero {
+	@extend .bg-splash;
+	background-size: cover;
+	color: white;
+	overflow: hidden;
+}
+
 #nav-bar {
-	$nav-bar-height: 10vh;
+	$nav-bar-height: 20vh;
 	height: $nav-bar-height;
 	line-height: $nav-bar-height;
 
@@ -56,6 +164,73 @@ $color-purple: #7B4397;
 
 	.nav-bar-logo {
 		@extend .nav-bar-link;
-		max-height: 65%;
+		height: 65%;
 	}
+}
+
+$himg-rotate-angle: 25;
+
+#hero-img {
+	max-width: 90%;
+	max-height: 400px;
+	-ms-transform: rotate(#{$himg-rotate-angle}deg); /* IE 9 */
+	-webkit-transform: rotate(#{$himg-rotate-angle}deg); /* Chrome, Safari, Opera */
+	transform: rotate(#{$himg-rotate-angle}deg);
+}
+
+.about-icon {
+	width: 90%;
+}
+
+.about-icon-desc {
+
+}
+
+
+.about-map {
+	overflow: hidden;
+	height: 100%;
+	border-radius: 5px;
+
+
+}
+
+.about-map-container {
+	@extend .bg-gradient;
+	padding: 3px;
+	height: 250px;
+	border-radius: 5px;
+}
+
+
+.sched-event {
+
+	color: white;
+	margin-top: 10px;
+	margin-bottom: 10px;
+
+
+	.sched-time {
+		color: inherit;
+		text-align: right;
+		padding: 5px 10px;
+		border: 1px solid;
+		border-radius: 5px;
+	}
+
+	.sched-desc {
+		color: inherit;
+		text-align: left;
+		padding: 5px 10px;
+	}
+}
+
+.faq-q {
+	@extend .bold-text;
+	@extend .theme-red;
+}
+
+.spons-level {
+	@extend .bold-text;
+	text-align: center;
 }

@@ -8,7 +8,28 @@
 @font-face {
   font-family: "Circular Std Book Italic";
   src: url(../fonts/CircularStd-BookItalic.otf); }
-.bg-gradient, #hero {
+.bronze {
+  color: #C96F0D; }
+
+.silver {
+  color: #B7B7B7; }
+
+.gold {
+  color: #F9DC62; }
+
+.plat {
+  color: #D8D8D8; }
+
+.theme-purple {
+  color: #7B4397; }
+
+.theme-red, .faq-q {
+  color: #DC2430; }
+
+.text-black {
+  color: black; }
+
+.bg-gradient, .bg-splash, #hero, .about-map-container {
   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#7b4397+0,dc2430+100 */
   background: #7B4397;
   /* Old browsers */
@@ -21,25 +42,118 @@
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$color-purple', endColorstr='$color-red',GradientType=1 );
   /* IE6-9 fallback on horizontal gradient */ }
 
+.bg-splash, #hero {
+  background-image: url(../assets/bg-splash.jpg);
+  background-size: cover; }
+
+a {
+  color: #7B4397; }
+  a:hover, a:focus {
+    color: #DC2430; }
+
+.z-top {
+  z-index: 999; }
+
+.skew {
+  transform: skew(0deg, -4deg);
+  margin-top: 50px; }
+
+.unskew {
+  transform: skew(0deg, 4deg); }
+
 .full-height {
   height: 100vh; }
+
+.min-full-height {
+  min-height: 100vh; }
+
+.min-half-height {
+  min-height: 50vh; }
+
+.min-quarter-height {
+  min-height: 25vh; }
+
+.bold-text, .row-title-box .row-title, .faq-q, .spons-level {
+  font-family: "Circular Std Bold", sans-serif; }
 
 * {
   font-family: "Circular Std Book", sans-serif; }
 
+.btn {
+  color: white;
+  border-color: white; }
+
+.row.min-full-height, .row.min-half-height, .row.min-quarter-height {
+  padding-bottom: 50px; }
+
+.row-title-box {
+  text-align: center;
+  padding-top: 50px;
+  padding-bottom: 30px; }
+  .row-title-box .row-title {
+    color: inherit;
+    margin: 0;
+    padding: 10px 20px;
+    display: inline-block;
+    border: 1px solid;
+    border-radius: 10px; }
+
+.row-content-box {
+  color: black; }
+
 #hero {
-  background-size: cover; }
-  #hero .season-text, #hero .season-location {
-    font-family: "Circular Std Bold", sans-serif; }
+  background-size: cover;
+  color: white;
+  overflow: hidden; }
 
 #nav-bar {
-  height: 10vh;
-  line-height: 10vh; }
+  height: 20vh;
+  line-height: 20vh; }
   #nav-bar .nav-bar-link, #nav-bar .nav-bar-logo {
     display: inline-block;
     vertical-align: middle;
     margin: 0; }
   #nav-bar .nav-bar-logo {
-    max-height: 65%; }
+    height: 65%; }
+
+#hero-img {
+  max-width: 90%;
+  max-height: 400px;
+  -ms-transform: rotate(25deg);
+  /* IE 9 */
+  -webkit-transform: rotate(25deg);
+  /* Chrome, Safari, Opera */
+  transform: rotate(25deg); }
+
+.about-icon {
+  width: 90%; }
+
+.about-map {
+  overflow: hidden;
+  height: 100%;
+  border-radius: 5px; }
+
+.about-map-container {
+  padding: 3px;
+  height: 250px;
+  border-radius: 5px; }
+
+.sched-event {
+  color: white;
+  margin-top: 10px;
+  margin-bottom: 10px; }
+  .sched-event .sched-time {
+    color: inherit;
+    text-align: right;
+    padding: 5px 10px;
+    border: 1px solid;
+    border-radius: 5px; }
+  .sched-event .sched-desc {
+    color: inherit;
+    text-align: left;
+    padding: 5px 10px; }
+
+.spons-level {
+  text-align: center; }
 
 /*# sourceMappingURL=style.css.map */

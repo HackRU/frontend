@@ -7,45 +7,338 @@
 </head>
 
 <body>
+<% include ./partials/mlh.ejs %>
 <div class="container-fluid">
-    <div class="row full-height" id="hero">
-        <div class="col-12">
+
+    <!-- HERO SECTION -->
+    <div class="row min-full-height" id="hero">
+        <div class="col-10 offset-1">
 
             <!-- The navbar is contained within a row with id="nav-bar" -->
             <% include ./partials/nav.ejs %>
 
-
-            <div class="row">
+            <div class="row mt-5">
                 <div class="col-6">
-                    <div class="row">
+                    <div class="row mt-5">
                         <div class="col-12">
-                            <h1 class="season-text">Fall 2017</h1>
-                            <h2 class="season-location">Something here about location.</h2>
+                            <h1 class="season-text bold-text">HackRU Fall 2017</h1>
+                            <h2 class="season-date">October 14th-15th, 2017</h2>
+                            <br>
+                            <h5 class="season-location bold-text">College Ave Student Center</h5>
+                            <h5 class="season-location bold-text">Rutgers University</h5>
                         </div>
                     </div>
 
-                    <div class="row">
-                        <div class="col-6">button here</div>
-                        <div class="col-6">button here</div>
+                    <div class="row mt-3">
+                        <div class="col-12">
+                            <button type="button" class="btn btn-outline-primary">Login</button>
+                            <button type="button" class="btn btn-outline-primary ml-3">Register</button>
+                        </div>
+                    </div>
+
+                    <div class="row mt-5">
+                        <div class="col-12">
+
+                        </div>
                     </div>
                 </div>
 
-                <div class="col-6">
-                    <div class="row">
-                        <div class="col-12">
-                            <h1>HackRU description</h1>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ad assumenda consequatur dicta est inventore labore! Accusantium ad et excepturi repudiandae voluptates! Nemo, quisquam tempore.</p>
-                        </div>
+                <div class="col-6 text-center">
+                    <img id="hero-img" src="./assets/icons/Duo-Stamp-White.png" alt="">
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END OF HERO SECTION -->
+
+
+    <!-- ******************************************************************** -->
+
+
+    <!-- ABOUT US SECTION -->
+    <div class="row min-full-height theme-purple">
+        <div class="col-10 offset-1">
+            <div class="row row-title-box">
+                <div class="col-12">
+                    <h2 class="row-title">About Us</h2>
+                </div>
+            </div>
+
+            <div class="row row-content-box">
+                <div class="col-12">
+                    <h3 class="bold-text"><i class="fa fa-question-circle theme-purple" aria-hidden="true"></i> Who and What?</h3>
+                    <p>
+                        HackRU is a 24-hour hackathon at Rutgers University. We welcome hundreds of students to join us
+                        in building awesome software and hardware projects. Industry experts and mentors come from all
+                        over the country to create an environment that fosters an atmosphere of learning through tech
+                        talks and one-on-one guidance. We encourage beginner and advanced hackers alike to challenge
+                        themselves and expand their skills. Learn more about HackRU by reading our articles on <a href="https://medium.com/the-hackru" target="_blank">Medium!</a>
+                    </p>
+                </div>
+
+                <div class="col-3 text-center">
+                    <img class="about-icon mb-2" src="./assets/bg-splash.jpg" alt="">
+                    <p class="about-icon-desc">Mobile Development</p>
+                </div>
+                <div class="col-3 text-center">
+                    <img class="about-icon mb-2" src="./assets/bg-splash.jpg" alt="">
+                    <p class="about-icon-desc">Web Development</p>
+                </div>
+                <div class="col-3 text-center">
+                    <img class="about-icon mb-2" src="./assets/bg-splash.jpg" alt="">
+                    <p class="about-icon-desc">Design</p>
+                </div>
+                <div class="col-3 text-center">
+                    <img class="about-icon mb-2" src="./assets/bg-splash.jpg" alt="">
+                    <p class="about-icon-desc">Hardware</p>
+                </div>
+
+                <div class="col-12 mt-3">
+                    <h3 class="bold-text"><i class="fa fa-globe theme-purple" aria-hidden="true"></i> When and Where?</h3>
+                    <p>
+                        HackRU is from October 14th to 15th, 2017 at the College Ave Student Center in New Brunswick,
+                        NJ. The College Ave Student Center is located at <strong>126 College Ave, New Brunswick, NJ 08901.</strong>
+                    </p>
+                </div>
+
+                <div class="col-10 offset-1 mt-5 about-map-container">
+                    <iframe class="about-map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1516.8805467681675!2d-74.45265422104657!3d40.5026657080946!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c3c6555ac2d7f7%3A0x8820e7c83ea74250!2sCollege+Avenue+Student+Center!5e0!3m2!1sen!2sus!4v1502828160852" width="100%" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END OF ABOUT US SECTION -->
+
+
+    <!-- ******************************************************************** -->
+
+
+    <!-- SCHEDULE SECTION -->
+    <div class="row min-half-height text-white bg-gradient skew">
+        <div class="col-10 offset-1 unskew">
+            <div class="row row-title-box">
+                <div class="col-12">
+                    <h2 class="row-title">Schedule</h2>
+                </div>
+            </div>
+
+            <div class="row row-content-box">
+                <div class="col-6 text-center">
+                    <h3 class="bold-text mb-5 text-white">😁 Saturday</h3>
+                    <div class="sched-event">
+                        <p>
+                            <span class="sched-time">??AM</span>
+                            <span class="sched-desc">description here nice wow amazing</span>
+                        </p>
+                    </div>
+                    <div class="sched-event">
+                        <p>
+                            <span class="sched-time">??AM</span>
+                            <span class="sched-desc">description here nice wow amazing</span>
+                        </p>
+                    </div>
+                    <div class="sched-event">
+                        <p>
+                            <span class="sched-time">??AM</span>
+                            <span class="sched-desc">description here nice wow amazing</span>
+                        </p>
+                    </div>
+                    <div class="sched-event">
+                        <p>
+                            <span class="sched-time">??AM</span>
+                            <span class="sched-desc">description here nice wow amazing</span>
+                        </p>
+                    </div>
+                    <div class="sched-event">
+                        <p>
+                            <span class="sched-time">??AM</span>
+                            <span class="sched-desc">description here nice wow amazing</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-6 text-center">
+                    <h3 class="bold-text mb-5 text-white">😎 Sunday</h3>
+                    <div class="sched-event">
+                        <p>
+                            <span class="sched-time">??AM</span>
+                            <span class="sched-desc">description here nice wow amazing</span>
+                        </p>
+                    </div>
+                    <div class="sched-event">
+                        <p>
+                            <span class="sched-time">??AM</span>
+                            <span class="sched-desc">description here nice wow amazing</span>
+                        </p>
+                    </div>
+                    <div class="sched-event">
+                        <p>
+                            <span class="sched-time">??AM</span>
+                            <span class="sched-desc">description here nice wow amazing</span>
+                        </p>
+                    </div>
+                    <div class="sched-event">
+                        <p>
+                            <span class="sched-time">??AM</span>
+                            <span class="sched-desc">description here nice wow amazing</span>
+                        </p>
+                    </div>
+                    <div class="sched-event">
+                        <p>
+                            <span class="sched-time">??AM</span>
+                            <span class="sched-desc">description here nice wow amazing</span>
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+    <!-- END OF SCHEDULE SECTION -->
 
 
+    <!-- ******************************************************************** -->
 
+
+    <!-- FAQ SECTION -->
+    <div class="row min-full-height theme-red">
+        <div class="col-10 offset-1">
+            <div class="row row-title-box">
+                <div class="col-12">
+                    <h2 class="row-title">FAQs</h2>
+                </div>
+            </div>
+
+            <div class="row row-content-box">
+                <div class="col-6">
+
+                    <h3 class="faq-q">This is an example question, or is it?</h3>
+                    <p class="faq-a">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus atque eius
+                        facere laboriosam necessitatibus reiciendis! Ab consequuntur eaque eum iste.</p>
+
+                    <h3 class="faq-q">This is an example question, or is it?</h3>
+                    <p class="faq-a">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus atque eius
+                        facere laboriosam necessitatibus reiciendis! Ab consequuntur eaque eum iste.</p>
+
+                    <h3 class="faq-q">This is an example question, or is it?</h3>
+                    <p class="faq-a">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus atque eius
+                        facere laboriosam necessitatibus reiciendis! Ab consequuntur eaque eum iste.</p>
+
+                    <h3 class="faq-q">This is an example question, or is it?</h3>
+                    <p class="faq-a">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus atque eius
+                        facere laboriosam necessitatibus reiciendis! Ab consequuntur eaque eum iste.</p>
+
+                    <h3 class="faq-q">This is an example question, or is it?</h3>
+                    <p class="faq-a">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus atque eius
+                        facere laboriosam necessitatibus reiciendis! Ab consequuntur eaque eum iste.</p>
+
+                </div>
+
+                <div class="col-6">
+
+                    <h3 class="faq-q">This is an example question, or is it?</h3>
+                    <p class="faq-a">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus atque eius
+                        facere laboriosam necessitatibus reiciendis! Ab consequuntur eaque eum iste.</p>
+
+                    <h3 class="faq-q">This is an example question, or is it?</h3>
+                    <p class="faq-a">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus atque eius
+                        facere laboriosam necessitatibus reiciendis! Ab consequuntur eaque eum iste.</p>
+
+                    <h3 class="faq-q">This is an example question, or is it?</h3>
+                    <p class="faq-a">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus atque eius
+                        facere laboriosam necessitatibus reiciendis! Ab consequuntur eaque eum iste.</p>
+
+                    <h3 class="faq-q">This is an example question, or is it?</h3>
+                    <p class="faq-a">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus atque eius
+                        facere laboriosam necessitatibus reiciendis! Ab consequuntur eaque eum iste.</p>
+
+                    <h3 class="faq-q">This is an example question, or is it?</h3>
+                    <p class="faq-a">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus atque eius
+                        facere laboriosam necessitatibus reiciendis! Ab consequuntur eaque eum iste.</p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END OF FAQ SECTION -->
+
+
+    <!-- ******************************************************************** -->
+
+
+    <!-- SPONSOR SECTION -->
+    <div class="row min-full-height text-white bg-gradient skew">
+        <div class="col-10 offset-1 unskew">
+            <div class="row row-title-box">
+                <div class="col-12">
+                    <h2 class="row-title">Sponsors</h2>
+                </div>
+            </div>
+
+            <div class="row row-content-box">
+                <div class="col-12">
+                    <h3 class="spons-level my-5 plat">&middot; Platinum &middot;</h3>
+
+                    <div class="row">
+                        <div class="col-12 text-white text-center">logos here pls</div>
+                    </div>
+
+                    <h3 class="spons-level my-5 gold">&middot; Gold &middot;</h3>
+
+                    <div class="row">
+                        <div class="col-12 text-white text-center">logos here pls</div>
+                    </div>
+
+                    <h3 class="spons-level my-5 silver">&middot; Silver &middot;</h3>
+
+                    <div class="row">
+                        <div class="col-12 text-white text-center">logos here pls</div>
+                    </div>
+
+                    <h3 class="spons-level my-5 bronze">&middot; Bronze &middot;</h3>
+
+                    <div class="row">
+                        <div class="col-12 text-white text-center">logos here pls</div>
+                    </div>
+
+                    <p class="mt-5 text-white text-center">
+                        Looking to sponsor us?
+                        <br>
+                        Visit <a class="gold" href="http://sponsorship.hackru.org">sponsorship.hackru.org</a> or email us at sponsorship@hackru.org!
+                    </p>
+
+
+                </div>
+            </div>
+        </div>
     </div>
 
-    <div class="row full-height">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci aut consequuntur cum debitis dolor facere fugiat hic illum, incidunt ipsa ipsam iste molestiae pariatur quam quos rem unde velit. Ad alias architecto asperiores aspernatur at blanditiis consequuntur cum cupiditate dicta dolores dolorum eligendi facilis fuga fugiat in inventore libero molestiae non nostrum numquam odit, officiis placeat possimus quidem rem sint sit soluta tenetur totam veniam veritatis vero voluptas voluptates. Atque dicta ducimus ea eos in ipsam molestiae mollitia sed. A ab deleniti deserunt dolores magnam, reprehenderit similique vel. Accusamus accusantium aspernatur at deleniti dolor hic itaque minus nisi nulla perferendis.</div>
+    <!-- END OF SPONSOR SECTION -->
+
+    <!-- ******************************************************************** -->
+
+
+    <!-- FOOTER SECTION -->
+    <div class="row min-quarter-height text-black">
+        <div class="col-10 offset-1">
+            <div class="row row-title-box">
+                <div class="col-12">
+                    <h2 class="row-title">Footer</h2>
+                </div>
+            </div>
+
+            <div class="row row-content-box">
+                <div class="col-12">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- END OF FOOTER SECTION -->
+
+
 </div>
 
 </body>
