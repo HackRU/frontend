@@ -4,15 +4,16 @@
 	font-family: "Circular Std Bold";
 	src: url(../fonts/CircularStd-Bold.otf);
 }
+
 @font-face {
 	font-family: "Circular Std Book";
 	src: url(../fonts/CircularStd-Book.otf);
 }
+
 @font-face {
 	font-family: "Circular Std Book Italic";
 	src: url(../fonts/CircularStd-BookItalic.otf);
 }
-
 
 $color-red: #DC2430;
 $color-purple: #7B4397;
@@ -22,20 +23,21 @@ $color-silver: #B7B7B7;
 $color-gold: #F9DC62;
 $color-plat: #D8D8D8;
 
-
 .bronze {
 	color: $color-bronze;
 }
+
 .silver {
 	color: $color-silver;
 }
+
 .gold {
 	color: $color-gold;
 }
+
 .plat {
 	color: $color-plat;
 }
-
 
 .theme-purple {
 	color: $color-purple;
@@ -52,10 +54,10 @@ $color-plat: #D8D8D8;
 .bg-gradient {
 	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#7b4397+0,dc2430+100 */
 	background: $color-purple; /* Old browsers */
-	background: -moz-linear-gradient(-45deg,  $color-purple 0%, $color-red 100%); /* FF3.6-15 */
-	background: -webkit-linear-gradient(-45deg,  $color-purple 0%,$color-red 100%); /* Chrome10-25,Safari5.1-6 */
-	background: linear-gradient(135deg,  $color-purple 0%,$color-red 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$color-purple', endColorstr='$color-red',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+	background: -moz-linear-gradient(-45deg, $color-purple 0%, $color-red 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(-45deg, $color-purple 0%, $color-red 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(135deg, $color-purple 0%, $color-red 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='$color-purple', endColorstr='$color-red', GradientType=1); /* IE6-9 fallback on horizontal gradient */
 }
 
 .bg-splash {
@@ -109,9 +111,11 @@ a {
 
 }
 
-* {
+*, input, select {
 	font-family: "Circular Std Book", sans-serif;
 }
+
+// todo: change form placeholder colors!
 
 .btn {
 	color: white;
@@ -186,12 +190,10 @@ $himg-rotate-angle: 25;
 
 }
 
-
 .about-map {
 	overflow: hidden;
 	height: 100%;
 	border-radius: 5px;
-
 
 }
 
@@ -202,13 +204,11 @@ $himg-rotate-angle: 25;
 	border-radius: 5px;
 }
 
-
 .sched-event {
 
 	color: white;
 	margin-top: 10px;
 	margin-bottom: 10px;
-
 
 	.sched-time {
 		color: inherit;
@@ -235,15 +235,92 @@ $himg-rotate-angle: 25;
 	text-align: center;
 }
 
-
 // LOGGED IN ELEMENTS
 
 .li-nav-bar {
-	background-color: $color-red;
+	background-color: $color-purple;
 	background-image: url(../assets/bg-splash.jpg);
 	background-size: cover;
 
 	.li-nav-bar-logo {
-		height: 50px;
+		height: 75px;
+		padding: 10px;
 	}
+
+	.nav-item {
+		color: white;
+		margin: 0 10px;
+		padding: 5px 10px;
+		display: inline-block;
+
+	}
+
+	.nav-item:hover {
+		.nav-link {
+			@extend .bold-text;
+		}
+	}
+
+	.nav-link {
+		padding: 0;
+		font-size: 125%;
+		color: white;
+	}
+}
+
+
+.li-section-title-box {
+	text-align: center;
+	padding: 50px 30px;
+
+	.li-section-title {
+		@extend .bold-text;
+		margin: 0;
+		padding: 10px 20px;
+		display: inline-block;
+		border: 1px solid;
+		border-radius: 10px;
+	}
+
+}
+
+.half-filler-img {
+	max-width: 70%;
+	max-height: 300px;
+}
+
+.more-info {
+	padding-left: 50px;
+	border-left: 1px $color-purple dotted;
+}
+
+$li-footer-height: 10vh;
+
+.li-footer {
+	height: $li-footer-height;
+
+	color: white;
+	@extend .bg-gradient;
+
+	.text-vcenter {
+		margin: 0;
+		line-height: $li-footer-height;
+
+	}
+
+	.social-links {
+		font-size: 175%;
+	}
+
+	a {
+		color: white;
+		line-height: $li-footer-height;
+		padding: 15px 10px;
+	}
+
+	.footer-logo {
+		display: inline-block;
+		height: calc(#{$li-footer-height}*0.5);
+	}
+
 }

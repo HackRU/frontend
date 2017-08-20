@@ -29,7 +29,7 @@
 .text-black {
   color: black; }
 
-.bg-gradient, .bg-splash, #hero, .about-map-container {
+.bg-gradient, .bg-splash, #hero, .about-map-container, .li-footer {
   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#7b4397+0,dc2430+100 */
   background: #7B4397;
   /* Old browsers */
@@ -39,7 +39,7 @@
   /* Chrome10-25,Safari5.1-6 */
   background: linear-gradient(135deg, #7B4397 0%, #DC2430 100%);
   /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$color-purple', endColorstr='$color-red',GradientType=1 );
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='$color-purple', endColorstr='$color-red', GradientType=1);
   /* IE6-9 fallback on horizontal gradient */ }
 
 .bg-splash, #hero {
@@ -73,10 +73,10 @@ a {
 .min-quarter-height {
   min-height: 25vh; }
 
-.bold-text, .row-title-box .row-title, .faq-q, .spons-level {
+.bold-text, .row-title-box .row-title, .faq-q, .spons-level, .li-nav-bar .nav-item:hover .nav-link, .li-section-title-box .li-section-title {
   font-family: "Circular Std Bold", sans-serif; }
 
-* {
+*, input, select {
   font-family: "Circular Std Book", sans-serif; }
 
 .btn {
@@ -157,10 +157,54 @@ a {
   text-align: center; }
 
 .li-nav-bar {
-  background-color: #DC2430;
+  background-color: #7B4397;
   background-image: url(../assets/bg-splash.jpg);
   background-size: cover; }
   .li-nav-bar .li-nav-bar-logo {
-    height: 50px; }
+    height: 75px;
+    padding: 10px; }
+  .li-nav-bar .nav-item {
+    color: white;
+    margin: 0 10px;
+    padding: 5px 10px;
+    display: inline-block; }
+  .li-nav-bar .nav-link {
+    padding: 0;
+    font-size: 125%;
+    color: white; }
+
+.li-section-title-box {
+  text-align: center;
+  padding: 50px 30px; }
+  .li-section-title-box .li-section-title {
+    margin: 0;
+    padding: 10px 20px;
+    display: inline-block;
+    border: 1px solid;
+    border-radius: 10px; }
+
+.half-filler-img {
+  max-width: 70%;
+  max-height: 300px; }
+
+.more-info {
+  padding-left: 50px;
+  border-left: 1px #7B4397 dotted; }
+
+.li-footer {
+  height: 10vh;
+  color: white; }
+  .li-footer .text-vcenter {
+    margin: 0;
+    line-height: 10vh; }
+  .li-footer .social-links {
+    font-size: 175%; }
+  .li-footer a {
+    color: white;
+    line-height: 10vh;
+    padding: 15px 10px; }
+  .li-footer .footer-logo {
+    display: inline-block;
+    height: calc(10vh*0.5); }
 
 /*# sourceMappingURL=style.css.map */

@@ -14,30 +14,24 @@
 <div class="container-fluid">
 
 
+
+
     <!-- CONTENT SECTION -->
     <div class="row min-full-height">
         <div class="col-10 offset-1">
 
             <div class="row li-section-title-box">
                 <div class="col-12">
-                    <h2 class="li-section-title">Dashboard</h2>
+                    <h2 class="li-section-title">Application</h2>
                 </div>
             </div>
 
             <div class="row mt-5">
-                <div class="col-7">
-
-                    <h3 class="mb-3"><span class="bold-text">Application Status:</span> Pending</h3>
-
-                    <p>
-                        We've received your application and are working hard to read through all of them. You will
-                        receive an email soon about the status of your application. In the meantime, why don't you like
-                        us on Facebook and visit our other social media?
-                    </p>
-
-                    <h5>Want to edit your application? <a href="/registration">Visit the registration page.</a></h5>
-
+                <div class="col-4">
+                    <% include ./partials/li-application-form.ejs %>
                 </div>
+
+                <div class="col-3"></div>
 
                 <% include ./partials/li-more-info.ejs %>
 

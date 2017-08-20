@@ -12,6 +12,11 @@ app.get('/dashboard', function (req, res) {
     res.render('dashboard.ejs');
 });
 
+app.get('/registration', function (req, res) {
+    res.render('registration.ejs');
+});
+
+
 // Launch
 var port = process.env.PORT || 8080;
 app.listen(port);
