@@ -234,3 +234,16 @@ $himg-rotate-angle: 25;
 	@extend .bold-text;
 	text-align: center;
 }
+
+
+// LOGGED IN ELEMENTS
+
+.li-nav-bar {
+	background-color: $color-red;
+	background-image: url(../assets/bg-splash.jpg);
+	background-size: cover;
+
+	.li-nav-bar-logo {
+		height: 50px;
+	}
+}

@@ -8,6 +8,10 @@ app.get('/', function (req, res) {
     res.render('index.ejs');
 });
 
+app.get('/dashboard', function (req, res) {
+    res.render('dashboard.ejs');
+});
+
 // Launch
 var port = process.env.PORT || 8080;
 app.listen(port);

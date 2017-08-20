@@ -156,4 +156,11 @@ a {
 .spons-level {
   text-align: center; }
 
+.li-nav-bar {
+  background-color: #DC2430;
+  background-image: url(../assets/bg-splash.jpg);
+  background-size: cover; }
+  .li-nav-bar .li-nav-bar-logo {
+    height: 50px; }
+
 /*# sourceMappingURL=style.css.map */
