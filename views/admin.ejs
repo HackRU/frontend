@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<% include ./partials/ascii.ejs %>
+<head>
+    <% include ./partials/head.ejs %>
+	<script src="./js/custom.js"></script>
+</head>
+
+<body>
+<!-- LOGGED IN NAVBAR -->
+<% include ./partials/li-nav.ejs %>
+
+<div class="container-fluid">
+
+    <div class="row min-full-height">
+        <div class="col-10 offset-1">
+
+            <div class="row li-section-title-box">
+                <div class="col-12">
+                    <h2 class="li-section-title">Admin</h2>
+                </div>
+            </div>
+
+            <div class="row mt-5">
+                <div class="col-7">
+                <% if(message) { %>
+                <h4 class="bg-danger"><%= message %></h4>
+                <% } %>
+
+
+                <!-- <form action="/check-in" method="post">
+                    <input type="text" name="email" value="Email Address">
+                    <input type="submit" value="Submit">
+                    </form> -->
+                    <h3>Accept users!</h3><br/>
+                    <% if(done) { %>
+                    <p>All done!</p>
+                    <% }else{ %>
+                    <p>Right arrow key = accept, left arrow key = reject</p><br/>
+                    <p>Remember the question is: <%= question %></p>
+                    <p>Short answer: <h2 id="user_answer"><%= user.short_answer%></h2></p><br/>
+                    <p>This <span id="user_gender"><%= user.mlh_data.gender %></span> gender person will graduate in <span id="user_level_of_study"><%= user.grad_year %></span></p>
+                    <!-- Don't make me do PHP all summer and then be surprised by this. -->
+                    <input type="hidden" id="user_id" value=<%=user.id%>></input>
+                    <% } %>
+
+                    <!-- -->
+
+                    <a href="/dashboard" class="btn btn-default content-button">Dashboard</a>
+            </div>
+
+            <div class="col-5 more-info">
+                <% if(now) { %>
+                <h2 class="li-section-title">Check-In</h3>
+                <% }else{ %>
+                <h2 class="li-section-title">Aggregates</h2>
+                <pre id="counts"><%= counts %></pre>
+                <% } %>
+            </div>
+
+		</div>
+	</div>
+
+	<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+	<div class="row" id="footer"></div>
+
+</div>
+</body>
+
+</html>
