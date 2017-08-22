@@ -3,50 +3,50 @@ const ejs = require('ejs'); // Templating Engine
 const app = express();
 
 //Really, our HackRU user.
-// const fakeUser = {
-//     "_id": {
-//         "$oid": "598ddc244b8f2b6dd8e39597"
-//     },
-//     "id": 0,
-//     "data_sharing": true,
-//     "resume": "example_resume",
-//     "github": "example_github",
-//     "registration_status": 0,
-//     "role": {
-//         "attendee": true,
-//         "mentor": false,
-//         "volunteer": false,
-//         "organizer": false,
-//         "admin": true,
-//         "director": false
-//     },
-//     "local": {
-//         "password": "defacto",
-//         "email": "team@hackru.org"
-//     },
-//     "mlh_data": {
-//         "gender": "Non-Binary",
-//         "date_of_birth": "2011-01-01",
-//         "special_needs": null,
-//         "dietary_restrictions": "None",
-//         "shirt_size": "Unisex - L",
-//         "major": "Computer Science",
-//         "level_of_study": "University (Undergraduate)",
-//         "last_name": "Team",
-//         "first_name": "HackRU",
-//         "email": "team@hackru.org",
-//         "mlhid": 56778,
-//         "school": {
-//             "id": 2037,
-//             "name": "Rutgers, The State University of New Jersey"
-//         }
-//     },
-//     "__v": 0,
-//     "short_answer": "asdf",
-//     "grad_year": 2018
-// }
+const fakeUser = {
+    "_id": {
+        "$oid": "598ddc244b8f2b6dd8e39597"
+    },
+    "id": 0,
+    "data_sharing": true,
+    "resume": "example_resume",
+    "github": "example_github",
+    "registration_status": 0,
+    "role": {
+        "attendee": true,
+        "mentor": false,
+        "volunteer": false,
+        "organizer": false,
+        "admin": true,
+        "director": false
+    },
+    "local": {
+        "password": "defacto",
+        "email": "team@hackru.org"
+    },
+    "mlh_data": {
+        "gender": "Non-Binary",
+        "date_of_birth": "2011-01-01",
+        "special_needs": null,
+        "dietary_restrictions": "None",
+        "shirt_size": "Unisex - L",
+        "major": "Computer Science",
+        "level_of_study": "University (Undergraduate)",
+        "last_name": "Team",
+        "first_name": "HackRU",
+        "email": "team@hackru.org",
+        "mlhid": 56778,
+        "school": {
+            "id": 2037,
+            "name": "Rutgers, The State University of New Jersey"
+        }
+    },
+    "__v": 0,
+    "short_answer": "asdf",
+    "grad_year": 2018
+}
 
-const fakeUser = null;
+
 
 app.use(express.static(__dirname + '/views'));
 

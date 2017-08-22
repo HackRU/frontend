@@ -265,7 +265,7 @@ a {
 	$nav-bar-height: 20vh;
 	height: $nav-bar-height;
 	line-height: $nav-bar-height;
-	margin-bottom: 150px;
+	margin-bottom: 75px;
 
 	a {
 		color: white;
@@ -439,10 +439,29 @@ $footer-height: 10vh;
 
 }
 
+$social-link-card-height: 25vh;
+
 .social-link-card {
-	background-color: purple;
-	border: 1px white dotted;
-	height: 300px;
+	color: white;
+	height: $social-link-card-height;
+
+
+
+	i, h2 {
+		font-size: 150%;
+		line-height: $social-link-card-height;
+	}
+}
+
+$social-link-undercard-height: calc(#{$social-link-card-height/3});
+
+.social-link-undercard {
+	color: white;
+	height: $social-link-undercard-height;
+	//background-color: $color-red;
+	p {
+		line-height: $social-link-undercard-height;
+	}
 }
 
 

@@ -59,11 +59,20 @@
 
 
     <% if (user.registration_status == 0) { %>
-    <p class="text-left" id="registration-terms">We participate in Major League Hacking (MLH) as an MLH Member Event. By accepting, you authorize us to share certain application/registration information for event administration, ranking, MLH admission, and occasional messages about hackathons in line with the <a href="/">MLH Privacy Policy</a>. Also, you understand that by uploading your resumé and GitHub handle, it can potentially be shared with sponsors of HackRU and you may be contacted by recruiters. By accepting, you also agree to the rules and policies of HackRU.</p>
+    <p class="text-left" id="registration-terms">We participate in Major League Hacking (MLH) as an MLH Member Event. By accepting, you authorize us to share certain application/registration information for event administration, ranking, MLH admission, and occasional messages about hackathons in line with the <a href="/">MLH Privacy Policy</a>. Also, you understand that by uploading your resumé and GitHub handle, it can potentially be shared with sponsors of HackRU and you may be contacted by recruiters. By accepting, you also agree to the rules and policies of HackRU outlined <a href="/">here</a>.</p>
+
     <div id="registration-checkbox">
-        <p class="bold-text"><input class="mr-2" type="checkbox" name="data_sharing" required>
-            I agree with the rules above, <a class="bold-text" href="https://github.com/MLH/mlh-policies/tree/master/prize-terms-and-conditions">MLH Contest Terms and Conditions</a>, and <a class="bold-text" href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf">MLH's Code of Conduct</a>.
+
+        <p class="bold-text">
+            <input class="mr-2" type="checkbox" name="rules_and_conditions" required>
+            I have read and agree with the rules and conditions above.
         </p>
+
+        <p class="bold-text">
+            <input class="mr-2" type="checkbox" name="data_sharing" required>
+            I agree to the terms of both the <a class="bold-text" href="https://github.com/MLH/mlh-policies/tree/master/prize-terms-and-conditions">MLH Contest Terms and Conditions</a> and the <a class="bold-text" href="https://mlh.io/privacy">MLH Privacy Policy</a>. Please note that you may receive pre and post-event informational e-mails and occasional messages about hackathons from MLH as per the MLH Privacy Policy.
+        </p>
+
     </div>
 
     <button type="submit" class="btn btn-primary bold-text">Submit</button>

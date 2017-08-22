@@ -192,7 +192,7 @@ a {
 #nav-bar {
   height: 20vh;
   line-height: 20vh;
-  margin-bottom: 150px; }
+  margin-bottom: 75px; }
   #nav-bar a {
     color: white; }
     #nav-bar a:hover {
@@ -292,9 +292,17 @@ a {
     border-radius: 10px; }
 
 .social-link-card {
-  background-color: purple;
-  border: 1px white dotted;
-  height: 300px; }
+  color: white;
+  height: 25vh; }
+  .social-link-card i, .social-link-card h2 {
+    font-size: 150%;
+    line-height: 25vh; }
+
+.social-link-undercard {
+  color: white;
+  height: calc(8.33333vh); }
+  .social-link-undercard p {
+    line-height: calc(8.33333vh); }
 
 .li-footer {
   height: 10vh;
