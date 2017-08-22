@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eeac2bfd-3e30-462e-87ee-f6bfdfb9a99a" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/css/style.css" afterPath="$PROJECT_DIR$/views/css/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/css/style.css.map" afterPath="$PROJECT_DIR$/views/css/style.css.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/css/style.scss" afterPath="$PROJECT_DIR$/views/css/style.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/partials/li-application-form.ejs" afterPath="$PROJECT_DIR$/views/partials/li-application-form.ejs" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/registration.ejs" afterPath="$PROJECT_DIR$/views/registration.ejs" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -31,7 +29,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="style.scss" pinned="false" current-in-tab="true">
+      <file leaf-file-name="style.scss" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/css/style.scss">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="815">
@@ -51,11 +49,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="li-application-form.ejs" pinned="false" current-in-tab="false">
+      <file leaf-file-name="li-application-form.ejs" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/views/partials/li-application-form.ejs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="223">
-              <caret line="12" column="37" lean-forward="true" selection-start-line="12" selection-start-column="37" selection-end-line="12" selection-end-column="37" />
+            <state relative-caret-position="444">
+              <caret line="26" column="37" lean-forward="true" selection-start-line="26" selection-start-column="37" selection-end-line="26" selection-end-column="37" />
               <folding />
             </state>
           </provider>
@@ -64,8 +62,8 @@
       <file leaf-file-name="registration.ejs" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/registration.ejs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="298">
-              <caret line="32" column="44" lean-forward="false" selection-start-line="32" selection-start-column="44" selection-end-line="32" selection-end-column="44" />
+            <state relative-caret-position="419">
+              <caret line="41" column="20" lean-forward="false" selection-start-line="41" selection-start-column="20" selection-end-line="41" selection-end-column="20" />
               <folding />
             </state>
           </provider>
@@ -74,7 +72,7 @@
       <file leaf-file-name="dashboard.ejs" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/dashboard.ejs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="273">
+            <state relative-caret-position="423">
               <caret line="49" column="74" lean-forward="true" selection-start-line="49" selection-start-column="74" selection-end-line="49" selection-end-column="74" />
               <folding />
             </state>
@@ -95,8 +93,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>nav-bar-link</find>
-      <find>nav-bar-;</find>
       <find>more-</find>
       <find>show_mlh_cc</find>
       <find>&lt;% if(user.registration_status == 1) { %&gt;</find>
@@ -123,8 +119,10 @@
       <find>who and</find>
       <find>social-link-ca</find>
       <find>resume</find>
-      <find>visit</find>
       <find>messag</find>
+      <find>visit</find>
+      <find>message</find>
+      <find>txt</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -152,11 +150,11 @@
         <option value="$PROJECT_DIR$/../splash-page/app.js" />
         <option value="$PROJECT_DIR$/views/partials/nav.ejs" />
         <option value="$PROJECT_DIR$/views/partials/li-more-info.ejs" />
-        <option value="$PROJECT_DIR$/views/partials/li-application-form.ejs" />
         <option value="$PROJECT_DIR$/views/dashboard.ejs" />
         <option value="$PROJECT_DIR$/app.js" />
-        <option value="$PROJECT_DIR$/views/registration.ejs" />
         <option value="$PROJECT_DIR$/views/css/style.scss" />
+        <option value="$PROJECT_DIR$/views/registration.ejs" />
+        <option value="$PROJECT_DIR$/views/partials/li-application-form.ejs" />
       </list>
     </option>
   </component>
@@ -627,12 +625,12 @@
       <workItem from="1503358892338" duration="1972000" />
       <workItem from="1503360885036" duration="9129000" />
       <workItem from="1503416988572" duration="12668000" />
-      <workItem from="1503435881289" duration="7834000" />
+      <workItem from="1503435881289" duration="8043000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="68894000" />
+    <option name="totallyTimeSpent" value="69103000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-11" y="-11" width="1942" height="1102" extended-state="6" />
@@ -984,6 +982,14 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="325">
+          <caret line="13" column="28" lean-forward="false" selection-start-line="13" selection-start-column="28" selection-end-line="13" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/views/partials/li-more-info.ejs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="190">
@@ -996,42 +1002,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/partials/li-application-form.ejs">
+    <entry file="file://$PROJECT_DIR$/views/css/style.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="223">
-          <caret line="12" column="37" lean-forward="true" selection-start-line="12" selection-start-column="37" selection-end-line="12" selection-end-column="37" />
+        <state relative-caret-position="815">
+          <caret line="531" column="18" lean-forward="false" selection-start-line="531" selection-start-column="18" selection-end-line="531" selection-end-column="18" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/views/dashboard.ejs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
+        <state relative-caret-position="423">
           <caret line="49" column="74" lean-forward="true" selection-start-line="49" selection-start-column="74" selection-end-line="49" selection-end-column="74" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="325">
-          <caret line="13" column="28" lean-forward="false" selection-start-line="13" selection-start-column="28" selection-end-line="13" selection-end-column="28" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/views/registration.ejs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="298">
-          <caret line="32" column="44" lean-forward="false" selection-start-line="32" selection-start-column="44" selection-end-line="32" selection-end-column="44" />
+        <state relative-caret-position="419">
+          <caret line="41" column="20" lean-forward="false" selection-start-line="41" selection-start-column="20" selection-end-line="41" selection-end-column="20" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/css/style.scss">
+    <entry file="file://$PROJECT_DIR$/views/partials/li-application-form.ejs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="815">
-          <caret line="531" column="18" lean-forward="false" selection-start-line="531" selection-start-column="18" selection-end-line="531" selection-end-column="18" />
+        <state relative-caret-position="444">
+          <caret line="26" column="37" lean-forward="true" selection-start-line="26" selection-start-column="37" selection-end-line="26" selection-end-column="37" />
           <folding />
         </state>
       </provider>
