@@ -32,12 +32,17 @@
 
                     <div class="row mt-3">
                         <div class="col-12">
-                            <button type="button"
-                                    class="btn btn-outline-primary">Login
-                            </button>
-                            <button type="button"
-                                    class="btn btn-outline-primary ml-3">Register
-                            </button>
+                            <% if (user) { %>
+                            <a href="/dashboard" class="btn btn-outline-primary"><h4>DASHBOARD</h4></a>
+                            <br><br>
+                            <a href="/logout" class="btn btn-outline-primary"><h4>LOGOUT</h4></a>
+                            <% } else { %>
+
+                            <h5 class="hidden-xs">Registration is now open!</h5>
+                            <a href="/authenticate" class="btn btn-outline-primary"><h4>REGISTER / LOGIN</h4></a>
+
+                            <br class="hidden-xs"><br class="hidden-xs">
+                            <% } %>
                         </div>
                     </div>
 
