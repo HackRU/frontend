@@ -158,8 +158,10 @@ a {
   .btn:hover {
     background-color: #7B4397; }
 
-.row.min-full-height, .row.min-half-height, .row.min-quarter-height {
+.row.min-full-height, .row.min-quarter-height {
   padding-bottom: 50px; }
+.row.min-half-height {
+  padding-bottom: 75px; }
 
 .row-title-box {
   text-align: center;
@@ -198,7 +200,7 @@ a {
 
 #hero-img {
   max-width: 90%;
-  max-height: 400px; }
+  max-height: 450px; }
 
 .about-icon {
   width: 90%; }
