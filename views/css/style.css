@@ -337,4 +337,8 @@ a {
     display: inline-block;
     height: calc(calc(30vh/3)*0.45); }
 
+.message {
+  border: #DC2430 solid 1px;
+  padding: 20px; }
+
 /*# sourceMappingURL=style.css.map */
