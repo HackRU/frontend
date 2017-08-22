@@ -6,7 +6,7 @@ action="/account"
 <% } %>
 enctype="multipart/form-data">
     <div class="form-group">
-        <div class="app-section-title-box">
+        <label>
             <h5 class="bold-text app-section-title">GitHub Username</h5>
         </label>
 
@@ -31,6 +31,7 @@ enctype="multipart/form-data">
 
         <label for="short-answer-text" class="col-12 col-form-label">
             <h5 class="bold-text app-section-title"><%= question %></h5>
+        </label>
 
         <div class="col-12">
             <textarea name="short_answer" class="form-control" id="exampleTextarea" rows="3" <% if(user.registration_status != 7 && user.registration_status != 0) { %> readonly <% } %>><%= user.short_answer %></textarea>
@@ -44,24 +45,6 @@ enctype="multipart/form-data">
             <h5 class="bold-text app-section-title">Graduation Year</h5>
         </label>
 
-        <div class="col-7">
-            <select class="form-control" id="grad-year-select" name="grad-year-select">
-                <option selected value></option>
-                <option>2017</option>
-                <option>2018</option>
-                <option>2019</option>
-                <option>2020</option>
-                <option>2021</option>
-                <option>2022</option>
-                <option>2023</option>
-                <option>2024</option>
-            </select>
-        </div>
-
-    </div>
-
-    <div class="form-group">
-        <h5 class="bold-text app-section-title">Graduation Year</h5>
         <select name="grad_year" class="form-control" id="exampleSelect1">
             <option value="2017" <% if (user.grad_year == 2017) { %> selected <% } %>>2017</option>
             <option value="2018" <% if (user.grad_year == 2018) { %> selected <% } %>>2018</option>
@@ -78,7 +61,7 @@ enctype="multipart/form-data">
         <p class="text-left" id="registration-terms">We participate in Major League Hacking (MLH) as an MLH Member Event. By accepting, you authorize us to share certain application/registration information for event administration, ranking, MLH admission, and occasional messages about hackathons in line with the <a href="/">MLH Privacy Policy</a>. Also, you understand that by uploading your resumé and Github handle, it can potentially be shared with sponsors of HackRU and you may be contacted by recruiters. By accepting, you also agree to the rules and policies of HackRU as they are listed in <a href="https://github.com/HackRU/Policies/blob/master/HackRU%20Spring%2017%20Waiver.pdf" target="_blank">here</a>.</p>
 
             <div id="registration-checkbox">
-            <p><input type="checkbox" name="data_sharing" required>I have read and agree with the rules and conditions above.</p>
+                <p class="bold-text"><input type="checkbox" name="data_sharing" required>I have read and agree with the rules and conditions above.</p>
             </div>
 
 
