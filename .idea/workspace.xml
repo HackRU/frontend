@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eeac2bfd-3e30-462e-87ee-f6bfdfb9a99a" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/partials/li-application-form.ejs" afterPath="$PROJECT_DIR$/views/partials/li-application-form.ejs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/partials/footer.ejs" afterPath="$PROJECT_DIR$/views/partials/footer.ejs" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -64,7 +65,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="li-application-form.ejs" pinned="false" current-in-tab="true">
+      <file leaf-file-name="li-application-form.ejs" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/partials/li-application-form.ejs">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="381">
@@ -74,11 +75,20 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="footer.ejs" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/views/partials/footer.ejs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="17">
+              <caret line="1" column="23" lean-forward="false" selection-start-line="1" selection-start-column="23" selection-end-line="1" selection-end-column="23" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
     </leaf>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>fo</find>
       <find>foo</find>
       <find>fooet</find>
       <find>fooe</find>
@@ -108,6 +118,7 @@
       <find>&lt;% if(user.registration_status == 1) { %&gt;</find>
       <find>mlh</find>
       <find>li-sectyi</find>
+      <find>grad-year</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -127,7 +138,6 @@
         <option value="$PROJECT_DIR$/views/partials/mlh.ejs" />
         <option value="$PROJECT_DIR$/views/partials/head.ejs" />
         <option value="$PROJECT_DIR$/views/css/omg.scss" />
-        <option value="$PROJECT_DIR$/views/partials/footer.ejs" />
         <option value="$PROJECT_DIR$/views/partials/nav.ejs" />
         <option value="$PROJECT_DIR$/views/index.ejs" />
         <option value="$PROJECT_DIR$/views/js/scripts.js" />
@@ -139,6 +149,7 @@
         <option value="$PROJECT_DIR$/views/partials/li-footer.ejs" />
         <option value="$PROJECT_DIR$/views/css/style.scss" />
         <option value="$PROJECT_DIR$/views/partials/li-application-form.ejs" />
+        <option value="$PROJECT_DIR$/views/partials/footer.ejs" />
       </list>
     </option>
   </component>
@@ -624,12 +635,12 @@
       <workItem from="1503347058558" duration="182000" />
       <workItem from="1503358892338" duration="1972000" />
       <workItem from="1503360885036" duration="9129000" />
-      <workItem from="1503416988572" duration="4666000" />
+      <workItem from="1503416988572" duration="4745000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="53058000" />
+    <option name="totallyTimeSpent" value="53137000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="18" width="1416" height="1026" extended-state="0" />
@@ -1003,14 +1014,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/partials/footer.ejs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="29" column="0" lean-forward="true" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/partials/li-footer.ejs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="663">
@@ -1047,6 +1050,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="381">
           <caret line="46" column="74" lean-forward="false" selection-start-line="46" selection-start-column="74" selection-end-line="46" selection-end-column="74" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/partials/footer.ejs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="23" lean-forward="false" selection-start-line="1" selection-start-column="23" selection-end-line="1" selection-end-column="23" />
           <folding />
         </state>
       </provider>
