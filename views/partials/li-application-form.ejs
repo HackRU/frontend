@@ -6,7 +6,7 @@
         </label>
 
         <div class="col-7">
-            <input type="text" class="form-control" id="github-username-input" name="github-username-input" placeholder="GitHub Username">
+            <input type="text" class="form-control" id="github-username-input" name="github" placeholder="GitHub Username" value=<%= user.github %>>
         </div>
     </div>
 
@@ -17,7 +17,8 @@
         </label>
 
         <div class="col-7">
-            <input type="file" class="form-control-file" id="resume-upload-input" name="resume-upload-input" aria-describedby="fileHelp">
+            <input type="file" class="form-control-file" id="resume-upload-input" name="resume">
+
         </div>
 
     </div>
@@ -29,7 +30,7 @@
         </label>
 
         <div class="col-12">
-            <textarea class="form-control" id="short-answer-text" name="short-answer-text" rows="3" required></textarea>
+            <textarea class="form-control" id="short-answer-text" name="short_answer" rows="3" required><%= user.short_answer %></textarea>
         </div>
 
     </div>
@@ -47,7 +48,7 @@
                 <option value="" selected></option>
                 <% for (var i=2017; i<2025; i++) { %>ya
 
-                <option value="<%= i %>" <% if (user.grad_year   == i) { %> selected <% } %>><%= i %></option>
+                <option value=<%= i %> <% if (user.grad_year   == i) { %> selected <% } %>><%= i %></option>
                 <% } %>
             </select>
         </div>
@@ -60,7 +61,7 @@
     <% if (user.registration_status == 0) { %>
     <p class="text-left" id="registration-terms">We participate in Major League Hacking (MLH) as an MLH Member Event. By accepting, you authorize us to share certain application/registration information for event administration, ranking, MLH admission, and occasional messages about hackathons in line with the <a href="/">MLH Privacy Policy</a>. Also, you understand that by uploading your resumé and Github handle, it can potentially be shared with sponsors of HackRU and you may be contacted by recruiters. By accepting, you also agree to the rules and policies of HackRU as they are listed in <a href="https://github.com/HackRU/Policies/blob/master/HackRU%20Spring%2017%20Waiver.pdf" target="_blank">here</a>.</p>
     <div id="registration-checkbox">
-        <p class="bold-text"><input type="checkbox" name="data_sharing" required> I have read and agree with the rules and conditions above.</p>
+        <p class="bold-text"><input class="mr-2" type="checkbox" name="data_sharing" required>I have read and agree with the rules and conditions above.</p>
     </div>
     <button type="submit" class="btn btn-primary bold-text">Submit</button>
 
