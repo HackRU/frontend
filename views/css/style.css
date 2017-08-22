@@ -219,13 +219,17 @@ a {
   margin-bottom: 25px;
   font-size: 115%; }
   .sched-event .sched-time {
+    text-align: center;
+    display: inline-block;
+    width: 125px;
     color: inherit;
     padding: 6px 12px;
     border: 1px solid;
     border-radius: 5px; }
   .sched-event .sched-desc {
+    display: inline-block;
     color: inherit;
-    padding: 5px 10px; }
+    padding: 6px 12px; }
 
 .faq-a {
   margin-bottom: 30px; }
