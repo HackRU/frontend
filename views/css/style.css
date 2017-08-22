@@ -101,7 +101,7 @@
 .text-black {
   color: black; }
 
-.bg-gradient, .bg-splash, #hero, .about-map-container, .li-footer {
+.bg-gradient, .bg-splash, #hero, .about-map-container, .li-footer, .li-mobile-footer {
   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#7b4397+0,dc2430+100 */
   background: #7B4397;
   /* Old browsers */
@@ -145,7 +145,7 @@ a {
 .min-quarter-height {
   min-height: 25vh; }
 
-.bold-text, .btn, .row-title-box .row-title, .faq-q, .spons-level, .footer a, .li-nav-bar .nav-item:hover .nav-link, .li-section-title-box .li-section-title, .li-footer a {
+.bold-text, .btn, .row-title-box .row-title, .faq-q, .spons-level, .footer a, .li-nav-bar .nav-item:hover .nav-link, .li-section-title-box .li-section-title, .li-footer a, .li-mobile-footer a {
   font-family: "Circular Std Bold", sans-serif; }
 
 *, input, select {
@@ -277,10 +277,6 @@ a {
     border: 1px solid;
     border-radius: 10px; }
 
-.more-info {
-  padding-left: 50px;
-  border-left: 1px #7B4397 dotted; }
-
 .li-footer {
   height: 10vh;
   color: white; }
@@ -288,13 +284,29 @@ a {
     margin: 0;
     line-height: 10vh; }
   .li-footer .social-links {
-    font-size: 175%; }
+    font-size: 165%; }
   .li-footer a {
     color: white;
     line-height: 10vh;
     padding: 15px 10px; }
   .li-footer .footer-logo {
     display: inline-block;
-    height: calc(10vh*0.5); }
+    height: calc(10vh*0.45); }
+
+.li-mobile-footer {
+  height: 30vh;
+  color: white; }
+  .li-mobile-footer .text-vcenter {
+    margin: 0;
+    line-height: calc(30vh/3); }
+  .li-mobile-footer .social-links {
+    font-size: 165%; }
+  .li-mobile-footer a {
+    color: white;
+    line-height: calc(30vh/3);
+    padding: 15px 10px; }
+  .li-mobile-footer .footer-logo {
+    display: inline-block;
+    height: calc(calc(30vh/3)*0.45); }
 
 /*# sourceMappingURL=style.css.map */
