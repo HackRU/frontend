@@ -26,7 +26,7 @@ enctype="multipart/form-data">
 
     <div class="form-group">
         <div class="app-section-title-box">
-            <h5 class="bold-text app-section-title">Short answer question here.</h5>
+            <h5 class="bold-text app-section-title"><%= question %></h5>
         </div>
 
         <textarea name="short_answer" class="form-control" id="exampleTextarea" rows="3" <% if(user.registration_status != 7 && user.registration_status != 0) { %> readonly <% } %>><%= user.short_answer %></textarea>
