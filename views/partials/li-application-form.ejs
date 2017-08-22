@@ -26,7 +26,7 @@
     <div class="form-group row mb-5">
 
         <label for="short-answer-text" class="col-12 col-form-label">
-            <h5 class="bold-text app-section-title">What excites you about HackRU?</h5>
+            <h5 class="bold-text app-section-title">How did you find out about HackRU and what persuaded you to register?</h5>
         </label>
 
         <div class="col-12">
@@ -59,11 +59,16 @@
 
 
     <% if (user.registration_status == 0) { %>
-    <p class="text-left" id="registration-terms">We participate in Major League Hacking (MLH) as an MLH Member Event. By accepting, you authorize us to share certain application/registration information for event administration, ranking, MLH admission, and occasional messages about hackathons in line with the <a href="/">MLH Privacy Policy</a>. Also, you understand that by uploading your resumé and GitHub handle, it can potentially be shared with sponsors of HackRU and you may be contacted by recruiters. By accepting, you also agree to the rules and policies of HackRU as they are listed in <a href="https://github.com/HackRU/Policies/blob/master/HackRU%20Spring%2017%20Waiver.pdf" target="_blank">here</a>.</p>
+    <p class="text-left" id="registration-terms">We participate in Major League Hacking (MLH) as an MLH Member Event. By accepting, you authorize us to share certain application/registration information for event administration, ranking, MLH admission, and occasional messages about hackathons in line with the <a href="/">MLH Privacy Policy</a>. Also, you understand that by uploading your resumé and GitHub handle, it can potentially be shared with sponsors of HackRU and you may be contacted by recruiters. By accepting, you also agree to the rules and policies of HackRU.</p>
     <div id="registration-checkbox">
-        <p class="bold-text"><input class="mr-2" type="checkbox" name="data_sharing" required>I have read and agree with the rules above and <a href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf">MLH's Code of Conduct</a>.</p>
+        <p class="bold-text"><input class="mr-2" type="checkbox" name="data_sharing" required>
+            I agree with the rules above, <a class="bold-text" href="https://github.com/MLH/mlh-policies/tree/master/prize-terms-and-conditions">MLH Contest Terms and Conditions</a>, and <a class="bold-text" href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf">MLH's Code of Conduct</a>.
+        </p>
     </div>
+
     <button type="submit" class="btn btn-primary bold-text">Submit</button>
+
+
 
     <% } else { %>
 

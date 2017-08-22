@@ -301,22 +301,19 @@ a {
 }
 
 .sched-event {
-
 	color: white;
-	margin-top: 10px;
-	margin-bottom: 10px;
+	margin-top: 25px;
+	margin-bottom: 25px;
 
 	.sched-time {
 		color: inherit;
-		text-align: right;
-		padding: 5px 10px;
+		padding: 6px 12px;
 		border: 1px solid;
 		border-radius: 5px;
 	}
 
 	.sched-desc {
 		color: inherit;
-		text-align: left;
 		padding: 5px 10px;
 	}
 }
@@ -424,11 +421,11 @@ $footer-height: 10vh;
 
 }
 
-//.half-filler-img {
-//	max-width: 70%;
-//	max-height: 300px;
-//}
-
+.social-link-card {
+	background-color: purple;
+	border: 1px white dotted;
+	height: 300px;
+}
 
 
 $li-footer-height: 10vh;

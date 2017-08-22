@@ -28,38 +28,42 @@
                 <div class="col-12 col-lg-6 mb-5 mb-lg-0">
 
 
+
                     <% if(user.registration_status == 0) { %>
-                    <h3 class="mb-3"><span class="bold-text">Application Status:</span> Incomplete</h3>
+                    <h3 class="mb-3">Application Status: <span class="bold-text">Incomplete</span></h3>
+                    <h5>Oops, seems like you haven't started your application yet.</h5>
+
                     <p>
                         Please visit the <a href="/registration">application page</a> to complete and submit your application!
                     </p>
                     <% } else if(user.registration_status == 1) { %>
-                    <h3><span class="bold-text">Application Status:</span> Registered </h3>
+                    <h3>Application Status: <span class="bold-text">Registered</span></h3>
                     <p>Being Registered doesn't mean you can attend. The next step is Confirming Your Attendance. We'll be emailing instructions on how to do that soon! Stay tuned!</p>
                     <% } else if(user.registration_status == 2) { %>
-                    <h3><span class="bold-text">Application Status:</span> Not Attending </h3>
+                    <h3>Application Status: <span class="bold-text">Not Attending</span></h3>
                     <% } else if(user.registration_status == 3) { %>
-                    <h3><span class="bold-text">Application Status:</span> Attending!</h3>
+                    <h3>Application Status: <span class="bold-text">Attending</span></h3>
                     <% } else if(user.registration_status == 4 ) { %>
-                    <h3><span class="bold-text">Application Status:</span> Waitlisted </h3>
+                    <h3>Application Status: <span class="bold-text">Waitlisted</span></h3>
                     <% } else if(user.registration_status == 7 ) { %>
-                    <h3 class="mb-3"><span class="bold-text">Application Status:</span> Pending</h3>
+                    <h3 class="mb-3">Application Status: <span class="bold-text">Pending</span></h3>
+                    <h5>Want to edit your application? <a href="/registration">Visit the application page.</a></h5>
+
                     <p>
                         We've received your application and are working hard to read through all of them. You will
                         receive an email soon about the status of your application. In the meantime, why don't you like
                         us on <a href="https://www.facebook.com/theHackRU">Facebook</a> and visit our other social media?
                     </p>
-                    <h5>Want to edit your application? <a href="/registration">Visit the application page.</a></h5>
 
                     <% } else if(user.registration_status == 6 ) { %>
-                    <h3><span class="bold-text">Application Status:</span> Rejected </h3>
+                    <h3>Application Status: <span class="bold-text">Rejected</span></h3>
                     <p>Sorry! Better luck next time!</p>
                     <% } %>
 
 
                 </div>
 
-                <div class="col-12 col-lg-6 more-info">
+                <div class="col-12 col-lg-5 offset-lg-1 more-info">
                     <% include ./partials/li-more-info.ejs %>
                 </div>
 

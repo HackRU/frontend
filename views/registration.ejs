@@ -28,11 +28,12 @@
                     <% include ./partials/li-application-form.ejs %>
                 </div>
 
-                <div class="col-12 col-lg-6 more-info">
-                    <% include ./partials/li-more-info.ejs %>
+                <div class="col-12 col-lg-5 offset-lg-1 more-info">
                     <%if (message) { %>
-                    <div><%= message %></div>
+                    <div class="mb-5"><%= message %></div>
                     <%}%>
+                    <% include ./partials/li-more-info.ejs %>
+
                 </div>
 
             </div>
