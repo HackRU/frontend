@@ -45,7 +45,7 @@
                     <h3>Application Status: <span class="bold-text">Attending</span></h3>
                     <% } else if(user.registration_status == 4 ) { %>
                     <h3>Application Status: <span class="bold-text">Waitlisted</span></h3>
-                    <% } else if(user.registration_status == 7 ) { %>
+                    <% } else if(user.registration_status == 7 || user.registration_status == 8) { %>
                     <h3 class="mb-3">Application Status: <span class="bold-text">Pending</span></h3>
                     <h5>Want to edit your application? <a href="/registration">Visit the application page.</a></h5>
 
