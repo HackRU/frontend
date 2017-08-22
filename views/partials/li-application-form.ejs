@@ -1,10 +1,16 @@
-<form class="form-horizontal" role="form" method="post" action="/account" enctype="multipart/form-data">
+<form class="form-horizontal" role="form" method="post"
+<% if (show_mlh_cc) { %>
+action="/register-mymlh"
+<% }else{ %>
+action="/account"
+<% } %>
+enctype="multipart/form-data">
     <div class="form-group">
         <div class="app-section-title-box">
             <h5 class="bold-text app-section-title">GitHub Username</h5>
         </div>
 
-        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="GitHub Username">
+        <input name="github" type="text" class="form-control" id="formGroupExampleInput" placeholder=<%= user.github %>>
     </div>
 
     <div class="form-group">
@@ -13,7 +19,7 @@
         </div>
 
         <label class="custom-file">
-            <input type="file" id="file" class="custom-file-input">
+            <input name="resume" type="file" id="file" class="custom-file-input">
             <span class="custom-file-control"></span>
         </label>
     </div>
@@ -23,21 +29,20 @@
             <h5 class="bold-text app-section-title">Short answer question here.</h5>
         </div>
 
-        <textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
+        <textarea name="short_answer" class="form-control" id="exampleTextarea" rows="3" <% if(user.registration_status != 7 && user.registration_status != 0) { %> readonly <% } %>><%= user.short_answer %></textarea>
     </div>
 
     <div class="form-group">
         <h5 class="bold-text app-section-title">Graduation Year</h5>
-        <select class="form-control" id="exampleSelect1">
-            <option>20xx</option>
-            <option>20xx</option>
-            <option>20xx</option>
-            <option>20xx</option>
-            <option>20xx</option>
-            <option>20xx</option>
-            <option>20xx</option>
-            <option>20xx</option>
-            <option>20xx</option>
+        <select name="grad_year" class="form-control" id="exampleSelect1" selected="<%= user.grad_year %>">
+            <option value="2017">2017</option>
+            <option value="2018">2018</option>
+            <option value="2019">2019</option>
+            <option value="2020">2020</option>
+            <option value="2021">2021</option>
+            <option value="2022">2022</option>
+            <option value="2023">2023</option>
+            <option value="2024">2024</option>
         </select>
     </div>
 

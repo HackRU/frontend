@@ -73,6 +73,6 @@ app.get('/register-confirmation', function (req, res) {
 });
 
 // Launch
-var port = process.env.PORT || 8080;
+var port = process.env.PORT || 9000;
 app.listen(port);
 console.log('Listening on port: %d', port);
