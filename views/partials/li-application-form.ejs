@@ -1,11 +1,11 @@
 <form class="form-horizontal" role="form" method="post" enctype="multipart/form-data" <% if (user.registration_status == 0) { %> action="/register-mymlh" <% } else { %> action="/account" <% } %>>
 
     <div class="form-group row mb-5">
-        <label for="github-username-input" class="col-5 col-form-label">
+        <label for="github-username-input" class="col-12 col-md-5 col-form-label">
             <h5 class="bold-text app-section-title">GitHub Username</h5>
         </label>
 
-        <div class="col-7">
+        <div class="col-12 col-md-7">
             <input type="text" class="form-control" id="github-username-input" name="github" placeholder="GitHub Username" value=<%= user.github %>>
         </div>
     </div>
@@ -44,7 +44,7 @@
 
 
         <div class="col-7">
-            <select class="form-control" id="grad-year-select" name="grad-year-select">
+            <select class="form-control" id="grad-year-select" name="grad-year">
                 <option value="" selected></option>
                 <% for (var i=2017; i<2025; i++) { %>ya
 
