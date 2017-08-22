@@ -9,9 +9,9 @@ const fakeUser = {
     },
     "id": 0,
     "data_sharing": true,
-    "resume": "",
-    "github": "",
-    "registration_status": 1,
+    "resume": "example_resume",
+    "github": "example_github",
+    "registration_status": 0,
     "role": {
         "attendee": true,
         "mentor": false,
@@ -43,7 +43,7 @@ const fakeUser = {
     },
     "__v": 0,
     "short_answer": "asdf",
-    "grad_year": 2018
+    "grad_year": 2018,
 }
 
 app.use(express.static(__dirname + '/views'));
@@ -61,7 +61,7 @@ app.get('/dashboard-dayof', function (req, res) {
 });
 
 app.get('/registration', function (req, res) {
-    res.render('registration.ejs', { show_mlh_cc: true, question: "Short answer q", user: fakeUser, message: false });
+    res.render('registration.ejs', { question: "Short answer q", user: fakeUser, message: false });
 });
 
 app.get('/admin', function (req, res) {

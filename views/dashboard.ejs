@@ -27,7 +27,13 @@
             <div class="row mt-5">
                 <div class="col-12 col-lg-6 mb-5 mb-lg-0">
 
-                    <% if(user.registration_status == 1) { %>
+
+                    <% if(user.registration_status == 0) { %>
+                    <h3 class="mb-3"><span class="bold-text">Application Status:</span> Incomplete</h3>
+                    <p>
+                        Please visit the <a href="/registration">application page</a> to complete and submit your application!
+                    </p>
+                    <% } else if(user.registration_status == 1) { %>
                     <h3><span class="bold-text">Application Status:</span> Registered </h3>
                     <p>Being Registered doesn't mean you can attend. The next step is Confirming Your Attendance. We'll be emailing instructions on how to do that soon! Stay tuned!</p>
                     <% } else if(user.registration_status == 2) { %>
@@ -38,18 +44,18 @@
                     <h3><span class="bold-text">Application Status:</span> Waitlisted </h3>
                     <% } else if(user.registration_status == 7 ) { %>
                     <h3 class="mb-3"><span class="bold-text">Application Status:</span> Pending</h3>
-
                     <p>
                         We've received your application and are working hard to read through all of them. You will
                         receive an email soon about the status of your application. In the meantime, why don't you like
                         us on <a href="https://www.facebook.com/theHackRU">Facebook</a> and visit our other social media?
                     </p>
+                    <h5>Want to edit your application? <a href="/registration">Visit the application page.</a></h5>
+
                     <% } else if(user.registration_status == 6 ) { %>
                     <h3><span class="bold-text">Application Status:</span> Rejected </h3>
                     <p>Sorry! Better luck next time!</p>
                     <% } %>
 
-                    <h5>Want to edit your application? <a href="/registration">Visit the application page.</a></h5>
 
                 </div>
 
