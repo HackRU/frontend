@@ -216,7 +216,8 @@ a {
 .sched-event {
   color: white;
   margin-top: 25px;
-  margin-bottom: 25px; }
+  margin-bottom: 25px;
+  font-size: 115%; }
   .sched-event .sched-time {
     color: inherit;
     padding: 6px 12px;
