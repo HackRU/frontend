@@ -13,9 +13,6 @@
 
 <div class="container-fluid">
 
-
-
-
     <!-- CONTENT SECTION -->
     <div class="row min-full-height">
         <div class="col-10 offset-1">
@@ -33,7 +30,9 @@
 
                 <div class="col-12 col-lg-6 more-info">
                 <% include ./partials/li-more-info.ejs %>
-                </div>
+                <%if (message) { %>
+                <div><%= message %></div>
+                <%}%>
 
             </div>
         </div>

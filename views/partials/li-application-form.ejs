@@ -1,12 +1,17 @@
-<form class="form-horizontal" id="" role="form" method="post" action="/account" enctype="multipart/form-data">
-
-    <div class="form-group row mb-5">
-        <label for="github-username-input" class="col-5 col-form-label">
+<form class="form-horizontal" role="form" method="post"
+<% if (show_mlh_cc) { %>
+action="/register-mymlh"
+<% }else{ %>
+action="/account"
+<% } %>
+enctype="multipart/form-data">
+    <div class="form-group">
+        <div class="app-section-title-box">
             <h5 class="bold-text app-section-title">GitHub Username</h5>
         </label>
 
         <div class="col-7">
-            <input type="text" class="form-control" id="github-username-input" name="github-username-input" placeholder="GitHub Username">
+            <input type="text" name="github" class="form-control" id="github-username-input" name="github-username-input" placeholder=<%= user.github %>>
         </div>
     </div>
 
@@ -17,7 +22,7 @@
         </label>
 
         <div class="col-7">
-            <input type="file" class="form-control-file" id="resume-upload-input" name="resume-upload-input" aria-describedby="fileHelp">
+            <input name="resume" type="file" class="form-control-file" id="resume-upload-input" name="resume-upload-input" aria-describedby="fileHelp">
         </div>
 
     </div>
@@ -25,11 +30,10 @@
     <div class="form-group row mb-5">
 
         <label for="short-answer-text" class="col-12 col-form-label">
-            <h5 class="bold-text app-section-title">What excites you about HackRU?</h5>
-        </label>
+            <h5 class="bold-text app-section-title"><%= question %></h5>
 
         <div class="col-12">
-            <textarea class="form-control" id="short-answer-text" name="short-answer-text" rows="3" required></textarea>
+            <textarea name="short_answer" class="form-control" id="exampleTextarea" rows="3" <% if(user.registration_status != 7 && user.registration_status != 0) { %> readonly <% } %>><%= user.short_answer %></textarea>
         </div>
 
     </div>
@@ -54,18 +58,29 @@
             </select>
         </div>
 
-
-
     </div>
 
-    <% var show_mlh_cc = false; %>
+    <div class="form-group">
+        <h5 class="bold-text app-section-title">Graduation Year</h5>
+        <select name="grad_year" class="form-control" id="exampleSelect1">
+            <option value="2017" <% if (user.grad_year == 2017) { %> selected <% } %>>2017</option>
+            <option value="2018" <% if (user.grad_year == 2018) { %> selected <% } %>>2018</option>
+            <option value="2019" <% if (user.grad_year == 2019) { %> selected <% } %>>2019</option>
+            <option value="2020" <% if (user.grad_year == 2020) { %> selected <% } %>>2020</option>
+            <option value="2021" <% if (user.grad_year == 2021) { %> selected <% } %>>2021</option>
+            <option value="2022" <% if (user.grad_year == 2022) { %> selected <% } %>>2022</option>
+            <option value="2023" <% if (user.grad_year == 2023) { %> selected <% } %>>2023</option>
+            <option value="2024" <% if (user.grad_year == 2024) { %> selected <% } %>>2024</option>
+        </select>
+    </div>
+
     <% if (show_mlh_cc) { %>
+        <p class="text-left" id="registration-terms">We participate in Major League Hacking (MLH) as an MLH Member Event. By accepting, you authorize us to share certain application/registration information for event administration, ranking, MLH admission, and occasional messages about hackathons in line with the <a href="/">MLH Privacy Policy</a>. Also, you understand that by uploading your resumé and Github handle, it can potentially be shared with sponsors of HackRU and you may be contacted by recruiters. By accepting, you also agree to the rules and policies of HackRU as they are listed in <a href="https://github.com/HackRU/Policies/blob/master/HackRU%20Spring%2017%20Waiver.pdf" target="_blank">here</a>.</p>
 
-    <p class="text-left" id="registration-terms">We participate in Major League Hacking (MLH) as an MLH Member Event. By accepting, you authorize us to share certain application/registration information for event administration, ranking, MLH admission, and occasional messages about hackathons in line with the <a href="/">MLH Privacy Policy</a>. Also, you understand that by uploading your resumé and Github handle, it can potentially be shared with sponsors of HackRU and you may be contacted by recruiters. By accepting, you also agree to the rules and policies of HackRU as they are listed in <a href="https://github.com/HackRU/Policies/blob/master/HackRU%20Spring%2017%20Waiver.pdf" target="_blank">here</a>.</p>
+            <div id="registration-checkbox">
+            <p><input type="checkbox" name="data_sharing" required>I have read and agree with the rules and conditions above.</p>
+            </div>
 
-    <div id="registration-checkbox">
-        <p class="bold-text"><input type="checkbox" name="data_sharing" required> I have read and agree with the rules and conditions above.</p>
-    </div>
 
     <button type="submit" class="btn btn-primary bold-text">Submit</button>
 

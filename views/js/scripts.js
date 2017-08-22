@@ -1,6 +1,4 @@
 // HackRU Fall 2017 Scripts
-
-
 $(document).ready(function() {
 
     var pageLocation = window.location.pathname; // used to run certain JS on specific pages
