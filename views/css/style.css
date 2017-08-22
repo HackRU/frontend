@@ -8,6 +8,78 @@
 @font-face {
   font-family: "Circular Std Book Italic";
   src: url(../fonts/CircularStd-BookItalic.otf); }
+.text-left-not-xs, .text-left-not-sm, .text-left-not-md, .text-left-not-lg {
+  text-align: left; }
+
+.text-center-not-xs, .text-center-not-sm, .text-center-not-md, .text-center-not-lg {
+  text-align: center; }
+
+.text-right-not-xs, .text-right-not-sm, .text-right-not-md, .text-right-not-lg {
+  text-align: right; }
+
+.text-justify-not-xs, .text-justify-not-sm, .text-justify-not-md, .text-justify-not-lg {
+  text-align: justify; }
+
+@media (max-width: 767px) {
+  .text-left-not-xs, .text-center-not-xs, .text-right-not-xs, .text-justify-not-xs {
+    text-align: inherit; }
+
+  .text-left-xs {
+    text-align: left; }
+
+  .text-center-xs {
+    text-align: center; }
+
+  .text-right-xs {
+    text-align: right; }
+
+  .text-justify-xs {
+    text-align: justify; } }
+@media (min-width: 768px) and (max-width: 991px) {
+  .text-left-not-sm, .text-center-not-sm, .text-right-not-sm, .text-justify-not-sm {
+    text-align: inherit; }
+
+  .text-left-sm {
+    text-align: left; }
+
+  .text-center-sm {
+    text-align: center; }
+
+  .text-right-sm {
+    text-align: right; }
+
+  .text-justify-sm {
+    text-align: justify; } }
+@media (min-width: 992px) and (max-width: 1199px) {
+  .text-left-not-md, .text-center-not-md, .text-right-not-md, .text-justify-not-md {
+    text-align: inherit; }
+
+  .text-left-md {
+    text-align: left; }
+
+  .text-center-md {
+    text-align: center; }
+
+  .text-right-md {
+    text-align: right; }
+
+  .text-justify-md {
+    text-align: justify; } }
+@media (min-width: 1200px) {
+  .text-left-not-lg, .text-center-not-lg, .text-right-not-lg, .text-justify-not-lg {
+    text-align: inherit; }
+
+  .text-left-lg {
+    text-align: left; }
+
+  .text-center-lg {
+    text-align: center; }
+
+  .text-right-lg {
+    text-align: right; }
+
+  .text-justify-lg {
+    text-align: justify; } }
 .bronze {
   color: #C96F0D; }
 
@@ -73,15 +145,18 @@ a {
 .min-quarter-height {
   min-height: 25vh; }
 
-.bold-text, .row-title-box .row-title, .faq-q, .spons-level, .li-nav-bar .nav-item:hover .nav-link, .li-section-title-box .li-section-title {
+.bold-text, .btn, .row-title-box .row-title, .faq-q, .spons-level, .footer a, .li-nav-bar .nav-item:hover .nav-link, .li-section-title-box .li-section-title, .li-footer a {
   font-family: "Circular Std Bold", sans-serif; }
 
 *, input, select {
   font-family: "Circular Std Book", sans-serif; }
 
 .btn {
+  background-color: #DC2430;
   color: white;
-  border-color: white; }
+  border: none; }
+  .btn:hover {
+    background-color: #7B4397; }
 
 .row.min-full-height, .row.min-half-height, .row.min-quarter-height {
   padding-bottom: 50px; }
@@ -108,22 +183,22 @@ a {
 
 #nav-bar {
   height: 20vh;
-  line-height: 20vh; }
+  line-height: 20vh;
+  margin-bottom: 150px; }
+  #nav-bar a {
+    color: white; }
+    #nav-bar a:hover {
+      color: #DC2430; }
   #nav-bar .nav-bar-link, #nav-bar .nav-bar-logo {
     display: inline-block;
     vertical-align: middle;
     margin: 0; }
   #nav-bar .nav-bar-logo {
-    height: 65%; }
+    width: 75%; }
 
 #hero-img {
   max-width: 90%;
-  max-height: 400px;
-  -ms-transform: rotate(25deg);
-  /* IE 9 */
-  -webkit-transform: rotate(25deg);
-  /* Chrome, Safari, Opera */
-  transform: rotate(25deg); }
+  max-height: 400px; }
 
 .about-icon {
   width: 90%; }
@@ -156,6 +231,25 @@ a {
 .spons-level {
   text-align: center; }
 
+.footer {
+  height: 10vh;
+  margin-top: 50px;
+  margin-bottom: 25px;
+  color: #DC2430;
+  background-color: white; }
+  .footer .text-vcenter {
+    margin: 0;
+    line-height: 10vh; }
+  .footer .social-links {
+    font-size: 175%; }
+  .footer a {
+    color: #DC2430;
+    line-height: 10vh;
+    padding: 15px 10px; }
+  .footer .footer-logo {
+    display: inline-block;
+    height: calc(10vh*0.5); }
+
 .li-nav-bar {
   background-color: #7B4397;
   background-image: url(../assets/bg-splash.jpg);
@@ -182,10 +276,6 @@ a {
     display: inline-block;
     border: 1px solid;
     border-radius: 10px; }
-
-.half-filler-img {
-  max-width: 70%;
-  max-height: 300px; }
 
 .more-info {
   padding-left: 50px;

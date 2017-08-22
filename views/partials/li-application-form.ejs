@@ -1,46 +1,78 @@
-<form class="form-horizontal" role="form" method="post" action="/account" enctype="multipart/form-data">
-    <div class="form-group">
-        <div class="app-section-title-box">
+<form class="form-horizontal" id="" role="form" method="post" action="/account" enctype="multipart/form-data">
+
+    <div class="form-group row">
+        <label for="github-username-input" class="col-5 col-form-label">
             <h5 class="bold-text app-section-title">GitHub Username</h5>
-        </div>
-
-        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="GitHub Username">
-    </div>
-
-    <div class="form-group">
-        <div class="app-section-title-box">
-            <h5 class="bold-text app-section-title">Resumé</h5>
-        </div>
-
-        <label class="custom-file">
-            <input type="file" id="file" class="custom-file-input">
-            <span class="custom-file-control"></span>
         </label>
+
+        <div class="col-7">
+            <input type="text" class="form-control" id="github-username-input" name="github-username-input" placeholder="GitHub Username">
+        </div>
     </div>
 
-    <div class="form-group">
-        <div class="app-section-title-box">
-            <h5 class="bold-text app-section-title">Short answer question here.</h5>
+    <div class="form-group row">
+
+        <label for="resume-upload-input" class="col-5 col-form-label">
+            <h5 class="bold-text app-section-title">Resumé</h5>
+        </label>
+
+        <div class="col-7">
+            <input type="file" class="form-control-file" id="resume-upload-input" name="resume-upload-input" aria-describedby="fileHelp">
         </div>
 
-        <textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
     </div>
 
-    <div class="form-group">
-        <h5 class="bold-text app-section-title">Graduation Year</h5>
-        <select class="form-control" id="exampleSelect1">
-            <option>20xx</option>
-            <option>20xx</option>
-            <option>20xx</option>
-            <option>20xx</option>
-            <option>20xx</option>
-            <option>20xx</option>
-            <option>20xx</option>
-            <option>20xx</option>
-            <option>20xx</option>
-        </select>
+    <div class="form-group row">
+
+        <label for="short-answer-text" class="col-12 col-form-label">
+            <h5 class="bold-text app-section-title">What excites you about HackRU?</h5>
+        </label>
+
+        <div class="col-12">
+            <textarea class="form-control" id="short-answer-text" name="short-answer-text" rows="3" required></textarea>
+        </div>
+
+    </div>
+
+    <div class="form-group row">
+
+        <label for="grad-year-select" class="col-5 col-form-label">
+            <h5 class="bold-text app-section-title">Graduation Year</h5>
+        </label>
+
+        <div class="col-7">
+            <select class="form-control" id="grad-year-select" name="grad-year-select">
+                <option selected value></option>
+                <option>2017</option>
+                <option>2018</option>
+                <option>2019</option>
+                <option>2020</option>
+                <option>2021</option>
+                <option>2022</option>
+                <option>2023</option>
+                <option>2024</option>
+            </select>
+        </div>
+
+
+
+    </div>
+
+    <% var show_mlh_cc = false; %>
+    <% if (show_mlh_cc) { %>
+
+    <p class="text-left" id="registration-terms">We participate in Major League Hacking (MLH) as an MLH Member Event. By accepting, you authorize us to share certain application/registration information for event administration, ranking, MLH admission, and occasional messages about hackathons in line with the <a href="/">MLH Privacy Policy</a>. Also, you understand that by uploading your resumé and Github handle, it can potentially be shared with sponsors of HackRU and you may be contacted by recruiters. By accepting, you also agree to the rules and policies of HackRU as they are listed in <a href="https://github.com/HackRU/Policies/blob/master/HackRU%20Spring%2017%20Waiver.pdf" target="_blank">here</a>.</p>
+
+    <div id="registration-checkbox">
+        <p class="bold-text"><input type="checkbox" name="data_sharing" required> I have read and agree with the rules and conditions above.</p>
     </div>
 
     <button type="submit" class="btn btn-primary bold-text">Submit</button>
-    <a href="/dashboard" class="btn btn-default content-button">Dashboard</a>
+
+    <% } else { %>
+
+    <button type="submit" class="btn btn-primary bold-text">Save</button>
+
+    <% } %>
+
 </form>

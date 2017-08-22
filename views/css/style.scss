@@ -15,6 +15,90 @@
 	src: url(../fonts/CircularStd-BookItalic.otf);
 }
 
+// RESPONSIVE TEXT ALIGN CLASSES
+.text-left-not-xs, .text-left-not-sm, .text-left-not-md, .text-left-not-lg {
+	text-align: left;
+}
+.text-center-not-xs, .text-center-not-sm, .text-center-not-md, .text-center-not-lg {
+	text-align: center;
+}
+.text-right-not-xs, .text-right-not-sm, .text-right-not-md, .text-right-not-lg {
+	text-align: right;
+}
+.text-justify-not-xs, .text-justify-not-sm, .text-justify-not-md, .text-justify-not-lg {
+	text-align: justify;
+}
+
+@media (max-width: 767px) {
+	.text-left-not-xs, .text-center-not-xs, .text-right-not-xs, .text-justify-not-xs {
+		text-align: inherit;
+	}
+	.text-left-xs {
+		text-align: left;
+	}
+	.text-center-xs {
+		text-align: center;
+	}
+	.text-right-xs {
+		text-align: right;
+	}
+	.text-justify-xs {
+		text-align: justify;
+	}
+}
+@media (min-width: 768px) and (max-width: 991px) {
+	.text-left-not-sm, .text-center-not-sm, .text-right-not-sm, .text-justify-not-sm {
+		text-align: inherit;
+	}
+	.text-left-sm {
+		text-align: left;
+	}
+	.text-center-sm {
+		text-align: center;
+	}
+	.text-right-sm {
+		text-align: right;
+	}
+	.text-justify-sm {
+		text-align: justify;
+	}
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+	.text-left-not-md, .text-center-not-md, .text-right-not-md, .text-justify-not-md {
+		text-align: inherit;
+	}
+	.text-left-md {
+		text-align: left;
+	}
+	.text-center-md {
+		text-align: center;
+	}
+	.text-right-md {
+		text-align: right;
+	}
+	.text-justify-md {
+		text-align: justify;
+	}
+}
+@media (min-width: 1200px) {
+	.text-left-not-lg, .text-center-not-lg, .text-right-not-lg, .text-justify-not-lg {
+		text-align: inherit;
+	}
+	.text-left-lg {
+		text-align: left;
+	}
+	.text-center-lg {
+		text-align: center;
+	}
+	.text-right-lg {
+		text-align: right;
+	}
+	.text-justify-lg {
+		text-align: justify;
+	}
+}
+// ********************************************************
+
 $color-red: #DC2430;
 $color-purple: #7B4397;
 
@@ -67,6 +151,8 @@ $color-plat: #D8D8D8;
 	@extend .bg-gradient;
 }
 
+
+
 $skew-angle: 4;
 
 a {
@@ -116,11 +202,18 @@ a {
 }
 
 // todo: change form placeholder colors!
-
 .btn {
+	background-color: $color-red;
 	color: white;
-	border-color: white;
+	@extend .bold-text;
+	border: none;
+
+	&:hover {
+		background-color: $color-purple;
+
+	}
 }
+
 
 .row {
 	&.min-full-height, &.min-half-height, &.min-quarter-height {
@@ -159,7 +252,14 @@ a {
 	$nav-bar-height: 20vh;
 	height: $nav-bar-height;
 	line-height: $nav-bar-height;
+	margin-bottom: 150px;
 
+	a {
+		color: white;
+		&:hover {
+			color: $color-red;
+		}
+	}
 	.nav-bar-link {
 		display: inline-block;
 		vertical-align: middle;
@@ -168,18 +268,14 @@ a {
 
 	.nav-bar-logo {
 		@extend .nav-bar-link;
-		height: 65%;
+		width: 75%;
 	}
 }
 
-$himg-rotate-angle: 25;
 
 #hero-img {
 	max-width: 90%;
 	max-height: 400px;
-	-ms-transform: rotate(#{$himg-rotate-angle}deg); /* IE 9 */
-	-webkit-transform: rotate(#{$himg-rotate-angle}deg); /* Chrome, Safari, Opera */
-	transform: rotate(#{$himg-rotate-angle}deg);
 }
 
 .about-icon {
@@ -235,6 +331,40 @@ $himg-rotate-angle: 25;
 	text-align: center;
 }
 
+$footer-height: 10vh;
+
+.footer {
+	height: $footer-height;
+	margin-top: 50px;
+	margin-bottom: 25px;
+
+	color: $color-red;
+	background-color: white;
+
+	.text-vcenter {
+		margin: 0;
+		line-height: $footer-height;
+	}
+
+	.social-links {
+		font-size: 175%;
+	}
+
+	a {
+		color: $color-red;
+		line-height: $footer-height;
+		padding: 15px 10px;
+		@extend .bold-text;
+
+	}
+
+	.footer-logo {
+		display: inline-block;
+		height: calc(#{$footer-height}*0.5);
+	}
+
+}
+
 // LOGGED IN ELEMENTS
 
 .li-nav-bar {
@@ -284,10 +414,11 @@ $himg-rotate-angle: 25;
 
 }
 
-.half-filler-img {
-	max-width: 70%;
-	max-height: 300px;
-}
+//.half-filler-img {
+//	max-width: 70%;
+//	max-height: 300px;
+//}
+
 
 .more-info {
 	padding-left: 50px;
@@ -316,11 +447,12 @@ $li-footer-height: 10vh;
 		color: white;
 		line-height: $li-footer-height;
 		padding: 15px 10px;
+		@extend .bold-text;
+
 	}
 
 	.footer-logo {
 		display: inline-block;
 		height: calc(#{$li-footer-height}*0.5);
 	}
-
 }

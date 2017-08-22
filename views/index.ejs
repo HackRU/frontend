@@ -19,7 +19,8 @@
             <% include ./partials/nav.ejs %>
 
             <div class="row mt-5">
-                <div class="col-6">
+
+                <div class="col-12 col-md-6 offset-md-1 col-xl-4 offset-xl-2">
                     <div class="row mt-5">
                         <div class="col-12">
                             <h1 class="season-text bold-text">HackRU Fall 2017</h1>
@@ -32,28 +33,25 @@
 
                     <div class="row mt-3">
                         <div class="col-12">
-                            <button type="button"
-                                    class="btn btn-outline-primary">Login
-                            </button>
-                            <button type="button"
-                                    class="btn btn-outline-primary ml-3">Register
-                            </button>
-                        </div>
-                    </div>
+                            <% var user = true; %>
 
-                    <div class="row mt-5">
-                        <div class="col-12">
+                            <% if (user) { %>
 
+                            <a href="/dashboard" class="btn btn-outline-primary">Dashboard</a>
+                            <a href="/logout" class="btn btn-outline-primary ml-3">Logout</a>
+
+                            <% } else { %>
+
+                            <a href="/authenticate" class="btn btn-outline-primary">Register</a>
+                            <a href="/authenticate" class="btn btn-outline-primary ml-3">Login</a>
+
+                            <% } %>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-6 text-center">
-                    <img id="hero-img"
-                         src="./assets/icons/Duo-Stamp-White.png"
-                         alt="">
-
-
+                <div class="hidden-sm-down col-md-4 col-xl-4 text-center">
+                    <img id="hero-img" src="./assets/icons/Duo-Stamp-White.png" alt="">
                 </div>
             </div>
         </div>
@@ -69,12 +67,12 @@
         <div class="col-10 offset-1">
             <div class="row row-title-box">
                 <div class="col-12">
-                    <h2 class="row-title">About Us</h2>
+                    <h2 class="row-title" id="about-us">About Us</h2>
                 </div>
             </div>
 
             <div class="row row-content-box">
-                <div class="col-12">
+                <div class="col-12 mb-3">
                     <h3 class="bold-text"><i class="fa fa-question-circle theme-purple"
                                              aria-hidden="true"></i> Who and What?</h3>
                     <p>
@@ -88,31 +86,31 @@
                     </p>
                 </div>
 
-                <div class="col-2 offset-1 text-center">
+                <div class="col-6 col-md-2 offset-0 offset-md-1 text-center">
                     <!--<img class="about-icon mb-2" src="./assets/bg-splash.jpg" alt="">-->
                     <h1><i class="fa fa-mobile theme-red"
                            aria-hidden="true"></i></h1>
                     <p class="about-icon-desc text-uppercase bold-text">Mobile Dev</p>
                 </div>
-                <div class="col-2 text-center">
+                <div class="col-6 col-md-2 text-center">
                     <!--<img class="about-icon mb-2" src="./assets/bg-splash.jpg" alt="">-->
                     <h1><i class="fa fa-mouse-pointer theme-red"
                            aria-hidden="true"></i></h1>
                     <p class="about-icon-desc text-uppercase bold-text">Web Dev</p>
                 </div>
-                <div class="col-2 text-center">
+                <div class="col-6 col-md-2 text-center">
                     <!--<img class="about-icon mb-2" src="./assets/bg-splash.jpg" alt="">-->
                     <h1><i class="fa fa-paint-brush theme-red"
                            aria-hidden="true"></i></h1>
                     <p class="about-icon-desc text-uppercase bold-text">Design</p>
                 </div>
-                <div class="col-2 text-center">
+                <div class="col-6 col-md-2 text-center">
                     <!--<img class="about-icon mb-2" src="./assets/bg-splash.jpg" alt="">-->
                     <h1><i class="fa fa-gamepad theme-red"
                            aria-hidden="true"></i></h1>
                     <p class="about-icon-desc text-uppercase bold-text">Game Dev</p>
                 </div>
-                <div class="col-2 text-center">
+                <div class="col-6 offset-3 offset-md-0 col-md-2 text-center">
                     <!--<img class="about-icon mb-2" src="./assets/bg-splash.jpg" alt="">-->
                     <h1><i class="fa fa-microchip theme-red"
                            aria-hidden="true"></i></h1>
@@ -151,12 +149,12 @@
         <div class="col-10 offset-1 unskew">
             <div class="row row-title-box">
                 <div class="col-12">
-                    <h2 class="row-title">Schedule</h2>
+                    <h2 class="row-title" id="schedule">Schedule</h2>
                 </div>
             </div>
 
             <div class="row row-content-box">
-                <div class="col-6 text-center">
+                <div class="col-12 col-lg-6 text-center">
                     <h3 class="bold-text mb-5 text-white">😁 Saturday</h3>
                     <div class="sched-event">
                         <p>
@@ -190,7 +188,9 @@
                     </div>
                 </div>
 
-                <div class="col-6 text-center">
+
+
+                <div class="col-12 mt-5 mt-lg-0 col-lg-6 text-center">
                     <h3 class="bold-text mb-5 text-white">😎 Sunday</h3>
                     <div class="sched-event">
                         <p>
@@ -237,56 +237,99 @@
         <div class="col-10 offset-1">
             <div class="row row-title-box">
                 <div class="col-12">
-                    <h2 class="row-title">FAQs</h2>
+                    <h2 class="row-title" id="faqs">FAQs</h2>
                 </div>
             </div>
 
             <div class="row row-content-box">
-                <div class="col-6">
+                <div class="col-12 col-xl-6">
 
-                    <h3 class="faq-q">This is an example question, or is it?</h3>
-                    <p class="faq-a">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus atque eius
-                        facere laboriosam necessitatibus reiciendis! Ab consequuntur eaque eum iste.</p>
+                    <h3 class="faq-q">What is HackRU?</h3>
+                    <p class="faq-a">
+                        HackRU is a 24-hour hackathon at Rutgers University. We welcome hundreds of
+                        students to join us in building awesome software and hardware projects. Industry experts and
+                        mentors come from all over the country to create an environment that fosters an atmosphere of
+                        learning through tech talks and one-on-one guidance. We encourage beginner and advanced hackers
+                        alike to challenge themselves and expand their skills.
+                    </p>
 
-                    <h3 class="faq-q">This is an example question, or is it?</h3>
-                    <p class="faq-a">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus atque eius
-                        facere laboriosam necessitatibus reiciendis! Ab consequuntur eaque eum iste.</p>
+                    <h3 class="faq-q">What should I bring?</h3>
+                    <p class="faq-a">
+                        Yourself, your ingenuity, hacking gear (laptop, laptop charger, monitor, hardware),
+                        photo ID, toiletries, sleeping gear, a change of clothes.
+                    </p>
 
-                    <h3 class="faq-q">This is an example question, or is it?</h3>
-                    <p class="faq-a">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus atque eius
-                        facere laboriosam necessitatibus reiciendis! Ab consequuntur eaque eum iste.</p>
+                    <h3 class="faq-q">What's the application process like?</h3>
+                    <p class="faq-a">
+                        The application is simply and consists of few questions, including a short answer
+                        question so we can get to know you a little better. Decisions are on a
+                        rolling basis, so make sure to register early!
+                    </p>
 
-                    <h3 class="faq-q">This is an example question, or is it?</h3>
-                    <p class="faq-a">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus atque eius
-                        facere laboriosam necessitatibus reiciendis! Ab consequuntur eaque eum iste.</p>
+                    <h3 class="faq-q">Travel reimbursements?</h3>
+                    <p class="faq-a">
+                        Unfortunately, due to university regulations, HackRU is unable to issue travel
+                        reimbursements or buses. ☹
+                    </p>
 
-                    <h3 class="faq-q">This is an example question, or is it?</h3>
-                    <p class="faq-a">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus atque eius
-                        facere laboriosam necessitatibus reiciendis! Ab consequuntur eaque eum iste.</p>
+                    <h3 class="faq-q">Can I win anything?</h3>
+                    <p class="faq-a">
+                        Yes! We'll release more information about prizes as the event draws near.
+                    </p>
+
+                    <h3 class="faq-q">Do you have any hardware?</h3>
+                    <p class="faq-a">
+                        Hardware will be provided by the MLH Hardware labs and a full list of available
+                        hardware will be released during the week of the event.
+                    </p>
 
                 </div>
 
-                <div class="col-6">
+                <div class="col-12 col-xl-6">
 
-                    <h3 class="faq-q">This is an example question, or is it?</h3>
-                    <p class="faq-a">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus atque eius
-                        facere laboriosam necessitatibus reiciendis! Ab consequuntur eaque eum iste.</p>
+                    <h3 class="faq-q">Where is it?</h3>
+                    <p class="faq-a">
+                        HackRU will be taking place October 14-15, 2017 at the College Avenue Student
+                        Center in New Brunswick, NJ. The address is 126 College Ave, New Brunswick, NJ 08901.
+                    </p>
 
-                    <h3 class="faq-q">This is an example question, or is it?</h3>
-                    <p class="faq-a">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus atque eius
-                        facere laboriosam necessitatibus reiciendis! Ab consequuntur eaque eum iste.</p>
+                    <h3 class="faq-q">Who can come?</h3>
+                    <p class="faq-a">
+                        HackRU welcomes undergraduate and graduate students of all majors, backgrounds, and
+                        skill levels to come create. Unfortunately, if you are not a Rutgers student and you are under
+                        18, you will not be able to attend. High school students who will be 18 by HackRU are allowed to
+                        register.
+                    </p>
 
-                    <h3 class="faq-q">This is an example question, or is it?</h3>
-                    <p class="faq-a">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus atque eius
-                        facere laboriosam necessitatibus reiciendis! Ab consequuntur eaque eum iste.</p>
+                    <h3 class="faq-q">I'm new, what should I do?</h3>
+                    <p class="faq-a">
+                        That's great! We'd love to have you at HackRU. Throughout the weekend there will be
+                        workshops for you to get your feet wet, project ideas for you to try out, and mentors to guide
+                        you through the process.
+                    </p>
 
-                    <h3 class="faq-q">This is an example question, or is it?</h3>
-                    <p class="faq-a">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus atque eius
-                        facere laboriosam necessitatibus reiciendis! Ab consequuntur eaque eum iste.</p>
+                    <h3 class="faq-q">How much does it cost to attend?</h3>
+                    <p class="faq-a">
+                        Like the best things in life, HackRU is completely free to attend! We will be
+                        providing meals, snacks, and drinks for the entire event along with swag on swag on swag.
+                    </p>
 
-                    <h3 class="faq-q">This is an example question, or is it?</h3>
-                    <p class="faq-a">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus atque eius
-                        facere laboriosam necessitatibus reiciendis! Ab consequuntur eaque eum iste.</p>
+                    <h3 class="faq-q">Can I work with others?</h3>
+                    <p class="faq-a">
+                        Hackers can (and are encouraged to) work in teams of up to 4 humans max. The knowledge
+                        you gain from teammates is invaluable, along with the opportunity to build lifetime friendships
+                        - you might leave with a new best friend! We will be having a team-building exercise after
+                        opening ceremonies for people who are looking for teammates.
+                    </p>
+
+                    <h3 class="faq-q">What shouldn't I bring?</h3>
+                    <p class="faq-a">
+                        Weapons (or anything that can be construed as a weapon), alcohol, illegal drugs,
+                        and/or animals. Use your common sense - if you wouldn't bring it on a plane or to school, don't
+                        bring it here.
+                    </p>
+
+
 
                 </div>
             </div>
@@ -303,7 +346,7 @@
         <div class="col-10 offset-1 unskew">
             <div class="row row-title-box">
                 <div class="col-12">
-                    <h2 class="row-title">Sponsors</h2>
+                    <h2 class="row-title" id="sponsors">Sponsors</h2>
                 </div>
             </div>
 
@@ -336,9 +379,7 @@
                     <p class="mt-5 text-white text-center">
                         Looking to sponsor us?
                         <br>
-                        Visit <a class="gold"
-                                 href="http://sponsorship.hackru.org">sponsorship.hackru.org</a> or email us at
-                        sponsorship@hackru.org!
+                        Visit <a class="gold" href="http://sponsorship.hackru.org">sponsorship.hackru.org</a> or email us at sponsorship@hackru.org!
                     </p>
 
 
