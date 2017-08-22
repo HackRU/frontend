@@ -2,14 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eeac2bfd-3e30-462e-87ee-f6bfdfb9a99a" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app.js" afterPath="$PROJECT_DIR$/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/css/style.css" afterPath="$PROJECT_DIR$/views/css/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/css/style.css.map" afterPath="$PROJECT_DIR$/views/css/style.css.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/css/style.scss" afterPath="$PROJECT_DIR$/views/css/style.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/index.ejs" afterPath="$PROJECT_DIR$/views/index.ejs" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/partials/li-application-form.ejs" afterPath="$PROJECT_DIR$/views/partials/li-application-form.ejs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/partials/li-more-info.ejs" afterPath="$PROJECT_DIR$/views/partials/li-more-info.ejs" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -21,11 +14,11 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="li-more-info.ejs" pinned="false" current-in-tab="true">
+      <file leaf-file-name="li-more-info.ejs" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/partials/li-more-info.ejs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="475">
-              <caret line="17" column="91" lean-forward="false" selection-start-line="17" selection-start-column="91" selection-end-line="17" selection-end-column="91" />
+            <state relative-caret-position="150">
+              <caret line="4" column="10" lean-forward="true" selection-start-line="4" selection-start-column="10" selection-end-line="4" selection-end-column="10" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#div#1;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#1;n#div#1;n#!!top" expanded="true" />
@@ -55,18 +48,18 @@
       <file leaf-file-name="index.ejs" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/index.ejs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-225">
+            <state relative-caret-position="225">
               <caret line="20" column="34" lean-forward="false" selection-start-line="20" selection-start-column="34" selection-end-line="20" selection-end-column="34" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="li-application-form.ejs" pinned="false" current-in-tab="false">
+      <file leaf-file-name="li-application-form.ejs" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/views/partials/li-application-form.ejs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="50">
-              <caret line="61" column="594" lean-forward="false" selection-start-line="61" selection-start-column="594" selection-end-line="61" selection-end-column="594" />
+            <state relative-caret-position="275">
+              <caret line="64" column="0" lean-forward="true" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -164,9 +157,9 @@
         <option value="$PROJECT_DIR$/views/index.ejs" />
         <option value="$PROJECT_DIR$/app.js" />
         <option value="$PROJECT_DIR$/views/registration.ejs" />
-        <option value="$PROJECT_DIR$/views/partials/li-application-form.ejs" />
         <option value="$PROJECT_DIR$/views/css/style.scss" />
         <option value="$PROJECT_DIR$/views/partials/li-more-info.ejs" />
+        <option value="$PROJECT_DIR$/views/partials/li-application-form.ejs" />
       </list>
     </option>
   </component>
@@ -637,12 +630,12 @@
       <workItem from="1503358892338" duration="1972000" />
       <workItem from="1503360885036" duration="9129000" />
       <workItem from="1503416988572" duration="12668000" />
-      <workItem from="1503435881289" duration="3326000" />
+      <workItem from="1503435881289" duration="3723000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="64386000" />
+    <option name="totallyTimeSpent" value="64783000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-11" y="-11" width="1942" height="1102" extended-state="6" />
@@ -994,26 +987,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/index.ejs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-225">
-          <caret line="20" column="34" lean-forward="false" selection-start-line="20" selection-start-column="34" selection-end-line="20" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/registration.ejs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="490">
           <caret line="36" column="22" lean-forward="true" selection-start-line="36" selection-start-column="22" selection-end-line="36" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/partials/li-application-form.ejs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="50">
-          <caret line="61" column="594" lean-forward="false" selection-start-line="61" selection-start-column="594" selection-end-line="61" selection-end-column="594" />
           <folding />
         </state>
       </provider>
@@ -1028,8 +1005,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/views/partials/li-more-info.ejs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="475">
-          <caret line="17" column="91" lean-forward="false" selection-start-line="17" selection-start-column="91" selection-end-line="17" selection-end-column="91" />
+        <state relative-caret-position="150">
+          <caret line="4" column="10" lean-forward="true" selection-start-line="4" selection-start-column="10" selection-end-line="4" selection-end-column="10" />
           <folding>
             <element signature="n#style#0;n#div#0;n#div#1;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#1;n#div#1;n#!!top" expanded="true" />
@@ -1042,6 +1019,22 @@
             <element signature="n#style#0;n#div#7;n#div#1;n#!!top" expanded="true" />
             <element signature="n#style#0;n#a#0;n#div#7;n#div#1;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/index.ejs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="20" column="34" lean-forward="false" selection-start-line="20" selection-start-column="34" selection-end-line="20" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/partials/li-application-form.ejs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="275">
+          <caret line="64" column="0" lean-forward="true" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
