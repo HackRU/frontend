@@ -157,6 +157,12 @@ a {
   border: none; }
   .btn:hover {
     background-color: #7B4397; }
+  .btn:active {
+    background-color: #7B4397;
+    border: none; }
+  .btn:focus {
+    color: white;
+    box-shadow: none; }
 
 .row.min-full-height, .row.min-quarter-height {
   padding-bottom: 50px; }

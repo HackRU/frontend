@@ -210,7 +210,16 @@ a {
 
 	&:hover {
 		background-color: $color-purple;
+	}
 
+	&:active {
+		background-color: $color-purple;
+		border: none;
+	}
+
+	&:focus {
+		color: white;
+		box-shadow: none;
 	}
 }
 
