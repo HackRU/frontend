@@ -439,28 +439,28 @@ $footer-height: 10vh;
 
 }
 
-$social-link-card-height: 25vh;
+$social-link-card-height: 10vh;
 
 .social-link-card {
 	color: white;
+	text-align: center;
+	margin-bottom: 25px;
 	height: $social-link-card-height;
 
+	a {
+		color: inherit;
 
-
-	i, h2 {
-		font-size: 150%;
+		&:hover {
+			text-decoration: none;
+		}
+	}
+	p {
+		@extend .bold-text;
 		line-height: $social-link-card-height;
 	}
-}
 
-$social-link-undercard-height: calc(#{$social-link-card-height/3});
-
-.social-link-undercard {
-	color: white;
-	height: $social-link-undercard-height;
-	//background-color: $color-red;
-	p {
-		line-height: $social-link-undercard-height;
+	i {
+		line-height: $social-link-card-height;
 	}
 }
 
