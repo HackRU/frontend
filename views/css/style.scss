@@ -216,8 +216,12 @@ a {
 
 
 .row {
-	&.min-full-height, &.min-half-height, &.min-quarter-height {
+	&.min-full-height, &.min-quarter-height {
 		padding-bottom: 50px;
+	}
+
+	&.min-half-height {
+		padding-bottom: 75px;
 	}
 }
 
@@ -275,7 +279,7 @@ a {
 
 #hero-img {
 	max-width: 90%;
-	max-height: 400px;
+	max-height: 450px;
 }
 
 .about-icon {
