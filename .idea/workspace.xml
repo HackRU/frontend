@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="eeac2bfd-3e30-462e-87ee-f6bfdfb9a99a" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/dashboard.ejs" afterPath="$PROJECT_DIR$/views/dashboard.ejs" />
-    </list>
+    <list default="true" id="eeac2bfd-3e30-462e-87ee-f6bfdfb9a99a" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -58,8 +55,8 @@
       <file leaf-file-name="registration.ejs" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/views/registration.ejs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="23" column="18" lean-forward="false" selection-start-line="23" selection-start-column="18" selection-end-line="23" selection-end-column="18" />
+            <state relative-caret-position="476">
+              <caret line="28" column="22" lean-forward="true" selection-start-line="28" selection-start-column="22" selection-end-line="28" selection-end-column="22" />
               <folding>
                 <marker date="1503444809000" expanded="true" signature="913:959" ph="{...}" />
               </folding>
@@ -630,12 +627,12 @@
       <workItem from="1503416988572" duration="12668000" />
       <workItem from="1503435881289" duration="10282000" />
       <workItem from="1503527063681" duration="476000" />
-      <workItem from="1503528391672" duration="224000" />
+      <workItem from="1503528391672" duration="825000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="72042000" />
+    <option name="totallyTimeSpent" value="72643000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="18" width="1416" height="1026" extended-state="0" />
@@ -1031,8 +1028,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/views/registration.ejs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="23" column="18" lean-forward="false" selection-start-line="23" selection-start-column="18" selection-end-line="23" selection-end-column="18" />
+        <state relative-caret-position="476">
+          <caret line="28" column="22" lean-forward="true" selection-start-line="28" selection-start-column="22" selection-end-line="28" selection-end-column="22" />
           <folding>
             <marker date="1503444809000" expanded="true" signature="913:959" ph="{...}" />
           </folding>
