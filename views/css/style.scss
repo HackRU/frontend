@@ -350,6 +350,16 @@ a {
 	text-align: center;
 }
 
+.splogo {
+	width: 100%;
+}
+
+.splogo-text {
+	margin-top: 25px;
+	@extend .bold-text;
+	text-align: center;
+}
+
 $footer-height: 10vh;
 
 .footer {
