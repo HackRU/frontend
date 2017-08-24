@@ -107,6 +107,10 @@ $color-silver: #B7B7B7;
 $color-gold: #F9DC62;
 $color-plat: #D8D8D8;
 
+html, body {
+	overflow-x: hidden;
+}
+
 .bronze {
 	color: $color-bronze;
 }
