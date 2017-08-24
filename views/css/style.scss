@@ -265,6 +265,10 @@ a {
 	overflow: hidden;
 }
 
+.navbar-toggler:focus {
+	outline: none;
+}
+
 #nav-bar {
 	$nav-bar-height: 20vh;
 	height: $nav-bar-height;

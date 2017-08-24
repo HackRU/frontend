@@ -192,6 +192,9 @@ a {
   color: white;
   overflow: hidden; }
 
+.navbar-toggler:focus {
+  outline: none; }
+
 #nav-bar {
   height: 20vh;
   line-height: 20vh;
