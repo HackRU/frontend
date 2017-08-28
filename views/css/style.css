@@ -80,20 +80,35 @@
 
   .text-justify-lg {
     text-align: justify; } }
-html, body {
+body {
   overflow-x: hidden; }
 
 .bronze {
-  color: #C96F0D; }
+  color: #C96F0D !important; }
 
 .silver {
-  color: #B7B7B7; }
+  color: #B7B7B7 !important; }
 
 .gold {
-  color: #F9DC62; }
+  color: #F9DC62 !important; }
 
 .plat {
-  color: #D8D8D8; }
+  color: #D8D8D8 !important; }
+
+.bg-bronze {
+  background-color: #C96F0D !important; }
+
+.bg-silver {
+  background-color: #B7B7B7 !important; }
+
+.bg-gold {
+  background-color: #F9DC62 !important; }
+
+.bg-plat {
+  background-color: #D8D8D8 !important; }
+
+.bg-none {
+  background: none !important; }
 
 .theme-purple {
   color: #7B4397; }
@@ -148,7 +163,7 @@ a {
 .min-quarter-height {
   min-height: 25vh; }
 
-.bold-text, .btn, .row-title-box .row-title, .faq-q, .spons-level, .splogo-text, .footer a, .li-nav-bar .nav-item:hover .nav-link, .li-section-title-box .li-section-title, .social-link-card p, .li-footer a, .li-mobile-footer a {
+.bold-text, .btn, .row-title-box .row-title, .faq-q, .spons-level, .footer a, .li-nav-bar .nav-item:hover .nav-link, .li-section-title-box .li-section-title, .social-link-card p, .li-footer a, .li-mobile-footer a {
   font-family: "Circular Std Bold", sans-serif; }
 
 *, input, select {
@@ -195,10 +210,12 @@ a {
 .navbar-toggler:focus {
   outline: none; }
 
+.nav-bar-div {
+  margin: 0 -15px; }
+
 #nav-bar {
-  height: 20vh;
-  line-height: 20vh;
-  margin-bottom: 75px; }
+  height: 15vh;
+  line-height: 15vh; }
   #nav-bar a {
     color: white; }
     #nav-bar a:hover {
@@ -208,7 +225,26 @@ a {
     vertical-align: middle;
     margin: 0; }
   #nav-bar .nav-bar-logo {
-    width: 75%; }
+    height: calc(15vh * .65); }
+
+#nav-bar-mobile {
+  height: 30vh;
+  line-height: calc(30vh/2); }
+  #nav-bar-mobile a {
+    color: white; }
+    #nav-bar-mobile a:hover {
+      color: #DC2430; }
+  #nav-bar-mobile .nav-bar-link, #nav-bar-mobile .nav-bar-logo {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0; }
+  #nav-bar-mobile .nav-bar-logo {
+    width: 60%;
+    padding-top: 30px; }
+
+#sponsorship-hero {
+  color: #7B4397;
+  background-color: white; }
 
 #hero-img {
   max-width: 90%;
@@ -251,12 +287,25 @@ a {
 .spons-level {
   text-align: center; }
 
-.splogo {
-  width: 100%; }
+.spons-level-button {
+  color: inherit; }
+  .spons-level-button:hover {
+    background-color: #DC2430 !important; }
 
-.splogo-text {
-  margin-top: 25px;
+.perk-row .perk-select-col {
+  /*Horizontal*/
+  background-image: linear-gradient(to right, white 12.5%, rgba(255, 255, 255, 0) 0%);
+  background-position: top;
+  background-size: 8px 1px;
+  background-repeat: repeat-x; }
+.perk-row .perk-select {
   text-align: center; }
+.perk-row .perk-desc {
+  text-align: left; }
+.perk-row h5, .perk-row p {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  margin: 0; }
 
 .footer {
   height: 10vh;

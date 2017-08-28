@@ -74,6 +74,10 @@ app.get('/register-confirmation', function (req, res) {
     res.render('manage-confirmation.ejs', { message: false, user: fakeUser });
 });
 
+app.get('/sponsorship', function (req, res) {
+    res.render('sponsorship.ejs', { user: fakeUser, message: false });
+});
+
 app.use("/waiver", express.static(__dirname + "/views/assets/hackru_f17_waiver.pdf"));
 // Launch
 var port = process.env.PORT || 9000;

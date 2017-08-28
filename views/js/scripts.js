@@ -4,7 +4,7 @@ $(document).ready(function() {
     var pageLocation = window.location.pathname; // used to run certain JS on specific pages
     console.log(pageLocation);
 
-    if (pageLocation == '/' || pageLocation == '/index.ejs') { // run on home page (landing page)
+    if (pageLocation == '/' || pageLocation == '/index.ejs' || pageLocation == '/sponsorship') { // run on home page (landing page)
         // console.log("THIS IS THE HOME PAGE.");
         smoothScrollEnable();
     }

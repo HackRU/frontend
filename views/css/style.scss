@@ -107,24 +107,44 @@ $color-silver: #B7B7B7;
 $color-gold: #F9DC62;
 $color-plat: #D8D8D8;
 
-html, body {
+body {
 	overflow-x: hidden;
 }
 
 .bronze {
-	color: $color-bronze;
+	color: $color-bronze !important;
 }
 
 .silver {
-	color: $color-silver;
+	color: $color-silver !important;
 }
 
 .gold {
-	color: $color-gold;
+	color: $color-gold !important;
 }
 
 .plat {
-	color: $color-plat;
+	color: $color-plat !important;
+}
+
+.bg-bronze {
+	background-color: $color-bronze !important;
+}
+
+.bg-silver {
+	background-color: $color-silver !important;
+}
+
+.bg-gold {
+	background-color: $color-gold !important;
+}
+
+.bg-plat {
+	background-color: $color-plat !important;
+}
+
+.bg-none {
+	background: none !important;
 }
 
 .theme-purple {
@@ -269,11 +289,14 @@ a {
 	outline: none;
 }
 
+.nav-bar-div {
+	margin: 0 -15px;
+}
+
 #nav-bar {
-	$nav-bar-height: 20vh;
+	$nav-bar-height: 15vh;
 	height: $nav-bar-height;
 	line-height: $nav-bar-height;
-	margin-bottom: 75px;
 
 	a {
 		color: white;
@@ -289,8 +312,39 @@ a {
 
 	.nav-bar-logo {
 		@extend .nav-bar-link;
-		width: 75%;
+		//width: 75%;
+		height: calc(#{$nav-bar-height} * .65);
 	}
+}
+
+#nav-bar-mobile {
+	$nav-bar-height: 30vh;
+	height: $nav-bar-height;
+	line-height: calc(#{$nav-bar-height}/2);
+
+	a {
+		color: white;
+		&:hover {
+			color: $color-red;
+		}
+	}
+	.nav-bar-link {
+		display: inline-block;
+		vertical-align: middle;
+		margin: 0;
+	}
+
+	.nav-bar-logo {
+		@extend .nav-bar-link;
+		width: 60%;
+		padding-top: 30px;
+	}
+}
+
+
+#sponsorship-hero {
+	color: $color-purple;
+	background-color: white;
 }
 
 
@@ -358,15 +412,41 @@ a {
 	text-align: center;
 }
 
-.splogo {
-	width: 100%;
+.spons-level-button {
+	color: inherit;
+
+	&:hover {
+		background-color: $color-red !important;
+	}
 }
 
-.splogo-text {
-	margin-top: 25px;
-	@extend .bold-text;
-	text-align: center;
+.perk-row {
+
+	.perk-select-col {
+		/*Horizontal*/
+		background-image: linear-gradient(to right, white 12.5%, rgba(255,255,255,0) 0%);
+		background-position: top;
+		background-size: 8px 1px;
+		background-repeat: repeat-x;
+	}
+
+	.perk-select {
+		text-align: center;
+	}
+	
+	.perk-desc {
+		text-align: left;
+	}
+
+	h5, p {
+		padding-top: 15px;
+		padding-bottom: 15px;
+		margin: 0;
+	}
 }
+
+
+
 
 $footer-height: 10vh;
 
