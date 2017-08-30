@@ -2,16 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eeac2bfd-3e30-462e-87ee-f6bfdfb9a99a" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/views/js/custom.js" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app.js" afterPath="$PROJECT_DIR$/app.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/css/style.css" afterPath="$PROJECT_DIR$/views/css/style.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/css/style.css.map" afterPath="$PROJECT_DIR$/views/css/style.css.map" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/css/style.scss" afterPath="$PROJECT_DIR$/views/css/style.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/index.ejs" afterPath="$PROJECT_DIR$/views/index.ejs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/js/scripts.js" afterPath="$PROJECT_DIR$/views/js/scripts.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/partials/nav.ejs" afterPath="$PROJECT_DIR$/views/partials/nav.ejs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/partials/footer.ejs" afterPath="$PROJECT_DIR$/views/partials/footer.ejs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/partials/sp-nav.ejs" afterPath="$PROJECT_DIR$/views/partials/sp-nav.ejs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/sponsorship.ejs" afterPath="$PROJECT_DIR$/views/sponsorship.ejs" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,21 +20,43 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="sponsorship.ejs" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/sponsorship.ejs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="9" column="32" lean-forward="false" selection-start-line="9" selection-start-column="32" selection-end-line="9" selection-end-column="32" />
+              <folding>
+                <marker date="1504134547359" expanded="true" signature="20736:20869" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="index.ejs" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/index.ejs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2516">
-              <caret line="148" column="36" lean-forward="false" selection-start-line="72" selection-start-column="4" selection-end-line="148" selection-end-column="36" />
+            <state relative-caret-position="136">
+              <caret line="8" column="6" lean-forward="true" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="sponsorship.ejs" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/views/sponsorship.ejs">
+      <file leaf-file-name="sp-nav.ejs" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/views/partials/sp-nav.ejs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="691">
-              <caret line="134" column="80" lean-forward="false" selection-start-line="134" selection-start-column="80" selection-end-line="134" selection-end-column="80" />
+            <state relative-caret-position="187">
+              <caret line="11" column="86" lean-forward="true" selection-start-line="11" selection-start-column="86" selection-end-line="11" selection-end-column="86" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="scripts.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/js/scripts.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="425">
+              <caret line="25" column="50" lean-forward="false" selection-start-line="25" selection-start-column="50" selection-end-line="25" selection-end-column="50" />
               <folding />
             </state>
           </provider>
@@ -44,8 +65,8 @@
       <file leaf-file-name="style.scss" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/css/style.scss">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="708">
-              <caret line="437" column="24" lean-forward="false" selection-start-line="437" selection-start-column="20" selection-end-line="437" selection-end-column="24" />
+            <state relative-caret-position="340">
+              <caret line="353" column="19" lean-forward="false" selection-start-line="353" selection-start-column="19" selection-end-line="353" selection-end-column="19" />
               <folding />
             </state>
           </provider>
@@ -67,25 +88,12 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>social-link-ca</find>
-      <find>resume</find>
-      <find>messag</find>
-      <find>visit</find>
-      <find>txt</find>
-      <find>message</find>
-      <find>messa</find>
-      <find>(`message &amp;&amp; message != ''`)</find>
-      <find>()</find>
-      <find>(me)</find>
-      <find>(mes)</find>
-      <find>(mess)</find>
       <find>(messa)</find>
       <find>(message)</find>
       <find>plati</find>
       <find>rouy</find>
       <find>sp</find>
       <find>nav</find>
-      <find>spon</find>
       <find>logo</find>
       <find>nav-ba</find>
       <find>#{}</find>
@@ -97,6 +105,19 @@
       <find>spo</find>
       <find>border-</find>
       <find>spons</find>
+      <find>spon</find>
+      <find>spons-level-button</find>
+      <find>border-ra</find>
+      <find>what is</find>
+      <find>input</find>
+      <find>progr</find>
+      <find>desc</find>
+      <find>li-footer</find>
+      <find>footer</find>
+      <find>footer {</find>
+      <find>img</find>
+      <find>.png</find>
+      <find>offset-sm-4</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -115,8 +136,6 @@
         <option value="$PROJECT_DIR$/views/partials/mlh.ejs" />
         <option value="$PROJECT_DIR$/views/partials/head.ejs" />
         <option value="$PROJECT_DIR$/views/css/omg.scss" />
-        <option value="$PROJECT_DIR$/views/partials/li-footer.ejs" />
-        <option value="$PROJECT_DIR$/views/partials/footer.ejs" />
         <option value="$PROJECT_DIR$/views/css/style.css" />
         <option value="$PROJECT_DIR$/../splash-page/app.js" />
         <option value="$PROJECT_DIR$/views/partials/li-application-form.ejs" />
@@ -127,11 +146,13 @@
         <option value="$PROJECT_DIR$/views/partials/sponsor-nav.ejs" />
         <option value="$PROJECT_DIR$/app.js" />
         <option value="$PROJECT_DIR$/views/partials/nav.ejs" />
+        <option value="$PROJECT_DIR$/views/partials/li-footer.ejs" />
+        <option value="$PROJECT_DIR$/views/partials/footer.ejs" />
+        <option value="$PROJECT_DIR$/views/css/style.scss" />
         <option value="$PROJECT_DIR$/views/index.ejs" />
+        <option value="$PROJECT_DIR$/views/sponsorship.ejs" />
         <option value="$PROJECT_DIR$/views/partials/sp-nav.ejs" />
         <option value="$PROJECT_DIR$/views/js/scripts.js" />
-        <option value="$PROJECT_DIR$/views/css/style.scss" />
-        <option value="$PROJECT_DIR$/views/sponsorship.ejs" />
       </list>
     </option>
   </component>
@@ -152,22 +173,6 @@
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="1" id="Add" />
-  </component>
-  <component name="ProjectView">
-    <navigator proportions="" version="1">
-      <flattenPackages />
-      <showMembers />
-      <showModules />
-      <showLibraryContents />
-      <hideEmptyPackages />
-      <abbreviatePackageNames />
-      <autoscrollToSource />
-      <autoscrollFromSource />
-      <sortByType />
-      <manualOrder />
-      <foldersAlwaysOnTop value="true" />
-    </navigator>
-    <panes />
   </component>
   <component name="PropertiesComponent">
     <property name="settings.editor.selected.configurable" value="preferences.sourceCode.HTML" />
@@ -625,11 +630,13 @@
       <workItem from="1503693148452" duration="1165000" />
       <workItem from="1503779523220" duration="3261000" />
       <workItem from="1503882579737" duration="5686000" />
+      <workItem from="1504122837727" duration="2121000" />
+      <workItem from="1504125279682" duration="7942000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="83147000" />
+    <option name="totallyTimeSpent" value="93210000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -675,19 +682,7 @@
     <breakpoint-manager />
     <watches-manager />
   </component>
-  <component name="antWorkspaceConfiguration">
-    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
-    <option name="FILTER_TARGETS" value="false" />
-  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/views/css/style.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3995">
-          <caret line="235" column="1" lean-forward="true" selection-start-line="235" selection-start-column="1" selection-end-line="235" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/partials/nav.ejs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -904,8 +899,6 @@
       </provider>
     </entry>
     <entry file="file://G:/Steam/steamapps/common/PUBG/TslGame/Binaries/Win64/reshade-shaders/README.md" />
-    <entry file="file://$PROJECT_DIR$/views/partials/li-footer.ejs" />
-    <entry file="file://$PROJECT_DIR$/views/partials/footer.ejs" />
     <entry file="file://$PROJECT_DIR$/views/css/style.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="58">
@@ -964,29 +957,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/partials/sp-nav.ejs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="43" lean-forward="false" selection-start-line="15" selection-start-column="43" selection-end-line="15" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/index.ejs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2516">
-          <caret line="148" column="36" lean-forward="false" selection-start-line="72" selection-start-column="4" selection-end-line="148" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/js/scripts.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="5" lean-forward="true" selection-start-line="9" selection-start-column="5" selection-end-line="9" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="746">
@@ -997,18 +967,68 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/views/partials/li-footer.ejs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="19" lean-forward="false" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/partials/footer.ejs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="19" lean-forward="false" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/views/css/style.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="708">
-          <caret line="437" column="24" lean-forward="false" selection-start-line="437" selection-start-column="20" selection-end-line="437" selection-end-column="24" />
+        <state relative-caret-position="340">
+          <caret line="353" column="19" lean-forward="false" selection-start-line="353" selection-start-column="19" selection-end-line="353" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/js/custom.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/js/scripts.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="25" column="50" lean-forward="false" selection-start-line="25" selection-start-column="50" selection-end-line="25" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/index.ejs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="6" lean-forward="true" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/views/sponsorship.ejs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="691">
-          <caret line="134" column="80" lean-forward="false" selection-start-line="134" selection-start-column="80" selection-end-line="134" selection-end-column="80" />
+        <state relative-caret-position="153">
+          <caret line="9" column="32" lean-forward="false" selection-start-line="9" selection-start-column="32" selection-end-line="9" selection-end-column="32" />
+          <folding>
+            <marker date="1504134547359" expanded="true" signature="20736:20869" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/partials/sp-nav.ejs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="86" lean-forward="true" selection-start-line="11" selection-start-column="86" selection-end-line="11" selection-end-column="86" />
           <folding />
         </state>
       </provider>

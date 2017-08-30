@@ -221,7 +221,7 @@ a {
 
 }
 
-*, input, select {
+*, input, select, textarea {
 	font-family: "Circular Std Book", sans-serif;
 }
 
@@ -349,8 +349,14 @@ a {
 
 
 #hero-img {
-	max-width: 90%;
-	max-height: 450px;
+	position: absolute;
+	max-width: 100%;
+	max-height: 500px;
+	right: 10%;
+	top: 75%;
+	transform: translateY(-50%);
+	z-index: 100;
+
 }
 
 .about-icon {
@@ -413,10 +419,10 @@ a {
 }
 
 .spons-level-button {
-	color: inherit;
+	color: white;
 
 	&:hover {
-		background-color: $color-red !important;
+		background-color: $color-purple !important;
 	}
 }
 
@@ -435,7 +441,8 @@ a {
 	}
 	
 	.perk-desc {
-		text-align: left;
+		@extend .bold-text;
+		//text-align: left;
 	}
 
 	h5, p {
@@ -446,14 +453,34 @@ a {
 }
 
 
+.progress {
+	background-color: white;
+	border: 1px lightgray solid;
+}
 
+.progress-bar {
+
+	$progress-bar-height: 4vh;
+
+	height: $progress-bar-height;
+
+	@extend .bg-gradient;
+
+	.progress-bar-text {
+		line-height: $progress-bar-height;
+	}
+}
+
+
+#sp-email, #sp-message {
+	border: 1px $color-purple solid;
+}
 
 $footer-height: 10vh;
 
 .footer {
 	height: $footer-height;
-	margin-top: 50px;
-	margin-bottom: 25px;
+
 
 	color: $color-red;
 	background-color: white;
@@ -477,7 +504,7 @@ $footer-height: 10vh;
 
 	.footer-logo {
 		display: inline-block;
-		height: calc(#{$footer-height}*0.5);
+		height: calc(#{$footer-height}*0.45);
 	}
 
 }
@@ -567,6 +594,7 @@ $li-footer-height: 10vh;
 .li-footer {
 	height: $li-footer-height;
 
+
 	color: white;
 	@extend .bg-gradient;
 
@@ -577,7 +605,7 @@ $li-footer-height: 10vh;
 	}
 
 	.social-links {
-		font-size: 165%;
+		font-size: 175%;
 	}
 
 	a {

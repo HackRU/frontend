@@ -119,7 +119,7 @@ body {
 .text-black {
   color: black; }
 
-.bg-gradient, .bg-splash, #hero, .about-map-container, .li-footer, .li-mobile-footer {
+.bg-gradient, .bg-splash, #hero, .about-map-container, .progress-bar, .li-footer, .li-mobile-footer {
   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#7b4397+0,dc2430+100 */
   background: #7B4397;
   /* Old browsers */
@@ -163,10 +163,10 @@ a {
 .min-quarter-height {
   min-height: 25vh; }
 
-.bold-text, .btn, .row-title-box .row-title, .faq-q, .spons-level, .footer a, .li-nav-bar .nav-item:hover .nav-link, .li-section-title-box .li-section-title, .social-link-card p, .li-footer a, .li-mobile-footer a {
+.bold-text, .btn, .row-title-box .row-title, .faq-q, .spons-level, .perk-row .perk-desc, .footer a, .li-nav-bar .nav-item:hover .nav-link, .li-section-title-box .li-section-title, .social-link-card p, .li-footer a, .li-mobile-footer a {
   font-family: "Circular Std Bold", sans-serif; }
 
-*, input, select {
+*, input, select, textarea {
   font-family: "Circular Std Book", sans-serif; }
 
 .btn {
@@ -247,8 +247,13 @@ a {
   background-color: white; }
 
 #hero-img {
-  max-width: 90%;
-  max-height: 450px; }
+  position: absolute;
+  max-width: 100%;
+  max-height: 500px;
+  right: 10%;
+  top: 75%;
+  transform: translateY(-50%);
+  z-index: 100; }
 
 .about-icon {
   width: 90%; }
@@ -288,9 +293,9 @@ a {
   text-align: center; }
 
 .spons-level-button {
-  color: inherit; }
+  color: white; }
   .spons-level-button:hover {
-    background-color: #DC2430 !important; }
+    background-color: #7B4397 !important; }
 
 .perk-row .perk-select-col {
   /*Horizontal*/
@@ -300,17 +305,25 @@ a {
   background-repeat: repeat-x; }
 .perk-row .perk-select {
   text-align: center; }
-.perk-row .perk-desc {
-  text-align: left; }
 .perk-row h5, .perk-row p {
   padding-top: 15px;
   padding-bottom: 15px;
   margin: 0; }
 
+.progress {
+  background-color: white;
+  border: 1px lightgray solid; }
+
+.progress-bar {
+  height: 4vh; }
+  .progress-bar .progress-bar-text {
+    line-height: 4vh; }
+
+#sp-email, #sp-message {
+  border: 1px #7B4397 solid; }
+
 .footer {
   height: 10vh;
-  margin-top: 50px;
-  margin-bottom: 25px;
   color: #DC2430;
   background-color: white; }
   .footer .text-vcenter {
@@ -324,7 +337,7 @@ a {
     padding: 15px 10px; }
   .footer .footer-logo {
     display: inline-block;
-    height: calc(10vh*0.5); }
+    height: calc(10vh*0.45); }
 
 .li-nav-bar {
   background-color: #7B4397;
@@ -374,7 +387,7 @@ a {
     margin: 0;
     line-height: 10vh; }
   .li-footer .social-links {
-    font-size: 165%; }
+    font-size: 175%; }
   .li-footer a {
     color: white;
     line-height: 10vh;
