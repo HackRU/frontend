@@ -23,7 +23,7 @@ $(document).ready(function() {
 
 function smoothScrollEnable() {
     // helps smoothly transition to anchor points on the landing page.
-    $('a[href*=\\#]').on('click', function(event){
+    $('.smooth-scroll').on('click', function(event){
         event.preventDefault();
         $('html,body').animate({scrollTop:$(this.hash).offset().top}, 500);
     });
