@@ -255,10 +255,10 @@
 
                     <div class="row spons-levels-select mt-5 mb-5">
                         <div class="col-12 text-center-not-lg col-lg-4 col-xl-3"></div>
-                        <div class="col-12 mb-3 col-md-6 col-lg-2 bold-text text-center"><button class="btn btn-block spons-level-button bg-bronze">Select Bronze</button></div>
-                        <div class="col-12 mb-3 col-md-6 col-lg-2 bold-text text-center"><button class="btn btn-block spons-level-button bg-silver">Select Silver</button></div>
-                        <div class="col-12 mb-3 col-md-6 col-lg-2 bold-text text-center"><button class="btn btn-block spons-level-button bg-gold">Select Gold</button></div>
-                        <div class="col-12 mb-3 col-md-6 col-lg-2 bold-text text-center"><button class="btn btn-block spons-level-button bg-plat">Select Platinum</button></div>
+                        <div class="col-12 mb-3 col-md-6 col-lg-2 bold-text text-center"><button id="spons-level-btn-brz" class="btn btn-block spons-level-button bg-bronze">Select Bronze</button></div>
+                        <div class="col-12 mb-3 col-md-6 col-lg-2 bold-text text-center"><button id="spons-level-btn-sil" class="btn btn-block spons-level-button bg-silver">Select Silver</button></div>
+                        <div class="col-12 mb-3 col-md-6 col-lg-2 bold-text text-center"><button id="spons-level-btn-gld" class="btn btn-block spons-level-button bg-gold">Select Gold</button></div>
+                        <div class="col-12 mb-3 col-md-6 col-lg-2 bold-text text-center"><button id="spons-level-btn-plt" class="btn btn-block spons-level-button bg-plat">Select Platinum</button></div>
                     </div>
 
 
@@ -296,7 +296,7 @@
                     <!--</div>-->
 
                     <div class="progress mb-5">
-                        <div class="progress-bar" role="progressbar" aria-valuenow="7000" aria-valuemin="0" aria-valuemax="15000" style="width:70%"></div>
+                        <div class="progress-bar" role="progressbar" style="width:0"></div>
                     </div>
                 </div>
 
@@ -324,7 +324,7 @@
                         <div class="form-group row">
                             <label for="sp-message" class="col-12 col-xl-2 col-form-label"><h5 class="bold-text">Message</h5></label>
                             <div class="col-12 col-xl-10">
-                                <textarea class="form-control" id="sp-message" name="sp-message" rows="3" placeholder="Message"></textarea>
+                                <textarea class="form-control" id="sp-message" name="sp-message" rows="3" placeholder="Message">Hi! Let's chat about sponsoring HackRU.</textarea>
                             </div>
 
                             <div class="hidden-xl-up col-12 mt-5 text-center">

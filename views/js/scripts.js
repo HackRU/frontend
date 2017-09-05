@@ -19,7 +19,47 @@ $(document).ready(function() {
     }
 
 
+    if (pageLocation == '/sponsorship') {
+
+        // sponsorship button selection functionality
+        $("#spons-level-btn-brz").click(function() {
+            scrollOnPackageSelect(1500, "Bronze");
+        });
+
+        $("#spons-level-btn-sil").click(function() {
+            scrollOnPackageSelect(4000, "Silver");
+        });
+
+        $("#spons-level-btn-gld").click(function() {
+            scrollOnPackageSelect(7000, "Gold");
+        });
+
+        $("#spons-level-btn-plt").click(function() {
+            scrollOnPackageSelect(15000, "Platinum");
+        });
+
+    }
+
 });
+
+
+function scrollOnPackageSelect(cost, packageName) {
+
+    var parentWidth = $(".progress").width().toFixed() - 1;
+    var newWidth = (cost/15000*parentWidth).toFixed();
+    var newPackageText = "the " + packageName + " package"
+
+    $('html, body').animate({
+        scrollTop: $("#contact").offset().top
+    }, "slow");
+    $(".progress-bar").animate({ width: newWidth }, "slow");
+
+    $("#package-selected-text").text(newPackageText);
+
+    $("#sp-message").text("Hi! Let's chat about my company sponsoring HackRU with the " + packageName + " package! :)");
+
+}
+
 
 function smoothScrollEnable() {
     // helps smoothly transition to anchor points on the landing page.
