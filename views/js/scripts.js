@@ -58,6 +58,8 @@ function scrollOnPackageSelect(cost, packageName) {
 
     $("#sp-message").text("Hi! Let's chat about my company sponsoring HackRU with the " + packageName + " package! :)");
 
+    $("#input-package-name").val(packageName);
+
 }
 
 

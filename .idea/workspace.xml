@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eeac2bfd-3e30-462e-87ee-f6bfdfb9a99a" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/workspace.xml___jb_tmp___" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/js/scripts.js" afterPath="$PROJECT_DIR$/views/js/scripts.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/sponsorship.ejs" afterPath="$PROJECT_DIR$/views/sponsorship.ejs" />
@@ -17,24 +18,24 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="sponsorship.ejs" pinned="false" current-in-tab="false">
+      <file leaf-file-name="sponsorship.ejs" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/views/sponsorship.ejs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="286" column="53" lean-forward="false" selection-start-line="286" selection-start-column="46" selection-end-line="286" selection-end-column="53" />
+            <state relative-caret-position="334">
+              <caret line="313" column="118" lean-forward="false" selection-start-line="313" selection-start-column="118" selection-end-line="313" selection-end-column="118" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <marker date="1504631187636" expanded="true" signature="20794:20927" ph="..." />
+                <marker date="1504631878689" expanded="true" signature="20794:20927" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="scripts.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="scripts.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/js/scripts.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="51" column="4" lean-forward="false" selection-start-line="51" selection-start-column="4" selection-end-line="51" selection-end-column="4" />
+            <state relative-caret-position="663">
+              <caret line="60" column="44" lean-forward="false" selection-start-line="60" selection-start-column="44" selection-end-line="60" selection-end-column="44" />
               <folding />
             </state>
           </provider>
@@ -61,7 +62,6 @@
       <find>spons-level-button</find>
       <find>border-ra</find>
       <find>what is</find>
-      <find>input</find>
       <find>progr</find>
       <find>desc</find>
       <find>li-footer</find>
@@ -74,6 +74,7 @@
       <find>spons-level-</find>
       <find>brz</find>
       <find>progre</find>
+      <find>input</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -107,8 +108,8 @@
         <option value="$PROJECT_DIR$/views/partials/sp-nav.ejs" />
         <option value="$PROJECT_DIR$/views/partials/nav.ejs" />
         <option value="$PROJECT_DIR$/views/index.ejs" />
-        <option value="$PROJECT_DIR$/views/sponsorship.ejs" />
         <option value="$PROJECT_DIR$/views/js/scripts.js" />
+        <option value="$PROJECT_DIR$/views/sponsorship.ejs" />
       </list>
     </option>
   </component>
@@ -589,12 +590,12 @@
       <workItem from="1504122837727" duration="2121000" />
       <workItem from="1504125279682" duration="8586000" />
       <workItem from="1504144072742" duration="2068000" />
-      <workItem from="1504629026078" duration="2190000" />
+      <workItem from="1504629026078" duration="2923000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="98112000" />
+    <option name="totallyTimeSpent" value="98845000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -975,22 +976,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/sponsorship.ejs">
+    <entry file="file://$PROJECT_DIR$/views/js/scripts.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="286" column="53" lean-forward="false" selection-start-line="286" selection-start-column="46" selection-end-line="286" selection-end-column="53" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <marker date="1504631187636" expanded="true" signature="20794:20927" ph="..." />
-          </folding>
+        <state relative-caret-position="663">
+          <caret line="60" column="44" lean-forward="false" selection-start-line="60" selection-start-column="44" selection-end-line="60" selection-end-column="44" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/js/scripts.js">
+    <entry file="file://$PROJECT_DIR$/views/sponsorship.ejs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="51" column="4" lean-forward="false" selection-start-line="51" selection-start-column="4" selection-end-line="51" selection-end-column="4" />
-          <folding />
+        <state relative-caret-position="334">
+          <caret line="313" column="118" lean-forward="false" selection-start-line="313" selection-start-column="118" selection-end-line="313" selection-end-column="118" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <marker date="1504631878689" expanded="true" signature="20794:20927" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
