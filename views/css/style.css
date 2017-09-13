@@ -370,15 +370,15 @@ a {
   color: white;
   text-align: center;
   margin-bottom: 25px;
-  height: 10vh; }
+  height: 8vh; }
   .social-link-card a {
     color: inherit; }
     .social-link-card a:hover {
       text-decoration: none; }
   .social-link-card p {
-    line-height: 10vh; }
+    line-height: 8vh; }
   .social-link-card i {
-    line-height: 10vh; }
+    line-height: 8vh; }
 
 .li-footer {
   height: 10vh;
