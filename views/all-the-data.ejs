@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<% include ./partials/ascii.ejs %>
+<head>
+    <% include ./partials/head.ejs %>
+	<script src="./js/custom.js"></script>
+	<script src="./js/admin-accept-users.js"></script>
+</head>
+
+<body>
+<!-- LOGGED IN NAVBAR -->
+<% include ./partials/li-nav.ejs %>
+
+<pre>
+<%= JSON.stringify(data, null, 4) %>
+</pre>
+
+<form>
+    <% for(var i = 0; i < fields.length; i++){ %>
+    <input type="checkbox" name="data" value="<%= fields[i] %>"> <%= fields[i] %> </input>
+    <% } %>
+     <br/>
+    EXCLUDE:
+    <% for(var i = 0; i < excludes.length; i++){ %>
+    <input type="checkbox" name="exclude" value="<%= excludes[i] %>"> <%= excludes[i] %> </input>
+    <% } %>
+    <button type="submit">Check all the data!</button>
+</form>
+
+</body>
+
+</html>
