@@ -406,15 +406,17 @@ a {
 
 .faq-q {
 	@extend .bold-text;
-	@extend .theme-red;
+	@extend .gold;
 }
 
 .faq-a {
+	color: white;
 	margin-bottom: 30px;
 }
 
 .spons-level {
 	@extend .bold-text;
+	text-transform: uppercase;
 	text-align: center;
 }
 
@@ -475,6 +477,21 @@ a {
 #sp-email, #sp-message {
 	border: 1px $color-purple solid;
 }
+
+.splogo {
+	width: 100%;
+	border: 1px $color-red dotted;
+	border-radius: 25px;
+	padding: 15px;
+}
+
+.splogo-text {
+	@extend .bold-text;
+	margin-top: 30px;
+	margin-bottom: 30px;
+	text-transform: uppercase;
+}
+
 
 $footer-height: 10vh;
 
