@@ -53,6 +53,11 @@
                             <a href="/authenticate" class="btn btn-outline-primary">Login to Dashboard</a>
 
                             <% } %>
+
+			    <% if (message && message.length > 0) { %>
+			    <p> <%= message %> </p>
+                            <% } %>
+
                         </div>
                     </div>
                 </div>
