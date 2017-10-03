@@ -429,4 +429,8 @@ a {
   border: #DC2430 solid 1px;
   padding: 20px; }
 
+[type=radio] {
+    display: none;
+}
+
 /*# sourceMappingURL=style.css.map */
