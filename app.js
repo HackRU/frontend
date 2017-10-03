@@ -11,7 +11,7 @@ const fakeUser = {
     "data_sharing": true,
     "resume": "example_resume",
     "github": "example_github",
-    "registration_status": 7,
+    "registration_status": 3,
     "role": {
         "attendee": true,
         "mentor": false,

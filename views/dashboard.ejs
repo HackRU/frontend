@@ -60,7 +60,42 @@
                     <p>Sorry! Better luck next time!</p>
                     <% } %>
 
+                    <h3>Let us know if you can make it to HackRU!</h3>
+                    <form action="/confirm-status" class="form-horizontal" method="post">
+                    <% if(1 <= user.registration_status && user.registration_status <= 3) { %>
 
+                            <% if (user.registration_status >= 3) { %>
+
+                            <label class="btn btn-primary active" id="attending-label">
+                                <input type="radio" name="attendance" id="attending" autocomplete="off"
+                                       value="attending" checked>
+                                <h1><i class="fa fa-smile-o" aria-hidden="true"></i> Attending</h1>
+                            </label>
+
+                            <label class="btn btn-primary" id="not-attending-label">
+                                <input type="radio" name="attendance" id="not-attending" autocomplete="off"
+                                       value="not-attending">
+                                <h1><i class="fa fa-frown-o" aria-hidden="true"></i> Not Going</h1>
+                            </label>
+
+                            <% } else if (user.registration_status < 3) { %>
+
+                            <label class="btn btn-primary" id="attending-label">
+                                <input type="radio" name="attendance" id="attending" autocomplete="off"
+                                       value="attending">
+                                <h1><i class="fa fa-smile-o" aria-hidden="true"></i> Attending</h1>
+                            </label>
+
+                            <label class="btn btn-primary active" id="not-attending-label">
+                                <input type="radio" name="attendance" id="not-attending" autocomplete="off"
+                                       value="not-attending" checked>
+                                <h1><i class="fa fa-frown-o" aria-hidden="true"></i> Not Going</h1>
+                            </label>
+
+                            <% } %>
+                        <input class="btn btn-default content-button" type="submit" value="Save">
+                        </form>
+                    <% } %>
                 </div>
 
                 <div class="col-12 col-lg-5 offset-lg-1 more-info">
