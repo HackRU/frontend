@@ -28,8 +28,6 @@
                 <div class="col-12 col-lg-6 mb-5 mb-lg-0">
                     <h2 class="bold-text">Hello <%= user.mlh_data.first_name %>!</h2>
 
-                    <% user.registration_status = 7; %>
-
                     <% if(user.registration_status == 0) { %>
                     <h3 class="mb-3">Application Status: <span class="bold-text">Incomplete</span></h3>
                     <h5>Seems like you haven't started your application yet.</h5>
