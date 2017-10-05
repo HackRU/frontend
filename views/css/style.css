@@ -193,6 +193,9 @@ a {
   outline: none;
   box-shadow: none !important; }
 
+.btn-attend.btn.hover, .btn-attend.btn:hover {
+  border-color: #7B4397; }
+
 .btn-group label {
   margin-bottom: 0; }
 

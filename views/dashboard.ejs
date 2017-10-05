@@ -28,6 +28,7 @@
                 <div class="col-12 col-lg-6 mb-5 mb-lg-0">
                     <h2 class="bold-text">Hello <%= user.mlh_data.first_name %>!</h2>
 
+                    <% user.registration_status = 7; %>
 
                     <% if(user.registration_status == 0) { %>
                     <h3 class="mb-3">Application Status: <span class="bold-text">Incomplete</span></h3>
@@ -36,19 +37,32 @@
                     <p>
                         Please visit the <a href="/registration">application page</a> to complete and submit your application!
                     </p>
+
                     <% } else if(user.registration_status == 1) { %>
-                    <h3>Application Status: <span class="bold-text">Registered</span></h3>
-                    <p>Being Registered doesn't mean you can attend. The next step is Confirming Your Attendance. We'll be emailing instructions on how to do that soon! Stay tuned!</p>
+                    <h3>Application Status: <span class="bold-text">Accepted (Unconfirmed)</span></h3>
+                    <br>
+                    <h5>Let us know if you can make it to HackRU by confirming below!</h5>
+
                     <% } else if(user.registration_status == 2) { %>
-                    <h3>Application Status: <span class="bold-text">Not Attending</span></h3>
+                    <h3>Application Status: <span class="bold-text">Accepted (Not attending)</span></h3>
+                    <br>
+                    <h5>You've told us that you will not be attending. We hope to see you next time!</h5>
+
+
                     <% } else if(user.registration_status == 3) { %>
-                    <h3>Application Status: <span class="bold-text">Attending</span></h3>
+                    <h3>Application Status: <span class="bold-text">Accepted (Attending)</span></h3>
+                    <br>
+                    <h5>You've confirmed that you'll be attending. Can't wait to see you at HackRU!</h5>
+
+
                     <% } else if(user.registration_status == 4 ) { %>
                     <h3>Application Status: <span class="bold-text">Waitlisted</span></h3>
+                    <br>
+                    <h5>You will receive an email shortly with more information about being waitlisted.</h5>
+
                     <% } else if(user.registration_status == 7 || user.registration_status == 8) { %>
                     <h3 class="mb-3">Application Status: <span class="bold-text">Pending</span></h3>
                     <h5>Visit the <a href="/registration">application page</a> to edit your application.</h5>
-
                     <p>
                         We've received your application and are working hard to read through all of them. You will
                         receive an email soon about the status of your application. In the meantime, why don't you like
@@ -58,24 +72,23 @@
                     <% } else if(user.registration_status == 6 ) { %>
                     <h3>Application Status: <span class="bold-text">Rejected</span></h3>
                     <br>
-                    <h4>Sorry! Better luck next time!</h4>
+                    <h5>Sorry - better luck next time!</h5>
                     <% } %>
 
 
                     <% if(1 <= user.registration_status && user.registration_status <= 3) { %>
                     <br>
-                    <h4>Let us know if you can make it to HackRU!</h4>
-                    <br>
+
                     <form action="/confirm-status" class="form-horizontal" method="post">
 
                         <div class="btn-group mr-3" data-toggle="buttons">
 
-                            <label id="attending-label" class="btn-attend btn btn-primary <% if (user.registration_status >= 3) { %>active<% } %>">
+                            <label id="attending-label" class="btn-attend btn btn-primary <% if (user.registration_status == 3) { %>active<% } %>">
                                 <input type="radio" name="attendance" id="attending" autocomplete="off" value="attending" <% if (user.registration_status >= 3) { %>checked<% } %>>
                                 <i class="fa fa-smile-o" aria-hidden="true"></i> Attending
                             </label>
 
-                            <label id="not-attending-label" class="btn-attend btn btn-primary <% if (user.registration_status < 3) { %>active<% } %>">
+                            <label id="not-attending-label" class="btn-attend btn btn-primary <% if (user.registration_status == 2) { %>active<% } %>">
                                 <input type="radio" name="attendance" id="not-attending" autocomplete="off" value="not-attending" <% if (user.registration_status >= 3) { %>checked<% } %>>
                                 <i class="fa fa-frown-o" aria-hidden="true"></i> Not Attending
                             </label>
@@ -83,8 +96,6 @@
                         </div>
 
                         <input class="btn btn-default content-button" type="submit" value="Save">
-
-
 
                     </form>
 

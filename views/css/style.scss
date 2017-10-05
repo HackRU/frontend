@@ -262,6 +262,12 @@ a {
 	box-shadow:none !important;
 }
 
+.btn-attend.btn.hover, .btn-attend.btn:hover {
+
+	border-color: $color-purple;
+
+}
+
 .btn-group {
 	label {
 		margin-bottom: 0;
