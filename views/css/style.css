@@ -182,6 +182,20 @@ a {
     color: white;
     box-shadow: none; }
 
+.btn-attend {
+  color: lightgray;
+  background: none;
+  border: 1px solid; }
+
+.btn-attend.btn.active, .btn-attend.btn:active {
+  background-color: #7B4397;
+  border: 1px solid #7B4397;
+  outline: none;
+  box-shadow: none !important; }
+
+.btn-group label {
+  margin-bottom: 0; }
+
 .row.min-full-height, .row.min-quarter-height {
   padding-bottom: 50px; }
 .row.min-half-height {
@@ -428,9 +442,5 @@ a {
 .message {
   border: #DC2430 solid 1px;
   padding: 20px; }
-
-[type=radio] {
-    display: none;
-}
 
 /*# sourceMappingURL=style.css.map */

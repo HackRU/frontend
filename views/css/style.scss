@@ -247,6 +247,26 @@ a {
 	}
 }
 
+.btn-attend {
+	color: lightgray;
+	background: none;
+	border: 1px solid;
+
+}
+
+.btn-attend.btn.active, .btn-attend.btn:active {
+
+	background-color: $color-purple;
+	border: 1px solid  $color-purple;
+	outline: none;
+	box-shadow:none !important;
+}
+
+.btn-group {
+	label {
+		margin-bottom: 0;
+	}
+}
 
 .row {
 	&.min-full-height, &.min-quarter-height {

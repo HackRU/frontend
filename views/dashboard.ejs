@@ -57,44 +57,37 @@
 
                     <% } else if(user.registration_status == 6 ) { %>
                     <h3>Application Status: <span class="bold-text">Rejected</span></h3>
-                    <p>Sorry! Better luck next time!</p>
+                    <br>
+                    <h4>Sorry! Better luck next time!</h4>
                     <% } %>
 
-                    <h3>Let us know if you can make it to HackRU!</h3>
-                    <form action="/confirm-status" class="form-horizontal" method="post">
+
                     <% if(1 <= user.registration_status && user.registration_status <= 3) { %>
+                    <br>
+                    <h4>Let us know if you can make it to HackRU!</h4>
+                    <br>
+                    <form action="/confirm-status" class="form-horizontal" method="post">
 
-                            <% if (user.registration_status >= 3) { %>
+                        <div class="btn-group mr-3" data-toggle="buttons">
 
-                            <label class="btn btn-primary active" id="attending-label">
-                                <input type="radio" name="attendance" id="attending" autocomplete="off"
-                                       value="attending" checked>
-                                <h1><i class="fa fa-smile-o" aria-hidden="true"></i> Attending</h1>
+                            <label id="attending-label" class="btn-attend btn btn-primary <% if (user.registration_status >= 3) { %>active<% } %>">
+                                <input type="radio" name="attendance" id="attending" autocomplete="off" value="attending" <% if (user.registration_status >= 3) { %>checked<% } %>>
+                                <i class="fa fa-smile-o" aria-hidden="true"></i> Attending
                             </label>
 
-                            <label class="btn btn-primary" id="not-attending-label">
-                                <input type="radio" name="attendance" id="not-attending" autocomplete="off"
-                                       value="not-attending">
-                                <h1><i class="fa fa-frown-o" aria-hidden="true"></i> Not Going</h1>
+                            <label id="not-attending-label" class="btn-attend btn btn-primary <% if (user.registration_status < 3) { %>active<% } %>">
+                                <input type="radio" name="attendance" id="not-attending" autocomplete="off" value="not-attending" <% if (user.registration_status >= 3) { %>checked<% } %>>
+                                <i class="fa fa-frown-o" aria-hidden="true"></i> Not Attending
                             </label>
 
-                            <% } else if (user.registration_status < 3) { %>
+                        </div>
 
-                            <label class="btn btn-primary" id="attending-label">
-                                <input type="radio" name="attendance" id="attending" autocomplete="off"
-                                       value="attending">
-                                <h1><i class="fa fa-smile-o" aria-hidden="true"></i> Attending</h1>
-                            </label>
-
-                            <label class="btn btn-primary active" id="not-attending-label">
-                                <input type="radio" name="attendance" id="not-attending" autocomplete="off"
-                                       value="not-attending" checked>
-                                <h1><i class="fa fa-frown-o" aria-hidden="true"></i> Not Going</h1>
-                            </label>
-
-                            <% } %>
                         <input class="btn btn-default content-button" type="submit" value="Save">
-                        </form>
+
+
+
+                    </form>
+
                     <% } %>
                 </div>
 
