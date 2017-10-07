@@ -9,11 +9,12 @@ $(document).ready(function(){
     //     $('#fundraiser').fadeIn('fast');
     // });
     
-    var u_email = '<%= user.mlh_data.email %>';
+    var u_email = $('#user-email').val();
 
-    var r_url = "http://ec2-54-190-29-165.us-west-2.compute.amazonaws.com:9000/info/" + u_email + "/"
+    var r_url = "http://ec2-54-186-192-209.us-west-2.compute.amazonaws.com:9000/info/" + u_email + "/"
     $.get( r_url, function( data ) {
 
+        console.log('here');
 
     	d = data['data'];
     	// console.log(d);

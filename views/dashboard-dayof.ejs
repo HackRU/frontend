@@ -5,6 +5,7 @@
     <% include ./partials/head.ejs %>
     <script src="./js/custom.js"></script>
     <script src="./js/util.js"></script>
+    <link rel="stylesheet" href="./css/custom.css"></link>
 </head>
 
 <body>
@@ -16,19 +17,12 @@
 
     <div class="row subpage-section" id="dashboarddayof">
 
-        <div class="col-10">
+        <div class="col-10 offset-1">
             <div class="row li-section-title-box">
                 <div class="col-12">
                     <h2 class="li-section-title">Dashboard</h2>
                 </div>
             </div>
-            <!-- <div class="row mt-5"> -->
-            <!--  -->
-            <!--     <div class="col-12 col-lg-6 mb-5 mb-lg-0"> -->
-            <!--         <h1 class="greeting">Welcome, <%= user.mlh_data.first_name %>!</h1> -->
-            <!--     </div> -->
-            <!-- </div> -->
-
 
             <div class="row">
                 <div class="col-xs-12 col-sm-4 col-md-3 card-container">
@@ -110,6 +104,19 @@
                         </div>
 
                     </div>
+                    <div class="col-md-12 card foodstats">
+                        <h1>/meal tracker</h1>
+
+                        <input type="hidden" value="<%= user.mlh_data.email %>" id="user-email"></input>
+                        <div id="snack-dash">
+
+                            <div id="meal-tracker" class="card">
+                                <canvas id="myChart" height="130px;"></canvas>
+                            </div>
+
+                        </div>
+
+                    </div>
                 </div>
 
 
@@ -176,22 +183,7 @@
                 </div>
 
 
-                <div class="col-xs-12 card-container">
-                    <div class="row">
-                        <div class="col-xs-12 card foodstats">
-                            <h1>/meal tracker</h1>
-
-                            <div id="snack-dash">
-
-                                <div id="meal-tracker" class="card">
-                                    <canvas id="myChart" height="130px;"></canvas>
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                    </div>
+                <div class="col-xs-12 col-sm-8 col-md-3 card-container">
                 </div>
 
             </div>
