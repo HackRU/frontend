@@ -78,7 +78,7 @@
 
                                     <br>
 
-                                    <p><a href="account">Edit my profile</a></p>
+                                    <p><a href="registration">Edit my profile</a></p>
 
 
                                 </div>
@@ -118,26 +118,35 @@
                             </div>
                         </div>
 
-                        <div class="col-md-12 card">
-                            <h1>/upcoming</h1>
-                            <div class="card-text upcoming">
-                                <section class="card-section" id="events-app"><%- eventsMarkup %></section>
-
-                            </div>
-                        </div>
-
-                        <div class="col-md-12 card foodstats">
+                        <div class="col-md-6 card foodstats">
                             <h1>/meal tracker</h1>
 
                             <input type="hidden" value="<%= user.mlh_data.email %>" id="user-email"></input>
                             <div id="snack-dash">
 
                                 <div id="meal-tracker" class="card">
-                                    <canvas id="myChart" height="230px;"></canvas>
+                                    <canvas id="myChart" height="260px;"></canvas>
                                 </div>
 
                             </div>
 
+                        </div>
+
+                        <div class="col-md-6 card">
+                            <h1>/map</h1>
+
+                            <div><strong>Main Floor:</strong> Mentor table (doors of main hacking area), Multipurpose room (futher down)</div>
+                            <div><strong>4th Floor:</strong> Hardware in 411 a</div>
+                            <div><strong>Basement:</strong> Red Lion Cafe(right of staircase), Mirror Room (left of staircase)</div>
+
+                        </div>
+
+                        <div class="col-md-12 card">
+                            <h1>/upcoming</h1>
+                            <div class="card-text upcoming">
+                                <section class="card-section" id="events-app"><%- eventsMarkup %></section>
+
+                            </div>
                         </div>
 
                     </div>
@@ -192,11 +201,6 @@
 
     </div>
 
-
-    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
-
-
-    <div class="row" id="footer"></div>
 
     <!-- FOOTER SECTION -->
     <% include ./partials/li-footer.ejs %>

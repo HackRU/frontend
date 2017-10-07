@@ -96,6 +96,10 @@ html {
   max-width: 50px;
 }
 
+.qr {
+    max-width: 100%;
+}
+
 body {
   overflow-y: scroll;
   color: black;
