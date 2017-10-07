@@ -8,26 +8,26 @@
 </head>
 
 <body>
+<!-- LOGGED IN NAVBAR -->
+<% include ./partials/li-nav.ejs %>
+<!-- END LOGGED IN NAVBAR -->
 <div class="container-fluid">
 
 
     <div class="row subpage-section" id="dashboarddayof">
 
-        <div class="col-xs-12">
-            <div class="row subpage-hero">
-                <div class="col-xs-12 subpage-nav"></div>
-                <div class="col-xs-12 subpage-hero-title">
-                    <h1 class="hidden-xs">Dashboard</h1>
-                    <h3 class="visible-xs-block">Dashboard</h3>
+        <div class="col-10">
+            <div class="row li-section-title-box">
+                <div class="col-12">
+                    <h2 class="li-section-title">Dashboard</h2>
                 </div>
             </div>
-
-            <div class="row">
-
-                <div class="col-xs-12">
-                    <h1 class="greeting">Welcome, <%= user.mlh_data.first_name %>!</h1>
-                </div>
-            </div>
+            <!-- <div class="row mt-5"> -->
+            <!--  -->
+            <!--     <div class="col-12 col-lg-6 mb-5 mb-lg-0"> -->
+            <!--         <h1 class="greeting">Welcome, <%= user.mlh_data.first_name %>!</h1> -->
+            <!--     </div> -->
+            <!-- </div> -->
 
 
             <div class="row">
@@ -206,8 +206,10 @@
 
     <div class="row" id="footer"></div>
 
+    <!-- FOOTER SECTION -->
+    <% include ./partials/li-footer.ejs %>
+    <!-- END FOOTER SECTION -->
 </div>
-
 
 </body>
 

@@ -59,7 +59,7 @@ app.get('/dashboard', function (req, res) {
 });
 
 app.get('/dashboard-dayof', function (req, res) {
-    res.render('dashboard-dayof.ejs', { user: fakeUser, qrimage:"http://placekitten.com/500/500", message: false });
+    res.render('dashboard-dayof.ejs', { anouncementsMarkup: "Use Camelot to see these!", eventsMarkup: "Use Camelot to see these!", user: fakeUser, qrimage:"http://placekitten.com/500/500", message: false });
 });
 
 app.get('/registration', function (req, res) {
