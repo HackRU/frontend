@@ -17,8 +17,6 @@ $(document).ready(function(){
         console.log('here');
 
     	d = data['data'];
-    	// console.log(d);
-    	// console.log('nice! meal tracker loaded.');
     	
     	lunch1 = d['lunch1'];
     	lunch2 = d['lunch2'];
@@ -56,6 +54,11 @@ $(document).ready(function(){
     	options: {
     		scales: {
     			yAxes: [{
+    				ticks: {
+    					beginAtZero:true
+    				}
+    			}],
+    			xAxes: [{
     				ticks: {
     					beginAtZero:true
     				}
