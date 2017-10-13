@@ -13,7 +13,7 @@ const fakeUser = {
     "github": "example_github",
     "registration_status": 2,
     "role": {
-        "attendee": true,
+        "attendee": false,
         "mentor": false,
         "volunteer": false,
         "organizer": false,
