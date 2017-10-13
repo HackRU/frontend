@@ -74,7 +74,7 @@
                     <% } %>
 
 
-                    <% if(1 <= user.registration_status && user.registration_status <= 3) { %>
+                    <% if(1 == user.registration_status || user.registration_status == 3) { %>
                     <br>
 
                     <form action="/confirm-status" class="form-horizontal" method="post">
