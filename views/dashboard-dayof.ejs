@@ -33,8 +33,8 @@
                         <div class="col-12 ru-card ru-card-me">
                             <h4 class="ru-card-title text-center"><span>My Info</span></h4>
 
-                            <!--<img class="qr" src="data:image/png;charset=utf-8;base64,<%= qrimage %>">-->
-                            <img class="qr" src="http://placekitten.com/g/1000/1000" style="width: 100%;">
+                            <img class="qr" width="200px" src="data:image/png;charset=utf-8;base64,<%= qrimage %>">
+                            <!-- <img class="qr" src="http://placekitten.com/g/1000/1000" style="width: 100%;"> -->
 
                             <h4 class="mb-4"><strong><%= user.mlh_data.first_name + " " + user.mlh_data.last_name %></strong></h4>
 
@@ -104,7 +104,7 @@
                         <div class="col-12 ru-card">
                             <h4 class="ru-card-title text-center"><span>Upcoming</span></h4>
                             <h5 class="ru-card-text">All upcoming events will go here.</h5>
-                            <!--<section class="card-section" id="events-app"><%- eventsMarkup %></section>-->
+                            <%- eventsMarkup %>
                         </div>
                         
 
