@@ -446,24 +446,29 @@ a {
   border: #DC2430 solid 1px;
   padding: 20px; }
 
-.qr {
-  margin-bottom: 20px; }
+.ru-card-col {
+  padding-left: 25px;
+  padding-right: 25px; }
 
 .ru-card {
+  border: #7B4397 solid 1px;
   padding: 0px 25px 25px 25px;
-  margin-bottom: 25px; }
+  margin-bottom: 25px;
+  border-radius: 10px; }
   .ru-card .fa-fw {
     margin-right: 10px; }
 
 .ru-card-title {
-  margin-top: 10px;
-  margin-bottom: 40px;
+  margin-top: 20px;
+  margin-bottom: 30px;
   font-weight: bold; }
   .ru-card-title span {
     color: #7B4397;
-    border: #7B4397 solid 1px;
     padding: 10px 20px;
     border-radius: 10px; }
+
+.qr {
+  margin-bottom: 25px; }
 
 .ru-card-me .ru-card-text {
   text-overflow: ellipsis;

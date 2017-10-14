@@ -69,6 +69,18 @@
                         </div>
 
                         <div class="col-12 ru-card">
+                            <h4 class="ru-card-title text-center"><span>Meal Tracker</span></h4>
+                            <input type="hidden" value="<%= user.mlh_data.email %>" id="user-email"></input>
+                            <div id="snack-dash">
+
+                                <div id="meal-tracker" class="card">
+                                    <canvas id="myChart" height="260px;"></canvas>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="col-12 ru-card">
                             <h4 class="ru-card-title text-center"><span>Gavel</span></h4>
                             <h5 class="ru-card-text">Submit your hacks <a href="https://hackru-f17.devpost.com/">here</a> or look up your hacks below:</h5>
 
@@ -94,6 +106,7 @@
                             <h5 class="ru-card-text">All upcoming events will go here.</h5>
                             <!--<section class="card-section" id="events-app"><%- eventsMarkup %></section>-->
                         </div>
+                        
 
                     </div>
                 </div>
@@ -106,7 +119,19 @@
                             <h5 class="ru-card-text"><strong>EXEC:</strong> (443) 945-7390</h5>
                             <h5 class="ru-card-text"><strong>RUPD:</strong> (732) 932-7211</h5>
                             <h5 class="ru-card-text"><strong>NBPD:</strong> (732) 745-5200</h5>
-                            
+                            <br>
+
+
+                            <h5 class="ru-card-text">
+                                <strong>Main Floor:</strong> Mentor table (doors of main hacking area), Multipurpose room (further down)
+                            </h5>
+                            <h5 class="ru-card-text">
+                                <strong>4th Floor:</strong> Hardware in 411a
+                            </h5>
+                            <h5 class="ru-card-text">
+                                <strong>Basement:</strong> Red Lion Cafe (right of staircase), Mirror Room (left of staircase)
+                            </h5>
+
                             <div class="row mt-5">
                                 <div class="col-4">
                                     <a href="https://www.google.com/maps/place/Rutgers+Athletic+Center/@40.5255273,-74.4432251,17z/data=!3m1!4b1!4m5!3m4!1s0x89c3c799e4acd7af:0xc1b21b4e9a6fa334!8m2!3d40.5255273!4d-74.4410311">
@@ -146,26 +171,11 @@
                     <div class="row">
 
 
-                        <div class="col-md-6 card foodstats">
-                            <h1>/meal tracker</h1>
 
-                            <input type="hidden" value="<%= user.mlh_data.email %>" id="user-email"></input>
-                            <div id="snack-dash">
-
-                                <div id="meal-tracker" class="card">
-                                    <canvas id="myChart" height="260px;"></canvas>
-                                </div>
-
-                            </div>
-
-                        </div>
 
                         <div class="col-md-6 card">
-                            <h1>/map</h1>
 
-                            <div><strong>Main Floor:</strong> Mentor table (doors of main hacking area), Multipurpose room (futher down)</div>
-                            <div><strong>4th Floor:</strong> Hardware in 411 a</div>
-                            <div><strong>Basement:</strong> Red Lion Cafe(right of staircase), Mirror Room (left of staircase)</div>
+
 
                         </div>
 

@@ -704,14 +704,19 @@ $li-mobile-footer-height: 30vh;
 
 // DAY-OF DASHBOARD ELEMENTS
 
-.qr {
-	margin-bottom: 20px;
+
+
+.ru-card-col {
+	padding-left: 25px;
+	padding-right: 25px;
 }
 
 .ru-card {
-	//border: $color-purple solid 1px;
+	border: $color-purple solid 1px;
 	padding: 0px 25px 25px 25px;
 	margin-bottom: 25px;
+	border-radius: 10px;
+
 
 	.fa-fw {
 		margin-right: 10px;
@@ -720,16 +725,19 @@ $li-mobile-footer-height: 30vh;
 
 .ru-card-title {
 
-	margin-top: 10px;
-	margin-bottom: 40px;
+	margin-top: 20px;
+	margin-bottom: 30px;
 	font-weight: bold;
 
 	span {
 		color: $color-purple;
-		border: $color-purple solid 1px;
 		padding: 10px 20px;
 		border-radius: 10px;
 	}
+}
+
+.qr {
+	margin-bottom: 25px;
 }
 
 .ru-card-me {
