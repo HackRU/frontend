@@ -700,3 +700,47 @@ $li-mobile-footer-height: 30vh;
 	border: $color-red solid 1px;
 	padding: 20px;
 }
+
+
+// DAY-OF DASHBOARD ELEMENTS
+
+.qr {
+	margin-bottom: 20px;
+}
+
+.ru-card {
+	//border: $color-purple solid 1px;
+	padding: 0px 25px 25px 25px;
+	margin-bottom: 25px;
+
+	.fa-fw {
+		margin-right: 10px;
+	}
+}
+
+.ru-card-title {
+
+	margin-top: 10px;
+	margin-bottom: 40px;
+	font-weight: bold;
+
+	span {
+		color: $color-purple;
+		border: $color-purple solid 1px;
+		padding: 10px 20px;
+		border-radius: 10px;
+	}
+}
+
+.ru-card-me {
+	.ru-card-text {
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		overflow: hidden;
+	}
+}
+
+
+.ru-card-info-pic {
+	width: 80%;
+}
