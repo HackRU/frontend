@@ -51,12 +51,16 @@
                     <h3>Application Status: <span class="bold-text">Accepted (Attending)</span></h3>
                     <br>
                     <h5>You've confirmed that you'll be attending. Can't wait to see you at HackRU!</h5>
+                    <img class="qr" style="width: 80%;" src="data:image/png;charset=utf-8;base64,<%= qrimage %>">
+
+
 
 
                     <% } else if(user.registration_status == 4 ) { %>
                     <h3>Application Status: <span class="bold-text">Waitlisted</span></h3>
                     <br>
                     <h5>Hackers who have been waitlisted are invited to come to HackRU, but will be admitted on a first-come, first-serve basis. When other accepted hackers do not show up after 11am, you are invited to take their spot and granted entry into HackRU.</h5>
+                    <img class="qr" style="width: 80%;" src="data:image/png;charset=utf-8;base64,<%= qrimage %>">
 
                     <% } else if(user.registration_status == 7 || user.registration_status == 8) { %>
                     <h3 class="mb-3">Application Status: <span class="bold-text">Pending</span></h3>
