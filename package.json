@@ -17,7 +17,6 @@
   },
   "homepage": "https://github.com/HackRU/frontend#readme",
   "dependencies": {
-    "ejs": "^2.5.7",
-    "express": "^4.15.4"
+    "react": "^16.2.0"
   }
 }
