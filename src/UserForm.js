@@ -1,8 +1,19 @@
 import React from 'react';
+import cookie from 'react-cookie';
 //import ReactDOM from 'react-dom';
 import 'whatwg-fetch'
 
 class UserForm extends React.Component {
+  constructor(){
+    super(props);
+    let authtok = cookie.load("authtoken");
+    let email = cookie.load("email");
+    this.state = {
+      email:'',
+      password: ''
+    };
+  }
+
   login() {
     fetch('https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/test/authorize', {
       method: 'POST',
