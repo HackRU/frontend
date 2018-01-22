@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/HackRU/frontend#readme",
   "dependencies": {
-    "react": "^16.2.0"
+    "react": "^16.2.0",
+    "whatwg-fetch": "^2.0.3"
   }
 }
