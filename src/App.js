@@ -1,6 +1,6 @@
 import React from 'react';
-//import ReactDOM from 'react-dom';
-import 'whatwg-fetch'
+import ReactDOM from 'react-dom';
+import UserForm from './UserForm';
 
 class App extends React.Component {
   constructor (props){
@@ -9,7 +9,7 @@ class App extends React.Component {
       email:'',
       password: ''
     };
-	
+
     this.login = this.login.bind(this);
     this.signUp = this.signUp.bind(this);
     this.mlh = this.mlh.bind(this);
@@ -18,6 +18,7 @@ class App extends React.Component {
   }
 
   login() {
+      /*
     fetch('https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/test/authorize', {
       method: 'POST',
       headers: {
@@ -30,7 +31,11 @@ class App extends React.Component {
       })
     }).then(function(data){
       alert(data);
+      const token = data.authToken;
+      ReactDOM.render(<UserForm token={token}/> , document.getElementById('register-root'));
     })
+    */
+      ReactDOM.render(<UserForm/> , document.getElementById('register-root'));
   }
 
   signUp() {
@@ -44,6 +49,9 @@ class App extends React.Component {
         email: this.state.email,
         password: this.state.password,
       })
+    }).then(data => {
+      const token = data.authToken;
+      ReactDOM.render(<UserForm token={token}/> , document.getElementById('register-root'));
     })
 
   }

@@ -1,17 +1,17 @@
 import React from 'react';
-import cookie from 'react-cookie';
 //import ReactDOM from 'react-dom';
 import 'whatwg-fetch'
 
 class UserForm extends React.Component {
-  constructor(){
+  constructor(props){
     super(props);
-    let authtok = cookie.load("authtoken");
-    let email = cookie.load("email");
-    this.state = {
-      email:'',
-      password: ''
-    };
+    this.state = {};
+    if(props.email && props.token){
+      this.state.email = props.email;
+      this.state.token = props.token;
+    }else{
+      this.state.flash = "NOT LOGGED IN!";
+    }
   }
 
   login() {
@@ -54,6 +54,7 @@ class UserForm extends React.Component {
   render() {
     return (
       <div>
+      <h1> {this.state.flash} </h1>
 	<p>Enter your name and email in the fields, then click "Login" or "Sign Up". Click "MLH" to login from MLH website.</p>
 
 	
