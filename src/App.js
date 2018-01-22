@@ -65,7 +65,6 @@ class App extends React.Component {
       <div className="App">
 	<p>Enter your name and email in the fields, then click "Login" or "Sign Up". Click "MLH" to login from MLH website.</p>
 
-	<form id = "fm1" action="/action_page.php">
 		Email: <input value={this.state.email} onChange={this.onEmailChange} type="email" name="email"/><br/>
 		Password: <input value={this.state.password} onChange={this.onPasswordChange} type="password" name="pass"/><br/>
 	
@@ -81,7 +80,6 @@ class App extends React.Component {
           Sign Up
 	</button>
 	
-	</form>
 	
       </div>
     );
