@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import UserForm from './UserForm';
+import Popup from 'react-popup';
 
 class App extends React.Component {
   constructor (props){
@@ -19,46 +20,65 @@ class App extends React.Component {
   }
 
   login() {
-    fetch('https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/test/authorize', {
-      method: 'POST',
-      mode: 'cors',
-      headers: {
-        'Content-Type': "application/json"
-      },
-      body: JSON.stringify({
-        email: this.state.email,
-        password: this.state.password,
-      })
-    }).then(function(data){
-      alert(data);
-      const token = data.authToken;
-      ReactDOM.render(<UserForm token={token} email={this.state.email}/> , document.getElementById('register-root'));
-    }).catch(data => {
-      const error = data.message;
-      this.setState({errorMessage: error});
-    })
+    		
+    function check_empty() {
+    	if (this.state.email == "" || this.state.password == ""){
+    		alert("Fill in all the fields!");
+    	}
+    	else {
+    		fetch('https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/test/authorize', {
+    		  method: 'POST',
+    		  mode: 'cors',
+    		  headers: {
+    		    'Content-Type': "application/json"
+    		  },
+    		  body: JSON.stringify({
+    		    email: this.state.email,
+    		    password: this.state.password,
+    		  })
+    		}).then(function(data){
+    		  alert(data);
+    		  const token = data.authToken;
+    		  ReactDOM.render(<UserForm token={token} email={this.state.email}/> , document.getElementById('register-root'));
+    		}).catch(data => {
+    		  const error = data.message;
+    		  this.setState({errorMessage: error});
+    		})
+
+    		document.getElementById('userform').style.display = "block";
+    	}
+
+    }
   }
 
   signUp() {
-    fetch('https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/test/create', {
-      method: 'POST',
-      mode: 'cors',
-      headers: {
-        'Content-Type': "application/json"
-      },
-      body: JSON.stringify({
-        email: this.state.email,
-        password: this.state.password,
-      })
-    }).then(data => {
-      const token = data.authToken;
-      ReactDOM.render(<UserForm token={token} email={this.state.email}/> , document.getElementById('register-root'));
-    }).catch(data => {
-      const error = data.message;
-      console.log(data);
-      this.setState({errorMessage: error});
-    })
 
+  	function check_empty(){
+  		if (this.state.email == "" || this.state.password == ""){
+    		alert("Fill in all the fields!");
+    	}
+    	else {
+    		fetch('https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/test/create', {
+    		  method: 'POST',
+    		  mode: 'cors',
+    		  headers: {
+    		    'Content-Type': "application/json"
+    		  },
+    		  body: JSON.stringify({
+    		    email: this.state.email,
+    		    password: this.state.password,
+    		  })
+    		}).then(data => {
+    		  const token = data.authToken;
+    		  ReactDOM.render(<UserForm token={token} email={this.state.email}/> , document.getElementById('register-root'));
+    		}).catch(data => {
+    		  const error = data.message;
+    		  console.log(data);
+    		  this.setState({errorMessage: error});
+    		})
+
+    		document.getElementById('userform').style.display = "block";
+	}
   }
 
   mlh() {
@@ -84,7 +104,7 @@ class App extends React.Component {
 	
         <button onClick={this.login} id="loginButton">
           Login
-			  </button>
+	</button>
 
         <button onClick={this.mlh} id="mlhButton">
           MLH

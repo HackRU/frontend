@@ -11,6 +11,11 @@ class UserForm extends React.Component {
     }else{
       this.state.flash = "NOT LOGGED IN!";
     }
+    
+    this.componentDidMount = this.componentDidMount.bind(this);
+    this.logout = this.logout.bind(this);
+    this.save = this.save.bind(this);
+
   }
 
   componentDidMount(){
@@ -56,12 +61,13 @@ class UserForm extends React.Component {
 
   render() {
     return (
+    <div id = "userform">
+
       <div>
       <h1> {this.state.flash} </h1>
-	<p>Please update your data.</p>
+	       <p>Please update your data.</p>
 
-    //Heman is lazy...
-    <div>
+      <div>
         {
             this.state.user.keys.map(key =>
                     <div>
@@ -70,16 +76,19 @@ class UserForm extends React.Component {
                     </div>
             )
         }
-    </div>
+      </div>
 
         <button onClick={this.logout} id="loginButton">
           Logout
-			  </button>
+	      </button>
 
         <button onClick={this.save} id="signupButton" >
           Save
-			  </button>
+	     </button>
+
       </div>
+
+    </div>
     );
 
   }
