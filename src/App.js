@@ -7,7 +7,8 @@ class App extends React.Component {
     super(props);
     this.state = {
       email:'',
-      password: ''
+      password: '',
+      errorMessage: ''
     };
 
     this.login = this.login.bind(this);
@@ -18,12 +19,11 @@ class App extends React.Component {
   }
 
   login() {
-      /*
     fetch('https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/test/authorize', {
       method: 'POST',
+      mode: 'cors',
       headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
+        'Content-Type': "application/json"
       },
       body: JSON.stringify({
         email: this.state.email,
@@ -32,18 +32,19 @@ class App extends React.Component {
     }).then(function(data){
       alert(data);
       const token = data.authToken;
-      ReactDOM.render(<UserForm token={token}/> , document.getElementById('register-root'));
+      ReactDOM.render(<UserForm token={token} email={this.state.email}/> , document.getElementById('register-root'));
+    }).catch(data => {
+      const error = data.message;
+      this.setState({errorMessage: error});
     })
-    */
-      ReactDOM.render(<UserForm/> , document.getElementById('register-root'));
   }
 
   signUp() {
     fetch('https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/test/create', {
       method: 'POST',
+      mode: 'cors',
       headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
+        'Content-Type': "application/json"
       },
       body: JSON.stringify({
         email: this.state.email,
@@ -51,7 +52,11 @@ class App extends React.Component {
       })
     }).then(data => {
       const token = data.authToken;
-      ReactDOM.render(<UserForm token={token}/> , document.getElementById('register-root'));
+      ReactDOM.render(<UserForm token={token} email={this.state.email}/> , document.getElementById('register-root'));
+    }).catch(data => {
+      const error = data.message;
+      console.log(data);
+      this.setState({errorMessage: error});
     })
 
   }
@@ -70,7 +75,8 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="App">
+      <div className="faq-box App">
+      <p> {this.state.errorMessage} </p>
 	<p>Enter your name and email in the fields, then click "Login" or "Sign Up". Click "MLH" to login from MLH website.</p>
 
 		Email: <input value={this.state.email} onChange={this.onEmailChange} type="email" name="email"/><br/>

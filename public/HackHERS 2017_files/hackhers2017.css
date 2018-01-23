@@ -287,7 +287,7 @@ each section will be a gradient*/
 	margin-left: -50px;
 }
 
-#faq .faq-box{
+.faq-box{
     padding: 2.25rem;
     margin: 5rem;
     width: 400px;
