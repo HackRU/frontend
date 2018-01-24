@@ -27,6 +27,7 @@ class App extends React.Component {
     		fetch('https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/test/authorize', {
     		  method: 'POST',
     		  mode: 'cors',
+              credentials: 'omit',
     		  headers: {
     		    'Content-Type': "application/json"
     		  },
@@ -43,7 +44,6 @@ class App extends React.Component {
     		  this.setState({errorMessage: error});
     		})
 
-    		document.getElementById('userform').style.display = "block";
     	}
 
   }
@@ -57,6 +57,7 @@ class App extends React.Component {
     		fetch('https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/test/create', {
     		  method: 'POST',
     		  mode: 'cors',
+              credentials: 'omit',
     		  headers: {
     		    'Content-Type': "application/json"
     		  },
