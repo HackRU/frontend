@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import UserForm from './UserForm';
-import Popup from 'react-popup';
 
 class App extends React.Component {
   constructor (props){
@@ -21,9 +20,8 @@ class App extends React.Component {
 
   login() {
     		
-    function check_empty() {
     	if (this.state.email == "" || this.state.password == ""){
-    		alert("Fill in all the fields!");
+    		this.setState({errorMessage: "Please fill in all the fields"});
     	}
     	else {
     		fetch('https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/test/authorize', {
@@ -48,14 +46,12 @@ class App extends React.Component {
     		document.getElementById('userform').style.display = "block";
     	}
 
-    }
   }
 
   signUp() {
 
-  	function check_empty(){
   		if (this.state.email == "" || this.state.password == ""){
-    		alert("Fill in all the fields!");
+    		this.setState({errorMessage: "Please fill in all the fields"});
     	}
     	else {
     		fetch('https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/test/create', {
@@ -77,8 +73,7 @@ class App extends React.Component {
     		  this.setState({errorMessage: error});
     		})
 
-    		document.getElementById('userform').style.display = "block";
-	}
+    }
   }
 
   mlh() {
