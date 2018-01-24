@@ -31,6 +31,8 @@ class UserForm extends React.Component {
   logout() {
     fetch('https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/test/authorize', {
       method: 'POST',
+      mode: 'cors',
+      credentials: 'omit',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
@@ -47,6 +49,8 @@ class UserForm extends React.Component {
   save() {
     fetch('https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/test/create', {
       method: 'POST',
+      mode: 'cors',
+      credentials: 'omit',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
