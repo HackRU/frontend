@@ -8,7 +8,8 @@ class App extends React.Component {
     this.state = {
       email:'',
       password: '',
-      errorMessage: ''
+      errorMessage: '',
+      isLoggedIn: false
     };
 
     this.login = this.login.bind(this);
@@ -27,7 +28,7 @@ class App extends React.Component {
     		fetch('https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/test/authorize', {
     		  method: 'POST',
     		  mode: 'cors',
-              credentials: 'omit',
+          credentials: 'omit',
     		  headers: {
     		    'Content-Type': "application/json"
     		  },
@@ -37,7 +38,8 @@ class App extends React.Component {
     		  })
     		}).then(function(data){
     		  alert(data);
-    		  const token = data.authToken;
+          this.setState({isLoggedIn: true});
+          const token = data.authToken;
     		  ReactDOM.render(<UserForm token={token} email={this.state.email}/> , document.getElementById('register-root'));
     		}).catch(data => {
     		  const error = data.message;
@@ -50,7 +52,7 @@ class App extends React.Component {
 
   signUp() {
 
-  		if (this.state.email == "" || this.state.password == ""){
+  	if (this.state.email == "" || this.state.password == ""){
     		this.setState({errorMessage: "Please fill in all the fields"});
     	}
     	else {
@@ -66,6 +68,7 @@ class App extends React.Component {
     		    password: this.state.password,
     		  })
     		}).then(data => {
+          this.setState({isLoggedIn:true});
     		  const token = data.authToken;
     		  ReactDOM.render(<UserForm token={token} email={this.state.email}/> , document.getElementById('register-root'));
     		}).catch(data => {
@@ -89,33 +92,57 @@ class App extends React.Component {
     this.setState({password: e.target.value})
   }
 
-  render() {
+  function LoginButtons() {
+    return (
+      <button onClick={this.login} id="loginButton">
+          Login
+      </button>
+
+      <button onClick={this.mlh} id="mlhButton">
+          MLH
+      </button>
+
+      <button onClick={this.signUp} id="signupButton" >
+          Sign Up
+      </button>  
+    )
+  }	
+
+  function currentForm(props){
+    const isLoggedIn = props.isLoggedIn;
+    if (isLoggedin) { 
+	    const userForm = UserForm.document.getElementById('userform');
+	    return userForm;
+
+    }
     return (
       <div className="faq-box App">
-      <p> {this.state.errorMessage} </p>
-	<p>Enter your name and email in the fields, then click "Login" or "Sign Up". Click "MLH" to login from MLH website.</p>
+        <p> {this.state.errorMessage} </p>
+	  <p>Enter your name and email in the fields, then click "Login" or "Sign Up". Click "MLH" to login from MLH website.</p>
 
 		Email: <input value={this.state.email} onChange={this.onEmailChange} type="email" name="email"/><br/>
 		Password: <input value={this.state.password} onChange={this.onPasswordChange} type="password" name="pass"/><br/>
-	
-        <button onClick={this.login} id="loginButton">
-          Login
-	</button>
+      </div>
+  }
 
-        <button onClick={this.mlh} id="mlhButton">
-          MLH
-        </button>
+  render() {
+  
+    const isloggedIn = this.state.isLoggedIn;
+    let button = null;
+    if (isLoggedIn){
+      button = <UserForm.LogoutButtons />; 
+    }else{
+      button = <LoginButtons />;
+    }
 
-        <button onClick={this.signUp} id="signupButton" >
-          Sign Up
-	</button>
-	
-	
+    return (
+      <div>
+        <currentForm isLoggedIn={isLoggedIn} />
+	      {button}
       </div>
     );
 
   }
-
 
 }
 

@@ -1,5 +1,6 @@
 import React from 'react';
 //import ReactDOM from 'react-dom';
+import App from '.UserForm';
 
 class UserForm extends React.Component {
   constructor(props){
@@ -15,7 +16,7 @@ class UserForm extends React.Component {
     this.componentDidMount = this.componentDidMount.bind(this);
     this.logout = this.logout.bind(this);
     this.save = this.save.bind(this);
-
+    this.onChange = this.onChange.bind(this);
   }
 
   componentDidMount(){
@@ -29,37 +30,37 @@ class UserForm extends React.Component {
   }
 
   logout() {
-    fetch('https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/test/authorize', {
-      method: 'POST',
-      mode: 'cors',
-      credentials: 'omit',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        email: 'email here',
-        password: 'password',
-      })
-    }).then(function(data){
-      alert(data);
-    })
+    App.setState({isLoggedIn: false});  
+  }
+
+  onChange{
+    this.setState({input: e.target.value});
   }
 
   save() {
-    fetch('https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/test/create', {
+    fetch('https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/test/update', {
       method: 'POST',
-      mode: 'cors',
-      credentials: 'omit',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        email: 'email here',
-        password: 'password',
+        user:this.state.user,
       })
     })
+
+  }
+
+  function LogoutButtons(){
+    return (
+	    <button onClick={this.logout} id="loginButton">
+          Logout
+	    </button>
+
+      <button onClick={this.save} id="signupButton" >
+          Save
+	    </button>
+    )
 
   }
 
@@ -76,22 +77,10 @@ class UserForm extends React.Component {
             this.state.user.keys.map(key =>
                     <div>
                         <label>{key}</label>
-                        <input type="text" id="input-{key}" value={this.state[key]} onChange={this.onChange}></input>
+                        <input type="input" id="input-{key}" value={this.state[key]} onChange={this.onChange}/><br/>
                     </div>
             )
         }
-      </div>
-
-        <button onClick={this.logout} id="loginButton">
-          Logout
-	      </button>
-
-        <button onClick={this.save} id="signupButton" >
-          Save
-	     </button>
-
-      </div>
-
     </div>
     );
 
