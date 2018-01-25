@@ -1,0 +1,974 @@
+ body{
+  overflow-x: hidden;
+}
+
+a{
+  color:#baacdd;
+}
+
+a:hover{
+  transition: all .3s ease-in-out;
+  text-decoration: none;
+  color: #fcb9f9;
+}
+
+
+::selection {
+  background: #9783c0;
+  color: #f9f9f9;
+}
+
+::-moz-selection {
+    background: #9783c0;
+  	color: #f9f9f9;
+}
+
+::-webkit-selection {
+    background: #9783c0;
+  	color: #f9f9f9;
+}
+
+
+
+/*styling navbar*/
+.navbar{
+  border-radius: 0;
+  height: 80px;
+  background-color: #9783c0;
+  border-bottom: 1px solid #8b79bc;
+  box-shadow: 0 0 5px 0 #8b79bc;
+  margin-bottom: 0;
+  text-align: center;
+  font-family: 'Montserrat'; sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  text-transform: lowercase;
+  display: none; /* made visible with js*/
+}
+
+/*modifies all the links that will be minimized when using a different device
+at desktop, links should be centered with branding image in center
+should be cleared when going to a different res size*/
+
+#myNavbar{
+  text-align: center;
+  padding: 0 7rem 0 8rem;
+  width: 1024px;
+  margin: 0 auto;
+}
+
+/*styling navbar link position*/
+.navbar-nav > li > a {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    color: #f9f9f9;
+}
+
+.navbar-nav > li > a:hover {
+    background-color: transparent;
+    color: #fcb9f9;
+    transition: all .3s ease-in-out;
+}
+
+/*to keep half of navbar links to left and the other half right*/
+
+#navbar-left{
+  float: left;
+}
+#navbar-right{
+  float: right;
+}
+
+.navbar .navbar-collapse {
+  text-align: center;
+}
+
+.nav .navbar-nav{
+  background-color: #ffe7eb;
+  color: #090909;
+}
+
+
+/* social media links*/
+
+
+.list-inline {
+    padding-left: 0;
+    list-style: none;
+    margin: -5px;
+    display: block;
+    text-align: center;
+    height: 60px;
+}
+
+list-inline > li {
+    display: block;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.btn-social {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    font-size: 20px;
+    line-height: 45px;
+}
+
+.btn-outline {
+    margin-top: 15px;
+    font-size: 30px;
+    color: #9783c0;
+    background: 0 0;
+}
+
+.break{
+	margin-top: 30px; /*space between social media links and shell divider*/
+}
+
+/* start of section styling*/
+
+section {
+  height: 100%;
+  min-height: 700px;
+  padding:50px;
+  text-align: center;
+  font-family: 'Montserrat';
+  margin: 0 auto;
+}
+
+section h1{
+  font-size: 3em;
+  margin-top: -4rem;
+  padding-top: 50px;
+  font-weight: 600;
+  text-transform: lowercase;
+
+}
+
+#hero{
+  top: 0;
+  background-color: #e2f7ff;
+  text-align: center;
+
+}
+
+
+
+/* background color for each section
+with the exception of the hero and footer
+each section will be a gradient*/
+#about{
+    background: #e2f7ff; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(#e2f7ff, #93e3ff); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#e2f7ff, #93e3ff); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#e2f7ff, #93e3ff); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#e2f7ff, #93e3ff);
+    color: #9783c0;
+
+}
+
+#faq{
+  background: #93e3ff; /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(#93e3ff, #45ceff); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(#93e3ff, #45ceff); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(#93e3ff, #45ceff); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(#93e3ff, #45ceff);
+  color: #9783c0;
+}
+
+#schedule{
+  background: #45ceff; /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(#45ceff, #00b5f5); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(#45ceff, #00b5f5); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(#45ceff, #00b5f5); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(#45ceff, #00b5f5);
+  color: #f9f9f9;
+}
+
+#sponsors{
+  background: #00b5f5; /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(#00b5f5, #007ba7); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(#00b5f5, #007ba7); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(#00b5f5, #007ba7); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(#00b5f5, #007ba7);
+  color: #9783c0;
+  text-transform: lowercase;
+}
+
+
+#get-involved{
+  background: #007ba7; /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(#007ba7, #004159); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(#007ba7, #004159); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(#007ba7, #004159); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(#007ba7, #004159);
+  color: #9783c0;
+
+}
+
+#team{
+  background: #004159; /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(#004159, #00070a); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(#004159, #00070a); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(#004159, #00070a); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(#004159, #00070a);
+  color: #9783c0;
+}
+
+/*hero section styles*/
+
+#diano-2017{
+	height: 490px;
+	width: auto;
+}
+
+#hero-text{
+  width: 100%;
+  font-family: 'Montserrat';
+  color: #9783c0;
+}
+
+#hero-text h1{
+  font-size: 38px;
+  font-weight: 600;
+  text-transform: lowercase;
+}
+
+#hero-text h2{
+  font-size: 25px;
+  font-weight: 600;
+  text-transform: lowercase;
+
+}
+
+.img-txt #about-img{
+  margin-top: 50px;
+  width: 800px;
+  height: auto;
+  border: 3px solid #f9f9f9;
+}
+
+#about-text{
+  margin: 0 auto;
+  padding: 5rem;
+  width: 800px;
+}
+
+#about-text p{
+  font-size: 18px;
+  font-weight: 400;
+  font-family: 'Montserrat';
+  color: #1a0b31;
+}
+
+#faq .row{
+  width: 1024px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+#faq .row .half-left, #faq .row .half-right {
+  width: 50%;
+  padding: 0 2.5rem;
+  display: inline-block;
+  float: left;
+  position: relative;
+  box-sizing: border-box;
+  vertical-align: top;
+}
+
+#faq .row .half-left{
+	margin-right: 40px;
+}
+
+#faq .row .half-right{
+	margin-left: -50px;
+}
+
+#faq .faq-box{
+    padding: 2.25rem;
+    margin: 5rem;
+    width: 400px;
+    text-align: left;
+    border: 3px solid #f9f9f9;
+    border-radius: 15px;
+    background-color: #f9f9f9;
+    opacity: 0.8;
+
+}
+#faq h4{
+  color: #9783c0;
+  font-size: 22px;
+  font-weight: 600;
+  text-transform: lowercase;
+  margin-bottom: 5px;
+}
+
+#faq p {
+    border-top: 2px solid #1a0b31;
+    padding-top: 20px;
+    margin-top: 1rem;
+    font-size: 16px;
+    font-weight: 400;
+    font-family: 'Montserrat';
+    color: #1a0b31;
+}
+
+
+/*schedule related styling*/
+
+
+#saturday, #sunday{
+  font-size: 24px;
+  color: #f9f9f9
+  margin-bottom: 50px 0;
+}
+
+.schedule{
+  text-align: center;
+  margin: 25px auto;
+  width: 100%;
+  font-size: 18px;
+  color: #f9f9f9;
+
+}
+
+
+
+.times{
+  display: inline-block;
+}
+
+.events{
+  display: inline-block;
+}
+
+#change{
+	padding-left: 300px;
+}
+
+.times li{
+  list-style-type: none;
+  text-align: left;
+  display: block;
+}
+
+.events li{
+  color: #f7d5f7;
+  margin-left: 5px;
+  list-style-type: none;
+  text-align: left;
+  display: block;
+}
+
+
+/* sponsors styling*/
+
+#sponsors h1 {
+	color: #f9f9f9;
+}
+
+#sponsors h3, #sponsors h4{
+  color: #f7d5f7;
+}
+
+.sponsorship-wrapper{
+  margin: 0 auto;
+  text-align: center;
+}
+
+.partners, .sponsor-tier{
+	margin: 50px;
+
+}
+
+
+.partners img {
+	margin: 30px;
+}
+
+.sponsor-tier img{
+	margin: 45px;
+}
+
+/*specific sponsor ids*/
+
+
+#special-thanks img{
+	width: 120px;
+	height: auto;
+}
+
+#drc {
+	width: 250px;
+	height: auto;
+
+}
+
+#mlh {
+	width: 175px;
+	height: auto;
+}
+
+#lockeed, #jpmorgan, #vanguard{
+	width: 565px;
+	height: auto;
+	margin: 25px;
+}
+
+#verizon{
+	width: 350px;
+	height: auto;
+	margin: 45px;
+}
+
+#ups{
+	width: 200px;
+	height: auto;
+	margin: 45px;
+}
+
+#icims, #capital-one{
+	width: 268px;
+	height: auto;
+	margin: 25px;
+
+}
+
+#facebook, #bloomberg, #prudential{
+	width: 200px;
+	height: auto;
+	margin: 40px;
+}
+
+#knowledgent{
+	width: 250px;
+	height: auto;
+	margin: 40px;
+}
+
+/* registration styling */
+
+#get-involved {
+	min-height: 500px;
+}
+
+#get-involved h1 {
+	color: #f9f9f9;
+}
+
+#get-involved a{
+	color: #090909;
+	font-size: 20px;
+	font-family: 'Montserrat';
+	font-weight: 700;
+}
+
+#get-involved .btn {
+	padding: 20px;
+	margin: 20px;
+	background-color:#e2f7ff;
+	border: 3px solid #e2f7ff;
+	opacity: .95;
+	border-radius: 15px;
+	text-align: center;
+	box-shadow: 0 2px 2px  #090909;
+}
+
+#get-involved .btn:hover{
+    background-color:#8b79bc;
+    border-color:#8b79bc;
+	color: #f7d5f7;
+	transition: all .3s ease-in-out;
+}
+
+
+#get-involved .hacker-reg, #get-involved .help-reg{
+	
+	width: 100%;
+	display: inline-block;
+}
+
+/*team styling*/
+
+#team h1 {
+	color: #f9f9f9;
+}
+
+#team .row{
+  margin-top: 30px;
+  width: 100%;
+}
+.col-xs-6 .col-sm-3{
+  text-align: center;
+}
+
+.team-wrapper{
+  width: 300px;
+  padding-bottom: 16.666666667%;
+  display: inline-block;
+  position: relative;
+  z-index: 1;
+}
+
+.team .team-wrapper .lead{
+  padding: 1.5rem;
+  position: absolute;
+  background-color: transparent;
+  left: 4px;
+  right: 4px;
+  top: 0;
+}
+
+#team h4, #team h6{
+  color: #f9f9f9;
+  font-weight: 400;
+  font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-transform: lowercase;
+
+}
+
+#team .team-wrapper img{
+  height: 150px;
+  width: 150px;
+  border-radius: 100%;
+}
+
+
+/*footer styling*/
+
+footer{
+	margin: 0;
+	position:relative;
+	bottom:0;
+	left:0;
+	background-color: #00070a;
+	color: #f9f9f9;
+	min-height: 200px;
+	text-align: center;
+	padding: 50px;
+}
+
+footer a:hover{
+	text-decoration:none
+}
+
+
+#footer .row{
+	margin-left: -15px;
+    margin-right: -15px;
+    padding: 20px;
+}
+
+#sea-monsters{
+	width: 100%;
+	height: 100%;
+}
+ #sea-monsters #one{
+ 	float: left;
+ 	margin: 20px;
+ }
+ 
+ #sea-monsters #two{
+ 	float: right;
+ 	margin: 20px;
+ }
+
+#footer-credits{
+	color: #ffffff;
+  font-weight: 400;
+  font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 14px;
+	margin-top: 45px;
+}
+
+#footer-credits a{
+	text-decoration:none;
+	background-color: transparent;
+}
+
+#footer-credits a:hover{
+	color: #fcb9f9;
+	text-decoration: none;
+	transition: all .3s ease-in-out;
+}
+
+@media (min-width: 500px) and (max-width: 956px) {
+
+  .navbar-toggle{
+    position:relative;
+    float:right;
+    padding:9px 10px;
+    margin-top:15px;
+    margin-right:15px;
+    margin-bottom:8px;
+    background-color:#9783c0;
+    background-image:none;
+    border:3px solid #8b79bc;
+    border-radius:4px
+  }
+
+  .navbar-toggle:hover{
+    background-color:#8b79bc;
+    color: #f9f9f9;
+    transition: all .3s ease-in-out;
+  }
+  
+  
+  #nav-shell{
+    display: none;
+  }
+
+  #myNavbar{
+    padding: 0px;
+    width: 100%;
+    margin: -8px 0 0 0;
+    background-color:#9783c0;
+    height: 100%;
+    overflow:hidden;
+
+  }
+
+
+  #navbar-left{
+    float: none;
+    display: inline-block;
+    padding: 0 50px;
+  }
+  
+  #navbar-right{
+    float: none;
+    display: inline-block;
+    padding: 0 50px;
+
+  }
+  
+  
+
+  .icon-bar{
+    display:block;
+    width:22px;
+    height:2px;
+    border-radius:1px;
+    border:1px solid #f9f9f9;
+  }
+  
+  #diano-2017{
+	height: 390px;
+	width: auto;
+  }
+
+
+
+  .img-txt #about-img{
+    margin-top: 50px;
+    max-width: 500px;
+    min-width: 320px;
+    height: auto;
+    border: 3px solid #f9f9f9;
+  }
+
+  #team {
+    padding: 0;
+  }
+
+  #team .row{
+    padding: 0;
+  }
+
+  #about-text{
+    max-width: 500px;
+    min-width: 320px;
+  }
+
+
+  #faq .row{
+    margin: 0 auto;
+    max-width: 500px;
+    min-width: 320px;
+    positon: relative;
+  }
+
+
+	#faq .faq-box{
+    	margin: 20px 0;
+    	min-width: 320px;
+      	height: 100%;
+    	text-align: left;
+
+	}
+
+
+  #faq .row .half-left, #faq .row .half-right{
+  	  width: 100%;
+  	  margin: 0 10%;
+  	  padding: 0;
+      display: block;
+      float: none;
+      position: relative;
+      box-sizing: border-box;
+      vertical-align: top;
+  }
+  
+  	.times li{
+  		font-size: 14px;
+	}
+
+	.events li{
+ 		font-size: 14px;
+	}
+  
+  	#lockeed, #jpmorgan, #vanguard{
+		width: 400px;
+		height: auto;
+		margin: 0 auto;
+	}
+	
+	#verizon{
+		width: 245px;
+		height: auto;
+		margin: 25px;
+	}
+
+	#ups{
+		width: 150px;
+		height: auto;
+		margin: 25px;
+	}
+	
+	#icims, #capital-one{
+		width: 200px;
+		height: auto;
+		margin: 25px;
+	}
+
+	#facebook, #bloomberg, #prudential{
+		width: 175px;
+		height: auto;
+		margin: 20px;
+	}
+	
+	#knowledgent{
+		width: 225px;
+		height: auto;
+		margin: 40px;
+	}
+
+
+
+  
+  #filler-1, #filler-2 {
+		display: none;
+	}
+
+
+
+}
+
+
+@media (min-width: 320px) and (max-width: 499px)  {
+
+
+  #nav-shell{
+    display: none;
+  }
+
+
+  #myNavbar{
+    padding: 0px;
+    width: 100%;
+    margin: -8px 0 0 0;
+    background-color:#9783c0;
+    height: 100%;
+    overflow:hidden;
+
+  }
+
+  .navbar-toggle{
+  	margin-top: 20px;
+    background-color:#9783c0;
+    border:3px solid #8b79bc;
+    border-radius:4px
+  }
+  
+  .navbar-toggle:hover{
+    background-color:#8b79bc;
+    color: #f9f9f9;
+    transition: all .3s ease-in-out;
+  }
+
+
+  .navbar-nav > li > a {
+   	padding: 30px;
+    color: #f9f9f9;
+  }
+  
+  #navbar-left{
+	margin-left: 20px;	
+  }
+  #navbar-right{
+	margin-right: 20px;	
+  }
+
+  .icon-bar{
+    display:block;
+    width:22px;
+    height:2px;
+    border-radius:1px;
+    border:1px solid #f9f9f9;
+
+  }
+  
+  #hero-text h1{
+  	font-size: 30px;
+  }
+
+  #hero-text h2{
+    font-size: 20px;
+  }
+  
+
+  #diano-2017{
+	width: 320px;
+	height: auto;
+  }
+
+
+  section {
+    padding:10px;
+  }
+
+  #about-text{
+    width: 100%;
+
+  }
+  
+  #about-text p{
+      font-size: 14px;
+  }
+
+  .img-txt #about-img{
+    width: 320px;
+    height: auto;
+
+  }
+
+
+  #faq .row{
+    width: 100%;
+  }
+
+  #faq .faq-box{
+      margin: 0 auto;
+      margin-top: 30px;
+      padding: 10px;
+      max-width: 320px;
+      height: 100%;
+      text-align: left;
+
+  }
+  
+  #faq h4{
+  	font-size: 22px;
+
+  }
+
+	#faq p {
+    font-size: 14px;
+
+  }
+
+
+
+    #faq .row .half-left, #faq .row .half-right{
+    	  width: 100%;
+        margin: 0 -5px;
+    	  padding: 0;
+        display: block;
+        float: none;
+        position: relative;
+    }
+    
+    
+	.times li{
+  		font-size: 12px;
+	}
+
+	.events li{
+ 		font-size: 12px;
+	}
+	
+	
+	#drc {
+		width: 150px;
+		height: auto;
+
+	}
+
+	#mlh {
+		width: 150px;
+		height: auto;
+	}
+
+	
+	#lockeed, #jpmorgan, #vanguard{
+		width: 275px;
+		height: auto;
+		margin: 25px auto;
+	}
+	
+	#verizon{
+		width: 225px;
+		height: auto;
+		margin: 25px;
+	}
+
+	#ups{
+		width: 125px;
+		height: auto;
+		margin: 25px;
+	}
+	
+	
+	#icims, #capital-one{
+		width: 175px;
+		height: auto;
+		margin: 25px;
+	}
+
+	#facebook, #bloomberg, #prudential{
+		width: 150px;
+		height: auto;
+		margin: 30px;
+	}
+	
+	#knowledgent{
+		width: 200px;
+		height: auto;
+		margin: 40px;
+	}
+
+
+
+	#team .team-wrapper{
+		width: 100%;
+		
+	}
+	
+	#filler-1, #filler-2 {
+		display: none;
+	}
+	
+	#get-involved .hacker-reg, #get-involved .help-reg{
+	
+		  display: block;
+	}
+
+
+
+
+}
+
+
