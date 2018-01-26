@@ -6,9 +6,9 @@ class UserForm extends React.Component {
   constructor(props){
     super(props);
     this.state = {};
-    if(props.email && props.token){
-      this.state.email = props.email;
-      this.state.token = props.token;
+    if(this.props.email && this.props.token){
+      this.state.email = this.props.email;
+      this.state.token = this.props.token;
       this.state.user = {};
     }else{
       this.state.flash = "NOT LOGGED IN!";
@@ -89,7 +89,7 @@ class UserForm extends React.Component {
 
       <div>
         { this.state.user && 
-            this.state.user.keys.map(key =>
+            Object.keys(this.state.user).map(key =>
                     <div>
                         <label>{key}</label>
                         <input type="input" id="input-{key}" value={this.state[key]} onChange={this.onChange}/><br/>

@@ -28,7 +28,8 @@ class App extends React.Component {
       return;
     }
     this.setState({isLoggedIn: true});
-    const token = data.authToken;
+    const bod = JSON.parse(data.body);
+    const token = bod.auth.token;
     ReactDOM.render(<UserForm token={token} email={this.state.email}/> , document.getElementById('register-root'));
   }
 
