@@ -1,6 +1,6 @@
 import React from 'react';
-//import ReactDOM from 'react-dom';
-import App from '.UserForm';
+import ReactDOM from 'react-dom';
+import App from './App';
 
 class UserForm extends React.Component {
   constructor(props){
@@ -9,6 +9,7 @@ class UserForm extends React.Component {
     if(props.email && props.token){
       this.state.email = props.email;
       this.state.token = props.token;
+      this.state.user = {};
     }else{
       this.state.flash = "NOT LOGGED IN!";
     }
@@ -17,29 +18,42 @@ class UserForm extends React.Component {
     this.logout = this.logout.bind(this);
     this.save = this.save.bind(this);
     this.onChange = this.onChange.bind(this);
+    this.LogoutButtons = this.LogoutButtons.bind(this);
   }
 
   componentDidMount(){
     fetch('https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/test/read', {
       method: 'POST',
+      mode: 'cors',
+      credentials: 'omit',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
       },
-    }).then(data => {})
+      body: JSON.stringify({
+        'email': this.state.email,
+        'token': this.state.token,
+        'query': {'email': this.state.email}
+      })
+    }).then(resp => resp.json())
+          .then(data => {
+      this.setState({user: data});
+    })
   }
 
   logout() {
-    App.setState({isLoggedIn: false});  
+    ReactDOM.render(<App /> , document.getElementById('register-root'));
   }
 
-  onChange{
+  onChange(e){
     this.setState({input: e.target.value});
   }
 
   save() {
     fetch('https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/test/update', {
       method: 'POST',
+      mode: 'cors',
+      credentials: 'omit',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
@@ -51,8 +65,9 @@ class UserForm extends React.Component {
 
   }
 
-  function LogoutButtons(){
+  LogoutButtons(){
     return (
+      <div>
 	    <button onClick={this.logout} id="loginButton">
           Logout
 	    </button>
@@ -60,20 +75,20 @@ class UserForm extends React.Component {
       <button onClick={this.save} id="signupButton" >
           Save
 	    </button>
+      </div>
     )
 
   }
 
   render() {
     return (
-    <div id = "userform">
+    <div id = "userform" className="faq-box App">
 
-      <div>
       <h1> {this.state.flash} </h1>
 	       <p>Please update your data.</p>
 
       <div>
-        {
+        { this.state.user && 
             this.state.user.keys.map(key =>
                     <div>
                         <label>{key}</label>
@@ -81,6 +96,8 @@ class UserForm extends React.Component {
                     </div>
             )
         }
+    </div>
+    <this.LogoutButtons />
     </div>
     );
 

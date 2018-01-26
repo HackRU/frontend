@@ -17,14 +17,26 @@ class App extends React.Component {
     this.mlh = this.mlh.bind(this);
     this.onEmailChange = this.onEmailChange.bind(this);
     this.onPasswordChange = this.onPasswordChange.bind(this);
+    this.LoginButtons = this.LoginButtons.bind(this);
+    this.currentForm = this.currentForm.bind(this);
+    this.loginPostFetch = this.loginPostFetch.bind(this);
+  }
+
+  loginPostFetch(data){
+    if(data.statusCode != 200){
+      this.setState({errorMessage: data.body});
+      return;
+    }
+    this.setState({isLoggedIn: true});
+    const token = data.authToken;
+    ReactDOM.render(<UserForm token={token} email={this.state.email}/> , document.getElementById('register-root'));
   }
 
   login() {
-    		
+
     	if (this.state.email == "" || this.state.password == ""){
     		this.setState({errorMessage: "Please fill in all the fields"});
-    	}
-    	else {
+    	} else {
     		fetch('https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/test/authorize', {
     		  method: 'POST',
     		  mode: 'cors',
@@ -34,14 +46,11 @@ class App extends React.Component {
     		  },
     		  body: JSON.stringify({
     		    email: this.state.email,
+            //HASH!!!
     		    password: this.state.password,
     		  })
-    		}).then(function(data){
-    		  alert(data);
-          this.setState({isLoggedIn: true});
-          const token = data.authToken;
-    		  ReactDOM.render(<UserForm token={token} email={this.state.email}/> , document.getElementById('register-root'));
-    		}).catch(data => {
+    		}).then(resp => resp.json())
+          .then(this.loginPostFetch).catch(data => {
     		  const error = data.message;
     		  this.setState({errorMessage: error});
     		})
@@ -54,8 +63,7 @@ class App extends React.Component {
 
   	if (this.state.email == "" || this.state.password == ""){
     		this.setState({errorMessage: "Please fill in all the fields"});
-    	}
-    	else {
+    } else {
     		fetch('https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/test/create', {
     		  method: 'POST',
     		  mode: 'cors',
@@ -67,7 +75,8 @@ class App extends React.Component {
     		    email: this.state.email,
     		    password: this.state.password,
     		  })
-    		}).then(data => {
+    		}).then(resp => resp.json())
+          .then(data => {
           this.setState({isLoggedIn:true});
     		  const token = data.authToken;
     		  ReactDOM.render(<UserForm token={token} email={this.state.email}/> , document.getElementById('register-root'));
@@ -82,8 +91,7 @@ class App extends React.Component {
 
   mlh() {
     let href = "https://my.mlh.io/oauth/authorize?client_id=bab4ace712bb186d8866ff4776baf96b2c4e9c64d729fb7f88e87357e4badcba&redirect_uri=https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/test/mlhcallback&response_type=code&scope=email+education+birthday";
-    // window.location.href = "https://my.mlh.io/oauth/authorize?client_id=bab4ace712bb186d8866ff4776baf96b2c4e9c64d729fb7f88e87357e4badcba&redirect_uri=https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/test/mlhcallback&response_type=code&scope=email+education+birthday";
-    let win = window.open(href, "_blank");
+    window.open(href, "_blank");
   }
 
   onEmailChange(e){
@@ -94,8 +102,9 @@ class App extends React.Component {
     this.setState({password: e.target.value})
   }
 
-  function LoginButtons() {
+  LoginButtons() {
     return (
+      <div>
       <button onClick={this.login} id="loginButton">
           Login
       </button>
@@ -107,40 +116,36 @@ class App extends React.Component {
       <button onClick={this.signUp} id="signupButton" >
           Sign Up
       </button>  
+      </div>
     )
   }	
 
-  function currentForm(props){
+  currentForm(props){
     const isLoggedIn = props.isLoggedIn;
-    if (isLoggedin) { 
-	    const userForm = UserForm.document.getElementById('userform');
+    if (isLoggedIn) { 
+	    let userForm = document.getElementById('userform');
 	    return userForm;
 
     }
     return (
-      <div className="faq-box App">
+      <div>
         <p> {this.state.errorMessage} </p>
 	  <p>Enter your name and email in the fields, then click "Login" or "Sign Up". Click "MLH" to login from MLH website.</p>
 
 		Email: <input value={this.state.email} onChange={this.onEmailChange} type="email" name="email"/><br/>
 		Password: <input value={this.state.password} onChange={this.onPasswordChange} type="password" name="pass"/><br/>
-      </div>
+       <this.LoginButtons />
+      </div>)
+
   }
 
   render() {
   
-    const isloggedIn = this.state.isLoggedIn;
-    let button = null;
-    if (isLoggedIn){
-      button = <UserForm.LogoutButtons />; 
-    }else{
-      button = <LoginButtons />;
-    }
+    const isLoggedIn = this.state.isLoggedIn;
 
     return (
-      <div>
-        <currentForm isLoggedIn={isLoggedIn} />
-	      {button}
+      <div className="faq-box App">
+        <this.currentForm isLoggedIn={isLoggedIn} />
       </div>
     );
 
