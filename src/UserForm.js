@@ -14,7 +14,7 @@ class UserForm extends React.Component {
       this.state.flash = "NOT LOGGED IN!";
     }
     
-    this.componentDidMount = this.componentDidMount.bind(this);
+    //this.componentDidMount = this.componentDidMount.bind(this);
     this.logout = this.logout.bind(this);
     this.save = this.save.bind(this);
     this.onChange = this.onChange.bind(this);
@@ -27,7 +27,7 @@ class UserForm extends React.Component {
       mode: 'cors',
       credentials: 'omit',
       headers: {
-        'Accept': 'application/json',
+        //'Accept': 'application/json',
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
@@ -36,9 +36,17 @@ class UserForm extends React.Component {
         'query': {'email': this.state.email}
       })
     }).then(resp => resp.json())
-          .then(data => {
-      this.setState({user: data});
-    })
+      .then(data => {
+        const redact_keys = ['auth', 'password', 'short_answer', 'mlh', 'registration_status', 'role'];
+        const og_usr = data.body[0];
+        let newser = {};
+        Object.keys(og_usr).map(key => {
+          if(!redact_keys.includes(key)){
+            newser[key] = og_usr[key];
+          }
+        });
+        this.setState({user: newser});
+    }).catch(data => this.setState({flash: data.toString()}));
   }
 
   logout() {
@@ -46,10 +54,14 @@ class UserForm extends React.Component {
   }
 
   onChange(e){
-    this.setState({input: e.target.value});
+    const upd_key = e.target.id.split('-')[1];
+    let updated = this.state.user;
+    updated[upd_key] = e.target.value;
+    this.setState({user: updated});
   }
 
   save() {
+    alert(this.state.email);
     fetch('https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/test/update', {
       method: 'POST',
       mode: 'cors',
@@ -59,7 +71,10 @@ class UserForm extends React.Component {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        user:this.state.user,
+        updates :this.state.user,
+        user_email: this.state.email,
+        auth_email: this.state.email,
+        auth: this.state.token
       })
     })
 
@@ -84,16 +99,17 @@ class UserForm extends React.Component {
     return (
     <div id = "userform" className="faq-box App">
 
-      <h1> {this.state.flash} </h1>
+      <p> {this.state.flash} </p>
 	       <p>Please update your data.</p>
 
       <div>
         { this.state.user && 
-            Object.keys(this.state.user).map(key =>
-                    <div>
-                        <label>{key}</label>
-                        <input type="input" id="input-{key}" value={this.state[key]} onChange={this.onChange}/><br/>
-                    </div>
+            Object.keys(this.state.user)
+              .map(key =>
+                 <div>
+                        <label>{key.replace(/_/g, ' ')}</label>
+                        <input type="input" id={"input-" + key} value={this.state.user[key]} onChange={this.onChange}/><br/>
+                 </div>
             )
         }
     </div>

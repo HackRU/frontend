@@ -79,7 +79,7 @@ class App extends React.Component {
     		}).then(resp => resp.json())
           .then(data => {
           this.setState({isLoggedIn:true});
-    		  const token = data.authToken;
+    		  const token = JSON.parse(data.body).auth.token;
     		  ReactDOM.render(<UserForm token={token} email={this.state.email}/> , document.getElementById('register-root'));
     		}).catch(data => {
     		  const error = data.message;
