@@ -114,10 +114,6 @@ class App extends React.Component {
           Login
       </button>
 
-      <button onClick={this.mlh} id="mlhButton">
-          MLH
-      </button>
-
       <button onClick={this.signUp} id="signupButton" >
           Sign Up
       </button>  
