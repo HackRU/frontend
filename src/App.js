@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import UserForm from './UserForm';
+import md5 from 'md5';
 
 class App extends React.Component {
   constructor (props){
@@ -47,8 +48,7 @@ class App extends React.Component {
     		  },
     		  body: JSON.stringify({
     		    email: this.state.email,
-            //HASH!!!
-    		    password: this.state.password,
+    		    password: md5(this.state.password),
     		  })
     		}).then(resp => resp.json())
           .then(this.loginPostFetch).catch(data => {
@@ -74,7 +74,7 @@ class App extends React.Component {
     		  },
     		  body: JSON.stringify({
     		    email: this.state.email,
-    		    password: this.state.password,
+    		    password: md5(this.state.password),
     		  })
     		}).then(resp => resp.json())
           .then(data => {
