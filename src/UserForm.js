@@ -61,7 +61,6 @@ class UserForm extends React.Component {
   }
 
   save() {
-    alert(this.state.email);
     fetch('https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/test/update', {
       method: 'POST',
       mode: 'cors',

@@ -48,7 +48,7 @@ class App extends React.Component {
     		  },
     		  body: JSON.stringify({
     		    email: this.state.email,
-    		    password: md5(this.state.password),
+    		    password: md5(this.state.password) + '',
     		  })
     		}).then(resp => resp.json())
           .then(this.loginPostFetch).catch(data => {
@@ -74,13 +74,17 @@ class App extends React.Component {
     		  },
     		  body: JSON.stringify({
     		    email: this.state.email,
-    		    password: md5(this.state.password),
+    		    password: md5(this.state.password) + '',
     		  })
     		}).then(resp => resp.json())
           .then(data => {
-          this.setState({isLoggedIn:true});
-    		  const token = JSON.parse(data.body).auth.token;
-    		  ReactDOM.render(<UserForm token={token} email={this.state.email}/> , document.getElementById('register-root'));
+                  if (data.statusCode == 200){
+			  this.setState({isLoggedIn:true});
+			  const token = JSON.parse(data.body).auth.token;
+			  ReactDOM.render(<UserForm token={token} email={this.state.email}/> , document.getElementById('register-root'));
+                  }else{
+                          this.setState({errorMessage: data.body})
+                  }
     		}).catch(data => {
     		  const error = data.message;
     		  console.log(data);
