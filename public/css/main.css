@@ -16,6 +16,68 @@ a:hover{
 	transition: all .3s ease-in-out;
 }
 
+/*styling navbar*/
+.navbar{
+  border-radius: 0;
+  height: 80px;
+  background-color: #9783c0;
+  border-bottom: 1px solid #8b79bc;
+  box-shadow: 0 0 15px 0 #8b79bc;
+  margin-bottom: 0;
+  text-align: center;
+  font-family: 'Montserrat'; sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  text-transform: lowercase;
+  display: none; /* made visible with js*/
+}
+
+/*modifies all the links that will be minimized when using a different device
+at desktop, links should be centered with branding image in center
+should be cleared when going to a different res size*/
+
+#myNavbar{
+  text-align: center;
+  padding: 0 7rem 0 8rem;
+  width: 1024px;
+  margin: 0 auto;
+}
+
+/*styling navbar link position*/
+.navbar-nav > li > a {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    color: #f9f9f9;
+}
+
+.navbar-nav > li > a:hover {
+    background-color: transparent;
+    color: #fcb9f9;
+    transition: all .3s ease-in-out;
+}
+
+/*to keep half of navbar links to left and the other half right*/
+
+#navbar-left{
+  float: left;
+}
+#navbar-right{
+  float: right;
+  margin-right: 15px;
+}
+
+.navbar .navbar-collapse {
+  text-align: center;
+}
+
+.nav .navbar-nav{
+  background-color: #ffe7eb;
+  color: #090909;
+}
+
+#nav-shell{
+  width: 100px;
+}
 
 .container {
     width:100%;
@@ -431,7 +493,10 @@ h4{
 	font-size: 1.0em;
 }
 
-
+.navbar{
+    opacity: 0; /* hack to make the JS not work */
+    display: none;
+}
 
 #faq .row .half-left, #faq .row .half-right{
 	width: 100%;
