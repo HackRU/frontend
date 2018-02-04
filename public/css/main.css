@@ -265,7 +265,7 @@ hr.star-primary-header:after{
 	margin: 45px;
 }
 
-#icims, #capital-one{
+#wakefern, #fiserv, #icims{
 	width: 268px;
 	height: auto;
 	margin: 25px;
@@ -279,7 +279,13 @@ hr.star-primary-header:after{
 }
 
 #knowledgent{
-	width: 250px;
+	width: 200px;
+	height: auto;
+	margin: 40px;
+}
+
+#goldman-sachs{
+	width: 200px;
 	height: auto;
 	margin: 40px;
 }
