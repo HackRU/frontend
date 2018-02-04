@@ -131,7 +131,7 @@ class App extends React.Component {
     return (
       <div>
         <p> {this.state.errorMessage} </p>
-	  <p>Enter your name and email in the fields, then click "Login" or "Sign Up". Click "MLH" to login from MLH website.</p>
+	  <p>Enter your name and email in the fields, then click "Login" or "Sign Up".</p>
 
 		Email: <input value={this.state.email} onChange={this.onEmailChange} type="email" name="email"/><br/>
 		Password: <input value={this.state.password} onChange={this.onPasswordChange} type="password" name="pass"/><br/>
@@ -145,7 +145,7 @@ class App extends React.Component {
     const isLoggedIn = this.state.isLoggedIn;
 
     return (
-      <div className="faq-box App">
+      <div className="react-form App">
         <this.currentForm isLoggedIn={isLoggedIn} />
       </div>
     );

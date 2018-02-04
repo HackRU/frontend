@@ -96,7 +96,7 @@ class UserForm extends React.Component {
 
   render() {
     return (
-    <div id = "userform" className="faq-box App">
+    <div id = "userform" className="react-form App">
 
       <p> {this.state.flash} </p>
 	       <p>Please update your data.</p>
