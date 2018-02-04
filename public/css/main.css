@@ -57,7 +57,7 @@ h4{
 	width:auto;
 }
 
-#get-hyped, #faq, #sponsors, #get-involved {
+#get-hyped, #faq, #sponsors, #get-involved, #team, #schedule{
 	max-width: 100%;
 	min-height: 400px;
 	height: 100%;
@@ -66,7 +66,7 @@ h4{
 	
 }
 
-#get-hyped, #sponsors{
+#get-hyped, #sponsors, #schedule{
 	background-color: white;
 	color: #9783c0;
 
@@ -85,7 +85,11 @@ h4{
 	margin-bottom: 50px;
 }
 
-#faq, #get-involved {
+#schedule ul {
+    list-style-type: none;
+}
+
+#faq, #get-involved, #team {
 	background-color: #9783c0;
 	color: #f9f9f9;
 	margin-top: 8rem;
@@ -225,6 +229,11 @@ hr.star-primary-header:after{
 	background-color: #ffffff;
 }
 
+#team img{
+  height: 150px;
+  width: 150px;
+  border-radius: 100%;
+}
 
 /*specific sponsor ids*/
 
