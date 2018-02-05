@@ -230,6 +230,24 @@ h4{
     margin-left: 15px;
 }
 
+#get-involved .form-bit{
+    padding: 5px;
+}
+
+#get-involved .form-bit label{
+    padding-right: 10px;
+    vertical-align: baseline;
+    display: inline-block;
+    width: 250px;
+}
+
+#get-involved .form-bit input{
+    vertical-align: baseline;
+    text-align: center;
+    display: inline-block;
+    box-sizing: border-box;
+}
+
 .title{
 	margin-top: 20px;
 }

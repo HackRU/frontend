@@ -133,8 +133,8 @@ class App extends React.Component {
         <p> {this.state.errorMessage} </p>
 	  <p>Enter your name and email in the fields, then click "Login" or "Sign Up".</p>
 
-		Email: <input value={this.state.email} onChange={this.onEmailChange} type="email" name="email"/><br/>
-		Password: <input value={this.state.password} onChange={this.onPasswordChange} type="password" name="pass"/><br/>
+		<div class="form-bit"><label>Email:</label> <input value={this.state.email} onChange={this.onEmailChange} type="email" name="email"/><br/></div>
+		<div class="form-bit"><label>Password:</label> <input value={this.state.password} onChange={this.onPasswordChange} type="password" name="pass"/><br/></div>
        <this.LoginButtons />
       </div>)
 
