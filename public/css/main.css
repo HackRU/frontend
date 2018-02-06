@@ -6,7 +6,7 @@ body{
 
 a {
 	text-decoration:none;
-	color: #228a4a;
+	color: #456a4a;
 	background-color: transparent;
 }
 
@@ -188,7 +188,12 @@ h4{
     text-align: center;
 }
 
+#faq .faq-box h4{
+  color: #456a4a;
+}
+
 #faq p {
+    color: #c4dac1;
     margin-top: 1rem;
 }
 
@@ -462,7 +467,7 @@ footer a:hover{
 
 #footer-credits a{
 	text-decoration:none;
-	color: #228a4a;
+	color: #456a4a;
 	background-color: transparent;
 }
 
@@ -593,7 +598,7 @@ h4{
     margin-left: 40px;
 }
 
-	color: #228a4a;
+	color: #456a4a;
 }
 
 }
