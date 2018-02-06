@@ -314,15 +314,49 @@ hr.star-primary-header:after{
 	background-color: #ffffff;
 }
 
-#team img{
+#team .row{
+  margin-top: 30px;
+  width: 100%;
+}
+.col-xs-6 .col-sm-3{
+  text-align: center;
+}
+
+.team-wrapper{
+  width: 300px;
+  padding-bottom: 16.666666667%;
+  display: inline-block;
+  position: relative;
+  z-index: 1;
+}
+
+.team .team-wrapper .lead{
+  padding: 1.5rem;
+  position: absolute;
+  background-color: transparent;
+  left: 4px;
+  right: 4px;
+  top: 0;
+}
+
+#team .upper-row{
+  margin-left: 25%;
+}
+
+#team .lower-row{
+  margin-left: 12%;
+}
+
+#team h4, #team h6{
+  color: #f9f9f9;
+}
+
+#team .team-wrapper img{
   height: 150px;
   width: 150px;
   border-radius: 100%;
 }
 
-#team h4,h6{
-  width: 150px;
-}
 
 /*specific sponsor ids*/
 
@@ -609,6 +643,13 @@ h4{
 
 @media (min-width: 320px) and (max-width: 499px)  {
 
+#team .upper-row{
+  margin-left: auto;
+}
+
+#team .lower-row{
+  margin-left: auto;
+}
 
 
 	#diano{
