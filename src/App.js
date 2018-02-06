@@ -25,7 +25,12 @@ class App extends React.Component {
 
   loginPostFetch(data){
     if(data.statusCode != 200){
-      this.setState({errorMessage: data.body});
+      const/*antina, our saviour*/ errorMsgs = {
+        "invalid email,hash combo": "Incorrect email or password.",
+        "Wrong Password": "Incorrect password."
+      };
+
+      this.setState({errorMessage: errorMsgs[data.body]});
       return;
     }
     this.setState({isLoggedIn: true});
@@ -131,7 +136,8 @@ class App extends React.Component {
     return (
       <div>
         <p> {this.state.errorMessage} </p>
-	  <p>Enter your name and email in the fields, then click "Login" or "Sign Up".</p>
+	  <p>Hi! We're glad you're joining us at HackHERS. Please enter your email, create a password, and click "Sign up."<br/>
+If you are already registered for HackHERS and would like to access or modify your information, please enter your account information and click "Login."</p>
 
 		<div class="form-bit"><label>Email:</label> <input value={this.state.email} onChange={this.onEmailChange} type="email" name="email"/><br/></div>
 		<div class="form-bit"><label>Password:</label> <input value={this.state.password} onChange={this.onPasswordChange} type="password" name="pass"/><br/></div>

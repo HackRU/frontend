@@ -37,12 +37,15 @@ class UserForm extends React.Component {
       })
     }).then(resp => resp.json())
       .then(data => {
-        const redact_keys = ['auth', 'password', 'short_answer', 'mlh', 'registration_status', 'role'];
+        const redact_keys = ['level_of_study', 'auth', 'password', 'short_answer', 'mlh', 'registration_status', 'role'];
         const og_usr = data.body[0];
         let newser = {};
         Object.keys(og_usr).map(key => {
           if(!redact_keys.includes(key)){
-            newser[key] = og_usr[key];
+            if(key !== 'school')
+              newser[key] = og_usr[key];
+            else
+              newser[key] = 'Rutgers University';
           }
         });
         this.setState({user: newser});
@@ -75,7 +78,14 @@ class UserForm extends React.Component {
         auth_email: this.state.email,
         auth: this.state.token
       })
-    })
+    }).then(data => data.json())
+      .then(json => {
+        if(json.statusCode == 200){
+           this.setState({flash: "Updated profile!"});
+        }else{
+           this.setState({flash: json.body});
+        }
+      });
 
   }
 

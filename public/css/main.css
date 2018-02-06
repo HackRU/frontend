@@ -250,6 +250,7 @@ h4{
     text-align: center;
     display: inline-block;
     box-sizing: border-box;
+    border: none;
 }
 
 .title{
@@ -295,7 +296,7 @@ hr.star-light {
 
 hr.star-light:after {
     color: #ffffff;
-    background-color: #9783c0;
+    background-color: #4bcf7e;
 }
 
 hr.star-primary, hr.star-primary-header {
@@ -305,11 +306,11 @@ hr.star-primary, hr.star-primary-header {
 
 hr.star-primary:after {
     color: #ffffff;
-    background-color: #9783c0;
+    background-color: #4bcf7e;
 }
 
 hr.star-primary-header:after{
-	color: #9783c0;
+	color: #4bcf7e;
 	background-color: #ffffff;
 }
 
@@ -317,6 +318,10 @@ hr.star-primary-header:after{
   height: 150px;
   width: 150px;
   border-radius: 100%;
+}
+
+#team h4,h6{
+  width: 150px;
 }
 
 /*specific sponsor ids*/
@@ -394,8 +399,8 @@ footer{
 	position:relative;
 	bottom:0;
 	left:0;
-	background-color: #019c3d;
-	color: #f9f9f9;
+	background-color: white;
+	color: #4bcf7e;
 	min-height: 150px;
 	text-align: center;
 	padding: 10px;
@@ -414,7 +419,7 @@ footer a:hover{
 }
 
 #footer-credits{
-	color: #ffffff;
+	color: #4bcf7e;
 	font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-size: 14px;
 	margin-top: 45px;
@@ -422,7 +427,7 @@ footer a:hover{
 
 #footer-credits a{
 	text-decoration:none;
-	color:  #ffffff;
+	color: #228a4a;
 	background-color: transparent;
 }
 
@@ -545,8 +550,7 @@ h4{
 
 
 #footer-credits{
-	color: #ffffff;
-	font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	color: #4bcf7e;
 	font-size: 14px;
 	margin-top: 20px;
 	margin-bottom: 0 auto;
@@ -554,7 +558,8 @@ h4{
     margin-left: 40px;
 }
 
-
+	color: #228a4a;
+}
 
 }
 
