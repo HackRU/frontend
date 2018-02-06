@@ -6,7 +6,7 @@ body{
 
 a {
 	text-decoration:none;
-	color: #b683c0;
+	color: #228a4a;
 	background-color: transparent;
 }
 
@@ -19,16 +19,16 @@ a:hover{
 /*styling navbar*/
 .navbar{
   border-radius: 0;
-  height: 80px;
-  background-color: #9783c0;
-  border-bottom: 1px solid #8b79bc;
-  box-shadow: 0 0 15px 0 #8b79bc;
+  height: 100px;
+  background-color: #4bcf7e;
+  border-bottom: 1px solid #3cb76c;
+  box-shadow: 0 0 15px 0 #6ac58d;
   margin-bottom: 0;
   text-align: center;
-  font-family: 'Montserrat'; sans-serif;
+
   font-size: 18px;
   font-weight: 600;
-  text-transform: lowercase;
+  text-transform: uppercase;
   display: none; /* made visible with js*/
 }
 
@@ -52,7 +52,7 @@ should be cleared when going to a different res size*/
 
 .navbar-nav > li > a:hover {
     background-color: transparent;
-    color: #fcb9f9;
+    color: #abf5c7;
     transition: all .3s ease-in-out;
 }
 
@@ -76,7 +76,7 @@ should be cleared when going to a different res size*/
 }
 
 #nav-shell{
-  width: 100px;
+  width: 140px;
 }
 
 .container {
@@ -115,7 +115,7 @@ h4{
 }
 
 #diano{
-	height: 500px; 
+	height: 500px;
 	width:auto;
 }
 
@@ -125,18 +125,18 @@ h4{
 	height: 100%;
 	margin: 0 auto;
 	text-align: center;
-	
+
 }
 
 #get-hyped, #sponsors, #schedule{
 	background-color: white;
-	color: #9783c0;
+	color: #4bcf7e;
 
 }
 
 #get-hyped h1{
 	padding-top: 35px;
-}	
+}
 
 #get-hyped h3{
 	margin-top: -15px;
@@ -152,7 +152,7 @@ h4{
 }
 
 #faq, #get-involved, #team {
-	background-color: #9783c0;
+	background-color: #4bcf7e;
 	color: #f9f9f9;
 	margin-top: 8rem;
 	padding-bottom: 100px;
@@ -199,14 +199,14 @@ h4{
 #sponsors h4{
     text-transform: uppercase;
     font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-weight: 700; 
- 
+    font-weight: 700;
+
 }
 
 #sponsors h5{
 	font-size: 14px;
 	font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-weight: 700; 
+    font-weight: 700;
 }
 
 #get-involved .react-form{
@@ -214,13 +214,13 @@ h4{
 }
 
 #get-involved input{
-    background-color: #9783c0;
+    background-color: #abeac3;
     border: none;
     border-bottom: white 2px solid;
 }
 
 #get-involved button{
-    background-color: #9783c0;
+    background-color: #4bcf7e;
     color: white;
     padding: 10px 22px;
     text-align: center;
@@ -228,6 +228,10 @@ h4{
     border: white 2px solid;
     margin-top: 10px;
     margin-left: 15px;
+}
+
+#get-involved button:hover {
+  background-color: #abeac3;
 }
 
 #get-involved .form-bit{
@@ -277,7 +281,7 @@ hr.star-primary:after, hr.star-primary-header:after {
     padding: 0 .25em;
     font-family: FontAwesome;
     font-size: 2em;
-    
+
 }
 
 #faq hr.star-light, #faq hr.star-primary, #faq hr.star-primary-header,
@@ -295,8 +299,8 @@ hr.star-light:after {
 }
 
 hr.star-primary, hr.star-primary-header {
-    border-color: #9783c0;
-    
+    border-color: #4bcf7e;
+
 }
 
 hr.star-primary:after {
@@ -390,7 +394,7 @@ footer{
 	position:relative;
 	bottom:0;
 	left:0;
-	background-color: #9783c0;
+	background-color: #019c3d;
 	color: #f9f9f9;
 	min-height: 150px;
 	text-align: center;
@@ -457,7 +461,7 @@ list-inline > li {
 .btn-outline {
     margin-top: 15px;
     font-size: 30px;
-    color: #9783c0;
+    color: #4bcf7e;
     background: 0 0;
 }
 
@@ -466,7 +470,7 @@ list-inline > li {
 
 
 	#diano{
-		height: 300px; 
+		height: 300px;
 		width:auto;
 	}
 
@@ -477,7 +481,7 @@ list-inline > li {
     	text-align: center;
 
 	}
-	
+
 	#footer-credits{
 		margin-top: 30px;
 	}
@@ -557,13 +561,13 @@ h4{
 
 @media (min-width: 500px) and (max-width: 956px) {
 
-  
+
   	#lockeed, #jpmorgan, #vanguard{
 		width: 400px;
 		height: auto;
 		margin: 0 auto;
 	}
-	
+
 	#verizon{
 		width: 245px;
 		height: auto;
@@ -575,7 +579,7 @@ h4{
 		height: auto;
 		margin: 25px;
 	}
-	
+
 	#icims, #capital-one{
 		width: 200px;
 		height: auto;
@@ -587,7 +591,7 @@ h4{
 		height: auto;
 		margin: 20px;
 	}
-	
+
 	#knowledgent{
 		width: 225px;
 		height: auto;
@@ -603,11 +607,11 @@ h4{
 
 
 	#diano{
-		height: 275px; 
+		height: 275px;
 		width:auto;
 	}
-	
-	
+
+
 	#drc {
 		width: 150px;
 		height: auto;
@@ -619,13 +623,13 @@ h4{
 		height: auto;
 	}
 
-	
+
 	#lockeed, #jpmorgan, #vanguard{
 		width: 275px;
 		height: auto;
 		margin: 25px auto;
 	}
-	
+
 	#verizon{
 		width: 225px;
 		height: auto;
@@ -637,8 +641,8 @@ h4{
 		height: auto;
 		margin: 25px;
 	}
-	
-	
+
+
 	#icims, #capital-one{
 		width: 175px;
 		height: auto;
@@ -650,7 +654,7 @@ h4{
 		height: auto;
 		margin: 30px;
 	}
-	
+
 	#knowledgent{
 		width: 200px;
 		height: auto;
@@ -661,15 +665,15 @@ h4{
 
 	#team .team-wrapper{
 		width: 100%;
-		
+
 	}
-	
+
 	#filler-1, #filler-2 {
 		display: none;
 	}
-	
+
 	#get-involved .hacker-reg, #get-involved .help-reg{
-	
+
 		  display: block;
 	}
 
@@ -677,7 +681,3 @@ h4{
 
 
 }
-
-
-
-
