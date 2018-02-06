@@ -106,7 +106,7 @@ class UserForm extends React.Component {
 
   render() {
     return (
-    <div id = "userform" className="react-form App">
+    <div id = "userform" className="react-form">
 
 	       <p>Please update your data.</p>
 

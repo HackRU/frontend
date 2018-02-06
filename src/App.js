@@ -87,6 +87,8 @@ class App extends React.Component {
 			  this.setState({isLoggedIn:true});
 			  const token = JSON.parse(data.body).auth.token;
 			  ReactDOM.render(<UserForm token={token} email={this.state.email}/> , document.getElementById('register-root'));
+                  }else if(data.body === "Duplicate user!"){
+                          this.setState({errorMessage: "You are already in our system! Please try logging in."})
                   }else{
                           this.setState({errorMessage: data.body})
                   }
@@ -151,7 +153,7 @@ If you are already registered for HackHERS and would like to access or modify yo
     const isLoggedIn = this.state.isLoggedIn;
 
     return (
-      <div className="react-form App">
+      <div className="react-form">
         <this.currentForm isLoggedIn={isLoggedIn} />
       </div>
     );
