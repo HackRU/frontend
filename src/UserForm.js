@@ -114,7 +114,7 @@ class UserForm extends React.Component {
         { this.state.user && 
             Object.keys(this.state.user)
               .map(key =>
-                 <div class="form-bit">
+                 <div className="form-bit">
                         <label>{key.replace(/_/g, ' ')}</label>
                         <input type="input" id={"input-" + key} value={this.state.user[key]} onChange={this.onChange}/><br/>
                  </div>

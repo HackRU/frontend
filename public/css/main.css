@@ -204,13 +204,13 @@ h4{
 }
 
 #faq .faq-box h4{
-  color: #456a4a;
+    color: white;
 }
 
 #faq p {
-    color: white;
+    color: #dbd9b1;
     margin-top: 1rem;
-	font-weight: 800;
+    font-weight: 800;
 }
 
 #sponsors{
