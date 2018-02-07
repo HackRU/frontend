@@ -1,7 +1,7 @@
 body{
 	margin: 0;
 	overflow-x:hidden;
-	background-color: #c4dac1;
+	background-color: #dbd9b1;
 }
 
 a {
@@ -22,7 +22,7 @@ a:hover{
   height: 100px;
   background-color: #80935e;
   border-bottom: 1px solid #3cb76c;
-  box-shadow: 0 0 15px 0 #6ac58d;
+  box-shadow: 0 0 15px 0 #dbd9b1;
   margin-bottom: 0;
   text-align: center;
 
@@ -52,7 +52,7 @@ should be cleared when going to a different res size*/
 
 .navbar-nav > li > a:hover {
     background-color: transparent;
-    color: #c4dac1;
+    color: #dbd9b1;
     transition: all .3s ease-in-out;
 }
 
@@ -135,7 +135,7 @@ h4{
 }
 
 #get-hyped, #sponsors, #schedule{
-	background-color: #c4dac1;
+	background-color: #dbd9b1;
 	color: #80935e;
 
 }
@@ -155,6 +155,14 @@ h4{
 
 #schedule ul {
     list-style-type: none;
+    text-align: center;
+	padding: 0px;
+	margin: 0px;
+	font-weight: bold;
+}
+
+#schedule li {
+    text-align: center;
 }
 
 #faq, #get-involved, #team {
@@ -167,7 +175,7 @@ h4{
 #faq h4{
 	font-size: 24px;
 	font-weight: bold;
-	/*border-bottom: 2px solid #c4dac1;*/
+	/*border-bottom: 2px solid #dbd9b1;*/
 }
 
 #faq .row .half-left, #faq .row .half-right {
@@ -192,6 +200,7 @@ h4{
     margin: 0 5rem;
     min-width: 320px;
     text-align: center;
+	
 }
 
 #faq .faq-box h4{
@@ -199,8 +208,9 @@ h4{
 }
 
 #faq p {
-    color: #c4dac1;
+    color: white;
     margin-top: 1rem;
+	font-weight: 800;
 }
 
 #sponsors{
@@ -224,11 +234,16 @@ h4{
     text-align: center;
 }
 
+#get-involved p{
+	color: white;
+	font-weight: 800;
+}
+
 #get-involved input{
-    background-color: #c4dac1;
+    background-color: #dbd9b1;
     color: #80935e;
     border: none;
-    border-bottom: #c4dac1 2px solid;
+    border-bottom: #dbd9b1 2px solid;
 }
 
 #get-involved button{
@@ -237,10 +252,11 @@ h4{
     padding: 10px 22px;
     text-align: center;
     text-decoration: none;
-    border: #c4dac1 2px solid;
+    border: #dbd9b1 2px solid;
     margin-top: 10px;
     margin-bottom: 10px;
-    margin-left: 15px;
+    margin-left: 7px;
+	margin-right: 7px;
 }
 
 #get-involved button:hover {
@@ -304,11 +320,11 @@ hr.star-primary:after, hr.star-primary-header:after {
 }
 
 hr.star-light {
-    border-color: #c4dac1;
+    border-color: #dbd9b1;
 }
 
 hr.star-light:after {
-    color: #c4dac1;
+    color: #dbd9b1;
     background-color: #80935e;
 }
 
@@ -318,13 +334,13 @@ hr.star-primary, hr.star-primary-header {
 }
 
 hr.star-primary:after {
-    color: #c4dac1;
+    color: #dbd9b1;
     background-color: #80935e;
 }
 
 hr.star-primary-header:after{
 	color: #80935e;
-	background-color: #c4dac1;
+	background-color: #dbd9b1;
 }
 
 #team .row{
@@ -392,8 +408,24 @@ hr.star-primary-header:after{
 	margin: 50px;
 }
 
-#lockeed, #jpmorgan, #vanguard{
+#lockeed, #jpmorgan, #exxonmobil{
 	width: 565px;
+	height: auto;
+	margin: 25px;
+}
+
+
+#vanguard{
+	width: 565px;
+	height: auto;
+	margin: 25px;
+	padding-bottom: 35px;
+	/* to align with rest of gold sponsors */
+}
+
+
+#exxonmobil{
+	width: 495px;
 	height: auto;
 	margin: 25px;
 }
@@ -410,11 +442,17 @@ hr.star-primary-header:after{
 	margin: 45px;
 }
 
-#wakefern, #fiserv, #icims{
+#wakefern, #icims, #capital-one{
 	width: 268px;
 	height: auto;
 	margin: 25px;
 
+}
+
+#fiserv{
+	width: 180px;
+	height: auto;
+	margin: 25px;
 }
 
 #facebook, #bloomberg, #prudential{
@@ -446,7 +484,7 @@ footer{
 	position:relative;
 	bottom:0;
 	left:0;
-	background-color: #c4dac1;
+	background-color: #dbd9b1;
 	color: #80935e;
 	min-height: 150px;
 	text-align: center;
@@ -454,7 +492,7 @@ footer{
 }
 
 footer a:hover{
-	background-color: #c4dac1;
+	background-color: #dbd9b1;
 	text-decoration:none
 }
 
@@ -547,7 +585,7 @@ list-inline > li {
 body{
 	margin: 0;
 	overflow-x:hidden;
-	background-color: transparent;
+	background-color: #dbd9b1;
 }
 
 
@@ -620,6 +658,12 @@ h4{
 		margin: 0 auto;
 	}
 
+	#exxonmobil{
+		width: 350px;
+		height: auto;
+		margin: 0 auto;
+	}
+
 	#verizon{
 		width: 245px;
 		height: auto;
@@ -632,7 +676,7 @@ h4{
 		margin: 25px;
 	}
 
-	#icims, #capital-one{
+	#icims, #capital-one, #fiserv{
 		width: 200px;
 		height: auto;
 		margin: 25px;
@@ -655,6 +699,14 @@ h4{
 
 
 @media (min-width: 320px) and (max-width: 499px)  {
+
+.react-form{
+  width: 100%;
+}
+
+#vanguard{
+  padding-bottom: 0px;
+}
 
 #team .upper-row{
   margin-left: auto;
@@ -688,6 +740,12 @@ h4{
 		height: auto;
 		margin: 25px auto;
 	}
+	
+	#exxonmobil{
+		width: 240px;
+		height: auto;
+		margin: 25px auto;
+	}
 
 	#verizon{
 		width: 225px;
@@ -707,6 +765,7 @@ h4{
 		height: auto;
 		margin: 25px;
 	}
+
 
 	#facebook, #bloomberg, #prudential{
 		width: 150px;
