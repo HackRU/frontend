@@ -1,12 +1,12 @@
 body{
 	margin: 0;
 	overflow-x:hidden;
-	background-color: transparent;
+	background-color: #c4dac1;
 }
 
 a {
 	text-decoration:none;
-	color: #228a4a;
+	color: #456a4a;
 	background-color: transparent;
 }
 
@@ -20,7 +20,7 @@ a:hover{
 .navbar{
   border-radius: 0;
   height: 100px;
-  background-color: #4bcf7e;
+  background-color: #80935e;
   border-bottom: 1px solid #3cb76c;
   box-shadow: 0 0 15px 0 #6ac58d;
   margin-bottom: 0;
@@ -52,7 +52,7 @@ should be cleared when going to a different res size*/
 
 .navbar-nav > li > a:hover {
     background-color: transparent;
-    color: #abf5c7;
+    color: #c4dac1;
     transition: all .3s ease-in-out;
 }
 
@@ -128,9 +128,15 @@ h4{
 
 }
 
+.react-form{
+  text-align: center;
+  width: 400px;
+  margin: auto;
+}
+
 #get-hyped, #sponsors, #schedule{
-	background-color: white;
-	color: #4bcf7e;
+	background-color: #c4dac1;
+	color: #80935e;
 
 }
 
@@ -152,7 +158,7 @@ h4{
 }
 
 #faq, #get-involved, #team {
-	background-color: #4bcf7e;
+	background-color: #80935e;
 	color: #f9f9f9;
 	margin-top: 8rem;
 	padding-bottom: 100px;
@@ -161,7 +167,7 @@ h4{
 #faq h4{
 	font-size: 24px;
 	font-weight: bold;
-	/*border-bottom: 2px solid #ffffff;*/
+	/*border-bottom: 2px solid #c4dac1;*/
 }
 
 #faq .row .half-left, #faq .row .half-right {
@@ -188,7 +194,12 @@ h4{
     text-align: center;
 }
 
+#faq .faq-box h4{
+  color: #456a4a;
+}
+
 #faq p {
+    color: #c4dac1;
     margin-top: 1rem;
 }
 
@@ -214,19 +225,21 @@ h4{
 }
 
 #get-involved input{
-    background-color: #abeac3;
+    background-color: #c4dac1;
+    color: #80935e;
     border: none;
-    border-bottom: white 2px solid;
+    border-bottom: #c4dac1 2px solid;
 }
 
 #get-involved button{
-    background-color: #4bcf7e;
+    background-color: #80935e;
     color: white;
     padding: 10px 22px;
     text-align: center;
     text-decoration: none;
-    border: white 2px solid;
+    border: #c4dac1 2px solid;
     margin-top: 10px;
+    margin-bottom: 10px;
     margin-left: 15px;
 }
 
@@ -291,38 +304,72 @@ hr.star-primary:after, hr.star-primary-header:after {
 }
 
 hr.star-light {
-    border-color: #ffffff;
+    border-color: #c4dac1;
 }
 
 hr.star-light:after {
-    color: #ffffff;
-    background-color: #4bcf7e;
+    color: #c4dac1;
+    background-color: #80935e;
 }
 
 hr.star-primary, hr.star-primary-header {
-    border-color: #4bcf7e;
+    border-color: #80935e;
 
 }
 
 hr.star-primary:after {
-    color: #ffffff;
-    background-color: #4bcf7e;
+    color: #c4dac1;
+    background-color: #80935e;
 }
 
 hr.star-primary-header:after{
-	color: #4bcf7e;
-	background-color: #ffffff;
+	color: #80935e;
+	background-color: #c4dac1;
 }
 
-#team img{
+#team .row{
+  margin-top: 30px;
+  width: 100%;
+}
+.col-xs-6 .col-sm-3{
+  text-align: center;
+}
+
+.team-wrapper{
+  width: 300px;
+  padding-bottom: 16.666666667%;
+  display: inline-block;
+  position: relative;
+  z-index: 1;
+}
+
+.team .team-wrapper .lead{
+  padding: 1.5rem;
+  position: absolute;
+  background-color: transparent;
+  left: 4px;
+  right: 4px;
+  top: 0;
+}
+
+#team .upper-row{
+  margin-left: 25%;
+}
+
+#team .lower-row{
+  margin-left: 12%;
+}
+
+#team h4, #team h6{
+  color: #f9f9f9;
+}
+
+#team .team-wrapper img{
   height: 150px;
   width: 150px;
   border-radius: 100%;
 }
 
-#team h4,h6{
-  width: 150px;
-}
 
 /*specific sponsor ids*/
 
@@ -399,15 +446,15 @@ footer{
 	position:relative;
 	bottom:0;
 	left:0;
-	background-color: white;
-	color: #4bcf7e;
+	background-color: #c4dac1;
+	color: #80935e;
 	min-height: 150px;
 	text-align: center;
 	padding: 10px;
 }
 
 footer a:hover{
-	background-color: #ffffff;
+	background-color: #c4dac1;
 	text-decoration:none
 }
 
@@ -419,7 +466,7 @@ footer a:hover{
 }
 
 #footer-credits{
-	color: #4bcf7e;
+	color: #80935e;
 	font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-size: 14px;
 	margin-top: 45px;
@@ -427,7 +474,7 @@ footer a:hover{
 
 #footer-credits a{
 	text-decoration:none;
-	color: #228a4a;
+	color: #456a4a;
 	background-color: transparent;
 }
 
@@ -466,7 +513,7 @@ list-inline > li {
 .btn-outline {
     margin-top: 15px;
     font-size: 30px;
-    color: #4bcf7e;
+    color: #80935e;
     background: 0 0;
 }
 
@@ -550,7 +597,7 @@ h4{
 
 
 #footer-credits{
-	color: #4bcf7e;
+	color: #80935e;
 	font-size: 14px;
 	margin-top: 20px;
 	margin-bottom: 0 auto;
@@ -558,7 +605,7 @@ h4{
     margin-left: 40px;
 }
 
-	color: #228a4a;
+	color: #456a4a;
 }
 
 }
@@ -609,6 +656,13 @@ h4{
 
 @media (min-width: 320px) and (max-width: 499px)  {
 
+#team .upper-row{
+  margin-left: auto;
+}
+
+#team .lower-row{
+  margin-left: auto;
+}
 
 
 	#diano{

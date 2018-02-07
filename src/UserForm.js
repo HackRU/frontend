@@ -81,7 +81,7 @@ class UserForm extends React.Component {
     }).then(data => data.json())
       .then(json => {
         if(json.statusCode == 200){
-           this.setState({flash: "Updated profile!"});
+           this.setState({flash: "Updated profile! Thank you for registering."});
         }else{
            this.setState({flash: json.body});
         }
@@ -106,9 +106,8 @@ class UserForm extends React.Component {
 
   render() {
     return (
-    <div id = "userform" className="react-form App">
+    <div id = "userform" className="react-form">
 
-      <p> {this.state.flash} </p>
 	       <p>Please update your data.</p>
 
       <div>
@@ -123,6 +122,7 @@ class UserForm extends React.Component {
         }
     </div>
     <this.LogoutButtons />
+      <p> {this.state.flash} </p>
     </div>
     );
 

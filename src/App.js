@@ -87,6 +87,8 @@ class App extends React.Component {
 			  this.setState({isLoggedIn:true});
 			  const token = JSON.parse(data.body).auth.token;
 			  ReactDOM.render(<UserForm token={token} email={this.state.email}/> , document.getElementById('register-root'));
+                  }else if(data.body === "Duplicate user!"){
+                          this.setState({errorMessage: "You are already in our system! Please try logging in."})
                   }else{
                           this.setState({errorMessage: data.body})
                   }
@@ -135,13 +137,13 @@ class App extends React.Component {
     }
     return (
       <div>
-        <p> {this.state.errorMessage} </p>
 	  <p>Hi! We're glad you're joining us at HackHERS. Please enter your email, create a password, and click "Sign up."<br/>
 If you are already registered for HackHERS and would like to access or modify your information, please enter your account information and click "Login."</p>
 
 		<div class="form-bit"><label>Email:</label> <input value={this.state.email} onChange={this.onEmailChange} type="email" name="email"/><br/></div>
 		<div class="form-bit"><label>Password:</label> <input value={this.state.password} onChange={this.onPasswordChange} type="password" name="pass"/><br/></div>
        <this.LoginButtons />
+        <p> {this.state.errorMessage} </p>
       </div>)
 
   }
@@ -151,7 +153,7 @@ If you are already registered for HackHERS and would like to access or modify yo
     const isLoggedIn = this.state.isLoggedIn;
 
     return (
-      <div className="react-form App">
+      <div className="react-form">
         <this.currentForm isLoggedIn={isLoggedIn} />
       </div>
     );
