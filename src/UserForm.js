@@ -110,17 +110,17 @@ class UserForm extends React.Component {
 
 	       <p>Please update your data.</p>
 
-      <div>
+      <span>
         { this.state.user && 
             Object.keys(this.state.user)
               .map(key =>
-                 <div className="form-bit">
-                        <label>{key.replace(/_/g, ' ')}</label>
+                 <div className="form-bit signed-in-form">
+                        <label>{key.replace(/_/g, ' ')}</label><br/>
                         <input type="input" id={"input-" + key} value={this.state.user[key]} onChange={this.onChange}/><br/>
                  </div>
             )
         }
-    </div>
+    </span>
     <this.LogoutButtons />
       <p> {this.state.flash} </p>
     </div>
