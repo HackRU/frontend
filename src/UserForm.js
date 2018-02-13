@@ -19,6 +19,9 @@ class UserForm extends React.Component {
     this.save = this.save.bind(this);
     this.onChange = this.onChange.bind(this);
     this.LogoutButtons = this.LogoutButtons.bind(this);
+    this.showVolunteer = this.showVolunteer.bind(this);
+    this.showMentor = this.showMentor.bind(this);
+    this.volunteerAndMentorForms = this.volunteerAndMentorForms.bind(this);
   }
 
   componentDidMount(){
@@ -104,6 +107,31 @@ class UserForm extends React.Component {
 
   }
 
+  showVolunteer(e){
+    document.getElementById('mentor-form').style.display = "none";
+    document.getElementById('volunteer-form').style.display = "block";
+  }
+
+  showMentor(e){
+    document.getElementById('mentor-form').style.display = "block";
+    document.getElementById('volunteer-form').style.display = "none";
+  }
+
+  volunteerAndMentorForms() {
+    return (
+      <div>
+        <button onClick={this.showVolunteer} value="Apply to volunteer">Volunteer!</button>
+        <button onClick={this.showMentor} value="Apply to mentor">Mentor!</button>
+        <div id="volunteer-form" style={{display:'none'}}>
+          Foo
+        </div>
+        <div id="mentor-form" style={{display:'none'}}>
+          Bar
+        </div>
+      </div>
+    );
+  }
+
   render() {
     return (
     <div id = "userform" className="react-form">
@@ -123,6 +151,7 @@ class UserForm extends React.Component {
     </span>
     <this.LogoutButtons />
       <p> {this.state.flash} </p>
+    <this.volunteerAndMentorForms />
     </div>
     );
 
