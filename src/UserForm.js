@@ -19,9 +19,14 @@ class UserForm extends React.Component {
     this.save = this.save.bind(this);
     this.onChange = this.onChange.bind(this);
     this.LogoutButtons = this.LogoutButtons.bind(this);
+
     this.showVolunteer = this.showVolunteer.bind(this);
     this.showMentor = this.showMentor.bind(this);
     this.volunteerAndMentorForms = this.volunteerAndMentorForms.bind(this);
+    this.applyMentor = this.showMentor.bind(this);
+    this.unapplyMentor = this.showMentor.bind(this);
+    this.applyVolunteer = this.showVolunteer.bind(this);
+    this.unapplyVolunteer = this.showVolunteer.bind(this);
   }
 
   componentDidMount(){
@@ -117,6 +122,147 @@ class UserForm extends React.Component {
     document.getElementById('volunteer-form').style.display = "none";
   }
 
+  getTimes(prefix){
+    let times = [];
+    if(document.getElementById('sat-morn-' + prefix + '-inp').checked === true){
+      times.push("Saturday morning");
+    }
+    if(document.getElementById('sat-noon-' + prefix + '-inp').checked === true){
+      times.push("Saturday afternoon");
+    }
+    if(document.getElementById('sat-night-' + prefix + '-inp').checked === true){
+      times.push("Saturday evening");
+    }
+    if(document.getElementById('sun-' + prefix + '-inp').checked === true){
+      times.push("Sunday morning");
+    }
+    return times;
+  }
+
+  applyMentor(e){
+    let tempUsr = this.state.user;
+    tempUsr.roles.mentor = true;
+    tempUsr.mentor_data = {
+      skills: document.getElementById('ment-skill-inp').value,
+      times: this.getTimes('ment')
+    }
+    this.setState({user: tempUsr});
+
+    fetch('https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/test/update', {
+      method: 'POST',
+      mode: 'cors',
+      credentials: 'omit',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        updates :this.state.user,
+        user_email: this.state.email,
+        auth_email: this.state.email,
+        auth: this.state.token
+      })
+    }).then(data => data.json())
+      .then(json => {
+        if(json.statusCode == 200){
+           this.setState({extraFlash: "Updated profile! Thank you mentoring!."});
+        }else{
+           this.setState({extraFlash: json.body});
+        }
+      });
+  }
+
+  unapplyMentor(e){
+    let tempUsr = this.state.user;
+    tempUsr.roles.mentor = false;
+    this.setState({user: tempUsr});
+
+    fetch('https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/test/update', {
+      method: 'POST',
+      mode: 'cors',
+      credentials: 'omit',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        updates :this.state.user,
+        user_email: this.state.email,
+        auth_email: this.state.email,
+        auth: this.state.token
+      })
+    }).then(data => data.json())
+      .then(json => {
+        if(json.statusCode == 200){
+           this.setState({extraFlash: "Updated profile!"});
+        }else{
+           this.setState({extraFlash: json.body});
+        }
+      });
+  }
+
+  applyVolunteer(e){
+    let tempUsr = this.state.user;
+    tempUsr.roles.volunteer = true;
+    tempUsr.volunteer_data = {
+      skills: document.querySelector('input[name="vol-cat"]:checked').value,
+      times: this.getTimes('vol')
+    }
+    this.setState({user: tempUsr});
+
+    fetch('https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/test/update', {
+      method: 'POST',
+      mode: 'cors',
+      credentials: 'omit',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        updates :this.state.user,
+        user_email: this.state.email,
+        auth_email: this.state.email,
+        auth: this.state.token
+      })
+    }).then(data => data.json())
+      .then(json => {
+        if(json.statusCode == 200){
+           this.setState({extraFlash: "Updated profile! Thank you volunteering!."});
+        }else{
+           this.setState({extraFlash: json.body});
+        }
+      });
+  }
+
+  unapplyVolunteer(e){
+    let tempUsr = this.state.user;
+    tempUsr.roles.volunteer = false;
+    this.setState({user: tempUsr});
+
+    fetch('https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/test/update', {
+      method: 'POST',
+      mode: 'cors',
+      credentials: 'omit',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        updates :this.state.user,
+        user_email: this.state.email,
+        auth_email: this.state.email,
+        auth: this.state.token
+      })
+    }).then(data => data.json())
+      .then(json => {
+        if(json.statusCode == 200){
+           this.setState({extraFlash: "Updated profile!"});
+        }else{
+           this.setState({extraFlash: json.body});
+        }
+      });
+  }
+
   volunteerAndMentorForms() {
     return (
       <div id="extra-form-container">
@@ -139,41 +285,37 @@ class UserForm extends React.Component {
           <div className="extra-right">
             Choose your preferred times:<br/>
             <input name="vol-time"  type="checkbox" value="sat-morn" id="sat-morn-vol-inp"></input>
-            <label htmlFor="sat-morn-vol-inp">Saturday Morning</label><br/>
+            <label htmlFor="sat-morn-vol-inp">Saturday (24th) Morning</label><br/>
             <input name="vol-time"  type="checkbox" value="sat-noon" id="sat-noon-vol-inp"></input>
-            <label htmlFor="sat-noon-vol-inp">Saturday Afternoon</label><br/>
+            <label htmlFor="sat-noon-vol-inp">Saturday (24th) Afternoon</label><br/>
             <input name="vol-time"  type="checkbox" value="sat-night" id="sat-night-vol-inp"></input>
-            <label htmlFor="sat-night-vol-inp">Saturday Night</label><br/>
+            <label htmlFor="sat-night-vol-inp">Saturday (24th) Evening</label><br/>
             <input name="vol-time"  type="checkbox" value="sun" id="sun-vol-inp"></input>
-            <label htmlFor="sun-vol-inp">Sunday Morning</label><br/>
+            <label htmlFor="sun-vol-inp">Sunday (25th) Morning</label><br/>
           </div>
+          <button value="Apply" onClick={this.applyVolunteer}>Apply</button>
+          <button value="Not volunteering" onClick={this.unapplyVolunteer}>Not Volunteering</button>
         </div>
         <div id="mentor-form" style={{display:'none'}}>
           <div className="extra-left">
             Tell us your skills!<br/>
-            <input name="ment-skill"  type="radio" value="set-up" id="set-up-ment-inp"></input>
-            <label htmlFor="set-up-ment-inp">Set-up</label><br/>
-            <input name="ment-skill"  type="radio" value="registration" id="registration-ment-inp"></input>
-            <label htmlFor="registration-ment-inp">Registration</label><br/>
-            <input name="ment-skill"  type="radio" value="event" id="event-ment-inp"></input>
-            <label htmlFor="event-ment-inp">Events</label><br/>
-            <input name="ment-skill"  type="radio" value="workshop" id="workshop-ment-inp"></input>
-            <label htmlFor="workshop-ment-inp">Workshops</label><br/>
-            <input name="ment-skill"  type="radio" value="food" id="food-ment-inp"></input>
-            <label htmlFor="food-ment-inp">Food</label><br/>
+            <textarea name="ment-skill" id="ment-skill-inp"></textarea>
           </div>
           <div className="extra-right">
             Choose your preferred times:<br/>
             <input name="ment-time"  type="checkbox" value="sat-morn" id="sat-morn-ment-inp"></input>
-            <label htmlFor="sat-morn-ment-inp">Saturday Morning</label><br/>
+            <label htmlFor="sat-morn-ment-inp">Saturday (24th) Morning</label><br/>
             <input name="ment-time"  type="checkbox" value="sat-noon" id="sat-noon-ment-inp"></input>
-            <label htmlFor="sat-noon-ment-inp">Saturday Afternoon</label><br/>
+            <label htmlFor="sat-noon-ment-inp">Saturday (24th) Afternoon</label><br/>
             <input name="ment-time"  type="checkbox" value="sat-night" id="sat-night-ment-inp"></input>
-            <label htmlFor="sat-night-ment-inp">Saturday Night</label><br/>
+            <label htmlFor="sat-night-ment-inp">Saturday (24th) Evening</label><br/>
             <input name="ment-time"  type="checkbox" value="sun" id="sun-ment-inp"></input>
-            <label htmlFor="sun-ment-inp">Sunday Morning</label><br/>
+            <label htmlFor="sun-ment-inp">Sunday (25th) Morning</label><br/>
           </div>
+          <button value="Apply" onClick={this.applyMentor}>Apply</button>
+          <button value="Not mentoring" onClick={this.unapplyMentor}>Not Mentoring</button>
         </div>
+        <p>{this.state.extraFlash}</p>
       </div>
     );
   }
