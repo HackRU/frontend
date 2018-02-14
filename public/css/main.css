@@ -136,8 +136,7 @@ h4{
 
 #get-hyped, #sponsors, #schedule{
 	background-color: #dbd9b1;
-	color: #80935e;
-
+    color: #80935E;
 }
 
 #get-hyped h1{
@@ -476,7 +475,7 @@ hr.star-primary-header:after{
 }
 
 #ups{
-	width: 200px;
+	width: 100px;
 	height: auto;
 	margin: 45px;
 }
