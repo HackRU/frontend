@@ -119,14 +119,60 @@ class UserForm extends React.Component {
 
   volunteerAndMentorForms() {
     return (
-      <div>
+      <div id="extra-form-container">
         <button onClick={this.showVolunteer} value="Apply to volunteer">Volunteer!</button>
         <button onClick={this.showMentor} value="Apply to mentor">Mentor!</button>
         <div id="volunteer-form" style={{display:'none'}}>
-          Foo
+          <div className="extra-left">
+            Choose your preferred area:<br/>
+            <input name="vol-cat"  type="radio" value="set-up" id="set-up-vol-inp"></input>
+            <label htmlFor="set-up-vol-inp">Set-up</label><br/>
+            <input name="vol-cat"  type="radio" value="registration" id="registration-vol-inp"></input>
+            <label htmlFor="registration-vol-inp">Registration</label><br/>
+            <input name="vol-cat"  type="radio" value="event" id="event-vol-inp"></input>
+            <label htmlFor="event-vol-inp">Events</label><br/>
+            <input name="vol-cat"  type="radio" value="workshop" id="workshop-vol-inp"></input>
+            <label htmlFor="workshop-vol-inp">Workshops</label><br/>
+            <input name="vol-cat"  type="radio" value="food" id="food-vol-inp"></input>
+            <label htmlFor="food-vol-inp">Food</label><br/>
+          </div>
+          <div className="extra-right">
+            Choose your preferred times:<br/>
+            <input name="vol-time"  type="checkbox" value="sat-morn" id="sat-morn-vol-inp"></input>
+            <label htmlFor="sat-morn-vol-inp">Saturday Morning</label><br/>
+            <input name="vol-time"  type="checkbox" value="sat-noon" id="sat-noon-vol-inp"></input>
+            <label htmlFor="sat-noon-vol-inp">Saturday Afternoon</label><br/>
+            <input name="vol-time"  type="checkbox" value="sat-night" id="sat-night-vol-inp"></input>
+            <label htmlFor="sat-night-vol-inp">Saturday Night</label><br/>
+            <input name="vol-time"  type="checkbox" value="sun" id="sun-vol-inp"></input>
+            <label htmlFor="sun-vol-inp">Sunday Morning</label><br/>
+          </div>
         </div>
         <div id="mentor-form" style={{display:'none'}}>
-          Bar
+          <div className="extra-left">
+            Tell us your skills!<br/>
+            <input name="ment-skill"  type="radio" value="set-up" id="set-up-ment-inp"></input>
+            <label htmlFor="set-up-ment-inp">Set-up</label><br/>
+            <input name="ment-skill"  type="radio" value="registration" id="registration-ment-inp"></input>
+            <label htmlFor="registration-ment-inp">Registration</label><br/>
+            <input name="ment-skill"  type="radio" value="event" id="event-ment-inp"></input>
+            <label htmlFor="event-ment-inp">Events</label><br/>
+            <input name="ment-skill"  type="radio" value="workshop" id="workshop-ment-inp"></input>
+            <label htmlFor="workshop-ment-inp">Workshops</label><br/>
+            <input name="ment-skill"  type="radio" value="food" id="food-ment-inp"></input>
+            <label htmlFor="food-ment-inp">Food</label><br/>
+          </div>
+          <div className="extra-right">
+            Choose your preferred times:<br/>
+            <input name="ment-time"  type="checkbox" value="sat-morn" id="sat-morn-ment-inp"></input>
+            <label htmlFor="sat-morn-ment-inp">Saturday Morning</label><br/>
+            <input name="ment-time"  type="checkbox" value="sat-noon" id="sat-noon-ment-inp"></input>
+            <label htmlFor="sat-noon-ment-inp">Saturday Afternoon</label><br/>
+            <input name="ment-time"  type="checkbox" value="sat-night" id="sat-night-ment-inp"></input>
+            <label htmlFor="sat-night-ment-inp">Saturday Night</label><br/>
+            <input name="ment-time"  type="checkbox" value="sun" id="sun-ment-inp"></input>
+            <label htmlFor="sun-ment-inp">Sunday Morning</label><br/>
+          </div>
         </div>
       </div>
     );

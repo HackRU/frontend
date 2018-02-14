@@ -294,6 +294,33 @@ h4{
     float: right;
 }
 
+#volunteer-form .extra-left{
+    float: left;
+    width: 200px;
+}
+
+#volunteer-form .extra-right{
+    float: right;
+    width: 200px;
+}
+
+#mentor-form .extra-left{
+    float: left;
+    width: 200px;
+}
+
+#mentor-form .extra-right{
+    float: right;
+    width: 200px;
+}
+
+#register-root:after{
+    /*Thanks, https://stackoverflow.com/questions/12540436/height-of-parent-div-is-zero-even-if-it-has-child-with-finite-heights*/
+    content: " ";
+    display: block;
+    clear: both;
+}
+
 .title{
 	margin-top: 20px;
 }
