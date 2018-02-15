@@ -23,10 +23,10 @@ class UserForm extends React.Component {
     this.showVolunteer = this.showVolunteer.bind(this);
     this.showMentor = this.showMentor.bind(this);
     this.volunteerAndMentorForms = this.volunteerAndMentorForms.bind(this);
-    this.applyMentor = this.showMentor.bind(this);
-    this.unapplyMentor = this.showMentor.bind(this);
-    this.applyVolunteer = this.showVolunteer.bind(this);
-    this.unapplyVolunteer = this.showVolunteer.bind(this);
+    this.applyMentor = this.applyMentor.bind(this);
+    this.unapplyMentor = this.unapplyMentor.bind(this);
+    this.applyVolunteer = this.applyVolunteer.bind(this);
+    this.unapplyVolunteer = this.unapplyVolunteer.bind(this);
   }
 
   componentDidMount(){
@@ -140,13 +140,13 @@ class UserForm extends React.Component {
   }
 
   applyMentor(e){
-    let tempUsr = this.state.user;
-    tempUsr.roles.mentor = true;
+    let tempUsr = {
+        "role.mentor": true
+    };
     tempUsr.mentor_data = {
       skills: document.getElementById('ment-skill-inp').value,
       times: this.getTimes('ment')
     }
-    this.setState({user: tempUsr});
 
     fetch('https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/test/update', {
       method: 'POST',
@@ -157,7 +157,7 @@ class UserForm extends React.Component {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        updates :this.state.user,
+        updates : tempUsr,
         user_email: this.state.email,
         auth_email: this.state.email,
         auth: this.state.token
@@ -173,9 +173,9 @@ class UserForm extends React.Component {
   }
 
   unapplyMentor(e){
-    let tempUsr = this.state.user;
-    tempUsr.roles.mentor = false;
-    this.setState({user: tempUsr});
+    let tempUsr = {
+        "role.mentor": false
+    };
 
     fetch('https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/test/update', {
       method: 'POST',
@@ -186,7 +186,7 @@ class UserForm extends React.Component {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        updates :this.state.user,
+        updates : tempUsr,
         user_email: this.state.email,
         auth_email: this.state.email,
         auth: this.state.token
@@ -202,8 +202,9 @@ class UserForm extends React.Component {
   }
 
   applyVolunteer(e){
-    let tempUsr = this.state.user;
-    tempUsr.roles.volunteer = true;
+    let tempUsr = {
+        "role.volunteer": true
+    };
     tempUsr.volunteer_data = {
       skills: document.querySelector('input[name="vol-cat"]:checked').value,
       times: this.getTimes('vol')
@@ -219,7 +220,7 @@ class UserForm extends React.Component {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        updates :this.state.user,
+        updates : tempUsr,
         user_email: this.state.email,
         auth_email: this.state.email,
         auth: this.state.token
@@ -235,9 +236,9 @@ class UserForm extends React.Component {
   }
 
   unapplyVolunteer(e){
-    let tempUsr = this.state.user;
-    tempUsr.roles.volunteer = false;
-    this.setState({user: tempUsr});
+    let tempUsr = {
+        "role.volunteer": false
+    };
 
     fetch('https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/test/update', {
       method: 'POST',
@@ -248,7 +249,7 @@ class UserForm extends React.Component {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        updates :this.state.user,
+        updates :tempUsr,
         user_email: this.state.email,
         auth_email: this.state.email,
         auth: this.state.token
@@ -293,8 +294,8 @@ class UserForm extends React.Component {
             <input name="vol-time"  type="checkbox" value="sun" id="sun-vol-inp"></input>
             <label htmlFor="sun-vol-inp">Sunday (25th) Morning</label><br/>
           </div>
-          <button value="Apply" onClick={this.applyVolunteer}>Apply</button>
-          <button value="Not volunteering" onClick={this.unapplyVolunteer}>Not Volunteering</button>
+          <button onClick={this.applyVolunteer}>Apply</button>
+          <button onClick={this.unapplyVolunteer}>Not Volunteering</button>
         </div>
         <div id="mentor-form" style={{display:'none'}}>
           <div className="extra-left">
@@ -312,8 +313,8 @@ class UserForm extends React.Component {
             <input name="ment-time"  type="checkbox" value="sun" id="sun-ment-inp"></input>
             <label htmlFor="sun-ment-inp">Sunday (25th) Morning</label><br/>
           </div>
-          <button value="Apply" onClick={this.applyMentor}>Apply</button>
-          <button value="Not mentoring" onClick={this.unapplyMentor}>Not Mentoring</button>
+          <button onClick={this.applyMentor}>Apply</button>
+          <button onClick={this.unapplyMentor}>Not Mentoring</button>
         </div>
         <p>{this.state.extraFlash}</p>
       </div>
