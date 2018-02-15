@@ -13,11 +13,13 @@ class UserForm extends React.Component {
     }else{
       this.state.flash = "NOT LOGGED IN!";
     }
+    this.state.mentorBit = {};
     
     //this.componentDidMount = this.componentDidMount.bind(this);
     this.logout = this.logout.bind(this);
     this.save = this.save.bind(this);
     this.onChange = this.onChange.bind(this);
+    this.mentorBitOnChange = this.mentorBitOnChange.bind(this);
     this.LogoutButtons = this.LogoutButtons.bind(this);
 
     this.showVolunteer = this.showVolunteer.bind(this);
@@ -57,6 +59,18 @@ class UserForm extends React.Component {
           }
         });
         this.setState({user: newser});
+        if(og_usr.mentor_data){
+          this.setState({mentorBit: og_usr.mentor_data.skills})
+        }else{
+          this.setState({
+            mentorBit: {
+              ment_ed: "",
+              ment_exp: "",
+              ment_langs: "",
+              ment_areas: "",
+            }
+          });
+        }
     }).catch(data => this.setState({flash: data.toString()}));
   }
 
@@ -69,6 +83,15 @@ class UserForm extends React.Component {
     let updated = this.state.user;
     updated[upd_key] = e.target.value;
     this.setState({user: updated});
+  }
+
+  mentorBitOnChange(e){
+    const upd_key = e.target.id.substring(0, e.target.id.length - 4).replace('-', '_');
+    console.log(upd_key);
+    let newMent = this.state.mentorBit;
+    newMent[upd_key] = e.target.value;
+    console.log(newMent);
+    this.setState({mentorBit: newMent});
   }
 
   save() {
@@ -143,8 +166,9 @@ class UserForm extends React.Component {
     let tempUsr = {
         "role.mentor": true
     };
+    console.log(this.state);
     tempUsr.mentor_data = {
-      skills: document.getElementById('ment-skill-inp').value,
+      skills: this.state.mentorBit,
       times: this.getTimes('ment')
     }
 
@@ -300,8 +324,14 @@ class UserForm extends React.Component {
         </div>
         <div id="mentor-form" style={{display:'none'}}>
           <div className="extra-left">
-            Tell us your skills!<br/>
-            <textarea name="ment-skill" id="ment-skill-inp"></textarea>
+            <label htmlFor="ment-ed-inp">Education Level</label>
+            <textarea onChange={this.mentorBitOnChange} name="ment-ed" id="ment-ed-inp" value={this.state.mentorBit.ment_ed}></textarea>
+            <label htmlFor="ment-exp-inp">Relevant Experience</label>
+            <textarea onChange={this.mentorBitOnChange} name="ment-exp" id="ment-exp-inp" value={this.state.mentorBit.ment_exp}></textarea>
+            <label htmlFor="ment-areas-inp">Areas of Expertise</label>
+            <textarea onChange={this.mentorBitOnChange} name="ment-areas" id="ment-areas-inp" value={this.state.mentorBit.ment_areas}></textarea>
+            <label htmlFor="ment-langs-inp">Programming Languages</label>
+            <textarea onChange={this.mentorBitOnChange} name="ment-langs" id="ment-langs-inp" value={this.state.mentorBit.ment_langs}></textarea>
           </div>
           <div className="extra-right">
             Choose your preferred times:<br/>

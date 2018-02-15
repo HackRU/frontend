@@ -313,6 +313,10 @@ h4{
     width: 200px;
 }
 
+#mentor-form textarea{
+    color: #80935e;
+}
+
 #extra-form-container:after{
     /*Thanks, https://stackoverflow.com/questions/12540436/height-of-parent-div-is-zero-even-if-it-has-child-with-finite-heights*/
     content: " ";
@@ -462,7 +466,6 @@ hr.star-primary-header:after{
 	width: 565px;
 	height: auto;
 	margin: 25px;
-	padding-bottom: 35px;
 	/* to align with rest of gold sponsors */
 }
 
