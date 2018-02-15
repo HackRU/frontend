@@ -285,11 +285,11 @@ h4{
     width: 600px;
 }
 
-#get-involved .signed-in-form:nth-of-type(2n){
+#get-involved .signed-in-form:nth-of-type(2n+1){
     float: left;
 }
 
-#get-involved .signed-in-form:nth-of-type(2n + 1){
+#get-involved .signed-in-form:nth-of-type(2n){
     float: right;
 }
 
@@ -313,9 +313,14 @@ h4{
     width: 200px;
 }
 
-#register-root:after{
+#extra-form-container:after{
     /*Thanks, https://stackoverflow.com/questions/12540436/height-of-parent-div-is-zero-even-if-it-has-child-with-finite-heights*/
     content: " ";
+    display: block;
+    clear: both;
+}
+
+.clearfix{
     display: block;
     clear: both;
 }

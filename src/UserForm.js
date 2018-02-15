@@ -45,7 +45,7 @@ class UserForm extends React.Component {
       })
     }).then(resp => resp.json())
       .then(data => {
-        const redact_keys = ['level_of_study', 'auth', 'password', 'short_answer', 'mlh', 'registration_status', 'role'];
+        const redact_keys = ['level_of_study', 'auth', 'password', 'short_answer', 'mlh', 'registration_status', 'role', 'volunteer_data', 'mentor_data'];
         const og_usr = data.body[0];
         let newser = {};
         Object.keys(og_usr).map(key => {
@@ -294,6 +294,7 @@ class UserForm extends React.Component {
             <input name="vol-time"  type="checkbox" value="sun" id="sun-vol-inp"></input>
             <label htmlFor="sun-vol-inp">Sunday (25th) Morning</label><br/>
           </div>
+          <div className="clearfix"></div>
           <button onClick={this.applyVolunteer}>Apply</button>
           <button onClick={this.unapplyVolunteer}>Not Volunteering</button>
         </div>
@@ -313,6 +314,7 @@ class UserForm extends React.Component {
             <input name="ment-time"  type="checkbox" value="sun" id="sun-ment-inp"></input>
             <label htmlFor="sun-ment-inp">Sunday (25th) Morning</label><br/>
           </div>
+          <div className="clearfix"></div>
           <button onClick={this.applyMentor}>Apply</button>
           <button onClick={this.unapplyMentor}>Not Mentoring</button>
         </div>
