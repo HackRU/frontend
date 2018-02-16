@@ -1,23 +1,18 @@
 {
-  "name": "frontend",
-  "version": "1.0.0",
-  "description": "Repository for every semester's website. Archives are stored as separate branches.",
-  "main": "app.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/HackRU/frontend.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/HackRU/frontend/issues"
-  },
-  "homepage": "https://github.com/HackRU/frontend#readme",
+  "name": "my-app",
+  "version": "0.1.0",
+  "private": true,
   "dependencies": {
-    "ejs": "^2.5.7",
-    "express": "^4.15.4"
+    "md5": "^2.2.1",
+    "react": "^16.2.0",
+    "react-cookie": "^2.1.2",
+    "react-dom": "^16.2.0",
+    "react-scripts": "1.1.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
   }
 }
