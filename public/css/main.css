@@ -293,9 +293,14 @@ h4{
     float: right;
 }
 
+#get-involved .not-logged-in label{
+    text-align: center;
+}
+
 #volunteer-form .extra-left{
     float: left;
     width: 200px;
+    text-align: left;
 }
 
 #volunteer-form .extra-right{
@@ -306,6 +311,7 @@ h4{
 #mentor-form .extra-left{
     float: left;
     width: 200px;
+    text-align: left;
 }
 
 #mentor-form .extra-right{

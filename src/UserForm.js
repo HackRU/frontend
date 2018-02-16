@@ -189,7 +189,7 @@ class UserForm extends React.Component {
     }).then(data => data.json())
       .then(json => {
         if(json.statusCode == 200){
-           this.setState({extraFlash: "Updated profile! Thank you mentoring!."});
+           this.setState({extraFlash: "Thank you for your interest in becoming a mentor. We will be in contact with you shortly!"});
         }else{
            this.setState({extraFlash: json.body});
         }
@@ -252,7 +252,7 @@ class UserForm extends React.Component {
     }).then(data => data.json())
       .then(json => {
         if(json.statusCode == 200){
-           this.setState({extraFlash: "Updated profile! Thank you volunteering!."});
+           this.setState({extraFlash: "Thank you for your interest in becoming a volunteer. We will be in contact with you shortly!"});
         }else{
            this.setState({extraFlash: json.body});
         }
@@ -310,17 +310,16 @@ class UserForm extends React.Component {
           <div className="extra-right">
             Choose your preferred times:<br/>
             <input name="vol-time"  type="checkbox" value="sat-morn" id="sat-morn-vol-inp"></input>
-            <label htmlFor="sat-morn-vol-inp">Saturday (24th) Morning</label><br/>
+            <label htmlFor="sat-morn-vol-inp">Saturday (24th) Morning</label>
             <input name="vol-time"  type="checkbox" value="sat-noon" id="sat-noon-vol-inp"></input>
-            <label htmlFor="sat-noon-vol-inp">Saturday (24th) Afternoon</label><br/>
+            <label htmlFor="sat-noon-vol-inp">Saturday (24th) Afternoon</label>
             <input name="vol-time"  type="checkbox" value="sat-night" id="sat-night-vol-inp"></input>
-            <label htmlFor="sat-night-vol-inp">Saturday (24th) Evening</label><br/>
+            <label htmlFor="sat-night-vol-inp">Saturday (24th) Evening</label>
             <input name="vol-time"  type="checkbox" value="sun" id="sun-vol-inp"></input>
-            <label htmlFor="sun-vol-inp">Sunday (25th) Morning</label><br/>
+            <label htmlFor="sun-vol-inp">Sunday (25th) Morning</label>
           </div>
           <div className="clearfix"></div>
-          <button onClick={this.applyVolunteer}>Apply</button>
-          <button onClick={this.unapplyVolunteer}>Not Volunteering</button>
+          <button onClick={this.applyVolunteer}>Submit Application</button>
         </div>
         <div id="mentor-form" style={{display:'none'}}>
           <div className="extra-left">
@@ -336,17 +335,16 @@ class UserForm extends React.Component {
           <div className="extra-right">
             Choose your preferred times:<br/>
             <input name="ment-time"  type="checkbox" value="sat-morn" id="sat-morn-ment-inp"></input>
-            <label htmlFor="sat-morn-ment-inp">Saturday (24th) Morning</label><br/>
+            <label htmlFor="sat-morn-ment-inp">Saturday (24th) Morning</label>
             <input name="ment-time"  type="checkbox" value="sat-noon" id="sat-noon-ment-inp"></input>
-            <label htmlFor="sat-noon-ment-inp">Saturday (24th) Afternoon</label><br/>
+            <label htmlFor="sat-noon-ment-inp">Saturday (24th) Afternoon</label>
             <input name="ment-time"  type="checkbox" value="sat-night" id="sat-night-ment-inp"></input>
-            <label htmlFor="sat-night-ment-inp">Saturday (24th) Evening</label><br/>
+            <label htmlFor="sat-night-ment-inp">Saturday (24th) Evening</label>
             <input name="ment-time"  type="checkbox" value="sun" id="sun-ment-inp"></input>
-            <label htmlFor="sun-ment-inp">Sunday (25th) Morning</label><br/>
+            <label htmlFor="sun-ment-inp">Sunday (25th) Morning</label>
           </div>
           <div className="clearfix"></div>
-          <button onClick={this.applyMentor}>Apply</button>
-          <button onClick={this.unapplyMentor}>Not Mentoring</button>
+          <button onClick={this.applyMentor}>Submit Application</button>
         </div>
         <p>{this.state.extraFlash}</p>
       </div>

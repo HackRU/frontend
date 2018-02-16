@@ -137,11 +137,12 @@ class App extends React.Component {
     }
     return (
       <div>
-	  <p>Hi! We're glad you're joining us at HackHERS. Please enter your email, create a password, and click "Sign up."<br/>
-If you are already registered for HackHERS and would like to access or modify your information, please enter your account information and click "Login."</p>
+	  <p>Hi! We're glad you're joining us at HackHERS. Please enter your email, create a password, and click "Sign up."<br/><br/>
+If you are already registered for HackHERS and would like to access or modify your information, please enter your account information and click "Login."</p><br/>
+       <p>If you are interested in applying to become a volunteer or mentor, please fill out the original registration form. Then, select your preference and proceed to the additional application form.</p>
 
-		<div className="form-bit"><label>Email:</label> <input value={this.state.email} onChange={this.onEmailChange} type="email" name="email"/><br/></div>
-		<div className="form-bit"><label>Password:</label> <input value={this.state.password} onChange={this.onPasswordChange} type="password" name="pass"/><br/></div>
+		<div className="not-logged-in form-bit"><label>Email:</label> <br/><input value={this.state.email} onChange={this.onEmailChange} type="email" name="email"/><br/></div>
+		<div className="not-logged-in form-bit"><label>Password:</label><br/> <input value={this.state.password} onChange={this.onPasswordChange} type="password" name="pass"/><br/></div>
        <this.LoginButtons />
         <p> {this.state.errorMessage} </p>
       </div>)
