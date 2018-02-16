@@ -232,11 +232,14 @@ class UserForm extends React.Component {
   }
 
   applyVolunteer(e){
+    let skills = [];
+    document.querySelectorAll('input[name="vol-cat"]:checked').forEach(e => skills.push(e.value));
+
     let tempUsr = {
         "role.volunteer": true
     };
     tempUsr.volunteer_data = {
-      skills: document.querySelector('input[name="vol-cat"]:checked').value,
+      skills: skills,
       times: this.getTimes('vol')
     }
 
@@ -299,17 +302,17 @@ class UserForm extends React.Component {
         <button onClick={this.showVolunteer} value="Apply to volunteer">Volunteer!</button>
         <button onClick={this.showMentor} value="Apply to mentor">Mentor!</button>
         <div id="volunteer-form" style={{display:'none'}}>
-          <div className="extra-left">
+          <div id="vol-lhs" className="extra-left">
             Choose your preferred area:<br/>
-            <input name="vol-cat"  type="radio" value="set-up" id="set-up-vol-inp"></input>
+            <input name="vol-cat"  type="checkbox" value="set-up" id="set-up-vol-inp"></input>
             <label htmlFor="set-up-vol-inp">Set-up</label><br/>
-            <input name="vol-cat"  type="radio" value="registration" id="registration-vol-inp"></input>
+            <input name="vol-cat"  type="checkbox" value="registration" id="registration-vol-inp"></input>
             <label htmlFor="registration-vol-inp">Registration</label><br/>
-            <input name="vol-cat"  type="radio" value="event" id="event-vol-inp"></input>
+            <input name="vol-cat"  type="checkbox" value="event" id="event-vol-inp"></input>
             <label htmlFor="event-vol-inp">Events</label><br/>
-            <input name="vol-cat"  type="radio" value="workshop" id="workshop-vol-inp"></input>
+            <input name="vol-cat"  type="checkbox" value="workshop" id="workshop-vol-inp"></input>
             <label htmlFor="workshop-vol-inp">Workshops</label><br/>
-            <input name="vol-cat"  type="radio" value="food" id="food-vol-inp"></input>
+            <input name="vol-cat"  type="checkbox" value="food" id="food-vol-inp"></input>
             <label htmlFor="food-vol-inp">Food</label><br/>
           </div>
           <div className="extra-right">
