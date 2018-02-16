@@ -166,7 +166,6 @@ class UserForm extends React.Component {
     let tempUsr = {
         "role.mentor": true
     };
-    console.log(this.state);
     tempUsr.mentor_data = {
       skills: this.state.mentorBit,
       times: this.getTimes('ment')
@@ -233,7 +232,6 @@ class UserForm extends React.Component {
       skills: document.querySelector('input[name="vol-cat"]:checked').value,
       times: this.getTimes('vol')
     }
-    this.setState({user: tempUsr});
 
     fetch('https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/test/update', {
       method: 'POST',
