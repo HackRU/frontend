@@ -71,6 +71,13 @@ class UserForm extends React.Component {
             }
           });
         }
+        if(og_usr.role.mentor && og_usr.role.volunteer){
+          this.setState({extraFlash: "You've already applied to mentor and volunteer. Thank you!"});
+        }else if(og_usr.role.mentor){
+          this.setState({extraFlash: "You've already applied to mentor. Thank you!"});
+        }else if(og_usr.role.volunteer){
+          this.setState({extraFlash: "You've already applied to volunteer. Thank you!"});
+        }
     }).catch(data => this.setState({flash: data.toString()}));
   }
 
