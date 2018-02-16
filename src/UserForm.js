@@ -310,13 +310,13 @@ class UserForm extends React.Component {
           <div className="extra-right">
             Choose your preferred times:<br/>
             <input name="vol-time"  type="checkbox" value="sat-morn" id="sat-morn-vol-inp"></input>
-            <label htmlFor="sat-morn-vol-inp">Saturday (24th) Morning</label>
+            <label htmlFor="sat-morn-vol-inp">Saturday (24th) Morning</label><br/>
             <input name="vol-time"  type="checkbox" value="sat-noon" id="sat-noon-vol-inp"></input>
-            <label htmlFor="sat-noon-vol-inp">Saturday (24th) Afternoon</label>
+            <label htmlFor="sat-noon-vol-inp">Saturday (24th) Afternoon</label><br/>
             <input name="vol-time"  type="checkbox" value="sat-night" id="sat-night-vol-inp"></input>
-            <label htmlFor="sat-night-vol-inp">Saturday (24th) Evening</label>
+            <label htmlFor="sat-night-vol-inp">Saturday (24th) Evening</label><br/>
             <input name="vol-time"  type="checkbox" value="sun" id="sun-vol-inp"></input>
-            <label htmlFor="sun-vol-inp">Sunday (25th) Morning</label>
+            <label htmlFor="sun-vol-inp">Sunday (25th) Morning</label><br/>
           </div>
           <div className="clearfix"></div>
           <button onClick={this.applyVolunteer}>Submit Application</button>
@@ -335,13 +335,13 @@ class UserForm extends React.Component {
           <div className="extra-right">
             Choose your preferred times:<br/>
             <input name="ment-time"  type="checkbox" value="sat-morn" id="sat-morn-ment-inp"></input>
-            <label htmlFor="sat-morn-ment-inp">Saturday (24th) Morning</label>
+            <label htmlFor="sat-morn-ment-inp">Saturday (24th) Morning</label><br/>
             <input name="ment-time"  type="checkbox" value="sat-noon" id="sat-noon-ment-inp"></input>
-            <label htmlFor="sat-noon-ment-inp">Saturday (24th) Afternoon</label>
+            <label htmlFor="sat-noon-ment-inp">Saturday (24th) Afternoon</label><br/>
             <input name="ment-time"  type="checkbox" value="sat-night" id="sat-night-ment-inp"></input>
-            <label htmlFor="sat-night-ment-inp">Saturday (24th) Evening</label>
+            <label htmlFor="sat-night-ment-inp">Saturday (24th) Evening</label><br/>
             <input name="ment-time"  type="checkbox" value="sun" id="sun-ment-inp"></input>
-            <label htmlFor="sun-ment-inp">Sunday (25th) Morning</label>
+            <label htmlFor="sun-ment-inp">Sunday (25th) Morning</label><br/>
           </div>
           <div className="clearfix"></div>
           <button onClick={this.applyMentor}>Submit Application</button>
