@@ -1,10 +1,54 @@
 body {
+
+  font-family: 'Open Sans', sans-serif;
+ 	width: 100%;
+ 	z-index: -1;
   background-color: #e9ecef;
+  min-height: 100vh;
+	width: 100%;
+	z-index: -1;
+}
+
+#container-top-fluid {
+  background-image: url("../img/background-gradient.jpg");
+  background-position: center bottom;
+  background-size: cover;
+  background-attachment: fixed;
+  min-height: 100vh;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.jumbotron {
+
+}
+
+h1,h2,h3,h4,h5,h6,p {
+  font-family: 'Open Sans', sans-serif;
+}
+
+h1 {
+  color: #50bccf;
+}
+
+.btn-primary {
+  background-color: #50bccf;
+  border-color: #50bccf;
 }
 
 .mycard {
   background-color: #fbfbfb;
-  padding: 15px;
+  padding: 20px;
+  font-family: 'Open Sans', sans-serif;
+
+}
+.mycard-dark {
+background-color: #e9ecef;
+padding-top: 2rem;
+padding-right: 2rem;
+padding-bottom: 2rem;
+padding-left: 2rem;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .box-shadow { box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05); }
