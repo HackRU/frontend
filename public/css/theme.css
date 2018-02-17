@@ -76,11 +76,20 @@
   #sideNav .navbar-collapse .navbar-nav .nav-item .nav-link {
     display: block;
   }
-  .container {
+  .container-top {
     padding-left: 18rem;
+    box-sizing: border-box;
+    padding-right: 15px;
+    margin-right: auto;
+    margin-left: auto;
   }
-  .container-fluid {
+  .container-top-fluid {
     padding-left: 18rem;
+    box-sizing: border-box;
+    padding-right: 15px;
+
+    margin-right: auto;
+    margin-left: auto;
   }
 }
 

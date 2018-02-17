@@ -1,3 +1,10 @@
 body {
-  background-color: #f8f9fa;
+  background-color: #e9ecef;
 }
+
+.mycard {
+  background-color: #fbfbfb;
+  padding: 15px;
+}
+
+.box-shadow { box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05); }
