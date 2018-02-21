@@ -102,6 +102,8 @@ class UserForm extends React.Component {
   }
 
   save() {
+    let upd = Object.assign({}, this.state.user);
+    upd.registration_status = 1;
     fetch('https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/test/update', {
       method: 'POST',
       mode: 'cors',
@@ -111,7 +113,7 @@ class UserForm extends React.Component {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        updates :this.state.user,
+        updates : upd,
         user_email: this.state.email,
         auth_email: this.state.email,
         auth: this.state.token
@@ -135,7 +137,7 @@ class UserForm extends React.Component {
 	    </button>
 
       <button onClick={this.save} id="signupButton" >
-          Save
+          Confirm Attendence
 	    </button>
       </div>
     )
