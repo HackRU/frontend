@@ -78,6 +78,25 @@ class UserForm extends React.Component {
         }else if(og_usr.role.volunteer){
           this.setState({extraFlash: "You've already applied to volunteer. Thank you!"});
         }
+
+        if(og_usr.registration_status === 1){
+             fetch('https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/test/qr', {
+                 method: 'POST',
+                 mode: 'cors',
+                 credentials: 'omit',
+                 headers: {
+                     'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                 },
+                 body: JSON.stringify({
+                    email: this.state.email,
+                    color: [128, 147, 94],
+                    background: [219, 217, 177]
+                 })
+             }).then(data => data.json())
+               .then(json => json.statusCode === 200 && (this.setState({qr: json.body})))
+               .catch(e => alert(e));
+        }
     }).catch(data => this.setState({flash: data.toString()}));
   }
 
@@ -122,6 +141,25 @@ class UserForm extends React.Component {
       .then(json => {
         if(json.statusCode == 200){
            this.setState({flash: "Updated profile! Thank you for registering."});
+
+           if(upd.registration_status === 1){
+             fetch('https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/test/qr', {
+                 method: 'POST',
+                 mode: 'cors',
+                 credentials: 'omit',
+                 headers: {
+                     'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                 },
+                 body: JSON.stringify({
+                    email: this.state.email,
+                    color: [128, 147, 94],
+                    background: [219, 217, 177]
+                 })
+             }).then(data => data.json())
+               .then(json => json.statusCode === 200 && (this.setState({qr: json.body})))
+               .catch(e => alert(e));
+           }
         }else{
            this.setState({flash: json.body});
         }
@@ -365,6 +403,7 @@ class UserForm extends React.Component {
     return (
     <div id = "userform" className="react-form">
 
+    {this.state.qr && <img src={this.state.qr}></img>}
 	       <p>Please update your data.</p>
 
       <span>
