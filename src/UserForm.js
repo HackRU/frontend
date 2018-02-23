@@ -175,7 +175,7 @@ class UserForm extends React.Component {
 	    </button>
 
       <button onClick={this.save} id="signupButton" >
-          Confirm Attendence
+          Confirm Attendance
 	    </button>
       </div>
     )
