@@ -79,7 +79,7 @@ class UserForm extends React.Component {
           this.setState({extraFlash: "You've already applied to volunteer. Thank you!"});
         }
 
-        if(og_usr.registration_status === 1){
+        if(og_usr.registration_status === 1 || og_usr.registration_status === 5){
              fetch('https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/test/qr', {
                  method: 'POST',
                  mode: 'cors',
