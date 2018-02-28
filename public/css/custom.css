@@ -10,7 +10,8 @@ body {
 }
 
 #container-top-fluid {
-  background-image: url("../img/background-gradient.jpg");
+  /*background-image: url("../img/background-gradient.jpg");*/
+  background: linear-gradient(to left, rgba(0, 172, 230,1), rgba(102, 217, 255,1), rgba(204, 255, 255,1));
   background-position: center bottom;
   background-size: cover;
   background-attachment: fixed;
