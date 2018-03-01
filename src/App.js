@@ -116,33 +116,43 @@ class App extends React.Component {
 
   LoginButtons() {
     return (
-      <div>
-      <button onClick={this.login} id="loginButton">
+      <div className="customcentertext">
+      <button className="btn btn-primary btn-lg m-2" onClick={this.login} id="loginButton">
           Login
       </button>
 
-      <button onClick={this.signUp} id="signupButton" >
+      <button className="btn btn-success btn-lg" onClick={this.signUp} id="signupButton" >
           Sign Up
-      </button>  
+      </button>
       </div>
     )
-  }	
+  }
 
   currentForm(props){
     const isLoggedIn = props.isLoggedIn;
-    if (isLoggedIn) { 
+    if (isLoggedIn) {
 	    let userForm = document.getElementById('userform');
 	    return userForm;
 
     }
     return (
       <div>
-	  <p>Hi! We're glad you're joining us at HackHERS. Please enter your email, create a password, and click "Sign up."<br/><br/>
-If you are already registered for HackHERS and would like to access or modify your information, please enter your account information and click "Login."</p><br/>
+	  <p>Hi! We're glad you're joining us at HackRU. Please enter your email, create a password, and click "Sign up."<br/><br/>
+If you are already registered for HackRU and would like to access or modify your information, please enter your account information and click "Login."</p><br/>
        <p>If you are interested in applying to become a volunteer or mentor, please fill out the original registration form. Then, select your preference and proceed to the additional application form.</p>
 
-		<div className="not-logged-in form-bit"><label>Email:</label> <br/><input value={this.state.email} onChange={this.onEmailChange} type="email" name="email"/><br/></div>
-		<div className="not-logged-in form-bit"><label>Password:</label><br/> <input value={this.state.password} onChange={this.onPasswordChange} type="password" name="pass"/><br/></div>
+		<div className="form-group row mb-4">
+    <label className="col-sm-2 col-form-label">Email:</label>
+    <div class="col-sm-10">
+    <input placeholder="student_email@rutgers.edu" className="form-control" value={this.state.email} onChange={this.onEmailChange} type="email" name="email"/>
+    </div>
+    </div>
+		<div className="form-group row mb-4 ">
+    <label className="col-sm-2 col-form-label">Password:</label>
+    <div class="col-sm-10">
+    <input placeholder="Your Password" className="form-control" value={this.state.password} onChange={this.onPasswordChange} type="password" name="pass"/>
+    </div>
+    </div>
        <this.LoginButtons />
         <p> {this.state.errorMessage} </p>
       </div>)
@@ -150,7 +160,7 @@ If you are already registered for HackHERS and would like to access or modify yo
   }
 
   render() {
-  
+
     const isLoggedIn = this.state.isLoggedIn;
 
     return (
