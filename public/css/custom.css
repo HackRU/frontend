@@ -56,3 +56,8 @@ padding-left: 2rem;
 .full-bgcolor {
   background-color: #000;
 }
+
+.customcentertext {
+  text-align: center;
+  padding: 5px;
+}
