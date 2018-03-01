@@ -9,12 +9,12 @@ body {
 	z-index: -1;
 }
 
-#container-top-fluid {
+body {
   background-image: url("../img/background-gradient.jpg");
   background-position: center bottom;
   background-size: cover;
   background-attachment: fixed;
-  min-height: 100vh;
+  /* min-height: 100vh; */
   padding-top: 20px;
   padding-bottom: 20px;
 }
@@ -28,12 +28,12 @@ h1,h2,h3,h4,h5,h6,p {
 }
 
 h1 {
-  color: #50bccf;
+  color: #1F4AB5;
 }
 
 .btn-primary {
-  background-color: #50bccf;
-  border-color: #50bccf;
+  background-color: #1F4AB5;
+  border-color: #23A9E1;
 }
 
 .mycard {
@@ -52,3 +52,7 @@ padding-left: 2rem;
 }
 
 .box-shadow { box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05); }
+
+.full-bgcolor {
+  background-color: #000;
+}
