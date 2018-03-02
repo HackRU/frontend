@@ -7,5 +7,5 @@ import './App.css';
 import registerServiceWorker from './registerServiceWorker';
 
 ReactDOM.render(<App />, document.getElementById('register-root'));
-ReactDOM.render(<Col messageText="thisistext" />, document.getElementById('second-root'));
+// ReactDOM.render(<Col messageText="thisistext" />, document.getElementById('second-root'));
 registerServiceWorker();
