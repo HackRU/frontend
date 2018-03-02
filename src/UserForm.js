@@ -14,7 +14,7 @@ class UserForm extends React.Component {
       this.state.flash = "NOT LOGGED IN!";
     }
     this.state.mentorBit = {};
-    
+
     //this.componentDidMount = this.componentDidMount.bind(this);
     this.logout = this.logout.bind(this);
     this.save = this.save.bind(this);
@@ -129,13 +129,13 @@ class UserForm extends React.Component {
 
   LogoutButtons(){
     return (
-      <div>
-	    <button onClick={this.logout} id="loginButton">
+      <div orm-group row mb-4>
+	    <button  className="btn btn-primary mr-2" onClick={this.logout} id="loginButton">
           Logout
 	    </button>
 
-      <button onClick={this.save} id="signupButton" >
-          Save
+      <button  className="btn btn-primary mr-2" onClick={this.save} id="signupButton" >
+          Save changes
 	    </button>
       </div>
     )
@@ -296,8 +296,8 @@ class UserForm extends React.Component {
   volunteerAndMentorForms() {
     return (
       <div id="extra-form-container">
-        <button onClick={this.showVolunteer} value="Apply to volunteer">Volunteer!</button>
-        <button onClick={this.showMentor} value="Apply to mentor">Mentor!</button>
+        <button className="btn btn-success mr-2" onClick={this.showVolunteer} value="Apply to volunteer">Volunteer Sign Up</button>
+        <button className="btn btn-primary" onClick={this.showMentor} value="Apply to mentor">Mentor Sign Up</button>
         <div id="volunteer-form" style={{display:'none'}}>
           <div className="extra-left">
             Choose your preferred area:<br/>
@@ -324,7 +324,7 @@ class UserForm extends React.Component {
             <label htmlFor="sun-vol-inp">Sunday (25th) Morning</label><br/>
           </div>
           <div className="clearfix"></div>
-          <button onClick={this.applyVolunteer}>Submit Application</button>
+          <button className="btn btn-primary" onClick={this.applyVolunteer}>Submit Application</button>
         </div>
         <div id="mentor-form" style={{display:'none'}}>
           <div className="extra-left">
@@ -349,7 +349,7 @@ class UserForm extends React.Component {
             <label htmlFor="sun-ment-inp">Sunday (25th) Morning</label><br/>
           </div>
           <div className="clearfix"></div>
-          <button onClick={this.applyMentor}>Submit Application</button>
+          <button className="btn btn-primary" onClick={this.applyMentor}>Submit Application</button>
         </div>
         <p>{this.state.extraFlash}</p>
       </div>
@@ -363,7 +363,7 @@ class UserForm extends React.Component {
 	       <p>Please update your data.</p>
 
       <span>
-        { this.state.user && 
+        { this.state.user &&
             Object.keys(this.state.user)
               .map(key =>
                  <div className="form-bit signed-in-form">

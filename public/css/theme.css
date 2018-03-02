@@ -13,6 +13,11 @@
   font-size: 1.35rem;
 }
 
+.size150 {
+  max-width: 150px;
+  max-height: 150px;
+}
+
 .list-social-icons a {
   color: #495057;
 }
