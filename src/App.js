@@ -117,13 +117,18 @@ class App extends React.Component {
   LoginButtons() {
     return (
       <div className="customcentertext">
-      <button className="btn btn-primary btn-lg m-2" onClick={this.login} id="loginButton">
+      <button className="btn btn-primary btn-lg " onClick={this.login} id="loginButton">
           Login
+      </button>
+
+      <button className="btn btn-warning btn-lg m-2" onClick={this.mlh} id="mlhButton" >
+          Login with MLH
       </button>
 
       <button className="btn btn-success btn-lg" onClick={this.signUp} id="signupButton" >
           Sign Up
       </button>
+
       </div>
     )
   }
@@ -144,7 +149,7 @@ If you are already registered for HackRU and would like to access or modify your
 		<div className="form-group row mb-4">
     <label className="col-sm-2 col-form-label">Email:</label>
     <div class="col-sm-10">
-    <input placeholder="student_email@rutgers.edu" className="form-control" value={this.state.email} onChange={this.onEmailChange} type="email" name="email"/>
+    <input placeholder="email@example.com" className="form-control" value={this.state.email} onChange={this.onEmailChange} type="email" name="email"/>
     </div>
     </div>
 		<div className="form-group row mb-4 ">
