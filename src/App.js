@@ -117,13 +117,18 @@ class App extends React.Component {
   LoginButtons() {
     return (
       <div className="customcentertext">
-      <button className="btn btn-primary btn-lg m-2" onClick={this.login} id="loginButton">
+      <button className="btn btn-primary btn-lg " onClick={this.login} id="loginButton">
           Login
+      </button>
+
+      <button className="btn btn-warning btn-lg m-2" onClick={this.mlh} id="mlhButton" >
+          Login with MLH
       </button>
 
       <button className="btn btn-success btn-lg" onClick={this.signUp} id="signupButton" >
           Sign Up
       </button>
+
       </div>
     )
   }
