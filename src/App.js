@@ -117,7 +117,7 @@ class App extends React.Component {
   LoginButtons() {
     return (
       <div className="customcentertext">
-      <button className="btn btn-primary btn-lg " onClick={this.login} id="loginButton">
+      <button  onClick={this.login} id="loginButton" className="btn btn-primary btn-lg">
           Login
       </button>
 
@@ -146,13 +146,13 @@ class App extends React.Component {
 If you are already registered for HackRU and would like to access or modify your information, please enter your account information and click "Login."</p><br/>
        <p>If you are interested in applying to become a volunteer or mentor, please fill out the original registration form. Then, select your preference and proceed to the additional application form.</p>
 
-		<div className="form-group row mb-4">
+		<div className="not-logged-in form-bit form-group row mb-4">
     <label className="col-sm-2 col-form-label">Email:</label>
     <div class="col-sm-10">
     <input placeholder="email@example.com" className="form-control" value={this.state.email} onChange={this.onEmailChange} type="email" name="email"/>
     </div>
     </div>
-		<div className="form-group row mb-4 ">
+		<div className="not-logged-in form-bit form-group row mb-4">
     <label className="col-sm-2 col-form-label">Password:</label>
     <div class="col-sm-10">
     <input placeholder="Your Password" className="form-control" value={this.state.password} onChange={this.onPasswordChange} type="password" name="pass"/>
