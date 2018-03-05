@@ -126,8 +126,10 @@ section.resume-section .resume-item .resume-date {
 }
 
 .bg-primary {
-  background-color: #1F4AB5 !important;
+    background-color: #1F4AB5 !important;
+    background-color: rgba(31,74,181, 0.95) !important;
   /* background: linear-gradient(to right, rgba(126, 235, 252,1), rgba(28, 140, 162,1)) !important; */
+
 }
 
 .text-primary {
