@@ -1,5 +1,4 @@
 body {
-
   font-family: 'Open Sans', sans-serif;
  	width: 100%;
  	z-index: -1;
@@ -25,6 +24,8 @@ body {
   padding-bottom: 20px;
 }
 
+
+
 .jumbotron {
 
 }
@@ -44,19 +45,25 @@ h1 {
 
 .mycard {
   background-color: #fbfbfb;
+  background-color: rgba(251,251,251, 0.95);
   padding: 20px;
 
   font-family: 'Open Sans', sans-serif;
-
 }
+
 .mycard-dark {
+
 background-color: #e9ecef;
+<<<<<<< HEAD
 
 padding-top: 2rem;
+=======
+/* padding-top: 2rem;
+>>>>>>> b21b201f09cb43580ae8c9cbc969f913fe0e2db5
 padding-right: 2rem;
 padding-bottom: 2rem;
-padding-left: 2rem;
-  font-family: 'Open Sans', sans-serif;
+padding-left: 2rem; */
+font-family: 'Open Sans', sans-serif;
 }
 
 .box-shadow {
