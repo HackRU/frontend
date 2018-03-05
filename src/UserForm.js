@@ -130,7 +130,7 @@ class UserForm extends React.Component {
   LogoutButtons(){
     return (
       <div orm-group row mb-4>
-	    <button  className="btn btn-primary mr-2" onClick={this.logout} id="loginButton">
+	    <button className="btn btn-primary mr-2" onClick={this.logout} id="loginButton">
           Logout
 	    </button>
 
