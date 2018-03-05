@@ -4,13 +4,19 @@ body {
  	width: 100%;
  	z-index: -1;
   background-color: #e9ecef;
+  opacity: 0.8;
   min-height: 100vh;
 	width: 100%;
 	z-index: -1;
 }
 
+.background-image{
+
+  filter: blur(4em);
+}
+
 body {
-  background-image: url("../img/HackRU-S18-Website-BG.jpg");
+  background-image: url("../img/blur.jpg");
   background-position: center bottom;
   background-size: cover;
   background-attachment: fixed;
@@ -39,11 +45,13 @@ h1 {
 .mycard {
   background-color: #fbfbfb;
   padding: 20px;
+
   font-family: 'Open Sans', sans-serif;
 
 }
 .mycard-dark {
 background-color: #e9ecef;
+
 padding-top: 2rem;
 padding-right: 2rem;
 padding-bottom: 2rem;
@@ -51,7 +59,10 @@ padding-left: 2rem;
   font-family: 'Open Sans', sans-serif;
 }
 
-.box-shadow { box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05); }
+.box-shadow {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+
+}
 
 .full-bgcolor {
   background-color: #000;
