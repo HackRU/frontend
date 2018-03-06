@@ -148,13 +148,13 @@ If you are already registered for HackRU and would like to access or modify your
 
 		<div className="not-logged-in form-bit form-group row mb-4">
     <label className="col-sm-2 col-form-label">Email:</label>
-    <div class="col-sm-10">
+    <div className="col-sm-10">
     <input placeholder="email@example.com" className="form-control" value={this.state.email} onChange={this.onEmailChange} type="email" name="email"/>
     </div>
     </div>
 		<div className="not-logged-in form-bit form-group row mb-4">
     <label className="col-sm-2 col-form-label">Password:</label>
-    <div class="col-sm-10">
+    <div className="col-sm-10">
     <input placeholder="Your Password" className="form-control" value={this.state.password} onChange={this.onPasswordChange} type="password" name="pass"/>
     </div>
     </div>
