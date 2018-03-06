@@ -44,7 +44,7 @@ class App extends React.Component {
     	if (this.state.email == "" || this.state.password == ""){
     		this.setState({errorMessage: "Please fill in all the fields"});
     	} else {
-    		fetch('https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/test/authorize', {
+    		fetch('https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/mlhtest/authorize', {
     		  method: 'POST',
     		  mode: 'cors',
           credentials: 'omit',
@@ -70,7 +70,7 @@ class App extends React.Component {
   	if (this.state.email == "" || this.state.password == ""){
     		this.setState({errorMessage: "Please fill in all the fields"});
     } else {
-    		fetch('https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/test/create', {
+    		fetch('https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/mlhtest/create', {
     		  method: 'POST',
     		  mode: 'cors',
               credentials: 'omit',
@@ -102,7 +102,7 @@ class App extends React.Component {
   }
 
   mlh() {
-    let href = "https://my.mlh.io/oauth/authorize?client_id=bab4ace712bb186d8866ff4776baf96b2c4e9c64d729fb7f88e87357e4badcba&redirect_uri=https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/test/mlhcallback&response_type=code&scope=email+education+birthday";
+    let href = "https://my.mlh.io/oauth/authorize?client_id=bab4ace712bb186d8866ff4776baf96b2c4e9c64d729fb7f88e87357e4badcba&redirect_uri=https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/mlhtest/mlhcallback&response_type=code&scope=email+education+birthday";
     window.open(href, "_blank");
   }
 
