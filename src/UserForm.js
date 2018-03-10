@@ -1,18 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
+import {instanceOf} from 'prop-types';
+import {CookiesProvider, withCookies, Cookies} from 'react-cookie';
 
 class UserForm extends React.Component {
+  static propTypes = {
+    cookies: instanceOf(Cookies).isRequired
+  };
+
   constructor(props){
     super(props);
     this.state = {};
-    if(this.props.email && this.props.token){
-      this.state.email = this.props.email;
-      this.state.token = this.props.token;
-      this.state.user = {};
-    }else{
-      this.state.flash = "NOT LOGGED IN!";
-    }
     this.state.mentorBit = {};
 
     //this.componentDidMount = this.componentDidMount.bind(this);
@@ -29,6 +28,22 @@ class UserForm extends React.Component {
     this.unapplyMentor = this.unapplyMentor.bind(this);
     this.applyVolunteer = this.applyVolunteer.bind(this);
     this.unapplyVolunteer = this.unapplyVolunteer.bind(this);
+    this.componentWillMount = this.componentWillMount.bind(this);
+  }
+
+  componentWillMount (){
+    const { cookies } = this.props;//I don't get it.
+    const auth = cookies.get('authdata');
+    if(!auth || Date.parse(auth.auth.valid_until) < Date.now()){
+      //we assume any authdata cookie is our authdata and check the validity.
+      ReactDOM.render(
+          <CookiesProvider>
+            <App/>
+          </CookiesProvider>,
+          document.getElementById('register-root')
+      );
+      return;
+    }
   }
 
   componentDidMount(){
@@ -82,7 +97,9 @@ class UserForm extends React.Component {
   }
 
   logout() {
-    ReactDOM.render(<App /> , document.getElementById('register-root'));
+    const {cookies} = this.props;
+    cookies.remove('authdata');
+    ReactDOM.render(<CookiesProvider><App /></CookiesProvider> , document.getElementById('register-root'));
   }
 
   onChange(e){
@@ -375,7 +392,6 @@ class UserForm extends React.Component {
     </span>
     <this.LogoutButtons />
       <p> {this.state.flash} </p>
-    <this.volunteerAndMentorForms />
     </div>
     );
 
@@ -384,4 +400,4 @@ class UserForm extends React.Component {
 
 }
 
-export default UserForm;
+export default withCookies(UserForm);
