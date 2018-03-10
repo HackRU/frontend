@@ -66,8 +66,6 @@ class App extends React.Component {
   }
 
   login() {
-    alert(this.state.email + "  has " + this.state.password);
-
     	if (this.state.email == "" || this.state.password == ""){
     		this.setState({errorMessage: "Please fill in all the fields"});
     	} else {
