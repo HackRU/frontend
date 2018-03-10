@@ -31,7 +31,7 @@ class App extends React.Component {
   componentWillMount (){
     const { cookies } = this.props;//I don't get it.
     const auth = cookies.get('authdata');
-    if(auth && Date.parse(auth.valid_until) < Date.now()){
+    if(auth && Date.parse(auth.auth.valid_until) > Date.now()){
       //we assume any authdata cookie is our authdata and check the validity.
       ReactDOM.render(
           <CookiesProvider>
@@ -130,7 +130,7 @@ class App extends React.Component {
 
   mlh() {
     let href = "https://my.mlh.io/oauth/authorize?client_id=bab4ace712bb186d8866ff4776baf96b2c4e9c64d729fb7f88e87357e4badcba&redirect_uri=https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/mlhtest/mlhcallback&response_type=code&scope=email+education+birthday";
-    window.open(href, "_blank");
+    window.open(href, "_self");
   }
 
   onEmailChange(e){
