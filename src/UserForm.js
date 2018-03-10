@@ -398,7 +398,7 @@ class UserForm extends React.Component {
         }
     </span>
 				<div className="form-group row my-5">
-          <h4>{this.state.flash}</h4>
+          <h4 className="font-modal">{this.state.flash}</h4>
         </div>
     <this.LogoutButtons />
     </form>

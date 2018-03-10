@@ -37,7 +37,7 @@ class App extends React.Component {
           <CookiesProvider>
             <UserForm/>
           </CookiesProvider>,
-          document.getElementById('register-root')
+          document.getElementById('register-more')
       );
       return;
     }
