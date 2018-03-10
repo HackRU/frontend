@@ -384,7 +384,7 @@ class UserForm extends React.Component {
       <div className="react-form font-modal">
 
 			   <form className="form-group">
-				    <div className="form-group row my-5">
+				    <div className="form-group row mx-1 my-2">
 	             <h4 className="font-modal">Please update your data.</h4>
             </div>
 
@@ -392,14 +392,14 @@ class UserForm extends React.Component {
         { this.state.user &&
             Object.keys(this.state.user)
               .map(key =>
-                 <div className="form-group row my-5">
-                        <label htmlFor={"input-" + key} className="col-lg-3 "><h4 className="font-weight-bold font-modal">{key.replace(/_/g, ' ').toUpperCase()}</h4></label>
-                        <input type="input" id={"input-" + key} value={this.state.user[key]} onChange={this.onChange} className="form-control"/><br/>
+                 <div className="form-group row my-2">
+                        <label htmlFor={"input-" + key} className="col col-lg-4 "><h4 className="font-weight-bold font-modal">{key.replace(/_/g, ' ').toUpperCase()}</h4></label>
+                        <input type="input" id={"input-" + key} value={this.state.user[key]} onChange={this.onChange} className="form-control mx-3"/><br/>
                  </div>
             )
         }
         </span>
-				<div className="form-group row my-5">
+				<div className="form-group row my-2 mx-1">
           <h4 className="font-modal">{this.state.flash}</h4>
         </div>
           </form>
