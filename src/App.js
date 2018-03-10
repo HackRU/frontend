@@ -159,7 +159,7 @@ class App extends React.Component {
 					</div>
 				</div>
 
-				<div className="form-group row my-5">
+				<div className="form-group row my-5 alert alert-danger">
           <h4>{this.state.errorMessage}</h4>
         </div>
 
