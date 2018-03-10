@@ -2,25 +2,45 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import UserForm from './UserForm';
 import md5 from 'md5';
+import {instanceOf} from 'prop-types';
+import {CookiesProvider, withCookies, Cookies} from 'react-cookie';
 
 class App extends React.Component {
+  static propTypes = {
+    cookies: instanceOf(Cookies).isRequired
+  };
+
   constructor (props){
     super(props);
     this.state = {
       email:'',
       password: '',
       errorMessage: '',
-      isLoggedIn: false
     };
+
 
     this.login = this.login.bind(this);
     this.signUp = this.signUp.bind(this);
     this.mlh = this.mlh.bind(this);
     this.onEmailChange = this.onEmailChange.bind(this);
     this.onPasswordChange = this.onPasswordChange.bind(this);
-    this.LoginButtons = this.LoginButtons.bind(this);
-    this.currentForm = this.currentForm.bind(this);
     this.loginPostFetch = this.loginPostFetch.bind(this);
+    this.componentWillMount = this.componentWillMount.bind(this);
+  }
+
+  componentWillMount (){
+    const { cookies } = this.props;//I don't get it.
+    const auth = cookies.get('authdata');
+    if(auth && Date.parse(auth.valid_until) < Date.now()){
+      //we assume any authdata cookie is our authdata and check the validity.
+      ReactDOM.render(
+          <CookiesProvider>
+            <UserForm/>
+          </CookiesProvider>,
+          document.getElementById('register-root')
+      );
+      return;
+    }
   }
 
   loginPostFetch(data){
@@ -33,13 +53,20 @@ class App extends React.Component {
       this.setState({errorMessage: errorMsgs[data.body]});
       return;
     }
+
     this.setState({isLoggedIn: true});
     const bod = JSON.parse(data.body);
-    const token = bod.auth.token;
-    ReactDOM.render(<UserForm token={token} email={this.state.email}/> , document.getElementById('register-root'));
+    this.props.cookies.set('authdata', bod);
+    ReactDOM.render(
+        <CookiesProvider>
+          <UserForm/>
+        </CookiesProvider>,
+        document.getElementById('register-root')
+    );
   }
 
   login() {
+    alert(this.state.email + "  has " + this.state.password);
 
     	if (this.state.email == "" || this.state.password == ""){
     		this.setState({errorMessage: "Please fill in all the fields"});
@@ -102,7 +129,7 @@ class App extends React.Component {
   }
 
   mlh() {
-    let href = "https://my.mlh.io/oauth/authorize?client_id=bab4ace712bb186d8866ff4776baf96b2c4e9c64d729fb7f88e87357e4badcba&redirect_uri=https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/test/mlhcallback&response_type=code&scope=email+education+birthday";
+    let href = "https://my.mlh.io/oauth/authorize?client_id=bab4ace712bb186d8866ff4776baf96b2c4e9c64d729fb7f88e87357e4badcba&redirect_uri=https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/mlhtest/mlhcallback&response_type=code&scope=email+education+birthday";
     window.open(href, "_blank");
   }
 
@@ -114,63 +141,40 @@ class App extends React.Component {
     this.setState({password: e.target.value})
   }
 
-  LoginButtons() {
-    return (
-      <div className="customcentertext">
-      <button  onClick={this.login} id="loginButton" className="btn btn-primary btn-lg">
-          Login
-      </button>
-
-      <button className="btn btn-warning btn-lg m-2" onClick={this.mlh} id="mlhButton" >
-          Login with MLH
-      </button>
-
-      <button className="btn btn-success btn-lg" onClick={this.signUp} id="signupButton" >
-          Sign Up
-      </button>
-
-      </div>
-    )
-  }
-
-  currentForm(props){
-    const isLoggedIn = props.isLoggedIn;
-    if (isLoggedIn) {
-	    let userForm = document.getElementById('userform');
-	    return userForm;
-
-    }
-    return (
-      <div>
-	  <p>Hi! We're glad you're joining us at HackRU. Please enter your email, create a password, and click "Sign up."<br/><br/>
-If you are already registered for HackRU and would like to access or modify your information, please enter your account information and click "Login."</p><br/>
-       <p>If you are interested in applying to become a volunteer or mentor, please fill out the original registration form. Then, select your preference and proceed to the additional application form.</p>
-
-		<div className="not-logged-in form-bit form-group row mb-4">
-    <label className="col-sm-2 col-form-label">Email:</label>
-    <div class="col-sm-10">
-    <input placeholder="email@example.com" className="form-control" value={this.state.email} onChange={this.onEmailChange} type="email" name="email"/>
-    </div>
-    </div>
-		<div className="not-logged-in form-bit form-group row mb-4">
-    <label className="col-sm-2 col-form-label">Password:</label>
-    <div class="col-sm-10">
-    <input placeholder="Your Password" className="form-control" value={this.state.password} onChange={this.onPasswordChange} type="password" name="pass"/>
-    </div>
-    </div>
-       <this.LoginButtons />
-        <p> {this.state.errorMessage} </p>
-      </div>)
-
-  }
-
   render() {
-
-    const isLoggedIn = this.state.isLoggedIn;
 
     return (
       <div className="react-form">
-        <this.currentForm isLoggedIn={isLoggedIn} />
+			<form className="form-group">
+
+				<div className="form-group row my-5">
+					<label htmlFor="email-input" className="col-lg-3 col-form-label"><h4 className="font-weight-bold">EMAIL</h4></label>
+					<div className="col-lg-9">
+						<input type="email" onChange={this.onEmailChange} className="form-control form-control-lg" id="email-input"></input>
+					</div>
+				</div>
+
+				<div className="form-group row my-5">
+					<label htmlFor="pw-input" className="col-lg-3 col-form-label"><h4 className="font-weight-bold">PASSWORD</h4></label>
+					<div className="col-lg-9">
+						<input type="password" onChange={this.onPasswordChange} className="form-control form-control-lg" id="pw-input"></input>
+					</div>
+				</div>
+
+				<div className="form-group row my-5">
+          <h4>{this.state.errorMessage}</h4>
+        </div>
+
+				<div className="form-group row my-5">
+					<div className="col-12 text-center">
+						<br/>
+						<button onClick={this.login} type="button" className="custom-btn btn btn-primary p-3"><h4 className="my-0">To the winds, Captain!</h4></button>
+						<button onClick={this.mlh} type="button" className="custom-btn btn btn-primary p-3"><h4 className="my-0">Board the Ship with MLH</h4></button>
+						<button onClick={this.signup} type="button" className="custom-btn btn btn-primary p-3"><h4 className="my-0">Board the Ship</h4></button>
+					</div>
+				</div>
+
+			</form>
       </div>
     );
 
@@ -178,4 +182,4 @@ If you are already registered for HackRU and would like to access or modify your
 
 }
 
-export default App;
+export default withCookies(App);
