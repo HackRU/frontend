@@ -61,7 +61,7 @@ class App extends React.Component {
         <CookiesProvider>
           <UserForm/>
         </CookiesProvider>,
-        document.getElementById('register-root')
+        document.getElementById('register-more')
     );
   }
 
@@ -166,7 +166,7 @@ class App extends React.Component {
 				<div className="form-group row my-5">
 					<div className="col-12 text-center">
 						<br/>
-						<button onClick={this.login} type="button" className="custom-btn btn btn-primary p-3"><h4 className="my-0">To the winds, Captain!</h4></button>
+						<button onClick={this.login} type="button" className="btn btn-primary custom-btn" data-toggle="modal" data-target="#exampleModalCenter"><h4 className="my-0">Login</h4></button>
 						<button onClick={this.mlh} type="button" className="custom-btn btn btn-primary p-3"><h4 className="my-0">Board the Ship with MLH</h4></button>
 						<button onClick={this.signup} type="button" className="custom-btn btn btn-primary p-3"><h4 className="my-0">Board the Ship</h4></button>
 					</div>

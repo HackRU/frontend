@@ -154,8 +154,8 @@ class UserForm extends React.Component {
 				<div className="form-group row my-5">
 					<div className="col-12 text-center">
 						<br/>
-						<button onClick={this.logout} type="button" className="custom-btn btn btn-primary p-3"><h4 className="my-0">Disembark</h4></button>
-						<button onClick={this.save} type="button" className="custom-btn btn btn-primary p-3"><h4 className="my-0">Drop the Anchor</h4></button>
+						<button onClick={this.logout} type="button" className="btn btn-primary p-3"><h4 className="my-0">Disembark</h4></button>
+						<button onClick={this.save} type="button" className="btn btn btn-primary p-3"><h4 className="my-0">Drop the Anchor</h4></button>
 					</div>
 				</div>
     )
@@ -379,11 +379,11 @@ class UserForm extends React.Component {
   render() {
     //pardon my indentation - David used tabs.
     return (
-    <div className="react-form">
+    <div className="react-form font-modal">
 
 			<form className="form-group">
 				<div className="form-group row my-5">
-	       <h4>Please update your data.</h4>
+	       <h4 className="font-modal">Please update your data.</h4>
         </div>
 
       <span>
@@ -391,8 +391,8 @@ class UserForm extends React.Component {
             Object.keys(this.state.user)
               .map(key =>
                  <div className="form-group row my-5">
-                        <label htmlFor={"input-" + key} className="col-lg-3 col-form-label"><h4 className="font-weight-bold">{key.replace(/_/g, ' ').toUpperCase()}</h4></label>
-                        <input type="input" id={"input-" + key} value={this.state.user[key]} onChange={this.onChange} className="form-control form-control-lg"/><br/>
+                        <label htmlFor={"input-" + key} className="col-lg-3 "><h4 className="font-weight-bold font-modal">{key.replace(/_/g, ' ').toUpperCase()}</h4></label>
+                        <input type="input" id={"input-" + key} value={this.state.user[key]} onChange={this.onChange} className="form-control"/><br/>
                  </div>
             )
         }
