@@ -151,11 +151,11 @@ class UserForm extends React.Component {
 
   LogoutButtons(){
     return (
-				<div className="form-group row my-5">
+				<div className="form-group ">
 					<div className="col-12 text-center">
 						<br/>
-						<button onClick={this.logout} type="button" className="btn btn-primary p-3"><h4 className="my-0">Disembark</h4></button>
-						<button onClick={this.save} type="button" className="btn btn btn-primary p-3"><h4 className="my-0">Drop the Anchor</h4></button>
+						<button onClick={this.logout} type="button" className="btn btn-primary custom-btn mx-2" data-dismiss="modal"><h4 className="my-1">Disembark</h4></button>
+						<button onClick={this.save} type="button" className="btn btn btn-primary custom-btn"><h4 className="my-1">Drop the Anchor</h4></button>
 					</div>
 				</div>
     )
