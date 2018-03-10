@@ -380,13 +380,17 @@ class UserForm extends React.Component {
     //pardon my indentation - David used tabs.
     return (
     <div>
+
+    <div class="modal-header">
+      <h5 class="modal-title font-modal" id="exampleModalLongTitle">Please update your data.</h5 >
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
     <div className="modal-body">
       <div className="react-form font-modal">
 
 			   <form className="form-group">
-				    <div className="form-group row mx-1 my-2">
-	             <h4 className="font-modal">Please update your data.</h4>
-            </div>
 
         <span>
         { this.state.user &&
