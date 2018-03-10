@@ -379,14 +379,16 @@ class UserForm extends React.Component {
   render() {
     //pardon my indentation - David used tabs.
     return (
-    <div className="react-form font-modal">
+    <div>
+    <div className="modal-body">
+      <div className="react-form font-modal">
 
-			<form className="form-group">
-				<div className="form-group row my-5">
-	       <h4 className="font-modal">Please update your data.</h4>
-        </div>
+			   <form className="form-group">
+				    <div className="form-group row my-5">
+	             <h4 className="font-modal">Please update your data.</h4>
+            </div>
 
-      <span>
+        <span>
         { this.state.user &&
             Object.keys(this.state.user)
               .map(key =>
@@ -396,13 +398,20 @@ class UserForm extends React.Component {
                  </div>
             )
         }
-    </span>
+        </span>
 				<div className="form-group row my-5">
           <h4 className="font-modal">{this.state.flash}</h4>
         </div>
-    <this.LogoutButtons />
-    </form>
+          </form>
+      </div>
+
     </div>
+
+    <div className="modal-footer">
+    <this.LogoutButtons />
+    </div>
+  </div>
+
     );
 
   }
