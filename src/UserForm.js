@@ -518,9 +518,9 @@ class UserForm extends React.Component {
     return (
     <div>
 
-    <div class="modal-header">
-      <h5 class="modal-title font-modal" id="exampleModalLongTitle">Please update your data.</h5 >
-      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+    <div className="modal-header">
+      <h5 className="modal-title  font-modal" id="exampleModalLongTitle">Please update your data.</h5 >
+      <button type="button" onClick={this.logout} className="close" data-dismiss="modal" aria-label="Close">
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
