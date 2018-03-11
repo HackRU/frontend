@@ -56,7 +56,7 @@ class UserForm extends React.Component {
   }
 
   componentDidMount(){
-    fetch('https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/test/read', {
+    fetch('https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/mlhtest/read', {
       method: 'POST',
       mode: 'cors',
       credentials: 'omit',
@@ -131,7 +131,7 @@ class UserForm extends React.Component {
   }
 
   save() {
-    fetch('https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/test/update', {
+    fetch('https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/mlhtest/update', {
       method: 'POST',
       mode: 'cors',
       credentials: 'omit',
@@ -205,7 +205,7 @@ class UserForm extends React.Component {
       times: this.getTimes('ment')
     }
 
-    fetch('https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/test/update', {
+    fetch('https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/mlhtest/update', {
       method: 'POST',
       mode: 'cors',
       credentials: 'omit',
@@ -234,7 +234,7 @@ class UserForm extends React.Component {
         "role.mentor": false
     };
 
-    fetch('https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/test/update', {
+    fetch('https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/mlhtest/update', {
       method: 'POST',
       mode: 'cors',
       credentials: 'omit',
@@ -267,7 +267,7 @@ class UserForm extends React.Component {
       times: this.getTimes('vol')
     }
 
-    fetch('https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/test/update', {
+    fetch('https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/mlhtest/update', {
       method: 'POST',
       mode: 'cors',
       credentials: 'omit',
@@ -296,7 +296,7 @@ class UserForm extends React.Component {
         "role.volunteer": false
     };
 
-    fetch('https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/test/update', {
+    fetch('https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/mlhtest/update', {
       method: 'POST',
       mode: 'cors',
       credentials: 'omit',

@@ -85,7 +85,7 @@ class App extends React.Component {
     	if (this.state.email == "" || this.state.password == ""){
     		this.setState({errorMessage: "Please fill in all the fields"});
     	} else {
-    		fetch('https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/test/authorize', {
+    		fetch('https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/mlhtest/authorize', {
     		  method: 'POST',
     		  mode: 'cors',
           credentials: 'omit',
@@ -111,7 +111,7 @@ class App extends React.Component {
   	if (this.state.email == "" || this.state.password == ""){
     		this.setState({errorMessage: "Please fill in all the fields"});
     } else {
-    		fetch('https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/test/create', {
+    		fetch('https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/mlhtest/create', {
     		  method: 'POST',
     		  mode: 'cors',
               credentials: 'omit',
