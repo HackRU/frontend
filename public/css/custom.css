@@ -17,6 +17,8 @@
     src: local("Circular"), url("../fonts/CircularStd-Book.otf") format("opentype");
 }
 
+
+
 /* - - - - - - - - FONTS - - - - - - - - */
 
 h1, h2, h3, h4, h5, h6, p {
@@ -26,6 +28,16 @@ h1, h2, h3, h4, h5, h6, p {
 
 .font-modal {
   color: #000;
+}
+
+a {
+  color: var(--color-one) !important;
+  text-decoration: underline;
+  transition: all 0.5s;
+}
+
+a:hover, a:focus, a:active {
+  color:  #a9e3f9 !important;
 }
 
 #main-header-logo {
@@ -142,4 +154,8 @@ body {
     background-attachment: fixed;
     padding-top: 20px;
     padding-bottom: 20px;
+}
+
+.footer-img {
+  max-width: 105px;
 }
