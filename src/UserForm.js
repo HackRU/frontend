@@ -6,6 +6,7 @@ import {Creatable, AsyncCreatable, Async } from 'react-select';
 import {instanceOf} from 'prop-types';
 import {CookiesProvider, withCookies, Cookies} from 'react-cookie';
 import 'react-select/dist/react-select.css';
+import ModalError from './modalerror'
 
 class UserForm extends React.Component {
   static propTypes = {
@@ -108,6 +109,9 @@ class UserForm extends React.Component {
     const {cookies} = this.props;
     cookies.remove('authdata');
     ReactDOM.render(<CookiesProvider><App /></CookiesProvider> , document.getElementById('register-root'));
+    ReactDOM.render(
+    <ModalError />
+      , document.getElementById('register-more'));
   }
 
   onChange(e){

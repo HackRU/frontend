@@ -4,6 +4,7 @@ import UserForm from './UserForm';
 import md5 from 'md5';
 import {instanceOf} from 'prop-types';
 import {CookiesProvider, withCookies, Cookies} from 'react-cookie';
+import ModalError from './modalerror'
 
 class App extends React.Component {
   static propTypes = {
@@ -51,6 +52,7 @@ class App extends React.Component {
       };
 
       this.setState({errorMessage: errorMsgs[data.body]});
+      ReactDOM.render(<ModalError />, document.getElementById('register-more'));
       return;
     }
 
