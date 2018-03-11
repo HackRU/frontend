@@ -1,8 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
+import Select from 'react-select';
+import {Creatable, AsyncCreatable, Async } from 'react-select';
 import {instanceOf} from 'prop-types';
 import {CookiesProvider, withCookies, Cookies} from 'react-cookie';
+import 'react-select/dist/react-select.css';
 
 class UserForm extends React.Component {
   static propTypes = {
@@ -377,6 +380,140 @@ class UserForm extends React.Component {
   }
 
   render() {
+    const formConfig = {
+      "email": {
+        "select": false,
+        "type": "email"
+      },
+      "github": {
+        "select": false,
+        "type": "text",
+        "searchFn": (i) => fetch(`https://api.github.com/search/users?q=${i}`)
+          .then(r => r.json()).then(j => ({options: j.items})),
+        "create": false
+      },
+      "major": {
+        "select": true,
+        "searchFn": (i) => fetch("majors.json")
+          .then(r => r.json()).then(json => ({
+            options: json.items.map(i => ({
+              'value': i, 'label': i
+            }))
+          })),
+        "create": true
+      },
+      "shirt_size": {
+        "select": true,
+        "options": ['XS', 'S', 'M', 'L', 'XL'].map(v => ({'value': v, 'label': v})),
+        "create": false
+      },
+      "first_name": {
+        "select": false,
+        "type": "text"
+      },
+      "last_name": {
+        "select": false,
+        "type": "text"
+      },
+      "dietary_restrictions": {
+        "select": false,
+        "type": "text"
+      },
+      "special_needs": {
+        "select": false,
+        "type": "text"
+      },
+      "date_of_birth": {
+        "select": false,
+        "type": "date"
+      },
+      "school": {
+        "select": true,
+        "searchFn": (i) => fetch("https://raw.githubusercontent.com/MLH/mlh-policies/master/schools.csv")
+          .then(r => r.text()).then(csv => {
+            const rv = csv.split("\n").map(ln => ln.replace(/[\r",]/g, ""))
+              .slice(1).map(v => ({'label': v, 'value': v}));
+            console.log(rv);
+            return {options: rv};
+          }),
+        "create": false
+      },
+      "grad_year": {
+        "select": true,
+        "options": [2018, 2019, 2020, 2021, 2022].map(v => ({'value': v, 'label': v})),
+        "create": true
+      },
+      "gender": {
+        "select": true,
+        "options": ['Male', 'Female', 'Non-binary'].map(v => ({'value': v, 'label': v})),
+        "create": true
+      }
+    }
+
+    const _usr = this.state.user
+    const parseInput = (key) => {
+      const mkOnChange = (key) => {
+        const handler = (i) => {
+          let updated = _usr;
+          updated[key] = i.value;
+          this.setState({user: updated});
+        }
+        return handler;
+      }
+
+      const conf = formConfig[key];
+      if(!conf){
+        return (
+            <input type="text"
+              id={"input-" + key}
+              className="form-control mx-3"
+              onChange={mkOnChange(key)}
+              value={_usr[key]}/>);
+      }else if(!conf.select){
+        return (
+            <input type={conf.type}
+              id={"input-" + key}
+              className="form-control mx-3"
+              onChange={mkOnChange(key)}
+              value={_usr[key]}/>);
+      }else if(!conf.searchFn && !conf.create){
+        return (
+              <Select
+                id={"input-" + key}
+                className="form-control mx-3"
+                value={_usr[key]}
+                onChange={mkOnChange(key)}
+                options={conf.options}/>);
+      }else if(!conf.searchFn){
+        return (
+              <Creatable
+                id={"input-" + key}
+                className="form-control mx-3"
+                value={_usr[key]}
+                onChange={mkOnChange(key)}
+                options={conf.options}/>);
+      }else if(!conf.create){
+        return (
+            <Async
+              id={"input-" + key}
+              className="form-control mx-3"
+              matchPos="any"
+              ignoreCase={true}
+              ignoreAccents={true}
+              value={_usr[key]}
+              onChange={mkOnChange(key)}
+              loadOptions={conf.searchFn}/>);
+      }else{
+        return (
+            <AsyncCreatable
+              id={"input-" + key}
+              className="form-control mx-3"
+              value={_usr[key]}
+              onChange={this.onChange}
+              loadOptions={conf.searchFn}/>);
+      }
+    }
+
     //pardon my indentation - David used tabs.
     return (
     <div>
@@ -394,11 +531,11 @@ class UserForm extends React.Component {
 
         <span>
         { this.state.user &&
-            Object.keys(this.state.user)
+            Object.keys(formConfig)
               .map(key =>
                  <div className="form-group row my-2">
-                        <label htmlFor={"input-" + key} className="col col-lg-4 "><h4 className="font-weight-bold font-modal">{key.replace(/_/g, ' ').toUpperCase()}</h4></label>
-                        <input type="input" id={"input-" + key} value={this.state.user[key]} onChange={this.onChange} className="form-control mx-3"/><br/>
+                        <label htmlFor={"input-" + key} className="col-lg-4"><h4 className="font-weight-bold font-modal">{key.replace(/_/g, ' ').toUpperCase()}</h4></label>
+                        {parseInput(key)}
                  </div>
             )
         }
