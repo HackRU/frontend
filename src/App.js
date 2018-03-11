@@ -124,15 +124,22 @@ class App extends React.Component {
     		  })
     		}).then(resp => resp.json())
           .then(data => {
-                  if (data.statusCode == 200){
-			  this.setState({isLoggedIn:true});
-			  const token = JSON.parse(data.body).auth.token;
-			  ReactDOM.render(<UserForm token={token} email={this.state.email}/> , document.getElementById('register-root'));
-                  }else if(data.body === "Duplicate user!"){
-                          this.setState({errorMessage: "You are already in our system! Please try logging in."})
-                  }else{
-                          this.setState({errorMessage: data.body})
-                  }
+            if (data.statusCode == 200){
+              this.setState({isLoggedIn:true});
+              const auth = JSON.parse(data.body)
+              this.props.cookies.set('authdata', auth);
+              ReactDOM.render(
+                  <div className="text-center">
+                  <h4> You are already logged in.  </h4>
+                  <button type="button" className="btn btn-primary custom-btn p-3  " data-toggle="modal" data-target="#exampleModalCenter" data-backdrop="static"><h4 className="my-0">View your profile</h4></button>,
+                  </div>,
+                  document.getElementById('register-root')
+              );
+            }else if(data.body === "Duplicate user!"){
+              this.setState({errorMessage: "You are already in our system! Please try logging in."})
+            }else{
+              this.setState({errorMessage: data.body})
+            }
     		}).catch(data => {
     		  const error = data.message;
     		  console.log(data);
