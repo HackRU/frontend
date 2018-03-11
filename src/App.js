@@ -40,6 +40,13 @@ class App extends React.Component {
           </CookiesProvider>,
           document.getElementById('register-more')
       );
+      ReactDOM.render(
+          <div className="text-center">
+          <h4> You are already logged in.  </h4>
+          <button type="button" className="btn btn-primary custom-btn p-3  " data-toggle="modal" data-target="#exampleModalCenter" data-backdrop="static"><h4 className="my-0">View your profile</h4></button>,
+          </div>,
+          document.getElementById('register-root')
+          );
       return;
     }
   }
