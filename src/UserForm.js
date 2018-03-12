@@ -71,37 +71,8 @@ class UserForm extends React.Component {
       })
     }).then(resp => resp.json())
       .then(data => {
-        const redact_keys = ['level_of_study', 'auth', 'password', 'short_answer', 'mlh', 'registration_status', 'role', 'volunteer_data', 'mentor_data'];
         const og_usr = data.body[0];
-        let newser = {};
-        Object.keys(og_usr).map(key => {
-          if(!redact_keys.includes(key)){
-            if(key !== 'school')
-              newser[key] = og_usr[key];
-            else
-              newser[key] = 'Rutgers University';
-          }
-        });
-        this.setState({user: newser});
-        if(og_usr.mentor_data){
-          this.setState({mentorBit: og_usr.mentor_data.skills})
-        }else{
-          this.setState({
-            mentorBit: {
-              ment_ed: "",
-              ment_exp: "",
-              ment_langs: "",
-              ment_areas: "",
-            }
-          });
-        }
-        if(og_usr.role.mentor && og_usr.role.volunteer){
-          this.setState({extraFlash: "You've already applied to mentor and volunteer. Thank you!"});
-        }else if(og_usr.role.mentor){
-          this.setState({extraFlash: "You've already applied to mentor. Thank you!"});
-        }else if(og_usr.role.volunteer){
-          this.setState({extraFlash: "You've already applied to volunteer. Thank you!"});
-        }
+        this.setState({user: og_usr});
     }).catch(data => this.setState({flash: data.toString()}));
   }
 
