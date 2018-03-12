@@ -419,6 +419,11 @@ class UserForm extends React.Component {
         "select": true,
         "options": ['Male', 'Female', 'Non-binary'].map(v => ({'value': v, 'label': v})),
         "create": true
+      },
+      "Traveling from (enter city)": {
+        "select": false,
+        "options": ['Male', 'Female', 'Non-binary'].map(v => ({'value': v, 'label': v})),
+        "create": true
       }
     }
 
@@ -505,9 +510,11 @@ class UserForm extends React.Component {
         { this.state.user &&
             Object.keys(formConfig)
               .map(key =>
-                 <div className="form-group row my-2">
-                        <label htmlFor={"input-" + key} className="col-lg-4"><h4 className="font-weight-bold font-modal">{key.replace(/_/g, ' ').toUpperCase()}</h4></label>
+                 <div className="form-group row mb-4">
+
+                        <label htmlFor={"input-" + key} className="col-lg-8"><h4 className="font-weight-bold font-modal">{key.replace(/_/g, ' ').toUpperCase()}</h4></label>
                         {parseInput(key)}
+
                  </div>
             )
         }
