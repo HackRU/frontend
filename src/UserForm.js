@@ -102,6 +102,13 @@ class UserForm extends React.Component {
   }
 
   save() {
+    let upd = this.state.user;
+    if (upd.registration_status == "unregistered"){
+      if(document.getElementById('code-of-conduct-box').checked && document.getElementById('data-sharing-box').checked){
+        upd.registration_status = "registered";
+      }
+    }
+
     fetch('https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/mlhtest/update', {
       method: 'POST',
       mode: 'cors',
@@ -111,7 +118,7 @@ class UserForm extends React.Component {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        updates :this.state.user,
+        updates : upd,
         user_email: this.state.email,
         auth_email: this.state.email,
         auth: this.state.token
@@ -534,6 +541,21 @@ class UserForm extends React.Component {
                         <label htmlFor="resumeupload" className="col-lg-8"><h4 className="font-weight-bold font-modal">RESUME</h4></label>
                 <input type="file" className="form-control mx-3" onChange={this.doResume} id="resumeupload"/>
         </div>
+        {this.state.user && this.state.user.registration_status == "unregistered" &&
+				<div className="form-group row my-2 mx-1">
+                <h4 className="font-weight-bold font-modal">MLH NOTICES</h4>
+                <label htmlFor="code-of-conduct-box" className="col-lg-8">
+                    I agree to abide by the <a href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf">MLH code of conduct.</a>
+                </label>
+                <input type="checkbox" className="form-control mx-3" id="code-of-conduct-box"/>
+                <label htmlFor="data-sharing-box" className="col-lg-8">
+                    I agree to the terms of both the <a href="https://github.com/MLH/mlh-policies/tree/master/prize-terms-and-conditions">MLH Contest Terms and Conditions</a>
+                    and <a href="https://mlh.io/privacy">the MLH Privacy Policy</a>. Please note that you may
+                    receive pre and post-event informational e-mails and occasional messages
+                    about hackathons from MLH as per the MLH Privacy Policy.
+                </label>
+                <input type="checkbox" className="form-control mx-3" id="data-sharing-box"/>
+        </div>}
 				<div className="form-group row my-2 mx-1">
           <h4 className="font-modal">{this.state.flash}</h4>
         </div>
