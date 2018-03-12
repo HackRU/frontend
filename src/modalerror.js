@@ -20,19 +20,19 @@ render() {
 
     <div className="modal-header">
       <h5 className="modal-title  font-modal" id="exampleModalLongTitle">Error.</h5 >
-      <button type="button" onClick={this.logout} className="close" data-dismiss="modal" aria-label="Close">
+      <button type="button" className="close" data-dismiss="modal" aria-label="Close">
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
     <div className="modal-body">
       <div className="react-form font-modal">
-        Close window and try again.
+        Please try again.
       </div>
 
     </div>
 
     <div className="modal-footer">
-    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+    <button type="button" class="btn btn-secondary custom-btn" data-dismiss="modal">Close</button>
     </div>
     </div>
 );
