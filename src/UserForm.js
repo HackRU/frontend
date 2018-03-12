@@ -377,7 +377,7 @@ class UserForm extends React.Component {
       },
       "shirt_size": {
         "select": true,
-        "options": ['XS', 'S', 'M', 'L', 'XL'].map(v => ({'value': v, 'label': v})),
+        "options": ['Unisex XS', 'Unisex S', 'Unisex M', 'Unisex L', 'Unisex XL'].map(v => ({'value': v, 'label': v})),
         "create": false
       },
       "first_name": {
