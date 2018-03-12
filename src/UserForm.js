@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
+import {uploadResume} from './resume.js';
 import Select from 'react-select';
 import {Creatable, AsyncCreatable, Async } from 'react-select';
 import {instanceOf} from 'prop-types';
@@ -33,6 +34,7 @@ class UserForm extends React.Component {
     this.applyVolunteer = this.applyVolunteer.bind(this);
     this.unapplyVolunteer = this.unapplyVolunteer.bind(this);
     this.componentWillMount = this.componentWillMount.bind(this);
+    this.doResume = this.doResume.bind(this);
   }
 
   componentWillMount (){
@@ -352,6 +354,12 @@ class UserForm extends React.Component {
     );
   }
 
+  doResume(ev){
+    uploadResume(this.state.email, (value) => {
+        this.setState({flash: value});
+    });
+  }
+
   render() {
     const formConfig = {
       "email": {
@@ -518,6 +526,10 @@ class UserForm extends React.Component {
             )
         }
         </span>
+				<div className="form-group row my-2 mx-1">
+                        <label htmlFor="resumeupload" className="col-lg-8"><h4 className="font-weight-bold font-modal">RESUME</h4></label>
+                <input type="file" className="form-control mx-3" onChange={this.doResume} id="resumeupload"/>
+        </div>
 				<div className="form-group row my-2 mx-1">
           <h4 className="font-modal">{this.state.flash}</h4>
         </div>
