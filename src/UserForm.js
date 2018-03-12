@@ -94,10 +94,8 @@ class UserForm extends React.Component {
 
   mentorBitOnChange(e){
     const upd_key = e.target.id.substring(0, e.target.id.length - 4).replace('-', '_');
-    console.log(upd_key);
     let newMent = this.state.mentorBit;
     newMent[upd_key] = e.target.value;
-    console.log(newMent);
     this.setState({mentorBit: newMent});
   }
 
@@ -408,7 +406,6 @@ class UserForm extends React.Component {
           .then(r => r.text()).then(csv => {
             const rv = csv.split("\n").map(ln => ln.replace(/[\r",]/g, ""))
               .slice(1).map(v => ({'label': v, 'value': v}));
-            console.log(rv);
             return {options: rv};
           }),
         "create": false
@@ -426,6 +423,7 @@ class UserForm extends React.Component {
     }
 
     const _usr = this.state.user
+    console.log(JSON.stringify(_usr));
     const parseInput = (key) => {
       const mkOnChange = (key) => {
         const handler = (i) => {
