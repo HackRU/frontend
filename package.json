@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "aws-sdk": "^2.207.0",
     "cookie-parser": "^1.4.3",
     "md5": "^2.2.1",
     "react": "^16.2.0",
