@@ -1,12 +1,16 @@
 import AWS from 'aws-sdk';
 import {config_resume} from './config_resume.js';
 
-var s3 = new AWS.S3();
+var s3 = new AWS.S3({
+    accessKeyId: config_resume.keyId,
+    secretAccessKey: config_resume.secretKey
+});
 
 function upload(key, file, callback) {
     s3.upload({
         Key: key,
         Body: file,
+        Bucket: config_resume.s3bucket,
         ACL: 'private'
     }, function(err, data) {
         if(err) {
@@ -38,8 +42,8 @@ function uploadResume(email, callback) {
     };
     
     // check if they already uploaded - if so, delete whatever's there and upload new resume
-    s3.waitFor(resumeKey, params, function(err, data) {
-        if(err) {
+    s3.waitFor('objectExists', params, function(err, data) {
+        if(!err) {
             s3.deleteObject({Key: resumeKey}, function(err, data) {
                 if(err){
                     callback('Deletion error:'+ err.message);
