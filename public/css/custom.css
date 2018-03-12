@@ -148,12 +148,17 @@ body {
 
 
 body {
-    background-image: url("../img/dark-bg.jpg");
+    background-color: #2c4ea0;
+    background-image: url("../img/dark-bg.jpg") !important;
     background-position: center bottom;
     background-size: cover;
     background-attachment: fixed;
     padding-top: 20px;
     padding-bottom: 20px;
+}
+
+@media (max-width: 767.98px) {
+    background-attachment: scroll; /* To fix image not showing up on mobile */
 }
 
 .footer-img {
