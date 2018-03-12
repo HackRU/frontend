@@ -430,6 +430,11 @@ class UserForm extends React.Component {
         "options": [2018, 2019, 2020, 2021, 2022].map(v => ({'value': v, 'label': v})),
         "create": true
       },
+      "level_of_study": {
+        "select": true,
+        "options": ["University (Undergraduate)", "University (Graduate)", "High School"].map(v => ({'value': v, 'label': v})),
+        "create": true
+      },
       "gender": {
         "select": true,
         "options": ['Male', 'Female', 'Non-binary'].map(v => ({'value': v, 'label': v})),
