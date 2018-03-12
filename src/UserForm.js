@@ -435,7 +435,7 @@ class UserForm extends React.Component {
         "options": ['Male', 'Female', 'Non-binary'].map(v => ({'value': v, 'label': v})),
         "create": true
       },
-      "Traveling from (enter city)": {
+      "travelling_from": {
         "select": false,
         "type": "text"
       }
@@ -526,7 +526,7 @@ class UserForm extends React.Component {
               .map(key =>
                  <div className="form-group row mb-4">
 
-                        <label htmlFor={"input-" + key} className="col-lg-8"><h4 className="font-weight-bold font-modal">{key.replace(/_/g, ' ').toUpperCase()}</h4></label>
+                        <label htmlFor={"input-" + key} className="col-lg-8"><h4 className="font-weight-bold font-modal">{key.replace(/_/g, ' ').toUpperCase()}</h4>{key == "travelling_from" && "(Enter the nearest city center)"}</label>
                         {parseInput(key)}
 
                  </div>
