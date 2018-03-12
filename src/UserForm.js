@@ -422,8 +422,7 @@ class UserForm extends React.Component {
       },
       "Traveling from (enter city)": {
         "select": false,
-        "options": ['Male', 'Female', 'Non-binary'].map(v => ({'value': v, 'label': v})),
-        "create": true
+        "type": "text"
       }
     }
 
