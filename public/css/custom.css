@@ -147,6 +147,7 @@ body {
 }
 
 
+
 body {
     background-color: #2c4ea0;
     background-image: url("../img/dark-bg.jpg") !important;
@@ -158,8 +159,16 @@ body {
 }
 
 @media (max-width: 767.98px) {
+  body{
+    background-image: url("../img/dark-bg.jpg") !important;
+    background-position: center bottom;
+    background-size: cover;
     background-attachment: scroll; /* To fix image not showing up on mobile */
+  }
 }
+
+
+
 
 .footer-img {
   max-width: 105px;
