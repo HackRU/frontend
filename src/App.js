@@ -55,7 +55,7 @@ class App extends React.Component {
         const { cookies } = this.props;//I don't get it.
         cookies.set('authdata', auth);
 
-        location.reload();
+        window.location.href = '/';
 
       }
     }
