@@ -18,7 +18,7 @@ http{
 # nginx should serve up static files and never send to the WSGI server
         location / {
             autoindex on;
-            alias /home/ec2-user/frontend/build;
+            alias /home/ec2-user/frontend/build/;
         }
 
     }
