@@ -535,7 +535,9 @@ class UserForm extends React.Component {
         </span>
 				<div className="form-group row my-2">
                         <label htmlFor="resumeupload" className="col-lg-8"><h4 className="font-weight-bold font-modal">SHORT ANSWER:</h4> What are you looking for from your experience at HackRU?</label>
-                <textarea className="form-control mx-3" onChange={this.onChange} id="input-short_answer"/>
+                <textarea className="form-control mx-3" onChange={this.onChange}
+                   value={(this.state.user)? this.state.user.short_answer : ""}
+                   id="input-short_answer"/>
         </div>
 				<div className="form-group row my-2">
                         <label htmlFor="resumeupload" className="col-lg-8"><h4 className="font-weight-bold font-modal">RESUME</h4></label>
