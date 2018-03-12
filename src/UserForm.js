@@ -458,14 +458,14 @@ class UserForm extends React.Component {
             <input type="text"
               id={"input-" + key}
               className="form-control mx-3"
-              onChange={mkOnChange(key)}
+              onChange={this.onChange}
               value={_usr[key]}/>);
       }else if(!conf.select){
         return (
             <input type={conf.type}
               id={"input-" + key}
               className="form-control mx-3"
-              onChange={mkOnChange(key)}
+              onChange={this.onChange}
               value={_usr[key]}/>);
       }else if(!conf.searchFn && !conf.create){
         return (
