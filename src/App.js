@@ -104,7 +104,7 @@ class App extends React.Component {
     		  },
     		  body: JSON.stringify({
     		    email: this.state.email,
-    		    password: md5(this.state.password) + '',
+    		    password: (this.state.password) + '',
     		  })
     		}).then(resp => resp.json())
           .then(this.loginPostFetch).catch(data => {
@@ -130,7 +130,7 @@ class App extends React.Component {
     		  },
     		  body: JSON.stringify({
     		    email: this.state.email,
-    		    password: md5(this.state.password) + '',
+    		    password: (this.state.password) + '',
     		  })
     		}).then(resp => resp.json())
           .then(data => {
