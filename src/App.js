@@ -49,37 +49,15 @@ class App extends React.Component {
           );
       return;
     }else{
-      fetch('https://api.hackru.org/validate', {
-        method: 'POST',
-        mode: 'cors',
-        credentials: 'omit',
-        headers: {
-          'Content-Type': "application/json"
-        }
-      }).then(r => r.json())
-        .then(json => {
-          if(json.statusCode == 200){
-            const auth = json.body;
-            if(auth && Date.parse(auth.auth.valid_until) > Date.now()){
-              const { cookies } = this.props;//I don't get it.
-              cookies.setCookie('authdata', auth);
-              //we assume any authdata cookie is our authdata and check the validity.
-              ReactDOM.render(
-                  <CookiesProvider>
-                  <UserForm/>
-                  </CookiesProvider>,
-                  document.getElementById('register-more')
-                  );
-              ReactDOM.render(
-                  <div className="text-center">
-                  <h4> You are already logged in.  </h4>
-                  <button type="button" className="btn btn-primary custom-btn p-3  " data-toggle="modal" data-target="#exampleModalCenter" data-backdrop="static"><h4 className="my-0">View your profile</h4></button>,
-                  </div>,
-                  document.getElementById('register-root')
-                  );
-            }
-          }
-      })
+      let urlParams = new URLSearchParams(window.location.search);
+      if(urlParams.has('authdata')){
+        const auth = JSON.parse(urlParams.get('authdata'));
+        const { cookies } = this.props;//I don't get it.
+        cookies.set('authdata', auth);
+
+        location.reload();
+
+      }
     }
   }
 
