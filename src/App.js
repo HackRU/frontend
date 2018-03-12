@@ -139,6 +139,12 @@ class App extends React.Component {
               const auth = JSON.parse(data.body)
               this.props.cookies.set('authdata', auth);
               ReactDOM.render(
+                <CookiesProvider>
+                  <UserForm/>
+                </CookiesProvider>,
+                document.getElementById('register-more')
+              );
+              ReactDOM.render(
                   <div className="text-center">
                   <h4> You are already logged in.  </h4>
                   <button type="button" className="btn btn-primary custom-btn p-3  " data-toggle="modal" data-target="#exampleModalCenter" data-backdrop="static"><h4 className="my-0">View your profile</h4></button>,
@@ -201,7 +207,7 @@ class App extends React.Component {
 						<br/>
 						<button onClick={this.login} type="button" className="btn btn-primary custom-btn p-3  " data-toggle="modal" data-target="#exampleModalCenter"><h4 className="my-0">Login</h4></button>
 						<button onClick={this.mlh} type="button" className="custom-btn btn btn-primary p-3 mx-3"><h4 className="my-0">Sign Up with MLH</h4></button>
-						<button onClick={this.signup} type="button" className="custom-btn btn btn-primary p-3"><h4 className="my-0">Sign Up</h4></button>
+						<button onClick={this.signUp} type="button" className="custom-btn btn btn-primary p-3"><h4 className="my-0">Sign Up</h4></button>
 					</div>
 				</div>
 
