@@ -500,7 +500,7 @@ class UserForm extends React.Component {
               id={"input-" + key}
               className="form-control mx-3"
               value={_usr[key]}
-              onChange={this.onChange}
+              onChange={mkOnChange(key)}
               loadOptions={conf.searchFn}/>);
       }
     }
