@@ -49,7 +49,7 @@ class UserForm extends React.Component {
       return;
     }else{
       this.setState({
-        email: auth.email,
+        email: auth.auth.email,
         token: auth.auth.token
       });
     }
@@ -423,7 +423,6 @@ class UserForm extends React.Component {
     }
 
     const _usr = this.state.user
-    console.log(JSON.stringify(_usr));
     const parseInput = (key) => {
       const mkOnChange = (key) => {
         const handler = (i) => {
