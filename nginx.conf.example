@@ -1,0 +1,25 @@
+# this specifies that there is a WSGI server running on port 8000
+user ec2-user;
+
+events{
+    worker_connections 4096;
+}
+
+# Nginx is set up to run on the standard HTTP port and listen for requests
+http{
+
+    server {
+        autoindex on;
+        sendfile on;
+
+        listen 80;
+
+
+# nginx should serve up static files and never send to the WSGI server
+        location / {
+            autoindex on;
+            alias /home/ec2-user/frontend/build;
+        }
+
+    }
+}
