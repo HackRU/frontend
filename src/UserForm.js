@@ -543,18 +543,24 @@ class UserForm extends React.Component {
         </div>
         {this.state.user && this.state.user.registration_status == "unregistered" &&
 				<div className="form-group row my-2 mx-1">
-                <h4 className="font-weight-bold font-modal">MLH NOTICES</h4>
-                <label htmlFor="code-of-conduct-box" className="col-lg-8">
-                    I agree to abide by the <a href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf">MLH code of conduct.</a>
-                </label>
-                <input type="checkbox" className="form-control mx-3" id="code-of-conduct-box"/>
-                <label htmlFor="data-sharing-box" className="col-lg-8">
-                    I agree to the terms of both the <a href="https://github.com/MLH/mlh-policies/tree/master/prize-terms-and-conditions">MLH Contest Terms and Conditions</a>
-                    and <a href="https://mlh.io/privacy">the MLH Privacy Policy</a>. Please note that you may
-                    receive pre and post-event informational e-mails and occasional messages
-                    about hackathons from MLH as per the MLH Privacy Policy.
-                </label>
-                <input type="checkbox" className="form-control mx-3" id="data-sharing-box"/>
+                <h4 className="font-weight-bold font-modal mb-2">MLH NOTICES</h4>
+                <div className="form-check form-check-inline mb-4">
+
+                  <input type="checkbox" className="form-check-input mr-4" id="code-of-conduct-box"/>
+                  <label htmlFor="code-of-conduct-box" className="form-check-label">
+                      I agree to abide by the <a href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf">MLH code of conduct.</a>
+                  </label>
+                </div>
+                <div className="form-check form-check-inline">
+                  <input type="checkbox" className="form-check-input mr-4" id="data-sharing-box"/>
+                  <label htmlFor="data-sharing-box" className="form-check-label">
+                      I agree to the terms of both the <a href="https://github.com/MLH/mlh-policies/tree/master/prize-terms-and-conditions">MLH Contest Terms and Conditions</a>
+                      and <a href="https://mlh.io/privacy">the MLH Privacy Policy</a>. Please note that you may
+                      receive pre and post-event informational e-mails and occasional messages
+                      about hackathons from MLH as per the MLH Privacy Policy.
+                  </label>
+                  </div>
+
         </div>}
 				<div className="form-group row my-2 mx-1">
           <h4 className="font-modal">{this.state.flash}</h4>
