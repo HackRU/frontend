@@ -171,6 +171,7 @@ body {
 .white-link a {
   color: #FFFFFF;
   transition: all 0.5s;
+  text-decoration: none;
 }
 
 
