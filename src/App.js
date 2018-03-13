@@ -147,7 +147,7 @@ class App extends React.Component {
               ReactDOM.render(
                   <div className="text-center">
                   <h4> You are already logged in.  </h4>
-                  <button type="button" className="btn btn-primary custom-btn p-3  " id="launch-modal" data-toggle="modal" data-target="#exampleModalCenter" data-backdrop="static"><h4 className="my-0">View/Finish your Applicatione</h4></button>,
+                  <button type="button" className="btn btn-primary custom-btn p-3  " id="launch-modal" data-toggle="modal" data-target="#exampleModalCenter" data-backdrop="static"><h4 className="my-0">View/Finish your Application</h4></button>,
                   </div>,
                   document.getElementById('register-root')
               );
