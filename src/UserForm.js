@@ -126,7 +126,7 @@ class UserForm extends React.Component {
     }).then(data => data.json())
       .then(json => {
         if(json.statusCode == 200){
-           this.setState({flash: "Updated profile! Thank you for applying. You will receive an email after your application has been reviewed."});
+           this.setState({flash: "Changes saved! Thank you for applying. You will receive an email after your application has been reviewed."});
         }else{
            this.setState({flash: json.body});
         }
