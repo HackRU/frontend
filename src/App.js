@@ -184,30 +184,31 @@ class App extends React.Component {
       <div className="react-form">
 			<form className="form-group">
 
-				<div className="form-group row my-5">
+				<div className="form-group row my-3">
 					<label htmlFor="email-input" className="col-lg-3 col-form-label"><h4 className="font-weight-bold">EMAIL</h4></label>
 					<div className="col-lg-9">
 						<input type="email" onChange={this.onEmailChange} className="form-control form-control-lg" id="email-input"></input>
 					</div>
 				</div>
 
-				<div className="form-group row my-5">
+				<div className="form-group row my-3">
 					<label htmlFor="pw-input" className="col-lg-3 col-form-label"><h4 className="font-weight-bold">PASSWORD</h4></label>
 					<div className="col-lg-9">
 						<input type="password" onChange={this.onPasswordChange} className="form-control form-control-lg" id="pw-input"></input>
 					</div>
 				</div>
 
-				<div className="form-group row my-5 ">
-          <h4>{this.state.errorMessage}</h4>
+				<div className="form-group row my-1 ">
+          <span className="col-lg-3"></span>
+          <h4 className="col-lg-9">{this.state.errorMessage}</h4>
         </div>
 
-				<div className="form-group row my-5">
+				<div className="form-group row my-1">
 					<div className="col-12 text-center">
 						<br/>
-						<button onClick={this.login} type="button" className="btn btn-primary custom-btn p-3  " data-toggle="modal" data-target="#exampleModalCenter"><h4 className="my-0">Login</h4></button>
-						<button onClick={this.mlh} type="button" className="custom-btn btn btn-primary p-3 mx-3"><h4 className="my-0">Log in/Sign Up with MLH</h4></button>
-						<button onClick={this.signUp} type="button" className="custom-btn btn btn-primary p-3"><h4 className="my-0">Sign Up</h4></button>
+						<button onClick={this.signUp} type="button" className="custom-btn btn btn-primary p-3 "><h4 className="my-0">Sign Up</h4></button>
+            <button onClick={this.login} type="button" className="btn btn-primary custom-btn p-3  mx-3 my-3" data-toggle="modal" data-target="#exampleModalCenter"><h4 className="my-0">Login</h4></button>
+            <button onClick={this.mlh} type="button" className="custom-btn btn btn-primary p-3"><h4 className="my-0">Log in/Sign Up with MLH</h4></button>
 					</div>
 				</div>
 
