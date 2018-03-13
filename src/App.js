@@ -94,6 +94,7 @@ class App extends React.Component {
   login() {
     	if (this.state.email == "" || this.state.password == ""){
     		this.setState({errorMessage: "Please fill in all the fields"});
+        ReactDOM.render(<ModalError />, document.getElementById('register-more'));
     	} else {
     		fetch('https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/mlhtest/authorize', {
     		  method: 'POST',
@@ -120,6 +121,7 @@ class App extends React.Component {
 
   	if (this.state.email == "" || this.state.password == ""){
     		this.setState({errorMessage: "Please fill in all the fields"});
+        ReactDOM.render(<ModalError />, document.getElementById('register-more'));
     } else {
     		fetch('https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/mlhtest/create', {
     		  method: 'POST',
