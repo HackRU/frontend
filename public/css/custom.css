@@ -31,13 +31,13 @@ h1, h2, h3, h4, h5, h6, p {
 }
 
 a {
-  color: var(--color-one) !important;
+  color: var(--color-one);
   text-decoration: underline;
   transition: all 0.5s;
 }
 
 a:hover, a:focus, a:active {
-  color:  #a9e3f9 !important;
+  color:  #a9e3f9;
 }
 
 #main-header-logo {
@@ -168,7 +168,15 @@ body {
 }
 
 
+.white-link a {
+  color: #FFFFFF;
+  transition: all 0.5s;
+}
 
+
+.white-link:hover a {
+  color:  #a9e3f9;
+}
 
 .footer-img {
   max-width: 105px;
