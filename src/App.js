@@ -41,7 +41,7 @@ class App extends React.Component {
           </CookiesProvider>,
           document.getElementById('register-more')
       );
-
+  this.isAdmin();
       ReactDOM.render(
           <div className="text-center">
           <h4> You are already logged in.  </h4>
@@ -170,7 +170,7 @@ class App extends React.Component {
   }
 
   isAdmin() {
-    ReactDOM.render(<Admin />, document.getElementById('register-admin');
+    ReactDOM.render(<Admin />, document.getElementById('register-admin'));
   }
 
   mlh() {
