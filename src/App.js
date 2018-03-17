@@ -49,10 +49,6 @@ class App extends React.Component {
           </div>,
           document.getElementById('register-root')
           );
-      ReactDOM.render(
-          <Admin />,
-          document.getElementById('register-admin')
-      );
       return;
     }else{
       let urlParams = new URLSearchParams(window.location.search);
