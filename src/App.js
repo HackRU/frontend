@@ -5,6 +5,7 @@ import md5 from 'md5';
 import {instanceOf} from 'prop-types';
 import {CookiesProvider, withCookies, Cookies} from 'react-cookie';
 import ModalError from './modalerror'
+import Admin from './Admin'
 
 class App extends React.Component {
   static propTypes = {
@@ -40,6 +41,7 @@ class App extends React.Component {
           </CookiesProvider>,
           document.getElementById('register-more')
       );
+
       ReactDOM.render(
           <div className="text-center">
           <h4> You are already logged in.  </h4>
@@ -47,6 +49,10 @@ class App extends React.Component {
           </div>,
           document.getElementById('register-root')
           );
+      ReactDOM.render(
+          <Admin />,
+          document.getElementById('register-admin')
+      );
       return;
     }else{
       let urlParams = new URLSearchParams(window.location.search);
