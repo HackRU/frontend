@@ -182,3 +182,14 @@ body {
 .footer-img {
   max-width: 105px;
 }
+
+.card {
+  background-color:rgba(0, 130, 186,0.9);
+  padding: 20px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.table {
+  font-size: 18px;
+}
