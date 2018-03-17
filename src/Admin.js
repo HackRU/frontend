@@ -17,7 +17,7 @@ render() {
     <div class="card row">
       <div class="col-lg-12">
         <div class="text-center">
-          <h3 class="text-center">You are logged in as in administrator!</h3>
+          <h3 class="text-center">You are logged in as an administrator!</h3>
 
           <button type="button" className="btn btn-primary custom-btn p-3 mx-1 my-3 " id="launch-modal" data-toggle="modal" data-target="#exampleModalCenter" data-backdrop="static"><h4 className="my-0">View/Finish your Application</h4></button>,
           <button type="button" className="btn btn-primary custom-btn p-3  mx-1 my-3" onClick=""><h4 className="my-0">DoesnotworkLogout!</h4></button>,
