@@ -24,9 +24,12 @@ render() {
         </div>
 
       <h1 class="text-center">Admin Dashbaord</h1>
-        <button type="button" className="btn btn-primary custom-btn p-3 mx-1 my-3  "><h4 className="my-0">Query1</h4></button>
-        <button type="button" className="btn btn-primary custom-btn p-3 mx-1 my-3 "><h4 className="my-0">Query2</h4></button>
-        <button type="button" className="btn btn-primary custom-btn p-3  mx-1 my-3"><h4 className="my-0">Query3</h4></button>
+      {
+        Object.keys(this.state.user).map(k =>
+          <input type="checkbox" id={"aggregate-" + k} />
+          <label htmlFor={"aggregate-" + k}>{k}</label>
+        );
+      }
 
         <table class="table table-dark">
           <thead class="thead-dark">
