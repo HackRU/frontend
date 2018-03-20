@@ -93,21 +93,26 @@ render() {
         <br />
         <button type="button" className="btn btn-primary custom-btn p-3  mx-1 my-3" onClick={this.doQuery}><h4 className="my-0">Query the DB</h4></button>,
 
-        <table class="table table-dark">
+        <table class="table table-dark table-fixed smaller-font">
           <thead class="thead-dark">
-            <tr>
-              <th scope="col">Category</th>
-              <th scope="col">Count</th>
-            </tr>
+
+            { this.state.results &&
+
+                (  <tr>
+                      {Object.keys(this.state.results[0]._id)
+                      .map(v => (<th className="col">{JSON.stringify(v)}</th>))
+                      }
+                  </tr>
+              )
+            }
           </thead>
           <tbody>
           { this.state.results &&
             this.state.results.map(count =>
                 <tr>
-                  <th scope="row">{Object.values(count._id)
-                    .map(v => '"' + v + '"')
-                    .join(" and ")}</th>
-                  <td>{count.count}</td>
+                    {Object.values(count._id)
+                    .map(v => (<td className="col">{JSON.stringify(v)}</td>))
+                    }
                 </tr>
             )
           }
