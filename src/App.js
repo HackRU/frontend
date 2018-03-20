@@ -5,7 +5,6 @@ import md5 from 'md5';
 import {instanceOf} from 'prop-types';
 import {CookiesProvider, withCookies, Cookies} from 'react-cookie';
 import ModalError from './modalerror'
-import Admin from './Admin'
 import Logged from './Logged'
 
 class App extends React.Component {
@@ -43,7 +42,6 @@ class App extends React.Component {
           document.getElementById('register-more')
       );
 
-      this.isAdmin();
       ReactDOM.render(
         <Logged />,
           document.getElementById('register-root')
@@ -161,12 +159,6 @@ class App extends React.Component {
     		})
 
     }
-  }
-
-  isAdmin() {
-
-      ReactDOM.render(<Admin />, document.getElementById('register-admin'));
-
   }
 
   mlh() {
