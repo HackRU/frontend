@@ -62,17 +62,19 @@ render() {
           <button type="button" className="btn btn-primary custom-btn p-3  mx-1 my-3" onClick=""><h4 className="my-0">DoesnotworkLogout!</h4></button>,
         </div>
 
-      <h1 class="text-center">Admin Dashbaord</h1>
+      <h1 className="text-center">Admin Dashbaord</h1>
+
       { this.state.user &&
         Object.keys(this.state.user).map(k =>
-          <div className="form-group">
-            <input className="agg-filter" type="checkbox" id={"aggregate-" + k} />
-            <label htmlFor={"aggregate-" + k}>{k}</label>
+          <div className="form-check form-check-inline">
+            <input className="agg-filter form-check-input" type="checkbox" id={"aggregate-" + k} />
+            <label className="form-check-label form-text" htmlFor={"aggregate-" + k}>{k}</label>
           </div>
         )
       }
 
-          <button type="button" className="btn btn-primary custom-btn p-3  mx-1 my-3" onClick={this.doQuery}><h4 className="my-0">Query the DB</h4></button>,
+        <br />
+        <button type="button" className="btn btn-primary custom-btn p-3  mx-1 my-3" onClick={this.doQuery}><h4 className="my-0">Query the DB</h4></button>,
 
         <table class="table table-dark">
           <thead class="thead-dark">
