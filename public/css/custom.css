@@ -193,3 +193,8 @@ body {
 .table {
   font-size: 18px;
 }
+
+.form-text {
+  color: #fff;
+  text-transform: uppercase;
+}
