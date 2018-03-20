@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import UserForm from './UserForm';
-import md5 from 'md5';
 import {instanceOf} from 'prop-types';
 import {CookiesProvider, withCookies, Cookies} from 'react-cookie';
 import ModalError from './modalerror'

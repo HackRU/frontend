@@ -1,8 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import md5 from 'md5';
+import {instanceOf} from 'prop-types';
+import {CookiesProvider, withCookies, Cookies} from 'react-cookie';
+import App from './App';
+import ModalError from './modalerror'
 
 class Admin extends React.Component {
+  static propTypes = {
+    cookies: instanceOf(Cookies).isRequired
+  };
 
 constructor (props){
     super(props);
@@ -11,6 +17,17 @@ constructor (props){
       token: props.token
     };
     this.doQuery = this.doQuery.bind(this);
+    this.logout = this.logout.bind(this);
+}
+
+logout() {
+  const {cookies} = this.props;
+  cookies.remove('authdata');
+  ReactDOM.render(<CookiesProvider><App /></CookiesProvider> , document.getElementById('register-root'));
+  ReactDOM.render(
+  <ModalError />
+    , document.getElementById('register-more'));
+  ReactDOM.unmountComponentAtNode(document.getElementById('register-admin'))
 }
 
 doQuery(){
@@ -59,7 +76,7 @@ render() {
           <h3 class="text-center">You are logged in as an administrator!</h3>
 
           <button type="button" className="btn btn-primary custom-btn p-3 mx-1 my-3 " id="launch-modal" data-toggle="modal" data-target="#exampleModalCenter" data-backdrop="static"><h4 className="my-0">View/Finish your Application</h4></button>,
-          <button type="button" className="btn btn-primary custom-btn p-3  mx-1 my-3" onClick=""><h4 className="my-0">DoesnotworkLogout!</h4></button>,
+          <button type="button" className="btn btn-primary custom-btn p-3  mx-1 my-3" onClick={this.logout}><h4 className="my-0">Logout</h4></button>,
         </div>
 
       <h1 className="text-center">Admin Dashbaord</h1>
@@ -104,4 +121,4 @@ render() {
 }
 
 }
-export default Admin;
+export default withCookies(Admin);

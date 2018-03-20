@@ -65,7 +65,7 @@ class UserForm extends React.Component {
       return ;
     }
 
-      ReactDOM.render(<Admin user={this.state.user} token={this.state.token}/>, document.getElementById('register-admin'));
+      ReactDOM.render(<CookiesProvider><Admin user={this.state.user} token={this.state.token}/></CookiesProvider>, document.getElementById('register-admin'));
 
   }
 
