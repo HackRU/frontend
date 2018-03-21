@@ -102,6 +102,7 @@ render() {
                       {Object.keys(this.state.results[0]._id)
                       .map(v => (<th className="col">{JSON.stringify(v)}</th>))
                       }
+                    <th className="col">Counts</th>
                   </tr>
               )
             }
@@ -113,6 +114,7 @@ render() {
                     {Object.values(count._id)
                     .map(v => (<td className="col">{JSON.stringify(v)}</td>))
                     }
+                  <td className="col">{count.count}</td>
                 </tr>
             )
           }
