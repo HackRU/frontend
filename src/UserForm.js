@@ -8,6 +8,7 @@ import {instanceOf} from 'prop-types';
 import {CookiesProvider, withCookies, Cookies} from 'react-cookie';
 import 'react-select/dist/react-select.css';
 import ModalError from './modalerror'
+import Admin from './Admin'
 
 class UserForm extends React.Component {
   static propTypes = {
@@ -54,8 +55,20 @@ class UserForm extends React.Component {
         email: auth.auth.email,
         token: auth.auth.token
       });
+
     }
   }
+
+  isAdmin() {
+
+    if(!this.state.user || (!this.state.user.role.organizer && !this.state.user.role.director)){
+      return ;
+    }
+
+      ReactDOM.render(<CookiesProvider><Admin user={this.state.user} token={this.state.token}/></CookiesProvider>, document.getElementById('register-admin'));
+
+  }
+
 
   componentDidMount(){
     fetch('https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/mlhtest/read', {
@@ -75,6 +88,7 @@ class UserForm extends React.Component {
       .then(data => {
         const og_usr = data.body[0];
         this.setState({user: og_usr});
+        this.isAdmin();
     }).catch(data => this.setState({flash: data.toString()}));
   }
 

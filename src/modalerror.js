@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import md5 from 'md5';
 
 class ModalError extends React.Component {
 

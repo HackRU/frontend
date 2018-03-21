@@ -182,3 +182,37 @@ body {
 .footer-img {
   max-width: 105px;
 }
+
+.card {
+  background-color:rgba(0, 200, 186,0.9);
+  padding: 20px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.table {
+  font-size: 18px;
+}
+
+.form-text {
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.smaller-font {
+  font-size: 1m;
+}
+
+tbody {
+    display:block;
+    height:80vh;
+    overflow:auto;
+}
+thead, tbody tr {
+    display:table;
+    width:100%;
+    table-layout:fixed;
+}
+thead {
+    width: calc( 100% - 1em )
+}
