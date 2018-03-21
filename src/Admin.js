@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom';
 import {instanceOf} from 'prop-types';
 import {CookiesProvider, withCookies, Cookies} from 'react-cookie';
 import App from './App';
-import ModalError from './modalerror'
+import VotingModal from './VotingModal';
+import ModalError from './modalerror';
 
 class Admin extends React.Component {
   static propTypes = {
@@ -18,6 +19,7 @@ constructor (props){
     };
     this.doQuery = this.doQuery.bind(this);
     this.logout = this.logout.bind(this);
+    this.adminVote = this.adminVote.bind(this);
 }
 
 logout() {
@@ -63,6 +65,10 @@ doQuery(){
 
 }
 
+adminVote(){
+  ReactDOM.render(<VotingModal user={this.state.user} token={this.state.token}/>, document.getElementById('register-more'));
+}
+
 render() {
   if(!this.state.user || (!this.state.user.role.organizer && !this.state.user.role.director)){
     return null;
@@ -70,17 +76,18 @@ render() {
 
   return (
 
-    <div class="card row">
-      <div class="col-lg-12">
-        <div class="text-center">
-          <h3 class="text-center">You are logged in as an administrator!</h3>
+    <div className="card row">
+      <div className="col-lg-12">
+        <div className="text-center">
+          <h3 className="text-center">You are logged in as an administrator!</h3>
 
           <button type="button" className="btn btn-primary custom-btn p-3 mx-1 my-3 " id="launch-modal" data-toggle="modal" data-target="#exampleModalCenter" data-backdrop="static"><h4 className="my-0">View/Finish your Application</h4></button>
+          <button type="button" className="btn btn-primary custom-btn p-3 my-3" id="launch-modal" data-toggle="modal" onClick={this.adminVote} data-target="#exampleModalCenter" data-backdrop="static"><h4 className="my-0">Vote on Applications</h4></button>
           <button type="button" className="btn btn-primary custom-btn p-3  mx-1 my-3" onClick={this.logout}><h4 className="my-0">Logout</h4></button>
         </div>
 
       <h1 className="text-center">Admin Dashbaord</h1>
-      <div class="col-lg-12 text-center">
+      <div className="col-lg-12 text-center">
 
       { this.state.user &&
         Object.keys(this.state.user).map(k =>
@@ -92,11 +99,11 @@ render() {
       }
       </div>
         <br />
-        <div class="col-lg-12 text-center">
+        <div className="col-lg-12 text-center">
         <button type="button" className="btn btn-primary custom-btn p-3  mx-1 my-3 text-center" onClick={this.doQuery}><h4 className="my-0">Query the DB</h4></button>,
         </div>
-        <table class="table table-dark table-fixed smaller-font">
-          <thead class="thead-dark">
+        <table className="table table-dark table-fixed smaller-font">
+          <thead className="thead-dark">
 
             { this.state.results &&
 
