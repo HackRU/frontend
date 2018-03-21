@@ -75,11 +75,12 @@ render() {
         <div class="text-center">
           <h3 class="text-center">You are logged in as an administrator!</h3>
 
-          <button type="button" className="btn btn-primary custom-btn p-3 mx-1 my-3 " id="launch-modal" data-toggle="modal" data-target="#exampleModalCenter" data-backdrop="static"><h4 className="my-0">View/Finish your Application</h4></button>,
-          <button type="button" className="btn btn-primary custom-btn p-3  mx-1 my-3" onClick={this.logout}><h4 className="my-0">Logout</h4></button>,
+          <button type="button" className="btn btn-primary custom-btn p-3 mx-1 my-3 " id="launch-modal" data-toggle="modal" data-target="#exampleModalCenter" data-backdrop="static"><h4 className="my-0">View/Finish your Application</h4></button>
+          <button type="button" className="btn btn-primary custom-btn p-3  mx-1 my-3" onClick={this.logout}><h4 className="my-0">Logout</h4></button>
         </div>
 
       <h1 className="text-center">Admin Dashbaord</h1>
+      <div class="col-lg-12 text-center">
 
       { this.state.user &&
         Object.keys(this.state.user).map(k =>
@@ -89,10 +90,11 @@ render() {
           </div>
         )
       }
-
+      </div>
         <br />
-        <button type="button" className="btn btn-primary custom-btn p-3  mx-1 my-3" onClick={this.doQuery}><h4 className="my-0">Query the DB</h4></button>,
-
+        <div class="col-lg-12 text-center">
+        <button type="button" className="btn btn-primary custom-btn p-3  mx-1 my-3 text-center" onClick={this.doQuery}><h4 className="my-0">Query the DB</h4></button>,
+        </div>
         <table class="table table-dark table-fixed smaller-font">
           <thead class="thead-dark">
 
