@@ -160,7 +160,7 @@ render() {
         <div onKeyPress={this.processKey} tabIndex="0">
           <div className="modal-header">
             <h5 className="modal-title font-modal" id="exampleModalLongTitle">Vote on Users</h5><br/>
-            <p className="font-modal">You can't use up arrow and down arrow too!</p>
+            <p className="font-modal">You cannot use up arrow and down arrows.</p>
             <button type="button" className="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -172,32 +172,32 @@ render() {
             (!this.state.hacker && "Loading...") ||
             <div>
             <div>
-              What are they looking for from your experience at HackRU?
+              What are they looking for from their experience at HackRU?
             </div>
             <div>
-              "{this.state.hacker.short_answer}"
+              <textarea class="form-control mb-2" type="text" placeholder={this.state.hacker.short_answer} readonly />
             </div>
             <div>
               Gender
             </div>
             <div>
-              "{this.state.hacker.gender}"
+              <input class="form-control mb-2" type="text" placeholder={this.state.hacker.gender} readonly />
             </div>
             <div>
               Grad year
             </div>
             <div>
-              "{this.state.hacker.grad_year}"
+              <input class="form-control mb-2" type="text" placeholder={this.state.hacker.grad_year} readonly />
             </div>
             </div>
           }
           <div>{this.state.error}</div>
           </div>
           <div className="modal-footer">
-            <button type="button" onClick={this.voteUp} className="btn btn-primary">Vote Up</button>
+            <button type="button" onClick={this.voteDown}className="btn btn-primary">Vote Down</button>
             <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
             <button type="button" onClick={this.skip}className="btn btn-primary">Skip User</button>
-            <button type="button" onClick={this.voteDown}className="btn btn-primary">Vote Down</button>
+            <button type="button" onClick={this.voteUp} className="btn btn-primary">Vote Up</button>
           </div>
         </div>
   );
