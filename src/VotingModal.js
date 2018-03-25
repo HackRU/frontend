@@ -23,8 +23,7 @@ componentWillMount(){
     //Also, the "k == 'organizer' ||" is for testing.
     .concat([
       {'votes_from': {'$ne': this.state.user.email}},
-      {'registration_status': 'registered'},
-      {'skipped_users': {'email': this.state.user.email}}}
+      {'registration_status': 'registered'}
       //TODO: figure out where query?
     ])
 
@@ -44,9 +43,9 @@ componentWillMount(){
   }).then(resp => resp.json())
     .then(users => {
       this.setState({hacker: users.body.filter(
-            (usr) => usr.skipped_users.every(
+            (usr) => !usr.skipped_users || usr.skipped_users.every(
               (sk) => sk.email !== this.state.user.email ||
-                      sk.short_answer !== this.state.user.short_answer))[0]});
+                      sk.short_answer !== usr.short_answer))[0]});
   });
 }
 
@@ -62,10 +61,11 @@ processKey(evt){
 }
 
 voteUp(evt){
-  if(this.state.user.votes === 2){
-    const upd_obj = {"$set": {"registration_status": "confirmation"}};
+  let upd_obj = [];
+  if(this.state.hacker.votes === 2){
+    upd_obj = {"$set": {"registration_status": "confirmation"}};
   }else{
-    const upd_obj = {
+    upd_obj = {
       "$inc": {"votes": 1},
       '$push': {'votes_from': this.state.user.email}
     }
@@ -138,8 +138,10 @@ skip(evt){
       'user_email': this.state.hacker.email,
       'updates': {
         '$push': {
-          'skipped_users': this.state.user.email,
-          'short_answer': this.state.hacker.short_answer
+          'skipped_users': {
+            'email': this.state.user.email,
+            'short_answer': this.state.hacker.short_answer
+          }
         }
       }
     })
