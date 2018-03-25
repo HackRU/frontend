@@ -13,6 +13,7 @@ constructor (props){
   this.processKey = this.processKey.bind(this);
   this.voteUp = this.voteUp.bind(this);
   this.voteDown = this.voteDown.bind(this);
+  this.skip = this.skip.bind(this);
 }
 
 componentWillMount(){
@@ -20,7 +21,12 @@ componentWillMount(){
     .map(k => ({["role." + k]: (/*k == 'organizer' ||*/ k == 'hacker')}))
     //ES6 computed keys ^ ... aren't they cool?!
     //Also, the "k == 'organizer' ||" is for testing.
-    .concat([{'votes_from': {'$ne': this.state.user.email}}])
+    .concat([
+      {'votes_from': {'$ne': this.state.user.email}},
+      {'registration_status': 'registered'},
+      {'skipped_users': {'email': this.state.user.email}}}
+      //TODO: figure out where query?
+    ])
 
   fetch('https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/mlhtest/read', {
     method: 'POST',
@@ -37,7 +43,10 @@ componentWillMount(){
     })
   }).then(resp => resp.json())
     .then(users => {
-      this.setState({hacker: users.body[0]})
+      this.setState({hacker: users.body.filter(
+            (usr) => usr.skipped_users.every(
+              (sk) => sk.email !== this.state.user.email ||
+                      sk.short_answer !== this.state.user.short_answer))[0]});
   });
 }
 
@@ -53,6 +62,15 @@ processKey(evt){
 }
 
 voteUp(evt){
+  if(this.state.user.votes === 2){
+    const upd_obj = {"$set": {"registration_status": "confirmation"}};
+  }else{
+    const upd_obj = {
+      "$inc": {"votes": 1},
+      '$push': {'votes_from': this.state.user.email}
+    }
+  }
+
   fetch('https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/mlhtest/update', {
     method: 'POST',
     mode: 'cors',
@@ -65,10 +83,7 @@ voteUp(evt){
       'auth_email': this.state.user.email,
       'auth': this.state.token,
       'user_email': this.state.hacker.email,
-      'updates': {
-        "$inc": {"votes": 1},
-        '$push': {'votes_from': this.state.user.email}
-      }
+      'updates': upd_obj
     })
   }).then(resp => resp.json())
     .then(data => {
@@ -96,6 +111,36 @@ voteDown(evt){
       'updates': {
         "$inc": {"votes": -1},
         '$push': {'votes_from': this.state.user.email}
+      }
+    })
+  }).then(resp => resp.json())
+    .then(data => {
+    if(data.statusCode === 200){
+      this.componentWillMount();
+    }else{
+      this.setState({error: data.body});
+    }
+  });
+}
+
+skip(evt){
+  fetch('https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/mlhtest/update', {
+    method: 'POST',
+    mode: 'cors',
+    credentials: 'omit',
+    headers: {
+      //'Accept': 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      'auth_email': this.state.user.email,
+      'auth': this.state.token,
+      'user_email': this.state.hacker.email,
+      'updates': {
+        '$push': {
+          'skipped_users': this.state.user.email,
+          'short_answer': this.state.hacker.short_answer
+        }
       }
     })
   }).then(resp => resp.json())
@@ -149,6 +194,7 @@ render() {
           <div className="modal-footer">
             <button type="button" onClick={this.voteUp} className="btn btn-primary">Vote Up</button>
             <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" onClick={this.skip}className="btn btn-primary">Skip User</button>
             <button type="button" onClick={this.voteDown}className="btn btn-primary">Vote Down</button>
           </div>
         </div>
