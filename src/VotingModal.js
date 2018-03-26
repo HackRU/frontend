@@ -45,15 +45,22 @@ componentWillMount(){
     })
   }).then(resp => resp.json())
     .then(users => {
-      if(users.body && users.body.length === 0){
+      if(!users.body || users.body.length === 0){
         this.setState({loadingMsg: "You're all done, it seems!"});
         return;
       }
 
-      this.setState({hacker: users.body.filter(
+      const nonSkipped = users.body.filter(
             (usr) => !usr.skipped_users || usr.skipped_users.every(
               (sk) => sk.email !== this.state.user.email ||
-                      sk.short_answer !== usr.short_answer))[0]});
+                      sk.short_answer !== usr.short_answer));
+
+      if(nonSkipped.length === 0){
+        this.setState({loadingMsg: "You're all done, it seems! But you have skipped some users. Check later: they may have updated their response."});
+        return;
+      }
+
+      this.setState({hacker: nonSkipped[0]});
   });
 
 }
