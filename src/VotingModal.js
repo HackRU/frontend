@@ -20,7 +20,7 @@ constructor (props){
 
 componentWillMount(){
   const userConds = Object.keys(this.state.user.role)
-    .map(k => ({["role." + k]: (k == 'organizer' || k == 'hacker')}))
+    .map(k => ({["role." + k]: (/*k == 'organizer' ||*/ k == 'hacker')}))
     //ES6 computed keys ^ ... aren't they cool?!
     //Also, the "k == 'organizer' ||" is for testing.
     .concat([
