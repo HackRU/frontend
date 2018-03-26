@@ -45,6 +45,11 @@ componentWillMount(){
     })
   }).then(resp => resp.json())
     .then(users => {
+      if(users.body && users.body.length === 0){
+        this.setState({loadingMsg: "You're all done, it seems!"});
+        return;
+      }
+
       this.setState({hacker: users.body.filter(
             (usr) => !usr.skipped_users || usr.skipped_users.every(
               (sk) => sk.email !== this.state.user.email ||
