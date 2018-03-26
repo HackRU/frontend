@@ -14,6 +14,7 @@ constructor (props){
   this.voteUp = this.voteUp.bind(this);
   this.voteDown = this.voteDown.bind(this);
   this.skip = this.skip.bind(this);
+
 }
 
 componentWillMount(){
@@ -26,6 +27,7 @@ componentWillMount(){
       {'registration_status': 'registered'}
       //TODO: figure out where query?
     ])
+
 
   fetch('https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/mlhtest/read', {
     method: 'POST',
@@ -47,13 +49,14 @@ componentWillMount(){
               (sk) => sk.email !== this.state.user.email ||
                       sk.short_answer !== usr.short_answer))[0]});
   });
+
 }
 
 processKey(evt){
-  alert("Press! " + evt.key);
-  if(evt.key === "Up"){
+//  alert("Press! " + evt.key);
+  if(evt.key === "ArrowUp"){
     this.voteUp(evt);
-  }else if(evt.key === "Down"){
+  }else if(evt.key === "ArrowDown"){
     this.voteDown();
   }/*else if(evt.key === "Space"){
      iff skipping users
@@ -61,6 +64,7 @@ processKey(evt){
 }
 
 voteUp(evt){
+  alert("Upvoted User");
   let upd_obj = [];
   if(this.state.hacker.votes === 2){
     upd_obj = {"$set": {"registration_status": "confirmation"}};
@@ -96,6 +100,7 @@ voteUp(evt){
 }
 
 voteDown(evt){
+  alert("Downvoted User");
   fetch('https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/mlhtest/update', {
     method: 'POST',
     mode: 'cors',
@@ -157,10 +162,12 @@ skip(evt){
 
 render() {
   return (
-        <div onKeyPress={this.processKey} tabIndex="0">
+        <div
+        onKeyDown={(e) => this.processKey(e)}
+        tabIndex="0">
           <div className="modal-header">
-            <h5 className="modal-title font-modal" id="exampleModalLongTitle">Vote on Users</h5><br/>
-            <p className="font-modal">You cannot use up arrow and down arrows.</p>
+            <h4 className="modal-title font-modal mr-3" id="exampleModalLongTitle">Vote on Users</h4><br/>
+            <p className="font-modal">Click on the top of the modal, then use the up and down arrow keys!</p>
             <button type="button" className="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
