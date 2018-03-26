@@ -65,6 +65,11 @@ processKey(evt){
 }
 
 voteUp(evt){
+  if(!this.state.hacker){
+    this.setState({loadingMsg: "Patience. You may be done."});
+    return;
+  }
+
   const hax0r = this.state.hacker;
   this.setState({hacker: undefined, loadingMsg: "Voted up! Next one inbound..."});
 
@@ -103,6 +108,11 @@ voteUp(evt){
 }
 
 voteDown(evt){
+  if(!this.state.hacker){
+    this.setState({loadingMsg: "Patience. You may be done."});
+    return;
+  }
+
   const hax0r = this.state.hacker;
   this.setState({hacker: undefined, loadingMsg: "Voted down. Next hacker coming..."});
 
@@ -134,6 +144,11 @@ voteDown(evt){
 }
 
 skip(evt){
+  if(!this.state.hacker){
+    this.setState({loadingMsg: "Patience. You may be done."});
+    return;
+  }
+
   const hax0r = this.state.hacker;
   this.setState({hacker: undefined, loadingMsg: "Skipped. Here's another one..."});
 
