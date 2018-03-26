@@ -66,12 +66,11 @@ componentWillMount(){
 }
 
 processKey(evt){
-//  alert("Press! " + evt.key);
   if(evt.key === "ArrowUp"){
     this.voteUp(evt);
   }else if(evt.key === "ArrowDown"){
     this.voteDown();
-  }else if(evt.key === "ArrowLeft"){
+  }else if(evt.key === "ArrowRight" || evt.key === "ArrowLeft"){
     this.skip();
   }
 }
@@ -202,7 +201,7 @@ render() {
         tabIndex="0">
           <div className="modal-header">
             <h4 className="modal-title font-modal mr-3" id="exampleModalLongTitle">Vote on Users</h4><br/>
-            <p className="font-modal">Click on the top of the modal, then use the up and down arrow keys!</p>
+            <p className="font-modal">Click on the top of the modal, then use the up and down arrow keys to vote! Left or right arrow skip!</p>
             <button type="button" className="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
