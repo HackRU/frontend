@@ -7,7 +7,8 @@ constructor (props){
   super(props);
   this.state = {
     user: props.user,
-    token: props.token
+    token: props.token,
+    loadingMsg: "Loading...",
   };
   this.componentWillMount = this.componentWillMount.bind(this);
   this.processKey = this.processKey.bind(this);
@@ -19,7 +20,7 @@ constructor (props){
 
 componentWillMount(){
   const userConds = Object.keys(this.state.user.role)
-    .map(k => ({["role." + k]: (/*k == 'organizer' ||*/ k == 'hacker')}))
+    .map(k => ({["role." + k]: (k == 'organizer' || k == 'hacker')}))
     //ES6 computed keys ^ ... aren't they cool?!
     //Also, the "k == 'organizer' ||" is for testing.
     .concat([
@@ -58,15 +59,17 @@ processKey(evt){
     this.voteUp(evt);
   }else if(evt.key === "ArrowDown"){
     this.voteDown();
-  }/*else if(evt.key === "Space"){
-     iff skipping users
-  } */
+  }else if(evt.key === "ArrowLeft"){
+    this.skip();
+  }
 }
 
 voteUp(evt){
-  alert("Upvoted User");
+  const hax0r = this.state.hacker;
+  this.setState({hacker: undefined, loadingMsg: "Voted up! Next one inbound..."});
+
   let upd_obj = [];
-  if(this.state.hacker.votes === 2){
+  if(hax0r.votes === 2){
     upd_obj = {"$set": {"registration_status": "confirmation"}};
   }else{
     upd_obj = {
@@ -86,7 +89,7 @@ voteUp(evt){
     body: JSON.stringify({
       'auth_email': this.state.user.email,
       'auth': this.state.token,
-      'user_email': this.state.hacker.email,
+      'user_email': hax0r.email,
       'updates': upd_obj
     })
   }).then(resp => resp.json())
@@ -100,7 +103,9 @@ voteUp(evt){
 }
 
 voteDown(evt){
-  alert("Downvoted User");
+  const hax0r = this.state.hacker;
+  this.setState({hacker: undefined, loadingMsg: "Voted down. Next hacker coming..."});
+
   fetch('https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/mlhtest/update', {
     method: 'POST',
     mode: 'cors',
@@ -112,7 +117,7 @@ voteDown(evt){
     body: JSON.stringify({
       'auth_email': this.state.user.email,
       'auth': this.state.token,
-      'user_email': this.state.hacker.email,
+      'user_email': hax0r.email,
       'updates': {
         "$inc": {"votes": -1},
         '$push': {'votes_from': this.state.user.email}
@@ -129,6 +134,9 @@ voteDown(evt){
 }
 
 skip(evt){
+  const hax0r = this.state.hacker;
+  this.setState({hacker: undefined, loadingMsg: "Skipped. Here's another one..."});
+
   fetch('https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/mlhtest/update', {
     method: 'POST',
     mode: 'cors',
@@ -140,12 +148,12 @@ skip(evt){
     body: JSON.stringify({
       'auth_email': this.state.user.email,
       'auth': this.state.token,
-      'user_email': this.state.hacker.email,
+      'user_email': hax0r.email,
       'updates': {
         '$push': {
           'skipped_users': {
             'email': this.state.user.email,
-            'short_answer': this.state.hacker.short_answer
+            'short_answer': hax0r.short_answer
           }
         }
       }
@@ -176,7 +184,7 @@ render() {
           {
             //hacky ternary... so if !state.hacker, loading
             //else the <div>
-            (!this.state.hacker && "Loading...") ||
+            (!this.state.hacker && this.state.loadingMsg) ||
             <div>
             <div>
               What are they looking for from their experience at HackRU?
