@@ -210,7 +210,7 @@ render() {
               What are they looking for from their experience at HackRU?
             </div>
             <div>
-              <textarea class="form-control mb-2" type="text" placeholder={this.state.hacker.short_answer} readonly />
+              <textarea class="form-control mb-2 votingtext" type="text" placeholder={this.state.hacker.short_answer} readonly />
             </div>
             <div>
               Gender
