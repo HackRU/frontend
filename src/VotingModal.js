@@ -25,7 +25,9 @@ componentWillMount(){
     //Also, the "k == 'organizer' ||" is for testing.
     .concat([
       {'votes_from': {'$ne': this.state.user.email}},
-      {'registration_status': 'registered'}
+      {'registration_status': 'registered'},
+      {'gender': {'$ne': ""}},
+      {'grad_year': {'$ne': ""}}
       //TODO: figure out where query?
     ])
 
@@ -216,19 +218,19 @@ render() {
               What are they looking for from their experience at HackRU?
             </div>
             <div>
-              <textarea class="form-control mb-2" type="text" placeholder={this.state.hacker.short_answer} readonly />
+              <textarea className="form-control mb-2 textminheightclass" type="text" placeholder={this.state.hacker.short_answer} readOnly />
             </div>
             <div>
               Gender
             </div>
             <div>
-              <input class="form-control mb-2" type="text" placeholder={this.state.hacker.gender} readonly />
+              <input className="form-control mb-2" type="text" placeholder={this.state.hacker.gender} readOnly />
             </div>
             <div>
               Grad year
             </div>
             <div>
-              <input class="form-control mb-2" type="text" placeholder={this.state.hacker.grad_year} readonly />
+              <input className="form-control mb-2" type="text" placeholder={this.state.hacker.grad_year} readOnly />
             </div>
             </div>
           }
