@@ -203,6 +203,10 @@ body {
   font-size: 1m;
 }
 
+.textminheightclass {
+  min-height: 200px;
+}
+
 tbody {
     display:block;
     height:80vh;
