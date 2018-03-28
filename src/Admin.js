@@ -86,7 +86,7 @@ render() {
           <button type="button" className="btn btn-primary custom-btn p-3  mx-1 my-3" onClick={this.logout}><h4 className="my-0">Logout</h4></button>
         </div>
 
-      <h1 className="text-center">Admin Dashbaord</h1>
+      <h1 className="text-center">Admin Dashboard</h1>
       <div className="col-lg-12 text-center">
 
       { this.state.user &&

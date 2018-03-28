@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 
 class VotingModal extends React.Component {
 
@@ -218,7 +217,7 @@ render() {
               What are they looking for from their experience at HackRU?
             </div>
             <div>
-              <textarea className="form-control mb-2 textminheightclass" type="text" placeholder={this.state.hacker.short_answer} readOnly />
+              <textarea className="form-control mb-2 textminheightclass" style={{minHeight: "200px"}} type="text" readOnly placeholder={this.state.hacker.short_answer}  />
             </div>
             <div>
               Gender
