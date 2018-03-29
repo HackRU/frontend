@@ -26,7 +26,8 @@ componentWillMount(){
       {'votes_from': {'$ne': this.state.user.email}},
       {'registration_status': 'registered'},
       {'gender': {'$ne': ""}},
-      {'grad_year': {'$ne': ""}}
+      {'grad_year': {'$ne': ""}},
+      {'short_answer': {'$ne': ""}}
       //TODO: figure out where query?
     ])
 
