@@ -4,6 +4,7 @@ import {instanceOf} from 'prop-types';
 import {CookiesProvider, withCookies, Cookies} from 'react-cookie';
 import App from './App';
 import VotingModal from './VotingModal';
+import AdminEmailing from './AdminEmailing';
 import ModalError from './modalerror';
 
 class Admin extends React.Component {
@@ -129,6 +130,7 @@ render() {
           }
           </tbody>
         </table>
+        <AdminEmailing user={this.state.user} token={this.state.token}/>
         </div>
       </div>
 
@@ -137,4 +139,5 @@ render() {
 }
 
 }
+
 export default withCookies(Admin);
