@@ -130,7 +130,8 @@ render() {
           }
           </tbody>
         </table>
-        <AdminEmailing user={this.state.user} token={this.state.token}/>
+        { (console.log(this.state.user.role.director) || this.state.user.role.director) &&
+          <AdminEmailing user={this.state.user} token={this.state.token}/>}
         </div>
       </div>
 

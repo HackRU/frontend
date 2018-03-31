@@ -41,7 +41,7 @@ class AdminEmailing extends React.Component {
     });
   }
 
-  sendEmails(){
+  sendEmails(e){
     const reg_stat = document.getElementById('email-recipient-status').value;
     const isEvery = document.querySelector('input[name="email-recipients"]:checked').value === "all";
     const query = [
@@ -66,6 +66,35 @@ class AdminEmailing extends React.Component {
         'template': document.getElementById('choose-email-template').value,
         'query': query,
         'aggregate': true
+      })
+    }).then(resp => resp.json())
+      .then(templates => {
+      if(templates.statusCode === 200){
+        alert('Worked!');
+      }else{
+        alert('Error: ' + templates.body);
+      }
+    });
+  }
+
+  sendLink(e){
+    let perms = [];
+    document.querySelectorAll('input[name="magiclink-permission"]:checked')
+      .forEach(p => perms.push(p.value));
+
+    fetch('https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/mlhtest/make-link', {
+      method: 'POST',
+      mode: 'cors',
+      credentials: 'omit',
+      headers: {
+        //'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        'email': this.state.user.email,
+        'token': this.state.token,
+        'template': document.getElementById('choose-email-template').value,
+        'permissions': perms
       })
     }).then(resp => resp.json())
       .then(templates => {
@@ -106,6 +135,16 @@ class AdminEmailing extends React.Component {
           that template that I selected above.
         </div>
         <button onClick={this.sendEmails} className="btn btn-primary custom-btn p-3 mx-1 my-3">Send thingy I described</button>
+        <div>
+          Email these addresses: (each email on a line) <textarea id="emails"></textarea>
+          to be <input type="checkbox" name="magiclink-permission" value="director"/>director
+          <input type="checkbox" name="magiclink-permission" value="judge"/>judge
+          <input type="checkbox" name="magiclink-permission" value="organizer"/>organizer
+          <input type="checkbox" name="magiclink-permission" value="volunteer"/>volunteer
+          <input type="checkbox" name="magiclink-permission" value="mentor"/>mentor
+           - use that template that I selected above.
+        </div>
+        <button onClick={this.sendLink} className="btn btn-primary custom-btn p-3 mx-1 my-3">Send link I described</button>
       </div>);
   }
 
