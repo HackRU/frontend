@@ -53,7 +53,9 @@ class App extends React.Component {
         const { cookies } = this.props;//I don't get it.
         cookies.set('authdata', auth);
 
-        window.location.href = '/#launch-modal';
+        if(!urlParams.has('magiclink')){
+          window.location.href = '/#launch-modal';
+        }
 
       }
     }

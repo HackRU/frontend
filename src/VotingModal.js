@@ -62,7 +62,7 @@ componentWillMount(){
         return;
       }
 
-      this.setState({hacker: nonSkipped[0]});
+      this.setState({hacker: nonSkipped[0], userCount: nonSkipped.length});
   });
 
 }
@@ -214,6 +214,7 @@ render() {
             //else the <div>
             (!this.state.hacker && this.state.loadingMsg) ||
             <div>
+            <div>{this.state.userCount} users to vote on (by everybody, DW... the team's gotchu).</div>
             <div>
               What are they looking for from their experience at HackRU?
             </div>
