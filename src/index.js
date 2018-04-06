@@ -7,6 +7,6 @@ import './App.css';
 import registerServiceWorker from './registerServiceWorker';
 import {CookiesProvider} from 'react-cookie';
 
-ReactDOM.render(<CookiesProvider><App /></CookiesProvider>, document.getElementById('register-root'));
+// ReactDOM.render(<CookiesProvider><App /></CookiesProvider>, document.getElementById('register-root'));
 // ReactDOM.render(<Col messageText="thisistext" />, document.getElementById('second-root'));
 registerServiceWorker();

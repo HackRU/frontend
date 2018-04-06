@@ -1,0 +1,164 @@
+:root {
+    --color-zero: #ffffff;
+    --color-one: #23A9E1; /* RGB = 35,169,225 */
+    --color-two: #1F4AB5; /* RGB = 31,74,181 */
+}
+
+
+/* - - - - - - - - BEGIN FONTS - - - - - - - - */
+@font-face {
+    font-family: Circular;
+    font-weight: bold;
+    src: local("Circular"), url("../fonts/CircularStd-Bold.otf") format("opentype");
+}
+
+@font-face {
+    font-family: Circular;
+    font-weight: normal;
+    src: local("Circular"), url("../fonts/CircularStd-Book.otf") format("opentype");
+}
+/* - - - - - - - -  END FONTS - - - - - - - - */
+
+
+.color-two {
+    color: var(--color-two);
+}
+
+.color-two:hover, .color-two:focus, .color-two:active {
+    color: var(--color-two);
+}
+
+h1, h2, h3, h4, h5, h6, p {
+    color: var(--color-zero);
+    font-family: 'Circular', sans-serif;
+    margin: 0;
+}
+
+
+a {
+    color: var(--color-zero);
+}
+
+a:hover, a:focus, a:active {
+    text-decoration: none;
+    color: var(--color-zero);
+    font-weight: bold;
+}
+
+#profile-logo {
+    width: 45%;
+}
+
+#profile-qr {
+    padding: 10%;
+    width: 100%;
+    border: 1px dotted white;
+    border-radius: 20px;
+}
+
+#dashboard-profile {
+    height: 100vh;
+    background-color: var(--color-two);
+    background-image: url("../img/dark-bg.jpg") !important;
+    background-position: right bottom;
+    background-size: cover;
+    background-attachment: fixed;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    position: fixed;
+}
+
+.profile-text {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+#dashboard-content {
+    padding: 50px;
+    background: rgba(35,169,225, 0.1);
+}
+
+
+.content-section-title {
+    color: var(--color-two);
+    font-weight: bold;
+}
+
+.content-section-desc {
+    color: var(--color-two);
+    margin-top: 20px;
+    padding: 20px;
+    border: 1px dotted;
+    border-radius: 20px;
+    /*background: rgba(35,169,225, 0.05);*/
+}
+
+.content-title {
+    color: var(--color-two);
+    font-weight: bold;
+}
+
+.content-desc {
+    color: black;
+}
+
+.content-desc a {
+    color: black;
+}
+
+.content-desc a:hover {
+    color: var(--color-two);
+}
+
+.content-desc:not(:last-child) {
+    margin-bottom: 30px;
+}
+
+#announcements-div, #upcoming-div {
+    overflow: hidden;
+}
+
+#announcements-list, #upcoming-list {
+    overflow-y: scroll;
+    max-height: 50vh;
+}
+
+#twitter-list {
+    overflow-y: scroll;
+    max-height: 70vh;
+}
+
+#info-list {
+    height: 50vh;
+}
+
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent; /* make scrollbar transparent */
+}
+
+.u-highlight {
+    display: inline-block;
+    position: relative;
+    z-index: 1;
+}
+
+.u-highlight:after {
+    content: '';
+    position: absolute;
+    top: 60%;
+    left: 7%;
+    height: 35%;
+    width: 100%;
+    background: var(--color-one);
+    opacity: 0.3;
+    z-index: -1;
+}
+
+.overlay-design {
+    position: fixed;
+    height: 300px;
+    z-index: -100;
+    opacity: 0.3;
+}
