@@ -38,13 +38,8 @@ class App extends React.Component {
           <CookiesProvider>
             <UserForm/>
           </CookiesProvider>,
-          document.getElementById('register-more')
-      );
-
-      ReactDOM.render(
-        <Logged />,
           document.getElementById('register-root')
-          );
+      );
       return;
     }else{
       let urlParams = new URLSearchParams(window.location.search);
@@ -78,19 +73,15 @@ class App extends React.Component {
         <CookiesProvider>
           <UserForm/>
         </CookiesProvider>,
-        document.getElementById('register-more')
+        document.getElementById('register-root')
     );
 
-    ReactDOM.render(
-      <Logged />,
-      document.getElementById('register-root')
-    );
+
   }
 
   login() {
     	if (this.state.email == "" || this.state.password == ""){
     		this.setState({errorMessage: "Please fill in all the fields"});
-        ReactDOM.render(<ModalError />, document.getElementById('register-more'));
     	} else {
     		fetch('https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/mlhtest/authorize', {
     		  method: 'POST',
@@ -117,7 +108,6 @@ class App extends React.Component {
 
   	if (this.state.email == "" || this.state.password == ""){
     		this.setState({errorMessage: "Please fill in all the fields"});
-        ReactDOM.render(<ModalError />, document.getElementById('register-more'));
     } else {
     		fetch('https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/mlhtest/create', {
     		  method: 'POST',
@@ -140,11 +130,7 @@ class App extends React.Component {
                 <CookiesProvider>
                   <UserForm/>
                 </CookiesProvider>,
-                document.getElementById('register-more')
-              );
-              ReactDOM.render(
-                  <Logged />,
-                  document.getElementById('register-root')
+                document.getElementById('register-root')
               );
             }else if(data.body === "Duplicate user!"){
               this.setState({errorMessage: "You are already in our system! Please try logging in."})
@@ -180,30 +166,30 @@ class App extends React.Component {
 			<form className="form-group">
 
 				<div className="form-group row my-3">
-					<label htmlFor="email-input" className="col-lg-3 col-form-label"><h4 className="font-weight-bold">EMAIL</h4></label>
+					<label htmlFor="email-input" className="col-lg-3 col-form-label"><h4 className="font-weight-bold blue">EMAIL</h4></label>
 					<div className="col-lg-9">
-						<input type="email" onChange={this.onEmailChange} className="form-control form-control-lg" id="email-input"></input>
+						<input type="email" onChange={this.onEmailChange} className="form-control form-control" id="email-input"></input>
 					</div>
 				</div>
 
 				<div className="form-group row my-3">
-					<label htmlFor="pw-input" className="col-lg-3 col-form-label"><h4 className="font-weight-bold">PASSWORD</h4></label>
+					<label htmlFor="pw-input" className="col-lg-3 col-form-label"><h4 className="font-weight-bold blue">PASSWORD</h4></label>
 					<div className="col-lg-9">
-						<input type="password" onChange={this.onPasswordChange} className="form-control form-control-lg" id="pw-input"></input>
+						<input type="password" onChange={this.onPasswordChange} className="form-control form-control" id="pw-input"></input>
 					</div>
 				</div>
 
-				<div className="form-group row my-1 ">
+				<div className="form-group row">
           <span className="col-lg-3"></span>
-          <h4 className="col-lg-9">{this.state.errorMessage}</h4>
+          <h4 className="col-lg-9 blue" >{this.state.errorMessage}</h4>
         </div>
 
-				<div className="form-group row my-1">
+				<div className="form-group row mt-1">
 					<div className="col-12 text-center">
 						<br/>
-						<button onClick={this.signUp} type="button" className="custom-btn btn btn-primary p-3 "><h4 className="my-0">Sign Up</h4></button>
-            <button onClick={this.login} type="button" className="btn btn-primary custom-btn p-3  mx-3 my-3" data-toggle="modal" data-target="#exampleModalCenter"><h4 className="my-0">Login</h4></button>
-            <button onClick={this.mlh} type="button" className="custom-btn btn btn-primary p-3"><h4 className="my-0">Log in/Sign Up with MLH</h4></button>
+						<button onClick={this.signUp} type="button" className="btn btn-primary p-3"><h6 className="my-0">Sign Up</h6></button>
+            <button onClick={this.login} type="button" className="btn btn-primary custom-btn p-3 mx-3 my-3" data-toggle="modal" data-target="#exampleModalCenter"><h6 className="my-0">Login</h6></button>
+            <button onClick={this.mlh} type="button" className="btn btn-primary p-3"><h6 className="my-0">Log in/Sign Up with MLH</h6></button>
 					</div>
 				</div>
 
