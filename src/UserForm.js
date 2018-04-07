@@ -96,9 +96,7 @@ class UserForm extends React.Component {
     const {cookies} = this.props;
     cookies.remove('authdata');
     ReactDOM.render(<CookiesProvider><App /></CookiesProvider> , document.getElementById('register-root'));
-    ReactDOM.render(
-    <ModalError />
-      , document.getElementById('register-more'));
+
   }
 
   onChange(e){
@@ -150,13 +148,10 @@ class UserForm extends React.Component {
 
   LogoutButtons(){
     return (
-				<div className="form-group ">
 					<div className="col-12 text-center">
-						<br/>
-						<button onClick={this.logout} type="button" className="btn btn-primary custom-btn mx-2" data-dismiss="modal"><h4 className="my-1">Logout</h4></button>
-						<button onClick={this.save} type="button" className="btn btn btn-primary custom-btn"><h4 className="my-1">Save Changes</h4></button>
+						<button onClick={this.logout} type="button" className="btn btn-primary custom-btn mx-2"><h6 className="my-1">Logout</h6></button>
+						<button onClick={this.save} type="button" className="btn btn btn-primary custom-btn"><h6 className="my-1">Save Changes</h6></button>
 					</div>
-				</div>
     )
 
   }
@@ -528,55 +523,56 @@ class UserForm extends React.Component {
     return (
     <div>
 
-    <div className="modal-header">
-      <h5 className="modal-title  font-modal" id="exampleModalLongTitle">Please update your data.</h5 >
-      <button type="button" onClick={this.logout} className="close" data-dismiss="modal" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-    <div className="modal-body">
-      <div className="react-form font-modal">
 
-			   <form className="form-group">
+
+		   <form className="form-group">
+
+       <div className="text-center">
+
+       <h2 className="blue"> Application Status: Pending </h2>
+
+       <button type="button" className="btn btn-primary custom-btn p-3 my-1 mx-md-1" id="launch-modal" data-toggle="modal" data-target="#exampleModalCenter" data-backdrop="static"><h4 className="my-0">Attending</h4></button>
+       <button type="button" className="btn btn-primary custom-btn p-3 my-1" id="launch-modal" data-toggle="modal" data-target="#exampleModalCenter" data-backdrop="static"><h4 className="my-0">Will not Attend</h4></button>
+
+       </div>
+       <h2 className="blue mb-3"> Your Info: </h2>
 
         <span>
         { this.state.user &&
             Object.keys(formConfig)
               .map(key =>
                  <div className="form-group row mb-4">
-
-                        <label htmlFor={"input-" + key} className="col-lg-8"><h4 className="font-weight-bold font-modal">{key.replace(/_/g, ' ').toUpperCase()}</h4>{key == "travelling_from" && "(Enter the nearest city center)"}</label>
+                        <label htmlFor={"input-" + key} className="col-lg-8"><h4 className="font-weight-bold blue">{key.replace(/_/g, ' ').toUpperCase()}</h4>{key == "travelling_from" && "(Enter the nearest city center)"}</label>
                         {parseInput(key)}
-
                  </div>
             )
         }
         </span>
 				<div className="form-group row my-2">
-                        <label htmlFor="resumeupload" className="col-lg-8"><h4 className="font-weight-bold font-modal">SHORT ANSWER:</h4> What are you looking for from your experience at HackRU?</label>
-                <textarea className="form-control mx-3" onChange={this.onChange}
+                        <label htmlFor="resumeupload" className="col-lg-8"><h4 className="font-weight-bold blue">SHORT ANSWER:</h4> What are you looking for from your experience at HackRU?</label>
+                        <textarea className="form-control mx-3" onChange={this.onChange}
                    value={(this.state.user)? this.state.user.short_answer : ""}
                    id="input-short_answer"/>
         </div>
 				<div className="form-group row my-2">
-                        <label htmlFor="resumeupload" className="col-lg-8"><h4 className="font-weight-bold font-modal">RESUME</h4></label>
+                        <label htmlFor="resumeupload" className="col-lg-8"><h4 className="font-weight-bold blue">RESUME</h4></label>
                 <input type="file" className="form-control mx-3" onChange={this.doResume} id="resumeupload"/>
         </div>
         {this.state.user && this.state.user.registration_status == "unregistered" &&
 				<div className="form-group row my-2 mx-1">
-                <h4 className="font-weight-bold font-modal mb-2">MLH NOTICES</h4>
-                <div className="form-check form-check-inline mb-4">
+                <h4 className="col-12 font-weight-bold blue mb-2">MLH NOTICES</h4>
+                <div className="col-12 form-check mb-4">
 
                   <input type="checkbox" className="form-check-input mr-4" id="code-of-conduct-box"/>
                   <label htmlFor="code-of-conduct-box" className="form-check-label">
-                      I agree to abide by the <a href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf">MLH code of conduct.</a>
+                      I agree to abide by the <a className="blue" href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf">MLH code of conduct.</a>
                   </label>
                 </div>
                 <div className="form-check form-check-inline">
                   <input type="checkbox" className="form-check-input mr-4" id="data-sharing-box"/>
                   <label htmlFor="data-sharing-box" className="form-check-label">
-                      I agree to the terms of both the <a href="https://github.com/MLH/mlh-policies/tree/master/prize-terms-and-conditions">MLH Contest Terms and Conditions</a>
-                      and <a href="https://mlh.io/privacy">the MLH Privacy Policy</a>. Please note that you may
+                      I agree to the terms of both the <a className="blue" href="https://github.com/MLH/mlh-policies/tree/master/prize-terms-and-conditions">MLH Contest Terms and Conditions</a>
+                      and <a className="blue" href="https://mlh.io/privacy">the MLH Privacy Policy</a>. Please note that you may
                       receive pre and post-event informational e-mails and occasional messages
                       about hackathons from MLH as per the MLH Privacy Policy.
                   </label>
@@ -584,16 +580,14 @@ class UserForm extends React.Component {
 
         </div>}
 				<div className="form-group row my-2 mx-1">
-          <h4 className="font-modal">{this.state.flash}</h4>
+          <h4 className="blue">{this.state.flash}</h4>
         </div>
-          </form>
-      </div>
+        </form>
 
-    </div>
 
-    <div className="modal-footer">
+
     <this.LogoutButtons />
-    </div>
+
   </div>
 
     );

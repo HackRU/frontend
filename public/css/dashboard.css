@@ -79,6 +79,9 @@ a:hover, a:focus, a:active {
     background: rgba(35,169,225, 0.1);
 }
 
+.blue {
+  color: var(--color-two);
+}
 
 .content-section-title {
     color: var(--color-two);
