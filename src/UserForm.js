@@ -51,6 +51,13 @@ class UserForm extends React.Component {
           </CookiesProvider>,
           document.getElementById('register-root')
       );
+      ReactDOM.render(
+          <div>
+            <h3>Please login</h3>
+          </div>,
+          document.getElementById('register-sidebar')
+      );
+
       return;
     }else{
       this.setState({
@@ -98,6 +105,7 @@ class UserForm extends React.Component {
     const {cookies} = this.props;
     cookies.remove('authdata');
     ReactDOM.render(<CookiesProvider><App /></CookiesProvider> , document.getElementById('register-root'));
+    ReactDOM.render(<div><h3>Please login</h3></div> , document.getElementById('register-sidebar'));
 
   }
 
@@ -151,8 +159,8 @@ class UserForm extends React.Component {
   LogoutButtons(){
     return (
 					<div className="col-12 text-center">
-						<button onClick={this.logout} type="button" className="btn btn-primary custom-btn mx-2"><h6 className="my-1">Logout</h6></button>
-						<button onClick={this.save} type="button" className="btn btn btn-primary custom-btn"><h6 className="my-1">Save Changes</h6></button>
+						<button onClick={this.logout} type="button" className="btn btn-primary UC custom-btn mx-2 p-3"><h6 className="my-1">Logout</h6></button>
+						<button onClick={this.save} type="button" className="btn btn btn-primary UC custom-btn p-3"><h6 className="my-1">Save Changes</h6></button>
 					</div>
     )
 
@@ -579,6 +587,20 @@ class UserForm extends React.Component {
     if(userStatus && userStatus === 'registered' || userStatus == 'unregistered') userStatus = 'Pending';
     else if(userStatus && userStatus === 'comfirmation') userStatus = 'Pending Confirmation';
     else if(userStatus) userStatus = userStatus.replace('-', ' ');
+
+    ReactDOM.render(<div>
+    <h2 class="font-weight-bold" >{this.state.user && this.state.user.first_name + ' ' + this.state.user.last_name} </h2>
+    <h6> <a onClick={this.logout}>Logout</a> </h6>
+    <br />
+    <h6 class="profile-text"><i class="fas fa-graduation-cap fa-fw"></i>{this.state.user && this.state.user.school}</h6>
+    <br />
+    <h6 class="profile-text"><i class="fas fa-user fa-fw"></i>{this.state.user && this.state.user.level_of_study}</h6>
+    <br />
+    <h6 class="profile-text"><i class="fas fa-lightbulb fa-fw"></i>{this.state.user && this.state.user.major}</h6>
+    <br />
+    <h6><i class="fab fa-github fa-fw"></i> <a href="http://github.com" target="_blank">{this.state.user && this.state.user.github}Github</a></h6>
+    </div>,
+    document.getElementById('register-sidebar'));
 
     //pardon my indentation - David used tabs.
     return (
