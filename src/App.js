@@ -48,7 +48,7 @@ class App extends React.Component {
         const { cookies } = this.props;//I don't get it.
         cookies.set('authdata', auth);
 
-        window.location.href = '/#launch-modal';
+        window.location.href = '/dashboard.html';
 
       }
     }
