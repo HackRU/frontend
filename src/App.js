@@ -62,7 +62,7 @@ class App extends React.Component {
       };
 
       this.setState({errorMessage: errorMsgs[data.body]});
-      
+
       return;
     }
 
@@ -184,12 +184,12 @@ class App extends React.Component {
           <h4 className="col-lg-9 blue" >{this.state.errorMessage}</h4>
         </div>
 
-				<div className="form-group row mt-1">
+				<div className="form-group row mt-0">
 					<div className="col-12 text-center">
 						<br/>
-						<button onClick={this.signUp} type="button" className="btn btn-primary p-3"><h6 className="my-0">Sign Up</h6></button>
-            <button onClick={this.login} type="button" className="btn btn-primary custom-btn p-3 mx-3 my-3" data-toggle="modal" data-target="#exampleModalCenter"><h6 className="my-0">Login</h6></button>
-            <button onClick={this.mlh} type="button" className="btn btn-primary p-3"><h6 className="my-0">Log in/Sign Up with MLH</h6></button>
+						<button onClick={this.signUp} type="button" className="btn btn-primary p-3"><h6 className="UC ">Sign Up</h6></button>
+            <button onClick={this.login} type="button" className="btn btn-primary custom-btn p-3 mx-md-1 my-sm-3" ><h6 className=" UC ">Login</h6></button>
+            <button onClick={this.mlh} type="button" className="btn btn-primary p-3"><h6 className=" UC">Log in/Sign Up with MLH</h6></button>
 					</div>
 				</div>
 
