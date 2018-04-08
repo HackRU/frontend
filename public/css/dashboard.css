@@ -52,8 +52,8 @@ a:hover, a:focus, a:active {
 #profile-qr {
     padding: 10%;
     width: 100%;
-    border: 1px dotted white;
-    border-radius: 20px;
+    /* border: 1px dotted white; */
+    /* border-radius: 20px; */
 }
 
 #dashboard-profile {

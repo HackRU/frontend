@@ -419,6 +419,9 @@ class UserForm extends React.Component {
   }
 
   notAttending(e){
+    let upd = {'registration_status': 'not-coming'};
+    if(this.state.user.travelling_from) upd['travelling_from.is_real'] = false;
+
     fetch('https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/mlhtest/update', {
       method: 'POST',
       mode: 'cors',
@@ -710,7 +713,7 @@ class UserForm extends React.Component {
                <label htmlFor="toggle-travel-stuff"><h5 className="blue">I request travel reimbursement</h5></label>
             </span>
            }
-           {this.state.user && this.state.user.travelling_from.is_real &&
+           {this.state.user && this.state.user.travelling_from && this.state.user.travelling_from.is_real &&
              <div>   <h4 className="font-weight-bold blue">Location Traveling from (include City & State)</h4>
                 <Autocomplete
                   types={['(cities)']}
