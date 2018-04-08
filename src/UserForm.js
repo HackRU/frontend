@@ -590,18 +590,18 @@ class UserForm extends React.Component {
 
        <div className="text-center">
 
-       <h2 className="blue"> Application Status: {userStatus} </h2>
+       <h2 className="blue SC"> Application Status: {userStatus} </h2>
 
        {userStatus != 'Pending' &&
          <div>
            <div className="blue">{this.state.upperFlash}</div>
-           <button type="button" className="btn btn-primary custom-btn p-3 my-1 mx-md-1" onClick={this.attending}><h4 className="my-0">Attending</h4></button>
-           <button type="button" className="btn btn-primary custom-btn p-3 my-1" onClick={this.notAttending}><h4 className="my-0">Will not Attend</h4></button>
+           <button type="button" className="btn btn-primary UC custom-btn p-3 my-1 mx-md-1" onClick={this.attending}><h6 className="my-0">Attending</h6></button>
+           <button type="button" className="btn btn-primary UC custom-btn p-3 my-1" onClick={this.notAttending}><h6 className="my-0">Will not Attend</h6></button>
         </div>
        }
 
        </div>
-       <h2 className="blue mb-3"> Your Info: </h2>
+       <h2 className="blue my-3"> Your Info: </h2>
 
         <span>
         { this.state.user &&

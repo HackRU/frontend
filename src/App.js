@@ -62,7 +62,7 @@ class App extends React.Component {
       };
 
       this.setState({errorMessage: errorMsgs[data.body]});
-      ReactDOM.render(<ModalError />, document.getElementById('register-more'));
+      
       return;
     }
 
