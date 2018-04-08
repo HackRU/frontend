@@ -612,7 +612,7 @@ class UserForm extends React.Component {
 
        <div className="text-center">
 
-       <h2 className="blue SC"> Application Status: {userStatus} </h2>
+       <h2 className="blue SC"> Status: {userStatus} </h2>
 
        {userStatus != 'Pending' &&
          <div>
