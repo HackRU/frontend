@@ -441,8 +441,8 @@ class UserForm extends React.Component {
         if(json.statusCode == 200){
            let newser = this.state.user;
            newser.registration_status = 'not-coming';
-           newser.travelling_from.is_real = false;
-           this.setState({upperFlash: "RIP :'(", user: newser});
+           if(newser.travelling_from) newser.travelling_from.is_real = false;
+           this.setState({upperFlash: "Thanks for letting us know!", user: newser});
         }else{
            this.setState({upperFlash: json.body});
         }
