@@ -705,11 +705,11 @@ class UserForm extends React.Component {
                  }}
                  defaultChecked={this.state.user.travelling_from && this.state.user.travelling_from.is_real}
                ></input>
-               <label htmlFor="toggle-travel-stuff">I would like travel reimbursement</label>
+                  <label className="mt-3" htmlFor="toggle-travel-stuff"><h5 className="blue">I would like to be considered for travel reimbursement</h5></label>
             </span>
            }
            {this.state.user && this.state.user.travelling_from.is_real &&
-             <div>
+             <div>   <h4 className="font-weight-bold blue">Location Traveling from (include City & State)</h4>
                 <Autocomplete
                   types={['(cities)']}
                   componentRestrictions={{country: 'us'}}
