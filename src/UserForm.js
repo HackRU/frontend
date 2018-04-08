@@ -734,13 +734,13 @@ class UserForm extends React.Component {
                   value={this.state.user && this.state.user.travelling_from.formatted_address}
                   className="form-control mx-3"
                 />
-                <div>Preferred mode of transport:</div>
+                <div><h6 className="blue mt-3">Preferred mode of transport:</h6></div>
                 <input type="radio" name="preferred-transport" onClick={this.transMode}
-                  checked={this.state.user.travelling_from.mode === "bus"} value="bus"/><label>Bus</label>
+                  checked={this.state.user.travelling_from.mode === "bus"} value="bus"/><label><p className="blue mr-1">Bus</p></label>
                 <input type="radio" name="preferred-transport" onClick={this.transMode}
-                  checked={this.state.user.travelling_from.mode === "train"} value="train"/><label>Train</label>
+                  checked={this.state.user.travelling_from.mode === "train"} value="train"/><label><p className="blue mr-1">Train</p></label>
                 <input type="radio" name="preferred-transport" onClick={this.transMode}
-                  checked={this.state.user.travelling_from.mode === "car"} value="car"/><label>Car</label><br/>
+                  checked={this.state.user.travelling_from.mode === "car"} value="car"/><label><p className="blue mr-1">Car</p></label><br/>
                 <button type="button" className="btn btn-primary UC custom-btn p-3 my-1" onClick={this.notifyTransport}>Apply for Reimbursement</button>
             </div>
            }
