@@ -21,7 +21,7 @@ class UserForm extends React.Component {
   constructor(props){
     super(props);
     this.state = {};
-    this.state.mentorBit = {};
+    this.state.travelClean = true;
 
     //this.componentDidMount = this.componentDidMount.bind(this);
     this.logout = this.logout.bind(this);
@@ -447,6 +447,8 @@ class UserForm extends React.Component {
   }
 
   notifyTransport(){
+    if(!this.state.travelClean) return;
+
     let mode = document.querySelector('input[name="preferred-transport"]:checked').value;
     let newser = this.state.user;
     newser.travelling_from.mode = mode;
@@ -705,7 +707,7 @@ class UserForm extends React.Component {
                  }}
                  defaultChecked={this.state.user.travelling_from && this.state.user.travelling_from.is_real}
                ></input>
-                  <label className="mt-3" htmlFor="toggle-travel-stuff"><h5 className="blue">I would like to be considered for travel reimbursement</h5></label>
+               <label htmlFor="toggle-travel-stuff"><h5 className="blue">I request travel reimbursement</h5></label>
             </span>
            }
            {this.state.user && this.state.user.travelling_from.is_real &&
@@ -722,16 +724,16 @@ class UserForm extends React.Component {
                       newser.travelling_from.location.lng = place.geometry.location.lng();
                       newser.travelling_from.formatted_address = place.formatted_address;
                       newser.travelling_from.mode = this.state.user.travelling_from.mode;
-                      this.setState({user: newser});
+                      this.setState({user: newser, travelClean: true});
                     }
                   }
                   onChange={(e) => {
                     let newser = this.state.user;
                     newser.travelling_from.formatted_address = e.target.value;
-                    this.setState({user: newser});
+                    this.setState({user: newser, travelClean: false});
                   }}
                   placeholder="where are you travelling from?"
-                  value={this.state.user && this.state.user.travelling_from.formatted_address}
+                  value={this.state.user && this.state.user.travelling_from && this.state.user.travelling_from.formatted_address}
                   className="form-control mx-3"
                 />
                 <div><h6 className="blue mt-3">Preferred mode of transport:</h6></div>
@@ -741,7 +743,12 @@ class UserForm extends React.Component {
                   checked={this.state.user.travelling_from.mode === "train"} value="train"/><label><p className="blue mr-1">Train</p></label>
                 <input type="radio" name="preferred-transport" onClick={this.transMode}
                   checked={this.state.user.travelling_from.mode === "car"} value="car"/><label><p className="blue mr-1">Car</p></label><br/>
-                <button type="button" className="btn btn-primary UC custom-btn p-3 my-1" onClick={this.notifyTransport}>Apply for Reimbursement</button>
+                <button
+                  type="button"
+                  className={"btn btn-primary UC custom-btn p-3 my-1" + (!this.state.travelClean && " disabled")}
+                  onClick={this.notifyTransport}>
+                  {this.state.travelClean? "Update Travel Information" : "Please choose a location from the dropdown to change it"}
+                </button>
             </div>
            }
         </div>
