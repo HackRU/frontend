@@ -133,7 +133,7 @@ a:hover, a:focus, a:active {
 }
 
 #info-list {
-    height: 50vh;
+    height: 52vh;
 }
 
 ::-webkit-scrollbar {
@@ -164,4 +164,12 @@ a:hover, a:focus, a:active {
     height: 300px;
     z-index: -100;
     opacity: 0.3;
+}
+
+.SC {
+  text-transform: capitalize;
+}
+
+.UC {
+  text-transform: uppercase;
 }
