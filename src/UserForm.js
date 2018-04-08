@@ -716,9 +716,12 @@ class UserForm extends React.Component {
                   onPlaceSelected={
                     (place) => {
                       let newser = this.state.user;
-                      newser.travelling_from = Object.assign({}, place.geometry.location);
-                      newser.travelling_from.is_real = true;
+                      if(!newser.travelling_from) newser.travelling_from = {};
+                      if(!newser.travelling_from.location) newser.travelling_from.location = {};
+                      newser.travelling_from.location.lat = place.geometry.location.lat();
+                      newser.travelling_from.location.lng = place.geometry.location.lng();
                       newser.travelling_from.formatted_address = place.formatted_address;
+                      newser.travelling_from.mode = this.state.user.travelling_from.mode;
                       this.setState({user: newser});
                     }
                   }
