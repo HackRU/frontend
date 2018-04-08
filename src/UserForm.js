@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import {uploadResume} from './resume.js';
+import {config_maps} from './config_resume.js';
 import Select from 'react-select';
 import {Creatable, AsyncCreatable, Async } from 'react-select';
 import {instanceOf} from 'prop-types';
@@ -631,6 +632,7 @@ class UserForm extends React.Component {
            <div className="blue">{this.state.upperFlash}</div>
            <button type="button" className="btn btn-primary UC custom-btn p-3 my-1 mx-md-1" onClick={this.attending}><h6 className="my-0">Attending</h6></button>
            <button type="button" className="btn btn-primary UC custom-btn p-3 my-1" onClick={this.notAttending}><h6 className="my-0">Will not Attend</h6></button>
+           <input type="text" id="maps-spot" placeholder="Where are you travelling from?"></input>
         </div>
        }
 
