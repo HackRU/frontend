@@ -588,19 +588,31 @@ class UserForm extends React.Component {
     else if(userStatus && userStatus === 'comfirmation') userStatus = 'Pending Confirmation';
     else if(userStatus) userStatus = userStatus.replace('-', ' ');
 
-    ReactDOM.render(<div>
-    <h2 class="font-weight-bold" >{this.state.user && this.state.user.first_name + ' ' + this.state.user.last_name} </h2>
-    <h6> <a onClick={this.logout}>Logout</a> </h6>
-    <br />
-    <h6 class="profile-text"><i class="fas fa-graduation-cap fa-fw"></i>{this.state.user && this.state.user.school}</h6>
-    <br />
-    <h6 class="profile-text"><i class="fas fa-user fa-fw"></i>{this.state.user && this.state.user.level_of_study}</h6>
-    <br />
-    <h6 class="profile-text"><i class="fas fa-lightbulb fa-fw"></i>{this.state.user && this.state.user.major}</h6>
-    <br />
-    <h6><i class="fab fa-github fa-fw"></i> <a href="http://github.com" target="_blank">{this.state.user && this.state.user.github}Github</a></h6>
-    </div>,
-    document.getElementById('register-sidebar'));
+    if(this.state.user){
+      const github = (this.state.user && this.state.user.github)? this.state.user.github : "";
+      ReactDOM.render(<div>
+      <h2 class="font-weight-bold" >{this.state.user && this.state.user.first_name + ' ' + this.state.user.last_name} </h2>
+      <h6> <a onClick={this.logout}>Logout</a> </h6>
+      <br />
+      {this.state.user && this.state.user.school &&
+        <span>
+          <h6 class="profile-text"><i class="fas fa-graduation-cap fa-fw"></i>{ this.state.user.school }</h6> <br />
+        </span>
+      }
+      {this.state.user && this.state.user.level_of_study &&
+        <span>
+          <h6 class="profile-text"><i class="fas fa-user fa-fw"></i>{ this.state.user.level_of_study }</h6> <br />
+        </span>
+      }
+      {this.state.user && this.state.user.major &&
+        <span>
+          <h6 class="profile-text"><i class="fas fa-lightbulb fa-fw"></i>{ this.state.user.major }</h6> <br />
+        </span>
+      }
+      { github && <h6><i class="fab fa-github fa-fw"></i> <a href={"http://github.com/" + github} target="_blank">{github}</a></h6> }
+      </div>,
+      document.getElementById('register-sidebar'));
+    }
 
     //pardon my indentation - David used tabs.
     return (
