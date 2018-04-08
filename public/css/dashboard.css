@@ -133,7 +133,7 @@ a:hover, a:focus, a:active {
 }
 
 #info-list {
-    height: 52vh;
+    height: 100%;
 }
 
 ::-webkit-scrollbar {
