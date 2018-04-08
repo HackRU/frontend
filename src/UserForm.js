@@ -10,7 +10,9 @@ import {CookiesProvider, withCookies, Cookies} from 'react-cookie';
 import 'react-select/dist/react-select.css';
 import ModalError from './modalerror'
 import Admin from './Admin'
+import Autocomplete from 'react-google-autocomplete'
 
+//OK, this is cancer and will have to be split.
 class UserForm extends React.Component {
   static propTypes = {
     cookies: instanceOf(Cookies).isRequired
@@ -39,6 +41,8 @@ class UserForm extends React.Component {
     this.doResume = this.doResume.bind(this);
     this.attending = this.attending.bind(this);
     this.notAttending = this.notAttending.bind(this);
+    this.notifyTransport = this.notifyTransport.bind(this);
+    this.transMode = this.transMode.bind(this);
   }
 
   componentWillMount (){
@@ -424,7 +428,7 @@ class UserForm extends React.Component {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        updates : {'$set': {'registration_status': 'not-coming'}},
+        updates : {'$set': {'registration_status': 'not-coming', 'travelling_from.is_real': false}},
         user_email: this.state.email,
         auth_email: this.state.email,
         auth: this.state.token
@@ -434,11 +438,47 @@ class UserForm extends React.Component {
         if(json.statusCode == 200){
            let newser = this.state.user;
            newser.registration_status = 'not-coming';
+           newser.travelling_from.is_real = false;
            this.setState({upperFlash: "RIP :'(", user: newser});
         }else{
            this.setState({upperFlash: json.body});
         }
       });
+  }
+
+  notifyTransport(){
+    let mode = document.querySelector('input[name="preferred-transport"]:checked').value;
+    let newser = this.state.user;
+    newser.travelling_from.mode = mode;
+
+    fetch('https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/mlhtest/update', {
+      method: 'POST',
+      mode: 'cors',
+      credentials: 'omit',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        updates : {'$set': {'travelling_from': newser.travelling_from}},
+        user_email: this.state.email,
+        auth_email: this.state.email,
+        auth: this.state.token
+      })
+    }).then(data => data.json())
+      .then(json => {
+        if(json.statusCode == 200){
+           this.setState({user: newser, upperFlash: "Changes saved! We will keep you up-to-date on reimbursement."});
+        }else{
+           this.setState({upperFlash: json.body});
+        }
+      });
+  }
+
+  transMode(e){
+    let newser = this.state.user;
+    newser.travelling_from.mode = e.target.value;
+    this.setState({user: newser});
   }
 
   render() {
@@ -513,10 +553,6 @@ class UserForm extends React.Component {
         "select": true,
         "options": ['Male', 'Female', 'Non-binary'].map(v => ({'value': v, 'label': v})),
         "create": true
-      },
-      "travelling_from": {
-        "select": false,
-        "type": "text"
       }
     }
 
@@ -632,7 +668,79 @@ class UserForm extends React.Component {
            <div className="blue">{this.state.upperFlash}</div>
            <button type="button" className="btn btn-primary UC custom-btn p-3 my-1 mx-md-1" onClick={this.attending}><h6 className="my-0">Attending</h6></button>
            <button type="button" className="btn btn-primary UC custom-btn p-3 my-1" onClick={this.notAttending}><h6 className="my-0">Will not Attend</h6></button>
-           <input type="text" id="maps-spot" placeholder="Where are you travelling from?"></input>
+           {userStatus === "coming" &&
+             <span>
+               <br/>
+               <input
+                 id="toggle-travel-stuff" type="checkbox"
+                 onClick={(e) => {
+                   let newser = this.state.user;
+                   newser.travelling_from.is_real = !(this.state.user.travelling_from && this.state.user.travelling_from.is_real);
+                   if(newser.travelling_from.is_real){
+                     this.setState({user: newser});
+                   }else{
+                     fetch('https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/mlhtest/update', {
+                         method: 'POST',
+                         mode: 'cors',
+                         credentials: 'omit',
+                         headers: {
+                           'Accept': 'application/json',
+                           'Content-Type': 'application/json',
+                         },
+                         body: JSON.stringify({
+                           updates : {'$set': {'travelling_from.is_real': false}},
+                           user_email: this.state.email,
+                           auth_email: this.state.email,
+                           auth: this.state.token
+                         })
+                         }).then(data => data.json())
+                         .then(json => {
+                           if(json.statusCode == 200){
+                             this.setState({user: newser});
+                           }else{
+                            this.setState({upperFlash: json.body});
+                          }
+                        });
+                   }
+                 }}
+                 defaultChecked={this.state.user.travelling_from && this.state.user.travelling_from.is_real}
+               ></input>
+               <label htmlFor="toggle-travel-stuff">I would like travel reimbursement</label>
+            </span>
+           }
+           {this.state.user && this.state.user.travelling_from.is_real &&
+             <div>
+                <Autocomplete
+                  types={['(cities)']}
+                  componentRestrictions={{country: 'us'}}
+                  onPlaceSelected={
+                    (place) => {
+                      let newser = this.state.user;
+                      newser.travelling_from = Object.assign({}, place.geometry.location);
+                      newser.travelling_from.is_real = true;
+                      newser.travelling_from.formatted_address = place.formatted_address;
+                      this.setState({user: newser});
+                    }
+                  }
+                  onChange={(e) => {
+                    let newser = this.state.user;
+                    newser.travelling_from.formatted_address = e.target.value;
+                    this.setState({user: newser});
+                  }}
+                  placeholder="where are you travelling from?"
+                  value={this.state.user && this.state.user.travelling_from.formatted_address}
+                  className="form-control mx-3"
+                />
+                <div>Preferred mode of transport:</div>
+                <input type="radio" name="preferred-transport" onClick={this.transMode}
+                  checked={this.state.user.travelling_from.mode === "bus"} value="bus"/><label>Bus</label>
+                <input type="radio" name="preferred-transport" onClick={this.transMode}
+                  checked={this.state.user.travelling_from.mode === "train"} value="train"/><label>Train</label>
+                <input type="radio" name="preferred-transport" onClick={this.transMode}
+                  checked={this.state.user.travelling_from.mode === "car"} value="car"/><label>Car</label><br/>
+                <button type="button" className="btn btn-primary UC custom-btn p-3 my-1" onClick={this.notifyTransport}>Apply for Reimbursement</button>
+            </div>
+           }
         </div>
        }
 
@@ -644,7 +752,7 @@ class UserForm extends React.Component {
             Object.keys(formConfig)
               .map(key =>
                  <div className="form-group row mb-4">
-                        <label htmlFor={"input-" + key} className="col-lg-8"><h4 className="font-weight-bold blue">{key.replace(/_/g, ' ').toUpperCase()}</h4>{key == "travelling_from" && "(Enter the nearest city center)"}</label>
+                        <label htmlFor={"input-" + key} className="col-lg-8"><h4 className="font-weight-bold blue">{key.replace(/_/g, ' ').toUpperCase()}</h4></label>
                         {parseInput(key)}
                  </div>
             )
