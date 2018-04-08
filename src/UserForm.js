@@ -36,6 +36,8 @@ class UserForm extends React.Component {
     this.unapplyVolunteer = this.unapplyVolunteer.bind(this);
     this.componentWillMount = this.componentWillMount.bind(this);
     this.doResume = this.doResume.bind(this);
+    this.attending = this.attending.bind(this);
+    this.notAttending = this.notAttending.bind(this);
   }
 
   componentWillMount (){
@@ -376,6 +378,60 @@ class UserForm extends React.Component {
     });
   }
 
+  attending(e){
+    fetch('https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/mlhtest/update', {
+      method: 'POST',
+      mode: 'cors',
+      credentials: 'omit',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        updates : {'$set': {'registration_status': 'coming'}},
+        user_email: this.state.email,
+        auth_email: this.state.email,
+        auth: this.state.token
+      })
+    }).then(data => data.json())
+      .then(json => {
+        if(json.statusCode == 200){
+           let newser = this.state.user;
+           newser.registration_status = 'coming';
+           this.setState({upperFlash: "Attendance confirmed!", user: newser});
+        }else{
+           this.setState({upperFlash: json.body});
+        }
+      });
+  }
+
+  notAttending(e){
+    fetch('https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/mlhtest/update', {
+      method: 'POST',
+      mode: 'cors',
+      credentials: 'omit',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        updates : {'$set': {'registration_status': 'not-coming'}},
+        user_email: this.state.email,
+        auth_email: this.state.email,
+        auth: this.state.token
+      })
+    }).then(data => data.json())
+      .then(json => {
+        if(json.statusCode == 200){
+           let newser = this.state.user;
+           newser.registration_status = 'not-coming';
+           this.setState({upperFlash: "RIP :'(", user: newser});
+        }else{
+           this.setState({upperFlash: json.body});
+        }
+      });
+  }
+
   render() {
     const formConfig = {
       "email": {
@@ -519,6 +575,11 @@ class UserForm extends React.Component {
       }
     }
 
+    let userStatus = this.state.user && this.state.user.registration_status;
+    if(userStatus && userStatus === 'registered' || userStatus == 'unregistered') userStatus = 'Pending';
+    else if(userStatus && userStatus === 'comfirmation') userStatus = 'Pending Confirmation';
+    else if(userStatus) userStatus = userStatus.replace('-', ' ');
+
     //pardon my indentation - David used tabs.
     return (
     <div>
@@ -529,10 +590,15 @@ class UserForm extends React.Component {
 
        <div className="text-center">
 
-       <h2 className="blue"> Application Status: Pending </h2>
+       <h2 className="blue"> Application Status: {userStatus} </h2>
 
-       <button type="button" className="btn btn-primary custom-btn p-3 my-1 mx-md-1" id="launch-modal" data-toggle="modal" data-target="#exampleModalCenter" data-backdrop="static"><h4 className="my-0">Attending</h4></button>
-       <button type="button" className="btn btn-primary custom-btn p-3 my-1" id="launch-modal" data-toggle="modal" data-target="#exampleModalCenter" data-backdrop="static"><h4 className="my-0">Will not Attend</h4></button>
+       {userStatus != 'Pending' &&
+         <div>
+           <div className="blue">{this.state.upperFlash}</div>
+           <button type="button" className="btn btn-primary custom-btn p-3 my-1 mx-md-1" onClick={this.attending}><h4 className="my-0">Attending</h4></button>
+           <button type="button" className="btn btn-primary custom-btn p-3 my-1" onClick={this.notAttending}><h4 className="my-0">Will not Attend</h4></button>
+        </div>
+       }
 
        </div>
        <h2 className="blue mb-3"> Your Info: </h2>
