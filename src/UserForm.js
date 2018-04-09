@@ -153,7 +153,7 @@ class UserForm extends React.Component {
     }).then(data => data.json())
       .then(json => {
         if(json.statusCode == 200){
-           this.setState({flash: "Changes saved! Thank you for applying. You will receive an email after your application has been reviewed."});
+           this.setState({flash: "Changes saved!"});
         }else{
            this.setState({flash: json.body});
         }
@@ -680,6 +680,7 @@ class UserForm extends React.Component {
                  id="toggle-travel-stuff" type="checkbox"
                  onClick={(e) => {
                    let newser = this.state.user;
+                   if (!newser.travelling_from) newser.travelling_from = {};
                    newser.travelling_from.is_real = !(this.state.user.travelling_from && this.state.user.travelling_from.is_real);
                    if(newser.travelling_from.is_real){
                      this.setState({user: newser});
