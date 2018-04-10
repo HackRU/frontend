@@ -23,6 +23,7 @@ class App extends React.Component {
     this.login = this.login.bind(this);
     this.signUp = this.signUp.bind(this);
     this.mlh = this.mlh.bind(this);
+    this.forgotPassword = this.forgotPassword.bind(this);
     this.onEmailChange = this.onEmailChange.bind(this);
     this.onPasswordChange = this.onPasswordChange.bind(this);
     this.loginPostFetch = this.loginPostFetch.bind(this);
@@ -43,15 +44,25 @@ class App extends React.Component {
       return;
     }else{
       let urlParams = new URLSearchParams(window.location.search);
-      if(urlParams.has('authdata')){
+      if(urlParams.has('error')){
+        this.setState({errorMessage: urlParams.get('error')});
+      }
+
+      if(urlParams.has('magiclink')){
+        const mag_link = urlParams.get('magiclink');
+
+        this.setState({errorMessage: "You have a magic link! If this is a password reset, please enter your email and then your new password.", hasLink: mag_link});
+      }else if(urlParams.has('authdata')){
         const auth = JSON.parse(urlParams.get('authdata'));
         const { cookies } = this.props;//I don't get it.
         cookies.set('authdata', auth);
 
         if(!urlParams.has('magiclink')){
-          window.location.href = '/#launch-modal';
-        }
+          window.location.href = '/dashboard.html';
+        }else{
+          const mag_link = urlParams.get('magiclink');
 
+        }
       }
     }
   }
@@ -141,7 +152,6 @@ class App extends React.Component {
             }
     		}).catch(data => {
     		  const error = data.message;
-    		  console.log(data);
     		  this.setState({errorMessage: error});
     		})
 
@@ -159,6 +169,49 @@ class App extends React.Component {
 
   onPasswordChange(e){
     this.setState({password: e.target.value})
+  }
+
+  forgotPassword(e){
+    if(this.state.hasLink){
+      if(this.state.email === "" || this.state.password === ""){
+        this.setState({errorMessage: "Enter your email and new password to continue!"});
+        return;
+      }
+
+      fetch('https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/mlhtest/consume', {
+        method: 'POST',
+        mode: 'cors',
+        credentials: 'omit',
+        headers: {
+          'Content-Type': "application/json"
+        },
+        body: JSON.stringify({
+          email: this.state.email,
+          forgot: true,
+          password: this.state.password,
+          link: this.state.hasLink
+        })
+      }).then(resp => resp.json())
+      .then(resp => {
+        this.setState({errorMessage: resp.body || resp.errorMessage, hasLink: false});
+      });
+    }else{
+      fetch('https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/mlhtest/createmagiclink', {
+        method: 'POST',
+        mode: 'cors',
+        credentials: 'omit',
+        headers: {
+          'Content-Type': "application/json"
+        },
+        body: JSON.stringify({
+          email: this.state.email,
+          forgot: true
+        })
+      }).then(resp => resp.json())
+      .then(resp => {
+        this.setState({errorMessage: resp.body || resp.errorMessage});
+      });
+    }
   }
 
   render() {
@@ -184,6 +237,9 @@ class App extends React.Component {
 				<div className="form-group row">
           <span className="col-lg-3"></span>
           <h4 className="col-lg-9 blue" >{this.state.errorMessage}</h4>
+          {this.state.errorMessage &&
+						<button onClick={this.forgotPassword} type="button" className="btn btn-primary p-3"><h6 className="UC ">{(this.state.hasLink)? "Apply magic link": "Forgot Password"}</h6></button>
+          }
         </div>
 
 				<div className="form-group row mt-0">
