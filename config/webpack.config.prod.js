@@ -244,9 +244,9 @@ module.exports = {
     new HtmlWebpackPlugin({
       inject: true,
       template: paths.appHtml,
+      filename: 'dashboard.html',
       minify: {
         removeComments: true,
-        filename: 'dashboard.html',
         collapseWhitespace: true,
         removeRedundantAttributes: true,
         useShortDoctype: true,
