@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import {uploadResume} from './resume.js';
+import {config_maps} from './config_resume.js';
 import Select from 'react-select';
 import {Creatable, AsyncCreatable, Async } from 'react-select';
 import {instanceOf} from 'prop-types';
@@ -9,7 +10,9 @@ import {CookiesProvider, withCookies, Cookies} from 'react-cookie';
 import 'react-select/dist/react-select.css';
 import ModalError from './modalerror'
 import Admin from './Admin'
+import Autocomplete from 'react-google-autocomplete'
 
+//OK, this is cancer and will have to be split.
 class UserForm extends React.Component {
   static propTypes = {
     cookies: instanceOf(Cookies).isRequired
@@ -18,7 +21,7 @@ class UserForm extends React.Component {
   constructor(props){
     super(props);
     this.state = {};
-    this.state.mentorBit = {};
+    this.state.travelClean = true;
 
     //this.componentDidMount = this.componentDidMount.bind(this);
     this.logout = this.logout.bind(this);
@@ -38,6 +41,8 @@ class UserForm extends React.Component {
     this.doResume = this.doResume.bind(this);
     this.attending = this.attending.bind(this);
     this.notAttending = this.notAttending.bind(this);
+    this.notifyTransport = this.notifyTransport.bind(this);
+    this.transMode = this.transMode.bind(this);
   }
 
   componentWillMount (){
@@ -51,6 +56,13 @@ class UserForm extends React.Component {
           </CookiesProvider>,
           document.getElementById('register-root')
       );
+      ReactDOM.render(
+          <div>
+            <h3>Please login</h3>
+          </div>,
+          document.getElementById('register-sidebar')
+      );
+
       return;
     }else{
       this.setState({
@@ -98,6 +110,7 @@ class UserForm extends React.Component {
     const {cookies} = this.props;
     cookies.remove('authdata');
     ReactDOM.render(<CookiesProvider><App /></CookiesProvider> , document.getElementById('register-root'));
+    ReactDOM.render(<div><h3>Please login</h3></div> , document.getElementById('register-sidebar'));
 
   }
 
@@ -140,7 +153,7 @@ class UserForm extends React.Component {
     }).then(data => data.json())
       .then(json => {
         if(json.statusCode == 200){
-           this.setState({flash: "Changes saved! Thank you for applying. You will receive an email after your application has been reviewed."});
+           this.setState({flash: "Changes saved!"});
         }else{
            this.setState({flash: json.body});
         }
@@ -151,8 +164,8 @@ class UserForm extends React.Component {
   LogoutButtons(){
     return (
 					<div className="col-12 text-center">
-						<button onClick={this.logout} type="button" className="btn btn-primary custom-btn mx-2"><h6 className="my-1">Logout</h6></button>
-						<button onClick={this.save} type="button" className="btn btn btn-primary custom-btn"><h6 className="my-1">Save Changes</h6></button>
+						<button onClick={this.logout} type="button" className="btn btn-primary UC custom-btn mx-2 p-3"><h6 className="my-1">Logout</h6></button>
+						<button onClick={this.save} type="button" className="btn btn btn-primary UC custom-btn p-3"><h6 className="my-1">Save Changes</h6></button>
 					</div>
     )
 
@@ -406,6 +419,9 @@ class UserForm extends React.Component {
   }
 
   notAttending(e){
+    let upd = {'registration_status': 'not-coming'};
+    if(this.state.user.travelling_from) upd['travelling_from.is_real'] = false;
+
     fetch('https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/mlhtest/update', {
       method: 'POST',
       mode: 'cors',
@@ -415,7 +431,7 @@ class UserForm extends React.Component {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        updates : {'$set': {'registration_status': 'not-coming'}},
+        updates : {'$set': {'registration_status': 'not-coming', 'travelling_from.is_real': false}},
         user_email: this.state.email,
         auth_email: this.state.email,
         auth: this.state.token
@@ -425,11 +441,49 @@ class UserForm extends React.Component {
         if(json.statusCode == 200){
            let newser = this.state.user;
            newser.registration_status = 'not-coming';
-           this.setState({upperFlash: "RIP :'(", user: newser});
+           if(newser.travelling_from) newser.travelling_from.is_real = false;
+           this.setState({upperFlash: "Thanks for letting us know!", user: newser});
         }else{
            this.setState({upperFlash: json.body});
         }
       });
+  }
+
+  notifyTransport(){
+    if(!this.state.travelClean) return;
+
+    let mode = document.querySelector('input[name="preferred-transport"]:checked').value;
+    let newser = this.state.user;
+    newser.travelling_from.mode = mode;
+
+    fetch('https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/mlhtest/update', {
+      method: 'POST',
+      mode: 'cors',
+      credentials: 'omit',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        updates : {'$set': {'travelling_from': newser.travelling_from}},
+        user_email: this.state.email,
+        auth_email: this.state.email,
+        auth: this.state.token
+      })
+    }).then(data => data.json())
+      .then(json => {
+        if(json.statusCode == 200){
+           this.setState({user: newser, upperFlash: "Changes saved! We will keep you up-to-date on reimbursement."});
+        }else{
+           this.setState({upperFlash: json.body});
+        }
+      });
+  }
+
+  transMode(e){
+    let newser = this.state.user;
+    newser.travelling_from.mode = e.target.value;
+    this.setState({user: newser});
   }
 
   render() {
@@ -504,10 +558,6 @@ class UserForm extends React.Component {
         "select": true,
         "options": ['Male', 'Female', 'Non-binary'].map(v => ({'value': v, 'label': v})),
         "create": true
-      },
-      "travelling_from": {
-        "select": false,
-        "type": "text"
       }
     }
 
@@ -580,6 +630,32 @@ class UserForm extends React.Component {
     else if(userStatus && userStatus === 'comfirmation') userStatus = 'Pending Confirmation';
     else if(userStatus) userStatus = userStatus.replace('-', ' ');
 
+    if(this.state.user){
+      const github = (this.state.user && this.state.user.github)? this.state.user.github : "";
+      ReactDOM.render(<div>
+      <h2 class="font-weight-bold" >{this.state.user && this.state.user.first_name + ' ' + this.state.user.last_name} </h2>
+      <h6> <a onClick={this.logout}>Logout</a> </h6>
+      <br />
+      {this.state.user && this.state.user.school &&
+        <span>
+          <h6 class="profile-text"><i class="fas fa-graduation-cap fa-fw"></i>{ this.state.user.school }</h6> <br />
+        </span>
+      }
+      {this.state.user && this.state.user.level_of_study &&
+        <span>
+          <h6 class="profile-text"><i class="fas fa-user fa-fw"></i>{ this.state.user.level_of_study }</h6> <br />
+        </span>
+      }
+      {this.state.user && this.state.user.major &&
+        <span>
+          <h6 class="profile-text"><i class="fas fa-lightbulb fa-fw"></i>{ this.state.user.major }</h6> <br />
+        </span>
+      }
+      { github && <h6><i class="fab fa-github fa-fw"></i> <a href={"http://github.com/" + github} target="_blank">{github}</a></h6> }
+      </div>,
+      document.getElementById('register-sidebar'));
+    }
+
     //pardon my indentation - David used tabs.
     return (
     <div>
@@ -590,25 +666,107 @@ class UserForm extends React.Component {
 
        <div className="text-center">
 
-       <h2 className="blue"> Application Status: {userStatus} </h2>
+       <h2 className="blue SC"> Status: {userStatus} </h2>
 
        {userStatus != 'Pending' &&
          <div>
            <div className="blue">{this.state.upperFlash}</div>
-           <button type="button" className="btn btn-primary custom-btn p-3 my-1 mx-md-1" onClick={this.attending}><h4 className="my-0">Attending</h4></button>
-           <button type="button" className="btn btn-primary custom-btn p-3 my-1" onClick={this.notAttending}><h4 className="my-0">Will not Attend</h4></button>
+           <button type="button" className="btn btn-primary UC custom-btn p-3 my-1 mx-md-1" onClick={this.attending}><h6 className="my-0">Attending</h6></button>
+           <button type="button" className="btn btn-primary UC custom-btn p-3 my-1" onClick={this.notAttending}><h6 className="my-0">Will not Attend</h6></button>
+           {userStatus === "coming" &&
+             <span>
+               <br/>
+               <input
+                 id="toggle-travel-stuff" type="checkbox"
+                 onClick={(e) => {
+                   let newser = this.state.user;
+                   if (!newser.travelling_from) newser.travelling_from = {};
+                   newser.travelling_from.is_real = !(this.state.user.travelling_from && this.state.user.travelling_from.is_real);
+                   if(newser.travelling_from.is_real){
+                     this.setState({user: newser});
+                   }else{
+                     fetch('https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/mlhtest/update', {
+                         method: 'POST',
+                         mode: 'cors',
+                         credentials: 'omit',
+                         headers: {
+                           'Accept': 'application/json',
+                           'Content-Type': 'application/json',
+                         },
+                         body: JSON.stringify({
+                           updates : {'$set': {'travelling_from.is_real': false}},
+                           user_email: this.state.email,
+                           auth_email: this.state.email,
+                           auth: this.state.token
+                         })
+                         }).then(data => data.json())
+                         .then(json => {
+                           if(json.statusCode == 200){
+                             this.setState({user: newser});
+                           }else{
+                            this.setState({upperFlash: json.body});
+                          }
+                        });
+                   }
+                 }}
+                 defaultChecked={this.state.user.travelling_from && this.state.user.travelling_from.is_real}
+               ></input>
+               <label htmlFor="toggle-travel-stuff"><h5 className="blue">I request travel reimbursement</h5></label>
+            </span>
+           }
+           {this.state.user && this.state.user.travelling_from && this.state.user.travelling_from.is_real &&
+             <div>   <h4 className="font-weight-bold blue">Location Traveling from (include City & State)</h4>
+                <Autocomplete
+                  types={['(cities)']}
+                  componentRestrictions={{country: 'us'}}
+                  onPlaceSelected={
+                    (place) => {
+                      let newser = this.state.user;
+                      if(!newser.travelling_from) newser.travelling_from = {};
+                      if(!newser.travelling_from.location) newser.travelling_from.location = {};
+                      newser.travelling_from.location.lat = place.geometry.location.lat();
+                      newser.travelling_from.location.lng = place.geometry.location.lng();
+                      newser.travelling_from.formatted_address = place.formatted_address;
+                      newser.travelling_from.mode = this.state.user.travelling_from.mode;
+                      this.setState({user: newser, travelClean: true});
+                    }
+                  }
+                  onChange={(e) => {
+                    let newser = this.state.user;
+                    newser.travelling_from.formatted_address = e.target.value;
+                    this.setState({user: newser, travelClean: false});
+                  }}
+                  placeholder="where are you travelling from?"
+                  value={this.state.user && this.state.user.travelling_from && this.state.user.travelling_from.formatted_address}
+                  className="form-control mx-3"
+                />
+                <div><h6 className="blue mt-3">Preferred mode of transport:</h6></div>
+                <input type="radio" name="preferred-transport" onClick={this.transMode}
+                  checked={this.state.user.travelling_from.mode === "bus"} value="bus"/><label><p className="blue mr-1">Bus</p></label>
+                <input type="radio" name="preferred-transport" onClick={this.transMode}
+                  checked={this.state.user.travelling_from.mode === "train"} value="train"/><label><p className="blue mr-1">Train</p></label>
+                <input type="radio" name="preferred-transport" onClick={this.transMode}
+                  checked={this.state.user.travelling_from.mode === "car"} value="car"/><label><p className="blue mr-1">Car</p></label><br/>
+                <button
+                  type="button"
+                  className={"btn btn-primary UC custom-btn p-3 my-1" + (!this.state.travelClean && " disabled")}
+                  onClick={this.notifyTransport}>
+                  {this.state.travelClean? "Update Travel Information" : "Please choose a location from the dropdown to change it"}
+                </button>
+            </div>
+           }
         </div>
        }
 
        </div>
-       <h2 className="blue mb-3"> Your Info: </h2>
+       <h2 className="blue my-3"> Your Info: </h2>
 
         <span>
         { this.state.user &&
             Object.keys(formConfig)
               .map(key =>
                  <div className="form-group row mb-4">
-                        <label htmlFor={"input-" + key} className="col-lg-8"><h4 className="font-weight-bold blue">{key.replace(/_/g, ' ').toUpperCase()}</h4>{key == "travelling_from" && "(Enter the nearest city center)"}</label>
+                        <label htmlFor={"input-" + key} className="col-lg-8"><h4 className="font-weight-bold blue">{key.replace(/_/g, ' ').toUpperCase()}</h4></label>
                         {parseInput(key)}
                  </div>
             )

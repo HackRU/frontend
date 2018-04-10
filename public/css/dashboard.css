@@ -52,8 +52,8 @@ a:hover, a:focus, a:active {
 #profile-qr {
     padding: 10%;
     width: 100%;
-    border: 1px dotted white;
-    border-radius: 20px;
+    /* border: 1px dotted white; */
+    /* border-radius: 20px; */
 }
 
 #dashboard-profile {
@@ -133,7 +133,7 @@ a:hover, a:focus, a:active {
 }
 
 #info-list {
-    height: 50vh;
+    height: 100%;
 }
 
 ::-webkit-scrollbar {
@@ -164,4 +164,12 @@ a:hover, a:focus, a:active {
     height: 300px;
     z-index: -100;
     opacity: 0.3;
+}
+
+.SC {
+  text-transform: capitalize;
+}
+
+.UC {
+  text-transform: uppercase;
 }
