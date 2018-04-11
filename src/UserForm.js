@@ -420,7 +420,7 @@ class UserForm extends React.Component {
 
   notAttending(e){
     let upd = {'registration_status': 'not-coming'};
-    if(this.state.user.travelling_from) upd['travelling_from.is_real'] = false;
+    if(this.state.user.travelling_from && this.state.user.travelling_from.is_real) upd['travelling_from.is_real'] = false;
 
     fetch('https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/mlhtest/update', {
       method: 'POST',
