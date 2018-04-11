@@ -680,7 +680,7 @@ class UserForm extends React.Component {
                  id="toggle-travel-stuff" type="checkbox"
                  onClick={(e) => {
                    let newser = this.state.user;
-                   if (!newser.travelling_from) newser.travelling_from = {};
+                   if (!newser.travelling_from || typeof(newser.travelling_from) === "string") newser.travelling_from = {};
                    newser.travelling_from.is_real = !(this.state.user.travelling_from && this.state.user.travelling_from.is_real);
                    if(newser.travelling_from.is_real){
                      this.setState({user: newser});
