@@ -173,3 +173,13 @@ a:hover, a:focus, a:active {
 .UC {
   text-transform: uppercase;
 }
+
+.image-divider {
+    -webkit-transition: -webkit-transform .5s ease-in-out;
+    transition:         transform .5s ease-in-out;
+}
+
+.image-divider:hover {
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
