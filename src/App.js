@@ -246,7 +246,7 @@ class App extends React.Component {
 					<div className="col-12 text-center">
 						<br/>
 						<button onClick={this.signUp} type="button" className="btn btn-primary mx-1 p-xs-2 p-md-3"><h6 className="UC ">Sign Up</h6></button>
-            <button onClick={this.login} type="button" className="btn btn-primary custom-btn p-xs-2 p-md-3 mx-1 " ><h6 className=" UC ">Login</h6></button>
+            <button onClick={this.login} type="button" className="btn btn-primary custom-btn p-xs-2 p-md-3 mx-1" ><h6 className=" UC ">Login</h6></button>
             <button onClick={this.mlh} type="button" className="btn btn-primary p-xs-2 p-md-3 my-2"><h6 className=" UC">Log in/Sign Up with MLH</h6></button>
 					</div>
 				</div>
