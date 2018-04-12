@@ -220,3 +220,24 @@ thead, tbody tr {
 thead {
     width: calc( 100% - 1em )
 }
+
+.splogos {
+    padding: 20px;
+    width: 100%;
+}
+
+.logo-level {
+	color: var(--color-two);
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+#sponsors-logos {
+	padding-top: 50px;
+}
+
+#sponsors-logos-row {
+    border-radius: 20px;
+    background-color: rgba(255, 255, 255, 0.6);
+
+}
