@@ -431,7 +431,7 @@ class UserForm extends React.Component {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        updates : {'$set': {'registration_status': 'not-coming', 'travelling_from.is_real': false}},
+        updates : {'$set': upd},
         user_email: this.state.email,
         auth_email: this.state.email,
         auth: this.state.token
