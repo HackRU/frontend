@@ -83,7 +83,6 @@ class UserForm extends React.Component {
 
   }
 
-
   componentDidMount(){
     fetch('https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/mlhtest/read', {
       method: 'POST',
@@ -103,6 +102,24 @@ class UserForm extends React.Component {
         const og_usr = data.body[0];
         this.setState({user: og_usr});
         this.isAdmin();
+        fetch('https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/mlhtest/qr', {
+          method: 'POST',
+          mode: 'cors',
+          credentials: 'omit',
+          headers: {
+            //'Accept': 'application/json',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            'email': this.state.email,
+            'color': [0xff, 0xff, 0xff],
+            'background': [0x25, 0x47, 0x9e]
+          })
+        }).then(resp => resp.json())
+          .then(resp => {
+            if(resp.statusCode === 200)
+              this.setState({qr: resp.body});
+        })
     }).catch(data => this.setState({flash: data.toString()}));
   }
 
@@ -654,6 +671,9 @@ class UserForm extends React.Component {
       { github && <h6><i class="fab fa-github fa-fw"></i> <a href={"http://github.com/" + github} target="_blank">{github}</a></h6> }
       </div>,
       document.getElementById('register-sidebar'));
+
+      if(this.state.qr && (userStatus === 'coming' || userStatus === 'waitlist'))
+        document.getElementById('profile-qr').setAttribute('src', this.state.qr);
     }
 
     //pardon my indentation - David used tabs.
@@ -668,7 +688,7 @@ class UserForm extends React.Component {
 
        <h2 className="blue SC"> Status: {userStatus} </h2>
 
-       {userStatus != 'Pending' &&
+       {userStatus != 'Pending' && userStatus != 'waitlist' &&
          <div>
            <div className="blue">{this.state.upperFlash}</div>
            <button type="button" className="btn btn-primary UC custom-btn p-3 my-1 mx-md-1" onClick={this.attending}><h6 className="my-0">Attending</h6></button>
