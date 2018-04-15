@@ -693,7 +693,7 @@ class UserForm extends React.Component {
            <div className="blue">{this.state.upperFlash}</div>
            <button type="button" className="btn btn-primary UC custom-btn p-3 my-1 mx-md-1" onClick={this.attending}><h6 className="my-0">Attending</h6></button>
            <button type="button" className="btn btn-primary UC custom-btn p-3 my-1" onClick={this.notAttending}><h6 className="my-0">Will not Attend</h6></button>
-           {userStatus === "coming" &&
+           {userStatus === "coming" && (!this.state.user.travelling_from || !this.state.user.travelling_from.estimate) &&
              <span>
                <br/>
                <input
