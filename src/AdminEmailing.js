@@ -103,7 +103,25 @@ class AdminEmailing extends React.Component {
     }).then(resp => resp.json())
       .then(templates => {
       if(templates.statusCode === 200){
-        alert('Worked!');
+        console.log('nani');
+        fetch('https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/mlhtest/send-emails', {
+          method: 'POST',
+          mode: 'cors',
+          credentials: 'omit',
+          headers: {
+            //'Accept': 'application/json',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            'email': this.state.user.email,
+            'token': this.state.token,
+            'template': (document.getElementById('choose-email-template')) ? document.getElementById('choose-email-template').value : 'judge-invite',
+            'recipients': emails,
+            'links': templates.body.map(l => 'https://hackru.org/dashboard.html?magiclink=' + l)
+          })
+        }).then(resp => resp.json())
+        .then(data => console.log(data));
+
       }else{
         alert('Error: ' + JSON.stringify(templates));
       }
