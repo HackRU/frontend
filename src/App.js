@@ -27,6 +27,7 @@ class App extends React.Component {
     this.onEmailChange = this.onEmailChange.bind(this);
     this.onPasswordChange = this.onPasswordChange.bind(this);
     this.loginPostFetch = this.loginPostFetch.bind(this);
+    this.goToUserForm = this.goToUserForm.bind(this);
     this.componentWillMount = this.componentWillMount.bind(this);
   }
 
@@ -51,7 +52,10 @@ class App extends React.Component {
       if(urlParams.has('magiclink')){
         const mag_link = urlParams.get('magiclink');
 
-        this.setState({errorMessage: "You have a magic link! If this is a password reset, please enter your email and then your new password.", hasLink: mag_link});
+        if(mag_link.startsWith('forgot-'))
+          this.setState({errorMessage: "You have a magic link! Please enter your email and then your new password.", hasLink: mag_link});
+        else
+          this.setState({errorMessage: "You have a magic link! Please log in to apply it.", hasLink: mag_link});
       }else if(urlParams.has('authdata')){
         const auth = JSON.parse(urlParams.get('authdata'));
         const { cookies } = this.props;//I don't get it.
@@ -67,6 +71,44 @@ class App extends React.Component {
     }
   }
 
+  goToUserForm(data){
+    this.setState({isLoggedIn: true});
+    const bod = JSON.parse(data.body);
+    this.props.cookies.set('authdata', bod);
+
+    if(!this.state.hasLink || this.state.hasLink.startsWith('forgot-')){
+      ReactDOM.render(
+          <CookiesProvider>
+            <UserForm/>
+          </CookiesProvider>,
+          document.getElementById('register-root')
+      );
+    }else{
+      fetch('https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/mlhtest/consume', {
+        method: 'POST',
+        mode: 'cors',
+        credentials: 'omit',
+        headers: {
+          'Content-Type': "application/json"
+        },
+        body: JSON.stringify({
+          link: this.state.hasLink,
+        })
+      }).then(resp => resp.json())
+        .then(resp => {
+        ReactDOM.render(
+            <div>
+              <div>We have applied your magic link!</div>
+              <CookiesProvider>
+                <UserForm/>
+              </CookiesProvider>
+            </div>,
+            document.getElementById('register-root')
+        );
+      })
+    }
+  }
+
   loginPostFetch(data){
     if(data.statusCode != 200){
       const/*antina, our saviour*/ errorMsgs = {
@@ -79,16 +121,7 @@ class App extends React.Component {
       return;
     }
 
-    this.setState({isLoggedIn: true});
-    const bod = JSON.parse(data.body);
-    this.props.cookies.set('authdata', bod);
-    ReactDOM.render(
-        <CookiesProvider>
-          <UserForm/>
-        </CookiesProvider>,
-        document.getElementById('register-root')
-    );
-
+    this.goToUserForm(data);
 
   }
 
@@ -136,15 +169,7 @@ class App extends React.Component {
     		}).then(resp => resp.json())
           .then(data => {
             if (data.statusCode == 200){
-              this.setState({isLoggedIn:true});
-              const auth = JSON.parse(data.body)
-              this.props.cookies.set('authdata', auth);
-              ReactDOM.render(
-                <CookiesProvider>
-                  <UserForm/>
-                </CookiesProvider>,
-                document.getElementById('register-root')
-              );
+              this.goToUserForm(data);
             }else if(data.body === "Duplicate user!"){
               this.setState({errorMessage: "You are already in our system! Please try logging in."})
             }else{
@@ -237,7 +262,7 @@ class App extends React.Component {
 				<div className="form-group row">
           <span className="col-lg-3"></span>
           <h4 className="col-lg-9 blue" >{this.state.errorMessage}</h4>
-          {this.state.errorMessage &&
+          {this.state.errorMessage && (!this.state.hasLink || this.state.hasLink.startsWith('forgot-')) &&
 						<button onClick={this.forgotPassword} type="button" className="btn btn-primary p-3"><h6 className="UC ">{(this.state.hasLink)? "Apply magic link": "Forgot Password"}</h6></button>
           }
         </div>
