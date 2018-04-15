@@ -112,8 +112,8 @@ class UserForm extends React.Component {
           },
           body: JSON.stringify({
             'email': this.state.email,
-            'color': [0xff, 0xff, 0xff],
-            'background': [0x25, 0x47, 0x9e]
+            'background': [0xe8, 0xf6, 0xfc],
+            'color': [0x25, 0x47, 0x9e]
           })
         }).then(resp => resp.json())
           .then(resp => {

@@ -18,6 +18,7 @@ class AdminEmailing extends React.Component {
     };
 
     this.sendEmails = this.sendEmails.bind(this);
+    this.sendLink = this.sendLink.bind(this);
   }
 
   componentWillMount(){
@@ -81,8 +82,9 @@ class AdminEmailing extends React.Component {
     let perms = [];
     document.querySelectorAll('input[name="magiclink-permission"]:checked')
       .forEach(p => perms.push(p.value));
+    const emails = document.getElementById('emails').value.split('\n');
 
-    fetch('https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/mlhtest/make-link', {
+    fetch('https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/mlhtest/createmagiclink', {
       method: 'POST',
       mode: 'cors',
       credentials: 'omit',
@@ -93,15 +95,17 @@ class AdminEmailing extends React.Component {
       body: JSON.stringify({
         'email': this.state.user.email,
         'token': this.state.token,
-        'template': document.getElementById('choose-email-template').value,
-        'permissions': perms
+        'template': (document.getElementById('choose-email-template')) ? document.getElementById('choose-email-template').value : 'judge-invite',
+        'permissions': perms,
+        'emailsTo': emails,
+        'numLinks': emails.length
       })
     }).then(resp => resp.json())
       .then(templates => {
       if(templates.statusCode === 200){
         alert('Worked!');
       }else{
-        alert('Error: ' + templates.body);
+        alert('Error: ' + JSON.stringify(templates));
       }
     });
   }
@@ -111,30 +115,30 @@ class AdminEmailing extends React.Component {
       <div>
         <h1 className="text-center">Send Emails</h1>
         {
-          (!this.state.templates && "Loading templates") ||
+          (!this.state.templates && "Using 'judge-invite' by default") ||
           <select id="choose-email-template">
           {
             this.state.templates.map(t => <option value={t.id}>{t.name}</option>)
           }
           </select>
+        // <div> TODO: (for next HackRU): make this work.
+        //   Email <input type="radio" name="email-recipients" value="all"/> every
+        //   <input type="radio" name="email-recipients" value="some"/> the first
+        //   <input type="number" id="email-how-many-recipients" /> users that are
+        //   <select id="email-recipient-status">
+        //     <option value="unregistered">Unregistered</option>
+        //     <option value="registered">Registered</option>
+        //     <option value="confirmation">Confirming attendence</option>
+        //     <option value="coming">Coming</option>
+        //     <option value="not-coming">Not Coming</option>
+        //     <option value="waitlisted">Waitlisted</option>
+        //     <option value="confirmed">Confirmed Attendence</option>
+        //     <option value="checked-in">Checked In</option>
+        //   </select>
+        //   that template that I selected above.
+        // </div>
+        // <button onClick={this.sendEmails} className="btn btn-primary custom-btn p-3 mx-1 my-3">Send thingy I described</button>
         }
-        <div>
-          Email <input type="radio" name="email-recipients" value="all"/> every
-          <input type="radio" name="email-recipients" value="some"/> the first
-          <input type="number" id="email-how-many-recipients" /> users that are
-          <select id="email-recipient-status">
-            <option value="unregistered">Unregistered</option>
-            <option value="registered">Registered</option>
-            <option value="confirmation">Confirming attendence</option>
-            <option value="coming">Coming</option>
-            <option value="not-coming">Not Coming</option>
-            <option value="waitlisted">Waitlisted</option>
-            <option value="confirmed">Confirmed Attendence</option>
-            <option value="checked-in">Checked In</option>
-          </select>
-          that template that I selected above.
-        </div>
-        <button onClick={this.sendEmails} className="btn btn-primary custom-btn p-3 mx-1 my-3">Send thingy I described</button>
         <div>
           Email these addresses: (each email on a line) <textarea id="emails"></textarea>
           to be <input type="checkbox" name="magiclink-permission" value="director"/>director
