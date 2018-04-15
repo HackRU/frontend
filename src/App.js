@@ -32,42 +32,30 @@ class App extends React.Component {
   }
 
   componentWillMount (){
-    const { cookies } = this.props; //I don't get it.
+    let urlParams = new URLSearchParams(window.location.search);
+    if(urlParams.has('error')){
+      this.setState({errorMessage: urlParams.get('error')});
+    }
+
+    if(urlParams.has('magiclink')){
+      const mag_link = urlParams.get('magiclink');
+
+      if(mag_link.startsWith('forgot-'))
+        this.setState({errorMessage: "You have a magic link! Please enter your email and then your new password.", hasLink: mag_link});
+      else
+        this.setState({errorMessage: "You have a magic link! Please log in to apply it.", hasLink: mag_link});
+    }
+
+    const { cookies } = this.props;//I don't get it.
+    if(urlParams.has('authdata')){
+      const auth = JSON.parse(urlParams.get('authdata'));
+      cookies.set('authdata', auth);
+    }
+
     const auth = cookies.get('authdata');
     if(auth && Date.parse(auth.auth.valid_until) > Date.now()){
       //we assume any authdata cookie is our authdata and check the validity.
-      ReactDOM.render(
-          <CookiesProvider>
-            <UserForm/>
-          </CookiesProvider>,
-          document.getElementById('register-root')
-      );
-      return;
-    }else{
-      let urlParams = new URLSearchParams(window.location.search);
-      if(urlParams.has('error')){
-        this.setState({errorMessage: urlParams.get('error')});
-      }
-
-      if(urlParams.has('magiclink')){
-        const mag_link = urlParams.get('magiclink');
-
-        if(mag_link.startsWith('forgot-'))
-          this.setState({errorMessage: "You have a magic link! Please enter your email and then your new password.", hasLink: mag_link});
-        else
-          this.setState({errorMessage: "You have a magic link! Please log in to apply it.", hasLink: mag_link});
-      }else if(urlParams.has('authdata')){
-        const auth = JSON.parse(urlParams.get('authdata'));
-        const { cookies } = this.props;//I don't get it.
-        cookies.set('authdata', auth);
-
-        if(!urlParams.has('magiclink')){
-          window.location.href = '/dashboard.html';
-        }else{
-          const mag_link = urlParams.get('magiclink');
-
-        }
-      }
+      this.goToUserForm({body: JSON.stringify(auth)});
     }
   }
 
@@ -93,12 +81,14 @@ class App extends React.Component {
         },
         body: JSON.stringify({
           link: this.state.hasLink,
+          email: this.state.email,
+          token: bod.auth.token
         })
       }).then(resp => resp.json())
         .then(resp => {
         ReactDOM.render(
             <div>
-              <div>We have applied your magic link!</div>
+              <div>{resp.body}</div>
               <CookiesProvider>
                 <UserForm/>
               </CookiesProvider>
@@ -184,7 +174,8 @@ class App extends React.Component {
   }
 
   mlh() {
-    let href = "https://my.mlh.io/oauth/authorize?client_id=bab4ace712bb186d8866ff4776baf96b2c4e9c64d729fb7f88e87357e4badcba&redirect_uri=https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/mlhtest/mlhcallback&response_type=code&scope=email+education+birthday";
+    let redir = (this.state.hasLink && !this.state.hasLink.startsWith('forgot-'))? '?redir=https://hackru.org/dashboard.html?magiclink=' + this.state.hasLink : ''
+    let href = "https://my.mlh.io/oauth/authorize?client_id=bab4ace712bb186d8866ff4776baf96b2c4e9c64d729fb7f88e87357e4badcba&redirect_uri=https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/mlhtest/mlhcallback" + redir +"&response_type=code&scope=email+education+birthday";
     window.open(href, "_self");
   }
 
