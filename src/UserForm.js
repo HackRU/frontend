@@ -734,7 +734,7 @@ class UserForm extends React.Component {
                <label htmlFor="toggle-travel-stuff"><h5 className="blue">I request travel reimbursement</h5></label>
             </span>
            }
-           {this.state.user && this.state.user.travelling_from && this.state.user.travelling_from.is_real &&
+           {this.state.user && this.state.user.travelling_from && this.state.user.travelling_from.is_real && !this.state.user.travelling_from.estimate &&
              <div>   <h4 className="font-weight-bold blue">Location Traveling from (include City & State)</h4>
                 <Autocomplete
                   types={['(cities)']}
@@ -774,6 +774,11 @@ class UserForm extends React.Component {
                   {this.state.travelClean? "Update Travel Information" : "Please choose a location from the dropdown to change it"}
                 </button>
             </div>
+           }
+           {this.state.user && this.state.user.travelling_from && this.state.user.travelling_from.is_real && this.state.user.travelling_from.estimate &&
+             <div>   <h4 className="font-weight-bold blue">Estimated reimbursement: ${this.state.user.travelling_from.estimate}</h4>
+               Please be prepared to <strong>show us all receipts</strong> related to your reimbursement on the day of HackRU. Please keep in mind you <strong>must submit a project to Devpost and demo on Sunday</strong> to receive your travel reimbursement in the form of an Amazon giftcard.
+               </div>
            }
         </div>
        }
