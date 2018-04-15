@@ -176,7 +176,14 @@ a:hover, a:focus, a:active {
 
 .image-divider {
     -webkit-transition: -webkit-transform .5s ease-in-out;
-    transition:         transform .5s ease-in-out;
+    transition: transform .5s ease-in-out;
+    border-style: solid;
+    border-color: #ffffff;
+    border-width: 2px;
+    border-radius: 20px;
+}
+.image-divider img{
+  width: 100%;
 }
 
 .image-divider:hover {
