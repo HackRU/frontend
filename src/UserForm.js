@@ -57,9 +57,9 @@ class UserForm extends React.Component {
           document.getElementById('register-root')
       );
       ReactDOM.render(
-          <div>
-            <h3>Please login</h3>
-          </div>,
+          <span>
+            <h3 className="text-center">Please login</h3>
+          </span>,
           document.getElementById('register-sidebar')
       );
       document.getElementById('profile-qr').setAttribute('src', 'img/wheel.png');
@@ -129,7 +129,7 @@ class UserForm extends React.Component {
     const {cookies} = this.props;
     cookies.remove('authdata');
     ReactDOM.render(<CookiesProvider><App /></CookiesProvider> , document.getElementById('register-root'));
-    ReactDOM.render(<div><h3>Please login</h3></div> , document.getElementById('register-sidebar'));
+    ReactDOM.render(<span><h3 className="text-center">Please login</h3></span> , document.getElementById('register-sidebar'));
     document.getElementById('profile-qr').setAttribute('src', 'img/wheel.png');
     document.getElementById('qr-border').setAttribute('style', 'display:none;');
   }
