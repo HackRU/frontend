@@ -652,7 +652,8 @@ class UserForm extends React.Component {
 
     if(this.state.user){
       const github = (this.state.user && this.state.user.github)? this.state.user.github : "";
-      ReactDOM.render(<div>
+      ReactDOM.render(
+      <div>
       <h2 class="font-weight-bold" >{this.state.user && this.state.user.first_name + ' ' + this.state.user.last_name} </h2>
       <h6> <a onClick={this.logout}>Logout</a> </h6>
       <br />
@@ -685,7 +686,9 @@ class UserForm extends React.Component {
     return (
     <div>
 
-
+    <div class="content-section" id="announcements-div">
+      <h2 class="content-section-title"><i class="fas fa-bullhorn fa-fw"></i> <span class="u-highlight">Status:</span></h2>
+      <div class="content-section-desc">
 
 		   <form className="form-group">
 
@@ -788,8 +791,12 @@ class UserForm extends React.Component {
         </div>
        }
 
-       </div>
-       <h2 className="blue my-3"> Your Info: </h2>
+       </div></form>
+       </div></div>
+       <div class="content-section" id="announcements-div">
+         <h2 class="content-section-title"><i class="fas fa-id-card fa-fw mt-4"></i> <span class="u-highlight">Your Info:</span></h2>
+         <div class="content-section-desc">
+
 
         <span>
         { this.state.user &&
@@ -836,11 +843,12 @@ class UserForm extends React.Component {
 				<div className="form-group row my-2 mx-1">
           <h4 className="blue">{this.state.flash}</h4>
         </div>
-        </form>
+          <this.LogoutButtons />
+        </div></div>
 
 
 
-    <this.LogoutButtons />
+
 
   </div>
 
