@@ -62,6 +62,8 @@ class UserForm extends React.Component {
           </div>,
           document.getElementById('register-sidebar')
       );
+      document.getElementById('profile-qr').setAttribute('src', 'img/wheel.png');
+      document.getElementById('qr-border').setAttribute('style', 'display:none;');
 
       return;
     }else{
@@ -128,7 +130,8 @@ class UserForm extends React.Component {
     cookies.remove('authdata');
     ReactDOM.render(<CookiesProvider><App /></CookiesProvider> , document.getElementById('register-root'));
     ReactDOM.render(<div><h3>Please login</h3></div> , document.getElementById('register-sidebar'));
-
+    document.getElementById('profile-qr').setAttribute('src', 'img/wheel.png');
+    document.getElementById('qr-border').setAttribute('style', 'display:none;');
   }
 
   onChange(e){
@@ -672,8 +675,10 @@ class UserForm extends React.Component {
       </div>,
       document.getElementById('register-sidebar'));
 
-      if(this.state.qr && (userStatus === 'coming' || userStatus === 'waitlist'))
+      if(this.state.qr && (userStatus === 'coming' || userStatus === 'waitlist')) {
         document.getElementById('profile-qr').setAttribute('src', this.state.qr);
+        document.getElementById('qr-border').setAttribute('style', 'display:block;');
+      }
     }
 
     //pardon my indentation - David used tabs.
