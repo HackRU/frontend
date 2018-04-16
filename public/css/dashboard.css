@@ -59,7 +59,7 @@ a:hover, a:focus, a:active {
 
 #dashboard-profile {
     height: 100%;
-
+    overflow-y: scroll;
     background-image: url("../img/dark-bg.jpg") !important;
     background-position: right bottom;
     background-attachment: fixed;
@@ -70,7 +70,7 @@ a:hover, a:focus, a:active {
 
 .profile-text {
     text-overflow: ellipsis;
-    overflow: hidden;
+    overflow: scroll;
 }
 
 #dashboard-content {
@@ -231,7 +231,6 @@ button {
     border-color: rgba(35,169,225, 0.1);;
     border-width: 2px;
     border-radius: 20px;
-
 }
 .image-divider img{
   width: 100%;
@@ -240,4 +239,8 @@ button {
 .image-divider:hover {
     -webkit-transform: rotate(180deg);
     transform: rotate(180deg);
+}
+
+.admin {
+  background: linear-gradient(to bottom right, #d50cff, #ba0d3b);
 }
