@@ -59,12 +59,14 @@ a:hover, a:focus, a:active {
 
 #dashboard-profile {
     height: 100%;
-    background-color: var(--color-two);
+
     background-image: url("../img/dark-bg.jpg") !important;
     background-position: right bottom;
-    background-size: cover;
     background-attachment: fixed;
+    background-color: var(--color-two);
 }
+
+
 
 .profile-text {
     text-overflow: ellipsis;
@@ -72,6 +74,8 @@ a:hover, a:focus, a:active {
 }
 
 #dashboard-content {
+    min-height: 100vh;
+    height: 100%;
     padding-left: 20px;
     padding-right: 20px;
     padding-top: 40px;
@@ -86,7 +90,7 @@ a:hover, a:focus, a:active {
   }
 
   #profile-qr {
-      padding: 10%;
+    
       width: 100%;
       /* border: 1px dotted white; */
       /* border-radius: 20px; */
