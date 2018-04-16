@@ -47,7 +47,7 @@ a:hover, a:focus, a:active {
 
 
 #profile-logo {
-    width: 20vw;
+    width: 40%;
 }
 
 #profile-qr {
@@ -211,7 +211,7 @@ button {
 .SC {
   text-transform: capitalize;
   word-wrap: break-word;
-  white-space: initial;  
+  white-space: initial;
 }
 
 .UC {
