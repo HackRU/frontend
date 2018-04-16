@@ -90,7 +90,7 @@ a:hover, a:focus, a:active {
   }
 
   #profile-qr {
-    
+
       width: 100%;
       /* border: 1px dotted white; */
       /* border-radius: 20px; */
@@ -228,9 +228,10 @@ button {
     -webkit-transition: -webkit-transform .5s ease-in-out;
     transition: transform .5s ease-in-out;
     border-style: solid;
-    border-color: #ffffff;
+    border-color: rgba(35,169,225, 0.1);;
     border-width: 2px;
     border-radius: 20px;
+
 }
 .image-divider img{
   width: 100%;
