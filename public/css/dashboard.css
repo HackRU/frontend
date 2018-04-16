@@ -45,42 +45,84 @@ a:hover, a:focus, a:active {
     font-weight: bold;
 }
 
+
 #profile-logo {
-    width: 45%;
+    width: 20vw;
 }
 
 #profile-qr {
-    padding: 10%;
-    width: 100%;
+    padding: 0em;
+    width: 70%;
     /* border: 1px dotted white; */
     /* border-radius: 20px; */
 }
 
 #dashboard-profile {
-    height: 100vh;
+    height: 100%;
     background-color: var(--color-two);
     background-image: url("../img/dark-bg.jpg") !important;
     background-position: right bottom;
     background-size: cover;
     background-attachment: fixed;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    position: fixed;
 }
 
 .profile-text {
     text-overflow: ellipsis;
-    white-space: nowrap;
     overflow: hidden;
 }
 
 #dashboard-content {
-    padding: 50px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 40px;
+    padding-bottom: 40px;
     background: rgba(35,169,225, 0.1);
+}
+
+
+@media (min-width: 768px) {
+  #profile-logo {
+      width: 45%;
+  }
+
+  #profile-qr {
+      padding: 10%;
+      width: 100%;
+      /* border: 1px dotted white; */
+      /* border-radius: 20px; */
+  }
+
+  #dashboard-profile {
+      height: 100vh;
+      background-color: var(--color-two);
+      background-image: url("../img/dark-bg.jpg") !important;
+      background-position: right bottom;
+      background-size: cover;
+      background-attachment: fixed;
+      padding-top: 20px;
+      padding-bottom: 20px;
+      position: fixed;
+  }
+
+  .profile-text {
+      text-overflow: ellipsis;
+      overflow: hidden;
+  }
 }
 
 .blue {
   color: var(--color-two);
+}
+
+.text-lg {
+  font-size: 1.5rem;
+  word-wrap: break-word;
+  white-space: initial;
+}
+
+button {
+  word-wrap: break-word;
+  white-space: initial;
 }
 
 .content-section-title {
@@ -168,10 +210,14 @@ a:hover, a:focus, a:active {
 
 .SC {
   text-transform: capitalize;
+  word-wrap: break-word;
+  white-space: initial;  
 }
 
 .UC {
   text-transform: uppercase;
+  word-wrap: break-word;
+  white-space: initial;
 }
 
 .image-divider {
