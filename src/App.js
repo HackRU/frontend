@@ -243,24 +243,22 @@ class App extends React.Component {
 					</div>
 				</div>
 
-				<div className="form-group row my-3">
+				<div className="form-group row my-1">
 					<label htmlFor="pw-input" className="col-lg-3 col-form-label"><h4 className="font-weight-bold blue">PASSWORD</h4></label>
 					<div className="col-lg-9">
 						<input type="password" onChange={this.onPasswordChange} className="form-control form-control" id="pw-input"></input>
 					</div>
 				</div>
 
-				<div className="form-group row">
-          <span className="col-lg-3"></span>
-          <h4 className="col-lg-9 blue" >{this.state.errorMessage}</h4>
+				<div className="form-group row text-center mx-4">
+          <h4 className="col-lg-12 text-lg badge badge-danger mb-4 mt-4" >{this.state.errorMessage}</h4>
           {this.state.errorMessage && (!this.state.hasLink || this.state.hasLink.startsWith('forgot-')) &&
-						<button onClick={this.forgotPassword} type="button" className="btn btn-primary p-3"><h6 className="UC ">{(this.state.hasLink)? "Apply magic link": "Forgot Password"}</h6></button>
+						<div className="col-12"><button onClick={this.forgotPassword} type="button" className="btn btn-primary p-xs-2 p-md-3"><h6 className="UC ">{(this.state.hasLink)? "Apply magic link": "Forgot Password"}</h6></button></div>
           }
         </div>
 
 				<div className="form-group row mt-0">
 					<div className="col-12 text-center">
-						<br/>
 						<button onClick={this.signUp} type="button" className="btn btn-primary mx-1 p-xs-2 p-md-3"><h6 className="UC ">Sign Up</h6></button>
             <button onClick={this.login} type="button" className="btn btn-primary custom-btn p-xs-2 p-md-3 mx-1" ><h6 className=" UC ">Login</h6></button>
             <button onClick={this.mlh} type="button" className="btn btn-primary p-xs-2 p-md-3 my-2"><h6 className=" UC">Log in/Sign Up with MLH</h6></button>
