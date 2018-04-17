@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import {uploadResume} from './resume.js';
+import {uploadResume, downloadResume} from './resume.js';
 import {config_maps} from './config_resume.js';
 import Select from 'react-select';
 import {Creatable, AsyncCreatable, Async } from 'react-select';
@@ -72,6 +72,7 @@ class UserForm extends React.Component {
         token: auth.auth.token
       });
 
+      downloadResume(true, auth.auth.email, (wrk, _) => this.setState({hasResume: wrk}));
     }
   }
 
@@ -407,7 +408,7 @@ class UserForm extends React.Component {
 
   doResume(ev){
     uploadResume(this.state.email, (value) => {
-        this.setState({flash: value});
+        this.setState({flash: value, hasResume: true});
     });
   }
 
@@ -816,7 +817,9 @@ class UserForm extends React.Component {
                    id="input-short_answer"/>
         </div>
 				<div className="form-group row my-2">
-                        <label htmlFor="resumeupload" className="col-lg-8"><h4 className="font-weight-bold blue">RESUME</h4></label>
+                        <label htmlFor="resumeupload" className="col-lg-8"><h4 className="font-weight-bold blue">RESUME</h4>
+                        {(this.state.hasResume)? "You have uploaded one.": "Please upload a copy!"}
+                        </label>
                 <input type="file" className="form-control mx-3" onChange={this.doResume} id="resumeupload"/>
         </div>
         {this.state.user && this.state.user.registration_status == "unregistered" &&
