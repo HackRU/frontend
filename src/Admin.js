@@ -77,16 +77,8 @@ render() {
 
   return (
 
-    <div className="card row">
-      <div className="col-lg-12">
-        <div className="text-center">
-          <h3 className="text-center">You are logged in as an administrator!</h3>
-
-          <button type="button" className="btn btn-primary custom-btn p-xs-2 p-md-3 mx-1 my-3 " id="launch-modal" data-toggle="modal" data-target="#exampleModalCenter" data-backdrop="static"><h4 className="my-0">View/Finish your Application</h4></button>
-          <button type="button" className="btn btn-primary custom-btn p-xs-2 p-md-3 my-3" id="launch-modal" data-toggle="modal" onClick={this.adminVote} data-target="#exampleModalCenter" data-backdrop="static"><h4 className="my-0">Vote on Applications</h4></button>
-          <button type="button" className="btn btn-primary custom-btn p-xs-2 p-md-3  mx-1 my-3" onClick={this.logout}><h4 className="my-0">Logout</h4></button>
-        </div>
-
+    <div className="card row admin">
+      <div className="col-lg-12 p-3">
       <h1 className="text-center">Admin Dashboard</h1>
       <div className="col-lg-12 text-center">
 
