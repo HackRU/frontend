@@ -696,12 +696,21 @@ class UserForm extends React.Component {
        <div className="text-center">
 
        <h2 className="blue SC"> Status: {userStatus} </h2>
+       {userStatus === 'checked in' &&
+       <div>
+       <h1 className="blue my-3"> Welcome to HackRU! </h1>
+       <h6 className="blue"> Some other basic info should go here </h6>
+       <h6 className="blue"> Some other basic info should go here </h6>
+       <h6 className="blue"> Some other basic info should go here </h6>
+       </div>
+        }
 
-       {userStatus != 'Pending' && userStatus != 'waitlist' &&
+       {userStatus != 'Pending' && userStatus != 'waitlist' && userStatus != 'checked in' &&
          <div>
-           <div className="blue">{this.state.upperFlash}</div>
+           <div className="blue"><h3>{this.state.upperFlash}</h3></div>
            <button type="button" className="btn btn-primary UC custom-btn p-3 my-1 mx-md-1" onClick={this.attending}><h6 className="my-0">Attending</h6></button>
            <button type="button" className="btn btn-primary UC custom-btn p-3 my-1" onClick={this.notAttending}><h6 className="my-0">Will not Attend</h6></button>
+
            {userStatus === "coming" && (!this.state.user.travelling_from || !this.state.user.travelling_from.estimate) &&
              <span>
                <br/>
@@ -794,6 +803,7 @@ class UserForm extends React.Component {
 
        </div></form>
        </div></div>
+      {this.state.user && userStatus != 'checked in' &&
        <div class="content-section" id="announcements-div">
          <h2 class="content-section-title"><i class="fas fa-id-card fa-fw mt-4"></i> <span class="u-highlight">Your Info:</span></h2>
          <div class="content-section-desc your-info">
@@ -848,7 +858,7 @@ class UserForm extends React.Component {
         </div>
           <this.LogoutButtons />
         </div></div>
-
+      }
 
 
 

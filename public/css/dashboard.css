@@ -188,6 +188,11 @@ button {
   overflow-y: scroll;
 }
 
+#upcoming-list {
+  height: 50vh;
+  overflow-y: scroll;
+}
+
 .your-info {
   height: 50vh;
   overflow-y: scroll;
