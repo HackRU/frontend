@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 
 class Slack extends React.Component {
 
+
+
   constructor (props){
       super(props);
     this.loadData = this.loadData.bind(this);
@@ -40,8 +42,8 @@ class Slack extends React.Component {
      <div className="">
          {this.state.text && this.state.text.map(key =>
            <span>
-           <h5 class="content-title">{JSON.stringify(key.text)}</h5>
-           <p class="content-desc mb-3">Time posted: {JSON.stringify(key.ts)}</p>
+           <h5 class="content-title">{(key.text)}</h5>
+           <p class="content-desc mb-3">Posted on  {new Date(key.ts*1000).toLocaleDateString()} at {new Date(key.ts*1000).toLocaleTimeString()}</p>
            </span>
        )}
 
