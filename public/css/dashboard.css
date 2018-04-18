@@ -184,7 +184,7 @@ button {
 }
 
 .register-root {
-  height: 50vh;
+  height: 100%;
   overflow-y: scroll;
 }
 
@@ -259,6 +259,8 @@ button {
 
 .admin {
   background: linear-gradient(to bottom right, #74fc9b, #d8ffe3);
+  max-height: 125vh;
+  overflow-y: scroll;
 }
  body {
    transition: all 0.2s ease !important;

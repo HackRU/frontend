@@ -688,7 +688,7 @@ class UserForm extends React.Component {
     <div>
 
     <div class="content-section " id="announcements-div">
-      <h2 class="content-section-title"><i class="fas fa-bullhorn fa-fw"></i> <span class="u-highlight">Status:</span></h2>
+      <h2 class="content-section-title"><i class="fas fa-sign-in-alt fa-fw"></i> <span class="u-highlight">Status:</span></h2>
       <div class="content-section-desc register-root">
 
 		   <form className="form-group">
@@ -697,7 +697,9 @@ class UserForm extends React.Component {
 
        <h2 className="blue SC"> Status: {userStatus} </h2>
        {userStatus === 'checked in' &&
+
        <div>
+        <i class="fas fa-check fa-fw"></i>
        <h1 className="blue my-3"> Welcome to HackRU! </h1>
        <h6 className="blue"> Some other basic info should go here </h6>
        <h6 className="blue"> Some other basic info should go here </h6>

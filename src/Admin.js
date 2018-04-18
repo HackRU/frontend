@@ -77,9 +77,15 @@ render() {
 
   return (
 
-    <div className="card row admin">
-      <div className="col-lg-12 p-3">
-      <h1 className="text-center">Admin Dashboard</h1>
+
+
+
+
+    <div className="content-section ">
+      <h2 class="content-section-title"><i class="fas fa-user-secret fa-fw"></i> <span class="u-highlight">Admin Dashboard</span></h2>
+      <div class="content-section-desc admin">
+      <div className="col-lg-12 p-3 ">
+
       <div className="col-lg-12 text-center">
 
       { this.state.user &&
@@ -125,6 +131,7 @@ render() {
         { (console.log(this.state.user.role.director) || this.state.user.role.director) &&
           <AdminEmailing user={this.state.user} token={this.state.token}/>}
         </div>
+      </div>
       </div>
 
 );
