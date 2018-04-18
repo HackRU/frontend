@@ -25,7 +25,7 @@ class Events extends React.Component {
               mode: 'no-cors',
               credentials: 'omit',
               headers: {
-                'Access-Control-Allow-Origin': 'application/json',
+                'Access-Control-Allow-Origin': 'true',
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
               },
