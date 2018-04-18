@@ -233,9 +233,9 @@ class App extends React.Component {
   render() {
 
     return (
-      <div class="content-section " id="announcements-div">
-        <h2 class="content-section-title"><i class="fas fa-bullhorn fa-fw"></i> <span class="u-highlight">Login:</span></h2>
-        <div class="content-section-desc register-root">
+      <div className="content-section " id="announcements-div">
+        <h2 className="content-section-title"><i className="fas fa-bullhorn fa-fw"></i> <span class="u-highlight">Login:</span></h2>
+        <div className="content-section-desc register-root">
       <div className="react-form">
 			<form className="form-group">
 
