@@ -179,7 +179,18 @@ button {
 }
 
 #info-list {
-    height: 100%;
+    height: 50vh;
+    overflow-y: scroll;
+}
+
+.register-root {
+  height: 50vh;
+  overflow-y: scroll;
+}
+
+.your-info {
+  height: 50vh;
+  overflow-y: scroll;
 }
 
 ::-webkit-scrollbar {

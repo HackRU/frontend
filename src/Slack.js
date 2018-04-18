@@ -37,9 +37,14 @@ class Slack extends React.Component {
 
   render () {
    return (
-     <div className="admin">
-       <h3>Input Data! IS HERE WTF</h3>
-         <div> {JSON.stringify(this.state.text)} </div>
+     <div className="">
+         {this.state.text && this.state.text.map(key =>
+           <span>
+           <h5 class="content-title">{JSON.stringify(key.text)}</h5>
+           <p class="content-desc mb-3">Time posted: {JSON.stringify(key.ts)}</p>
+           </span>
+       )}
+
       </div>
    );
  }
