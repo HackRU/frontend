@@ -21,10 +21,9 @@ class Slack extends React.Component {
      try {
         const res = await fetch('https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/mlhtest/dayof-slack');
         const blocks = await res.json();
-        const dataBody = blocks.body.text;
-
+        const dataBody = blocks;
         this.setState({
-           dataIsBody: dataBody,
+           text: dataBody.blocks.body.text,
         })
     } catch (e) {
         console.log(e);
