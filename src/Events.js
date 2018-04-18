@@ -22,8 +22,13 @@ class Events extends React.Component {
      try {
         const res = await fetch('https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/mlhtest/dayof-events',
             {
-              mode: 'cors',
-              credentials: 'omit'
+              mode: 'no-cors',
+              credentials: 'omit',
+              headers: {
+                'Access-Control-Allow-Origin': 'application/json',
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+              },
             });
         const blocks = await res.json();
         const dataBody = blocks;
