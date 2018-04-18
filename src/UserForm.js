@@ -677,7 +677,7 @@ class UserForm extends React.Component {
       </div>,
       document.getElementById('register-sidebar'));
 
-      if(this.state.qr && (userStatus === 'coming' || userStatus === 'waitlist')) {
+      if(this.state.qr && (userStatus === 'coming' || userStatus === 'waitlist' || userStatus === 'checked in')) {
         document.getElementById('profile-qr').setAttribute('src', this.state.qr);
         document.getElementById('qr-border').setAttribute('style', 'display:block;');
       }
