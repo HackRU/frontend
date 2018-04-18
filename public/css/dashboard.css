@@ -242,5 +242,8 @@ button {
 }
 
 .admin {
-  background: linear-gradient(to bottom right, #d50cff, #ba0d3b);
+  background: linear-gradient(to bottom right, #74fc9b, #d8ffe3);
 }
+ body {
+   transition: all 0.2s ease !important;
+ }
