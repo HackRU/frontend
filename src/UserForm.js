@@ -687,9 +687,9 @@ class UserForm extends React.Component {
     return (
     <div>
 
-    <div class="content-section" id="announcements-div">
+    <div class="content-section " id="announcements-div">
       <h2 class="content-section-title"><i class="fas fa-bullhorn fa-fw"></i> <span class="u-highlight">Status:</span></h2>
-      <div class="content-section-desc">
+      <div class="content-section-desc register-root">
 
 		   <form className="form-group">
 
@@ -796,7 +796,7 @@ class UserForm extends React.Component {
        </div></div>
        <div class="content-section" id="announcements-div">
          <h2 class="content-section-title"><i class="fas fa-id-card fa-fw mt-4"></i> <span class="u-highlight">Your Info:</span></h2>
-         <div class="content-section-desc">
+         <div class="content-section-desc your-info">
 
 
         <span>
