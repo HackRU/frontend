@@ -701,9 +701,7 @@ class UserForm extends React.Component {
        <div>
         <i class="fas fa-check fa-fw"></i>
        <h1 className="blue my-3"> Welcome to HackRU! </h1>
-       <h6 className="blue"> Some other basic info should go here </h6>
-       <h6 className="blue"> Some other basic info should go here </h6>
-       <h6 className="blue"> Some other basic info should go here </h6>
+       <h6 className="blue"> In case of an emergency, call RUPD: 732-932-7211 </h6>
        </div>
         }
 
