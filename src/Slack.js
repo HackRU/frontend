@@ -38,11 +38,34 @@ class Slack extends React.Component {
   }
 
   render () {
+    const clearBraColon = (msg) => {
+      let acc = '';
+      let braColon = false;
+      let lstIdx = 0;
+
+      for(let i = 0; i < msg.length; i++){
+        if((msg[i] === '<' || msg[i] === ':') && !braColon){
+          acc += msg.substring(lstIdx, i);
+          braColon = true;
+        }else if(braColon && (msg[i] === '>' || msg[i] === ':')){
+          lstIdx = i + 1;
+          braColon = false;
+        }
+      }
+
+      acc += msg.substring(lstIdx);
+
+      console.log(msg);
+      console.log(acc);
+
+      return acc;
+    };
+
    return (
      <div className="">
          {this.state.text && this.state.text.map(key =>
            <span>
-           <h5 class="content-title">{(key.text)}</h5>
+           <h5 class="content-title">{clearBraColon(key.text)}</h5>
            <p class="content-desc mb-3">Posted on  {new Date(key.ts*1000).toLocaleDateString()} at {new Date(key.ts*1000).toLocaleTimeString()}</p>
            </span>
        )}

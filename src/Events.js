@@ -22,18 +22,13 @@ class Events extends React.Component {
      try {
         const res = await fetch('https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/mlhtest/dayof-events',
             {
-              mode: 'no-cors',
-              credentials: 'omit',
-              headers: {
-                'Access-Control-Allow-Origin': 'true',
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-              },
+              mode: 'cors',
+              credentials: 'omit'
             });
         const blocks = await res.json();
         const dataBody = blocks;
         this.setState({
-           summary: blocks.body
+           text: blocks.body
         })
     } catch (e) {
         console.log(e);
@@ -41,11 +36,19 @@ class Events extends React.Component {
   }
 
   render () {
+
+   const day = (dt) => (dt.split('T')[0].split('-')[2] === '21')? 'Saturday': 'Sunday';
+   const time = (dt) => dt.split('T')[1].split('-')[0];
+
    return (
      <div className="">
          {this.state.text && this.state.text.map(key =>
            <span>
-           <h5 class="content-title">{JSON.stringify(key.summary)}</h5>
+           <h5 className="content-title">{(key.summary)}</h5>
+           <p className="content-desc mb-3">
+           From {day(key.start.dateTime)} at {time(key.start.dateTime)} to {day(key.end.dateTime)} at {time(key.end.dateTime)}.
+           {key.location && " In the " + key.location + '.'}
+           </p>
 
            </span>
        )}
