@@ -270,11 +270,26 @@ button {
    transition: all 0.2s ease !important;
  }
 
-#all {
-  width:100%;
-  text-align:center;
-}
+ #all {
+   height: 100%;
+   display: none;
+   text-align:center;
+ }
 
-.sub, iframe {
-  margin: 0 auto;
+ .sub, iframe {
+   margin: 0 auto;
+ }
+
+
+@media (min-width: 768px) {
+  #all {
+    display: block;
+    height: 100%;
+    width:100%;
+    text-align:center;
+  }
+
+  .sub, iframe {
+    margin: 0 auto;
+  }
 }
