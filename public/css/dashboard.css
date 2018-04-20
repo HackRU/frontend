@@ -170,7 +170,7 @@ button {
 
 #announcements-list, #upcoming-list {
     overflow-y: scroll;
-    max-height: 50vh;
+    height: 50vh;
 }
 
 #twitter-list {

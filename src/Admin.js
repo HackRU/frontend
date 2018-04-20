@@ -71,7 +71,7 @@ adminVote(){
 }
 
 render() {
-  if(!this.state.user || (!this.state.user.role.organizer && !this.state.user.role.director)){
+  if(!this.state.user || (!this.state.user.role.director)){
     return null;
   }
 

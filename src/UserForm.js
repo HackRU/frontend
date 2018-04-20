@@ -78,7 +78,7 @@ class UserForm extends React.Component {
 
   isAdmin() {
 
-    if(!this.state.user || (!this.state.user.role.organizer && !this.state.user.role.director)){
+    if(!this.state.user || (!this.state.user.role.director)){
       return ;
     }
 
