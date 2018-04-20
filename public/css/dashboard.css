@@ -118,6 +118,10 @@ a:hover, a:focus, a:active {
   color: var(--color-two);
 }
 
+.blue:hover {
+  color: #80c7e5;
+}
+
 .text-lg {
   font-size: 1.5rem;
   word-wrap: break-word;
@@ -265,3 +269,12 @@ button {
  body {
    transition: all 0.2s ease !important;
  }
+
+#all {
+  width:100%;
+  text-align:center;
+}
+
+.sub, iframe {
+  margin: 0 auto;
+}
