@@ -133,6 +133,7 @@ class UserForm extends React.Component {
     ReactDOM.render(<span><h3 className="text-center">Please login</h3></span> , document.getElementById('register-sidebar'));
     document.getElementById('profile-qr').setAttribute('src', 'img/wheel.png');
     document.getElementById('qr-border').setAttribute('style', 'display:none;');
+    window.location.href = '/dashboard.html';
   }
 
   onChange(e){

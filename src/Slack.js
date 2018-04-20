@@ -55,9 +55,6 @@ class Slack extends React.Component {
 
       acc += msg.substring(lstIdx);
 
-      console.log(msg);
-      console.log(acc);
-
       return acc;
     };
 
