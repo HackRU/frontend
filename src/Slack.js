@@ -11,7 +11,7 @@ class Slack extends React.Component {
   }
   componentDidMount() {
       this.loadData();
-      setInterval(this.loadData, 30000);
+      setInterval(this.loadData, 1000 * 60 * 5);
   }
 
   state = {
