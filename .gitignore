@@ -1,2 +1,7 @@
 node_modules
 workspace.xml
+.DS_Store
+.idea
+config_resume.js
+.env
+build/
