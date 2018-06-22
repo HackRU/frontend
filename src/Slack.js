@@ -42,19 +42,20 @@ class Slack extends React.Component {
       let acc = '';
       let braColon = false;
       let lstIdx = 0;
-
-      for(let i = 0; i < msg.length; i++){
-        if((msg[i] === '<' || msg[i] === ':') && !braColon){
-          acc += msg.substring(lstIdx, i);
-          braColon = true;
-        }else if(braColon && (msg[i] === '>' || msg[i] === ':')){
-          lstIdx = i + 1;
-          braColon = false;
-        }
-      }
+	  if(msg) {
+		  for(let i = 0; i < msg.length; i++){
+			if((msg[i] === '<' || msg[i] === ':') && !braColon){
+			  acc += msg.substring(lstIdx, i);
+			  braColon = true;
+			}else if(braColon && (msg[i] === '>' || msg[i] === ':')){
+			  lstIdx = i + 1;
+			  braColon = false;
+        	}
+      	}
+	  
 
       acc += msg.substring(lstIdx);
-
+	  }
       return acc;
     };
 

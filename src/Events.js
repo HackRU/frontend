@@ -43,7 +43,7 @@ class Events extends React.Component {
 
    return (
      <div className="">
-         {this.state.text && this.state.text.map(key =>
+         {this.state.summary && this.state.summary.map(key =>
            <span>
            <h5 className="content-title">{(key.summary)}</h5>
            <p className="content-desc mb-3"> <span className="font-weight-bold">
