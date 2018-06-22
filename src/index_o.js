@@ -1,21 +1,13 @@
-//index.js
+//index_o.js
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { createStore, applyMiddleware, compose } from 'redux';
-import { Provider } from 'react-redux';
-import reduxThunk from 'redux-thunk';
-import './styles/index.css';
-import App from './components/App';
-import Slack from './components/Slack';
-import Events from './components/Events';
-import './styles/App.css';
-import rootReducer from './reducers/rootReducer';
+import './index.css';
+import App from './App';
+import Slack from './Slack';
+import Events from './Events';
+import './App.css';
 import registerServiceWorker from './registerServiceWorker';
 import {CookiesProvider} from 'react-cookie';
-	
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const store = createStore(rootReducer, composeEnhancers(applyMiddleware(reduxThunk)));
-
 
 ReactDOM.render(<CookiesProvider><App /></CookiesProvider>, document.getElementById('register-root'));
 ReactDOM.render(<Slack></Slack>, document.getElementById('announcements-list'));
