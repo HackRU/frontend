@@ -49,7 +49,7 @@ The people who have worked on the CSS to its current state, AFAIK, are:
 
 It's literally how http://www.hackru.org runs.  pls help.
 
-# Style Guide (linting ..ugh)
+## Style Guide (Heman is an occupational hazard and we need linters)
 
 So the thing is ~~I am a huge fan of anarchy and using tabs~~ I've only worked on smaller projects.  A style guide here can and will be useful. 
 We will likely be using something custom, with enough rules to make code uniform and easy to review, 
