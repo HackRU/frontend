@@ -21,7 +21,7 @@ Welcome ~~to hell~~ to HackRU, MF'er.
 
 ## Inspiration (how the hell did we get here)
 
-Heman has written a nice [wiki]: https://github.com/HackRU/lcs/wiki/History discussing the history of HackRU, and I encourage reading it for context.
+Heman has written a nice [wiki](https://github.com/HackRU/lcs/wiki/History) discussing the history of HackRU, and I encourage reading it for context.
 You should also at some point met up with us to demo the current state of the front-end and discuss all open issues and goals for this HackRU.
 
 The people who worked on the React to its current state, AFAIK, are:
@@ -40,14 +40,14 @@ The people who have worked on the CSS to its current state, AFAIK, are:
 ## Installation Guide (how a MF'er can get started)
 
 
-1.  After cloning in and [setting up a feature branch]: https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow, get dependencies from package.json by running `npm install`
+1.  After cloning in and [setting up a feature branch](https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow), get dependencies from package.json by running `npm install`
 2.  Get nvm in your computer.  Use something like `curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash`
 3.  You should have .env in project root and config_resume.js somewhere in src, you'll have to obtain these separately (ask Heman or any of the others listed above)
 4.  Check things out by starting the server: `sh ec2-run.sh`
 
 ## Example Uses (why care)
 
-It's literally how http://www.hackru.org runs.  pls help.
+It's literally how http://www.hackru.org can be seen by users.  pls help.
 
 ## Style Guide (Heman is an occupational hazard and we need linters)
 
@@ -65,10 +65,10 @@ But I will likely add a .eslintrc configuration file for us to follow once I wor
 Your duties will be assigned according to needs, but they will follow these overarching goals:
 
 0.  Figuring out roles
--   Create feature branches
--   Check out/investigate the current state of the front-end
--   Learn about its parts and how they work
--   Have an okayish understanding at minimum about the codebase, namely Node and Webpack, React, Redux, and JS-CSS-HTML in general 
+-   Create feature branches.
+-   Check out/investigate the current state of the front-end.
+-   Learn about its parts and how they work.
+-   Have an okayish understanding at minimum about the codebase, namely Node and Webpack, React, Redux, and JS-CSS-HTML in general. 
 
 1.  Fixing open and immediate issues, depending on their criticality
 -   Heman is gonna open issues and yell at us.  Our job will be to attempt to fix said issues and then yell back at him.  
@@ -85,8 +85,8 @@ Your duties will be assigned according to needs, but they will follow these over
 
 4.  Testing
 -   This leads more into point 1., in the sense that we should get into the proper practices of code reviews, unit testing, integration testing, etc.
--   This includes having a Style Guide as mentioned above, and we will be learning together some good testing schema
--   Make sure you test on your local branches before you push upstream, and do your best to attend meetings so we're all on the same page
+-   This includes having a Style Guide as mentioned above, and we will be learning together some good testing schema.
+-   Make sure you test on your local branches before you push upstream, and do your best to attend meetings so we're all on the same page.
 
 ## Links to Further docs (please read some of this shit)
 
@@ -99,10 +99,10 @@ This can be a huge boon - you will definitely have a tremendous amount of experi
 
 In case something goes wrong, or in case of a fire, or in case you feel overwhelmed or daunted by what's going on, here are some rules that have personally helped me before:
 
-1.  Take some time to calm down and chill out.  Health comes first, even from a practical perspective.  You can't fix anything while panicking.  HALT is a real good pattern to keep in mind:  Don't try to work on things when you are hungry, angry/upset, lonely/lost, or tired to the extent that you can't perform properly.  It will make things worse.  Heroes be damned, don't try to stay up til 5am working on something on your own.
-2.  Write down what exactly has gone wrong and tell someone.  Contact me, one of the directors, our assigned rnd mentor, the git-help channel, etc.  We will all will be willing to help clean up the mess.   It's not just because this project affects all of us, and it's not just because we have a responsibility - it's because we literally have set shit on fire before and caused holy hell to occur through our mistakes.  We want to be do as much as we can, and yelling and accusing people is definitively counter-productive.  (Leave that for the post-mortem party ;) )
+1.  Take some time to calm down and chill out.  Health comes first, even from a practical perspective.  You can't fix anything while panicking.  HALT is a real good pattern to keep in mind:  Don't try to work on things when you are hungry, angry/upset, lonely/lost, or tired to the extent that you can't perform properly.  It will make things worse.  Heroes be damned, don't try to stay up til 5am working on something on your own.  If last minute crunching is needed, we shouldn't be doing it by ourselves.
+2.  Write down what exactly has gone wrong and tell someone.  Contact me, one of the directors, our assigned rnd mentor, the git-help channel, etc.  We will all will be willing to help clean up the mess.   It's not just because this project affects all of us, and it's not just because we have a responsibility - it's because we literally have set shit on fire before and caused holy hell to occur through our mistakes.  We want to be do as much as we can, and yelling and accusing people is definitely counter-productive.  (Leave that for the post-mortem party ;) )
 3.  Cooperate and work together with whoever's helping you to fix what happened as much as possible.  Stay on the issue, learn from it, and don't add or subtract from directions to prevent further issues from rising.  
-4.  After it's passed, we'll all sit down and discuss the reason for what happened.  Huge breaks and long error logs can be the result of innocent mistakes or even non-mistakes that have been handled a specific way by the library/framework/language in use.  We will all benefit from learning what happened and then implementing a procedure to prevent it from happening again.  
+4.  After it's passed, we'll all sit down and discuss the reason for what happened.  Huge breaks and long error logs can be the result of innocent mistakes or even non-mistakes that have been handled a specific way by the library/framework/language in use.  We will all benefit from learning what happened and from implementing a procedure to prevent it from happening again.  A good principle is to review the documentation given and to also write some of your own.
 5.  Remember that communication is key, and that we are all very appreciative of your efforts and contributions.  If you need to stop working on HackRU, we will understand and adapt as necessary.  We just ask that you be courteous and tell of us any and all issues/questions that you have.
 
 ## Thanks for making it to the end (go be a great MF!)
