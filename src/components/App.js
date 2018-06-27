@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom';
 import UserForm from './UserForm';
 import {instanceOf} from 'prop-types';
 import {CookiesProvider, withCookies, Cookies} from 'react-cookie';
-import ModalError from './modalerror'
-import Logged from './Logged'
+import ModalError from './modalerror';
+import Logged from './Logged';
 
 class App extends React.Component {
   static propTypes = {
