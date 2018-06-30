@@ -1,5 +1,6 @@
 {
 				"rules": {
+						"no-console": 'off',
 						"indent": [
 								2,
 								2
@@ -36,7 +37,7 @@
 								2
 						],
 						"react/jsx-key": 1,
-						"react/jsx-max-props-per-line": 1,
+						"react/jsx-max-props-per-line": [1, { "when": "multiline" }],
 						"react/jsx-no-bind": [
 								1,
 								{
