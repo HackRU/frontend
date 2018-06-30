@@ -1,4 +1,4 @@
-# Admin Dashboard (known as frontend)
+# HackRU Front-End
 
 ## Description (wtf is this)
 
@@ -22,7 +22,7 @@ Welcome ~~to hell~~ to HackRU, MF'er.
 ## Inspiration (how the hell did we get here)
 
 Heman has written a nice [wiki](https://github.com/HackRU/lcs/wiki/History) discussing the history of HackRU, and I encourage reading it for context.
-You should also at some point met up with us to demo the current state of the front-end and discuss all open issues and goals for this HackRU.
+You should also have at some point had a meeting with us where we demoed the current state of the front-end and discussed all open issues and goals for this HackRU.
 
 The people who worked on the React to its current state, AFAIK, are:
 
