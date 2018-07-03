@@ -21,6 +21,8 @@
 								2,
 								"as-needed"
 						],
+            "jsx-a11y/href-no-hash": "off",
+            "react/require-extension": "off",
 						"react/display-name": 1,
 						"react/forbid-prop-types": 1,
 						"react/jsx-boolean-value": 1,
@@ -51,8 +53,8 @@
 						"react/jsx-no-undef": 1,
 						"react/jsx-pascal-case": 1,
 						"jsx-quotes": 1,
-						"react/jsx-sort-prop-types": 1,
-						"react/jsx-sort-props": 1,
+						"react/jsx-sort-prop-types": 0,
+						"react/jsx-sort-props": 0,
 						"react/jsx-uses-react": 1,
 						"react/jsx-uses-vars": 1,
 						"react/no-danger": 1,
@@ -71,7 +73,7 @@
 						"react/require-extension": 1,
 						"react/self-closing-comp": 1,
 						"react/sort-comp": 1,
-						"react/wrap-multilines": 1
+						"react/jsx-wrap-multilines": 1
 				},
 				"env": {
 						"es6": true,
