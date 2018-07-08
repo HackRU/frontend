@@ -7,15 +7,15 @@
 5.  [Example Uses](#example-uses-why-care)
 6.  [TO-DO List](#to-do-list-the-heck-are-we-doing)
 7.  [Links to Further Docs](#links-to-further-docs-some-shit-I-read-when-starting-out)
-  1.  [JS, CSS, and HTML](#js-cs-and-html)
-  2.  [React](#react)
-  3.  [Redux](#redux)
-  4.  [Other Libraries](#other-libraries)
-  5.  [ECMA 6](#ecma-6)
-  6.  [Coding Style Guides and Linting](#coding-style-guides-and-linting)
-  7.  [Testing](#testing)
-  8.  [Version Control on Git](#version-control-on-git)
-8.  [Don't Panic](#don-t-panic-i-do-that-enough)
+  *  [JS, CSS, and HTML](#js-css-and-html)
+  *  [React](#react)
+  *  [Redux](#redux)
+  *  [Other Libraries](#other-libraries)
+  *  [ECMA 6](#ecma-6)
+  *  [Coding Style Guides and Linting](#coding-style-guides-and-linting)
+  *  [Testing](#testing)
+  *  [Version Control on Git](#version-control-on-git)
+8.  [Don't Panic](#dont-panic-i-do-that-enough)
 
 ## Contacts (some important people)
 *  RND Co-Director: Heman Gandhi : hemangandhi@gmail.com : [hemangandhi](https://github.com/hemangandhi)
@@ -107,7 +107,7 @@ Your duties will be assigned according to needs, but they will follow these over
 But please **do read** the docs on [contributing to this project](./CONTRIB.md) and [on our transition to Redux](./ROAD_TO_REDUX.md)
 If you don't read those above, you may easily run into issues.
 
-# JS, CSS, and HTML 
+### JS, CSS, and HTML 
 (Personally I recommend W3Schools over MDN):
 -  [W3Schools HTML5](https://www.w3schools.com/Html/default.asp)
 -  [W3Schools JS](https://www.w3schools.com/js/default.asp)
@@ -116,7 +116,7 @@ If you don't read those above, you may easily run into issues.
 -  [MDN Docs JS](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference)
 -  [MDN Docs CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
 
-# React:
+### React:
 -  [React Main Concepts](https://reactjs.org/docs/hello-world.html)
 -  [A Really Crappy React Tutorial](https://reactjs.org/tutorial/tutorial.html)
 -  [A Much Better React Tutorial](https://tylermcginnis.com/reactjs-tutorial-a-comprehensive-guide-to-building-apps-with-react/)
@@ -124,29 +124,29 @@ If you don't read those above, you may easily run into issues.
 -  [Another Guide to React Component Lifecycles](https://hackernoon.com/reactjs-component-lifecycle-methods-a-deep-dive-38275d9d13c0)
 -  [React Developer Tools](https://github.com/facebook/react-devtools)
 
-# Redux:
+### Redux:
 -  [Pretty Okay Redux Documentation](https://redux.js.org/)
 -  [Redux To-Do List Example](https://redux.js.org/basics/example-todo-list)
 -  [A Really Great Read on Learning Redux](https://daveceddia.com/how-does-redux-work/)
 -  [Why Use Redux](https://hackernoon.com/how-to-redux-with-react-836ed6d85330)
 -  [Redux Developer Tools](https://github.com/zalmoxisus/redux-devtools-extension) 
 
-# Other Libraries:
+### Other Libraries:
 -  [An Overview of NPM, Babel, and Webpack](https://medium.com/front-end-hacking/what-are-npm-yarn-babel-and-webpack-and-how-to-properly-use-them-d835a758f987)
 
 
-# ECMA 6: 
+### ECMA 6: 
 -  [The Difference Between JS and ECMAScript](https://medium.freecodecamp.org/whats-the-difference-between-javascript-and-ecmascript-cba48c73a2b5)
 -  [ECMA 6 Features](http://es6-features.org)
 
-# Coding Style Guides and Linters:
+### Coding Style Guides and Linters:
 -  [Overview of Style Guides + Some Examples](https://codeburst.io/5-javascript-style-guides-including-airbnb-github-google-88cbc6b2b7aa)
 -  [Using ESLint](https://eslint.org/docs/user-guide/getting-started)
 
-# Testing: 
+### Testing: 
 -  [Getting Started with Jest](https://jestjs.io/docs/en/getting-started)
 
-# Version Control on Git:
+### Version Control on Git:
 -  [Git Cheat Sheet](https://www.atlassian.com/git/tutorials/atlassian-git-cheatsheet)
 
 
