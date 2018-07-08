@@ -3,7 +3,8 @@
 						"no-console": 'off',
 						"indent": [
 								2,
-								2
+								2, 
+                "SwitchCase"
 						],
 						"quotes": [
 								2,
