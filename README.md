@@ -61,6 +61,8 @@ The people who have worked on the CSS to its current state, AFAIK, are:
 
 ## Installation Guide (how a MF'er can get started)
 
+**Make sure you read the** [handbook!](https://github.com/HackRU/handbook/blob/master/architects.md)
+
 *If you're a dev, make sure you read the* [contribution guidelines](./CONTRIB.md) and the [Redux walkthrough](./ROAD_TO_REDUX.md)
 
 1.  After cloning in and [setting up a feature branch](https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow), get `nvm` in your computer.  Use something like `curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash`.  Don't forget to source your `.bashrc` afterwards.
