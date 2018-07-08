@@ -1,9 +1,17 @@
-# HackRU Front-End
+# HackRU Front-End 
+
+1.  [Contacts](#contacts-some-important-people)
+
+
+## Contacts (some important people)
+*  RND Co-Director: [Heman Gandhi](hemangandhi@gmail.com) : [hemangandhi](https://github.com/hemangandhi)
+*  RND Co-Director: [Qasim Abbas](qasimabbas52@gmail.com) : [QasimAbbas](https://github.com/QasimAbbas)
+*  Project Lead: [Ezra Ablaza](ezrabl42@gmail.com) : [TresTres](https://github.com/TresTres)
+*  Project Alumni Mentor: [whom'st?] : [which'dve?]
 
 ## Description (wtf is this)
 
-
-Welcome to HackRU's front-end.  The front end is in charge of several things, namely what the user sees when accessing http://www.hackru.org,
+Welcome to HackRU's front-end.  The front-end is in charge of several things, namely what the user sees when accessing http://www.hackru.org,
 and how the behind-the-scenes functionality operates so that people can navigate through and use the dashboard.  
 Some things we do on the dashboard are:
 1.  Sign up, login, and register
@@ -36,67 +44,21 @@ The people who have worked on the CSS to its current state, AFAIK, are:
 *   David Chen
 *   Kabir Kuriyan
 
-
 ## Installation Guide (how a MF'er can get started)
 
+*If you're a dev, make sure you read the* [contribution guidelines](./CONTRIB.md) and the [Redux walkthrough](./ROAD_TO_REDUX.md)
 
 1.  After cloning in and [setting up a feature branch](https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow), get `nvm` in your computer.  Use something like `curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash`.  Don't forget to source your `.bashrc` afterwards.
 2.  `nvm install 10` to get the stable release of Node.  Double check with `node -v`.  Then install all the dependencies listed in `package.json` using `npm install`.
 3.  You should have a `.env` in the project root and a `config_resume.js` somewhere in `src`. These are purposely listed in the `.gitignore`, and you'll have to acquire them separately.  (ask Heman or any of the others listed above)
 4.  Check things out by starting the server: `sh ec2-run.sh`.  Someone will probably tell you the test login/pw combo in person.  Don't share it with people outside of RND.
 
+
 ## Example Uses (why care)
 
-It's literally how http://www.hackru.org can be seen by users.  pls help.
+It's literally how the HackRU Dashboard can be seen by users.  pls help.  
 
-## Style Guide (Heman is an occupational hazard and we need linters)
-
-So the thing is ~~I am a huge fan of anarchy and using tabs~~ I've only worked on smaller projects, where linters weren't as important as a general sense of consistency.  A style guide here for a project like this is necessary.
-We will likely be using something custom, with enough rules to make code uniform and easy to review, but without so many rules that it's a hassle for us to read or write anything.  
-
-We will use eslint to enforce our practice, and I have included a .eslintrc file in the project root to configure it.  
-If you use vim, I recommend using Syntastic, which is a syntax-checking plugin.  Here's how to get it up and running and configured properly:
-
-1.  Get Pathogen for vim: `mkdir -p ~/.vim/autoload ~/.vim/bundle && \
-curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim` (Pathogen is good for lots of plugins, not just this one)
-2.  Inside your `.vimrc` file (If you don't have one for whatever reason just make one in your home folder) add `execute pathogen#infect()`.
-3.  Add Syntastic to vim: `cd ~/.vim/bundle && \
-git clone --depth=1 https://github.com/vim-syntastic/syntastic.git` then check that `:Helptags` in vim doesn't return an error.  You can read the docs using `:help Syntastic`.
-4.  Inside `.vimrc` add the following (this is my setup, it might not be exactly the same for yours): 
-```
-" syntax things
-syntax on
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-
-" linting
-let g:syntastic_javascript_checkers = ['eslint']
-
-
-let g:syntastic_javascript_eslint_exe = '$(npm bin)/eslint'
-
-highlight link SyntasticErrorSign SignColumn
-highlight link SyntasticWarningSign SignColumn
-highlight link SyntasticStyleErrorSign SignColumn
-highlight link SyntasticStyleWarningSign SignColumn
-
-filetype off
-filetype plugin indent on
-```
-5.  Go back to this project directory and install eslint globally with `npm install -g eslint`.  To explain what's going on, in the previous step, we tell vim that syntastic will use eslint as a javascript syntax-checker.  For this to work, a global install of eslint needs to be available by default.  We override this by designating the `exe` as `$(npm bin)/eslint`.  Now when eslint is used, it will look for the local eslint for the project directory.
-6.  This should be enough, because you already have `.eslintrc` inside the project root and should have installed the necessary dependencies when you first used `npm install` above.  However, things can go wrong, as they always do with Node.  In such cases:
--   Check that the right eslint version is called: `$(npm bin)/eslint <some .js file>`
--   Check that eslint is configured with our `.eslintrc` and not something else: `$(npm bin)/eslint --print-config <some .js file>`
--   Check that the right linter is used by opening a `.js` file in vim and calling `:SyntasticInfo`
--   Debug Syntastic output in vim if necessary: `:let g:syntastic_debug=3`,`SyntasticCheck eslint`, `:mes`
-
-
+**Will attach screenshots**
 ## TO-DO List (the heck are we doing)
 
 Your duties will be assigned according to needs, but they will follow these overarching goals:
@@ -114,7 +76,7 @@ Your duties will be assigned according to needs, but they will follow these over
 
 2.  Implementing Redux - a solution for the current yucky implementation
 -   Having done projects with just pure React before, dealing with states and props can be a terrible and annoying experience (sibling-sibling flow, child-parent flow).  With Redux, the state of everything can be managed by a central store.  This "single source of truth" can be referred to for consistent information.  
--   Redux and good Redux practices allow the mechanics to be separated from the appearance.  Components should care about displaying results and getting input.  Handling said input, implementing business logic, and displaying results should be handled by the actions, and as such, be kept separate.  This also allows us to worry less about accidentally having a "side effect" during part of a component life-cycle.  
+-   Redux and good Redux practices allow the mechanics to be separated from the appearance.  Components should care about displaying results and getting input.  Handling said input, implementing business logic, and obtaining results should be handled by the actions, and as such, be kept separate.  This also allows us to worry less about accidentally having a "side effect" during part of a component life-cycle.  
 -   Finally, I think this could make us less prone to errors that occur when multiple people work on the same file.
 
 3.  Removing modals and switching to better interfaces
@@ -125,9 +87,53 @@ Your duties will be assigned according to needs, but they will follow these over
 -   This includes having a Style Guide as mentioned above, and we will be learning together some good testing schema.
 -   Make sure you test on your local branches before you push upstream, and do your best to attend meetings so we're all on the same page.
 
-## Links to Further docs (please read some of this shit)
+## Links to Further docs (some shit I read when starting out)
 
-**Links to tutorials and guides go here**
+*I will be updating this section anytime I find something useful*, so think of this less as a "required reading list" and more of a "resource reference."
+But please **do read** the docs on [contributing to this project](./CONTRIB.md) and [on our transition to Redux](./ROAD_TO_REDUX.md)
+If you don't read those above, you may easily run into issues.
+
+All-around reference for JS, CSS, and HTML (Personally I recommend W3Schools over MDN):
+-  [W3Schools HTML5](https://www.w3schools.com/Html/default.asp)
+-  [W3Schools JS](https://www.w3schools.com/js/default.asp)
+-  [W3Schools CSS](https://www.w3schools.com/css/default.asp)
+-  [MDN Docs HTML5](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5)
+-  [MDN Docs JS](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference)
+-  [MDN Docs CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
+
+React:
+-  [React Main Concepts](https://reactjs.org/docs/hello-world.html)
+-  [A Really Crappy React Tutorial](https://reactjs.org/tutorial/tutorial.html)
+-  [A Much Better React Tutorial](https://tylermcginnis.com/reactjs-tutorial-a-comprehensive-guide-to-building-apps-with-react/)
+-  [A Guide to React Component Lifecycles](https://medium.com/@baphemot/understanding-reactjs-component-life-cycle-823a640b3e8d)
+-  [Another Guide to React Component Lifecycles](https://hackernoon.com/reactjs-component-lifecycle-methods-a-deep-dive-38275d9d13c0)
+-  [React Developer Tools](https://github.com/facebook/react-devtools)
+
+Redux:
+-  [Pretty Okay Redux Documentation](https://redux.js.org/)
+-  [Redux To-Do List Example](https://redux.js.org/basics/example-todo-list)
+-  [A Really Great Read on Learning Redux](https://daveceddia.com/how-does-redux-work/)
+-  [Why Use Redux](https://hackernoon.com/how-to-redux-with-react-836ed6d85330)
+-  [Redux Developer Tools](https://github.com/zalmoxisus/redux-devtools-extension) q
+
+Libraries:
+-  [An Overview of NPM, Babel, and Webpack](https://medium.com/front-end-hacking/what-are-npm-yarn-babel-and-webpack-and-how-to-properly-use-them-d835a758f987)
+
+
+ECMA 6: 
+-  [The Difference Between JS and ECMAScript](https://medium.freecodecamp.org/whats-the-difference-between-javascript-and-ecmascript-cba48c73a2b5)
+-  [ECMA 6 Features](http://es6-features.org)
+
+Coding Style Guides and Linters:
+-  [Overview of Style Guides + Some Examples](https://codeburst.io/5-javascript-style-guides-including-airbnb-github-google-88cbc6b2b7aa)
+-  [Using ESLint](https://eslint.org/docs/user-guide/getting-started)
+
+Testing: 
+-  [Getting Started with Jest](https://jestjs.io/docs/en/getting-started)
+
+Version Control on Git:
+-  [Git Cheat Sheet](https://www.atlassian.com/git/tutorials/atlassian-git-cheatsheet)
+
 
 ## Don't Panic (~~I do that enough~~)
 
@@ -142,7 +148,7 @@ In case something goes wrong, or in case of a fire, or in case you feel overwhel
 4.  After it's passed, we'll all sit down and discuss the reason for what happened.  Huge breaks and long error logs can be the result of innocent mistakes or even non-mistakes that have been handled a specific way by the library/framework/language in use.  We will all benefit from learning what happened and from implementing a procedure to prevent it from happening again.  A good principle is to review the documentation given and to also write some of your own.
 5.  Remember that communication is key, and that we are all very appreciative of your efforts and contributions.  If you need to stop working on HackRU, we will understand and adapt as necessary.  We just ask that you be courteous and tell of us any and all issues/questions that you have.
 
-## Thanks for making it to the end (go be a great MF!)
-
+## Thanks for making it to the end (go be a great MF'er!)
+### Kind regards, [TresTres](https://github.com/TresTres)
 
 
