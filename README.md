@@ -12,10 +12,11 @@
     *  [Redux](#redux)
     *  [Other Libraries](#other-libraries)
     *  [ECMA 6](#ecma-6)
-    *  [Coding Style Guides and Linting](#coding-style-guides-and-linting)
+    *  [Coding Style Guides and Linters](#coding-style-guides-and-linters)
     *  [Testing](#testing)
     *  [Version Control on Git](#version-control-on-git)
 8.  [Don't Panic](#dont-panic-i-do-that-enough)
+9.  [Thanks for Making It to the End](#thanks-for-making-it-to-the-end-go-be-a-great-mfer)
 
 ## Contacts (some important people)
 *  RND Co-Director: Heman Gandhi : hemangandhi@gmail.com : [hemangandhi](https://github.com/hemangandhi)
