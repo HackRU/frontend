@@ -4,4 +4,4 @@ var resURLS = {
 
 };
 
-export {resURLS};
+export default resURLS;
