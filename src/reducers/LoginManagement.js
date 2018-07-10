@@ -6,6 +6,7 @@ const initialState = {
   password: '',
   link: '',
   isLoggedIn: false, 
+  forgottenPassword: false, 
   errorMessage: ''
 };
 
@@ -21,15 +22,16 @@ const LoginManagement = (state = initialState, action) => {
         ...state, 
         password: action.password
       };
-    case LOGIN_MNGMNT.GOTO_USER_FORM:
+    case LOGIN_MNGMNT.SET_LOGIN_STATUS:
       return {
+        ...state,
+        isLoggedIn: action.isLoggedIn
       };
     case LOGIN_MNGMNT.SET_ERROR:
       return {
         ...state, 
-        errorMessage: action.errorMessage,
-        link: action.link
-      }
+        errorMessage: action.errorMessage
+      };
     default: 
       return state;
   }
