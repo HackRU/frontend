@@ -1,6 +1,6 @@
+//LoginForm.js
 import React from 'react';
 import ReactDOM from 'react-dom';
-import UserForm from './UserForm';
 import {instanceOf} from 'prop-types';
 import {CookiesProvider, withCookies, Cookies} from 'react-cookie';
 import ModalError from './modalerror';
@@ -116,47 +116,47 @@ class App extends React.Component {
   }
 
   login() {
-    	if (this.state.email == '' || this.state.password == ''){
-    		this.setState({errorMessage: 'Please fill in all the fields'});
-    	} else {
-    		fetch('https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/mlhtest/authorize', {
-    		  method: 'POST',
-    		  mode: 'cors',
+    if (this.state.email == '' || this.state.password == ''){
+      this.setState({errorMessage: 'Please fill in all the fields'});
+    } else {
+      fetch('https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/mlhtest/authorize', {
+        method: 'POST',
+        mode: 'cors',
         credentials: 'omit',
-    		  headers: {
-    		    'Content-Type': 'application/json'
-    		  },
-    		  body: JSON.stringify({
-    		    email: this.state.email,
-    		    password: (this.state.password) + '',
-    		  })
-    		}).then(resp => resp.json())
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          email: this.state.email,
+          password: (this.state.password) + '',
+        })
+      }).then(resp => resp.json())
         .then(this.loginPostFetch).catch(data => {
-    		  const error = data.message;
-    		  this.setState({errorMessage: error});
-    		});
+          const error = data.message;
+          this.setState({errorMessage: error});
+        });
 
-    	}
+    }
 
   }
 
   signUp() {
 
-  	if (this.state.email == '' || this.state.password == ''){
-    		this.setState({errorMessage: 'Please fill in all the fields'});
+    if (this.state.email == '' || this.state.password == ''){
+      this.setState({errorMessage: 'Please fill in all the fields'});
     } else {
-    		fetch('https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/mlhtest/create', {
-    		  method: 'POST',
-    		  mode: 'cors',
+      fetch('https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/mlhtest/create', {
+        method: 'POST',
+        mode: 'cors',
         credentials: 'omit',
-    		  headers: {
-    		    'Content-Type': 'application/json'
-    		  },
-    		  body: JSON.stringify({
-    		    email: this.state.email,
-    		    password: (this.state.password) + '',
-    		  })
-    		}).then(resp => resp.json())
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          email: this.state.email,
+          password: (this.state.password) + '',
+        })
+      }).then(resp => resp.json())
         .then(data => {
           if (data.statusCode == 200){
             this.goToUserForm(data);
@@ -165,10 +165,10 @@ class App extends React.Component {
           }else{
             this.setState({errorMessage: data.body});
           }
-    		}).catch(data => {
-    		  const error = data.message;
-    		  this.setState({errorMessage: error});
-    		});
+        }).catch(data => {
+          const error = data.message;
+          this.setState({errorMessage: error});
+        });
 
     }
   }
@@ -179,10 +179,12 @@ class App extends React.Component {
     window.open(href, '_self');
   }
 
+  //done
   onEmailChange(e){
     this.setState({email: e.target.value});
   }
 
+  //done
   onPasswordChange(e){
     this.setState({password: e.target.value});
   }
@@ -273,7 +275,7 @@ class App extends React.Component {
                 <div className="col-12"><button className="btn btn-primary p-xs-2 p-md-3"
                   onClick={this.forgotPassword}
                   type="button"
-                                        ><h6 className="UC ">{(this.state.hasLink)? 'Apply magic link': 'Forgot Password'}</h6></button></div>
+                ><h6 className="UC ">{(this.state.hasLink)? 'Apply magic link': 'Forgot Password'}</h6></button></div>
                 }
               </div>
 
