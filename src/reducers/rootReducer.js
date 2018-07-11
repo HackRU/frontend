@@ -1,9 +1,9 @@
 //rootReducer.js
 import { combineReducers } from 'redux';
-import LoginManagement from 'reducers/LoginManagement';
+import LoginManager from 'reducers/LoginManager';
 
 const rootReducer = combineReducers({
-  login_mngmt: LoginManagement
+  loginManager: LoginManager
 });
 
 export default rootReducer;

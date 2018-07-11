@@ -1,0 +1,63 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+$inc	VotingModal.js	/^      upd_obj = {$/;"	p	class:upd_obj
+$set	VotingModal.js	/^      upd_obj = {'$set': {'registration_status': 'confirmation'}};$/;"	p	class:upd_obj
+Bucket	resume.js	/^  var params = {$/;"	p	class:uploadResume.params
+CHANGE_EMAIL	actions/ActionTypes.js	/^export const LOGIN_MNGMNT = {$/;"	p	class:export
+CHANGE_PASSWORD	actions/ActionTypes.js	/^  CHANGE_EMAIL: 'CHANGE_EMAIL',$/;"	p	class:export
+SET_ERROR	actions/ActionTypes.js	/^  CHANGE_PASSWORD: 'CHANGE_PASSWORD',$/;"	p	class:export
+SET_LOGIN_STATUS	actions/ActionTypes.js	/^  SET_ERROR: 'SET_ERROR',$/;"	p	class:export
+SET_MAGIC_LINK	actions/ActionTypes.js	/^  SET_LOGIN_STATUS: 'SET_LOGIN_STATUS',$/;"	p	class:export
+Wrong Password	App.js	/^        'invalid email,hash combo': 'Incorrect email or password.',$/;"	p	class:loginPostFetch
+Wrong Password	components/LoginForm.js	/^        'invalid email,hash combo': 'Incorrect email or password.',$/;"	p	class:loginPostFetch
+checkValidServiceWorker	registerServiceWorker.js	/^function checkValidServiceWorker(swUrl) {$/;"	f
+cookies	Admin.js	/^  static propTypes = {$/;"	p	class:class.Component
+cookies	AdminEmailing.js	/^  static propTypes = {$/;"	p	class:class.Component
+cookies	App.js	/^  static propTypes = {$/;"	p	class:class.Component
+cookies	components/LoginForm.js	/^  static propTypes = {$/;"	p	class:class.Component
+cookies	components/UserForm.js	/^  static propTypes = {$/;"	p	class:class.Component
+dataIsBody	Events.js	/^  state = {$/;"	p	class:state
+dataIsBody	Slack.js	/^  state = {$/;"	p	class:state
+download	resume.js	/^function download(email, callback) {$/;"	f
+downloadResume	resume.js	/^function downloadResume(hacker, userEmail, callback) {$/;"	f
+email	App.js	/^    this.state = {$/;"	p	class:state
+email	components/LoginForm.js	/^    this.state = {$/;"	p	class:state
+email	components/UserForm.js	/^    const formConfig = {$/;"	p	class:render
+email	reducers/LoginManagement.js	/^const initialState = {$/;"	p	class:const
+errorMessage	App.js	/^      password: '',$/;"	p	class:state
+errorMessage	components/LoginForm.js	/^      password: '',$/;"	p	class:state
+errorMessage	reducers/LoginManagement.js	/^  magicLink: '',$/;"	p	class:const
+forgottenPassword	reducers/LoginManagement.js	/^  isLoggedIn: false, $/;"	p	class:const
+invalid email,hash combo	App.js	/^      const\/*antina, our saviour*\/ errorMsgs = {$/;"	p	class:loginPostFetch
+invalid email,hash combo	components/LoginForm.js	/^      const\/*antina, our saviour*\/ errorMsgs = {$/;"	p	class:loginPostFetch
+isLoggedIn	reducers/LoginManagement.js	/^  password: '',$/;"	p	class:const
+iterate	resume.js	/^    function iterate(emails, idx, acc){$/;"	f	function:function
+keyId	config_resume.js	/^    secretKey: 'udJuAogw+7dZCXpKe05YWEbaK7Y+UUhpeLfA5HIg',$/;"	p	class:config_resume
+logoURL	resources/resURLS.js	/^var resURLS = {$/;"	p	class:resURLS
+magicLink	reducers/LoginManagement.js	/^  forgottenPassword: false, $/;"	p	class:const
+messageText	Col.js	/^    this.state = {$/;"	p	class:state
+messageText	Logged.js	/^    this.state = {$/;"	p	class:state
+messageText	modalerror.js	/^    this.state = {$/;"	p	class:state
+password	App.js	/^      email:'',$/;"	p	class:state
+password	components/LoginForm.js	/^      email:'',$/;"	p	class:state
+password	reducers/LoginManagement.js	/^  email: '',$/;"	p	class:const
+registerValidSW	registerServiceWorker.js	/^function registerValidSW(swUrl) {$/;"	f
+registration_status	components/UserForm.js	/^    let upd = {'registration_status': 'not-coming'};$/;"	p	class:notAttending
+role.mentor	components/UserForm.js	/^    let tempUsr = {$/;"	p	class:applyMentor
+role.mentor	components/UserForm.js	/^    let tempUsr = {$/;"	p	class:unapplyMentor
+role.volunteer	components/UserForm.js	/^    let tempUsr = {$/;"	p	class:applyVolunteer
+role.volunteer	components/UserForm.js	/^    let tempUsr = {$/;"	p	class:unapplyVolunteer
+s3bucket	config_resume.js	/^var config_resume = {$/;"	p	class:config_resume
+secretKey	config_resume.js	/^    s3bucket: 'hackru-test',$/;"	p	class:config_resume
+skills	components/UserForm.js	/^    tempUsr.mentor_data = {$/;"	p	class:tempUsr.mentor_data
+skills	components/UserForm.js	/^    tempUsr.volunteer_data = {$/;"	p	class:tempUsr.volunteer_data
+tConvert	Events.js	/^function tConvert (time) {$/;"	f
+upload	resume.js	/^function upload(key, file, callback) {$/;"	f
+uploadResume	resume.js	/^function uploadResume(email, callback) {$/;"	f
+user	Admin.js	/^    this.state = {$/;"	p	class:state
+user	AdminEmailing.js	/^    this.state = {$/;"	p	class:state
+user	VotingModal.js	/^    this.state = {$/;"	p	class:state

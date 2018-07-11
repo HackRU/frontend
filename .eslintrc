@@ -30,7 +30,13 @@
 						"react/jsx-closing-bracket-location": 1,
 						"react/jsx-curly-spacing": 1,
 						"react/jsx-equals-spacing": 1,
-						"react/jsx-handler-names": 1,
+						"react/jsx-handler-names": [
+                1,
+                {
+                  "eventHandlerPrefix": "handle",
+                  "eventHandlerPropPrefix": "off"
+                }
+            ],
 						"react/jsx-indent-props": [
 								1,
 								2
