@@ -81,28 +81,28 @@ It's literally how the HackRU Dashboard can be seen by users.  pls help.
 Your duties will be assigned according to needs, but they will follow these overarching goals:
 
 0.  Figuring out roles (implicit)
--   Create feature branches.
--   Check out/investigate the current state of the front-end.
--   Learn about its parts and how they work.
--   Have an okayish understanding at minimum about the codebase, namely Node and Webpack, React, Redux, and JS-CSS-HTML in general. 
+  -   Create feature branches.
+  -   Check out/investigate the current state of the front-end.
+  -   Learn about its parts and how they work.
+  -   Have an okayish understanding at minimum about the codebase, namely Node and Webpack, React, Redux, and JS-CSS-HTML in general. 
 
 1.  Fixing open and immediate issues, depending on their criticality
--   Heman is gonna open issues and yell at us.  Our job will be to attempt to fix said issues and then yell back at him.  
--   There are gonna be edge cases to think about and unfortunately, this may result in inelegant temporary solutions.  If and when this happens, make note of what's wrong with the solution and how it acts as a band-aid.  This way, you can get back to it and fix it properly.
+  -   Heman is gonna open issues and yell at us.  Our job will be to attempt to fix said issues and then yell back at him.  
+  -   There are gonna be edge cases to think about and unfortunately, this may result in inelegant temporary solutions.  If and when this happens, make note of what's wrong with the solution and how it acts as a band-aid.  This way, you can get back to it and fix it properly.
 
 
 2.  Implementing Redux - a solution for the current yucky implementation
--   Having done projects with just pure React before, dealing with states and props can be a terrible and annoying experience (sibling-sibling flow, child-parent flow).  With Redux, the state of everything can be managed by a central store.  This "single source of truth" can be referred to for consistent information.  
--   Redux and good Redux practices allow the mechanics to be separated from the appearance.  Components should care about displaying results and getting input.  Handling said input, implementing business logic, and obtaining results should be handled by the actions, and as such, be kept separate.  This also allows us to worry less about accidentally having a "side effect" during part of a component life-cycle.  
--   Finally, I think this could make us less prone to errors that occur when multiple people work on the same file.
+  -   Having done projects with just pure React before, dealing with states and props can be a terrible and annoying experience (sibling-sibling flow, child-parent flow).  With Redux, the state of everything can be managed by a central store.  This "single source of truth" can be referred to for consistent information.  
+  -   Redux and good Redux practices allow the mechanics to be separated from the appearance.  Components should care about displaying results and getting input.  Handling said input, implementing business logic, and obtaining results should be handled by the actions, and as such, be kept separate.  This also allows us to worry less about accidentally having a "side effect" during part of a component life-cycle.  
+  -   Finally, I think this could make us less prone to errors that occur when multiple people work on the same file.
 
 3.  Removing modals and switching to better interfaces
--   We don't want this "card pop-up" occurring when users need to insert input.  A form that's attached to the page will do fine enough.  Details will come later.   
+  -   We don't want this "card pop-up" occurring when users need to insert input.  A form that's attached to the page will do fine enough.  Details will come later.   
 
 4.  Testing
--   This leads more into point 1., in the sense that we should get into the proper practices of code reviews, unit testing, integration testing, etc.
--   This includes having a Style Guide as mentioned above, and we will be learning together some good testing schema.
--   Make sure you test on your local branches before you push upstream, and do your best to attend meetings so we're all on the same page.
+  -   This leads more into point 1., in the sense that we should get into the proper practices of code reviews, unit testing, integration testing, etc.
+  -   This includes having a Style Guide as mentioned above, and we will be learning together some good testing schema.
+  -   Make sure you test on your local branches before you push upstream, and do your best to attend meetings so we're all on the same page.
 
 ## Links to Further Docs (some shit I read when starting out)
 
