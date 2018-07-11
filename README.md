@@ -126,6 +126,7 @@ If you don't read those above, you may easily run into issues.
 -  [A Guide to React Component Lifecycles](https://medium.com/@baphemot/understanding-reactjs-component-life-cycle-823a640b3e8d)
 -  [Another Guide to React Component Lifecycles](https://hackernoon.com/reactjs-component-lifecycle-methods-a-deep-dive-38275d9d13c0)
 -  [React Developer Tools](https://github.com/facebook/react-devtools)
+-  [Validating Using PropTypes](https://steemit.com/utopian-io/@jfuenmayor96/validating-the-props-of-your-react-components-with-proptypes)
 
 ### Redux:
 -  [Pretty Okay Redux Documentation](https://redux.js.org/)
@@ -133,6 +134,10 @@ If you don't read those above, you may easily run into issues.
 -  [A Really Great Read on Learning Redux](https://daveceddia.com/how-does-redux-work/)
 -  [Why Use Redux](https://hackernoon.com/how-to-redux-with-react-836ed6d85330)
 -  [Redux Developer Tools](https://github.com/zalmoxisus/redux-devtools-extension) 
+-  [Good Example of Making API Calls in Redux](https://stackoverflow.com/questions/39813984/how-to-fetch-data-through-api-in-redux)
+-  [Why Use Action Creators?](https://blog.isquaredsoftware.com/2016/10/idiomatic-redux-why-use-action-creators/?utm_source=hashnode.com)
+
+
 
 ### Other Libraries:
 -  [An Overview of NPM, Babel, and Webpack](https://medium.com/front-end-hacking/what-are-npm-yarn-babel-and-webpack-and-how-to-properly-use-them-d835a758f987)

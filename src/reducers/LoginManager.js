@@ -1,16 +1,19 @@
-//LoginManagement.js
+//LoginManager.js
 import LOGIN_MNGMNT from 'actions/ActionTypes';
 
+
+//what we want to manage
 const initialState = {
   email: '',
   password: '',
-  link: '',
   isLoggedIn: false, 
   forgottenPassword: false, 
+  magicLink: '',
   errorMessage: ''
+
 };
 
-const LoginManagement = (state = initialState, action) => {
+const LoginManager = (state = initialState, action) => {
   switch(action.type) {
     case LOGIN_MNGMNT.CHANGE_EMAIL:
       return {
@@ -27,6 +30,11 @@ const LoginManagement = (state = initialState, action) => {
         ...state,
         isLoggedIn: action.isLoggedIn
       };
+    case LOGIN_MNGMNT.SET_MAGIC_LINK:
+      return {
+        ...state,
+        magicLink: action.magicLink
+      };
     case LOGIN_MNGMNT.SET_ERROR:
       return {
         ...state, 
@@ -37,4 +45,4 @@ const LoginManagement = (state = initialState, action) => {
   }
 };
 
-export default LoginManagement;
+export default LoginManager;
