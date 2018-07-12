@@ -4,7 +4,7 @@
 ```js
 {
   email: '',
-  password: '', << hmmm
+  password: '',
   isLoggedIn: false,
   forgotPassword: false,
   magicLink: '',
