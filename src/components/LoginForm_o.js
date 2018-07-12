@@ -11,6 +11,7 @@ class App extends React.Component {
     cookies: instanceOf(Cookies).isRequired
   };
 
+  //yeet
   constructor (props){
     super(props);
     this.state = {
@@ -189,6 +190,7 @@ class App extends React.Component {
     this.setState({password: e.target.value});
   }
 
+  //done?
   forgotPassword(e){
     if(this.state.hasLink){
       if(this.state.email === '' || this.state.password === ''){

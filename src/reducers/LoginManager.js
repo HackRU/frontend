@@ -35,6 +35,11 @@ const LoginManager = (state = initialState, action) => {
         ...state,
         magicLink: action.magicLink
       };
+    case LOGIN_MNGMNT.HAS_FORGOTTEN_PASSWORD:
+      return {
+        ...state,
+        forgottenPassword: action.forgottenPassword
+      };
     case LOGIN_MNGMNT.SET_ERROR:
       return {
         ...state, 
