@@ -1,5 +1,5 @@
 //LoginActions.js
-import LOGIN_MNGMNT from 'actions/ActionTypes';
+import { LOGIN_MNGMNT } from 'actions/ActionTypes';
 import resURLS from 'resources/resURLS';
 
 
@@ -267,6 +267,12 @@ export const login = (user) => (
     }
   }
 );
+
+export const mlhLogin = (user) => {
+  let redir = (user.magicLink && !(user.magicLink.startsWith('forgot-')))? resURLS.magicLinkRedirect + user.magicLink : '';
+  let href = resURLS.mlhRedirectURL + redir + resURLS.mlhResponseType;
+  window.open(href, '_self');
+};
 
 
 const loginPostFetch = (data) => (

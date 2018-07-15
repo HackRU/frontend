@@ -25,23 +25,25 @@ class LoginManagement extends React.Component {
       activeForm = <LoginForm />;
     }
 
-    return ({activeForm});
+    return (
+      <div>
+        {activeForm}
+      </div>
+    );
   }
 
 }
 
 LoginManagement.propTypes = {
-  loginManager: PropTypes.arrayOf(
-    PropTypes.shape({
-      isLoggedIn: PropTypes.bool.isRequired
-    })
-  )
+  loginManager: PropTypes.shape({
+    isLoggedIn: PropTypes.bool.isRequired
+  })
 };
 
 function mapStateToProps(state) {
   return {
-    loginManager: state.loginManger
+    loginManager: state.loginManager
   };
 }
 
-export default connect(mapStateToProps) (LoginManagement);
+export default connect(mapStateToProps, null) (LoginManagement);

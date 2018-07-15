@@ -1,5 +1,5 @@
 //LoginManager.js
-import LOGIN_MNGMNT from 'actions/ActionTypes';
+import { LOGIN_MNGMNT } from 'actions/ActionTypes';
 
 
 //what we want to manage
