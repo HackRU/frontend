@@ -16,7 +16,7 @@ const InfoSection = () => (
       <h5 className="content-title">{'Location'}</h5>
       <span className="font-weight-bold blue"><a className="blue" href="https://goo.gl/maps/a6gNk22V6px">{'Rutgers Athletic Center'}</a></span>
       <p className="content-desc">
-        {'83 Rockafeller Rd, '}<br>{'Piscataway Township, '}</br>{'NJ 08854'}
+        {'83 Rockafeller Rd, '}<br />{'Piscataway Township, '}<br />{'NJ 08854'}
       </p>
       <h5 className="content-title">{'Devpost'}</h5>
       <p className="content-desc">
@@ -32,7 +32,7 @@ const InfoSection = () => (
       </p>
       <h5 className="content-title">{'Emergency Contact'}</h5>
       <p className="content-desc">
-        <span className="font-weight-bold">{'RUPD'}</span><br>{'732-932-7211'}</br>
+        <span className="font-weight-bold">{'RUPD'}</span><br />{'732-932-7211'}<br />
       </p>
 
 

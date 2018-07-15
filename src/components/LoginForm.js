@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import * as loginActions from 'actions/LoginActions.';
+import * as loginActions from 'actions/LoginActions';
 
 
 class LoginForm extends React.Component {
@@ -23,36 +23,36 @@ class LoginForm extends React.Component {
 
   onChangeEmail = (e) => {
     e.preventDefault();
-    this.props.loginActions.changeEmail(e.target.value);
+    this.props.changeEmail(e.target.value);
   }
 
   onChangePassword = (e) => {
     e.preventDefault();
-    this.props.loginActions.changePassword(e.target.password);
+    this.props.changePassword(e.target.password);
   }
 
   onAttemptReset = (e) => {
     e.preventDefault();
     let user = this.props.loginManager;
-    this.props.loginActions.resetPassword(user);
+    this.props.resetPassword(user);
   }
 
   onSignUp = (e) => {
     e.preventDefault();
     let user = this.props.loginManager;
-    this.props.loginActions.signUp(user);
+    this.props.signUp(user);
   }
 
   onLogin = (e) => {
     e.preventDefault();
     let user = this.props.loginManager;
-    this.props.loginActions.login(user);
+    this.props.login(user);
   }
 
   onMlhLogin = (e) => {
     e.preventDefault();
     let user = this.props.loginManager;
-    this.props.loginActions.mlhLogin(user);
+    this.props.mlhLogin(user);
   }
 
   render() {
@@ -135,17 +135,20 @@ class LoginForm extends React.Component {
 }
 
 LoginForm.propTypes = {
-  loginManager: PropTypes.arrayOf(
-    PropTypes.shape({
-      email: PropTypes.string,
-      password: PropTypes.string,
-      isLoggedIn: PropTypes.bool,
-      forgottenPassword: PropTypes.bool,
-      magicLink: PropTypes.string,
-      errorMessage: PropTypes.string
-    }).isRequired
-  ).isRequired,
-  loginActions: PropTypes.objectOf(PropTypes.func.isRequired)
+  loginManager: PropTypes.shape({
+    email: PropTypes.string,
+    password: PropTypes.string,
+    isLoggedIn: PropTypes.bool,
+    forgottenPassword: PropTypes.bool,
+    magicLink: PropTypes.string,
+    errorMessage: PropTypes.string
+  }).isRequired,
+  changeEmail: PropTypes.func.isRequired,
+  changePassword: PropTypes.func.isRequired,
+  resetPassword: PropTypes.func.isRequired,
+  signUp: PropTypes.func.isRequired,
+  login: PropTypes.func.isRequired,
+  mlhLogin: PropTypes.func.isRequired
 
 };
 
@@ -157,7 +160,12 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({
-    ...loginActions
+    changeEmail: loginActions.changeEmail,
+    changePassword: loginActions.changePassword,
+    resetPassword: loginActions.resetPassword,
+    signUp: loginActions.signUp,
+    login: loginActions.login,
+    mlhLogin: loginActions.mlhLogin
   }, dispatch);
 }
 
