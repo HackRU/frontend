@@ -58,26 +58,11 @@ export const checkURL = () => (
       const auth = '';
       if(auth && Date.parse(auth.auth.valid_until) > Date.now()) {
 
-        dispatch(loadUserForm({body: JSON.stringify(auth)}));
+        loadUserForm({body: JSON.stringify(auth)});
       }
     }
   }
 );
-
-/*
-const loadUserForm = (data) => (
-  (dispatch) => {
-    dispatch({
-      type: LOGIN_MNGMNT.SET_LOGIN_STATUS,
-      isLoggedIn: true
-    });
-
-    const body = JSON.parse(data.body);
-    //set the cookies auth data as the body????
-
-    
-  }
-);*/
 
 export const changeEmail = (email) => (
   (dispatch) => {
@@ -110,11 +95,10 @@ export const resetPassword = (user) => (
           type: LOGIN_MNGMNT.SET_ERROR,
           errorMessage: 'Please enter your email and your new password to continue.'
         });
-        return;
       } else {
 
-        //complete form, send to MLH to consume
-        fetch(resURLS.mlhTestConsumeURL, {
+        //complete form, send to LCS to consume
+        fetch(resURLS.lcsConsumeURL, {
           method: 'POST',
           mode: 'cors',
           credentials: 'omit',
@@ -144,13 +128,11 @@ export const resetPassword = (user) => (
             });
           })
           .catch(err => {
-            console.log(err.message);
-            dispatch({
-              type: LOGIN_MNGMNT.SET_ERROR,
-              errorMessage: 'An error occurred.'
-            });
+
+            //unexpected error
+            //console.log(err.message);
+            showCaughtError(err.message);
           });
-        return;
       }
     } else {
 
@@ -160,7 +142,7 @@ export const resetPassword = (user) => (
         forgottenPassword: true
       });
         
-      fetch(resURLS.mlhTestMagicURL,{
+      fetch(resURLS.lcsMagicURL,{
         method: 'POST',
         mode: 'cors',
         credentials: 'omit',
@@ -174,19 +156,19 @@ export const resetPassword = (user) => (
       }).then(resp => resp.json())
         .then(resp => {
           //notify user
+          
+          let resp_mes = resp.body || resp.errorMessage;
           dispatch({
             type: LOGIN_MNGMNT.SET_ERROR,
-            errorMessage: resp.body || resp.errorMessage
+            errorMessage: resp_mes
           });
         })
         .catch(err => {
-          console.log(err.message);
-          dispatch({
-            type: LOGIN_MNGMNT.SET_ERROR,
-            errorMessage: 'An error occurred.'
-          });
+
+          //unexpected error
+          //console.log(err.message);
+          showCaughtError(err.message);
         });
-      return;
     }
   }
 );
@@ -203,16 +185,129 @@ export const signUp = (user) => (
       });
     } else {
 
-      //complete form, sent to MLH to create user
-      fetch(resURLS.mlhTestCreateURL, {
+      //complete form, send to LCS to create user
+      fetch(resURLS.lcsCreateURL, {
         method: 'POST',
         mode: 'cors',
         credentials: 'omit',
         headers: {
           'Content-Type': 'application/json'
         },
+        body: JSON.stringify({
+          email: user.email,
+          password: user.password
+        })
+      }).then(resp => resp.json())
+        .then(data => {
+          if(data.statusCode === 200) {
 
-      })
+            //succesfful creation
+            loadUserForm({data});
+          } else if(data.body === 'Duplicate user!') {
+
+            //duplicate user
+            dispatch({
+              type: LOGIN_MNGMNT.SET_ERROR,
+              errorMessage: 'You are already in the system!  Please try logging in.'
+            });
+          } else {
+
+            //show error
+            dispatch({
+              type: LOGIN_MNGMNT.SET_ERROR,
+              errorMessage: data.body
+            });
+          }
+        })
+        .catch(err => {
+
+          //unexpected error
+          showCaughtError(err.message);
+        });
     }
+  }
+);
+
+
+export const login = (user) => (
+  (dispatch) => {
+
+    if(user.email === '' || user.password === '') {
+      
+      //incomplete form
+      dispatch({
+        type: LOGIN_MNGMNT.SET_ERROR,
+        errorMessage: 'Please fill out email and password to continue.'
+      });
+    } else {
+
+      //complete form, send to LCS to authorize
+      fetch(resURLS.lcsAuthURL, {
+        method: 'POST',
+        mode: 'cors',
+        credentials: 'omit',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: {
+          email: user.email,
+          password: user.password
+        }
+      }).then(resp => resp.json())
+        .then(data => {
+          
+          //post-process
+          loginPostFetch(data);
+        })
+        .catch(err => {
+
+          //unexpected error
+          showCaughtError(err.message);
+        });
+    }
+  }
+);
+
+
+const loginPostFetch = (data) => (
+  (dispatch) => {
+    if(data.statusCode !== 200) {
+      
+      //unsuccessful authorization, check the problem
+      const errorMsgs = {
+        'invalid email,hash combo': 'Incorrect email or passsword.',
+        'Wrong Password': 'Incorrect password.'
+      }; 
+      showCaughtError(errorMsgs[data.body]);
+    } else {
+
+      //successful authorization
+      loadUserForm(data);
+    }
+  }
+);
+
+
+const loadUserForm = (data) => (
+  (dispatch) => {
+
+
+    const body = JSON.parse(data.body);
+    //set cookies authdata to the body..how do??
+
+    //called upon successful login, will trigger LoginManagement to render UserForm
+    dispatch({
+      type: LOGIN_MNGMNT.SET_LOGIN_STATUS,
+      isLoggedIn: true
+    });
+  }
+);
+
+const showCaughtError = (mes) => (
+  (dispatch) => {
+    dispatch({
+      type: LOGIN_MNGMNT.SET_ERROR,
+      errorMessage: 'An error occurred. ' + mes
+    });
   }
 );

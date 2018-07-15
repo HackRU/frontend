@@ -32,6 +32,7 @@ class App extends React.Component {
     this.componentWillMount = this.componentWillMount.bind(this);
   }
 
+  //almost done
   componentWillMount (){
     let urlParams = new URLSearchParams(window.location.search);
     if(urlParams.has('error')){
@@ -60,6 +61,7 @@ class App extends React.Component {
     }
   }
 
+  //fuck this??
   goToUserForm(data){
     this.setState({isLoggedIn: true});
     const bod = JSON.parse(data.body);
@@ -100,6 +102,7 @@ class App extends React.Component {
     }
   }
 
+  //done
   loginPostFetch(data){
     if(data.statusCode != 200){
       const/*antina, our saviour*/ errorMsgs = {
@@ -116,6 +119,7 @@ class App extends React.Component {
 
   }
 
+  //done
   login() {
     if (this.state.email == '' || this.state.password == ''){
       this.setState({errorMessage: 'Please fill in all the fields'});
@@ -141,6 +145,7 @@ class App extends React.Component {
 
   }
 
+  //done
   signUp() {
 
     if (this.state.email == '' || this.state.password == ''){

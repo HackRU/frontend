@@ -14,8 +14,7 @@ import ImportantLinks from 'static/ImportantLinks';
 import 'styles/index.css';
 import 'styles/App.css';
 
-import LoginForm from 'components/LoginForm';
-import UserForm from 'components/UserForm';
+import LoginManagement from 'containers/LoginManagement';
 import Slack from 'components/Slack';
 import Events from 'components/Events';
 
@@ -42,12 +41,6 @@ class Dashboard extends React.component {
   
   render() {
     
-    let activeForm = null;
-    if(this.props.loginManager.isLogged === true) {
-      activeForm = <UserForm />;
-    } else {
-      activeForm = <LoginForm />;
-    }
 
     return (
       <div>
@@ -85,7 +78,7 @@ class Dashboard extends React.component {
               <div className="col-xs-12 col-md-8 offset-md-2 mb-3">
                 <div id="register-root">
                   <CookiesProvider>
-                    {activeForm} {/*Form component goes here*/}
+                    <LoginManagement /> {/*LoginManagement component goes here*/}
                   </CookiesProvider>
                 </div>
                 <div id="register-more" />
@@ -141,4 +134,6 @@ class Dashboard extends React.component {
 
 ReactDOM.render(<Dashboard />, document.getElementById('dashboard-full'));
 registerServiceWorker();
+
+export default Dashboard;
 
