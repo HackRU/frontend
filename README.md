@@ -1,5 +1,11 @@
 # HackRU Front-End 
 
+
+## TL;DR
+Hi, this is front-end, it was made with React, we're implementing Redux for reasons, and there's a bunch of other stuff too.  Look at the [Installation Guide](#installation-guide-how-a-mfer-can-get-started), [Contribution Guide](./CONTRIBUTING.md), and [Road to Redux](./ROAD_TO_REDUX.md). 
+Yahh, Yerr, Yeet, etc.
+
+
 1.  [Contacts](#contacts-some-important-people)
 2.  [Description](#description-wtf-is-this)
 3.  [Inspiration](#inspiration-how-the-hell-did-we-get-here)
@@ -63,7 +69,7 @@ The people who have worked on the CSS to its current state, AFAIK, are:
 
 **Make sure you read the** [handbook!](https://github.com/HackRU/handbook/blob/master/architects.md)
 
-*If you're a dev, make sure you read the* [contribution guidelines](./CONTRIB.md) and the [Redux walkthrough](./ROAD_TO_REDUX.md)
+*If you're a dev, make sure you read the* [contribution guidelines](./CONTRIBUTING.md) and the [Redux walkthrough](./ROAD_TO_REDUX.md)
 
 1.  After cloning in and [setting up a feature branch](https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow), get `nvm` in your computer.  Use something like `curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash`.  Don't forget to source your `.bashrc` afterwards.
 2.  `nvm install 10` to get the stable release of Node.  Double check with `node -v`.  Then install all the dependencies listed in `package.json` using `npm install`.
@@ -107,8 +113,8 @@ Your duties will be assigned according to needs, but they will follow these over
 ## Links to Further Docs (some shit I read when starting out)
 
 *I will be updating this section anytime I find something useful*, so think of this less as a "required reading list" and more of a "resource reference."
-But please **do read** the docs on [contributing to this project](./CONTRIB.md) and [on our transition to Redux](./ROAD_TO_REDUX.md)
-If you don't read those above, you may easily run into issues.
+But please **do read** the docs on [contributing to this project](./CONTRIBUTING.md) and [on our transition to Redux](./ROAD_TO_REDUX.md).
+If you don't read those, you may easily run into issues.
 
 ### JS, CSS, and HTML 
 (Personally I recommend W3Schools over MDN):
@@ -171,7 +177,7 @@ In case something goes wrong, or in case of a fire, or in case you feel overwhel
 4.  After it's passed, we'll all sit down and discuss the reason for what happened.  Huge breaks and long error logs can be the result of innocent mistakes or even non-mistakes that have been handled a specific way by the library/framework/language in use.  We will all benefit from learning what happened and from implementing a procedure to prevent it from happening again.  A good principle is to review the documentation given and to also write some of your own.
 5.  Remember that communication is key, and that we are all very appreciative of your efforts and contributions.  If you need to stop working on HackRU, we will understand and adapt as necessary.  We just ask that you be courteous and tell of us any and all issues/questions that you have.
 
-## Thanks for making it to the end (go be a great MF'er!)
+## Thanks for Making It to the End (go be a great MF'er!)
 ### Kind regards, [TresTres](https://github.com/TresTres)
 
 
