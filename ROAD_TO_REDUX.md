@@ -1,8 +1,8 @@
 # Road to Redux 
 
-1.  Introduction(#introduction)
-2.  In Defense of Redux(#in-defense-of-redux)
-3.  Workflow(#workflow)
+1.  [Introduction](#introduction)
+2.  [In Defense of Redux](#in-defense-of-redux)
+3.  [Workflow](#workflow)
 
 ## Introduction 
 This document hopes to serve as some sort of walkthrough on the transition from the original React App into a React-Redux architecture.  
