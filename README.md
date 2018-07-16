@@ -2,7 +2,7 @@
 
 
 ## TL;DR
-Hi, this is front-end, it was made with React, we're implementing Redux for reasons, and there's a bunch of other stuff too.  Look at the [Installation Guide](#installation-guide-how-a-mfer-can-get-started), [Contribution Guide](./CONTRIB.md), and [Road to Redux](./ROAD_TO_REDUX.md). 
+Hi, this is front-end, it was made with React, we're implementing Redux for reasons, and there's a bunch of other stuff too.  Look at the [Installation Guide](#installation-guide-how-a-mfer-can-get-started), [Contribution Guide](./CONTRIBUTING.md), and [Road to Redux](./ROAD_TO_REDUX.md). 
 Yahh, Yerr, Yeet, etc.
 
 
@@ -69,7 +69,7 @@ The people who have worked on the CSS to its current state, AFAIK, are:
 
 **Make sure you read the** [handbook!](https://github.com/HackRU/handbook/blob/master/architects.md)
 
-*If you're a dev, make sure you read the* [contribution guidelines](./CONTRIB.md) and the [Redux walkthrough](./ROAD_TO_REDUX.md)
+*If you're a dev, make sure you read the* [contribution guidelines](./CONTRIBUTING.md) and the [Redux walkthrough](./ROAD_TO_REDUX.md)
 
 1.  After cloning in and [setting up a feature branch](https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow), get `nvm` in your computer.  Use something like `curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash`.  Don't forget to source your `.bashrc` afterwards.
 2.  `nvm install 10` to get the stable release of Node.  Double check with `node -v`.  Then install all the dependencies listed in `package.json` using `npm install`.
@@ -113,7 +113,7 @@ Your duties will be assigned according to needs, but they will follow these over
 ## Links to Further Docs (some shit I read when starting out)
 
 *I will be updating this section anytime I find something useful*, so think of this less as a "required reading list" and more of a "resource reference."
-But please **do read** the docs on [contributing to this project](./CONTRIB.md) and [on our transition to Redux](./ROAD_TO_REDUX.md).
+But please **do read** the docs on [contributing to this project](./CONTRIBUTING.md) and [on our transition to Redux](./ROAD_TO_REDUX.md).
 If you don't read those, you may easily run into issues.
 
 ### JS, CSS, and HTML 

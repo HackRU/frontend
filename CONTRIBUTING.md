@@ -1,20 +1,47 @@
 # Guidelines for Contributing
 
 1.  [RTFH](#rtfh)
-2.  [Naming your feature branch](#naming-your-feature-branch)
-3.  [Style Guide](#style-guide-heman-is-an-occupational-hazard-and-we-need-linters)
+2.  [Naming Your Feature Branch](#naming-your-feature-branch)
+3.  [Naming Your Variables](#naming-your-variables)
+4.  [Style Guide](#style-guide-heman-is-an-occupational-hazard-and-we-need-linters)
 
 ## RTFH
 **Make sure you read the**[handbook!](https://github.com/HackRU/handbook/blob/master/architects.md)
+**Make sure to watch the repo so you can get notified of updates!**
 
+## Naming Your Feature Branch
 
-## Naming your feature branch
 Please keep your branch naming consistent - as much as possible, one word, all lower-case, no numbers or special symbols.  If you must use more than one word, use dashes: like-this-branch.
 
-Make sure you don't accidentally push to master!
+Make sure you don't accidentally push to master!  Use a [git hook](https://blog.ghost.org/prevent-master-push/) if you must.
+
+```
+#!/bin/bash
+
+protected_branch='master'
+current_branch=$(git symbolic-ref HEAD | sed -e 's,.*/\(.*\),\1,')
+
+if [ $protected_branch = $current_branch ]
+then
+    read -p "You're about to push master, is that what you intended? [y|n] " -n 1 -r < /dev/tty
+    echo
+    if echo $REPLY | grep -E '^[Yy]$' > /dev/null
+    then
+        exit 0 # push will execute
+    fi
+    exit 1 # push will not execute
+else
+    exit 0 # push will execute
+fi
+```
 
 
+## Naming your Variables
 
+In general, we don't really have a strict style ruling for this.  Please view the various files to get the idea.
+
+*  For variables, we generally use `camelCase`
+*  For action types, we generally use `SCREAMING_SNAKE_CASE`
 
 ## Style Guide (Heman is an occupational hazard and we need linters)
 
