@@ -274,6 +274,17 @@ export const mlhLogin = (user) => {
   window.open(href, '_self');
 };
 
+export const logout = (user) => (
+  (dispatch) => {
+    
+    //remove the authdata from the cookie?
+    dispatch({
+      type: LOGIN_MNGMNT.SET_LOGIN_STATUS,
+      isLoggedIn: false
+    });
+  }
+);
+
 
 const loginPostFetch = (data) => (
   (dispatch) => {

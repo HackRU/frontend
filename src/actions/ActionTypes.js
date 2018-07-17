@@ -12,5 +12,6 @@ export const LOGIN_MNGMNT = {
 
 //UserData actions
 export const USER_DATA = {
+  UPDATE_USER: 'UPDATE_USER', 
 
 };
