@@ -95,6 +95,7 @@
   "devDependencies": {
     "eslint": "^5.0.1",
     "eslint-loader": "^2.0.0",
-    "eslint-plugin-react": "^7.10.0"
+    "eslint-plugin-react": "^7.10.0",
+    "redux-cookie": "^0.5.9"
   }
 }
