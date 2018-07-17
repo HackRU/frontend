@@ -6,7 +6,6 @@ import Cookies from 'react-cookie';
 import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
 import reduxThunk from 'redux-thunk';
-import { createCookieMiddleware } from 'redux-cookie';
 
 import 'styles/index.css';
 import 'styles/App.css';
@@ -17,7 +16,7 @@ import rootReducer from 'reducers/rootReducer';
 import registerServiceWorker from 'registerServiceWorker';
 	
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const store = createStore(rootReducer, composeEnhancers(applyMiddleware(reduxThunk, createCookieMiddleware(Cookies))));
+const store = createStore(rootReducer, composeEnhancers(applyMiddleware(reduxThunk)));
 
 
 //ReactDOM.render(<CookiesProvider><App /></CookiesProvider>, document.getElementById('register-root'));
