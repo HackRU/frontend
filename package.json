@@ -39,6 +39,7 @@
     "react-redux": "^5.0.7",
     "react-select": "^1.2.1",
     "redux": "^4.0.0",
+    "redux-cookie": "^0.5.9",
     "redux-thunk": "^2.3.0",
     "style-loader": "0.19.0",
     "sw-precache-webpack-plugin": "0.11.4",
