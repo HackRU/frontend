@@ -47,20 +47,14 @@ export const checkURL = () => (
           });
         }
       } 
-
     
-      if(urlParams.has('authdata')) {
-        
-        const authdata = JSON.parse(urlParams.get('authdata'));
-        setCookie('authdata', authdata);
-      }
-
       //grab the auth data from the cookie
       const auth = getCookie('authdata');
-      if(auth && Date.parse(auth.auth.valid_until) > Date.now()) {
+      console.log(auth);
+      if(auth.auth && Date.parse(auth.auth.valid_until) > Date.now()) {
         
         //the data is still valid
-        loadUserForm({body: JSON.stringify(auth)});
+        dispatch(loadUserForm({body: JSON.stringify(auth)}));
       }
     }
   }
@@ -132,8 +126,8 @@ export const resetPassword = (user) => (
           .catch(err => {
 
             //unexpected error
-            //console.log(err.message);
-            showCaughtError(err.message);
+            //console.log(err);
+            dispatch(showCaughtError(err.message));
           });
       }
     } else {
@@ -169,7 +163,7 @@ export const resetPassword = (user) => (
 
           //unexpected error
           //console.log(err.message);
-          showCaughtError(err.message);
+          dispatch(showCaughtError(err.message));
         });
     }
   }
@@ -204,7 +198,7 @@ export const signUp = (user) => (
           if(data.statusCode === 200) {
 
             //succesfful creation
-            loadUserForm({data});
+            dispatch(loadUserForm({data}));
           } else if(data.body === 'Duplicate user!') {
 
             //duplicate user
@@ -224,7 +218,7 @@ export const signUp = (user) => (
         .catch(err => {
 
           //unexpected error
-          showCaughtError(err.message);
+          dispatch(showCaughtError(err.message));
         });
     }
   }
@@ -251,20 +245,20 @@ export const login = (user) => (
         headers: {
           'Content-Type': 'application/json'
         },
-        body: {
+        body: JSON.stringify({
           email: user.email,
-          password: user.password + '' 
-        }
+          password: user.password
+        })
       }).then(resp => resp.json())
         .then(data => {
-          
           //post-process
-          loginPostFetch(data);
+          dispatch(loginPostFetch(data));
         })
         .catch(err => {
 
           //unexpected error
-          showCaughtError(err.message);
+          //console.log(err);
+          dispatch(showCaughtError(err.message));
         });
     }
   }
@@ -280,17 +274,17 @@ export const mlhLogin = (user) => {
 const loginPostFetch = (data) => (
   (dispatch) => {
     if(data.statusCode !== 200) {
-      
       //unsuccessful authorization, check the problem
       const errorMsgs = {
         'invalid email,hash combo': 'Incorrect email or passsword.',
         'Wrong Password': 'Incorrect password.'
       }; 
-      showCaughtError(errorMsgs[data.body]);
+      console.log(errorMsgs[data.body]);
+      dispatch(showCaughtError(errorMsgs[data.body]));
     } else {
 
       //successful authorization
-      loadUserForm(data);
+      dispatch(loadUserForm(data));
     }
   }
 );
@@ -299,12 +293,16 @@ const loginPostFetch = (data) => (
 const loadUserForm = (data) => (
   (dispatch) => {
 
-
     const body = JSON.parse(data.body);
     //set cookies authdata to the body
-    setCookie('authdata', body);
-
+    dispatch(setCookie('authdata', body));
+    
+    //console.log(body);
     //called upon successful login, will trigger LoginManagement to render UserForm
+    
+
+    let x = dispatch(getCookie('authdata'));
+    console.log(JSON.parse(x).auth);
     dispatch({
       type: LOGIN_MNGMNT.SET_LOGIN_STATUS,
       isLoggedIn: true
@@ -314,6 +312,7 @@ const loadUserForm = (data) => (
 
 const showCaughtError = (mes) => (
   (dispatch) => {
+    console.log('error logging');
     dispatch({
       type: LOGIN_MNGMNT.SET_ERROR,
       errorMessage: 'An error occurred. ' + mes
