@@ -262,6 +262,7 @@ export const login = (user) => (
         .catch(err => {
 
           //unexpected error
+          console.log(err);
           showCaughtError(err.message);
         });
     }
