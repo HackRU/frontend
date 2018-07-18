@@ -5,3 +5,5 @@ workspace.xml
 config_resume.js
 build/
 .env
+*.swo
+*.swp
