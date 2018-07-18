@@ -21,6 +21,11 @@ class LoginForm extends React.Component {
 
   }
 
+
+  componentDidMount() {
+    this.props.checkURL();
+  }
+
   onChangeEmail = (e) => {
     e.preventDefault();
     this.props.changeEmail(e.target.value);
@@ -143,6 +148,7 @@ LoginForm.propTypes = {
     magicLink: PropTypes.string,
     errorMessage: PropTypes.string
   }).isRequired,
+  checkURL: PropTypes.func.isRequired,
   changeEmail: PropTypes.func.isRequired,
   changePassword: PropTypes.func.isRequired,
   resetPassword: PropTypes.func.isRequired,
@@ -160,6 +166,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({
+    checkURL: loginActions.checkURL,
     changeEmail: loginActions.changeEmail,
     changePassword: loginActions.changePassword,
     resetPassword: loginActions.resetPassword,
