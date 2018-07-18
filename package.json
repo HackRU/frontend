@@ -32,7 +32,6 @@
     "promise": "8.0.1",
     "raf": "3.4.0",
     "react": "^16.2.0",
-    "react-cookie": "^2.1.2",
     "react-dev-utils": "^5.0.0",
     "react-dom": "^16.2.0",
     "react-google-autocomplete": "^1.0.15",
@@ -96,6 +95,7 @@
     "eslint": "^5.0.1",
     "eslint-loader": "^2.0.0",
     "eslint-plugin-react": "^7.10.0",
+    "js-cookie": "^2.2.0",
     "redux-cookie": "^0.5.9"
   }
 }
