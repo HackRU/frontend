@@ -28,7 +28,7 @@ class LoginForm extends React.Component {
 
   onChangePassword = (e) => {
     e.preventDefault();
-    this.props.changePassword(e.target.password);
+    this.props.changePassword(e.target.value);
   }
 
   onAttemptReset = (e) => {

@@ -1,4 +1,5 @@
 //LoginActions.js
+import { getCookie, setCookie } from 'redux-cookie';
 import { LOGIN_MNGMNT } from 'actions/ActionTypes';
 import resURLS from 'resources/resURLS';
 
@@ -6,19 +7,19 @@ import resURLS from 'resources/resURLS';
 export const checkURL = () => (
   (dispatch) => {
 
-    let url_params = new URLSearchParams(window.location.search);
-    if(url_params.has('error')) {
+    let urlParams = new URLSearchParams(window.location.search);
+    if(urlParams.has('error')) {
       
       dispatch({
         type: LOGIN_MNGMNT.SET_ERROR, 
-        errorMessage: url_params.get('error')
+        errorMessage: urlParams.get('error')
       });
     } else {
       
-      if(url_params.has('magiclink')) {
+      if(urlParams.has('magiclink')) {
       
-        const magic_link = url_params.get('magiclink');
-        if(magic_link.startsWith('forgot-')) {
+        const magicLink = urlParams.get('magiclink');
+        if(magicLink.startsWith('forgot-')) {
 
           //user forgot password and is attempting to reset it
           dispatch({
@@ -27,7 +28,7 @@ export const checkURL = () => (
           });
           dispatch({
             type: LOGIN_MNGMNT.SET_MAGIC_LINK, 
-            magicLink: magic_link
+            magicLink: magicLink
           });
           dispatch({
             type: LOGIN_MNGMNT.HAS_FORGOTTEN_PASSWORD,
@@ -42,22 +43,23 @@ export const checkURL = () => (
           });
           dispatch({
             type: LOGIN_MNGMNT.SET_MAGIC_LINK, 
-            magicLnk: magic_link
+            magicLnk: magicLink
           });
         }
       } 
 
-      //cookie setup ???? how do
-      if(url_params.has('authdata')) {
+    
+      if(urlParams.has('authdata')) {
         
-        const authdata = JSON.parse(url_params.get('authdata'));
-        //set the auth data in the cookie
+        const authdata = JSON.parse(urlParams.get('authdata'));
+        setCookie('authdata', authdata);
       }
 
       //grab the auth data from the cookie
-      const auth = '';
+      const auth = getCookie('authdata');
       if(auth && Date.parse(auth.auth.valid_until) > Date.now()) {
-
+        
+        //the data is still valid
         loadUserForm({body: JSON.stringify(auth)});
       }
     }
@@ -251,7 +253,7 @@ export const login = (user) => (
         },
         body: {
           email: user.email,
-          password: user.password
+          password: user.password + '' 
         }
       }).then(resp => resp.json())
         .then(data => {
@@ -299,7 +301,8 @@ const loadUserForm = (data) => (
 
 
     const body = JSON.parse(data.body);
-    //set cookies authdata to the body..how do??
+    //set cookies authdata to the body
+    setCookie('authdata', body);
 
     //called upon successful login, will trigger LoginManagement to render UserForm
     dispatch({
