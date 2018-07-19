@@ -301,8 +301,6 @@ const loadUserForm = (data) => (
     //called upon successful login, will trigger LoginManagement to render UserForm
     
 
-    let x = dispatch(getCookie('authdata'));
-    console.log(JSON.parse(x).auth);
     dispatch({
       type: LOGIN_MNGMNT.SET_LOGIN_STATUS,
       isLoggedIn: true
