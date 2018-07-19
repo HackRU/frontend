@@ -25,10 +25,13 @@ Yahh, Yerr, Yeet, etc.
 9.  [Thanks for Making It to the End](#thanks-for-making-it-to-the-end-go-be-a-great-mfer)
 
 ## Contacts (some important people)
-*  RND Co-Director: Heman Gandhi : hemangandhi@gmail.com : [hemangandhi](https://github.com/hemangandhi)
-*  RND Co-Director: Qasim Abbas : qasimabbas52@gmail.com : [QasimAbbas](https://github.com/QasimAbbas)
-*  Project Lead: Ezra Ablaza : ezrabl42@gmail.com : [TresTres](https://github.com/TresTres)
-*  Project Alumni Mentor: [whom'st?] : [which'dve?] : [where'd'mn'st?]
+*  RND Co-Director : Heman Gandhi : [hemangandhi](https://github.com/hemangandhi)
+*  RND Co-Director : Qasim Abbas : [QasimAbbas](https://github.com/QasimAbbas)
+*  Project Lead : Ezra Ablaza : [TresTres](https://github.com/TresTres)
+*  Project Alumni Mentor : Constantina Scoullis : [conscou](https://github.com/conscou)
+*  Architect : Kabir Kuriyan : [thekabistro](https://github.com/thekabistro)
+*  Architect : Ryan Goldstein : [ryanisaacg](https://github.com/ryanisaacg)
+
 
 ## Description (wtf is this)
 
