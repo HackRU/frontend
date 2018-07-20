@@ -10,7 +10,6 @@ const initialState = {
   forgottenPassword: false, 
   magicLink: '',
   errorMessage: ''
-
 };
 
 const LoginManager = (state = initialState, action) => {

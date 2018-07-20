@@ -1,6 +1,6 @@
 //ActionTypes.js
 
-//LoginManagement actions
+//LoginManager actions
 export const LOGIN_MNGMNT = {
   CHANGE_EMAIL: 'CHANGE_EMAIL',
   CHANGE_PASSWORD: 'CHANGE_PASSWORD',
@@ -10,8 +10,15 @@ export const LOGIN_MNGMNT = {
   HAS_FORGOTTEN_PASSWORD: 'HAS_FORGOTTEN_PASSWORD'
 };
 
-//UserData actions
+//UserManager actions
 export const USER_DATA = {
-  UPDATE_USER: 'UPDATE_USER', 
-
+  SET_EMAIL: 'SET_EMAIL',
+  SET_TOKEN: 'SET_TOKEN',
+  SET_RESUME: 'SET_RESUME',
+  SET_USER_INFO: 'SET_USER_INFO',
+  SET_MENTOR_INFO: 'SET_MENTOR_INFO',
+  SET_COC: 'SET_COC',
+  SET_SHARE: 'SET_SHARE',
+  SET_QR: 'SET_QR',
+  SET_FLASH: 'SET_FLASH'
 };

@@ -3,6 +3,9 @@ const resURLS = {
   logoURL: process.env.PUBLIC_PATH + 'img/logo-white.png',
   wheelURL: process.env.PUBLIC_PATH + 'img/wheel.png',
 
+  //colors
+  background: [0xe8, 0xf6, 0xfc],
+  foreground: [0x25, 0x47, 0x9e],
 
   //back-end API
   magicLinkRedirect: '?redir=https://hackru.org/dashboard.html?magiclink=',

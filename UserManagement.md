@@ -1,4 +1,4 @@
-# UserForm
+# UserManagement
 
 ## State Handled
 ```js
@@ -48,7 +48,7 @@ This retrieves the QR code for a userInfo and should be called shortly after rea
 *  Post request the `userInfo_email` to `lcsQRURL along with a `background` color and a `color` for the foreground (values subject to change):
   *  `background`: `[0xe8, 0xf6, 0xfc]`
   *  `color`: `[0x25, 0x47, 0x9e]`
-*  Upon resolution, if the response `statusCode` is 200, set `qr` to theresponse `body`.
+*  Upon resolution, if the response `statusCode` is 200, set `qr` to the response `body`.
   *  Catch errors into `flash`.
 *  Otherwise, set `flash` to the error.
 

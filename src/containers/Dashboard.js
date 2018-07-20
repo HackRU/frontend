@@ -1,12 +1,16 @@
 //Dashboard.js
 import React from 'react';
 
-import DashboardProfile from 'static/DashboardProfile';
+import { connect } from 'react-redux';
+
 import InfoSection from 'static/InfoSection';
 import ImportantLinks from 'static/ImportantLinks';
 
 import 'styles/index.css';
 import 'styles/App.css';
+
+
+import DashboardProfile from 'components/DashboardProfile';
 
 import LoginManagement from 'containers/LoginManagement';
 
@@ -26,6 +30,7 @@ import LoginManagement from 'containers/LoginManagement';
 class Dashboard extends React.Component {
   
   render() {
+
     
 
     return (
