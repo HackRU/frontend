@@ -19,7 +19,7 @@ Yahh, Yerr, Yeet, etc.
     *  [Other Libraries](#other-libraries)
     *  [ECMA 6](#ecma-6)
     *  [Coding Style Guides and Linters](#coding-style-guides-and-linters)
-    *  [Testing](#testing)
+    *  [Testing and CI](#testing-and-ci)
     *  [Version Control on Git](#version-control-on-git)
 8.  [Don't Panic](#dont-panic-i-do-that-enough)
 9.  [Thanks for Making It to the End](#thanks-for-making-it-to-the-end-go-be-a-great-mfer)
@@ -138,6 +138,7 @@ If you don't read those, you may easily run into issues.
 -  [Validating Using PropTypes](https://steemit.com/utopian-io/@jfuenmayor96/validating-the-props-of-your-react-components-with-proptypes)
 
 ### Redux:
+-  [Container Design Pattern](https://www.thegreatcodeadventure.com/the-react-plus-redux-container-pattern/)
 -  [Pretty Okay Redux Documentation](https://redux.js.org/)
 -  [Redux To-Do List Example](https://redux.js.org/basics/example-todo-list)
 -  [A Really Great Read on Learning Redux](https://daveceddia.com/how-does-redux-work/)
@@ -160,7 +161,8 @@ If you don't read those, you may easily run into issues.
 -  [Overview of Style Guides + Some Examples](https://codeburst.io/5-javascript-style-guides-including-airbnb-github-google-88cbc6b2b7aa)
 -  [Using ESLint](https://eslint.org/docs/user-guide/getting-started)
 
-### Testing: 
+### Testing and CI: 
+-  [Continuous Integration Essentials](https://codeship.com/continuous-integration-essentials)
 -  [Getting Started with Jest](https://jestjs.io/docs/en/getting-started)
 
 ### Version Control on Git:

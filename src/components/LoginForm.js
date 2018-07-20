@@ -53,12 +53,13 @@ class LoginForm extends React.Component {
     let user = this.props.loginManager;
     this.props.login(user);
   }
-
+  
+  /*NOT NEEDED
   onMlhLogin = (e) => {
     e.preventDefault();
     let user = this.props.loginManager;
     this.props.mlhLogin(user);
-  }
+  }*/
 
   render() {
 
@@ -123,12 +124,12 @@ class LoginForm extends React.Component {
                   >
                     <h6 className=" UC ">{'Login'}</h6>
                   </button>
-                  <button className="btn btn-primary p-xs-2 p-md-3 my-2"
+                  {/*<button className="btn btn-primary p-xs-2 p-md-3 my-2"
                     onClick={this.onMlhLogin}
                     type="button"
                   >
                     <h6 className=" UC">{'Log in/Sign Up with MLH'}</h6>
-                  </button>
+                  </button>*/}
                 </div>
               </div>
             </form>

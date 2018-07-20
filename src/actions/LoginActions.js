@@ -1,6 +1,8 @@
 //LoginActions.js
-import { getCookie, setCookie } from 'redux-cookie';
+import { getCookie, setCookie, removeCookie } from 'redux-cookie';
+
 import { LOGIN_MNGMNT } from 'actions/ActionTypes';
+
 import resURLS from 'resources/resURLS';
 
 
@@ -34,8 +36,9 @@ export const checkURL = () => (
             type: LOGIN_MNGMNT.HAS_FORGOTTEN_PASSWORD,
             forgottenPassword: true
           });
-        } else {
 
+        } else {
+          /* NOT NEEDED
           //user is logging in after going through mlh system
           dispatch({
             type: LOGIN_MNGMNT.SET_ERROR, 
@@ -45,16 +48,19 @@ export const checkURL = () => (
             type: LOGIN_MNGMNT.SET_MAGIC_LINK, 
             magicLnk: magicLink
           });
+          */
+
+          dispatch(showCaughtError('MLH-assigned magic links are not curently supported!'));
         }
       } 
     
       //grab the auth data from the cookie
-      const auth = getCookie('authdata');
-      console.log(auth);
-      if(auth.auth && Date.parse(auth.auth.valid_until) > Date.now()) {
+      const authdata = dispatch(getCookie('authdata'));
+      //console.log(auth);
+      if(authdata.auth && Date.parse(authdata.auth.valid_until) > Date.now()) {
         
         //the data is still valid
-        dispatch(loadUserForm({body: JSON.stringify(auth)}));
+        dispatch(loadUserForm({body: JSON.stringify(authdata)}));
       }
     }
   }
@@ -84,6 +90,7 @@ export const resetPassword = (user) => (
     if(user.magicLink) {
 
       //user has already received the magic link and is applying it
+      
       if(user.email === '' || user.password === '') {
 
         //incomplete form
@@ -127,7 +134,7 @@ export const resetPassword = (user) => (
 
             //unexpected error
             //console.log(err);
-            dispatch(showCaughtError(err.message));
+            dispatch(showCaughtError(err.toString()));
           });
       }
     } else {
@@ -153,17 +160,17 @@ export const resetPassword = (user) => (
         .then(resp => {
           //notify user
           
-          let resp_mes = resp.body || resp.errorMessage;
+          let respMes = resp.body || resp.errorMessage;
           dispatch({
             type: LOGIN_MNGMNT.SET_ERROR,
-            errorMessage: resp_mes
+            errorMessage: respMes
           });
         })
         .catch(err => {
 
           //unexpected error
-          //console.log(err.message);
-          dispatch(showCaughtError(err.message));
+          //console.log(err.toString());
+          dispatch(showCaughtError(err.toString()));
         });
     }
   }
@@ -218,7 +225,7 @@ export const signUp = (user) => (
         .catch(err => {
 
           //unexpected error
-          dispatch(showCaughtError(err.message));
+          dispatch(showCaughtError(err.toString()));
         });
     }
   }
@@ -258,22 +265,25 @@ export const login = (user) => (
 
           //unexpected error
           //console.log(err);
-          dispatch(showCaughtError(err.message));
+          dispatch(showCaughtError(err.toString()));
         });
     }
   }
 );
 
+/*  NOT NEEDED
 export const mlhLogin = (user) => {
   let redir = (user.magicLink && !(user.magicLink.startsWith('forgot-')))? resURLS.magicLinkRedirect + user.magicLink : '';
   let href = resURLS.mlhRedirectURL + redir + resURLS.mlhResponseType;
   window.open(href, '_self');
 };
+*/
 
 export const logout = (user) => (
   (dispatch) => {
     
-    //remove the authdata from the cookie?
+    //remove the authdata from the cookie
+    removeCookie('authdata');
     dispatch({
       type: LOGIN_MNGMNT.SET_LOGIN_STATUS,
       isLoggedIn: false
@@ -315,15 +325,20 @@ const loadUserForm = (data) => (
       type: LOGIN_MNGMNT.SET_LOGIN_STATUS,
       isLoggedIn: true
     });
+
+    //Get the response from the consume URL if a magic link was used
+    //and put it in the UserManager's flash (?)
+    
+
   }
 );
 
 const showCaughtError = (mes) => (
   (dispatch) => {
-    console.log('error logging');
+    console.log('error logged: ' + mes);
     dispatch({
       type: LOGIN_MNGMNT.SET_ERROR,
-      errorMessage: 'An error occurred. ' + mes
+      errorMessage: 'An error occurred:\n' + mes
     });
   }
 );

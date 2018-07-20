@@ -45,6 +45,8 @@ class UserForm extends React.Component {
     this.transMode = this.transMode.bind(this);
   }
 
+  
+  //done? ?? 
   componentWillMount (){
     const { cookies } = this.props;//I don't get it.
     const auth = cookies.get('authdata');
