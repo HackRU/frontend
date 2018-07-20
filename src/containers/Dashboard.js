@@ -13,7 +13,7 @@ import LoginManagement from 'containers/LoginManagement';
 //import Slack from 'components/Slack';
 //import Events from 'components/Events';
 
-import {CookiesProvider} from 'react-cookie';
+
 
 
 //ReactDOM.render(<CookiesProvider><App /></CookiesProvider>, document.getElementById('register-root'));
@@ -62,9 +62,7 @@ class Dashboard extends React.Component {
           <div className="row mb-5"> {/*row mb-5 begin*/}
             <div className="col-xs-12 col-md-8 offset-md-2 mb-3">
               <div id="register-root">
-                <CookiesProvider>
-                  <LoginManagement /> {/*LoginManagement component goes here*/}
-                </CookiesProvider>
+                <LoginManagement /> {/*LoginManagement component goes here*/}
               </div>
               <div id="register-more" />
             </div>
