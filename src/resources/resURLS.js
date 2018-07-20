@@ -10,7 +10,7 @@ const resURLS = {
   lcsConsumeURL: 'https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/mlhtest/consume',
   lcsCreateURL: 'https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/mlhtest/create',
   lcsMagicURL: 'https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/mlhtest/createmagiclink',
-  lcsQRURL: ,'https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/mlhtest/qr'
+  lcsQRURL: 'https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/mlhtest/qr',
   lcsReadURL: 'https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/mlhtest/read',
   lcsUpdateURL: 'https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/mlhtest/update',
   mlhResponseType: '&response_type=code&scope=email+education+birthday',
