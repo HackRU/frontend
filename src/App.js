@@ -45,12 +45,6 @@ class App extends React.Component {
         this.setState({errorMessage: "You have a magic link! Please log in to apply it.", hasLink: mag_link});
     }
 
-    const { cookies } = this.props;//I don't get it.
-    if(urlParams.has('authdata')){
-      const auth = JSON.parse(urlParams.get('authdata'));
-      cookies.set('authdata', auth);
-    }
-
     const auth = cookies.get('authdata');
     if(auth && Date.parse(auth.auth.valid_until) > Date.now()){
       //we assume any authdata cookie is our authdata and check the validity.
