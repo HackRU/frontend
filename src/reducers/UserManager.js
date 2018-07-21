@@ -5,7 +5,7 @@ import { USER_DATA } from 'actions/ActionTypes';
 const initialState = {
   userInfoEmail: '',
   token: '',
-  resume: null,
+  hasResume: false,
   userInfo: null,
   mentorInfo: null,
   codeOfConduct: false,
@@ -26,10 +26,10 @@ const UserManager = (state = initialState, action) => {
         ...state,
         token: action.token
       };
-    case USER_DATA.SET_RESUME:
+    case USER_DATA.HAS_RESUME:
       return {
         ...state,
-        resume: action.resume
+        hasResume: action.hasResume
       };
     case USER_DATA.SET_USER_INFO:
       return {

@@ -15,7 +15,7 @@ const formConfig = {
     'select': true,
     'searchFn': (i) => fetch('majors.json')
       .then(r => r.json()).then(json => ({options: json.items
-      .map(i => ({'value': i, 'label': i}))})),
+        .map(i => ({'value': i, 'label': i}))})),
     'create': true
   },
   'shirt_size': {
@@ -50,8 +50,8 @@ const formConfig = {
       .then(r => r.text()).then(csv => {
         const rv = csv.split('\n').map(ln => ln.replace(/[\r",]/g, ''))
           .slice(1).map(v => ({'label': v, 'value': v}));
-          return {options: rv};
-    }),
+        return {options: rv};
+      }),
     'create': false
   },
   'grad_year': {

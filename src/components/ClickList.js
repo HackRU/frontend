@@ -1,11 +1,10 @@
-//InputList.js
+//ClickList.js
 import { React } from 'react';
 
 
+class ClickList extends React.Component { 
 
-
-class InputList extends React.Component { 
-
+  //Takes in a structured object to render as an interactive list, e.g. list of radio inputs or checkbox inputs
 
   render() {
 
@@ -13,7 +12,7 @@ class InputList extends React.Component {
     var prompt = this.props.data['prompt'];
     var items = this.props.data['items']
       .map((itemData) => (
-        React.createElement(InputItem, {
+        React.createElement(ClickItem, {
           title: itemData['title'],
           id: itemData['id'],
           name: itemData['name'],
@@ -36,9 +35,9 @@ class InputList extends React.Component {
 
 }
 
-class InputItem extends React.Component {
-
-  //The Input Item to render in the list
+class ClickItem extends React.Component {
+  
+  //The Click Item to render in the list
   render() {
     return (
       <div>
@@ -56,4 +55,4 @@ class InputItem extends React.Component {
   }
 }
 
-export default InputList;
+export default ClickList;
