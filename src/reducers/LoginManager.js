@@ -6,7 +6,6 @@ import { LOGIN_MNGMNT } from 'actions/ActionTypes';
 const initialState = {
   email: '',
   password: '',
-  isLoggedIn: false, 
   forgottenPassword: false, 
   magicLink: '',
   errorMessage: ''
@@ -23,11 +22,6 @@ const LoginManager = (state = initialState, action) => {
       return {
         ...state, 
         password: action.password
-      };
-    case LOGIN_MNGMNT.SET_LOGIN_STATUS:
-      return {
-        ...state,
-        isLoggedIn: action.isLoggedIn
       };
     case LOGIN_MNGMNT.SET_MAGIC_LINK:
       return {

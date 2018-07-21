@@ -35,7 +35,7 @@ export const checkCookies = () => (
       });
 
       //download the user's resume, uses callback
-      downloadResume(true, email, (_, resume) => dispatch(setResume(resume)));
+      downloadResume(true, email, (resp, _) => dispatch(confirmResume(true)));
 
 
       //read in the user data from lcs
@@ -179,12 +179,12 @@ const readUser = (uEmail, uToken) => (
   }
 );
 
-const setResume = (resume) => (
+const confirmResume = (hasResume) => (
   (dispatch) => {
     
     dispatch({
-      type: USER_DATA.SET_RESUME, 
-      resume: resume
+      type: USER_DATA.HAS_RESUME, 
+      resume: hasResume
     });
   }
 );
