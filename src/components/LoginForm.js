@@ -12,12 +12,12 @@ class LoginForm extends React.Component {
 
   constructor(props) {
     super(props);
-    this.onChangeEmail = this.onChangeEmail.bind(this);
-    this.onChangePassword = this.onChangePassword.bind(this);
-    this.onAttemptReset = this.onAttemptReset.bind(this);
-    this.onSignUp = this.onSignUp.bind(this);
-    this.onLogin = this.onLogin.bind(this);
-    this.onMlhLogin = this.onMlhLogin.bind(this);
+    this.changeEmail = this.changeEmail.bind(this);
+    this.changePassword = this.changePassword.bind(this);
+    this.attemptReset = this.attemptReset.bind(this);
+    this.signUp = this.signUp.bind(this);
+    this.login = this.login.bind(this);
+    //this.onMlhLogin = this.onMlhLogin.bind(this);
 
   }
 
@@ -26,29 +26,29 @@ class LoginForm extends React.Component {
     this.props.checkURL();
   }
 
-  onChangeEmail = (e) => {
+  changeEmail = (e) => {
     e.preventDefault();
     this.props.changeEmail(e.target.value);
   }
 
-  onChangePassword = (e) => {
+  changePassword = (e) => {
     e.preventDefault();
     this.props.changePassword(e.target.value);
   }
 
-  onAttemptReset = (e) => {
+  attemptReset = (e) => {
     e.preventDefault();
     let user = this.props.loginManager;
     this.props.resetPassword(user);
   }
 
-  onSignUp = (e) => {
+  signUp = (e) => {
     e.preventDefault();
     let user = this.props.loginManager;
     this.props.signUp(user);
   }
 
-  onLogin = (e) => {
+  login = (e) => {
     e.preventDefault();
     let user = this.props.loginManager;
     this.props.login(user);
@@ -79,7 +79,7 @@ class LoginForm extends React.Component {
                 <div className="col-lg-9">
                   <input className="form-control form-control"
                     id="email-input"
-                    onChange={this.onChangeEmail}
+                    onChange={this.changeEmail}
                     type="email"
                   />
                 </div>
@@ -91,7 +91,7 @@ class LoginForm extends React.Component {
                 <div className="col-lg-9">
                   <input className="form-control form-control"
                     id="pw-input"
-                    onChange={this.onChangePassword}
+                    onChange={this.changePassword}
                     type="password"
                   />
                 </div>
@@ -102,7 +102,7 @@ class LoginForm extends React.Component {
                     (!this.props.loginManager.magicLink || this.props.loginManager.forgottenPassword) &&
                     <div className="col-12">
                       <button className="btn btn-primary p-xs-2 p-md-3"
-                        onClick={this.onAttemptReset}
+                        onClick={this.attemptReset}
                         type="button"
                       >
                         <h6 className="UC ">{(this.props.loginManager.magicLink) ? 'Apply magic link': 'Forgot Password'}</h6>
@@ -113,13 +113,13 @@ class LoginForm extends React.Component {
               <div className="form-group row mt-0">
                 <div className="col-12 text-center">
                   <button className="btn btn-primary mx-1 p-xs-2 p-md-3"
-                    onClick={this.onSignUp}
+                    onClick={this.signUp}
                     type="button"
                   >
                     <h6 className="UC ">{'Sign Up'}</h6>
                   </button>
                   <button className="btn btn-primary custom-btn p-xs-2 p-md-3 mx-1"
-                    onClick={this.onLogin}
+                    onClick={this.login}
                     type="button"
                   >
                     <h6 className=" UC ">{'Login'}</h6>

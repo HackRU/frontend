@@ -45,8 +45,7 @@ class UserForm extends React.Component {
     this.transMode = this.transMode.bind(this);
   }
 
-  
-  //done? ?? 
+  //done?
   componentWillMount (){
     const { cookies } = this.props;//I don't get it.
     const auth = cookies.get('authdata');
@@ -74,10 +73,12 @@ class UserForm extends React.Component {
         token: auth.auth.token
       });
 
+      //done
       downloadResume(true, auth.auth.email, (wrk, _) => this.setState({hasResume: wrk}));
     }
   }
 
+  //done?
   isAdmin() {
 
     if(!this.state.user || (!this.state.user.role.director)){
@@ -90,6 +91,7 @@ class UserForm extends React.Component {
 
   }
 
+  //done?
   componentDidMount(){
     fetch('https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/mlhtest/read', {
       method: 'POST',
@@ -130,6 +132,7 @@ class UserForm extends React.Component {
       }).catch(data => this.setState({flash: data.toString()}));
   }
 
+  //done?
   logout() {
     const {cookies} = this.props;
     cookies.remove('authdata');
@@ -140,6 +143,7 @@ class UserForm extends React.Component {
     window.location.href = '/dashboard.html';
   }
 
+  //done
   onChange(e){
     const upd_key = e.target.id.split('-')[1];
     let updated = this.state.user;
@@ -147,6 +151,7 @@ class UserForm extends React.Component {
     this.setState({user: updated});
   }
 
+  //done
   mentorBitOnChange(e){
     const upd_key = e.target.id.substring(0, e.target.id.length - 4).replace('-', '_');
     let newMent = this.state.mentorBit;
@@ -154,6 +159,7 @@ class UserForm extends React.Component {
     this.setState({mentorBit: newMent});
   }
 
+  //done
   save() {
     let upd = this.state.user;
     if (upd.registration_status == 'unregistered'){
@@ -203,16 +209,19 @@ class UserForm extends React.Component {
 
   }
 
+  //done?
   showVolunteer(e){
     document.getElementById('mentor-form').style.display = 'none';
     document.getElementById('volunteer-form').style.display = 'block';
   }
 
+  //done?
   showMentor(e){
     document.getElementById('mentor-form').style.display = 'block';
     document.getElementById('volunteer-form').style.display = 'none';
   }
 
+  //not done and not gonna be used
   getTimes(prefix){
     let times = [];
     if(document.getElementById('sat-morn-' + prefix + '-inp').checked === true){
@@ -230,6 +239,7 @@ class UserForm extends React.Component {
     return times;
   }
 
+  //done
   applyMentor(e){
     let tempUsr = {
       'role.mentor': true
@@ -263,6 +273,7 @@ class UserForm extends React.Component {
       });
   }
 
+  //done
   unapplyMentor(e){
     let tempUsr = {
       'role.mentor': false
@@ -292,6 +303,7 @@ class UserForm extends React.Component {
       });
   }
 
+  //done
   applyVolunteer(e){
     let tempUsr = {
       'role.volunteer': true
@@ -325,6 +337,7 @@ class UserForm extends React.Component {
       });
   }
 
+  //done
   unapplyVolunteer(e){
     let tempUsr = {
       'role.volunteer': false
@@ -354,6 +367,8 @@ class UserForm extends React.Component {
       });
   }
 
+
+  //done?  not in use
   volunteerAndMentorForms() {
     return (
       <div id="extra-form-container">
@@ -365,6 +380,74 @@ class UserForm extends React.Component {
           onClick={this.showMentor}
           value="Apply to mentor"
         >Mentor Sign Up</button>
+        <div id="volunteer-form"
+          style={{display:'none'}}
+        >
+          <div className="extra-left">
+            Choose your preferred area:<br/>
+            <input id="set-up-vol-inp"
+              name="vol-cat"
+              type="radio"
+              value="set-up"
+            />
+            <label htmlFor="set-up-vol-inp">Set-up</label><br/>
+            <input id="registration-vol-inp"
+              name="vol-cat"
+              type="radio"
+              value="registration"
+            />
+            <label htmlFor="registration-vol-inp">Registration</label><br/>
+            <input id="event-vol-inp"
+              name="vol-cat"
+              type="radio"
+              value="event"
+            />
+            <label htmlFor="event-vol-inp">Events</label><br/>
+            <input id="workshop-vol-inp"
+              name="vol-cat"
+              type="radio"
+              value="workshop"
+            />
+            <label htmlFor="workshop-vol-inp">Workshops</label><br/>
+            <input id="food-vol-inp"
+              name="vol-cat"
+              type="radio"
+              value="food"
+            />
+            <label htmlFor="food-vol-inp">Food</label><br/>
+          </div>
+          <div className="extra-right">
+            Choose your preferred times:<br/>
+            <input id="sat-morn-vol-inp"
+              name="vol-time"
+              type="checkbox"
+              value="sat-morn"
+            />
+            <label htmlFor="sat-morn-vol-inp">Saturday (24th) Morning</label><br/>
+            <input id="sat-noon-vol-inp"
+              name="vol-time"
+              type="checkbox"
+              value="sat-noon"
+            />
+            <label htmlFor="sat-noon-vol-inp">Saturday (24th) Afternoon</label><br/>
+            <input id="sat-night-vol-inp"
+              name="vol-time"
+              type="checkbox"
+              value="sat-night"
+            />
+            <label htmlFor="sat-night-vol-inp">Saturday (24th) Evening</label><br/>
+            <input id="sun-vol-inp"
+              name="vol-time"
+              type="checkbox"
+              value="sun"
+            />
+            <label htmlFor="sun-vol-inp">Sunday (25th) Morning</label><br/>
+          </div>
+          <div className="clearfix" />
+          <button className="btn btn-primary"
+            onClick={this.applyVolunteer}
+          >Submit Application</button>
+        </div>
         <div id="mentor-form"
           style={{display:'none'}}
         >
@@ -431,6 +514,7 @@ class UserForm extends React.Component {
     );
   }
 
+  //done
   doResume(ev){
     uploadResume(this.state.email, (value) => {
       this.setState({flash: value, hasResume: true});
@@ -464,6 +548,7 @@ class UserForm extends React.Component {
       });
   }
 
+  //not done
   notAttending(e){
     let upd = {'registration_status': 'not-coming'};
     if(this.state.user.travelling_from && this.state.user.travelling_from.is_real) upd['travelling_from.is_real'] = false;
@@ -533,6 +618,79 @@ class UserForm extends React.Component {
   }
 
   render() {
+    const formConfig = {
+      'email': {
+        'select': false,
+        'type': 'email'
+      },
+      'github': {
+        'select': false,
+        'type': 'text',
+        'searchFn': (i) => fetch(`https://api.github.com/search/users?q=${i}`)
+          .then(r => r.json()).then(j => ({options: j.items})),
+        'create': false
+      },
+      'major': {
+        'select': true,
+        'searchFn': (i) => fetch('majors.json')
+          .then(r => r.json()).then(json => ({
+            options: json.items.map(i => ({
+              'value': i, 'label': i
+            }))
+          })),
+        'create': true
+      },
+      'shirt_size': {
+        'select': true,
+        'optio/ns': ['Unisex XS', 'Unisex S', 'Unisex M', 'Unisex L', 'Unisex XL'].map(v => ({'value': v, 'label': v})),
+        'create': false
+      },
+      'first_name': {
+        'select': false,
+        'type': 'text'
+      },
+      'last_name': {
+        'select': false,
+        'type': 'text'
+      },
+      'dietary_restrictions': {
+        'select': false,
+        'type': 'text'
+      },
+      'special_needs': {
+        'select': false,
+        'type': 'text'
+      },
+      'date_of_birth': {
+        'select': false,
+        'type': 'date'
+      },
+      'school': {
+        'select': true,
+        'searchFn': (i) => fetch('https://raw.githubusercontent.com/MLH/mlh-policies/master/schools.csv')
+          .then(r => r.text()).then(csv => {
+            const rv = csv.split('\n').map(ln => ln.replace(/[\r",]/g, ''))
+              .slice(1).map(v => ({'label': v, 'value': v}));
+            return {options: rv};
+          }),
+        'create': false
+      },
+      'grad_year': {
+        'select': true,
+        'options': [2018, 2019, 2020, 2021, 2022].map(v => ({'value': v, 'label': v})),
+        'create': true
+      },
+      'level_of_study': {
+        'select': true,
+        'options': ['University (Undergraduate)', 'University (Graduate)', 'High School'].map(v => ({'value': v, 'label': v})),
+        'create': true
+      },
+      'gender': {
+        'select': true,
+        'options': ['Male', 'Female', 'Non-binary'].map(v => ({'value': v, 'label': v})),
+        'create': true
+      }
+    };
 
     const _usr = this.state.user;
     const parseInput = (key) => {

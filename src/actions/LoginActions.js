@@ -1,7 +1,9 @@
 //LoginActions.js
-import { getCookie, setCookie, removeCookie } from 'redux-cookie';
+import { getCookie } from 'redux-cookie';
 
 import { LOGIN_MNGMNT } from 'actions/ActionTypes';
+
+import { loginUser } from 'actions/ViewActions';
 
 import resURLS from 'resources/resURLS';
 
@@ -60,7 +62,7 @@ export const checkURL = () => (
       if(authdata.auth && Date.parse(authdata.auth.valid_until) > Date.now()) {
         
         //the data is still valid
-        dispatch(loadUserForm({body: JSON.stringify(authdata)}));
+        dispatch(loginUser({body: JSON.stringify(authdata)}));
       }
     }
   }
@@ -204,8 +206,8 @@ export const signUp = (user) => (
         .then(data => {
           if(data.statusCode === 200) {
 
-            //succesfful creation
-            dispatch(loadUserForm({data}));
+            //successful creation
+            dispatch(loginUser({body: data}));
           } else if(data.body === 'Duplicate user!') {
 
             //duplicate user
@@ -279,18 +281,6 @@ export const mlhLogin = (user) => {
 };
 */
 
-export const logout = (user) => (
-  (dispatch) => {
-    
-    //remove the authdata from the cookie
-    removeCookie('authdata');
-    dispatch({
-      type: LOGIN_MNGMNT.SET_LOGIN_STATUS,
-      isLoggedIn: false
-    });
-  }
-);
-
 
 const loginPostFetch = (data) => (
   (dispatch) => {
@@ -305,33 +295,11 @@ const loginPostFetch = (data) => (
     } else {
 
       //successful authorization
-      dispatch(loadUserForm(data));
+      dispatch(loginUser({body: data}));
     }
   }
 );
 
-
-const loadUserForm = (data) => (
-  (dispatch) => {
-
-    const body = JSON.parse(data.body);
-    //set cookies authdata to the body
-    dispatch(setCookie('authdata', body));
-    //console.log(body);
-    
-    //called upon successful login, will trigger LoginManagement to render UserForm
-
-    dispatch({
-      type: LOGIN_MNGMNT.SET_LOGIN_STATUS,
-      isLoggedIn: true
-    });
-
-    //Get the response from the consume URL if a magic link was used
-    //and put it in the UserManager's flash (?)
-    
-
-  }
-);
 
 const showCaughtError = (mes) => (
   (dispatch) => {

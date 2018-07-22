@@ -11,7 +11,7 @@ class LoginManagement extends React.Component {
 
   render() {
 
-    const isLoggedIn = this.props.loginManager.isLoggedIn;
+    const isLoggedIn = this.props.viewController.isLoggedIn;
 
     let activeForm = null;
 
@@ -35,14 +35,14 @@ class LoginManagement extends React.Component {
 }
 
 LoginManagement.propTypes = {
-  loginManager: PropTypes.shape({
+  viewController: PropTypes.shape({
     isLoggedIn: PropTypes.bool.isRequired
   })
 };
 
 function mapStateToProps(state) {
   return {
-    loginManager: state.loginManager
+    viewController: state.viewController
   };
 }
 
