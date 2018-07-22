@@ -7,11 +7,16 @@ const initialState = {
   token: '',
   hasResume: false,
   userInfo: null,
-  mentorInfo: null,
+  mentorInfo: null, //NOT IN USE
+  mentorTimes: null, //NOT IN USE
+  volunteerArea: '', //NOT IN USE
+  volunteerTimes: null, //NOT IN USE
   codeOfConduct: false,
   dataSharing: false,
   qr: '',
-  flash: ''
+  flash: '',
+  extraFlash: '',
+  upperFlash: ''
 };
 
 const UserManager = (state = initialState, action) => {
@@ -41,6 +46,21 @@ const UserManager = (state = initialState, action) => {
         ...state,
         mentorInfo: action.mentorInfo
       };
+    case USER_DATA.SET_MENTOR_TIMES:
+      return {
+        ...state,
+        mentorTimes: action.mentorTimes
+      };
+    case USER_DATA.SET_VOLUNTEER_AREA:
+      return {
+        ...state,
+        volunteerArea: action.volunteerArea
+      };
+    case USER_DATA.SET_VOLUNTEER_TIMES:
+      return {
+        ...state,
+        volunteerTimes: action.volunteerTimes
+      };
     case USER_DATA.SET_COC:
       return {
         ...state,
@@ -60,6 +80,16 @@ const UserManager = (state = initialState, action) => {
       return {
         ...state,
         flash: action.flash
+      };
+    case USER_DATA.SET_EXTRA_FLASH:
+      return {
+        ...state, 
+        extraFlash: action.extraFlash
+      };
+    case USER_DATA.SET_UPPER_FLASH:
+      return {
+        ...state,
+        upperFlash: action.upperFlash
       };
     default:
       return state;

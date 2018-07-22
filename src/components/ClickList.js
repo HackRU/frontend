@@ -8,20 +8,20 @@ class ClickList extends React.Component {
 
   render() {
 
-    var className = this.props.data['className'];
-    var prompt = this.props.data['prompt'];
-    var items = this.props.data['items']
+    const className = this.props.data['className'];
+    const prompt = this.props.data['prompt'];
+    const items = this.props.data['items']
       .map((itemData) => (
         React.createElement(ClickItem, {
+    
           title: itemData['title'],
           id: itemData['id'],
           name: itemData['name'],
           type: itemData['type'],
           value: itemData['value'],
           htmlFor: itemData['htmlFor']
-        })
-      ));
-
+        })));
+    
     return (
       <div className={className}>
         {prompt}<br />

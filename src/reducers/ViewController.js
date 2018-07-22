@@ -8,7 +8,7 @@ const initialState = {
   applyForm: ''
 };
 
-const ViewController = (state = initalState, action) => {
+const ViewController = (state = initialState, action) => {
   switch(action.type) {
     case VIEW_CONTROL.SET_LOGIN_STATUS:
       return {
