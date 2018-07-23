@@ -13,6 +13,7 @@ const initialState = {
   volunteerTimes: null, //NOT IN USE
   codeOfConduct: false,
   dataSharing: false,
+  travelReady: true, //TravelForm is either completely filled or empty
   qr: '',
   flash: '',
   extraFlash: '',
@@ -70,6 +71,11 @@ const UserManager = (state = initialState, action) => {
       return {
         ...state,
         dataSharing: action.dataSharing
+      };
+    case USER_DATA.SET_TRAVEL_READY:
+      return {
+        ...state,
+        travelReady: action.travelReady
       };
     case USER_DATA.SET_QR:
       return {
