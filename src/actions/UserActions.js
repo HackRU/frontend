@@ -419,6 +419,8 @@ export const upResume = (userState) => (
 
 export const confirmAttendance = (userState) => (
   (dispatch) => {
+
+    let update = {'registration_status': 'coming'};
     fetch(resURLS.lcsUpdateURL, {
       method: 'POST',
       mode: 'cors',
@@ -428,7 +430,7 @@ export const confirmAttendance = (userState) => (
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        updates: {'$set': {'registration_status': 'coming'}},
+        updates: {'$set': update},
         user_email: userState.userInfoEmail,
         auth_email: userState.userInfoEmail,
         auth: userState.token 
@@ -465,6 +467,59 @@ export const confirmAttendance = (userState) => (
 export const cancelAttendance = (userState) => (
   (dispatch) => {
     
+    let update = {'registration_status': 'not-coming'};
+    if(userState.userInfo.travelling_from && userState.userInfo.travelling_from.is_real === true) {
+
+      //this person had previously requested for travel reimbursement
+      update['travelling_from.is_real'] = false;
+    }
+
+    fetch(resURLS.lcsUpdateURL, {
+      method: 'POST',
+      mode: 'cors',
+      credentials: 'omit',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        updates: {'$set': update},
+        user_email: userState.userInfoEmail,
+        auth_email: userState.userInfoEmail,
+        token: userState.token
+      })
+    }).then(data => data.json())
+      .then(resp => {
+        
+        if(resp.statusCode === 200) {
+          
+          //successful update
+          let user = userState.user;
+          dispatch(updateUser(user, 'registration_status', 'not_coming'));
+          
+          if(user.travelling_from) {
+            dispatch(updateUser(user, 'travelling_from', false));
+          }
+
+          dispatch({
+            type: USER_DATA.SET_UPPER_FLASH,
+            upperFlash: 'Attendance canceled.'
+          });
+
+        } else {
+        
+          //unsuccessful update
+          dispatch({
+            type: USER_DATA.SET_UPPER_FLASH, 
+            upperFlash: 'There was an issue with your cancellation:\n' + resp.body
+          });
+        }
+      })
+      .catch(err => {
+        
+        //unexpected error
+        dispatch(showCaughtError(err));
+      });
   }
 ); 
 

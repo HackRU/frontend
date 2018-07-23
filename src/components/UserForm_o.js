@@ -57,6 +57,7 @@ class UserForm extends React.Component {
         </CookiesProvider>,
         document.getElementById('register-root')
       );
+      //this goes in the sidebar
       ReactDOM.render(
         <span>
           <h3 className="text-center">Please login</h3>
@@ -85,6 +86,7 @@ class UserForm extends React.Component {
       return ;
     }
 
+    //this goes in the admin section
     ReactDOM.render(<CookiesProvider><Admin token={this.state.token}
       user={this.state.user}
     /></CookiesProvider>, document.getElementById('register-admin'));
@@ -136,7 +138,9 @@ class UserForm extends React.Component {
   logout() {
     const {cookies} = this.props;
     cookies.remove('authdata');
+    //taken care of
     ReactDOM.render(<CookiesProvider><App /></CookiesProvider> , document.getElementById('register-root'));
+    //this should go in the sidebar
     ReactDOM.render(<span><h3 className="text-center">Please login</h3></span> , document.getElementById('register-sidebar'));
     document.getElementById('profile-qr').setAttribute('src', 'img/wheel.png');
     document.getElementById('qr-border').setAttribute('style', 'display:none;');
@@ -521,6 +525,7 @@ class UserForm extends React.Component {
     });
   }
 
+  //done
   attending(e){
     fetch('https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/mlhtest/update', {
       method: 'POST',
@@ -580,6 +585,7 @@ class UserForm extends React.Component {
       });
   }
 
+  //not done
   notifyTransport(){
     if(!this.state.travelClean) return;
 
@@ -611,12 +617,14 @@ class UserForm extends React.Component {
       });
   }
 
+  //not done
   transMode(e){
     let newser = this.state.user;
     newser.travelling_from.mode = e.target.value;
     this.setState({user: newser});
   }
 
+  //not done
   render() {
     const formConfig = {
       'email': {
@@ -767,6 +775,7 @@ class UserForm extends React.Component {
     else if(userStatus && userStatus === 'comfirmation') userStatus = 'Pending Confirmation';
     else if(userStatus) userStatus = userStatus.replace('-', ' ');
 
+    //this goes in the side bar
     if(this.state.user){
       const github = (this.state.user && this.state.user.github)? this.state.user.github : '';
       ReactDOM.render(
