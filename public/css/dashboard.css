@@ -47,6 +47,7 @@ a:hover, a:focus, a:active {
 
 
 #profile-logo {
+    border-bottom: 1px solid #7852C9;
     width: 40%;
 }
 
@@ -61,16 +62,7 @@ a:hover, a:focus, a:active {
     height: 100%;
     overflow-y: scroll;
   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#7b4397+0,dc2430+100 */
-  background: #39275E;
-  /* Old browsers */
-  background: -moz-linear-gradient(-45deg, #39275E 0%, #7852C9 100%);
-  /* FF3.6-15 */
-  background: -webkit-linear-gradient(-45deg, #39275E 0%, #7852C9 100%);
-  /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(135deg, #39275E 0%, #7852C9 100%);
-  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='$color-purple', endColorstr='$color-red', GradientType=1);
-    background-attachment: fixed;
+  background: white;
 }
 
 
@@ -93,6 +85,7 @@ a:hover, a:focus, a:active {
 
 @media (min-width: 768px) {
   #profile-logo {
+      border-bottom: 1px solid #7852C9;
       width: 45%;
   }
 
@@ -106,19 +99,10 @@ a:hover, a:focus, a:active {
   #dashboard-profile {
       height: 100vh;
       overflow-y: hidden;
-  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#7b4397+0,dc2430+100 */
-  background: #39275E;
-  /* Old browsers */
-  background: -moz-linear-gradient(-45deg, #39275E 0%, #7852C9 100%);
-  /* FF3.6-15 */
-  background: -webkit-linear-gradient(-45deg, #39275E 0%, #7852C9 100%);
-  /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(135deg, #39275E 0%, #7852C9 100%);
-  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='$color-purple', endColorstr='$color-red', GradientType=1);
       padding-top: 20px;
       padding-bottom: 20px;
       position: fixed;
+      background: white;
   }
 
   .profile-text {
@@ -128,11 +112,11 @@ a:hover, a:focus, a:active {
 }
 
 .blue {
-  color: #fff242;
+  color: white;
 }
 
 .blue:hover {
-  color: #39275E;
+  color: #fff242;
 }
 
 .text-lg {
@@ -149,18 +133,20 @@ button {
 .content-section-title {
     color: white;
     font-weight: bold;
-  transform: skew(0deg, -4deg);
+    text-align: center;
 }
 
 .content-section-desc {
-    color: #white;
+    color: #7852C9;
     margin-top: 20px;
     padding: 20px;
-    background: #7852C9;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    border: 3px solid white;
 }
 
 .content-title {
-    color: #fff242;
+    color: white;
     font-weight: bold;
 }
 
@@ -169,11 +155,12 @@ button {
 }
 
 .content-desc a {
-    color: #fff242;
+    color: white;
+    font-weight: bold;
 }
 
 .content-desc a:hover {
-    color: #39275E;
+    color: #fff242;
 }
 
 .content-desc:not(:last-child) {
@@ -225,16 +212,15 @@ button {
     z-index: 1;
 }
 
-.u-highlight:after {
-    content: '';
+.u-highlight:before {
     position: absolute;
     top: 60%;
-    left: 7%;
-    height: 35%;
-    width: 100%;
-    background: #fff242;
-    opacity: 0.3;
+    left: 50%;
+    height: 100%;
+    width: 200px;
+    content: url("../assets/underline.png");
     z-index: -1;
+    margin-left: -100px;
 }
 
 .overlay-design {
@@ -254,7 +240,7 @@ button {
   text-transform: uppercase;
   word-wrap: break-word;
   white-space: initial;
-  color: black;
+  color: white;
 }
 
 .image-divider {
@@ -279,34 +265,41 @@ button {
   max-height: 125vh;
   overflow-y: scroll;
 }
- body {
-   transition: all 0.2s ease !important;
- }
 
- #all {
-   height: 100%;
-   display: none;
-   text-align:center;
- }
+body {
+  transition: all 0.2s ease !important;
+}
+
+#all {
+  height: 100%;
+  display: none;
+  text-align:center;
+}
 
  .sub, iframe {
    margin: 0 auto;
  }
 
 .btn-primary {
-    color: black;
-    background: #fff242;
-    border: none;
+    color: white;
+    background: rgba(255,255,255,0.0);
+    border: 3px solid white;
 }
 
 .btn-primary:hover {
     color: white;
-    background: #38275E;
-    border: none;
+    background: rgba(255,255,255,0.3);
+    border: 3px solid #fff242;
 }
 
 .btn-primary:hover .UC {
-    color: white;
+    color: #fff242;
+}
+
+.form-control {
+    border: 3px solid white;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.0);
 }
 
 @media (min-width: 768px) {
