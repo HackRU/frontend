@@ -254,6 +254,7 @@ button {
   text-transform: uppercase;
   word-wrap: break-word;
   white-space: initial;
+  color: black;
 }
 
 .image-divider {
@@ -292,6 +293,21 @@ button {
    margin: 0 auto;
  }
 
+.btn-primary {
+    color: black;
+    background: #fff242;
+    border: none;
+}
+
+.btn-primary:hover {
+    color: white;
+    background: #38275E;
+    border: none;
+}
+
+.btn-primary:hover .UC {
+    color: white;
+}
 
 @media (min-width: 768px) {
   #all {
