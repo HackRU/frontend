@@ -3,114 +3,29 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 
-import formConfig from 'resources/formConfig';
-
+import * as userActions from 'actions/UserActions';
+import TravelForm from 'component/TravelForm';
 
 class AttendancePrompt extends React.Component {
-
   
-  changeKeyByEvent = (e) => {
+  constructor(props) {
+    super(props);
+    this.reflectPrompt = this.reflectPrompt.bind(this);
+  }
+
+  confirmAttendance = (e) => {
     e.preventDefault();
-    const key = e.target.id.split('-')[1]; 
-    const value = e.target.value;
-    let user = this.props.userManager.userInfo;
-    this.props.updateUser(user, key, value);
+    this.props.confirmAttendance(this.props.userManager);
   }
 
-  changeKeyByArg = (key) => {
-    (selected) => {
-      const value = selected.value;
-      let user = this.props.userManager.userInfo;
-      this.props.updateUser(user, key, value);
-    };
+  cancelAttendance = (e) => {
+    e.preventDefault();
+    this.props.cancelAttendance(this.props.userManager);
   }
 
-  parseConfig = (key) => {
     
-    //return components based on configuration of each field
-    const user = this.props.userManager.userInfo;
-
-    if(!user[key]) {
-
-      //non-existing user key
-      console.log('Key ' + key + ' not found in user!');
-      return;
-    }
-    const field = formConfig[key];
-    if(!field) {
-      //text input not in formConfig
-      return (
-        <input className="form-control mx-3"
-          id={'input-'+ key}
-          onChange={this.changeKeyByEvent}
-          type="text"
-          required={field.required}
-          value={user[key]}
-        />
-      );
-    } else if(!field.select) {
-      //non-select input in formConfig
-      return (
-        <input className="form-control mx-3"
-          id={'input-'+ key}
-          onChange={this.changeKeyByEvent}
-          type={field.type}
-          required={field.required}
-          value={user[key]}
-        />
-      );
-    } else if(!field.searchFn && !field.create) {
-      //no ability to search or create new entries
-      return (
-        <Select className="form-control mx-3"
-          id={'input-' + key}
-          onChange={this.changeKeyByArg(key)}
-          options={field.options}
-          required={field.required}
-          value={user[key]}
-        />
-      );
-    } else if(!field.searchFn && field.create) {
-      //can create new entries but not search
-      return (
-        <Creatable className="form-control mx-3"
-          id={'input-' + key}
-          onChange={this.changeKeyByArg(key)}
-          options={field.options}
-          required={field.required}
-          value={user[key]}
-        />
-      );
-    } else if(field.searchFn && !field.create) {
-      //can search but not create new entries
-      return (
-        <Async className="form-control mx-3"
-          id={'input-' + key}
-          ignoreAccents
-          ignoreCase
-          loadOptions={field.searchFn}
-          matchPos="any"
-          onChange={this.changeKeyByArg(key)}
-          required={field.required}
-          value={user[key]}
-        />
-      );
-    } else {
-      //can search and create new entries
-      return (
-        <AsyncCreatable className="form-control mx-3"
-          id={'input-' + key}
-          loadOptions={field.searchFn}
-          onChange={this.changeKeyByArg(key)}
-          required={field.required}
-          value={user[key]}
-        />
-      );
-    }
-  }
-
-
   reflectPrompt = (userStatus) => {
     if(userStatus === 'checked in') {
 
@@ -123,37 +38,61 @@ class AttendancePrompt extends React.Component {
         </div>
       );
     } else if (userStatus !== 'pending' && userStatus !== 'waitlist' && userStatus !== 'checked in') {
+      //confirming
       return (
         <div> 
           <div className="blue">
-            <h3>{this.props.upperFlash}</h3>
+            <h3>{this.props.userManager.upperFlash}</h3>
           </div>
           <button className="btn btn-primary UC custom-btn p-3 my-1 mx-md-1"
-            onClick={this.props.attending}
+            onClick={this.props.confirmAttendance}
             type="button"
           >
             <h6 className="my-0">{'Attending'}</h6>
           </button>
           <button className="btn btn-primary UC custom-btn p-3 my-1"
-            onClick={this.props.notAttending}
+            onClick={this.props.cancelAttendance}
             type="button"
           >
             <h6 className="my-0">{'Not Attending'}</h6>
           </button>
-          <TravelForm user={this.props.user}/>
+          <TravelForm />
         </div>
       );
     }
-  
-  
   }
 
   render() {
 
+    let confirmation = this.reflectPrompt(this.props.userStatus);
     return (
-    
+      <div>
+        {confirmation}
+      </div>
     );
   }
 }
 
-export default AttendancePrompt;
+AttendancePrompt.propTypes = {
+  userStatus: PropTypes.string,
+  userManager: PropTypes.shape({
+    upperFlash: PropTypes.string
+  }).isRequired,
+  confirmAttendance: PropTypes.func.isRequired,
+  cancelAttendance: PropTypes.func.isRequired
+};
+
+function mapStateToProps(state) {
+  return {
+    userManager: state.userManager
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({
+    confirmAttendance: userActions.confirmAttendance,
+    cancelAttendance: userActions.cancelAttendance
+  }, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps) (AttendancePrompt);
