@@ -58,14 +58,24 @@ export const checkCookies = () => (
   }
 );
 
-export const updateUser = (user, key, value) => (
+export const updateUser = (userState, key, value) => (
   (dispatch) => {
 
+    let user = userState.userInfo;
     user[key] = value;
     dispatch({
       type: USER_DATA.SET_USER_INFO,
       userInfo: user
     });
+  }
+);
+
+export const updateTravel = (userState, key, value) => (
+  (dispatch) => {
+
+    let travellingFrom = userState.userInfo.travelling_from;
+    travellingFrom[key] = value;
+    dispatch(updateUser(userState, 'travelling_from', travellingFrom));
   }
 );
 
@@ -168,6 +178,7 @@ export const save = (userState) => (
         if(resp.statusCode === 200) {
 
           //save successful
+          dispatch(updateUser(userState, 'registration_status', user.registration_status));
           dispatch({
             type: USER_DATA.SET_FLASH,
             flash: 'Changes saved successfully'
@@ -441,8 +452,8 @@ export const confirmAttendance = (userState) => (
         if(resp.statusCode === 200) {
 
           //successful update
-          let user = userState.user;
-          dispatch(updateUser(user, 'registration_status', 'coming'));
+          let user = userState.userInfo;
+          dispatch(updateUser(userState, 'registration_status', 'coming'));
           dispatch({
             type: USER_DATA.SET_UPPER_FLASH,
             upperFlash: 'Attendance confirmed.'
@@ -494,18 +505,15 @@ export const cancelAttendance = (userState) => (
         if(resp.statusCode === 200) {
           
           //successful update
-          let user = userState.user;
-          dispatch(updateUser(user, 'registration_status', 'not_coming'));
+          dispatch(updateUser(userState, 'registration_status', 'not_coming'));
           
-          if(user.travelling_from) {
-            dispatch(updateUser(user, 'travelling_from', false));
+          if(userState.userInfo.travelling_from) {
+            dispatch(updateTravel(userState, 'is_real', false));
           }
-
           dispatch({
             type: USER_DATA.SET_UPPER_FLASH,
             upperFlash: 'Attendance canceled.'
           });
-
         } else {
         
           //unsuccessful update
@@ -522,6 +530,63 @@ export const cancelAttendance = (userState) => (
       });
   }
 ); 
+
+export const notifyTransport = (userState) => (
+  (dispatch) => {
+
+    if(userState.travelReady !== true) {
+
+      //do nothing, no notifications if the TravelForm is not ready
+      return;
+    }
+
+    //let travelMode = document.querySelector('input[name="preferred-transport"]:checked').value; //the fuck is this
+
+    let travellingFrom = userState.userInfo.travelling_from;
+    //travellingFrom.mode = travelMode; //the fuck is that
+
+    fetch(resURLS.lcsUpdateURL, {
+      method: 'POST',
+      mode: 'cors',
+      credentials: 'omit',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        updates: {'$set': {'travelling_from': travellingFrom}},
+        user_email: userState.userInfoEmail,
+        auth_email: userState.userInfoEmail,
+        token: userState.token
+      })
+    }).then(data => data.json())
+      .then(resp => {
+        
+        if(resp.statuscode === 200) {
+          
+          //successful update
+          dispatch(updateUser(userState, 'travelling_from', travellingFrom));
+          dispatch({
+            type: USER_DATA.SET_UPPER_FLASH,
+            upperFlash: 'Travel update successful.  Updates on reimbursement to follow.'
+          });
+        } else {
+
+          //unsuccessful update
+          dispatch({
+            type: USER_DATA.SET_UPPER_FLASH,
+            upperFlash: 'There was an issue updating travel your travel information:\n' + resp.body
+          });
+        }
+      }).
+      catch(err => {
+        
+        //unexpected error
+        dispatch(showCaughtError(err));
+      });
+  }
+);
+
 
 
 const readUser = (uEmail, uToken) => (
