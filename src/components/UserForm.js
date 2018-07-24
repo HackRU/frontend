@@ -55,9 +55,9 @@ class UserForm extends React.Component{
             <form className="form-group">
               <div className="text-center">
                 <h2 className="blue SC"> 
-                  {'Status: '+ status} 
+                  {'Status: ' + status} 
                 </h2>
-                <AttendancePrompt />
+                <AttendancePrompt userStatus={status}/>
               </div>
             </form>
           </div>
