@@ -553,7 +553,7 @@ class UserForm extends React.Component {
       });
   }
 
-  //not done
+  //done
   notAttending(e){
     let upd = {'registration_status': 'not-coming'};
     if(this.state.user.travelling_from && this.state.user.travelling_from.is_real) upd['travelling_from.is_real'] = false;

@@ -2,133 +2,34 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import formConfig from 'resources/formConfig';
-import * as userActions from 'actions/userActions'; 
-
+import AttendancePrompt from 'components/AttendancePrompt';
+import InfoPrompt from 'components/InfoPrompt';
 
 class UserForm extends React.Component{
 
   constructor(props) {
     super(props);
-    
+    this.getUserStatus = this.getUserStatus.bind(this);
   }
 
-
-  changeKeyByEvent = (e) => {
-    e.preventDefault();
-    const key = e.target.id.split('-')[1]; 
-    const value = e.target.value;
-    let user = this.props.userManager.userInfo;
-    this.props.updateUser(user, key, value);
-  }
-
-  changeKeyByArg = (key) => {
-    (selected) => {
-      const value = selected.value;
-      let user = this.props.userManager.userInfo;
-      this.props.updateUser(user, key, value);
-    };
-  }
-
-  parseConfig = (key) => {
-    
-    //return components based on configuration of each field
-    const user = this.props.userManager.userInfo;
-
-    if(!user[key]) {
-
-      //non-existing user key
-      console.log('Key ' + key + ' not found in user!');
-      return;
-    }
-    const field = formConfig[key];
-    if(!field) {
-      //text input not in formConfig
-      return (
-        <input className="form-control mx-3"
-          id={'input-'+ key}
-          onChange={this.changeKeyByEvent}
-          type="text"
-          required={field.required}
-          value={user[key]}
-        />
-      );
-    } else if(!field.select) {
-      //non-select input in formConfig
-      return (
-        <input className="form-control mx-3"
-          id={'input-'+ key}
-          onChange={this.changeKeyByEvent}
-          type={field.type}
-          required={field.required}
-          value={user[key]}
-        />
-      );
-    } else if(!field.searchFn && !field.create) {
-      //no ability to search or create new entries
-      return (
-        <Select className="form-control mx-3"
-          id={'input-' + key}
-          onChange={this.changeKeyByArg(key)}
-          options={field.options}
-          required={field.required}
-          value={user[key]}
-        />
-      );
-    } else if(!field.searchFn && field.create) {
-      //can create new entries but not search
-      return (
-        <Creatable className="form-control mx-3"
-          id={'input-' + key}
-          onChange={this.changeKeyByArg(key)}
-          options={field.options}
-          required={field.required}
-          value={user[key]}
-        />
-      );
-    } else if(field.searchFn && !field.create) {
-      //can search but not create new entries
-      return (
-        <Async className="form-control mx-3"
-          id={'input-' + key}
-          ignoreAccents
-          ignoreCase
-          loadOptions={field.searchFn}
-          matchPos="any"
-          onChange={this.changeKeyByArg(key)}
-          required={field.required}
-          value={user[key]}
-        />
-      );
-    } else {
-      //can search and create new entries
-      return (
-        <AsyncCreatable className="form-control mx-3"
-          id={'input-' + key}
-          loadOptions={field.searchFn}
-          onChange={this.changeKeyByArg(key)}
-          required={field.required}
-          value={user[key]}
-        />
-      );
-    }
-  }
-
-  userStatus = (userState) => {
+  getUserStatus = (user) => {
   
-    const status = userState && userState.registration_status;
-    
-    if(status && status === 'registered' || status === 'unregistered' || status === 'rejected') {
+    let status = user && user.registration_status;
+    if(status && (status === 'registered' || status === 'unregistered' || status === 'rejected')) {
+
+      //we don't show a rejection status
       status = 'pending';
     } else if(status && status === 'confirmation') {
+
+      //accepted and awaiting user confirmation
       status = 'pending confirmation';
     } else if(status) {
+
+      //use whatever's there
       status = status.replace('-', ' ');
     }
-
     return status;
   }
 
@@ -136,9 +37,8 @@ class UserForm extends React.Component{
 
   render() {
 
-    const userState = this.props.userManager.userInfo;
-    const status = this.userStatus(userState);
-
+    const user = this.props.userManager.userInfo;
+    const status = this.getUserStatus(user);
 
     return (   
       <div>
@@ -162,7 +62,7 @@ class UserForm extends React.Component{
             </form>
           </div>
         </div>
-        <InfoPrompts />
+        <InfoPrompt />
       </div>
     
     );
@@ -171,4 +71,18 @@ class UserForm extends React.Component{
 
 }
 
-export default UserForm;
+UserForm.propTypes = {
+  userManager: PropTypes.shape({
+    userInfo: PropTypes.shape({
+      registration_status: PropTypes.string
+    }).isRequired
+  }).isRequired
+};
+
+function mapStateToProps(state) {
+  return {
+    userManager: state.userManager,
+  };
+}
+
+export default connect(mapStateToProps, null) (UserForm);
