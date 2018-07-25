@@ -1,8 +1,6 @@
 //Dashboard.js
 import React from 'react';
 
-import { connect } from 'react-redux';
-
 import InfoSection from 'static/InfoSection';
 import ImportantLinks from 'static/ImportantLinks';
 

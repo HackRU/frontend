@@ -56,7 +56,7 @@ class AttendancePrompt extends React.Component {
           >
             <h6 className="my-0">{'Not Attending'}</h6>
           </button>
-          <TravelForm />
+          <TravelForm userStatus={userStatus}/>
         </div>
       );
     }

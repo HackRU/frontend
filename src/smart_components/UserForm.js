@@ -62,7 +62,7 @@ class UserForm extends React.Component{
             </form>
           </div>
         </div>
-        <InfoPrompt />
+        <InfoPrompt userStatus={status}/>
       </div>
     
     );
