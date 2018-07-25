@@ -74,6 +74,11 @@ export const updateTravel = (userState, key, value) => (
   (dispatch) => {
 
     let travellingFrom = userState.userInfo.travelling_from;
+    if(!travellingFrom || (typeof(travellingFrom) === 'string')) {
+
+      //no travel info yet
+      travellingFrom = {};
+    }
     travellingFrom[key] = value;
     dispatch(updateUser(userState, 'travelling_from', travellingFrom));
   }
@@ -452,7 +457,6 @@ export const confirmAttendance = (userState) => (
         if(resp.statusCode === 200) {
 
           //successful update
-          let user = userState.userInfo;
           dispatch(updateUser(userState, 'registration_status', 'coming'));
           dispatch({
             type: USER_DATA.SET_UPPER_FLASH,
@@ -531,7 +535,7 @@ export const cancelAttendance = (userState) => (
   }
 ); 
 
-export const notifyTransport = (userState) => (
+export const sendTravelInfo = (userState) => (
   (dispatch) => {
 
     if(userState.travelReady !== true) {
@@ -540,10 +544,10 @@ export const notifyTransport = (userState) => (
       return;
     }
 
-    //let travelMode = document.querySelector('input[name="preferred-transport"]:checked').value; //the fuck is this
+    //let travelMode = document.querySelector('input[name="preferred-transport"]:checked').value; 
 
     let travellingFrom = userState.userInfo.travelling_from;
-    //travellingFrom.mode = travelMode; //the fuck is that
+    //travellingFrom.mode = travelMode; 
 
     fetch(resURLS.lcsUpdateURL, {
       method: 'POST',
@@ -578,8 +582,8 @@ export const notifyTransport = (userState) => (
             upperFlash: 'There was an issue updating travel your travel information:\n' + resp.body
           });
         }
-      }).
-      catch(err => {
+      })
+      .catch(err => {
         
         //unexpected error
         dispatch(showCaughtError(err));
@@ -587,6 +591,90 @@ export const notifyTransport = (userState) => (
   }
 );
 
+export const toggleTravel = (userState) => (
+  (dispatch) => {
+
+    let user = userState.userInfo;
+    
+    let isReal = !(user.travelling_from && user.travelling_from.is_real); //toggle request status
+    
+    updateTravel(userState, 'is_real', isReal);
+
+    if(!isReal) {
+
+      //update when toggled off..?
+      fetch(resURLS.lcsUpdateURL, {
+        method: 'POST',
+        mode: 'cors', 
+        credentials: 'omit',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          updates: {'$set': {'travelling_from.is_real': false}},
+          user_email: userState.userInfoEmail,
+          auth_email: userState.userInfoEmail,
+          auth: userState.token
+        })
+      }).then(data => data.json())
+        .then(resp => {
+          
+          if(resp.statusCode === 200) {
+
+            //successful update
+            //state already updated
+          } else {
+
+            //unsuccessful update
+            dispatch({
+              type: USER_DATA.SET_UPPER_FLASH,
+              upperFlash: 'There was an issue updating your travel information:\n' + resp.body
+            });
+          }
+        })
+        .catch(err => {
+          
+          //unexpected error
+          dispatch(showCaughtError(err));
+        });
+    }
+  }
+);
+
+export const readyTravel = (ready) => (
+  (dispatch) => {
+    dispatch({
+      type: USER_DATA.SET_TRAVEL_READY,
+      travelReady: ready
+    });
+  }
+);
+
+export const finalizeTravel = (userState, place) => (
+  (dispatch) => {
+    
+    let travellingFrom = userState.userInfo.travelling_from;
+    if(!travellingFrom) {
+      
+      //no existing travel info yet, start with empty
+      travellingFrom = {};
+    }
+
+    if(!travellingFrom.location) {
+
+      //no existing location yet, start with empty
+      travellingFrom.location = {};
+    }
+
+    travellingFrom.location.lat = place.geometry.location.lat();
+    travellingFrom.location.lng = place.geometry.location.lng();
+    travellingFrom.formatted_address = place.formatted_address;
+
+    dispatch(updateUser(userState, 'travelling_from', travellingFrom));
+    dispatch(readyTravel(true));
+  }
+);
 
 
 const readUser = (uEmail, uToken) => (
