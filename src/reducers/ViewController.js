@@ -5,7 +5,8 @@ import { VIEW_CONTROL } from 'action_creators/ActionTypes';
 const initialState = {
   loggedIn: false,
   isAdmin: false,
-  applyForm: ''
+  applyForm: '', 
+  userStatus: ''
 };
 
 const ViewController = (state = initialState, action) => {
@@ -24,6 +25,11 @@ const ViewController = (state = initialState, action) => {
       return {
         ...state, 
         applyForm: action.applyForm
+      };
+    case VIEW_CONTROL.SET_STATUS:
+      return {
+        ...state,
+        userStatus: action.userStatus
       };
     default: 
       return state;
