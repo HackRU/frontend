@@ -5,8 +5,8 @@ import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import * as userActions from 'actions/UserActions';
-import TravelForm from 'component/TravelForm';
+import * as userActions from 'action_creators/UserActions';
+import TravelForm from 'smart_components/TravelForm';
 
 class AttendancePrompt extends React.Component {
   

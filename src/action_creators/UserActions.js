@@ -1,8 +1,8 @@
 //UserActions.js
 import { getCookie } from 'redux-cookie';
 
-import { USER_DATA } from 'actions/ActionTypes';
-import * as ViewActions from 'actions/ViewActions';
+import { USER_DATA } from 'action_creators/ActionTypes';
+import * as ViewActions from 'action_creators/ViewActions';
 
 import resURLS from 'resources/resURLS';
 import { uploadResume, downloadResume } from 'resources/resume.js';
@@ -11,7 +11,8 @@ export const checkCookies = () => (
   (dispatch) => {
     
     let authdata = dispatch(getCookie('authdata'));
-    if(!authdata || Date.parse(authdata.auth.valid_until) < Date.now()) {
+    console.log(authdata);
+    if(typeof(authdata) === 'undefined' || Date.parse(authdata.auth.valid_until) < Date.now()) {
       
       //not authorized or expired, logout
       dispatch(ViewActions.logoutUser());
@@ -31,27 +32,9 @@ export const checkCookies = () => (
         type: USER_DATA.SET_TOKEN,
         token: token
       });
+      dispatch(ViewActions.loginUser({body: authdata}));
 
-      //download the user's resume from S3
-      downloadResume(true, email, (resp, err) => {
-        dispatch(confirmResume(resp));        
-        if(resp === false ) {
-          
-          //problem with downloading
-          dispatch({
-            type: USER_DATA.SET_FLASH,
-            flash: err
-          });
-        } else {
- 
-          //successful download -- does this show ever?
-          dispatch({
-            type: USER_DATA.SET_FLASH,
-            flash: 'Resume found.'
-          });
-        }
-      });
-
+      
       //read in the user data from lcs
       dispatch(readUser(email, token));
     }
@@ -677,7 +660,7 @@ export const finalizeTravel = (userState, place) => (
 );
 
 
-const readUser = (uEmail, uToken) => (
+export const readUser = (uEmail, uToken) => (
   (dispatch) => {
 
     //read the specified user, the query email must match the user's email
@@ -701,13 +684,38 @@ const readUser = (uEmail, uToken) => (
         //on successful read, set state's user to data
         const user = data.body[0];
         dispatch({
-          action: USER_DATA.SET_USER_INFO,
+          type: USER_DATA.SET_USER_INFO,
           userInfo: user
         });
+
+        console.log('user set');
         //check for admin status
         dispatch(checkAdmin(user));
         //set the qr code
         dispatch(getQR(user));
+        //get resume
+
+        
+        //download the user's resume from S3
+        downloadResume(true, uEmail, (resp, err) => {
+          dispatch(confirmResume(resp));        
+          if(resp === false ) {
+            
+            //problem with downloading
+            dispatch({
+              type: USER_DATA.SET_FLASH,
+              flash: err
+            });
+          } else {
+   
+            //successful download -- does this show ever?
+            dispatch({
+              type: USER_DATA.SET_FLASH,
+              flash: 'Resume found.'
+            });
+          }
+        });
+
       })
       .catch(err => {
 

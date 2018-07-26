@@ -7,9 +7,19 @@ import { connect } from 'react-redux';
 
 import formConfig from 'resources/formConfig';
 
-import { Select, Creatable, AsyncCreatable, Async } from 'react-select';
+import * as userActions from 'action_creators/UserActions';
+
+import Select, { Creatable, AsyncCreatable, Async } from 'react-select';
 
 class InfoPrompt extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.changeKeyByEvent = this.changeKeyByEvent.bind(this);
+    this.changeKeyByArg = this.changeKeyByArg.bind(this);
+    this.upResume = this.upResume.bind(this);
+    this.save = this.save.bind(this);
+  }
 
   changeKeyByEvent = (e) => {
     e.preventDefault();
@@ -19,13 +29,26 @@ class InfoPrompt extends React.Component {
     this.props.updateUser(user, key, value);
   }
 
-  changeKeyByArg = (key) => {
+  changeKeyByArg = (key) => (
     (selected) => {
       const value = selected.value;
       let user = this.props.userManager.userInfo;
       this.props.updateUser(user, key, value);
-    };
+    }
+  )
+
+  upResume = (e) => {
+    e.preventDefault();
+    this.props.upResume(this.props.userManager);
   }
+
+  save = (e) => {
+    e.preventDefault();
+    this.props.save(this.props.userManager);
+  }
+
+  
+
 
   parseConfig = (key) => {  
     //return components based on configuration of each field
@@ -143,7 +166,7 @@ class InfoPrompt extends React.Component {
                           {key.replace(/_/g, ' ').toUpperCase()}
                         </h4>
                       </label>
-                      {this.parseInput(key)}
+                      {this.parseConfig(key)}
                     </div>
                   ))
               }
@@ -159,7 +182,7 @@ class InfoPrompt extends React.Component {
               </label>
               <textarea className="form-control mx-3"
                 id="input-short_answer"
-                onChange={this.onChange}
+                onChange={this.changeKeyByEvent}
                 value={(user)? user.short_answer : ''}
               />
             </div>
@@ -174,7 +197,7 @@ class InfoPrompt extends React.Component {
               </label>
               <input className="form-control mx-3"
                 id="resumeupload"
-                onChange={this.doResume}
+                onChange={this.upResume}
                 type="file"
               />
             </div>
@@ -252,4 +275,33 @@ class InfoPrompt extends React.Component {
   }
 }
 
-export default InfoPrompt;
+InfoPrompt.propTypes = {
+  userManager: PropTypes.shape({
+    userInfoEmail: PropTypes.string,
+    token: PropTypes.string,
+    hasResume: PropTypes.bool,
+    userInfo: PropTypes.object,
+    flash: PropTypes.string
+  }).isRequired,
+  updateUser: PropTypes.func.isRequired,
+  upResume: PropTypes.func.isRequired,
+  save: PropTypes.func.isRequired,
+  userStatus: PropTypes.string.isRequired
+};
+
+function mapStateToProps(state) {
+  return {
+    userManager: state.userManager
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({
+    updateUser: userActions.updateUser,
+    upResume: userActions.upResume,
+    save: userActions.save
+  }, dispatch);
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps) (InfoPrompt);

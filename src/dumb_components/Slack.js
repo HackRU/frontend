@@ -39,7 +39,7 @@ class SlackContainer extends React.Component {
       time: new Date(key.ts * 1000).toLocaleTimeString()
     });
 
-    return <SlackView messages={this.state.text.map(formatMessage)} />;
+    return <SlackView messages={this.state.dataIsBody.text.map(formatMessage)} />;
   }
 }
 

@@ -2,20 +2,32 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import LoginForm from 'components/LoginForm';
-import UserForm from 'components/UserForm';
+import { checkCookies } from 'action_creators/UserActions';
+
+import LoginForm from 'smart_components/LoginForm';
+import UserForm from 'smart_components/UserForm';
+
+
 
 class LoginManagement extends React.Component {
 
+  componentDidMount() {
+    //console.log('cookies check');
+    this.props.checkCookies();
+  }
+  
+  
+
   render() {
 
-    const isLoggedIn = this.props.viewController.isLoggedIn;
+    const loggedIn = this.props.viewController.loggedIn;
 
     let activeForm = null;
 
-    if(isLoggedIn === true) {
+    if(loggedIn === true) {
 
       //user form
       activeForm = <UserForm />;
@@ -36,8 +48,9 @@ class LoginManagement extends React.Component {
 
 LoginManagement.propTypes = {
   viewController: PropTypes.shape({
-    isLoggedIn: PropTypes.bool.isRequired
-  })
+    loggedIn: PropTypes.bool.isRequired
+  }),
+  checkCookies: PropTypes.func.isRequired
 };
 
 function mapStateToProps(state) {
@@ -46,4 +59,10 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, null) (LoginManagement);
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({
+    checkCookies: checkCookies
+  }, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps) (LoginManagement);
