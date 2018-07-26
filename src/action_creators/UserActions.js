@@ -1,7 +1,7 @@
 //UserActions.js
 import { getCookie } from 'redux-cookie';
 
-import { USER_DATA } from 'action_creators/ActionTypes';
+import { USER_DATA, VIEW_CONTROL } from 'action_creators/ActionTypes';
 import * as ViewActions from 'action_creators/ViewActions';
 
 import resURLS from 'resources/resURLS';
@@ -146,13 +146,15 @@ export const toggleShare = (checked) => (
 export const save = (userState) => (
   (dispatch) => {
 
-    let user = userState.user;
+    let user = userState.userInfo;
     if(userState.codeOfConduct && userState.dataSharing) {
       
       //the user has checked both boxes and can be set as registered in lcs
     
       user.registration_status = 'registered';
     }
+
+    console.log(user);
 
     fetch(resURLS.lcsUpdateURL, {
       method: 'POST',
@@ -695,12 +697,18 @@ export const readUser = (uEmail, uToken) => (
           type: USER_DATA.SET_USER_INFO,
           userInfo: user
         });
+        dispatch({
+          type: USER_DATA.SET_EMAIL,
+          email: user.email
+        });
 
         //console.log('user set');
         //check for admin status
         dispatch(checkAdmin(user));
+        //set the status
+        dispatch(getStatus(user));
         //set the qr code
-        dispatch(getQR(user));
+        dispatch(getQR(user.email));
         //get resume
 
         
@@ -730,6 +738,35 @@ export const readUser = (uEmail, uToken) => (
         //unexpected error
         dispatch(showCaughtError(err.toString()));
       });
+  }
+);
+
+const getStatus = (user) => (
+  (dispatch) => {
+
+    let status = user && user.registration_status;
+    if(status && (status === 'registered' || status === 'unregistered' || status === 'rejected')) {
+
+      //we don't show a rejection status
+      status = 'pending';
+    } else if(status && status === 'confirmation') {
+
+      //accepted and awaiting user confirmation
+      status = 'pending confirmation';
+    } else if(status) {
+
+      //use whatever's there
+      status = status.replace('-', ' ');
+    } else {
+
+      //none of the above, not set yet
+      status = 'Loading';//kind of hacky
+    }
+
+    dispatch({
+      type: VIEW_CONTROL.SET_STATUS,
+      userStatus: status
+    });
   }
 );
 

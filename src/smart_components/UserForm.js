@@ -2,50 +2,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import AttendancePrompt from 'smart_components/AttendancePrompt';
 import InfoPrompt from 'smart_components/InfoPrompt';
 
-import { checkCookies } from 'action_creators/UserActions';
 
 class UserForm extends React.Component{
 
-  constructor(props) {
-    super(props);
-    this.getUserStatus = this.getUserStatus.bind(this);
-  }
-
   
-  getUserStatus = (user) => {
-  
-    let status = user && user.registration_status;
-    if(status && (status === 'registered' || status === 'unregistered' || status === 'rejected')) {
-
-      //we don't show a rejection status
-      status = 'pending';
-    } else if(status && status === 'confirmation') {
-
-      //accepted and awaiting user confirmation
-      status = 'pending confirmation';
-    } else if(status) {
-
-      //use whatever's there
-      status = status.replace('-', ' ');
-    } else {
-      
-      status = 'Loading';j //kind of hacky
-    }
-    return status;
-  }
-
-
 
   render() {
 
-    const user = this.props.userManager.userInfo;
-    const status = this.getUserStatus(user);
+    let status = this.props.viewController.userStatus;
 
     return (   
       <div>
@@ -84,19 +53,16 @@ UserForm.propTypes = {
       registration_status: PropTypes.string
     }).isRequired
   }).isRequired,
-  checkCookies: PropTypes.func.isRequired
+  viewController: PropTypes.shape({
+    userStatus: PropTypes.string
+  }).isRequired
 };
 
 function mapStateToProps(state) {
   return {
     userManager: state.userManager,
+    viewController: state.viewController
   };
 }
 
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({
-    checkCookies: checkCookies
-  }, dispatch);
-}
-
-export default connect(mapStateToProps, mapDispatchToProps) (UserForm);
+export default connect(mapStateToProps, null) (UserForm);

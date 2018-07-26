@@ -27,15 +27,23 @@ class InfoPrompt extends React.Component {
     e.preventDefault();
     const key = e.target.id.split('-')[1]; 
     const value = e.target.value;
-    let user = this.props.userManager.userInfo;
+    let user = this.props.userManager;
     this.props.updateUser(user, key, value);
   }
 
   changeKeyByArg = (key) => (
     (selected) => {
-      const value = selected.value;
-      let user = this.props.userManager.userInfo;
-      this.props.updateUser(user, key, value);
+      if(selected !== null) {
+
+        //not a clear
+        const value = selected.value;
+        let user = this.props.userManager;
+        this.props.updateUser(user, key, value);
+      } else {
+
+        let user = this.props.userManager;
+        this.props.updateUser(user, key, '');
+      }
     }
   )
 
@@ -60,14 +68,15 @@ class InfoPrompt extends React.Component {
   parseConfig = (key) => {  
     //return components based on configuration of each field
     const user = this.props.userManager.userInfo;
-
-    if(!user[key]) {
+    
+    if(typeof(user[key]) === 'undefined') {
 
       //non-existing user key
       console.log('Key ' + key + ' not found in user!');
       return;
     }
     const field = formConfig[key];
+    //console.log(field);
     if(!field) {
       //text input not in formConfig
       return (
