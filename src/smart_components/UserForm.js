@@ -35,7 +35,7 @@ class UserForm extends React.Component{
       status = status.replace('-', ' ');
     } else {
       
-      status = 'unregistered';
+      status = 'Loading';j //kind of hacky
     }
     return status;
   }

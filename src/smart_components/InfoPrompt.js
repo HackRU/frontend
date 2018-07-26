@@ -8,6 +8,7 @@ import { connect } from 'react-redux';
 import formConfig from 'resources/formConfig';
 
 import * as userActions from 'action_creators/UserActions';
+import { logoutUser } from 'action_creators/ViewActions';
 
 import Select, { Creatable, AsyncCreatable, Async } from 'react-select';
 
@@ -18,6 +19,7 @@ class InfoPrompt extends React.Component {
     this.changeKeyByEvent = this.changeKeyByEvent.bind(this);
     this.changeKeyByArg = this.changeKeyByArg.bind(this);
     this.upResume = this.upResume.bind(this);
+    this.logout = this.logout.bind(this);
     this.save = this.save.bind(this);
   }
 
@@ -40,6 +42,11 @@ class InfoPrompt extends React.Component {
   upResume = (e) => {
     e.preventDefault();
     this.props.upResume(this.props.userManager);
+  }
+
+  logout = (e) => {
+    e.preventDefault();
+    this.props.logoutUser();
   }
 
   save = (e) => {
@@ -214,7 +221,7 @@ class InfoPrompt extends React.Component {
                 <label className="form-check-label"
                   htmlFor="code-of-conduct-box"
                 >
-                  {'I agree to abide by the'} 
+                  {'I agree to abide by the '} 
                   <a className="blue" 
                     href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf"
                   >
@@ -230,13 +237,13 @@ class InfoPrompt extends React.Component {
                 <label className="form-check-label"
                   htmlFor="data-sharing-box"
                 >
-                  {'I agree to the terms of both the'} 
+                  {'I agree to the terms of both the '} 
                   <a className="blue"
                     href="https://github.com/MLH/mlh-policies/tree/master/prize-terms-and-conditions"
                   >
                     {'MLH Contest Terms and Conditions'}
                   </a>
-                  {'and'} 
+                  {' and '} 
                   <a className="blue"
                     href="https://mlh.io/privacy"
                   >
@@ -254,6 +261,14 @@ class InfoPrompt extends React.Component {
             </div>
             <div className="col-12 text-center">
               <button className="btn btn-primary UC custom-btn mx-2 p-3"
+                onClick={this.logout}
+                type="button"
+              >
+                <h6 className="my-1">
+                  {'Logout'}
+                </h6>
+              </button>
+              <button className="btn btn-primary UC custom-btn p-3"
                 onClick={this.save}
                 type="button"
               >
@@ -285,6 +300,7 @@ InfoPrompt.propTypes = {
   }).isRequired,
   updateUser: PropTypes.func.isRequired,
   upResume: PropTypes.func.isRequired,
+  logoutUser: PropTypes.func.isRequired,
   save: PropTypes.func.isRequired,
   userStatus: PropTypes.string.isRequired
 };
@@ -299,6 +315,7 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators({
     updateUser: userActions.updateUser,
     upResume: userActions.upResume,
+    logoutUser: logoutUser,
     save: userActions.save
   }, dispatch);
 }
