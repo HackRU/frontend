@@ -35,11 +35,9 @@ class App extends React.Component {
     
 
     return (
-      <div>
-        <Provider store={store}>		
-          <Dashboard />
-        </Provider>
-      </div>
+      <Provider store={store}>		
+        <Dashboard />
+      </Provider>
     );
   }
 }

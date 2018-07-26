@@ -29,10 +29,10 @@ class Dashboard extends React.Component {
   
   render() {
 
-    
+    const Fragment = React.Fragment;
 
     return (
-      <div>
+      <Fragment>
         {/*BEGIN LEFT SIDE OF DASHBOARD*/}
         <DashboardProfile />
         {/*END LEFT SIDE OF DASHBOARD*/}
@@ -112,7 +112,7 @@ class Dashboard extends React.Component {
             </div>
           </div>
         </div>
-      </div>
+      </Fragment>
     );
   }
 }
