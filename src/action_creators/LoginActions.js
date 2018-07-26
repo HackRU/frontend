@@ -1,9 +1,9 @@
 //LoginActions.js
 import { getCookie } from 'redux-cookie';
 
-import { LOGIN_MNGMNT } from 'actions/ActionTypes';
+import { LOGIN_MNGMNT } from 'action_creators/ActionTypes';
 
-import { loginUser } from 'actions/ViewActions';
+import { loginUser } from 'action_creators/ViewActions';
 
 import resURLS from 'resources/resURLS';
 
@@ -58,8 +58,8 @@ export const checkURL = () => (
     
       //grab the auth data from the cookie
       const authdata = dispatch(getCookie('authdata'));
-      //console.log(auth);
-      if(authdata.auth && Date.parse(authdata.auth.valid_until) > Date.now()) {
+      //console.log(authdata);
+      if(typeof(authdata) !== 'undefined' && Date.parse(authdata.auth.valid_until) > Date.now()) {
         
         //the data is still valid
         dispatch(loginUser({body: JSON.stringify(authdata)}));
@@ -295,7 +295,7 @@ const loginPostFetch = (data) => (
     } else {
 
       //successful authorization
-      dispatch(loginUser({body: data}));
+      dispatch(loginUser({body: data.body}));
     }
   }
 );

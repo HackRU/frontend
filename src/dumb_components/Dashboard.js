@@ -1,16 +1,16 @@
 //Dashboard.js
 import React from 'react';
 
-import InfoSection from 'static/InfoSection';
-import ImportantLinks from 'static/ImportantLinks';
-
 import 'styles/index.css';
 import 'styles/App.css';
 
+import DashboardProfile from 'dumb_components/DashboardProfile';
+import Events from 'dumb_components/Events';
+import InfoSection from 'dumb_components/InfoSection';
+import ImportantLinks from 'dumb_components/ImportantLinks';
+import SlackContainer from 'dumb_components/Slack';
 
-import DashboardProfile from 'components/DashboardProfile';
-
-import LoginManagement from 'containers/LoginManagement';
+import LoginManagement from 'smart_components/LoginManagement';
 
 //import Slack from 'components/Slack';
 //import Events from 'components/Events';
@@ -44,7 +44,7 @@ class Dashboard extends React.Component {
                 <h2 className="content-section-title">
                   <i className="fas fa-bullhorn fa-fw" /> <span className="u-highlight">{'Announcements'}</span></h2>
                 <div className="content-section-desc" id="announcements-list">
-                  {'Slack'} {/*Slack component goes here*/}
+                  <SlackContainer /> {/*Slack component goes here*/}
                 </div>
               </div>
             </div>
@@ -54,7 +54,7 @@ class Dashboard extends React.Component {
                   <i className="fas fa-calendar-alt fa-fw" /> 
                   <span className="u-highlight">{'Upcoming'}</span></h2>
                 <div className="content-section-desc" id="upcoming-list">
-                  {'Events'} {/*Events component goes here*/}
+                  <Events /> {/*Events component goes here*/}
                 </div>
               </div>
             </div>

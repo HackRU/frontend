@@ -1,5 +1,5 @@
 //ViewController.js
-import { VIEW_CONTROL } from 'actions/ActionTypes';
+import { VIEW_CONTROL } from 'action_creators/ActionTypes';
 
 //what we want to manage
 const initialState = {

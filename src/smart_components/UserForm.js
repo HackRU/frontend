@@ -2,10 +2,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import AttendancePrompt from 'components/AttendancePrompt';
-import InfoPrompt from 'components/InfoPrompt';
+import AttendancePrompt from 'smart_components/AttendancePrompt';
+import InfoPrompt from 'smart_components/InfoPrompt';
+
+import { checkCookies } from 'action_creators/UserActions';
 
 class UserForm extends React.Component{
 
@@ -14,6 +17,7 @@ class UserForm extends React.Component{
     this.getUserStatus = this.getUserStatus.bind(this);
   }
 
+  
   getUserStatus = (user) => {
   
     let status = user && user.registration_status;
@@ -29,6 +33,9 @@ class UserForm extends React.Component{
 
       //use whatever's there
       status = status.replace('-', ' ');
+    } else {
+      
+      status = 'unregistered';
     }
     return status;
   }
@@ -76,7 +83,8 @@ UserForm.propTypes = {
     userInfo: PropTypes.shape({
       registration_status: PropTypes.string
     }).isRequired
-  }).isRequired
+  }).isRequired,
+  checkCookies: PropTypes.func.isRequired
 };
 
 function mapStateToProps(state) {
@@ -85,4 +93,10 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, null) (UserForm);
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({
+    checkCookies: checkCookies
+  }, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps) (UserForm);

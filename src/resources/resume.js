@@ -1,5 +1,5 @@
 import AWS from 'aws-sdk';
-import {config_resume} from './config_resume.js';
+import { config_resume } from 'resources/config_resume.js';
 
 var s3 = new AWS.S3({
   accessKeyId: config_resume.keyId,
@@ -70,22 +70,30 @@ function download(email, callback) {
 }
 
 function downloadResume(hacker, userEmail, callback) {
+  
+  
+  
+  function iterate(emails, idx, acc){
+    if(idx >= emails.length) callback(true, acc);
+
+    function innerCallback(worked, value){
+      acc[worked][emails[idx]] = value;
+      iterate(emails, idx + 1, acc);
+    }
+
+    download(emails[idx], innerCallback);
+  }
+  
+  
   if(hacker) {
     return download(userEmail, callback);
   } else {
-    function iterate(emails, idx, acc){
-      if(idx >= emails.length) callback(true, acc);
-
-      function innerCallback(worked, value){
-        acc[worked][emails[idx]] = value;
-        iterate(emails, idx + 1, acc);
-      }
-
-      download(emails[idx], innerCallback);
-    }
 
     iterate(userEmail, 0, {true: {}, false: {}});
   }
 }
+
+
+
 
 export {uploadResume, downloadResume};

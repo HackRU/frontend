@@ -185,11 +185,11 @@ TravelForm.propTypes = {
     flash: PropTypes.string,
     upperFlash: PropTypes.string
   }).isRequired,
-  finalizeTravel: PropTypes.func,
-  readyTravel: PropTypes.func,
-  toggleTravel: PropTypes.func,
-  updateTravel: PropTypes.func,
-  userStatus: PropTypes.string
+  finalizeTravel: PropTypes.func.isRequired,
+  readyTravel: PropTypes.func.isRequired,
+  toggleTravel: PropTypes.func.isRequired,
+  updateTravel: PropTypes.func.isRequired,
+  userStatus: PropTypes.string.isRequired
 };
 
 function mapStateToProps(state) {

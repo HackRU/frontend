@@ -1,12 +1,14 @@
 //ViewActions.js
-import { setCookie, removeCookie } from 'redux-cookie';
+import { setCookie, getCookie, removeCookie } from 'redux-cookie';
 
-import { VIEW_CONTROL } from 'actions/ActionTypes';
+import { VIEW_CONTROL } from 'action_creators/ActionTypes';
 
+import { readUser } from 'action_creators/UserActions';
 
 export const loginUser = (data) => (
   (dispatch) => {
 
+    //console.log(data.body);
     const body = JSON.parse(data.body);
 
     //set the authdata cookie
@@ -16,6 +18,12 @@ export const loginUser = (data) => (
       type: VIEW_CONTROL.SET_LOGIN_STATUS,
       loggedIn: true
     });
+
+
+    var x = dispatch(getCookie('authdata'));
+    console.log(x);
+
+    dispatch(readUser(body.auth.email, body.auth.token));
   }
 );
 

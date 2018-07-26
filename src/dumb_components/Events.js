@@ -45,16 +45,18 @@ class Events extends React.Component {
       <div className="">
         {this.state.summary && this.state.summary.map(key =>
           <span>
-            <h5 className="content-title">{(key.summary)}</h5>
-            <p className="content-desc mb-3"> <span className="font-weight-bold">
-
-              {day(key.start.dateTime)} {tConvert(time(key.start.dateTime))} - {tConvert(time(key.end.dateTime))} </span><br/>
+            <h5 className="content-title">
+              {(key.summary)}
+            </h5>    
+            <p className="content-desc mb-3">   
+              <span className="font-weight-bold">
+                {day(key.start.dateTime)} {tConvert(time(key.start.dateTime))} - {tConvert(time(key.end.dateTime))} 
+              </span>
+              <br/> 
               {key.location && ' Location: ' + key.location}
             </p>
-
-          </span>
+          </span>        
         )}
-
       </div>
     );
   }

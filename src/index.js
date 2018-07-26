@@ -11,7 +11,7 @@ import { createCookieMiddleware } from 'redux-cookie';
 import 'styles/index.css';
 import 'styles/App.css';
 
-import Dashboard from 'containers/Dashboard';
+import Dashboard from 'dumb_components/Dashboard';
 
 import rootReducer from 'reducers/rootReducer';
 import registerServiceWorker from 'registerServiceWorker';

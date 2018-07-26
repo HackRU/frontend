@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import * as loginActions from 'actions/LoginActions';
+import * as loginActions from 'action_creators/LoginActions';
 
 
 class LoginForm extends React.Component {
@@ -18,7 +18,6 @@ class LoginForm extends React.Component {
     this.signUp = this.signUp.bind(this);
     this.login = this.login.bind(this);
     //this.onMlhLogin = this.onMlhLogin.bind(this);
-
   }
 
 
@@ -154,8 +153,8 @@ LoginForm.propTypes = {
   changePassword: PropTypes.func.isRequired,
   resetPassword: PropTypes.func.isRequired,
   signUp: PropTypes.func.isRequired,
-  login: PropTypes.func.isRequired,
-  mlhLogin: PropTypes.func.isRequired
+  login: PropTypes.func.isRequired
+  //mlhLogin: PropTypes.func.isRequired not in use
 
 };
 
@@ -172,8 +171,8 @@ function mapDispatchToProps(dispatch) {
     changePassword: loginActions.changePassword,
     resetPassword: loginActions.resetPassword,
     signUp: loginActions.signUp,
-    login: loginActions.login,
-    mlhLogin: loginActions.mlhLogin
+    login: loginActions.login
+    //mlhLogin: loginActions.mlhLogin not in use
   }, dispatch);
 }
 

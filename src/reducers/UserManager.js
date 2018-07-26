@@ -1,16 +1,16 @@
 //UserManager.js
-import { USER_DATA } from 'actions/ActionTypes';
+import { USER_DATA } from 'action_creators/ActionTypes';
 
 //what we want to manage
 const initialState = {
   userInfoEmail: '',
   token: '',
   hasResume: false,
-  userInfo: null,
-  mentorInfo: null, //NOT IN USE
-  mentorTimes: null, //NOT IN USE
+  userInfo: {},
+  mentorInfo: {}, //NOT IN USE
+  mentorTimes: {}, //NOT IN USE
   volunteerArea: '', //NOT IN USE
-  volunteerTimes: null, //NOT IN USE
+  volunteerTimes: {}, //NOT IN USE
   codeOfConduct: false,
   dataSharing: false,
   travelReady: true, //TravelForm is either completely filled or empty
