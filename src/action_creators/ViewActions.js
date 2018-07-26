@@ -9,21 +9,20 @@ export const loginUser = (data) => (
   (dispatch) => {
 
     //console.log(data.body);
-    const body = JSON.parse(data.body);
-
+    const body = JSON.parse(data.body); //turn string to Object
+      
     //set the authdata cookie
-    dispatch(setCookie(body, 'authdata'));
+    dispatch(setCookie('authdata', body));
 
     dispatch({
       type: VIEW_CONTROL.SET_LOGIN_STATUS,
       loggedIn: true
     });
 
+    //console.log(typeof(authdata));
 
-    var x = dispatch(getCookie('authdata'));
-    console.log(x);
-
-    dispatch(readUser(body.auth.email, body.auth.token));
+    var authdata = JSON.parse(dispatch(getCookie('authdata')));
+    dispatch(readUser(authdata.auth.email, authdata.auth.token));
   }
 );
 

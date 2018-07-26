@@ -52,17 +52,21 @@ export const checkURL = () => (
           });
           */
 
-          dispatch(showCaughtError('MLH-assigned magic links are not curently supported!'));
+          dispatch(showCaughtError('MLH-assigned magic links are not currently supported!'));
         }
       } 
     
       //grab the auth data from the cookie
-      const authdata = dispatch(getCookie('authdata'));
-      //console.log(authdata);
-      if(typeof(authdata) !== 'undefined' && Date.parse(authdata.auth.valid_until) > Date.now()) {
-        
-        //the data is still valid
-        dispatch(loginUser({body: JSON.stringify(authdata)}));
+      let authdata = dispatch(getCookie('authdata'));
+      
+      if(typeof(authdata) === 'string') {
+
+        authdata = JSON.parse(authdata);
+        if(authdata && Date.parse(authdata.auth.valid_until) > Date.now()) {
+
+          //still valid
+          dispatch(loginUser({body: JSON.stringify(authdata)}));
+        }
       }
     }
   }
@@ -207,7 +211,7 @@ export const signUp = (user) => (
           if(data.statusCode === 200) {
 
             //successful creation
-            dispatch(loginUser({body: data}));
+            dispatch(loginUser({body: data.body}));
           } else if(data.body === 'Duplicate user!') {
 
             //duplicate user
@@ -295,7 +299,7 @@ const loginPostFetch = (data) => (
     } else {
 
       //successful authorization
-      dispatch(loginUser({body: data.body}));
+      dispatch(loginUser({body: data.body})); 
     }
   }
 );

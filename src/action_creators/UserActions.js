@@ -11,32 +11,40 @@ export const checkCookies = () => (
   (dispatch) => {
     
     let authdata = dispatch(getCookie('authdata'));
-    console.log(authdata);
-    if(typeof(authdata) === 'undefined' || Date.parse(authdata.auth.valid_until) < Date.now()) {
-      
-      //not authorized or expired, logout
-      dispatch(ViewActions.logoutUser());
+    //console.log(authdata);
+    
+    if(typeof(authdata) === 'string') {
 
-      //should also be seen in sidebar
+      authdata = JSON.parse(authdata);
+      if(Date.parse(authdata.auth.valid_until < Date.now())) {
+        
+        //invalid token
+        dispatch(ViewActions.logoutUser());
+
+        //should also be seen in sidebar
+      } else {
+
+        //token is still valid
+        const email = authdata.auth.email;
+        const token = authdata.auth.token;
+
+        dispatch({
+          type: USER_DATA.SET_EMAIL,
+          email: email
+        });
+        dispatch({
+          type: USER_DATA.SET_TOKEN,
+          token: token
+        });
+        dispatch(ViewActions.loginUser({body: JSON.stringify(authdata)})); 
+        
+        //read in the user data from lcs
+        dispatch(readUser(email, token));
+      }
     } else {
 
-      //token is still valid
-      const email = authdata.auth.email;
-      const token = authdata.auth.token;
-
-      dispatch({
-        type: USER_DATA.SET_EMAIL,
-        email: email
-      });
-      dispatch({
-        type: USER_DATA.SET_TOKEN,
-        token: token
-      });
-      dispatch(ViewActions.loginUser({body: authdata}));
-
-      
-      //read in the user data from lcs
-      dispatch(readUser(email, token));
+      //no authorization
+      dispatch(ViewActions.logoutUser());
     }
   }
 );
@@ -688,7 +696,7 @@ export const readUser = (uEmail, uToken) => (
           userInfo: user
         });
 
-        console.log('user set');
+        //console.log('user set');
         //check for admin status
         dispatch(checkAdmin(user));
         //set the qr code
