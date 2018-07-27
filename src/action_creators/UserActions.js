@@ -713,14 +713,14 @@ export const readUser = (uEmail, uToken) => (
 
         
         //download the user's resume from S3
-        downloadResume(true, uEmail, (resp, err) => {
+        downloadResume(true, uEmail, (resp, err, mes) => {
           dispatch(confirmResume(resp));        
           if(resp === false ) {
             
             //problem with downloading
             dispatch({
               type: USER_DATA.SET_FLASH,
-              flash: err
+              flash: err + ' ' + mes
             });
           } else {
    
@@ -791,7 +791,7 @@ const confirmResume = (hasResume) => (
     
     dispatch({
       type: USER_DATA.HAS_RESUME, 
-      resume: hasResume
+      hasResume: hasResume
     });
   }
 );

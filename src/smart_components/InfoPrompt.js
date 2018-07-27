@@ -152,9 +152,10 @@ class InfoPrompt extends React.Component {
 
   render() {
 
+    const Fragment = React.Fragment;
     let prompts = '';
     let user = this.props.userManager.userInfo;
-
+    
     if(user && this.props.userStatus !== 'checked in') {
       
       //user has not checked in yet, render the prompts
@@ -169,132 +170,136 @@ class InfoPrompt extends React.Component {
             </span>
           </h2>
           <div className="content-section-desc your-info">
-            <span>
-              {user && 
-                  Object.keys(formConfig).map(key => (
-                    <div className="form-group row mb-4"
-                      key={key}
-                    >
-                      <label className="col-lg-8"
-                        htmlFor={'input-' + key}
+            <form>  
+              <span>
+                {user && 
+                    Object.keys(formConfig).map(key => (
+                      <div className="form-group row mb-4"
+                        key={key}
                       >
-                        <h4 className="font-weight-bold blue">
-                          {key.replace(/_/g, ' ').toUpperCase()}
-                        </h4>
-                      </label>
-                      {this.parseConfig(key)}
-                    </div>
-                  ))
-              }
-            </span>
-            <div className="form-group row my-2">
-              <label className="col-lg-8"
-                htmlFor="resumeupload"
-              >
-                <h4 className="font-weight-bold blue">
-                  {'SHORT ANSWER:'}
-                </h4> 
-                {'What are you looking for from your experience at HackRU?'}
-              </label>
-              <textarea className="form-control mx-3"
-                id="input-short_answer"
-                onChange={this.changeKeyByEvent}
-                value={(user)? user.short_answer : ''}
-              />
-            </div>
-            <div className="form-group row my-2">
-              <label className="col-lg-8"
-                htmlFor="resumeupload"
-              >
-                <h4 className="font-weight-bold blue">
-                  {'RESUME'}
+                        <label className="col-lg-8"
+                          htmlFor={'input-' + key}
+                        >
+                          <h4 className="font-weight-bold blue">
+                            {key.replace(/_/g, ' ').toUpperCase()}
+                          </h4>
+                        </label>
+                        {this.parseConfig(key)}
+                      </div>
+                    ))
+                }
+              </span>
+              <div className="form-group row my-2">
+                <label className="col-lg-8"
+                  htmlFor="resumeupload"
+                >
+                  <h4 className="font-weight-bold blue">
+                    {'SHORT ANSWER:'}
+                  </h4> 
+                  {'What are you looking for from your experience at HackRU?'}
+                </label>
+                <textarea className="form-control mx-3"
+                  id="input-short_answer"
+                  onChange={this.changeKeyByEvent}
+                  value={(user)? user.short_answer : ''}
+                />
+              </div>
+              <div className="form-group row my-2">
+                <label className="col-lg-8"
+                  htmlFor="resumeupload"
+                >
+                  <h4 className="font-weight-bold blue">
+                    {'RESUME'}
+                  </h4>
+                  {(this.props.userManager.hasResume)? 'You have uploaded a resume already.': 'Please upload a copy!'}
+                </label>
+                <input className="form-control mx-3"
+                  id="resumeupload"
+                  onChange={this.upResume}
+                  type="file"
+                />
+              </div>
+              {user && user.registration_status === 'unregistered' &&
+              <div className="form-group row my-2 mx-1">
+                <h4 className="col-12 font-weight-bold blue mb-2">
+                  {'MLH NOTICES'}
                 </h4>
-                {(this.props.userManager.hasResume)? 'You have uploaded a resume already.': 'Please upload a copy!'}
-              </label>
-              <input className="form-control mx-3"
-                id="resumeupload"
-                onChange={this.upResume}
-                type="file"
-              />
-            </div>
-            {user && user.registration_status === 'unregistered' &&
-            <div className="form-group row my-2 mx-1">
-              <h4 className="col-12 font-weight-bold blue mb-2">
-                {'MLH NOTICES'}
-              </h4>
-              <div className="col-12 form-check mb-4">
-                <input className="form-check-input mr-4"
-                  id="code-of-conduct-box"
-                  type="checkbox"
-                />
-                <label className="form-check-label"
-                  htmlFor="code-of-conduct-box"
-                >
-                  {'I agree to abide by the '} 
-                  <a className="blue" 
-                    href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf"
+                <div className="col-12 form-check mb-4">
+                  <input className="form-check-input mr-4"
+                    id="code-of-conduct-box"
+                    type="checkbox"
+                  />
+                  <label className="form-check-label"
+                    htmlFor="code-of-conduct-box"
                   >
-                    {'MLH code of conduct.'}
-                  </a>
-                </label>
+                    {'I agree to abide by the '} 
+                    <a className="blue" 
+                      href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf"
+                    >
+                      {'MLH code of conduct.'}
+                    </a>
+                  </label>
+                </div>
+                <div className="form-check form-check-inline">
+                  <input className="form-check-input mr-4"
+                    id="data-sharing-box"
+                    type="checkbox"
+                  />
+                  <label className="form-check-label"
+                    htmlFor="data-sharing-box"
+                  >
+                    {'I agree to the terms of both the '} 
+                    <a className="blue"
+                      href="https://github.com/MLH/mlh-policies/tree/master/prize-terms-and-conditions"
+                    >
+                      {'MLH Contest Terms and Conditions'}
+                    </a>
+                    {' and '} 
+                    <a className="blue"
+                      href="https://mlh.io/privacy"
+                    >
+                      {'the MLH Privacy Policy'}
+                    </a>
+                    {'. Please note that you may receive pre and post-event informational e-mails and occasional messages about hackathons from MLH as per the MLH Privacy Policy.'}
+                  </label>
+                </div>
               </div>
-              <div className="form-check form-check-inline">
-                <input className="form-check-input mr-4"
-                  id="data-sharing-box"
-                  type="checkbox"
-                />
-                <label className="form-check-label"
-                  htmlFor="data-sharing-box"
-                >
-                  {'I agree to the terms of both the '} 
-                  <a className="blue"
-                    href="https://github.com/MLH/mlh-policies/tree/master/prize-terms-and-conditions"
-                  >
-                    {'MLH Contest Terms and Conditions'}
-                  </a>
-                  {' and '} 
-                  <a className="blue"
-                    href="https://mlh.io/privacy"
-                  >
-                    {'the MLH Privacy Policy'}
-                  </a>
-                  {'. Please note that you may receive pre and post-event informational e-mails and occasional messages about hackathons from MLH as per the MLH Privacy Policy.'}
-                </label>
+              }
+              <div className="form-group row my-2 mx-1">
+                <h4 className="blue">
+                  {this.props.userManager.flash}
+                </h4>
               </div>
-            </div>
-            }
-            <div className="form-group row my-2 mx-1">
-              <h4 className="blue">
-                {this.props.userManager.flash}
-              </h4>
-            </div>
-            <div className="col-12 text-center">
-              <button className="btn btn-primary UC custom-btn mx-2 p-3"
-                onClick={this.logout}
-                type="button"
-              >
-                <h6 className="my-1">
-                  {'Logout'}
-                </h6>
-              </button>
-              <button className="btn btn-primary UC custom-btn p-3"
-                onClick={this.save}
-                type="button"
-              >
-                <h6 className="my-1">
-                  {'Save Changes'}
-                </h6>
-              </button>
-            </div>
+              <div className="col-12 text-center">
+                <button className="btn btn-primary UC custom-btn mx-2 p-3"
+                  onClick={this.logout}
+                  type="submit"
+                  value="logout"
+                >
+                  <h6 className="my-1">
+                    {'Logout'}
+                  </h6>
+                </button>
+                <button className="btn btn-primary UC custom-btn p-3"
+                  onClick={this.save}
+                  type="submit"
+                  value="save"
+                >
+                  <h6 className="my-1">
+                    {'Save Changes'}
+                  </h6>
+                </button>
+              </div>
+            </form>
           </div>
         </div>
       );  
     }
 
     return (
-      <div>
+      <Fragment>
         {prompts}
-      </div>
+      </Fragment>
     );
   }
 }
