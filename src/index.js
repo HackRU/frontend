@@ -1,7 +1,6 @@
 //index.js
 import React from 'react';
 import ReactDOM from 'react-dom';
-<<<<<<< HEAD
 import Cookies from 'js-cookie';
 
 import { createStore, applyMiddleware, compose } from 'redux';
