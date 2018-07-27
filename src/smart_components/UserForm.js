@@ -22,7 +22,6 @@ class UserForm extends React.Component{
           id="announcements-div"
         >
           <h2 className="content-section-title">
-            <i className="fas fa-sign-in-alt fa-fw" /> 
             <span className="u-highlight">
               {'Status:'}
             </span>

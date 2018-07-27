@@ -65,7 +65,6 @@ class LoginForm extends React.Component {
     return (
       <div className="content-section " id="announcements-div">
         <h2 className="content-section-title">
-          <i className="fas fa-sign-in-alt fa-fw" /> 
           <span className="u-highlight">{'Login:'}</span>
         </h2>
         <div className="content-section-desc register-root">

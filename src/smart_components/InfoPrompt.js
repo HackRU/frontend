@@ -164,7 +164,6 @@ class InfoPrompt extends React.Component {
           id="announcements-div"
         >
           <h2 className="content-section-title">
-            <i className="fas fa-id-card fa-fw mt-4"/>
             <span className="u-highlight">
               {'Your Info:'}
             </span>
