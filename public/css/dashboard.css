@@ -1,5 +1,5 @@
 :root {
-    --color-zero: #ffffff;
+    --color-zero: #39275E;
     --color-one: #23A9E1; /* RGB = 35,169,225 */
     --color-two: #1F4AB5; /* RGB = 31,74,181 */
 }
@@ -61,8 +61,8 @@ a:hover, a:focus, a:active {
 #dashboard-profile {
     height: 100%;
     overflow-y: scroll;
-  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#7b4397+0,dc2430+100 */
-  background: white;
+    background: white;
+    color: #39275E;
 }
 
 
@@ -184,6 +184,10 @@ button {
 #info-list {
     height: 50vh;
     overflow-y: scroll;
+}
+
+#register-sidebar {
+  margin-top: 5px;
 }
 
 .register-root {
