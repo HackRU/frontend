@@ -22,7 +22,6 @@ class App extends React.Component {
 
     this.login = this.login.bind(this);
     this.signUp = this.signUp.bind(this);
-    this.mlh = this.mlh.bind(this);
     this.forgotPassword = this.forgotPassword.bind(this);
     this.onEmailChange = this.onEmailChange.bind(this);
     this.onPasswordChange = this.onPasswordChange.bind(this);
@@ -44,12 +43,6 @@ class App extends React.Component {
         this.setState({errorMessage: "You have a magic link! Please enter your email and then your new password.", hasLink: mag_link});
       else
         this.setState({errorMessage: "You have a magic link! Please log in to apply it.", hasLink: mag_link});
-    }
-
-    const { cookies } = this.props;//I don't get it.
-    if(urlParams.has('authdata')){
-      const auth = JSON.parse(urlParams.get('authdata'));
-      cookies.set('authdata', auth);
     }
 
     const auth = cookies.get('authdata');
@@ -173,12 +166,6 @@ class App extends React.Component {
     }
   }
 
-  mlh() {
-    let redir = (this.state.hasLink && !this.state.hasLink.startsWith('forgot-'))? '?redir=https://hackru.org/dashboard.html?magiclink=' + this.state.hasLink : ''
-    let href = "https://my.mlh.io/oauth/authorize?client_id=bab4ace712bb186d8866ff4776baf96b2c4e9c64d729fb7f88e87357e4badcba&redirect_uri=https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/mlhtest/mlhcallback" + redir +"&response_type=code&scope=email+education+birthday";
-    window.open(href, "_self");
-  }
-
   onEmailChange(e){
     this.setState({email: e.target.value})
   }
@@ -264,7 +251,6 @@ class App extends React.Component {
 					<div className="col-12 text-center">
 					  <button onClick={this.signUp} type="button" className="btn btn-primary mx-1 p-xs-2 p-md-3"><h6 className="UC ">Sign Up</h6></button>
             <button onClick={this.login} type="button" className="btn btn-primary custom-btn p-xs-2 p-md-3 mx-1" ><h6 className=" UC ">Login</h6></button>
-            <button onClick={this.mlh} type="button" className="btn btn-primary p-xs-2 p-md-3 my-2"><h6 className=" UC">Log in/Sign Up with MLH</h6></button>
 					</div>
 				</div>
 
