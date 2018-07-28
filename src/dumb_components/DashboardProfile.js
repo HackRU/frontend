@@ -31,7 +31,7 @@ class DashboardProfile extends React.Component {
     const major = (user.major)? user.major: '';
 
     return (
-      <div>
+      <div className="left-header">
         <h2 className="font-weight-bold"> 
           {firstName + ' ' + lastName}
         </h2>
@@ -88,7 +88,7 @@ class DashboardProfile extends React.Component {
       //not logged in 
       header = (
         <span>
-          <h3 className="text-center">
+          <h3 className="left-header text-center">
             {'Please login'}
           </h3>
         </span>

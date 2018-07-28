@@ -1,5 +1,5 @@
 :root {
-    --color-zero: #39275E;
+    --color-zero: #7852C9;
     --color-one: #23A9E1; /* RGB = 35,169,225 */
     --color-two: #1F4AB5; /* RGB = 31,74,181 */
 }
@@ -17,6 +17,11 @@
     font-weight: normal;
     src: local("Circular"), url("../fonts/helvetica-regular.otf") format("opentype");
 }
+
+@font-face {
+  font-family: "Helvetica Regular";
+  src: url(../fonts/helvetica-regular.otf);
+}
 /* - - - - - - - -  END FONTS - - - - - - - - */
 
 
@@ -30,18 +35,19 @@
 
 h1, h2, h3, h4, h5, h6, p {
     color: var(--color-zero);
-    font-family: 'Circular', sans-serif;
+    font-family: 'Helvetica Regular', sans-serif;
     margin: 0;
 }
 
 
 a {
-    color: var(--color-zero);
+    color: white;
+    font-weight: bold;
 }
 
 a:hover, a:focus, a:active {
     text-decoration: none;
-    color: var(--color-zero);
+    color: #fff242;
     font-weight: bold;
 }
 
@@ -187,7 +193,7 @@ button {
 }
 
 #register-sidebar {
-  margin-top: 5px;
+
 }
 
 .register-root {
@@ -203,6 +209,10 @@ button {
 .your-info {
   height: 50vh;
   overflow-y: scroll;
+}
+
+.left-header {
+  margin-top: 10px;
 }
 
 ::-webkit-scrollbar {
@@ -287,13 +297,28 @@ body {
 .btn-primary {
     color: white;
     background: rgba(0,0,0,0.5);
-    border: 3px solid white;
+    border: 1px solid white;
+    margin-right: 20px;
+}
+
+.btn-primary::-moz-focus-inner {
+    /** ew **/
+    padding: 0;
+    border: 0;
+}
+
+.btn-primary .UC {
+    font-weight: bold;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 2px;
+    padding-bottom: 2px;
 }
 
 .btn-primary:hover {
     color: white;
     background: rgba(0,0,0,0.5);
-    border: 3px solid #fff242;
+    border: 1px solid #fff242;
 }
 
 .btn-primary:hover .UC {
@@ -301,9 +326,17 @@ body {
 }
 
 .form-control {
-    border: 3px solid white;
+    border: 1px solid white;
     border-radius: 10px;
     background: rgba(0,0,0,0.5);
+    color: white;
+}
+
+.form-control:active, .form-control:focus, .form-control:hover {
+    border: 1px solid #FFF242;
+    border-radius: 10px;
+    background: rgba(0,0,0,0.5);
+    color: white;
 }
 
 @media (min-width: 768px) {

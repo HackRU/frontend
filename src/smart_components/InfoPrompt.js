@@ -188,8 +188,8 @@ class InfoPrompt extends React.Component {
                     ))
                 }
               </span>
-              <div className="form-group row my-2">
-                <label className="col-lg-8"
+              <div className="form-group row mb-4">
+                <label className="col-lg-8 blue"
                   htmlFor="resumeupload"
                 >
                   <h4 className="font-weight-bold blue">
@@ -203,8 +203,8 @@ class InfoPrompt extends React.Component {
                   value={(user)? user.short_answer : ''}
                 />
               </div>
-              <div className="form-group row my-2">
-                <label className="col-lg-8"
+              <div className="form-group row mb-4">
+                <label className="col-lg-8 blue"
                   htmlFor="resumeupload"
                 >
                   <h4 className="font-weight-bold blue">
@@ -219,11 +219,11 @@ class InfoPrompt extends React.Component {
                 />
               </div>
               {user && user.registration_status === 'unregistered' &&
-              <div className="form-group row my-2 mx-1">
-                <h4 className="col-12 font-weight-bold blue mb-2">
+              <div className="form-group row mb-4 mx-1">
+                <h4 className="font-weight-bold blue">
                   {'MLH NOTICES'}
                 </h4>
-                <div className="col-12 form-check mb-4">
+                <div className="col-12 form-check mb-4 blue">
                   <input className="form-check-input mr-4"
                     id="code-of-conduct-box"
                     type="checkbox"
@@ -232,29 +232,29 @@ class InfoPrompt extends React.Component {
                     htmlFor="code-of-conduct-box"
                   >
                     {'I agree to abide by the '} 
-                    <a className="blue" 
+                    <a
                       href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf"
                     >
                       {'MLH code of conduct.'}
                     </a>
                   </label>
                 </div>
-                <div className="form-check form-check-inline">
+                <div className="col-12 form-check mb-4 blue">
                   <input className="form-check-input mr-4"
                     id="data-sharing-box"
                     type="checkbox"
                   />
-                  <label className="form-check-label"
+                  <label className="form-check-label blue"
                     htmlFor="data-sharing-box"
                   >
                     {'I agree to the terms of both the '} 
-                    <a className="blue"
+                    <a
                       href="https://github.com/MLH/mlh-policies/tree/master/prize-terms-and-conditions"
                     >
                       {'MLH Contest Terms and Conditions'}
                     </a>
                     {' and '} 
-                    <a className="blue"
+                    <a
                       href="https://mlh.io/privacy"
                     >
                       {'the MLH Privacy Policy'}
@@ -275,7 +275,7 @@ class InfoPrompt extends React.Component {
                   type="submit"
                   value="logout"
                 >
-                  <h6 className="my-1">
+                  <h6 className="UC">
                     {'Logout'}
                   </h6>
                 </button>
@@ -284,7 +284,7 @@ class InfoPrompt extends React.Component {
                   type="submit"
                   value="save"
                 >
-                  <h6 className="my-1">
+                  <h6 className="UC">
                     {'Save Changes'}
                   </h6>
                 </button>
