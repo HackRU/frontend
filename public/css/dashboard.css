@@ -51,6 +51,11 @@ a:hover, a:focus, a:active {
     font-weight: bold;
 }
 
+h6 a {
+    color: var(--color-zero);
+    font-family: 'Helvetica Regular', sans-serif;
+    margin: 0;
+}
 
 #profile-logo {
     border-bottom: 1px solid #7852C9;
@@ -232,9 +237,12 @@ button {
     left: 50%;
     height: 100%;
     width: 200px;
-    content: url("../assets/underline.png");
+    content: '';
+    background-image: url("../assets/underline.png");
     z-index: -1;
     margin-left: -100px;
+    background-size: 200px auto;
+    display: block;
 }
 
 .overlay-design {

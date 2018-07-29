@@ -36,7 +36,7 @@ class DashboardProfile extends React.Component {
           {firstName + ' ' + lastName}
         </h2>
         <h6>
-          <a onClick={this.logout}>
+          <a href="#" onClick={this.logout}>
             {'Logout'}
           </a>
         </h6>

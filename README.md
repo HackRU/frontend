@@ -186,3 +186,10 @@ In case something goes wrong, or in case of a fire, or in case you feel overwhel
 ### Kind regards, [TresTres](https://github.com/TresTres)
 
 
+# TODO:
+-> The buttons (see ^^^)
+-> Download error at the bottom of form
+-> icons by announcements, upcoming, info
+-> small boxes for the "select" things (uni, grad year, gender, among others)
+-> FAQ font size should be smaller.
+-> "Status" and "your info" spacing.
