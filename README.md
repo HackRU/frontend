@@ -190,6 +190,8 @@ In case something goes wrong, or in case of a fire, or in case you feel overwhel
 -> The buttons (see ^^^)
 -> Download error at the bottom of form
 -> icons by announcements, upcoming, info
--> small boxes for the "select" things (uni, grad year, gender, among others)
+-> small boxes for the "select" things (uni, grad year, gender, among others) <- also scrolls wildly
 -> FAQ font size should be smaller.
 -> "Status" and "your info" spacing.
+-> Fix repeating image
+-> Status hover rule = nani?
