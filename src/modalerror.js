@@ -3,19 +3,19 @@ import ReactDOM from 'react-dom';
 
 class ModalError extends React.Component {
 
-constructor (props){
+  constructor (props){
     super(props);
     this.state = {
       messageText:'samele message',
     };
-}
+  }
 
-render() {
-  return (
-    <span></span>
-);
+  render() {
+    return (
+      <span />
+    );
 
-}
+  }
 
 }
 export default ModalError;
