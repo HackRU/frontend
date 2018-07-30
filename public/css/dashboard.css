@@ -1,5 +1,5 @@
 :root {
-    --color-zero: #ffffff;
+    --color-zero: #7852C9;
     --color-one: #23A9E1; /* RGB = 35,169,225 */
     --color-two: #1F4AB5; /* RGB = 31,74,181 */
 }
@@ -9,44 +9,59 @@
 @font-face {
     font-family: Circular;
     font-weight: bold;
-    src: local("Circular"), url("../fonts/CircularStd-Bold.otf") format("opentype");
+    src: local("Circular"), url("../fonts/helvetica-regular.otf") format("opentype");
 }
 
 @font-face {
     font-family: Circular;
     font-weight: normal;
-    src: local("Circular"), url("../fonts/CircularStd-Book.otf") format("opentype");
+    src: local("Circular"), url("../fonts/helvetica-regular.otf") format("opentype");
+<<<<<<< HEAD
+=======
+}
+
+@font-face {
+  font-family: "Helvetica Regular";
+  src: url(../fonts/helvetica-regular.otf);
+>>>>>>> 2d14206cbf0294946683524205985e01d0f83a9d
 }
 /* - - - - - - - -  END FONTS - - - - - - - - */
 
 
 .color-two {
-    color: var(--color-two);
+    color: white;
 }
 
 .color-two:hover, .color-two:focus, .color-two:active {
-    color: var(--color-two);
+    color: #fff242;
 }
 
 h1, h2, h3, h4, h5, h6, p {
     color: var(--color-zero);
-    font-family: 'Circular', sans-serif;
+    font-family: 'Helvetica Regular', sans-serif;
     margin: 0;
 }
 
 
 a {
-    color: var(--color-zero);
+    color: white;
+    font-weight: bold;
 }
 
 a:hover, a:focus, a:active {
     text-decoration: none;
-    color: var(--color-zero);
+    color: #fff242;
     font-weight: bold;
 }
 
+h6 a {
+    color: var(--color-zero);
+    font-family: 'Helvetica Regular', sans-serif;
+    margin: 0;
+}
 
 #profile-logo {
+    border-bottom: 1px solid #7852C9;
     width: 40%;
 }
 
@@ -60,10 +75,13 @@ a:hover, a:focus, a:active {
 #dashboard-profile {
     height: 100%;
     overflow-y: scroll;
-    background-image: url("../img/dark-bg.jpg") !important;
-    background-position: right bottom;
-    background-attachment: fixed;
-    background-color: var(--color-two);
+<<<<<<< HEAD
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#7b4397+0,dc2430+100 */
+  background: white;
+=======
+    background: white;
+    color: #39275E;
+>>>>>>> 2d14206cbf0294946683524205985e01d0f83a9d
 }
 
 
@@ -80,12 +98,13 @@ a:hover, a:focus, a:active {
     padding-right: 20px;
     padding-top: 40px;
     padding-bottom: 40px;
-    background: rgba(35,169,225, 0.1);
+    background-image: url("../assets/splash-bg-notextlowglow.png") !important;
 }
 
 
 @media (min-width: 768px) {
   #profile-logo {
+      border-bottom: 1px solid #7852C9;
       width: 45%;
   }
 
@@ -98,14 +117,11 @@ a:hover, a:focus, a:active {
 
   #dashboard-profile {
       height: 100vh;
-      background-color: var(--color-two);
-      background-image: url("../img/dark-bg.jpg") !important;
-      background-position: right bottom;
-      background-size: cover;
-      background-attachment: fixed;
+      overflow-y: hidden;
       padding-top: 20px;
       padding-bottom: 20px;
       position: fixed;
+      background: white;
   }
 
   .profile-text {
@@ -115,11 +131,11 @@ a:hover, a:focus, a:active {
 }
 
 .blue {
-  color: var(--color-two);
+  color: white;
 }
 
 .blue:hover {
-  color: #80c7e5;
+  color: #fff242;
 }
 
 .text-lg {
@@ -134,34 +150,36 @@ button {
 }
 
 .content-section-title {
-    color: var(--color-two);
+    color: white;
     font-weight: bold;
+    text-align: center;
 }
 
 .content-section-desc {
-    color: var(--color-two);
+    color: #7852C9;
     margin-top: 20px;
     padding: 20px;
-    border: 1px dotted;
-    border-radius: 20px;
-    /*background: rgba(35,169,225, 0.05);*/
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    border: 3px solid white;
 }
 
 .content-title {
-    color: var(--color-two);
+    color: white;
     font-weight: bold;
 }
 
 .content-desc {
-    color: black;
+    color: white;
 }
 
 .content-desc a {
-    color: black;
+    color: white;
+    font-weight: bold;
 }
 
 .content-desc a:hover {
-    color: var(--color-two);
+    color: #fff242;
 }
 
 .content-desc:not(:last-child) {
@@ -187,6 +205,10 @@ button {
     overflow-y: scroll;
 }
 
+#register-sidebar {
+
+}
+
 .register-root {
   height: 100%;
   overflow-y: scroll;
@@ -202,6 +224,10 @@ button {
   overflow-y: scroll;
 }
 
+.left-header {
+  margin-top: 10px;
+}
+
 ::-webkit-scrollbar {
     width: 0px;
     background: transparent; /* make scrollbar transparent */
@@ -213,16 +239,24 @@ button {
     z-index: 1;
 }
 
-.u-highlight:after {
-    content: '';
+.u-highlight:before {
     position: absolute;
     top: 60%;
-    left: 7%;
-    height: 35%;
-    width: 100%;
-    background: var(--color-one);
-    opacity: 0.3;
+    left: 50%;
+    height: 100%;
+    width: 200px;
+<<<<<<< HEAD
+    content: url("../assets/underline.png");
     z-index: -1;
+    margin-left: -100px;
+=======
+    content: '';
+    background-image: url("../assets/underline.png");
+    z-index: -1;
+    margin-left: -100px;
+    background-size: 200px auto;
+    display: block;
+>>>>>>> 2d14206cbf0294946683524205985e01d0f83a9d
 }
 
 .overlay-design {
@@ -242,6 +276,7 @@ button {
   text-transform: uppercase;
   word-wrap: break-word;
   white-space: initial;
+  color: white;
 }
 
 .image-divider {
@@ -266,20 +301,79 @@ button {
   max-height: 125vh;
   overflow-y: scroll;
 }
- body {
-   transition: all 0.2s ease !important;
- }
 
- #all {
-   height: 100%;
-   display: none;
-   text-align:center;
- }
+body {
+  transition: all 0.2s ease !important;
+}
+
+#all {
+  height: 100%;
+  display: none;
+  text-align:center;
+}
 
  .sub, iframe {
    margin: 0 auto;
  }
 
+.btn-primary {
+    color: white;
+    background: rgba(0,0,0,0.5);
+<<<<<<< HEAD
+    border: 3px solid white;
+=======
+    border: 1px solid white;
+    margin-right: 20px;
+}
+
+.btn-primary::-moz-focus-inner {
+    /** ew **/
+    padding: 0;
+    border: 0;
+}
+
+.btn-primary .UC {
+    font-weight: bold;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+>>>>>>> 2d14206cbf0294946683524205985e01d0f83a9d
+}
+
+.btn-primary:hover {
+    color: white;
+    background: rgba(0,0,0,0.5);
+<<<<<<< HEAD
+    border: 3px solid #fff242;
+=======
+    border: 1px solid #fff242;
+>>>>>>> 2d14206cbf0294946683524205985e01d0f83a9d
+}
+
+.btn-primary:hover .UC {
+    color: #fff242;
+}
+
+.form-control {
+<<<<<<< HEAD
+    border: 3px solid white;
+    border-radius: 10px;
+    background: rgba(0,0,0,0.5);
+=======
+    border: 1px solid white;
+    border-radius: 10px;
+    background: rgba(0,0,0,0.5);
+    color: white;
+}
+
+.form-control:active, .form-control:focus, .form-control:hover {
+    border: 1px solid #FFF242;
+    border-radius: 10px;
+    background: rgba(0,0,0,0.5);
+    color: white;
+>>>>>>> 2d14206cbf0294946683524205985e01d0f83a9d
+}
 
 @media (min-width: 768px) {
   #all {

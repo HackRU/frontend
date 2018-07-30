@@ -42,7 +42,7 @@ class Dashboard extends React.Component {
             <div className="col-xs-12 col-md-5 mb-3">
               <div id="announcements-id">
                 <h2 className="content-section-title">
-                  <i className="fas fa-bullhorn fa-fw" /> <span className="u-highlight">{'Announcements'}</span></h2>
+                  <span className="u-highlight">{'Announcements'}</span></h2>
                 <div className="content-section-desc" id="announcements-list">
                   <SlackContainer /> {/*Slack component goes here*/}
                 </div>
@@ -51,7 +51,6 @@ class Dashboard extends React.Component {
             <div className="col-xs-12 col-md-4 mb-3">
               <div className="content-section" id="upcoming-div">
                 <h2 className="content-section-title">
-                  <i className="fas fa-calendar-alt fa-fw" /> 
                   <span className="u-highlight">{'Upcoming'}</span></h2>
                 <div className="content-section-desc" id="upcoming-list">
                   <Events /> {/*Events component goes here*/}
@@ -73,7 +72,7 @@ class Dashboard extends React.Component {
           <div className="row mb-5"> {/*row mb-5 begin*/}
             <div className="col-xs-12 col-md-8 offset-md-2 mb-3">
               <div id="announcements-id">
-                <h2 className="content-section-title"><i className="fas fa-video fa-fw" /> <span className="u-highlight">{'Livestream'}</span></h2>
+                <h2 className="content-section-title"><span className="u-highlight">{'Livestream'}</span></h2>
                 <div className="content-section-desc" id="livestream text-center">
                   <div id="all">
                     <div className="sub">

@@ -11,8 +11,8 @@
 
 	<meta charset="utf-8">
 	<meta name='language' content='en'>
-	<meta name="title" content="HackRU Spring 2018">
-	<meta name="description" content="HackRU Spring 2018">
+	<meta name="title" content="HackRU fall 2018">
+	<meta name="description" content="HackRU fall 2018">
 	<meta name="keywords" content="HackRU, hackathon, tech, Rutgers, CS">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
 
@@ -22,12 +22,12 @@
 
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 
-	<link rel="shortcut icon" href="../img/HackRU_favicon.ico" type="image/x-icon">
-	<link rel="icon" href="../img/HackRU_favicon.ico" type="image/x-icon">
+	<link rel="shortcut icon" href="./assets/fav.png" type="image/x-icon">
+	<link rel="icon" href="./assets/fav.png" type="image/x-icon">
 
 	<!-- CSS -->
-	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="css/dashboard.css">
+	<link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="./css/dashboard.css">
 
 	<!--JS-->
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
@@ -44,20 +44,200 @@
  crossorigin="anonymous" defer></script>
   <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=%REACT_APP_MAP_API_KEY%&libraries=places"></script>
 
-	<title>HackRU Spring 2018</title>
+	<title>HackRU Fall 2018</title>
 </head>
 
 <body>
 
 	<div class="container-fluid">
 
-		<img class="overlay-design d-none d-lg-block" style="left:-200px;top:200px" src="img/zz.png">
-		<img class="overlay-design d-none d-lg-block" style="right:-200px;bottom:-60px" src="img/zz.png">
-
 		<div class="row" id="dashboard-full">
 
+<<<<<<< HEAD
+			<!-- BEGIN LEFT SIDE OF DASHBOARD -->
+			<div class="col-xs-12 col-md-2" id="dashboard-profile">
+				<div class="row">
+					<div class="col-12 text-center">
+						<a href="http://hackru.org/"><img id="profile-logo" src="./assets/hackru_lpurple.png"></a>
+					</div>
+
+					<div class="col-10 offset-1 text-center mt-4 mb-5" style="display:none;" id="qr-border">
+						<img class="image-divider" id="profile-qr" src="img/wheel.png">
+					</div>
+
+					<div class="col-10 offset-1 text-left mb-5" id="register-sidebar">
+
+					</div>
+
+
+
+
+				</div>
+
+			</div>
+			<!-- END LEFT SIDE OF DASHBOARD -->
+
+
+
+			<!-- BEGIN RIGHT SIDE OF DASHBOARD -->
+			<div class="col-xs-12 col-md-10 offset-md-2" id="dashboard-content">
+
+
+								<div class="row mb-5">
+									<div class="col-xs-12 col-md-5 mb-3">
+
+												<div id="announcements-id">
+													<h2 class="content-section-title"> <span class="u-highlight">Announcements</span></h2>
+													<div class="content-section-desc" id="announcements-list">
+
+													</div>
+
+												</div>
+											</div>
+
+									<div class="col-xs-12 col-md-4 mb-3">
+
+
+										<div class="content-section" id="upcoming-div">
+											<h2 class="content-section-title"> <span class="u-highlight">Upcoming</span></h2>
+											<div class="content-section-desc" id="upcoming-list">
+
+
+											</div>
+										</div>
+
+
+										</div>
+										<div class="col-xs-12 col-md-3 mb-3">
+											<div class="content-section" id="info-div">
+												<h2 class="content-section-title"> <span class="u-highlight">Info</span></h2>
+												<div class="content-section-desc" id="info-list">
+
+													<h5 class="content-title">Date</h5>
+													<p class="content-desc">
+														Oct. 6th - 7th
+													</p>
+													<h5 class="content-title">Location</h5>
+													<span class="font-weight-bold blue"><a class="blue" href="https://goo.gl/maps/Vau7qn2Hca72">College Avenue Student Center</a></span><br>
+													<p class="content-desc">
+														126 College Ave, <br>New Brunswick, <br>NJ 08901
+													</p>
+													<h5 class="content-title">Devpost</h5>
+													<p class="content-desc">
+														Click <a href="https://hackru-s18.devpost.com/">here</a> to view the previous devpost
+													</p>
+													<h5 class="content-title">Want to mentor?</h5>
+													<p class="content-desc">
+														Click <a href="https://docs.google.com/forms/d/e/1FAIpQLSdGuoY6ATqMlOxOqoiP8FPyzgWMGg60gVzryvUrQBjV6T8h-w/viewform">here</a> to sign up
+													<h5 class="content-title">Questions?</h5>
+													<p class="content-desc">
+													Email us at <a href="mailto:info@hackru.org">info@hackru.org</a>
+													</p>
+													<h5 class="content-title">Emergency Contact</h5>
+													<p class="content-desc">
+															<span class="font-weight-bold">RUPD</span><br>732-932-7211
+													</p>
+
+
+												</div>
+											</div>
+
+									</div>
+								</div>
+
+
+				<div class="row mb-5">
+					<div class="col-xs-12 col-md-8 offset-md-2 mb-3">
+
+								<div id="register-root">
+								</div>
+								<div id="register-more">
+								</div>
+						</div>
+
+				</div> <!-- row -->
+
+				<div class="row mb-5">
+					<div class="col-xs-12 col-md-8 offset-md-2 mb-3">
+
+								<div id="announcements-id">
+									<h2 class="content-section-title"> <span class="u-highlight">Livestream</span></h2>
+									<div class="content-section-desc" id="livestream text-center">
+										<div id="all">
+    									<div class="sub">
+											<iframe src="https://player.twitch.tv/?channel=hack_ru" frameborder="0" allowfullscreen="true" scrolling="no" height="378" width="620"></iframe>
+											</div>
+									</div>
+									<h5><a href="https://www.twitch.tv/hack_ru?tt_content=text_link&tt_medium=live_embed" style="display:block;" class="blue text-center">Watch live video from Hack_RU on www.twitch.tv</a></h5>
+
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+				<div class="row mb-5">
+					<div class="col-xs-12 col-md-8 offset-md-2 mb-3">
+
+							<div class=" mt-2 mb-2" id="register-admin">
+
+							</div>
+						</div>
+
+				</div> <!-- row -->
+
+
+
+
+				<div class="row">
+
+
+					<div class="col-xs-12 col-md-2 offset-xs-0 offset-md-5">
+						<div class="row">
+
+							<div class="col-3 text-center">
+								<h5>
+									<a href="https://www.facebook.com/theHackRU/" class="color-two" target="_blank"><i class="fab fa-facebook-square fa-fw"></i></a>
+								</h5>
+							</div>
+
+							<div class="col-3 text-center">
+								<h5>
+									<a href="https://www.instagram.com/thehackru/" class="color-two" target="_blank"><i class="fab fa-instagram fa-fw"></i></a>
+								</h5>
+							</div>
+
+							<div class="col-3 text-center">
+								<h5>
+									<a href="https://medium.com/the-hackru" class="color-two" target="_blank"><i class="fab fa-medium fa-fw"></i></a>
+								</h5>
+							</div>
+
+							<div class="col-3 text-center">
+								<h5>
+									<a href="https://twitter.com/theHackRU" class="color-two" target="_blank"><i class="fab fa-twitter-square fa-fw"></i></a>
+								</h5>
+							</div>
+
+							<div class="col-12 text-center mt-3">
+								<p><a href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf" class="color-two" target="_blank">MLH's Code of Conduct</a></p>
+								<p><a href="mailto:info@hackru.org" class="color-two" target="_blank" data-email="info@hackru.org">info@hackru.org</a></p>
+							</div>
+
+						</div>
+					</div>
+
+				</div>
+
+
+			</div>
+
+
+			<!-- END RIGHT SIDE OF DASHBOARD -->
+=======
 			<!--Looking for something?  Rendered comopnents now written in JSX-->
 			<!--Please look in src/-->
+>>>>>>> 2d14206cbf0294946683524205985e01d0f83a9d
 
 		</div><span title=".dashboard-full" HIDDEN></span>
 

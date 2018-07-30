@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+
 	<!--.##.....##....###.....######..##....##.########..##.....##.....######.....##....#######.-->
 	<!--.##.....##...##.##...##....##.##...##..##.....##.##.....##....##....##..####...##.....##-->
 	<!--.##.....##..##...##..##.......##..##...##.....##.##.....##....##..........##...##.....##-->
@@ -8,334 +7,557 @@
 	<!--.##.....##.#########.##.......##..##...##...##...##.....##..........##....##...##.....##-->
 	<!--.##.....##.##.....##.##....##.##...##..##....##..##.....##....##....##....##...##.....##-->
 	<!--.##.....##.##.....##..######..##....##.##.....##..#######......######...######..#######.-->
+<!--
+©2017 HackRU Team at Rutgers University
+Frontend: HackRU Marketing and Design Team (MnD)
+Backend: HackRU Research and Development Team (RnD)
+-->
+<html lang="en">
 
-	<meta charset="utf-8">
-	<meta name='language' content='en'>
-	<meta name="title" content="HackRU Spring 2018">
-	<meta name="description" content="HackRU Spring 2018">
-	<meta name="keywords" content="HackRU, hackathon, tech, Rutgers, CS">
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+<head>
+    <meta charset="UTF-8">
+    <meta property="og:title" content="HackRU Fall 2017"/>
+    <meta property="og:description" content="Get hyped for the best hackathon that Rutgers has to offer! The 13th semiannual HackRU is coming this Fall 2017, from October 14th-15th at College Ave Student Center." />
+    <meta property="og:image" content="http://www.hackru.org/assets/hackRU_SP17_avatar.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sign up for HackRU Fall 2017, taking place from October 14th to 15th.">
+    <title>HackRU Fall 2018</title>
 
-	<meta property="og:site_name" content="HackRU 2018">
-	<meta property="og:description" content="HackRU, the hackathon at Rutgers University, is back. April 21-22, 2018.">
-	<meta property="og:url" content="http://hackru.org">
+    <link href="./assets/fav.png" rel="shortcut icon" type="image/png"/>
 
-	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="./css/tether.min.css">
+    <link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
 
-	<link rel="shortcut icon" href="../img/HackRU_favicon.ico" type="image/x-icon">
-	<link rel="icon" href="../img/HackRU_favicon.ico" type="image/x-icon">
-
-	<!-- CSS -->
-	<link rel="stylesheet" type="text/css" href="css/font-awesome-4.6.3/css/font-awesome.min.css">
-	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="css/theme.css">
-	<link rel="stylesheet" type="text/css" href="css/custom.css">
-
-	<!--JS-->
-	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-	        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-	        crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-	        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-	        crossorigin="anonymous"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-	        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-	        crossorigin="anonymous"></script>
-
-	<title>HackRU Spring 2018</title>
+    <script src="./js/tether.min.js"></script>
+    <script src="./js/jquery-3.2.1.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+    <script src="./js/font-awesome-4.7.0.js"></script>
+    <script src="./js/scripts.js"></script>
 </head>
 
-<!-- MLH Badge -->
-<a id="mlh-trust-badge" style="display:block;max-width:100px;min-width:60px;position:fixed;right:50px;top:0;width:10%;z-index:10000" href="https://mlh.io/seasons/na-2018/events?utm_source=na-2018&utm_medium=TrustBadge&utm_campaign=na-2018&utm_content=blue" target="_blank"><img src="https://s3.amazonaws.com/logged-assets/trust-badge/2018/white.svg" alt="Major League Hacking 2017 Hackathon Season" style="width:100%"></a>
 <body>
-
+<a id="mlh-trust-badge" style="display:block;max-width:90px;min-width:60px;position:fixed;right:20px;top:0;width:10%;z-index:10000" href="https://mlh.io/seasons/na-2018/events?utm_source=na-2018&utm_medium=TrustBadge&utm_campaign=na-2018&utm_content=red" target="_blank"><img src="https://s3.amazonaws.com/logged-assets/trust-badge/2018/black.svg" alt="Major League Hacking 2018 Hackathon Season" style="width:100%"></a>
 <div class="container-fluid">
 
-	<img class="overlay-design d-none d-lg-block" style="left:-350px;top:100px" src="img/zz.png">
-	<img class="overlay-design d-none d-lg-block" style="right:-200px;bottom:-75px" src="img/zz.png">
+    <!-- HERO SECTION -->
+    <div class="row min-full-height"
+         id="hero">
+        <div class="col-12">
 
-	<div class="row" id="main-header">
-		<div class="col-10 offset-1 col-md-8 offset-md-2 text-center">
-			<img id="main-header-logo" src="img/logo-white.png">
-		</div>
 
-		<div class="col-10 offset-1 col-md-8 offset-md-2 text-center">
-			<h4 class="main-header-text m-0">
-				April 21 - 22, 2018
-				<br>
-				Rutgers Athletic Center
-				<br>
-				Rutgers University
-			</h4>
-			<a href="/dashboard.html"><button type="button" class="btn btn-lg btn-primary custom-btn mt-5 p-3">Go to Dashboard</button></a>
-		</div>
-	</div>
+<div class="hidden-lg-down row text-center text-white" id="nav-bar">
 
-	<div class="row content-row mt-5">
-		<div class="col-10 offset-1 col-md-8 offset-md-2 content-box">
-			<h1 class="content-header-text"><span class="u-highlight">HackRU?</span></h1>
-			<h3 class="content-desc-text">HackRU is a 24-hour hackathon at Rutgers University. We welcome hundreds of students to join us in building awesome software and hardware projects. Industry experts and mentors come from all over the country to create an environment that fosters an atmosphere of learning through tech talks and one-on-one guidance. We encourage beginner and advanced hackers alike to challenge themselves and expand their skills.</h3>
-		</div>
-	</div>
+    <div class="col-1 offset-2"><a class="smooth-scroll" href="#about-us"><h5 class="nav-bar-link bold-text">About Us</h5></a></div>
+    <div class="col-1"><a class="smooth-scroll" href="#schedule"><h5 class="nav-bar-link bold-text">Schedule</h5></a></div>
+    <div class="col-1"><a class="smooth-scroll" href="#faqs"><h5 class="nav-bar-link bold-text">FAQs</h5></a></div>
 
+    <div class="col-2"><img src="./assets/logo.svg" class="nav-bar-logo"></div>
 
+    <div class="col-1"><a class="smooth-scroll" href="#sponsors"><h5 class="nav-bar-link bold-text">Sponsors</h5></a></div>
+    <div class="col-1"><a target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSddRjq9DIG8HQl48ERSWQq5kdO89Vr05edDD1Fnfgqq8vnzJg/viewform"><h5 class="nav-bar-link bold-text">Mentor</h5></a></div>
+    <div class="col-1"><a target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLScg2sf8xi14Zq3ZIouYJof4EsZkCYYZKTQCkC5lltMZxmfGuQ/viewform"><h5 class="nav-bar-link bold-text">Volunteer</h5></a></div>
+</div>
 
-	<!-- IMAGE DIVIDER -->
-	<div class="row my-5">
-		<div class="col-8 offset-2 text-center">
-			<img class="image-divider" src="img/wheel.png">
-		</div>
-	</div>
-	<!-- IMAGE DIVIDER -->
 
+<!-- mobile nav -->
+<div class="hidden-xl-up row text-center text-white mb-5" id="nav-bar-mobile">
+    <div class="col-8 col-sm-4 offset-2 offset-sm-4"><img src="./assets/logo.svg" class="nav-bar-logo"></div>
+    <div class="col-2 col-sm-4"></div>
 
-
-
-
-	<div id="register-admin"></div>
-
-
-
-
-
-
-
-
-	<div class="row content-row">
-
-		<div class="col-10 offset-1 col-md-8 offset-md-2 content-box">
-
-			<h1 class="content-header-text"><span class="u-highlight">FAQs</span></h1>
-
-			<div class="row">
-				<div class="content-question col-12 col-lg-6">
-					<h2 class="content-desc-q">Who can come?</h2>
-					<h4 class="content-desc-a">HackRU welcomes undergraduate and graduate students of all majors, backgrounds, and skill levels to come create. Unfortunately, if <i> you are under 18, you will not be able to attend </i>, unless you are also a Rutgers student. Additionally, high school students who will be 18 by HackRU are allowed to register.</div>
-
-				<div class="content-question col-12 col-lg-6">
-					<h2 class="content-desc-q">What's the application process?</h2>
-					<h4 class="content-desc-a">HackRU will run registration on a first-come-first-serve basis for those with qualifying applications. That means registration can fill up quickly, so make sure to register early and answer questions thoroughly!
-				</div>
-
-				<div class="content-question col-12 col-lg-6">
-					<h2 class="content-desc-q">What should I bring? </h2>
-					<h4 class="content-desc-a">You should pack all the essentials for a sleepover, plus a photo ID with proof of age, as well as the essentials for hacking (laptop, hardware, other materials you will use for your project). MLH will be providing hardware the day of the event so please check the list on our website before packing. HackRU shall be providing food, snacks, and drinks throughout the whole event so no need to worry about packing that.  Weapons or anything that can be construed as a weapon, alcohol, illegal drugs, and animals are <b>prohibited</b>. Use your common sense about what to bring. If you wouldn't bring it on a plane or to school, please <b>DO NOT</b> bring it here.
-				</div>
-
-				<div class="content-question col-12 col-lg-6">
-					<h2 class="content-desc-q">Will there be reimbursements?</h2>
-					<h4 class="content-desc-a">HackRU is considering offering reimbursements on a first come first serve basis to students who do not attend Rutgers University - New Brunswick. Please note that putting down where you are traveling from <i><b>does not guarantee you any travel reimbursement</b></i> for Spring HackRU 2018. If you are accepted, you will be notified if you qualify for reimbursement based on region and availability.
-				</div>
-
-				<div class="content-question col-12 col-lg-12 text-center">
-					<h2 class="content-desc-q">I have more questions!</h2>
-					<h4 class="content-desc-a">Reach out to us at <a href="mailto:info@hackru.org">info@hackru.org</a>! We'll be happy to answer.</h4>
-				</div>
-
-			</div>
-		</div>
-	</div>
-
-
-	<div class="row content-row">
-		<div class=" col-sm-12 offset-0 col-md-8 offset-md-2 content-box">
-			<div class="col-sm-10 offset-sm-1 offset-md-0 offset-lg-0">
-				<h1 class="content-header-text offset-sm-1"><span class="u-highlight">Schedule</span></h1>
-			</div>
-
-			<div class="row">
-				<div class="sched-col mb-5 text-center col-12 col-lg-6">
-					<h2 class="sched-col-day font-weight-bold mt-3 mb-5"><span>Saturday</span></h2>
-
-					<div class="row sched-event">
-						<div class="col-5 sched-event-time"><h3 class="font-weight-bold">10:00 AM</h3></div>
-						<div class="col-7 sched-event-desc"><h3>Registration opens</h3></div>
-					</div>
-
-					<div class="row sched-event">
-						<div class="col-5 sched-event-time"><h3 class="font-weight-bold">11:00 AM</h3></div>
-						<div class="col-7 sched-event-desc"><h3>Lunch</h3></div>
-					</div>
-
-					<div class="row sched-event">
-						<div class="col-5 sched-event-time"><h3 class="font-weight-bold">11:30 AM</h3></div>
-						<div class="col-7 sched-event-desc"><h3>Opening ceremony</h3></div>
-					</div>
-
-					<div class="row sched-event">
-						<div class="col-5 sched-event-time"><h3 class="font-weight-bold">1:00 PM</h3></div>
-						<div class="col-7 sched-event-desc"><h3>Hacking commences</h3></div>
-					</div>
-
-					<div class="row sched-event">
-						<div class="col-5 sched-event-time"><h3 class="font-weight-bold">6:00 PM</h3></div>
-						<div class="col-7 sched-event-desc"><h3>Dinner</h3></div>
-					</div>
-
-					<div class="row sched-event">
-						<div class="col-5 sched-event-time"><h3 class="font-weight-bold">10:00 PM</h3></div>
-						<div class="col-7 sched-event-desc"><h3>Coffee</h3></div>
-					</div>
-
-				</div>
-
-				<div class="sched-col mb-5 text-center col-12 col-lg-6">
-					<h2 class="sched-col-day font-weight-bold mt-3 mb-5"><span>Sunday</span></h2>
-
-					<div class="row sched-event">
-						<div class="col-5 sched-event-time"><h3 class="font-weight-bold">12:00 AM</h3></div>
-						<div class="col-7 sched-event-desc"><h3>Midnight snack</h3></div>
-					</div>
-
-					<div class="row sched-event">
-						<div class="col-5 sched-event-time"><h3 class="font-weight-bold">7:00 AM</h3></div>
-						<div class="col-7 sched-event-desc"><h3>Breakfast</h3></div>
-					</div>
-
-					<div class="row sched-event">
-						<div class="col-5 sched-event-time"><h3 class="font-weight-bold">11:30 AM</h3></div>
-						<div class="col-7 sched-event-desc"><h3>Hacking ends</h3></div>
-					</div>
-
-					<div class="row sched-event">
-						<div class="col-5 sched-event-time"><h3 class="font-weight-bold">11:30 AM</h3></div>
-						<div class="col-7 sched-event-desc"><h3>Lunch</h3></div>
-					</div>
-
-					<div class="row sched-event">
-						<div class="col-5 sched-event-time"><h3 class="font-weight-bold">3:00 PM</h3></div>
-						<div class="col-7 sched-event-desc"><h3>Closing ceremony</h3></div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<div class="row content-row">
-		<div class="col-10 offset-1 col-md-8 offset-md-2 content-box">
-
-			<h1 class="content-header-text"><span class="u-highlight">Sponsors</span></h1>
-
-			<div class="row" id="sponsors-logos-row">
-
-				<div class="col-10 offset-1" id="sponsors-logos">
-
-					<h4 class="text-center logo-level pt-3">Platinum</h4>
-					<!-- PLATINUM -->
-					<div class="row mb-5">
-						<div class="col-12">
-							<img class="splogos" src="./img/logos/wakefern.png">
-						</div>
-					</div>
-
-					<h4 class="text-center logo-level pt-3">Gold</h4>
-					<!-- GOLD -->
-					<div class="row mb-5">
-						<div class="col-10 offset-1">
-							<img class="splogos" src="./img/logos/bose.png">
-						</div>
-					</div>
-
-					<h4 class="text-center logo-level pt-3">Silver</h4>
-					<!-- SILVER -->
-					<div class="row">
-						<div class="col-sm-6 col-md-6">
-							<img class="splogos" src="./img/logos/taos.png">
-						</div>
-						<div class="col-sm-6 col-md-6">
-							<img class="splogos" src="./img/logos/merck.png">
-						</div>
-						<div class="col-sm-6 col-md-6">
-							<img class="splogos" src="./img/logos/twilio.png">
-						</div>
-						<div class="col-sm-6 col-md-6">
-							<img class="splogos" src="./img/logos/icims.png">
-						</div>
-					</div>
-
-					<h4 class="text-center logo-level pt-3">Bronze</h4>
-					<!-- BRONZE -->
-					<div class="row mb-5">
-						<div class="col-sm-6 col-md-4 offset-md-1">
-							<img class="splogos" src="./img/logos/linode.png">
-						</div>
-						<div class="col-sm-6 col-md-4 offset-md-2">
-							<img class="splogos" src="./img/logos/chartbeat.png">
-						</div>
-						<div class="col-sm-6 col-md-4 offset-md-1">
-							<img class="splogos" src="./img/logos/facebook.png">
-						</div>
-						<div class="col-sm-6 col-md-4 offset-md-2">
-							<img class="splogos" src="./img/logos/prudential.png">
-						</div>
-						<div class="col-sm-6 col-md-4 offset-sm-3 offset-md-4">
-							<img class="splogos" src="./img/logos/sogeti.png">
-						</div>
-					</div>
-					<div class="row mb-5">
-						<div class="col-12 text-center">
-							<h3 style="color: black;"> Special thanks to Facebook for sponsoring dinner.  <br>
-							Special thanks to Sogeti for sponsoring coffee. </3>
-						</div>
-
-					</div>
-				</div>
-
-
-
-				<!--<div class="content-question col-12 col-lg-12 text-center">-->
-					<!--<h2 class="content-desc-q">Current sponsors coming soon.</h2>-->
-					<!--<h4 class="content-desc-a">Looking to Sponsor? Email us at <a href="mailto:sponsorship@hackru.org">sponsorship@hackru.org!</a></h4>-->
-				<!--</div>-->
-
-			</div>
-		</div>
-	</div>
-
-	<!-- IMAGE DIVIDER -->
-	<div class="row">
-		<div class="col-8 offset-2 text-center">
-			<img class="image-divider" src="img/wheel.png">
-		</div>
-	</div>
-	<!-- IMAGE DIVIDER -->
-
-	<div class="row content-row">
-		<div class="col-10 offset-1 col-md-8 offset-md-2 content-box">
-
-
-
-			<div class="row">
-				<div class="footer col-12 col-lg-12 text-center">
-
-					<div class="row my-3">
-
-						<div class="col-lg-4 col-sm-3 text-center mt-lg-5 mt-sm-2">
-							<h6 class="content-desc-a white-link align-middle"><a class="" href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf">MLH Code of Conduct</a></h6>
-						</div>
-
-						<div class="col-lg-4 col-sm-6 text-center mb-2">
-							<div class="row text-center mb-1">
-								<div class="col"><h6 class="content-desc-a ">In partnership with: </h6></div>
-							</div>
-							<img class=" footer-img mx-2" src="img/mlh-logo-color.png">
-							<img class=" footer-img mx-2" src="img/usacs-logo.svg">
-						</div>
-
-						<div class="col-lg-4 col-sm-3 text-center mt-lg-5 mt-sm-2">
-							<h6 class="content-desc-a white-link">Contact us at <a class="" href="mailto:info@hackru.org">info@hackru.org</a></h6>
-						</div>
-					</div>
-
-				</div>
-
-			</div>
-		</div>
-	</div>
+    <div class="col-6 col-sm-3"><a class="smooth-scroll" href="#about-us"><h4 class="bold-text">About Us</h4></a></div>
+    <div class="col-6 col-sm-3"><a class="smooth-scroll" href="#schedule"><h4 class="bold-text">Schedule</h4></a></div>
+    <div class="col-6 col-sm-3"><a class="smooth-scroll" href="#faqs"><h4 class="bold-text">FAQs</h4></a></div>
+    <div class="col-6 col-sm-3"><a class="smooth-scroll" href="#sponsors"><h4 class="bold-text">Sponsors</h4></a></div>
+    <div class="col-6 col-sm-3 offset-sm-3"><a target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSddRjq9DIG8HQl48ERSWQq5kdO89Vr05edDD1Fnfgqq8vnzJg/viewform"><h4 class="bold-text">Mentor</h4></a></div>
+    <div class="col-6 col-sm-3"><a target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLScg2sf8xi14Zq3ZIouYJof4EsZkCYYZKTQCkC5lltMZxmfGuQ/viewform"><h4 class="bold-text">Volunteer</h4></a></div>
 
 </div>
 
+
+            <div class="row mt-sm-5">
+
+                <div class="col-12 col-md-6 offset-md-1 col-xl-4 offset-xl-2 text-center-xs">
+                    <div class="row mt-5">
+                        <div class="col-12 hidden-xs-down">
+                            <h1 class="season-text bold-text">HackRU Fall 2018</h1>
+                            <h2 class="season-date">October 6th-7th, 2018</h2>
+                            <br>
+                            <h5 class="season-location bold-text">College Ave Student Center</h5>
+                            <h5 class="season-location bold-text">Rutgers University</h5>
+                        </div>
+
+                        <div class="col-12 hidden-sm-up">
+                            <h1 class="season-text bold-text">HackRU Fall 2018</h1>
+                            <h2 class="season-date">October 6th-7th, 2018</h2>
+                            <br>
+                            <h6 class="season-location bold-text">College Ave Student Center</h6>
+                            <h6 class="season-location bold-text">Rutgers University</h6>
+                        </div>
+                    </div>
+
+                    <div class="row mt-3">
+                        <div class="col-12">
+
+                            <a href="./dashboard.html" class="btn btn-outline-primary">Go to Dashboard</a>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hidden-sm-down col-md-4 col-xl-4 text-center">
+                    <img id="hero-img" src="./assets/icons/hackethon_alien_noplat_2.png" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END OF HERO SECTION -->
+
+
+    <!-- ******************************************************************** -->
+
+
+    <!-- ABOUT US SECTION -->
+    <div class="row min-full-height theme-purple">
+        <div class="col-10 offset-1">
+            <div class="row row-title-box">
+                <div class="col-12">
+                    <h2 class="row-title" id="about-us">About Us</h2>
+                </div>
+            </div>
+
+            <div class="row row-content-box">
+                <div class="col-12 mb-3">
+                    <h3 class="bold-text"><i class="fa fa-question-circle theme-purple hidden-xs-down"
+                                             aria-hidden="true">&nbsp;</i>Who and What?</h3>
+                    <p>
+                        HackRU is a 24-hour hackathon at Rutgers University. We welcome hundreds of students to join us
+                        in building awesome software and hardware projects. Industry experts and mentors come from all
+                        over the country to create an environment that fosters an atmosphere of learning through tech
+                        talks and one-on-one guidance. We encourage beginner and advanced hackers alike to challenge
+                        themselves and expand their skills. Learn more about HackRU by reading our articles on
+                        <a href="https://medium.com/the-hackru"
+                           target="_blank">Medium!</a>
+                    </p>
+                </div>
+
+                <div class="col-4 col-md-2 offset-0 offset-md-1 text-center">
+                    <!--<img class="about-icon mb-2" src="./assets/bg-splash.jpg" alt="">-->
+                    <h1><i class="fa fa-mobile theme-red"
+                           aria-hidden="true"></i></h1>
+                    <p class="about-icon-desc text-uppercase bold-text">Mobile Dev</p>
+                </div>
+                <div class="col-4 col-md-2 text-center">
+                    <!--<img class="about-icon mb-2" src="./assets/bg-splash.jpg" alt="">-->
+                    <h1><i class="fa fa-mouse-pointer theme-red"
+                           aria-hidden="true"></i></h1>
+                    <p class="about-icon-desc text-uppercase bold-text">Web Dev</p>
+                </div>
+                <div class="col-4 col-md-2 text-center">
+                    <!--<img class="about-icon mb-2" src="./assets/bg-splash.jpg" alt="">-->
+                    <h1><i class="fa fa-paint-brush theme-red"
+                           aria-hidden="true"></i></h1>
+                    <p class="about-icon-desc text-uppercase bold-text">Design</p>
+                </div>
+                <div class="col-4 offset-2 offset-md-0 col-md-2 text-center">
+                    <!--<img class="about-icon mb-2" src="./assets/bg-splash.jpg" alt="">-->
+                    <h1><i class="fa fa-gamepad theme-red"
+                           aria-hidden="true"></i></h1>
+                    <p class="about-icon-desc text-uppercase bold-text">Game Dev</p>
+                </div>
+                <div class="col-4 col-md-2 text-center">
+                    <!--<img class="about-icon mb-2" src="./assets/bg-splash.jpg" alt="">-->
+                    <h1><i class="fa fa-microchip theme-red"
+                           aria-hidden="true"></i></h1>
+                    <p class="about-icon-desc text-uppercase bold-text">Hardware</p>
+                </div>
+
+
+                <div class="col-12 mt-3">
+                    <h3 class="bold-text"><i class="fa fa-globe theme-purple hidden-xs-down"
+                                             aria-hidden="true">&nbsp;</i>When and Where?</h3>
+                    <p>
+                        HackRU is from October 6th to 7th, 2018 at the College Ave Student Center in New Brunswick,
+                        NJ. The College Ave Student Center is located at <strong>126 College Ave, New Brunswick, NJ
+                            08901.</strong>
+                    </p>
+                </div>
+
+                <div class="col-10 offset-1 mt-5 about-map-container">
+                    <iframe class="about-map"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1516.8805467681675!2d-74.45265422104657!3d40.5026657080946!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c3c6555ac2d7f7%3A0x8820e7c83ea74250!2sCollege+Avenue+Student+Center!5e0!3m2!1sen!2sus!4v1502828160852"
+                            width="100%"
+                            frameborder="0"
+                            allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END OF ABOUT US SECTION -->
+
+
+    <!-- ******************************************************************** -->
+
+
+    <!-- SCHEDULE SECTION -->
+    <div class="row min-half-height text-white bg-gradient skew">
+        <div class="col-10 offset-1 unskew">
+            <div class="row row-title-box">
+                <div class="col-12">
+                    <h2 class="row-title" id="schedule">Schedule</h2>
+                </div>
+            </div>
+
+            <div class="row row-content-box">
+                <div class="col-12 col-lg-6 text-center">
+                    <h3 class="bold-text mb-5 gold">😁 Saturday</h3>
+
+                    <div class="row sched-event">
+                        <div class="col-12 col-sm-6 text-center-xs text-right-not-xs"><span class="sched-time">10:00AM</span></div>
+                        <div class="col-12 col-sm-6 mt-2 mt-sm-0 text-center-xs text-left-not-xs"><span class="sched-desc">Check-In</span></div>
+                    </div>
+
+                    <div class="row sched-event">
+                        <div class="col-12 col-sm-6 text-center-xs text-right-not-xs"><span class="sched-time">11:00AM</span></div>
+                        <div class="col-12 col-sm-6 mt-2 mt-sm-0 text-center-xs text-left-not-xs"><span class="sched-desc">Lunch</span></div>
+                    </div>
+
+                    <div class="row sched-event">
+                        <div class="col-12 col-sm-6 text-center-xs text-right-not-xs"><span class="sched-time">11:30AM</span></div>
+                        <div class="col-12 col-sm-6 mt-2 mt-sm-0 text-center-xs text-left-not-xs"><span class="sched-desc">Opening Ceremonies</span></div>
+                    </div>
+
+                    <div class="row sched-event">
+                        <div class="col-12 col-sm-6 text-center-xs text-right-not-xs"><span class="sched-time">01:00PM</span></div>
+                        <div class="col-12 col-sm-6 mt-2 mt-sm-0 text-center-xs text-left-not-xs"><span class="sched-desc">Hacking Begins</span></div>
+                    </div>
+
+                    <div class="row sched-event">
+                        <div class="col-12 col-sm-6 text-center-xs text-right-not-xs"><span class="sched-time">05:30PM</span></div>
+                        <div class="col-12 col-sm-6 mt-2 mt-sm-0 text-center-xs text-left-not-xs"><span class="sched-desc">Dinner</span></div>
+                    </div>
+
+                </div>
+
+
+
+                <div class="col-12 mt-5 mt-lg-0 col-lg-6 text-center">
+                    <h3 class="bold-text mb-5 gold">😎 Sunday</h3>
+
+
+
+                    <div class="row sched-event">
+                        <div class="col-12 col-sm-6 text-center-xs text-right-not-xs"><span class="sched-time">12:00AM</span></div>
+                        <div class="col-12 col-sm-6 mt-2 mt-sm-0 text-center-xs text-left-not-xs"><span class="sched-desc">Midnight Surprise</span></div>
+                    </div>
+
+                    <div class="row sched-event">
+                        <div class="col-12 col-sm-6 text-center-xs text-right-not-xs"><span class="sched-time">02:00AM</span></div>
+                        <div class="col-12 col-sm-6 mt-2 mt-sm-0 text-center-xs text-left-not-xs"><span class="sched-desc">Midnight Snack</span></div>
+                    </div>
+
+                    <div class="row sched-event">
+                        <div class="col-12 col-sm-6 text-center-xs text-right-not-xs"><span class="sched-time">07:30AM</span></div>
+                        <div class="col-12 col-sm-6 mt-2 mt-sm-0 text-center-xs text-left-not-xs"><span class="sched-desc">Breakfast</span></div>
+                    </div>
+
+                    <div class="row sched-event">
+                        <div class="col-12 col-sm-6 text-center-xs text-right-not-xs"><span class="sched-time">11:30AM</span></div>
+                        <div class="col-12 col-sm-6 mt-2 mt-sm-0 text-center-xs text-left-not-xs"><span class="sched-desc">Hacking Ends</span></div>
+                    </div>
+
+                    <div class="row sched-event">
+                        <div class="col-12 col-sm-6 text-center-xs text-right-not-xs"><span class="sched-time">11:30AM</span></div>
+                        <div class="col-12 col-sm-6 mt-2 mt-sm-0 text-center-xs text-left-not-xs"><span class="sched-desc">Lunch</span></div>
+                    </div>
+
+                    <div class="row sched-event">
+                        <div class="col-12 col-sm-6 text-center-xs text-right-not-xs"><span class="sched-time">12:00PM</span></div>
+                        <div class="col-12 col-sm-6 mt-2 mt-sm-0 text-center-xs text-left-not-xs"><span class="sched-desc">Demos Begin</span></div>
+                    </div>
+
+                    <div class="row sched-event">
+                        <div class="col-12 col-sm-6 text-center-xs text-right-not-xs"><span class="sched-time">03:00PM</span></div>
+                        <div class="col-12 col-sm-6 mt-2 mt-sm-0 text-center-xs text-left-not-xs"><span class="sched-desc">Closing Ceremonies</span></div>
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END OF SCHEDULE SECTION -->
+
+
+    <!-- ******************************************************************** -->
+
+    <!-- SPONSOR SECTION -->
+    <div class="row min-half-height theme-red">
+        <div class="col-10 offset-1">
+            <div class="row row-title-box">
+                <div class="col-12">
+                    <h2 class="row-title" id="sponsors">Sponsors</h2>
+                </div>
+            </div>
+
+            <div class="row row-content-box">
+                <div class="col-12">
+
+
+
+                    <!-- <h4 class="spons-level my-5 plat">Platinum</h4> -->
+                    <!--  -->
+                    <!-- <div class="row text-center"> -->
+                    <!--     <div class="col-12 col-md-10 offset-md-1"> -->
+                    <!--         <img class="splogo" src="./assets/splogos/plat/rbc.png" alt="RBC Capital Markets"> -->
+                    <!--         <h6 class="splogo-text">RBC Capital Markets</h6> -->
+                    <!--     </div> -->
+                    <!-- </div> -->
+                    <!--  -->
+                    <!-- <h4 class="spons-level my-5 gold">Gold</h4> -->
+                    <!--  -->
+                    <!-- <div class="row text-center"> -->
+                    <!--     <div class="col-10 offset-1 col-md-5 offset-md-1"> -->
+                    <!--         <img class="splogo" src="./assets/splogos/gold/bny.png" alt="BNY Mellon"> -->
+                    <!--         <h6 class="splogo-text">BNY Mellon</h6> -->
+                    <!--     </div> -->
+                    <!--     <div class="col-10 offset-1 col-md-5 offset-md-0"> -->
+                    <!--         <img class="splogo" src="./assets/splogos/gold/vitech.png" alt="Vitech"> -->
+                    <!--         <h6 class="splogo-text">Vitech</h6> -->
+                    <!--     </div> -->
+                    <!-- </div> -->
+                    <!--  -->
+                    <!-- <h4 class="spons-level my-5 silver">Silver</h4> -->
+                    <!--  -->
+                    <!-- <div class="row text-center"> -->
+                    <!--     <div class="col hidden-sm-down"></div> -->
+                    <!--     <div class="col-md-3 col-8 offset-2 offset-md-0"> -->
+                    <!--         <img class="splogo" src="./assets/splogos/silver/bloomberg.png" alt="Bloomberg"> -->
+                    <!--         <h6 class="splogo-text">Bloomberg</h6> -->
+                    <!--     </div> -->
+                    <!--     <div class="col-md-3 col-8 offset-2 offset-md-0"> -->
+                    <!--         <img class="splogo" src="./assets/splogos/silver/verizon.png" alt="Verizon"> -->
+                    <!--         <h6 class="splogo-text">Verizon</h6> -->
+                    <!--     </div> -->
+                    <!--     <div class="col-md-3 col-8 offset-2 offset-md-0"> -->
+                    <!--         <img class="splogo" src="./assets/splogos/silver/capital-one.png" alt="Capital One"> -->
+                    <!--         <h6 class="splogo-text">Capital One</h6> -->
+                    <!--     </div> -->
+                    <!--     <div class="col hidden-sm-down"></div> -->
+                    <!--  -->
+                    <!-- </div> -->
+                    <!--  -->
+                    <!-- <div class="row text-center"> -->
+                    <!--     <div class="col hidden-sm-down"></div> -->
+                    <!--  -->
+                    <!--     <div class="col-md-3 col-8 offset-2 offset-md-0"> -->
+                    <!--         <img class="splogo" src="./assets/splogos/silver/mongodb.png" alt="MongoDB"> -->
+                    <!--         <h6 class="splogo-text">MongoDB</h6> -->
+                    <!--     </div> -->
+                    <!--  -->
+                    <!--     <div class="col-md-3 col-8 offset-2 offset-md-0"> -->
+                    <!--         <img class="splogo" src="./assets/splogos/silver/icims.png" alt="iCIMS"> -->
+                    <!--         <h6 class="splogo-text">iCIMS</h6> -->
+                    <!--     </div> -->
+                    <!--  -->
+                    <!--     <div class="col hidden-sm-down"></div> -->
+                    <!-- </div> -->
+                    <!--  -->
+                    <!--  -->
+                    <!-- <h4 class="spons-level my-5 bronze">Bronze</h4> -->
+                    <!--  -->
+                    <!-- <div class="row text-center"> -->
+                    <!--     <div class="col-6 col-md-2 offset-md-3"> -->
+                    <!--         <img class="splogo" src="./assets/splogos/bronze/chartbeat.png" alt="Chartbeat"> -->
+                    <!--         <h6 class="splogo-text">Chartbeat</h6> -->
+                    <!--     </div> -->
+                    <!--     <div class="col-6 col-md-2"> -->
+                    <!--         <img class="splogo" src="./assets/splogos/bronze/prudential.png" alt="Prudential"> -->
+                    <!--         <h6 class="splogo-text">Prudential</h6> -->
+                    <!--     </div> -->
+                    <!--     <div class="col-6 col-md-2 "> -->
+                    <!--         <img class="splogo" src="./assets/splogos/bronze/knowledgent.png" alt="Knowledgent"> -->
+                    <!--         <h6 class="splogo-text">Knowledgent</h6> -->
+                    <!--     </div> -->
+                    <!--  -->
+                    <!--     <div class="col-6 col-md-2 offset-md-3"> -->
+                    <!--         <img class="splogo" src="./assets/splogos/bronze/twilio.png" alt="Twilio"> -->
+                    <!--         <h6 class="splogo-text">Twilio</h6> -->
+                    <!--     </div> -->
+                    <!--     <div class="col-6 col-md-2"> -->
+                    <!--         <img class="splogo" src="./assets/splogos/bronze/buzzfeed.png" alt="BuzzFeed"> -->
+                    <!--         <h6 class="splogo-text">BuzzFeed</h6> -->
+                    <!--     </div> -->
+                    <!--     <div class="col-6 col-md-2"> -->
+                    <!--         <img class="splogo" src="./assets/splogos/bronze/gartner.png" alt="Gartner"> -->
+                    <!--         <h6 class="splogo-text">Gartner</h6> -->
+                    <!--     </div> -->
+                    <!-- </div> -->
+
+                    <p class="mt-5 text-center">
+                        Looking to sponsor us?
+                        <br>
+                        Visit <a class="theme-red" href="http://sponsorship.hackru.org">sponsorship.hackru.org</a> or email us at sponsorship@hackru.org!
+                    </p>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- END OF SPONSOR SECTION -->
+
+    <!-- ******************************************************************** -->
+
+    <!-- FAQ SECTION -->
+    <div class="row min-full-height text-white bg-gradient skew mb-5">
+        <div class="col-10 offset-1 unskew">
+            <div class="row row-title-box">
+                <div class="col-12">
+                    <h2 class="row-title" id="faqs">FAQs</h2>
+                </div>
+            </div>
+
+            <div class="row row-content-box">
+                <div class="col-12 col-xl-6">
+
+                    <h3 class="faq-q">What is HackRU?</h3>
+                    <p class="faq-a">
+                        HackRU is a 24-hour hackathon at Rutgers University. We welcome hundreds of
+                        students to join us in building awesome software and hardware projects. Industry experts and
+                        mentors come from all over the country to create an environment that fosters an atmosphere of
+                        learning through tech talks and one-on-one guidance. We encourage beginner and advanced hackers
+                        alike to challenge themselves and expand their skills.
+                    </p>
+
+                    <h3 class="faq-q">What should I bring?</h3>
+                    <p class="faq-a">
+                        Yourself, your ingenuity, hacking gear (laptop, laptop charger, monitor, hardware),
+                        photo ID, toiletries, sleeping gear, a change of clothes.
+                    </p>
+
+                    <h3 class="faq-q">What's the application process like?</h3>
+                    <p class="faq-a">
+                        HackRU will run registration on a first-come-first-serve basis for those with qualifying applications. That means registration can fill up quickly, so make sure to register early and answer questions thoroughly!
+                    </p>
+
+                    <h3 class="faq-q">Travel reimbursements?</h3>
+                    <p class="faq-a">
+                        HackRU is considering offering reimbursements on a first come first serve basis to students who do not attend Rutgers University - New Brunswick. Please note that putting down where you are traveling from <i><b>does not guarantee you any travel reimbursement</b></i> for Fall HackRU 2018. If you are accepted, you will be notified if you qualify for reimbursement based on region and availability.
+                    </p>
+
+                    <h3 class="faq-q">Can I win anything?</h3>
+                    <p class="faq-a">
+                        Yes! We'll release more information about prizes as the event draws near.
+                    </p>
+
+                    <h3 class="faq-q">I have more questions!</h3>
+                    <p class="faq-a">
+                        Reach out to us at <a href="mailto:info@hackru.org">info@hackru.org</a>! We'll be happy to answer.
+                    </p>
+
+                </div>
+
+                <div class="col-12 col-xl-6">
+
+                    <h3 class="faq-q">Who can come?</h3>
+                    <p class="faq-a">
+                        HackRU welcomes undergraduate and graduate students of all majors, backgrounds, and
+                        skill levels to come create. Unfortunately, if you are not a Rutgers student and you are under
+                        18, you will not be able to attend. High school students who will be 18 by HackRU are allowed to
+                        register.
+                    </p>
+
+                    <h3 class="faq-q">I'm new, what should I do?</h3>
+                    <p class="faq-a">
+                        That's great! We'd love to have you at HackRU. Throughout the weekend there will be
+                        workshops for you to get your feet wet, project ideas for you to try out, and mentors to guide
+                        you through the process.
+                    </p>
+
+                    <h3 class="faq-q">How much does it cost to attend?</h3>
+                    <p class="faq-a">
+                        Like the best things in life, HackRU is completely free to attend! We will be
+                        providing meals, snacks, and drinks for the entire event along with swag on swag on swag.
+                    </p>
+
+                    <h3 class="faq-q">Can I work with others?</h3>
+                    <p class="faq-a">
+                        Hackers can (and are encouraged to) work in teams of up to 4 humans max. The knowledge
+                        you gain from teammates is invaluable, along with the opportunity to build lifetime friendships
+                        - you might leave with a new best friend! We will be having a team-building exercise after
+                        opening ceremonies for people who are looking for teammates.
+                    </p>
+
+                    <h3 class="faq-q">What shouldn't I bring?</h3>
+                    <p class="faq-a">
+                        Weapons (or anything that can be construed as a weapon), alcohol, illegal drugs,
+                        and/or animals. Use your common sense - if you wouldn't bring it on a plane or to school, don't
+                        bring it here.
+                    </p>
+
+                    <h3 class="faq-q">Do you have any hardware?</h3>
+                    <p class="faq-a">
+                        Hardware will be provided by the MLH Hardware labs and a full list of available
+                        hardware will be released during the week of the event.
+                    </p>
+
+
+                </div>
+            </div>
+        </div>
+                            </div>
+    <!-- END OF FAQ SECTION -->
+
+    <!-- ******************************************************************** -->
+
+    <!-- FOOTER SECTION -->
+<div class="row text-black footer">
+    <div class="col-12 col-lg-10 offset-lg-1">
+
+        <div class="row">
+            <div class="col-12 text-center col-lg-4 text-left-lg">
+                <h6 class="text-vcenter">
+                    <a href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf" target="_blank">MLH's Code of Conduct</a>
+                </h6>
+            </div>
+
+            <div class="col-12 col-lg-4 text-center">
+
+                <a href="mailto:info@hackru.org" class="social-links" data-email="info@hackru.org" target="_blank"><i class="fa fa-envelope" aria-hidden="true"></i></a>
+                <a href="https://www.facebook.com/theHackRU/" class="social-links" target="_blank"><i class="fa fa-facebook-square" aria-hidden="true"></i></a>
+                <a href="https://www.instagram.com/thehackru/" class="social-links" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                <a href="https://medium.com/the-hackru" class="social-links" target="_blank"><i class="fa fa-medium" aria-hidden="true"></i></a>
+                <a href="https://twitter.com/theHackRU" class="social-links" target="_blank"><i class="fa fa-twitter-square" aria-hidden="true"></i></a>
+
+            </div>
+
+
+            <div class="col-12 mb-5 mb-lg-0 text-center col-lg-4 text-right-lg">
+
+                <a href="https://mlh.io/" target="_blank">
+                    <img class="footer-logo" src="./assets/icons/mlh-logo-black.svg" alt="MLH logo">
+                </a>
+                <a href="http://usacs.rutgers.edu/" target="_blank">
+                    <img class="footer-logo" src="./assets/icons/usacs-logo-purple-yo.png" alt="USACS logo">
+                </a>
+
+            </div>
+
+        </div>
+
+
+
+    </div>
+</div>
+
+
+    <!-- END FOOTER SECTION -->
+
+</div>
 </body>
-
-
 </html>
+
+                              

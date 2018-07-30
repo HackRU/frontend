@@ -32,7 +32,6 @@ class AttendancePrompt extends React.Component {
       //checked in
       return (
         <div>
-          <i className="fas fa-check fa-fw"/>
           <h1 className="blue my-3">{'Welcome to HackRU!'}</h1>
           <h6 className="blue">{'In case of an emergency, call RUPD: 732-932-7211'}</h6>
         </div>
