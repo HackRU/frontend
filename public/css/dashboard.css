@@ -16,14 +16,11 @@
     font-family: Circular;
     font-weight: normal;
     src: local("Circular"), url("../fonts/helvetica-regular.otf") format("opentype");
-<<<<<<< HEAD
-=======
 }
 
 @font-face {
   font-family: "Helvetica Regular";
   src: url(../fonts/helvetica-regular.otf);
->>>>>>> 2d14206cbf0294946683524205985e01d0f83a9d
 }
 /* - - - - - - - -  END FONTS - - - - - - - - */
 
@@ -75,13 +72,8 @@ h6 a {
 #dashboard-profile {
     height: 100%;
     overflow-y: scroll;
-<<<<<<< HEAD
-  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#7b4397+0,dc2430+100 */
-  background: white;
-=======
     background: white;
     color: #39275E;
->>>>>>> 2d14206cbf0294946683524205985e01d0f83a9d
 }
 
 
@@ -245,18 +237,12 @@ button {
     left: 50%;
     height: 100%;
     width: 200px;
-<<<<<<< HEAD
-    content: url("../assets/underline.png");
-    z-index: -1;
-    margin-left: -100px;
-=======
     content: '';
     background-image: url("../assets/underline.png");
     z-index: -1;
     margin-left: -100px;
     background-size: 200px auto;
     display: block;
->>>>>>> 2d14206cbf0294946683524205985e01d0f83a9d
 }
 
 .overlay-design {
@@ -319,9 +305,6 @@ body {
 .btn-primary {
     color: white;
     background: rgba(0,0,0,0.5);
-<<<<<<< HEAD
-    border: 3px solid white;
-=======
     border: 1px solid white;
     margin-right: 20px;
 }
@@ -338,17 +321,12 @@ body {
     padding-right: 5px;
     padding-top: 2px;
     padding-bottom: 2px;
->>>>>>> 2d14206cbf0294946683524205985e01d0f83a9d
 }
 
 .btn-primary:hover {
     color: white;
     background: rgba(0,0,0,0.5);
-<<<<<<< HEAD
-    border: 3px solid #fff242;
-=======
     border: 1px solid #fff242;
->>>>>>> 2d14206cbf0294946683524205985e01d0f83a9d
 }
 
 .btn-primary:hover .UC {
@@ -356,11 +334,6 @@ body {
 }
 
 .form-control {
-<<<<<<< HEAD
-    border: 3px solid white;
-    border-radius: 10px;
-    background: rgba(0,0,0,0.5);
-=======
     border: 1px solid white;
     border-radius: 10px;
     background: rgba(0,0,0,0.5);
@@ -372,7 +345,6 @@ body {
     border-radius: 10px;
     background: rgba(0,0,0,0.5);
     color: white;
->>>>>>> 2d14206cbf0294946683524205985e01d0f83a9d
 }
 
 @media (min-width: 768px) {
