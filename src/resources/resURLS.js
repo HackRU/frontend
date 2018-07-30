@@ -1,7 +1,7 @@
 const resURLS = {
   //assets
-  logoURL: 'img/logo-white.png',
-  wheelURL: 'img/wheel.png',
+  logoURL: 'assets/hackru_lpurple.png',
+  wheelURL: 'assets/hackru_lpurple.png',
 
   //colors
   background: [232, 246, 252],

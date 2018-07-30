@@ -65,7 +65,6 @@ class LoginForm extends React.Component {
     return (
       <div className="content-section " id="announcements-div">
         <h2 className="content-section-title">
-          <i className="fas fa-sign-in-alt fa-fw" /> 
           <span className="u-highlight">{'Login:'}</span>
         </h2>
         <div className="content-section-desc register-root">
@@ -111,17 +110,17 @@ class LoginForm extends React.Component {
               </div>
               <div className="form-group row mt-0">
                 <div className="col-12 text-center">
-                  <button className="btn btn-primary mx-1 p-xs-2 p-md-3"
-                    onClick={this.signUp}
-                    type="button"
-                  >
-                    <h6 className="UC ">{'Sign Up'}</h6>
-                  </button>
                   <button className="btn btn-primary custom-btn p-xs-2 p-md-3 mx-1"
                     onClick={this.login}
                     type="button"
                   >
                     <h6 className=" UC ">{'Login'}</h6>
+                  </button>
+                  <button className="btn btn-primary mx-1 p-xs-2 p-md-3"
+                    onClick={this.signUp}
+                    type="button"
+                  >
+                    <h6 className="UC ">{'Sign Up'}</h6>
                   </button>
                   {/*<button className="btn btn-primary p-xs-2 p-md-3 my-2"
                     onClick={this.onMlhLogin}
