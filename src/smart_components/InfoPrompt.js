@@ -11,6 +11,8 @@ import * as userActions from 'action_creators/UserActions';
 import { logoutUser } from 'action_creators/ViewActions';
 
 import Select, { Creatable, AsyncCreatable, Async } from 'react-select';
+import 'react-select/dist/react-select.css';
+
 
 class InfoPrompt extends React.Component {
 
