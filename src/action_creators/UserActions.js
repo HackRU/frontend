@@ -123,22 +123,26 @@ export const setShifts = (shifts, role) => (
   }
 );
 
-export const toggleCOC = (checked) => (
+export const toggleCOC = (userState) => (
   (dispatch) => {
-    
+
+    const isChecked = !userState.codeOfConduct; 
+
     dispatch({
       type: USER_DATA.SET_COC, 
-      codeOfConduct: checked
+      codeOfConduct: isChecked
     });
   }
 );
 
-export const toggleShare = (checked) => (
+export const toggleShare = (userState) => (
   (dispatch) => {
+
+    const isChecked = !userState.dataSharing;
 
     dispatch({
       type: USER_DATA.SET_SHARE,
-      dataSharing: checked
+      dataSharing: isChecked
     });
   }
 );
@@ -147,6 +151,8 @@ export const save = (userState) => (
   (dispatch) => {
 
     let user = userState.userInfo;
+    user.codeOfConduct = userState.codeOfConduct; //hacky way to save codeOfConduct status to lcs
+    user.dataSharing = userState.dataSharing; //hacky way to save dataSharing status to lcs
     if(userState.codeOfConduct && userState.dataSharing) {
       
       //the user has checked both boxes and can be set as registered in lcs
@@ -700,6 +706,16 @@ export const readUser = (uEmail, uToken) => (
         dispatch({
           type: USER_DATA.SET_EMAIL,
           email: user.email
+        });
+
+        //hacky way to get codeOfConduct and dataSharing status from lcs
+        dispatch({
+          type: USER_DATA.SET_COC,
+          codeOfConduct: user.codeOfConduct
+        });
+        dispatch({
+          type: USER_DATA.SET_SHARE,
+          dataSharing: user.dataSharing
         });
 
         //console.log('user set');

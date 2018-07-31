@@ -33,7 +33,7 @@ class TravelForm extends React.Component {
   }
 
   toggleTravel = (e) => {
-    e.preventDefault();
+    //e.preventDefault();
     this.props.toggleTravel(this.props.userManager);
   }
 
