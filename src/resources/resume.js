@@ -24,37 +24,13 @@ function upload(key, file, callback) {
 }
 
 function uploadResume(email, callback) {
-  var files = document.getElementById('resumeupload').files;
+  const files = document.getElementById('resumeupload').files;
   if(!files.length) {
     callback('Please choose a file to upload first.');
     return;
   }
-  var resumeKey = encodeURIComponent(email);
-
-  /*
-     * security: nobody can access bucket other than the owner but with this script, which contains
-     * upload, download
-    */
-
-  var params = {
-    Bucket: config_resume.s3bucket,
-    Key: resumeKey
-  };
-    
-    // check if they already uploaded - if so, delete whatever's there and upload new resume
-  s3.waitFor('objectExists', params, function(err, data) {
-    if(!err) {
-      s3.deleteObject({Key: resumeKey}, function(err, data) {
-        if(err){
-          callback('Deletion error:'+ err.message);
-          return;
-        }
-        upload(resumeKey, files[0], callback);
-      });
-    } else {
-      upload(resumeKey, files[0], callback);
-    }
-  });
+  const resumeKey = encodeURIComponent(email);
+  upload(resumeKey, files[0], callback);
 }
 
 // pass hacker's email if hacker = true, else pass {hacker = false, email = the set of emails the companies want resumes for}
