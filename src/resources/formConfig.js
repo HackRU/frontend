@@ -1,33 +1,6 @@
 //formConfig.js
 const formConfig = {
-  'email': {
-    'select': false,
-    'type': 'email',
-    'required': true
-  },
-  'github': {
-    'select': false,
-    'type': 'text',
-    'searchFn': (i) => fetch(`https://api.github.com/search/users?q=${i}`)
-      .then(r => r.json()).then(j => ({options: j.items})),
-    'create': false,
-    'required': false
-  },
-  'major': {
-    'select': true,
-    'searchFn': (i) => fetch('majors.json')
-      .then(r => r.json()).then(json => ({options: json.items
-        .map(i => ({'value': i, 'label': i}))})),
-    'create': true,
-    'required': true
-  },
-  'shirt_size': {
-    'select': true,
-    'options': ['Unisex XS', 'Unisex S', 'Unisex M', 'Unisex L', 'Unisex XL']
-      .map(v => ({'value': v, 'label': v})),
-    'create': false,
-    'required': true
-  },
+  
   'first_name': {
     'select': false,
     'type': 'text',
@@ -38,19 +11,9 @@ const formConfig = {
     'type': 'text', 
     'required': true
   },
-  'dietary_restrictions': {
+  'email': {
     'select': false,
-    'type': 'text',
-    'required': false
-  },
-  'special_needs': {
-    'select': false,
-    'type': 'text',
-    'required': false
-  },
-  'date_of_birth': {
-    'select': false,
-    'type': 'date',
+    'type': 'email',
     'required': true
   },
   'school': {
@@ -64,6 +27,21 @@ const formConfig = {
     'create': false,
     'required': true
   },
+  'level_of_study': {
+    'select': true,
+    'options': ['University (Undergraduate)', 'University (Graduate)', 'High School']
+      .map(v => ({'value': v, 'label': v})),
+    'create': true,
+    'required': true
+  },
+  'major': {
+    'select': true,
+    'searchFn': (i) => fetch('majors.json')
+      .then(r => r.json()).then(json => ({options: json.items
+        .map(i => ({'value': i, 'label': i}))})),
+    'create': true,
+    'required': true
+  },
   'grad_year': {
     'select': true,
     'options': [2018, 2019, 2020, 2021, 2022]
@@ -71,11 +49,9 @@ const formConfig = {
     'create': true,
     'required': true
   },
-  'level_of_study': {
-    'select': true,
-    'options': ['University (Undergraduate)', 'University (Graduate)', 'High School']
-      .map(v => ({'value': v, 'label': v})),
-    'create': true,
+  'date_of_birth': {
+    'select': false,
+    'type': 'date',
     'required': true
   },
   'gender': {
@@ -84,6 +60,38 @@ const formConfig = {
       .map(v => ({'value': v, 'label': v})),
     'create': true,
     'required': false
+  },
+  'shirt_size': {
+    'select': true,
+    'options': ['Unisex XS', 'Unisex S', 'Unisex M', 'Unisex L', 'Unisex XL']
+      .map(v => ({'value': v, 'label': v})),
+    'create': false,
+    'required': true
+  },
+  'dietary_restrictions': {
+    'select': false,
+    'type': 'text',
+    'required': false
+  },
+  'special_needs': {
+    'select': false,
+    'type': 'text',
+    'required': false
+  },
+  'github': {
+    'select': false,
+    'type': 'text',
+    'searchFn': (i) => fetch(`https://api.github.com/search/users?q=${i}`)
+      .then(r => r.json()).then(j => ({options: j.items})),
+    'create': false,
+    'required': false
+  },
+  'how_you_heard_about_hackru': {
+    'select': true,
+    'options': ['Mailing List', 'MLH Website', 'Facebook', 'Instagram', 'Twitter', 'Reddit', 'Medium', 'Youtube', 'Twitch']
+      .map(v=> ({'value': v, 'label': v})),
+    'create': true,
+    'required': true
   }
 };
 
