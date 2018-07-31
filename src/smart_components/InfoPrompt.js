@@ -69,12 +69,12 @@ class InfoPrompt extends React.Component {
     //return components based on configuration of each field
     const user = this.props.userManager.userInfo;
     
-    if(typeof(user[key]) === 'undefined') {
+    /*if(typeof(user[key]) === 'undefined') {
 
       //non-existing user key
       console.log('Key ' + key + ' not found in user!');
       return;
-    }
+    }*/
     const field = formConfig[key];
     //console.log(field);
     if(!field) {
