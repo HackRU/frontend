@@ -6,31 +6,24 @@ var s3 = new AWS.S3({
   secretAccessKey: config_resume.secretKey
 });
 
-function upload(key, file, callback) {
-  s3.upload({
+async function upload(key, file, callback) {
+  return s3.upload({
     Key: key,
     Body: file,
     Bucket: config_resume.s3bucket,
     ACL: 'private'
-  }, function(err, data) {
-    if(err) {
-      callback('There was an error uploading your resume: '+ err.message);
-      return;
-    }
-
-    callback('Successfully uploaded resume.');
-  });
-
+  }).promise()
+    .then(obj => 'Successfully uploaded resume')
+    .catch(err => 'There was an error uploading your resume' + err.message);
 }
 
-function uploadResume(email, callback) {
+async function uploadResume(email, callback) {
   const files = document.getElementById('resumeupload').files;
   if(!files.length) {
-    callback('Please choose a file to upload first.');
-    return;
+    return 'Please choose a file to upload first.';
   }
   const resumeKey = encodeURIComponent(email);
-  upload(resumeKey, files[0], callback);
+  return await upload(resumeKey, files[0], callback);
 }
 
 // pass hacker's email if hacker = true, else pass {hacker = false, email = the set of emails the companies want resumes for}

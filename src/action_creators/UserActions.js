@@ -404,24 +404,13 @@ export const unapplyVolunteer = (userState) => (
 );
 
 export const upResume = (userState) => (
-  (dispatch) => {
-
+  async (dispatch) => {
     //upload resume to S3
-    uploadResume(userState.userInfoEmail, (response) => {
-      if(response === 'Successfullly uploaded resume.') {
-
-        //successful upload
-        dispatch(confirmResume(true));
-      } else {
-
-        //unsuccessful upload
-        dispatch(confirmResume(false));
-      }
-
-      dispatch({
-        type: USER_DATA.SET_FLASH,
-        flash: response
-      });
+    const response = await uploadResume(userState.userInfoEmail);
+    dispatch(confirmResume(response === 'Successfullly uploaded resume.'));
+    dispatch({
+      type: USER_DATA.SET_FLASH,
+      flash: response
     });
   }
 );
