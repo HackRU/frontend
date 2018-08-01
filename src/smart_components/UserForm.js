@@ -15,7 +15,10 @@ class UserForm extends React.Component{
   render() {
 
     let status = this.props.viewController.userStatus;
-
+    if(!status) {
+      //loading
+      status = 'Loading...';
+    }
     return (   
       <div>
         <div className="content-section"

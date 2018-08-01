@@ -29,7 +29,12 @@ class AttendancePrompt extends React.Component {
 
     
   reflectPrompt = (userStatus) => {
-    if(userStatus === 'checked in') {
+
+    if(userStatus === 'Loading...') {
+      //return nothing
+      return;
+
+    } else if(userStatus === 'checked in') {
 
       //checked in
       return (

@@ -101,7 +101,7 @@ class InfoPrompt extends React.Component {
           onChange={this.changeKeyByEvent}
           type="text"
           required={field.required}
-          value={user[key]}
+          value={user[key] || ''}
         />
       );
     } else if(!field.select) {
@@ -112,7 +112,7 @@ class InfoPrompt extends React.Component {
           onChange={this.changeKeyByEvent}
           type={field.type}
           required={field.required}
-          value={user[key]}
+          value={user[key] || ''}
         />
       );
     } else if(!field.searchFn && !field.create) {
@@ -123,7 +123,7 @@ class InfoPrompt extends React.Component {
           onChange={this.changeKeyByArg(key)}
           options={field.options}
           required={field.required}
-          value={user[key]}
+          value={user[key] || ''}
         />
       );
     } else if(!field.searchFn && field.create) {
@@ -134,7 +134,7 @@ class InfoPrompt extends React.Component {
           onChange={this.changeKeyByArg(key)}
           options={field.options}
           required={field.required}
-          value={user[key]}
+          value={user[key] || ''}
         />
       );
     } else if(field.searchFn && !field.create) {
@@ -148,7 +148,7 @@ class InfoPrompt extends React.Component {
           matchPos="any"
           onChange={this.changeKeyByArg(key)}
           required={field.required}
-          value={user[key]}
+          value={user[key] || ''}
         />
       );
     } else {
@@ -248,7 +248,7 @@ class InfoPrompt extends React.Component {
                   type="file"
                 />
               </div>
-              {user &&
+              {user.registration_status !== 'registered' &&
               <div className="form-group row mb-4 mx-1">
                 <h4 className="font-weight-bold blue">
                   {'MLH NOTICES'}

@@ -26,7 +26,7 @@ const store = createStore(rootReducer, composeEnhancers(applyMiddleware(reduxThu
 
 // ReactDOM.render(<Col messageText="thisistext" />, document.getElementById('second-root')); <-- what this
 
-store.subscribe(() => (console.log(store.getState())));
+//store.subscribe(() => (console.log(store.getState())));
 
 
 class App extends React.Component {

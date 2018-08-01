@@ -72,6 +72,7 @@ export const updateTravel = (userState, key, value) => (
     }
     travellingFrom[key] = value;
     dispatch(updateUser(userState, 'travelling_from', travellingFrom));
+    //console.log(userState);
   }
 );
 
@@ -151,8 +152,6 @@ export const save = (userState) => (
   (dispatch) => {
 
     let user = userState.userInfo;
-    user.codeOfConduct = userState.codeOfConduct; //hacky way to save codeOfConduct status to lcs
-    user.dataSharing = userState.dataSharing; //hacky way to save dataSharing status to lcs
     if(userState.codeOfConduct === false || userState.dataSharing === false) {
       
       //the user is not registered
@@ -163,8 +162,9 @@ export const save = (userState) => (
       //user is registered
       user.registration_status = 'registered';
     }
+    //delete user.update;
 
-    console.log('user being saved: ' + JSON.stringify(user));
+    //console.log('user being saved: ' + JSON.stringify(user));
 
     fetch(resURLS.lcsUpdateURL, {
       method: 'POST',
@@ -430,7 +430,7 @@ export const upResume = (userState) => (
 export const confirmAttendance = (userState) => (
   (dispatch) => {
 
-    let update = {'registration_status': 'coming', dietary_restrictions: ''};
+    let update = {'registration_status': 'coming'};
     fetch(resURLS.lcsUpdateURL, {
       method: 'POST',
       mode: 'cors',
@@ -477,8 +477,7 @@ export const confirmAttendance = (userState) => (
 export const cancelAttendance = (userState) => (
   (dispatch) => {
 
-    console.log(userState);
-    let update = {'registration_status': 'not-coming', 'special_needs': ''};
+    let update = {'registration_status': 'not-coming'};
     if(userState.userInfo.travelling_from && userState.userInfo.travelling_from.is_real === true) {
 
       //this person had previously requested for travel reimbursement
@@ -698,7 +697,7 @@ export const readUser = (uEmail, uToken) => (
 
         //on successful read, set state's user to data
         const user = data.body[0];
-        console.log('user being read: ' + JSON.stringify(user));
+        //console.log('user being read: ' + JSON.stringify(user));
         dispatch({
           type: USER_DATA.SET_USER_INFO,
           userInfo: user
@@ -706,16 +705,6 @@ export const readUser = (uEmail, uToken) => (
         dispatch({
           type: USER_DATA.SET_EMAIL,
           email: user.email
-        });
-
-        //hacky way to get codeOfConduct and dataSharing status from lcs
-        dispatch({
-          type: USER_DATA.SET_COC,
-          codeOfConduct: user.codeOfConduct
-        });
-        dispatch({
-          type: USER_DATA.SET_SHARE,
-          dataSharing: user.dataSharing
         });
 
         //console.log('user set');

@@ -297,7 +297,7 @@ const loginPostFetch = (data) => (
       //console.log(errorMsgs[data.body]);
       dispatch(showCaughtError(errorMsgs[data.body]));
     } else {
-
+    
       //successful authorization
       dispatch(loginUser({body: data.body})); 
     }
