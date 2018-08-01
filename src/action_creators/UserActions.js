@@ -5,7 +5,7 @@ import { USER_DATA, VIEW_CONTROL } from 'action_creators/ActionTypes';
 import * as ViewActions from 'action_creators/ViewActions';
 
 import resURLS from 'resources/resURLS';
-import { uploadResume, downloadResume } from 'resources/resume.js';
+import { resumeExists, uploadResume } from 'resources/resume.js';
 
 export const checkCookies = () => (
   (dispatch) => {
@@ -679,7 +679,6 @@ export const readUser = (uEmail, uToken) => (
       })
     }).then(resp => resp.json())
       .then(data => {
-
         //on successful read, set state's user to data
         const user = data.body[0];
         dispatch({
@@ -699,20 +698,16 @@ export const readUser = (uEmail, uToken) => (
         //set the qr code
         dispatch(getQR(user.email));
         //get resume
-
-        
-        //download the user's resume from S3
-        downloadResume(true, uEmail, (resp, err) => {
-          dispatch(confirmResume(resp));        
-          dispatch({
-            type: USER_DATA.SET_FLASH,
-            flash: resp ? 'Resume found' : err
-          });
+        return resumeExists(uEmail);
+      })
+      .then(found => {
+        dispatch(confirmResume(found));
+        dispatch({
+          type: USER_DATA.SET_FLASH,
+          flash: found ? 'Resume found' : 'Resume not found' 
         });
-
       })
       .catch(err => {
-
         //unexpected error
         dispatch(showCaughtError(err.toString()));
       });
