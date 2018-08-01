@@ -12,6 +12,8 @@ class AttendancePrompt extends React.Component {
   
   constructor(props) {
     super(props);
+    this.confirmAttendance = this.confirmAttendance.bind(this);
+    this.cancelAttendance = this.cancelAttendance.bind(this);
     this.reflectPrompt = this.reflectPrompt.bind(this);
   }
 
@@ -36,29 +38,31 @@ class AttendancePrompt extends React.Component {
           <h6 className="blue">{'In case of an emergency, call RUPD: 732-932-7211'}</h6>
         </div>
       );
-    } else if (userStatus !== 'pending' && userStatus !== 'waitlist' && userStatus !== 'checked in') {
+    } else if (userStatus || userStatus !== 'pending' && userStatus !== 'waitlist' && userStatus !== 'checked in') {
       //confirming
+
+      const Fragment = React.Fragment;
       return (
-        <div> 
+        <Fragment> 
           <div className="blue">
             <h3>{this.props.userManager.upperFlash}</h3>
           </div>
           <button className="btn btn-primary UC custom-btn p-3 my-1 mx-md-1"
-            onClick={this.props.confirmAttendance}
+            onClick={this.confirmAttendance}
             type="button"
           >
             <h6 className="my-0">{'Attending'}</h6>
           </button>
           <button className="btn btn-primary UC custom-btn p-3 my-1"
-            onClick={this.props.cancelAttendance}
+            onClick={this.cancelAttendance}
             type="button"
           >
             <h6 className="my-0">{'Not Attending'}</h6>
           </button>
           <TravelForm userStatus={userStatus}/>
-        </div>
+        </Fragment>
       );
-    }
+    } 
   }
 
   render() {

@@ -39,7 +39,7 @@ export const checkCookies = () => (
         dispatch(ViewActions.loginUser({body: JSON.stringify(authdata)})); 
         
         //read in the user data from lcs
-        dispatch(readUser(email, token));
+        //dispatch(readUser(email, token));
       }
     } else {
 
@@ -153,14 +153,14 @@ export const save = (userState) => (
     let user = userState.userInfo;
     user.codeOfConduct = userState.codeOfConduct; //hacky way to save codeOfConduct status to lcs
     user.dataSharing = userState.dataSharing; //hacky way to save dataSharing status to lcs
-    if(userState.codeOfConduct && userState.dataSharing) {
+    if(userState.codeOfConduct === false || userState.dataSharing === false) {
       
-      //the user has checked both boxes and can be set as registered in lcs
+      //the user is not registered
     
-      user.registration_status = 'registered';
+      user.registration_status = 'unregistered';
     }
 
-    console.log(user);
+    console.log('user being saved: ' + JSON.stringify(user));
 
     fetch(resURLS.lcsUpdateURL, {
       method: 'POST',
@@ -187,6 +187,7 @@ export const save = (userState) => (
             type: USER_DATA.SET_FLASH,
             flash: 'Changes saved successfully'
           });
+          dispatch(getStatus(userState.userInfo));
         } else {
             
           //save unsucessful
@@ -424,7 +425,7 @@ export const upResume = (userState) => (
 export const confirmAttendance = (userState) => (
   (dispatch) => {
 
-    let update = {'registration_status': 'coming'};
+    let update = {'registration_status': 'coming', dietary_restrictions: ''};
     fetch(resURLS.lcsUpdateURL, {
       method: 'POST',
       mode: 'cors',
@@ -450,12 +451,13 @@ export const confirmAttendance = (userState) => (
             type: USER_DATA.SET_UPPER_FLASH,
             upperFlash: 'Attendance confirmed.'
           });
+          dispatch(getStatus(userState.userInfo));
         } else {
 
           //unsuccessful update
           dispatch({
             type: USER_DATA.SET_UPPER_FLASH,
-            upperFlash: 'There was an issue with your confirmation:\n' + resp.body  
+            upperFlash: 'There was an issue with your confirmation:\n' + resp.body 
           });
         }
       })
@@ -469,13 +471,15 @@ export const confirmAttendance = (userState) => (
 
 export const cancelAttendance = (userState) => (
   (dispatch) => {
-    
-    let update = {'registration_status': 'not-coming'};
+
+    console.log(userState);
+    let update = {'registration_status': 'not-coming', 'special_needs': ''};
     if(userState.userInfo.travelling_from && userState.userInfo.travelling_from.is_real === true) {
 
       //this person had previously requested for travel reimbursement
       update['travelling_from.is_real'] = false;
     }
+    
 
     fetch(resURLS.lcsUpdateURL, {
       method: 'POST',
@@ -489,7 +493,7 @@ export const cancelAttendance = (userState) => (
         updates: {'$set': update},
         user_email: userState.userInfoEmail,
         auth_email: userState.userInfoEmail,
-        token: userState.token
+        auth: userState.token
       })
     }).then(data => data.json())
       .then(resp => {
@@ -506,6 +510,7 @@ export const cancelAttendance = (userState) => (
             type: USER_DATA.SET_UPPER_FLASH,
             upperFlash: 'Attendance canceled.'
           });
+          dispatch(getStatus(userState.userInfo));
         } else {
         
           //unsuccessful update
@@ -549,7 +554,7 @@ export const sendTravelInfo = (userState) => (
         updates: {'$set': {'travelling_from': travellingFrom}},
         user_email: userState.userInfoEmail,
         auth_email: userState.userInfoEmail,
-        token: userState.token
+        auth: userState.token
       })
     }).then(data => data.json())
       .then(resp => {
@@ -687,6 +692,8 @@ export const readUser = (uEmail, uToken) => (
       .then(data => {
         //on successful read, set state's user to data
         const user = data.body[0];
+
+        console.log('user being read: ' + JSON.stringify(user));
         dispatch({
           type: USER_DATA.SET_USER_INFO,
           userInfo: user
@@ -734,7 +741,7 @@ const getStatus = (user) => (
   (dispatch) => {
 
     let status = user && user.registration_status;
-    if(status && (status === 'registered' || status === 'unregistered' || status === 'rejected')) {
+    if(status && (status === 'registered' || status === 'rejected')) {
 
       //we don't show a rejection status
       status = 'pending';
@@ -745,7 +752,7 @@ const getStatus = (user) => (
     } else if(status) {
 
       //use whatever's there
-      status = status.replace('-', ' ');
+      status = status.replace('_', ' ').replace('-', ' '); //Yes I'm lazy.
     } else {
 
       //none of the above, not set yet
