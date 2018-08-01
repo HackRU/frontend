@@ -5,7 +5,7 @@ import { USER_DATA, VIEW_CONTROL } from 'action_creators/ActionTypes';
 import * as ViewActions from 'action_creators/ViewActions';
 
 import resURLS from 'resources/resURLS';
-import { uploadResume, downloadResume } from 'resources/resume.js';
+import { resumeExists, uploadResume } from 'resources/resume.js';
 
 export const checkCookies = () => (
   (dispatch) => {
@@ -410,24 +410,13 @@ export const unapplyVolunteer = (userState) => (
 );
 
 export const upResume = (userState) => (
-  (dispatch) => {
-
+  async (dispatch) => {
     //upload resume to S3
-    uploadResume(userState.userInfoEmail, (response) => {
-      if(response === 'Successfullly uploaded resume.') {
-
-        //successful upload
-        dispatch(confirmResume(true));
-      } else {
-
-        //unsuccessful upload
-        dispatch(confirmResume(false));
-      }
-
-      dispatch({
-        type: USER_DATA.SET_FLASH,
-        flash: response
-      });
+    const response = await uploadResume(userState.userInfoEmail);
+    dispatch(confirmResume(response === 'Successfullly uploaded resume.'));
+    dispatch({
+      type: USER_DATA.SET_FLASH,
+      flash: response
     });
   }
 );
@@ -696,7 +685,6 @@ export const readUser = (uEmail, uToken) => (
       })
     }).then(resp => resp.json())
       .then(data => {
-
         //on successful read, set state's user to data
         const user = data.body[0];
         dispatch({
@@ -726,31 +714,16 @@ export const readUser = (uEmail, uToken) => (
         //set the qr code
         dispatch(getQR(user.email));
         //get resume
-
-        
-        //download the user's resume from S3
-        downloadResume(true, uEmail, (resp, err, mes) => {
-          dispatch(confirmResume(resp));        
-          if(resp === false ) {
-            
-            //problem with downloading
-            dispatch({
-              type: USER_DATA.SET_FLASH,
-              flash: err + ' ' + mes
-            });
-          } else {
-   
-            //successful download -- does this show ever?
-            dispatch({
-              type: USER_DATA.SET_FLASH,
-              flash: 'Resume found.'
-            });
-          }
+        return resumeExists(uEmail);
+      })
+      .then(found => {
+        dispatch(confirmResume(found));
+        dispatch({
+          type: USER_DATA.SET_FLASH,
+          flash: found ? 'Resume found' : 'Resume not found' 
         });
-
       })
       .catch(err => {
-
         //unexpected error
         dispatch(showCaughtError(err.toString()));
       });
