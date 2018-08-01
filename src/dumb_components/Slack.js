@@ -5,16 +5,11 @@ class SlackContainer extends React.Component {
   constructor (props) {
     super(props);
     this.loadData = this.loadData.bind(this);
+    this.state = { text: [] };
   }
   componentDidMount() {
     this.loadData();
-    setInterval(this.loadData, 1000 * 60 * 5);
-  }
-
-  state = {
-    dataIsBody: {
-      text: [],
-    },
+    setInterval(this.loadData, 1000 * 60 * 5); // 5 minutes
   }
 
   async loadData() {
@@ -23,8 +18,10 @@ class SlackContainer extends React.Component {
         mode: 'cors',
         credentials: 'omit'
       });
+      const msgs = await res.json().body;
+      console.log(msgs);
       this.setState({
-        text: await res.json()
+        text: msgs
       });
     } catch (e) {
       console.log(e);
@@ -34,12 +31,15 @@ class SlackContainer extends React.Component {
   render () {
     const formatMessage = (key) => ({
       // Strip brackets and colon artifacts from slack
-      text: key.replace(/(:[^:]*:)|(<[^>]*>)/g, ''),
+      text: key.message.replace(/(:[^:]*:)|(<[^>]*>)/g, ''),
       date: new Date(key.ts * 1000).toLocaleDateString(),
       time: new Date(key.ts * 1000).toLocaleTimeString()
     });
 
-    return <SlackView messages={this.state.dataIsBody.text.map(formatMessage)} />;
+    const text = this.state.text;
+    const messages = text.map(formatMessage);
+
+    return <SlackView messages={messages} />;
   }
 }
 
