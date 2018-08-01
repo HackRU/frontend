@@ -1,7 +1,7 @@
 //UserActions.js
 import { getCookie } from 'redux-cookie';
 
-import { USER_DATA, VIEW_CONTROL } from 'action_creators/ActionTypes';
+import { USER_DATA, VIEW_CONTROL, LOGIN_MNGMNT } from 'action_creators/ActionTypes';
 import * as ViewActions from 'action_creators/ViewActions';
 
 import resURLS from 'resources/resURLS';
@@ -716,6 +716,21 @@ export const readUser = (uEmail, uToken) => (
         dispatch(getQR(user.email));
         //get resume
 
+        
+        //clear LoginManager
+        dispatch({
+          type: LOGIN_MNGMNT.SET_ERROR,
+          errorMessage: ''
+        });
+        dispatch({
+          type: LOGIN_MNGMNT.CHANGE_EMAIL,
+          email: ''
+        });
+        dispatch({
+          type: LOGIN_MNGMNT.CHANGE_PASSWORD,
+          password: ''
+        });
+
         return resumeExists(uEmail);
       })
       .then(found => {
@@ -741,6 +756,16 @@ const getStatus = (user) => (
 
       //we don't show a rejection status
       status = 'pending';
+
+      //implicity, this means user agreed to codeOfConduct and dataSharing
+      dispatch({
+        type: USER_DATA.SET_COC, 
+        codeOfConduct: true
+      });
+      dispatch({
+        type: USER_DATA.SET_SHARE,
+        dataSharing: true
+      });
     } else if(status && status === 'confirmation') {
 
       //accepted and awaiting user confirmation

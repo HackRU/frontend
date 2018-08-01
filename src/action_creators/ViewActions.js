@@ -23,6 +23,7 @@ export const loginUser = (data) => (
 
     var authdata = JSON.parse(dispatch(getCookie('authdata')));
     dispatch(readUser(authdata.auth.email, authdata.auth.token));
+
   }
 );
 
@@ -31,7 +32,8 @@ export const logoutUser = () => (
   
     //remove the authdata cookie
     dispatch(removeCookie('authdata'));
-    
+
+
     dispatch({
       type: VIEW_CONTROL.SET_LOGIN_STATUS,
       loggedIn: false
