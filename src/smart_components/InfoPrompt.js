@@ -201,7 +201,10 @@ class InfoPrompt extends React.Component {
                           htmlFor={'input-' + key}
                         >
                           <h4 className="font-weight-bold blue">
-                            {key.replace(/_/g, ' ').toUpperCase()}
+                            {key.replace(/_/g, ' ').toUpperCase()} 
+                            <i>
+                              {formConfig[key]['required'] === true ? ' (required)' : ' (optional)'}
+                            </i>
                           </h4>
                         </label>
                         {this.parseConfig(key)}
@@ -214,7 +217,10 @@ class InfoPrompt extends React.Component {
                   htmlFor="resumeupload"
                 >
                   <h4 className="font-weight-bold blue">
-                    {'SHORT ANSWER:'}
+                    {'SHORT ANSWER'}
+                    <i>
+                      {' (required)'}
+                    </i>
                   </h4> 
                   {'What are you looking for from your experience at HackRU?'}
                 </label>
@@ -230,6 +236,9 @@ class InfoPrompt extends React.Component {
                 >
                   <h4 className="font-weight-bold blue">
                     {'RESUME'}
+                    <i>
+                      {' (optional)'}
+                    </i>
                   </h4>
                   {(hasResume)? 'You have uploaded a resume already.': 'Please upload a copy!'}
                 </label>
@@ -243,6 +252,9 @@ class InfoPrompt extends React.Component {
               <div className="form-group row mb-4 mx-1">
                 <h4 className="font-weight-bold blue">
                   {'MLH NOTICES'}
+                  <i>
+                    {' (required)'}
+                  </i>
                 </h4>
                 <div className="col-12 form-check mb-4 blue">
                   <input className="form-check-input mr-4"
