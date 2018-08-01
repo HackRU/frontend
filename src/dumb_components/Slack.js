@@ -18,10 +18,10 @@ class SlackContainer extends React.Component {
         mode: 'cors',
         credentials: 'omit'
       });
-      const msgs = await res.json().body;
-      console.log(msgs);
+      const msgs = await res.json();
+      console.log(msgs.body);
       this.setState({
-        text: msgs
+        text: msgs.body
       });
     } catch (e) {
       console.log(e);
@@ -32,7 +32,7 @@ class SlackContainer extends React.Component {
     const formatMessage = (key) => ({
       // Strip brackets and colon artifacts from slack
       // Do not match patterns with interior whitespace
-      text: key.message.replace(/(:[^:\s]*:)|(<[^>\s]*>)/g, ''),
+      text: key.text && key.text.replace(/(:[^:\s]*:)|(<[^>\s]*>)/g, ''),
       date: new Date(key.ts * 1000).toLocaleDateString(),
       time: new Date(key.ts * 1000).toLocaleTimeString()
     });

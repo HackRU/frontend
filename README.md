@@ -75,9 +75,9 @@ The people who have worked on the CSS to its current state, AFAIK, are:
 *If you're a dev, make sure you read the* [contribution guidelines](./CONTRIBUTING.md) and the [Redux walkthrough](./ROAD_TO_REDUX.md)
 
 1.  After cloning in and [setting up a feature branch](https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow), get `nvm` in your computer.  Use something like `curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash`.  Don't forget to source your `.bashrc` afterwards.
-2.  `nvm install 10` to get the stable release of Node.  Double check with `node -v`.  Then install all the dependencies listed in `package.json` using `npm install`.
+2.  `nvm install 10` to get the stable release of Node.  Double check with `node -v`.  Then install all the dependencies listed in `package.json` using `npm install`.  You should also have `aws` installed; Please only use `sudo pip install awscli`;
 3.  You should have a `.env` in the project root and a `config_resume.js` somewhere in `src`. These are purposely listed in the `.gitignore`, and you'll have to acquire them separately.  (ask Heman or any of the others listed above)
-4.  Check things out by starting the server: `sh ec2-run.sh`.  Someone will probably tell you the test login/pw combo in person.  Don't share it with people outside of RND.
+4.  Check things out by starting the server: `npm start`.  Someone will probably tell you the test login/pw combo in person.  Don't share it with people outside of RND.
 
 
 ## Example Uses (why care)

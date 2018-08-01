@@ -44,7 +44,7 @@ class Dashboard extends React.Component {
                 <h2 className="content-section-title">
                   <span className="u-highlight">{'Announcements'}</span></h2>
                 <div className="content-section-desc" id="announcements-list">
-                  <SlackContainer /> {/*Slack component goes here*/}
+                  {/*<SlackContainer /> /*Slack component goes here*/}
                 </div>
               </div>
             </div>
