@@ -239,11 +239,7 @@ class InfoPrompt extends React.Component {
                   type="file"
                 />
               </div>
-<<<<<<< HEAD
-              {user && user.registration_status === 'unregistered' &&
-=======
               {user &&
->>>>>>> redux-refactor
               <div className="form-group row mb-4 mx-1">
                 <h4 className="font-weight-bold blue">
                   {'MLH NOTICES'}
