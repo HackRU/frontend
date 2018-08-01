@@ -11,6 +11,8 @@ import * as userActions from 'action_creators/UserActions';
 import { logoutUser } from 'action_creators/ViewActions';
 
 import Select, { Creatable, AsyncCreatable, Async } from 'react-select';
+import 'react-select/dist/react-select.css';
+
 
 class InfoPrompt extends React.Component {
 
@@ -21,6 +23,8 @@ class InfoPrompt extends React.Component {
     this.upResume = this.upResume.bind(this);
     this.logout = this.logout.bind(this);
     this.save = this.save.bind(this);
+    this.toggleCOC = this.toggleCOC.bind(this);
+    this.toggleShare = this.toggleShare.bind(this);
   }
 
   changeKeyByEvent = (e) => {
@@ -62,6 +66,18 @@ class InfoPrompt extends React.Component {
     this.props.save(this.props.userManager);
   }
 
+  toggleCOC = (e) => {
+    //e.preventDefault();
+    this.props.toggleCOC(this.props.userManager);
+    this.forceUpdate();
+  }
+
+  toggleShare = (e) => {
+    //e.preventDefault();
+    this.props.toggleShare(this.props.userManager);
+    this.forceUpdate();
+  }
+
   
 
 
@@ -69,12 +85,12 @@ class InfoPrompt extends React.Component {
     //return components based on configuration of each field
     const user = this.props.userManager.userInfo;
     
-    if(typeof(user[key]) === 'undefined') {
+    /*if(typeof(user[key]) === 'undefined') {
 
       //non-existing user key
       console.log('Key ' + key + ' not found in user!');
       return;
-    }
+    }*/
     const field = formConfig[key];
     //console.log(field);
     if(!field) {
@@ -155,7 +171,12 @@ class InfoPrompt extends React.Component {
     const Fragment = React.Fragment;
     let prompts = '';
     let user = this.props.userManager.userInfo;
+    let hasResume = this.props.userManager.hasResume;
+    let codeOfConduct = this.props.userManager.codeOfConduct;
+    let dataSharing = this.props.userManager.dataSharing;
+    let flash = this.props.userManager.flash;
     
+
     if(user && this.props.userStatus !== 'checked in') {
       
       //user has not checked in yet, render the prompts
@@ -210,7 +231,7 @@ class InfoPrompt extends React.Component {
                   <h4 className="font-weight-bold blue">
                     {'RESUME'}
                   </h4>
-                  {(this.props.userManager.hasResume)? 'You have uploaded a resume already.': 'Please upload a copy!'}
+                  {(hasResume)? 'You have uploaded a resume already.': 'Please upload a copy!'}
                 </label>
                 <input className="form-control mx-3"
                   id="resumeupload"
@@ -218,7 +239,11 @@ class InfoPrompt extends React.Component {
                   type="file"
                 />
               </div>
+<<<<<<< HEAD
               {user && user.registration_status === 'unregistered' &&
+=======
+              {user &&
+>>>>>>> redux-refactor
               <div className="form-group row mb-4 mx-1">
                 <h4 className="font-weight-bold blue">
                   {'MLH NOTICES'}
@@ -227,6 +252,8 @@ class InfoPrompt extends React.Component {
                   <input className="form-check-input mr-4"
                     id="code-of-conduct-box"
                     type="checkbox"
+                    onChange={this.toggleCOC}
+                    checked={codeOfConduct}
                   />
                   <label className="form-check-label"
                     htmlFor="code-of-conduct-box"
@@ -243,6 +270,8 @@ class InfoPrompt extends React.Component {
                   <input className="form-check-input mr-4"
                     id="data-sharing-box"
                     type="checkbox"
+                    onChange={this.toggleShare}
+                    checked={dataSharing}
                   />
                   <label className="form-check-label blue"
                     htmlFor="data-sharing-box"
@@ -266,7 +295,7 @@ class InfoPrompt extends React.Component {
               }
               <div className="form-group row my-2 mx-1">
                 <h4 className="blue">
-                  {this.props.userManager.flash}
+                  {flash}
                 </h4>
               </div>
               <div className="col-12 text-center">
@@ -309,12 +338,16 @@ InfoPrompt.propTypes = {
     token: PropTypes.string,
     hasResume: PropTypes.bool,
     userInfo: PropTypes.object,
-    flash: PropTypes.string
+    flash: PropTypes.string,
+    codeOfConduct: PropTypes.bool,
+    dataSharing: PropTypes.bool
   }).isRequired,
   updateUser: PropTypes.func.isRequired,
   upResume: PropTypes.func.isRequired,
   logoutUser: PropTypes.func.isRequired,
   save: PropTypes.func.isRequired,
+  toggleCOC: PropTypes.func.isRequired,
+  toggleShare: PropTypes.func.isRequired,
   userStatus: PropTypes.string.isRequired
 };
 
@@ -329,7 +362,9 @@ function mapDispatchToProps(dispatch) {
     updateUser: userActions.updateUser,
     upResume: userActions.upResume,
     logoutUser: logoutUser,
-    save: userActions.save
+    save: userActions.save,
+    toggleCOC: userActions.toggleCOC,
+    toggleShare: userActions.toggleShare
   }, dispatch);
 }
 

@@ -305,6 +305,7 @@ body {
 .btn-primary {
     color: white;
     background: rgba(0,0,0,0.5);
+    border: 3px solid white;
     border: 1px solid white;
     margin-right: 20px;
 }
@@ -334,6 +335,9 @@ body {
 }
 
 .form-control {
+    border: 3px solid white;
+    border-radius: 10px;
+    background: rgba(0,0,0,0.5);
     border: 1px solid white;
     border-radius: 10px;
     background: rgba(0,0,0,0.5);

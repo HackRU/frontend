@@ -22,6 +22,8 @@ class LoginManagement extends React.Component {
   
 
   render() {
+    
+    const Fragment = React.Fragment;
 
     const loggedIn = this.props.viewController.loggedIn;
 
@@ -38,9 +40,9 @@ class LoginManagement extends React.Component {
     }
 
     return (
-      <div>
+      <Fragment>
         {activeForm}
-      </div>
+      </Fragment>
     );
   }
 
