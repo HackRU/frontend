@@ -31,7 +31,8 @@ class SlackContainer extends React.Component {
   render () {
     const formatMessage = (key) => ({
       // Strip brackets and colon artifacts from slack
-      text: key.message.replace(/(:[^:]*:)|(<[^>]*>)/g, ''),
+      // Do not match patterns with interior whitespace
+      text: key.message.replace(/(:[^:\s]*:)|(<[^>\s]*>)/g, ''),
       date: new Date(key.ts * 1000).toLocaleDateString(),
       time: new Date(key.ts * 1000).toLocaleTimeString()
     });
