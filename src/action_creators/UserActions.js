@@ -713,23 +713,12 @@ export const readUser = (uEmail, uToken) => (
 
         
         //download the user's resume from S3
-        downloadResume(true, uEmail, (resp, err, mes) => {
+        downloadResume(true, uEmail, (resp, err) => {
           dispatch(confirmResume(resp));        
-          if(resp === false ) {
-            
-            //problem with downloading
-            dispatch({
-              type: USER_DATA.SET_FLASH,
-              flash: err + ' ' + mes
-            });
-          } else {
-   
-            //successful download -- does this show ever?
-            dispatch({
-              type: USER_DATA.SET_FLASH,
-              flash: 'Resume found.'
-            });
-          }
+          dispatch({
+            type: USER_DATA.SET_FLASH,
+            flash: resp ? 'Resume found' : err
+          });
         });
 
       })

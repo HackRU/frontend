@@ -36,10 +36,10 @@ function uploadResume(email, callback) {
 // pass hacker's email if hacker = true, else pass {hacker = false, email = the set of emails the companies want resumes for}
 
 function download(email, callback) {
-  s3.getObject({Bucket: config_resume.s3bucket, Key: encodeURIComponent(email)}, 
+  s3.headObject({Bucket: config_resume.s3bucket, Key: encodeURIComponent(email)}, 
     function(err, data) {
       if (err) 
-        callback(false, 'Download error: ', err.message);
+        callback(false, 'Resume not found');
       else
         callback(true, data);
     });
