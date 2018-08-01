@@ -38,7 +38,7 @@ class AttendancePrompt extends React.Component {
           <h6 className="blue">{'In case of an emergency, call RUPD: 732-932-7211'}</h6>
         </div>
       );
-    } else if (userStatus || userStatus !== 'pending' && userStatus !== 'waitlist' && userStatus !== 'checked in') {
+    } else if (userStatus !== 'unregistered' && userStatus !== 'pending' && userStatus !== 'waitlist' && userStatus !== 'checked in') {
       //confirming
 
       const Fragment = React.Fragment;

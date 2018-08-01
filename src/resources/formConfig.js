@@ -31,7 +31,7 @@ const formConfig = {
     'select': true,
     'options': ['University (Undergraduate)', 'University (Graduate)', 'High School']
       .map(v => ({'value': v, 'label': v})),
-    'create': true,
+    'create': false,
     'required': true
   },
   'major': {

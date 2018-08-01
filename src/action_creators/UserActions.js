@@ -158,6 +158,10 @@ export const save = (userState) => (
       //the user is not registered
     
       user.registration_status = 'unregistered';
+    } else {
+
+      //user is registered
+      user.registration_status = 'registered';
     }
 
     console.log('user being saved: ' + JSON.stringify(user));
@@ -412,9 +416,10 @@ export const unapplyVolunteer = (userState) => (
 
 export const upResume = (userState) => (
   async (dispatch) => {
+
     //upload resume to S3
     const response = await uploadResume(userState.userInfoEmail);
-    dispatch(confirmResume(response === 'Successfullly uploaded resume.'));
+    dispatch(confirmResume(response === 'Successfully uploaded resume.'));
     dispatch({
       type: USER_DATA.SET_FLASH,
       flash: response
@@ -690,9 +695,9 @@ export const readUser = (uEmail, uToken) => (
       })
     }).then(resp => resp.json())
       .then(data => {
+
         //on successful read, set state's user to data
         const user = data.body[0];
-
         console.log('user being read: ' + JSON.stringify(user));
         dispatch({
           type: USER_DATA.SET_USER_INFO,
@@ -721,16 +726,18 @@ export const readUser = (uEmail, uToken) => (
         //set the qr code
         dispatch(getQR(user.email));
         //get resume
+
         return resumeExists(uEmail);
       })
       .then(found => {
         dispatch(confirmResume(found));
         dispatch({
           type: USER_DATA.SET_FLASH,
-          flash: found ? 'Resume found' : 'Resume not found' 
+          flash: found ? 'Resume found' : 'Resume not found'
         });
       })
       .catch(err => {
+
         //unexpected error
         dispatch(showCaughtError(err.toString()));
       });
