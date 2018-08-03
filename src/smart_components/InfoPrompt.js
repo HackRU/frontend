@@ -181,7 +181,7 @@ class InfoPrompt extends React.Component {
       
       //user has not checked in yet, render the prompts
       prompts = (
-        <div className="content-section"
+        <div className="content-section mt-4"
           id="announcements-div"
         >
           <h2 className="content-section-title">
