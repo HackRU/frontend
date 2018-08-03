@@ -94,8 +94,8 @@ class LoginForm extends React.Component {
                   />
                 </div>
               </div>
-              <div className="form-group row text-center mx-4"> {/*ERROR MESSAGE*/}
-                <h4 className="col-lg-12 text-lg badge badge-danger mb-4 mt-4" >{this.props.loginManager.errorMessage}</h4>
+              <div className="form-group row text-center"> {/*ERROR MESSAGE*/}
+                <h4 className="col-lg-10 offset-lg-1 text-lg badge badge-danger mb-4 mt-4" >{this.props.loginManager.errorMessage}</h4>
                 {this.props.loginManager.errorMessage && 
                     (!this.props.loginManager.magicLink || this.props.loginManager.forgottenPassword) &&
                     <div className="col-12">
@@ -110,17 +110,17 @@ class LoginForm extends React.Component {
               </div>
               <div className="form-group row mt-0">
                 <div className="col-12 text-center">
-                  <button className="btn btn-primary custom-btn p-xs-2 p-md-3 mx-1"
+                  <button className="btn btn-primary custom-btn p-xs-2 p-md-3"
                     onClick={this.login}
                     type="button"
                   >
-                    <h6 className=" UC ">{'Login'}</h6>
+                    <h6 className="UC">{'Login'}</h6>
                   </button>
-                  <button className="btn btn-primary mx-1 p-xs-2 p-md-3"
+                  <button className="btn btn-primary p-xs-2 p-md-3"
                     onClick={this.signUp}
                     type="button"
                   >
-                    <h6 className="UC ">{'Sign Up'}</h6>
+                    <h6 className="UC">{'Sign Up'}</h6>
                   </button>
                   {/*<button className="btn btn-primary p-xs-2 p-md-3 my-2"
                     onClick={this.onMlhLogin}
