@@ -144,7 +144,7 @@ export const resetPassword = (user) => (
               //notify user and remove link
               dispatch({
                 type: LOGIN_MNGMNT.SET_ERROR,
-                errorMessage: resp.body + '. \nPlease try again.'
+                errorMessage: resp.body
               });
               dispatch({
                 type: LOGIN_MNGMNT.SET_MAGIC_LINK, 
