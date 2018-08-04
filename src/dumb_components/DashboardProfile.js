@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 
 import resURLS from 'resources/resURLS';
 import { logoutUser } from 'action_creators/ViewActions';
+import { save } from 'action_creators/UserActions';
 
 class DashboardProfile extends React.Component {
 
@@ -14,11 +15,18 @@ class DashboardProfile extends React.Component {
     super(props);
     this.listInfo = this.listInfo.bind(this);
     this.logout = this.logout.bind(this);
+    this.save = this.save.bind(this);
   }
 
   logout = (e) => {
     e.preventDefault();
-    this.props.logoutUser();
+
+    this.props.logoutUser(this.props.userManager);
+  }
+
+  save = (e) => {
+    e.preventDefault();
+    this.props.save(this.props.userManager);
   }
 
   listInfo = (user) => {
@@ -29,12 +37,21 @@ class DashboardProfile extends React.Component {
     const school = (user.school)? user.school: '';
     const levelOfStudy = (user.level_of_study)? user.level_of_study: '';
     const major = (user.major)? user.major: '';
+    const giveSaveOption = (this.props.userManager.hasUnsavedChanges === true)? 
+      (
+        <h6>
+          <a href="." onClick={this.save}>
+            {'Save Changes'}
+          </a>
+        </h6>
+      ):'';
 
     return (
       <div className="left-header">
         <h2 className="font-weight-bold"> 
           {firstName + ' ' + lastName}
         </h2>
+        {giveSaveOption}
         <h6>
           <a href="#" onClick={this.logout}>
             {'Logout'}
@@ -147,9 +164,11 @@ DashboardProfile.propTypes = {
       level_of_study: PropTypes.string,
       major: PropTypes.string
     }).isRequired,
-    qr: PropTypes.string.isRequired
+    qr: PropTypes.string.isRequired,
+    hasUnsavedChanges: PropTypes.bool.isRequired
   }).isRequired,
-  logoutUser: PropTypes.func.isRequired
+  logoutUser: PropTypes.func.isRequired,
+  save: PropTypes.func.isRequired
 };
 
 function mapStateToProps(state) {
@@ -161,7 +180,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({
-    logoutUser: logoutUser
+    logoutUser: logoutUser,
+    save: save
   }, dispatch);
 }
 

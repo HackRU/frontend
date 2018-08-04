@@ -14,6 +14,7 @@ const initialState = {
   codeOfConduct: false,
   dataSharing: false,
   travelReady: true, //TravelForm is either completely filled or empty
+  hasUnsavedChanges: false, //True whenever a change occurs
   qr: '',
   flash: '',
   extraFlash: '',
@@ -76,6 +77,11 @@ const UserManager = (state = initialState, action) => {
       return {
         ...state,
         travelReady: action.travelReady
+      };
+    case USER_DATA.HAS_UNSAVED_CHANGES:
+      return {
+        ...state,
+        hasUnsavedChanges: action.hasUnsavedChanges
       };
     case USER_DATA.SET_QR:
       return {

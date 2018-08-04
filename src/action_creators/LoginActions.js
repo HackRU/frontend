@@ -122,19 +122,39 @@ export const resetPassword = (user) => (
           })
         }).then(resp => resp.json())
           .then(resp => {
-            //notify user and remove link
-            dispatch({
-              type: LOGIN_MNGMNT.SET_ERROR,
-              errorMessage: resp.body || resp.errorMessage
-            });
-            dispatch({
-              type: LOGIN_MNGMNT.SET_MAGIC_LINK, 
-              magicLink: ''
-            });
-            dispatch({
-              type: LOGIN_MNGMNT.HAS_FORGOTTEN_PASSWORD, 
-              forgottenPassword: false
-            });
+
+            if(resp.statusCode === 200) {
+                
+              //notify user and remove link
+              dispatch({
+                type: LOGIN_MNGMNT.SET_ERROR,
+                errorMessage: resp.body + '. \nYou may now login.'
+              });
+              dispatch({
+                type: LOGIN_MNGMNT.SET_MAGIC_LINK, 
+                magicLink: ''
+              });
+              dispatch({
+                type: LOGIN_MNGMNT.HAS_FORGOTTEN_PASSWORD, 
+                forgottenPassword: false
+              });
+            } else {
+  
+                          
+              //notify user and remove link
+              dispatch({
+                type: LOGIN_MNGMNT.SET_ERROR,
+                errorMessage: resp.body + '. \nPlease try again.'
+              });
+              dispatch({
+                type: LOGIN_MNGMNT.SET_MAGIC_LINK, 
+                magicLink: ''
+              });
+              dispatch({
+                type: LOGIN_MNGMNT.HAS_FORGOTTEN_PASSWORD, 
+                forgottenPassword: false
+              });
+            }
           })
           .catch(err => {
 
