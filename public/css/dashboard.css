@@ -52,6 +52,7 @@ a:hover, a:focus, a:active {
 }
 
 h6 a {
+    display: inline-block;
     color: var(--color-zero);
     font-family: 'Helvetica Regular', sans-serif;
     margin: 0;
@@ -363,3 +364,4 @@ body {
     margin: 0 auto;
   }
 }
+

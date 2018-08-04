@@ -1,9 +1,9 @@
 //ViewActions.js
 import { setCookie, getCookie, removeCookie } from 'redux-cookie';
 
-import { VIEW_CONTROL } from 'action_creators/ActionTypes';
+import { LOGIN_MNGMNT, VIEW_CONTROL, USER_DATA } from 'action_creators/ActionTypes';
 
-import { readUser } from 'action_creators/UserActions';
+import { readUser, save } from 'action_creators/UserActions';
 
 export const loginUser = (data) => (
   (dispatch) => {
@@ -19,25 +19,80 @@ export const loginUser = (data) => (
       loggedIn: true
     });
 
-    //console.log(typeof(authdata));
+
+    //if they used a magic link to get here, remove it from the address bar -- triggers a reload, but only this once
+    let urlParams = new URLSearchParams(window.location.search);
+    if(urlParams.has('magiclink')) {
+      window.location.href = '/dashboard.html';
+    }
 
     var authdata = JSON.parse(dispatch(getCookie('authdata')));
-    dispatch(readUser(authdata.auth.email, authdata.auth.token));
+    //console.log(authdata);
+    const email = authdata.auth.email;
+    const token = authdata.auth.token;
+
+    dispatch({
+      type: USER_DATA.SET_EMAIL,
+      email: email
+    });
+    dispatch({
+      type: USER_DATA.SET_TOKEN,
+      token: token
+    });
+    //console.log(typeof(authdata));
+
+    dispatch(readUser(email, token));
 
   }
 );
 
-export const logoutUser = () => (
+export const logoutUser = (userState) => (
   (dispatch) => {
-  
+    
+    const unregistered = userState.userInfo.registration_status === 'unregistered';
+    if(unregistered) {
+
+      //interrupt
+      if(window.confirm('You must fill out all the required fields in order to register.  Do you wish to save your changes and finish registering later?')) {
+                  
+        //save all unsaved changes
+        dispatch(save(userState));
+        dispatch({
+          type: LOGIN_MNGMNT.SET_ERROR,
+          errorMessage: 'Changes have been automatically saved.  Please remember to come back and finish registering.' 
+        });
+        //remove the authdata cookie
+        dispatch(removeCookie('authdata'));
+        
+        dispatch({
+          type: VIEW_CONTROL.SET_LOGIN_STATUS,
+          loggedIn: false
+        });
+        return;
+
+      } else {
+        
+        //do not logout if canceled
+        dispatch(save(userState));
+        return;
+      }
+    }
+
+    //save all unsaved changes
+    dispatch(save(userState));
+    dispatch({
+      type: LOGIN_MNGMNT.SET_ERROR,
+      errorMessage: 'Changes have been automatically saved.'
+    });
+
     //remove the authdata cookie
     dispatch(removeCookie('authdata'));
-
-
+    
     dispatch({
       type: VIEW_CONTROL.SET_LOGIN_STATUS,
       loggedIn: false
     });
+
   }
 );
 

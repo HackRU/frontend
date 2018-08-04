@@ -51,6 +51,7 @@ class LoginForm extends React.Component {
     e.preventDefault();
     let user = this.props.loginManager;
     this.props.login(user);
+
   }
   
   /*NOT NEEDED

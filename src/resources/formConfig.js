@@ -11,6 +11,11 @@ const formConfig = {
     'type': 'text', 
     'required': true
   },
+  'phone_number': {
+    'select': false,
+    'type': 'tel',
+    'required': true
+  },
   'email': {
     'select': false,
     'type': 'email',
@@ -18,13 +23,15 @@ const formConfig = {
   },
   'school': {
     'select': true,
-    'searchFn': (i) => fetch('https://raw.githubusercontent.com/MLH/mlh-policies/master/schools.csv')
-      .then(r => r.text()).then(csv => {
-        const rv = csv.split('\n').map(ln => ln.replace(/[\r",]/g, ''))
-          .slice(1).map(v => ({'label': v, 'value': v}));
-        return {options: rv};
-      }),
-    'create': false,
+    'searchFn': (input) => (
+      fetch('https://raw.githubusercontent.com/MLH/mlh-policies/master/schools.csv')
+        .then(r => r.text())
+        .then(csv => csv.split('\n')
+          .map(ln => ln.replace(/[\r",]/g, '')).slice(1)
+          .map(v => ({'label': v, 'value': v})))
+        .then(o => ({options: o}))
+    ),
+    'create': true,
     'required': true
   },
   'level_of_study': {
@@ -36,16 +43,30 @@ const formConfig = {
   },
   'major': {
     'select': true,
-    'searchFn': (i) => fetch('majors.json')
-      .then(r => r.json()).then(json => ({options: json.items
-        .map(i => ({'value': i, 'label': i}))})),
+    'searchFn': (input) => (
+      fetch('majors.json')
+        .then(r => r.json())
+        .then(json => json.items.map(i => ({'label': i, 'value': i})))
+        .then(o => ({options: o}))
+    ),
     'create': true,
     'required': true
   },
   'grad_year': {
     'select': true,
-    'options': [2018, 2019, 2020, 2021, 2022]
-      .map(v => ({'value': v, 'label': v})),
+    'options': (q) => {
+      let options = [2018, 2019, 2020, 2021, 2022]
+        .map(v => ({'value': v, 'label': v}));
+      if(!(options.find(o => o.value === q)) && q) {
+        options.push({'label': q, 'value': q});
+      }
+
+      return(
+        options.sort(function(a,b) {
+          return (a.value > b.value) ? 1 : ((b.value > a.value) ? -1 : 0);
+        })
+      );
+    },
     'create': true,
     'required': true
   },
@@ -56,14 +77,39 @@ const formConfig = {
   },
   'gender': {
     'select': true,
-    'options': ['Male', 'Female', 'Non-binary']
-      .map(v => ({'value': v, 'label': v})),
+    'options': (q) => {
+      let options = ['Male', 'Female', 'Non-binary']
+        .map(v => ({'value': v, 'label': v}));
+      if(!(options.find(o => o.value === q)) && q) {
+        options.push({'label': q, 'value': q});
+      }
+      
+      return(
+        options.sort(function(a,b) {
+          return (a.value > b.value) ? 1 : ((b.value > a.value) ? -1 : 0);
+        })
+      );
+    },
+    'create': true,
+    'required': false
+  },
+  'ethnicity': {
+    'select': true,
+    'options': (q) => {
+      let options = ['American Indian or Alaskan Native', 'Asian / Pacific Islander', 'Black or African American', 'Hispanic', 'White/Caucasian']
+        .map(v => ({'value': v, 'label': v}));
+      if(!(options.find(o => o.value === q)) && q) {
+        options.push({'label': q, 'value': q});
+      }
+
+      return(options);
+    },
     'create': true,
     'required': false
   },
   'shirt_size': {
     'select': true,
-    'options': ['Unisex XS', 'Unisex S', 'Unisex M', 'Unisex L', 'Unisex XL']
+    'options': ['Unisex XS', 'Unisex S', 'Unisex M', 'Unisb1ex L', 'Unisex XL']
       .map(v => ({'value': v, 'label': v})),
     'create': false,
     'required': true
@@ -81,15 +127,30 @@ const formConfig = {
   'github': {
     'select': false,
     'type': 'text',
-    'searchFn': (i) => fetch(`https://api.github.com/search/users?q=${i}`)
-      .then(r => r.json()).then(j => ({options: j.items})),
+    'searchFn': (i) => fetch(`https://api.github.com/search/users?q=${i}`) //this works but is rate limited so we can't use it :(
+      .then(r => r.json())
+      .then(b => {
+        let res = b.items.map(i => ({'value': i.login, 'label': i.login})).sort();
+        return {options: res};
+      }),
     'create': false,
     'required': false
   },
   'how_you_heard_about_hackru': {
-    'select': true,
-    'options': ['Mailing List', 'MLH Website', 'Facebook', 'Instagram', 'Twitter', 'Reddit', 'Medium', 'Youtube', 'Twitch']
-      .map(v=> ({'value': v, 'label': v})),
+    'select': true, 
+    'options': (q) => {
+      let options = ['Mailing List', 'MLH Website', 'Facebook', 'Instagram', 'Twitter', 'Reddit', 'Medium', 'Youtube', 'Twitch']
+        .map(v=> ({'value': v, 'label': v}));
+      if(!(options.find(o => o.value === q)) && q) {
+        options.push({'label': q, 'value': q});
+      }
+
+      return(
+        options.sort(function(a,b) {
+          return (a.value > b.value) ? 1 : ((b.value > a.value) ? -1 : 0);
+        })
+      );
+    },
     'create': true,
     'required': true
   }
