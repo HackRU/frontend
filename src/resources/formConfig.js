@@ -124,7 +124,7 @@ const formConfig = {
     'type': 'text',
     'required': false
   },
-  'github': {
+  'github_username': {
     'select': false,
     'type': 'text',
     'searchFn': (i) => fetch(`https://api.github.com/search/users?q=${i}`) //this works but is rate limited so we can't use it :(
