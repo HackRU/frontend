@@ -137,6 +137,15 @@ h6 a {
   color: #7852c9;
 }
 
+
+.blue-nohover {
+    color: white;
+}
+
+.blue-nohover:hover {
+    color: white;
+}
+
 .text-lg {
   font-size: 1.5rem;
   word-wrap: break-word;
