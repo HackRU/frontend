@@ -73,7 +73,7 @@ class LoginForm extends React.Component {
             <form className="form-group">
               <div className="form-group row my-3"> {/*EMAIL FIELD*/}
                 <label className="col-lg-3 col-form-label" htmlFor="email-input">
-                  <h4 className="font-weight-bold blue">{'EMAIL'}</h4>
+                  <h4 className="font-weight-bold blue-nohover">{'EMAIL'}</h4>
                 </label>
                 <div className="col-lg-9">
                   <input className="form-control form-control"
@@ -85,7 +85,7 @@ class LoginForm extends React.Component {
               </div>
               <div className="form-group row my-1"> {/*PASSWORD FIELD*/}
                 <label className="col-lg-3 col-form-label" htmlFor="pw-input">
-                  <h4 className="font-weight-bold blue">{'PASSWORD'}</h4>
+                  <h4 className="font-weight-bold blue-nohover">{'PASSWORD'}</h4>
                 </label>
                 <div className="col-lg-9">
                   <input className="form-control form-control"
