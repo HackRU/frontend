@@ -11,7 +11,7 @@ import * as userActions from 'action_creators/UserActions';
 import { logoutUser } from 'action_creators/ViewActions';
 
 import Select, { Creatable, AsyncCreatable, Async } from 'react-select';
-import 'react-select/dist/react-select.css';
+import 'styles/react-select.css';
 
 
 class InfoPrompt extends React.Component {
@@ -58,7 +58,8 @@ class InfoPrompt extends React.Component {
 
   logout = (e) => {
     e.preventDefault();
-    this.props.logoutUser();
+    
+    this.props.logoutUser(this.props.userManager);
   }
 
   save = (e) => {
@@ -92,6 +93,7 @@ class InfoPrompt extends React.Component {
       return;
     }*/
     const field = formConfig[key];
+
     //console.log(field);
     if(!field) {
       //text input not in formConfig
@@ -128,13 +130,15 @@ class InfoPrompt extends React.Component {
       );
     } else if(!field.searchFn && field.create) {
       //can create new entries but not search
+
+      //console.log(JSON.stringify(options));
       return (
         <Creatable className="form-control mx-3"
           id={'input-' + key}
           onChange={this.changeKeyByArg(key)}
-          options={field.options}
+          options={field.options(user[key])}
           required={field.required}
-          value={user[key] || ''}
+          value={user[key]}
         />
       );
     } else if(field.searchFn && !field.create) {
@@ -158,8 +162,8 @@ class InfoPrompt extends React.Component {
           id={'input-' + key}
           loadOptions={field.searchFn}
           onChange={this.changeKeyByArg(key)}
-          required={field.required}
-          value={user[key]}
+          defaultValueInput={user[key]}
+          placeholder={user[key] || ''}
         />
       );
     }
@@ -246,6 +250,7 @@ class InfoPrompt extends React.Component {
                   id="resumeupload"
                   onChange={this.upResume}
                   type="file"
+                  accept="image/*, .pdf, .txt"
                 />
               </div>
               {user.registration_status !== 'registered' &&
@@ -266,11 +271,9 @@ class InfoPrompt extends React.Component {
                   <label className="form-check-label"
                     htmlFor="code-of-conduct-box"
                   >
-                    {'I agree to abide by the '} 
-                    <a
-                      href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf"
-                    >
-                      {'MLH code of conduct.'}
+                    {'I have read and agree to the '} 
+                    <a href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf">
+                      {'MLH Code of Conduct.'}
                     </a>
                   </label>
                 </div>
@@ -284,19 +287,18 @@ class InfoPrompt extends React.Component {
                   <label className="form-check-label blue"
                     htmlFor="data-sharing-box"
                   >
-                    {'I agree to the terms of both the '} 
-                    <a
-                      href="https://github.com/MLH/mlh-policies/tree/master/prize-terms-and-conditions"
-                    >
+                    {'I authorize you to share my application/registration information for event administration, ranking, MLH administration, pre- and post-event informational e-mails, and occasional messages about hackathons in-line with '} 
+                    <a href="https://mlh.io/privacy">
+                      {'the MLH Privacy Policy.'}
+                    </a>
+                    {'Further, I agree to the terms of both the '}
+                    <a href="https://github.com/MLH/mlh-policies/tree/master/prize-terms-and-conditions">
                       {'MLH Contest Terms and Conditions'}
                     </a>
                     {' and '} 
-                    <a
-                      href="https://mlh.io/privacy"
-                    >
-                      {'the MLH Privacy Policy'}
+                    <a href="https://mlh.io/privacy">
+                      {'the MLH Privacy Policy.'}
                     </a>
-                    {'. Please note that you may receive pre and post-event informational e-mails and occasional messages about hackathons from MLH as per the MLH Privacy Policy.'}
                   </label>
                 </div>
               </div>
@@ -307,15 +309,6 @@ class InfoPrompt extends React.Component {
                 </h4>
               </div>
               <div className="col-12 text-center">
-                <button className="btn btn-primary UC custom-btn mx-2 p-3"
-                  onClick={this.logout}
-                  type="submit"
-                  value="logout"
-                >
-                  <h6 className="UC">
-                    {'Logout'}
-                  </h6>
-                </button>
                 <button className="btn btn-primary UC custom-btn p-3"
                   onClick={this.save}
                   type="submit"
@@ -323,6 +316,15 @@ class InfoPrompt extends React.Component {
                 >
                   <h6 className="UC">
                     {'Save Changes'}
+                  </h6>
+                </button>
+                <button className="btn btn-primary UC custom-btn mx-2 p-3"
+                  onClick={this.logout}
+                  type="submit"
+                  value="logout"
+                >
+                  <h6 className="UC">
+                    {'Logout'}
                   </h6>
                 </button>
               </div>
@@ -346,6 +348,7 @@ InfoPrompt.propTypes = {
     token: PropTypes.string,
     hasResume: PropTypes.bool,
     userInfo: PropTypes.object,
+    hasUnsavedChanges: PropTypes.bool,
     flash: PropTypes.string,
     codeOfConduct: PropTypes.bool,
     dataSharing: PropTypes.bool

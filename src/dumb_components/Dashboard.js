@@ -39,29 +39,6 @@ class Dashboard extends React.Component {
         {/*BEGIN RIGHT SIDE OF DASHBOARD*/}
         <div className="col-xs-12 col-md-10 offset-md-2" id="dashboard-content">
           <div className="row mb-5"> {/*row mb-5 begin*/}
-            <div className="col-xs-12 col-md-5 mb-3">
-              <div id="announcements-id">
-                <h2 className="content-section-title">
-                  <span className="u-highlight">{'Announcements'}</span></h2>
-                <div className="content-section-desc" id="announcements-list">
-                  {/*<SlackContainer /> /*Slack component goes here*/}
-                </div>
-              </div>
-            </div>
-            <div className="col-xs-12 col-md-4 mb-3">
-              <div className="content-section" id="upcoming-div">
-                <h2 className="content-section-title">
-                  <span className="u-highlight">{'Upcoming'}</span></h2>
-                <div className="content-section-desc" id="upcoming-list">
-                  <Events /> {/*Events component goes here*/}
-                </div>
-              </div>
-            </div>
-            <div className="col-xs-12 col-md-3 mb-3">
-              <InfoSection />
-            </div> 
-          </div> {/*row mb-5 end*/}
-          <div className="row mb-5"> {/*row mb-5 begin*/}
             <div className="col-xs-12 col-md-8 offset-md-2 mb-3">
               <div id="register-root">
                 <LoginManagement /> {/*LoginManagement component goes here*/}
@@ -70,7 +47,37 @@ class Dashboard extends React.Component {
             </div>
           </div> {/*row mb-5 end*/}
           <div className="row mb-5"> {/*row mb-5 begin*/}
+            {false && 
+            <Fragment>
+              <div className="col-xs-12 col-md-5 mb-3">
+                <div id="announcements-id">
+                  <h2 className="content-section-title">
+                    <span className="u-highlight">{'Announcements'}</span>
+                  </h2>
+                  <div className="content-section-desc" id="announcements-list">
+                    {/*<SlackContainer /> /*Slack component goes here*/}
+                  </div>
+                </div>
+              </div>
+              <div className="col-xs-12 col-md-4 mb-3">
+                <div className="content-section" id="upcoming-div">
+                  <h2 className="content-section-title">
+                    <span className="u-highlight">{'Upcoming'}</span>
+                  </h2>
+                  <div className="content-section-desc" id="upcoming-list">
+                    <Events /> {/*Events component goes here*/}
+                  </div>
+                </div>
+              </div>
+            </Fragment>
+            }
+            <div className="col-xs-12 col-md-8 offset-md-2 mb-3" id="register-root"> {/*original col-xs-12 col-md-3 mb-3, no id*/}
+              <InfoSection />
+            </div> 
+          </div> {/*row mb-5 end*/}
+          <div className="row mb-5"> {/*row mb-5 begin*/}
             <div className="col-xs-12 col-md-8 offset-md-2 mb-3">
+              {false && 
               <div id="announcements-id">
                 <h2 className="content-section-title"><span className="u-highlight">{'Livestream'}</span></h2>
                 <div className="content-section-desc" id="livestream text-center">
@@ -98,6 +105,7 @@ class Dashboard extends React.Component {
                   </h5>
                 </div>
               </div>
+              }
             </div>
           </div>
           <div className="row mb-5"> {/*row mb-5 nested begin*/}
