@@ -31,9 +31,10 @@ class DashboardProfile extends React.Component {
 
   listInfo = (user) => {
 
-    const github = (user.github)? user.github: '';
+    const github = (user.github_username)? user.github_username: '';
     const firstName = (user.first_name)? user.first_name: '';
     const lastName = (user.last_name)? user.last_name: '';
+    const email = (user.email)? user.email: '';
     const school = (user.school)? user.school: '';
     const levelOfStudy = (user.level_of_study)? user.level_of_study: '';
     const major = (user.major)? user.major: '';
@@ -58,6 +59,13 @@ class DashboardProfile extends React.Component {
           </a>
         </h6>
         <br />
+        <span>
+          <h6 className="profile-text">
+            <i className="fas fa-envelope fa-fw" />
+            {email}
+          </h6>
+          <br />
+        </span>
         <span>
           <h6 className="profile-text">
             <i className="fas fa-graduation-cap fa-fw" />

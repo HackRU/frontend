@@ -270,6 +270,11 @@ export const login = (user) => (
       });
     } else {
 
+      dispatch({
+        type: LOGIN_MNGMNT.SET_ERROR,
+        errorMessage: 'Credentials submitted.  Awaiting response...'
+      });
+
       //complete form, send to LCS to authorize
       fetch(resURLS.lcsAuthURL, {
         method: 'POST',

@@ -154,10 +154,15 @@ export const save = (userState) => (
     let user = userState.userInfo;
     let registered = dispatch(checkUserReq(userState));
     
-    if(!registered){
+    if(registered === false){
 
       //the user is not registered 
       user.registration_status = 'unregistered';
+
+    } else if(registered === 'unfinished') {
+
+      //not done but register them
+      user.registration_status = 'registered';
     } else {
 
       //user is registered
@@ -855,7 +860,7 @@ const getQR = (email) => (
   }
 );
 
-const checkUserReq = (userState) => (
+export const checkUserReq = (userState) => (
   (dispatch) => {
 
     if(userState.codeOfConduct === false || userState.dataSharing === false) {
@@ -880,7 +885,7 @@ const checkUserReq = (userState) => (
       if(!reqFields.every(x => x === true)) {
 
         //required fields not filled out
-        return false;
+        return 'unfinished';
       } else {
 
         //run age check

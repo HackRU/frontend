@@ -261,6 +261,8 @@ class InfoPrompt extends React.Component {
                     {' (required)'}
                   </i>
                 </h4>
+                <br />
+                <br />
                 <div className="col-12 form-check mb-4 blue">
                   <input className="form-check-input mr-4"
                     id="code-of-conduct-box"
