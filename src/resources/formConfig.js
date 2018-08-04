@@ -16,11 +16,6 @@ const formConfig = {
     'type': 'tel',
     'required': true
   },
-  'email': {
-    'select': false,
-    'type': 'email',
-    'required': true
-  },
   'school': {
     'select': true,
     'searchFn': (input) => (
@@ -109,7 +104,7 @@ const formConfig = {
   },
   'shirt_size': {
     'select': true,
-    'options': ['Unisex XS', 'Unisex S', 'Unisex M', 'Unisb1ex L', 'Unisex XL']
+    'options': ['Unisex XS', 'Unisex S', 'Unisex M', 'Unisex L', 'Unisex XL']
       .map(v => ({'value': v, 'label': v})),
     'create': false,
     'required': true

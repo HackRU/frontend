@@ -3,7 +3,7 @@ import { setCookie, getCookie, removeCookie } from 'redux-cookie';
 
 import { LOGIN_MNGMNT, VIEW_CONTROL, USER_DATA } from 'action_creators/ActionTypes';
 
-import { readUser, save } from 'action_creators/UserActions';
+import { readUser, save, checkUserReq } from 'action_creators/UserActions';
 
 export const loginUser = (data) => (
   (dispatch) => {
@@ -49,11 +49,11 @@ export const loginUser = (data) => (
 export const logoutUser = (userState) => (
   (dispatch) => {
     
-    const unregistered = userState.userInfo.registration_status === 'unregistered';
-    if(unregistered) {
+    const done = dispatch(checkUserReq(userState));
+    if(done === false) {
 
       //interrupt
-      if(window.confirm('You must fill out all the required fields in order to register.  Do you wish to save your changes and finish registering later?')) {
+      if(window.confirm('You must agree to the MLH Code of Conduct and Data Sharing Policy to register.  Do you wish to save your changes and finish registering later?')) {
                   
         //save all unsaved changes
         dispatch(save(userState));
@@ -76,22 +76,49 @@ export const logoutUser = (userState) => (
         dispatch(save(userState));
         return;
       }
-    }
-
-    //save all unsaved changes
-    dispatch(save(userState));
-    dispatch({
-      type: LOGIN_MNGMNT.SET_ERROR,
-      errorMessage: 'Changes have been automatically saved.'
-    });
-
-    //remove the authdata cookie
-    dispatch(removeCookie('authdata'));
+    } else if (done === 'unfinished') {
     
-    dispatch({
-      type: VIEW_CONTROL.SET_LOGIN_STATUS,
-      loggedIn: false
-    });
+      //interrupt
+      if(window.confirm('We\'re still missing some personal information from you.  Do you wish to save your changes and finish registering later?')) {
+                  
+        //save all unsaved changes
+        dispatch(save(userState));
+        dispatch({
+          type: LOGIN_MNGMNT.SET_ERROR,
+          errorMessage: 'Changes have been automatically saved.  Please remember to come back and fill out the required fields.' 
+        });
+        //remove the authdata cookie
+        dispatch(removeCookie('authdata'));
+        
+        dispatch({
+          type: VIEW_CONTROL.SET_LOGIN_STATUS,
+          loggedIn: false
+        });
+        return;
+
+      } else {
+        
+        //do not logout if canceled
+        dispatch(save(userState));
+        return;
+      }
+    } else {
+
+      //save all unsaved changes
+      dispatch(save(userState));
+      dispatch({
+        type: LOGIN_MNGMNT.SET_ERROR,
+        errorMessage: 'Changes have been automatically saved. We will contact you if there any updates.'
+      });
+
+      //remove the authdata cookie
+      dispatch(removeCookie('authdata'));
+      
+      dispatch({
+        type: VIEW_CONTROL.SET_LOGIN_STATUS,
+        loggedIn: false
+      });
+    }
 
   }
 );

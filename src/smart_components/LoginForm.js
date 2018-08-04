@@ -80,6 +80,7 @@ class LoginForm extends React.Component {
                     id="email-input"
                     onChange={this.changeEmail}
                     type="email"
+                    autoFocus="true"
                   />
                 </div>
               </div>

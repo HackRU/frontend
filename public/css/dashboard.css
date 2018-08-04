@@ -30,7 +30,7 @@
 }
 
 .color-two:hover, .color-two:focus, .color-two:active {
-    color: #7852c9;
+    color: #39275e;
 }
 
 h1, h2, h3, h4, h5, h6, p {
@@ -135,15 +135,6 @@ h6 a {
 
 .blue:hover {
   color: #7852c9;
-}
-
-
-.blue-nohover {
-    color: white;
-}
-
-.blue-nohover:hover {
-    color: white;
 }
 
 .text-lg {
@@ -280,10 +271,6 @@ button {
   white-space: initial;
 }
 
-.SC-white {
-    color: #ffffff;
-}
-
 .UC {
   text-transform: uppercase;
   word-wrap: break-word;
@@ -334,6 +321,7 @@ body {
     border: 3px solid white;
     border: 1px solid white;
     margin-right: 20px;
+    margin-bottom: 10px;
 }
 
 .btn-primary::-moz-focus-inner {
