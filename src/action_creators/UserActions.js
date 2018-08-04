@@ -7,11 +7,13 @@ import * as ViewActions from 'action_creators/ViewActions';
 import resURLS from 'resources/resURLS';
 import { resumeExists, uploadResume } from 'resources/resume.js';
 
+import formConfig from 'resources/formConfig';
+
 export const checkCookies = () => (
   (dispatch) => {
     
     let authdata = dispatch(getCookie('authdata'));
-    //console.log(authdata);
+    //console.log('a ' + authdata);
     
     if(typeof(authdata) === 'string') {
 
@@ -25,17 +27,6 @@ export const checkCookies = () => (
       } else {
 
         //token is still valid
-        const email = authdata.auth.email;
-        const token = authdata.auth.token;
-
-        dispatch({
-          type: USER_DATA.SET_EMAIL,
-          email: email
-        });
-        dispatch({
-          type: USER_DATA.SET_TOKEN,
-          token: token
-        });
         dispatch(ViewActions.loginUser({body: JSON.stringify(authdata)})); 
         
         //read in the user data from lcs
@@ -44,7 +35,10 @@ export const checkCookies = () => (
     } else {
 
       //no authorization
-      dispatch(ViewActions.logoutUser());
+      dispatch({
+        type: VIEW_CONTROL.SET_LOGIN_STATUS,
+        loggedIn: false
+      });
     }
   }
 );
@@ -57,6 +51,12 @@ export const updateUser = (userState, key, value) => (
     dispatch({
       type: USER_DATA.SET_USER_INFO,
       userInfo: user
+    });
+
+    //there are changes obviously
+    dispatch({
+      type: USER_DATA.HAS_UNSAVED_CHANGES,
+      hasUnsavedChanges: true
     });
   }
 );
@@ -152,10 +152,11 @@ export const save = (userState) => (
   (dispatch) => {
 
     let user = userState.userInfo;
-    if(userState.codeOfConduct === false || userState.dataSharing === false) {
-      
-      //the user is not registered
+    let registered = dispatch(checkUserReq(userState));
     
+    if(!registered){
+
+      //the user is not registered 
       user.registration_status = 'unregistered';
     } else {
 
@@ -192,6 +193,11 @@ export const save = (userState) => (
             flash: 'Changes saved successfully'
           });
           dispatch(getStatus(userState.userInfo));
+          //new reference for future changes
+          dispatch({
+            type: USER_DATA.HAS_UNSAVED_CHANGES,
+            hasUnsavedChanges: false
+          });
         } else {
             
           //save unsucessful
@@ -846,6 +852,74 @@ const getQR = (email) => (
         //unexpected error
         dispatch(showCaughtError('Could not display QR.\n' + err.toString()));
       });
+  }
+);
+
+const checkUserReq = (userState) => (
+  (dispatch) => {
+
+    if(userState.codeOfConduct === false || userState.dataSharing === false) {
+      
+      //mlh not filled out
+      return false;
+    } else {
+      
+      let user = userState.userInfo;
+      let reqFields = Object.keys(formConfig).filter(f => formConfig[f].required === true)
+        .map(k => {
+          if(k === 'phone_number') {
+            //console.log(user[k]);
+            return /^\d{10}$/.test(user[k]);
+          } else {
+            return user[k] !== '';
+          }
+        });
+
+      //console.log(reqFields);
+
+      if(!reqFields.every(x => x === true)) {
+
+        //required fields not filled out
+        return false;
+      } else {
+
+        //run age check
+
+        //console.log(Date.parse(user.date_of_birth));
+        //console.log(user.school);
+
+
+        //console.log(Date.parse(user.data_of_birth));
+        //console.log(Date.now());
+        if(Date.parse(user.date_of_birth) > Date.now()) {
+
+          //time traveller
+          alert('Your info indicates that your birthday is in the future.  If this is correct, be advised that we cannot admit time travellers to HackRU since their mere presence violates the 2nd Law of Thermodynamics.  Otherwise, please correct the relevant fields before saving.');
+          return false;
+        }
+
+
+        if(user.school.includes('Rutgers') && Date.parse(user.date_of_birth) > Date.parse(resURLS.cutoffBDate)) {
+
+          alert('Your info indicates that you will be under 18 years old on the day of HackRU.  Please be informed that a parent/guardian must sign your waiver for attendance if you are admitted to this event.  Contact info@hackru.org if you have questions.');
+        } else if(!user.school.includes('Rutgers') && Date.parse(user.date_of_birth) > Date.parse(resURLS.cutoffBDate)) {
+
+          //too young
+          alert('Your info indicates that you will be under 18 years old on the day of HackRU.  We cannot admit non-Rutgers students who are under 18 years old to this event.  Please contact info@hackru.org if you have questions.');
+          return false;
+        }
+
+        const gradAge = user.grad_year - new Date(user.date_of_birth).getFullYear();
+
+        if(gradAge < 0) {
+          alert('Your info indicates that you graduated on a year before your date of birth.  We do not believe this is physically possible.  Please correct the relevant fields before saving.');
+          
+          return false;
+        }
+        return true;
+      }
+      
+    }
   }
 );
 

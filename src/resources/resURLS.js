@@ -3,6 +3,9 @@ const resURLS = {
   logoURL: 'assets/hackru_lpurple.png',
   wheelURL: 'assets/hackru_lpurple.png',
 
+  eventDate: 'October 6, 2018',
+  cutoffBDate: 'October 6, 2000',
+
   //colors
   background: [232, 246, 252],
   foreground: [37, 71, 158],
