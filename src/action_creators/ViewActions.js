@@ -52,9 +52,11 @@ export const logoutUser = (userState) => (
     const done = dispatch(checkUserReq(userState));
     if(done === false) {
 
-      //interrupt
+      //interrupt: unregistered
       if(window.confirm('You must agree to the MLH Code of Conduct and Data Sharing Policy to register.  Do you wish to save your changes and finish registering later?')) {
-                  
+
+        userState.userInfo.registration_status = 'unregistered';
+
         //save all unsaved changes
         dispatch(save(userState));
         dispatch({
@@ -77,8 +79,10 @@ export const logoutUser = (userState) => (
         return;
       }
     } else if (done === 'unfinished') {
-    
-      //interrupt
+      
+      //interrupt: register partiallly
+      userState.userInfo.registration_status = 'registered';
+
       if(window.confirm('We\'re still missing some personal information from you.  Do you wish to save your changes and finish registering later?')) {
                   
         //save all unsaved changes
@@ -104,6 +108,8 @@ export const logoutUser = (userState) => (
       }
     } else {
 
+      //registered
+      userState.userInfo.registration_status = 'registered';
       //save all unsaved changes
       dispatch(save(userState));
       dispatch({
