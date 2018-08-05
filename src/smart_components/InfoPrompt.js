@@ -293,7 +293,7 @@ class InfoPrompt extends React.Component {
                     <a href="https://mlh.io/privacy">
                       {'the MLH Privacy Policy.'}
                     </a>
-                    {'Further, I agree to the terms of both the '}
+                    {' Further, I agree to the terms of both the '}
                     <a href="https://github.com/MLH/mlh-policies/tree/master/prize-terms-and-conditions">
                       {'MLH Contest Terms and Conditions'}
                     </a>

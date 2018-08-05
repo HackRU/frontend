@@ -152,22 +152,6 @@ export const save = (userState) => (
   (dispatch) => {
 
     let user = userState.userInfo;
-    let registered = dispatch(checkUserReq(userState));
-    
-    if(registered === false){
-
-      //the user is not registered 
-      user.registration_status = 'unregistered';
-
-    } else if(registered === 'unfinished') {
-
-      //not done but register them
-      user.registration_status = 'registered';
-    } else {
-
-      //user is registered
-      user.registration_status = 'registered';
-    }
     //delete user.update;
 
     //console.log('user being saved: ' + JSON.stringify(user));
@@ -899,8 +883,8 @@ export const checkUserReq = (userState) => (
         if(Date.parse(user.date_of_birth) > Date.now()) {
 
           //time traveller
-          alert('Your info indicates that your birthday is in the future.  If this is correct, be advised that we cannot admit time travellers to HackRU since their mere presence violates the 2nd Law of Thermodynamics.  Otherwise, please correct the relevant fields before saving.');
-          return false;
+          alert('Your info indicates that your birthday is in the future.  If this is correct, be advised that we cannot admit time travellers to HackRU since their mere presence violates the 2nd Law of Thermodynamics.  Otherwise, please correct the relevant fields.');
+          return 'unfinished';
         }
 
 
@@ -911,7 +895,7 @@ export const checkUserReq = (userState) => (
 
           //too young
           alert('Your info indicates that you will be under 18 years old on the day of HackRU.  We cannot admit non-Rutgers students who are under 18 years old to this event.  Please contact info@hackru.org if you have questions.');
-          return false;
+          return 'unfinished';
         }
 
         const gradAge = user.grad_year - new Date(user.date_of_birth).getFullYear();
@@ -919,7 +903,7 @@ export const checkUserReq = (userState) => (
         if(gradAge < 0) {
           alert('Your info indicates that you graduated on a year before your date of birth.  We do not believe this is physically possible.  Please correct the relevant fields before saving.');
           
-          return false;
+          return 'unfinished';
         }
         return true;
       }

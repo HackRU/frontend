@@ -214,6 +214,12 @@ export const signUp = (user) => (
       });
     } else {
 
+
+      dispatch({
+        type: LOGIN_MNGMNT.SET_ERROR,
+        errorMessage: 'New account info submitted.  Awaiting response...'
+      });
+
       //complete form, send to LCS to create user
       fetch(resURLS.lcsCreateURL, {
         method: 'POST',
