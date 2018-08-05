@@ -3,5 +3,7 @@ workspace.xml
 .DS_Store
 .idea
 config_resume.js
-.env
 build/
+.env
+*.swp
+*.swo

@@ -4,16 +4,16 @@ import md5 from 'md5';
 
 class Col extends React.Component {
 
-constructor (props){
+  constructor (props){
     super(props);
-}
+  }
 
-render() {
-  return (
-     <div id="register-more"> </div>
-);
+  render() {
+    return (
+      <div id="register-more" />
+    );
 
-}
+  }
 
 }
 export default Col;
