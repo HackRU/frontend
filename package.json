@@ -33,7 +33,7 @@
     "promise": "8.0.1",
     "raf": "3.4.0",
     "react": "^16.2.0",
-    "react-dev-utils": "^5.0.0",
+    "react-dev-utils": "^5.0.1",
     "react-dom": "^16.2.0",
     "react-google-autocomplete": "^1.0.15",
     "react-redux": "^5.0.7",
