@@ -263,7 +263,7 @@ class InfoPrompt extends React.Component {
                 </h4>
                 <br />
                 <br />
-                <div className="col-12 form-check mb-4 blue">
+                <div className="col-12 form-check mb-4 blue-nohover">
                   <input className="form-check-input mr-4"
                     id="code-of-conduct-box"
                     type="checkbox"
@@ -279,14 +279,14 @@ class InfoPrompt extends React.Component {
                     </a>
                   </label>
                 </div>
-                <div className="col-12 form-check mb-4 blue">
+                <div className="col-12 form-check mb-4 blue-nohover">
                   <input className="form-check-input mr-4"
                     id="data-sharing-box"
                     type="checkbox"
                     onChange={this.toggleShare}
                     checked={dataSharing}
                   />
-                  <label className="form-check-label blue"
+                  <label className="form-check-label blue-hover"
                     htmlFor="data-sharing-box"
                   >
                     {'I authorize you to share my application/registration information for event administration, ranking, MLH administration, pre- and post-event informational e-mails, and occasional messages about hackathons in-line with '} 
