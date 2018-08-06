@@ -193,12 +193,12 @@ a:hover, a:focus {
 
 .btn, .row-title-box .row-title, .faq-q, .spons-level, .perk-row .perk-desc, .splogo-text, .footer a, .li-nav-bar .nav-item:hover .nav-link, .li-section-title-box .li-section-title, .social-link-card p, .li-footer a, .li-mobile-footer a {
   font-family: "Helvetica Regular", sans-serif; 
-  font-size: 24px;
 }
 
 .bold-text {
   font-family: "Helvetica Regular", sans-serif;
   font-size: 1.6rem;
+  white-space: nowrap;
 }
 
 .season-text {
@@ -276,15 +276,17 @@ a:hover, a:focus {
     color: white; 
     font-size: 2rem;
     font-weight: 800;
+    margin: 10px;
   }
     #nav-bar a:hover {
       color: #FFF242; }
   #nav-bar .nav-bar-link, #nav-bar .nav-bar-logo {
     display: inline-block;
     vertical-align: middle;
-    margin: 0; }
+    margin: 0;
+    padding: 10px;}
   #nav-bar .nav-bar-logo {
-    height: calc(15vh * .65); }
+    height: calc(15vh); }
 
 #nav-bar-mobile {
   height: 30vh;
@@ -553,6 +555,4 @@ a:hover, a:focus {
 .c {
   font-size: 1.3rem;
 }
-
-
 
