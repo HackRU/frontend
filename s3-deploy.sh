@@ -6,6 +6,7 @@ KEY_ID=$(node -e "const config_resume = require('./temp.js');console.log(config_
 SECRET=$(node -e "const config_resume = require('./temp.js');console.log(config_resume.secretKey);")
 rm temp.js
 npm run-script build
-AWS_ACCESS_KEY_ID="$KEY_ID" AWS_SECRET_ACCESS_KEY="$SECRET" aws s3 cp --recursive build s3://hackru-deploy --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers
+
 #to empty bucket
-#AWS_ACCESS_KEY_ID="$KEY_ID" AWS_SECRET_ACCESS_KEY="$SECRET" aws s3 rm s3://hackru-deploy --recursive
+AWS_ACCESS_KEY_ID="$KEY_ID" AWS_SECRET_ACCESS_KEY="$SECRET" aws s3 rm s3://hackru-deploy --recursive
+AWS_ACCESS_KEY_ID="$KEY_ID" AWS_SECRET_ACCESS_KEY="$SECRET" aws s3 cp --recursive build s3://hackru-deploy --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers
