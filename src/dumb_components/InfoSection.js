@@ -14,7 +14,7 @@ const InfoSection = () => (
         {'October 6th-7th'}
       </p>
       <h5 className="content-title">{'Location'}</h5>
-      <span className="font-weight-bold blue"><a className="blue" href="https://goo.gl/maps/a6gNk22V6px">{'College Ave Student Center'}</a></span>
+      <span className="font-weight-bold blue"><a className="blue" href="https://goo.gl/maps/SLPeZQ4PCfH2" target="_blank"  >{'College Ave Student Center'}</a></span>
       <p className="content-desc">
         {'126 College Ave'}<br />{'New Brunswick, '}<br />{'NJ 08901'}
       </p>
