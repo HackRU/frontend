@@ -36,7 +36,7 @@ fi
 ```
 
 
-## Naming your Variables
+## Naming Your Variables
 
 In general, we don't really have a strict style ruling for this.  Please view the various files to get the idea.
 
