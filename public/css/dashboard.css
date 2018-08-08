@@ -51,6 +51,12 @@ a:hover, a:focus, a:active {
     font-weight: bold;
 }
 
+.alt-link:hover {
+  text-decoration: underline;
+  color: #7852c9;
+  font-weight: bold;
+}
+
 h6 {
   font-size: 1.2rem;
 }

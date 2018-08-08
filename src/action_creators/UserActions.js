@@ -148,11 +148,33 @@ export const toggleShare = (userState) => (
   }
 );
 
+export const preSave = (userState) => (
+  (dispatch) => {
+    
+    const done = dispatch(checkUserReq(userState));
+    
+    if(done === false) {
+      
+      //unregistered
+
+      alert('Your info will be saved but you will not be registered until you agree to the MLH Code of Conduct and Data Sharing Policy.');
+      userState.userInfo.registration_status = 'unregistered';
+    } else {
+      
+      //unfinished or true
+      userState.userInfo.registration_status = 'registered';
+    
+    }
+
+    dispatch(save(userState));
+  }
+);
+
 export const save = (userState) => (
   (dispatch) => {
 
     let user = userState.userInfo;
-    //delete user.update;
+
 
     //console.log('user being saved: ' + JSON.stringify(user));
 
@@ -177,9 +199,18 @@ export const save = (userState) => (
 
           //save successful
           dispatch(updateUser(userState, 'registration_status', user.registration_status));
+
+          let success = 'All changes saved successfully';
+          if(user.registration_status === 'registered') {
+
+            success = success + ', thanks for registering!';
+          }
+
+
+
           dispatch({
             type: USER_DATA.SET_FLASH,
-            flash: 'Changes saved successfully'
+            flash: success
           });
           dispatch(getStatus(userState.userInfo));
           //new reference for future changes
@@ -730,10 +761,11 @@ export const readUser = (uEmail, uToken) => (
       })
       .then(found => {
         dispatch(confirmResume(found));
+        /*
         dispatch({
           type: USER_DATA.SET_FLASH,
           flash: found ? 'Resume found' : 'Resume not found'
-        });
+        });*/
       })
       .catch(err => {
 
@@ -858,7 +890,8 @@ export const checkUserReq = (userState) => (
         .map(k => {
           if(k === 'phone_number') {
             //console.log(user[k]);
-            return /^\d{10}$/.test(user[k]);
+            
+            return /^\d{16}$/.test(user[k]);
           } else {
             return user[k] !== '';
           }
@@ -869,6 +902,7 @@ export const checkUserReq = (userState) => (
       if(!reqFields.every(x => x === true)) {
 
         //required fields not filled out
+
         return 'unfinished';
       } else {
 
