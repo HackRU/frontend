@@ -22,7 +22,7 @@ class InfoPrompt extends React.Component {
     this.changeKeyByArg = this.changeKeyByArg.bind(this);
     this.upResume = this.upResume.bind(this);
     this.logout = this.logout.bind(this);
-    this.save = this.save.bind(this);
+    this.preSave = this.preSave.bind(this);
     this.toggleCOC = this.toggleCOC.bind(this);
     this.toggleShare = this.toggleShare.bind(this);
   }
@@ -62,9 +62,9 @@ class InfoPrompt extends React.Component {
     this.props.logoutUser(this.props.userManager);
   }
 
-  save = (e) => {
+  preSave = (e) => {
     e.preventDefault();
-    this.props.save(this.props.userManager);
+    this.props.preSave(this.props.userManager);
   }
 
   toggleCOC = (e) => {
@@ -274,7 +274,7 @@ class InfoPrompt extends React.Component {
                     htmlFor="code-of-conduct-box"
                   >
                     {'I have read and agree to the '} 
-                    <a href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf">
+                    <a className="alt-link" href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf">
                       {'MLH Code of Conduct.'}
                     </a>
                   </label>
@@ -290,15 +290,15 @@ class InfoPrompt extends React.Component {
                     htmlFor="data-sharing-box"
                   >
                     {'I authorize you to share my application/registration information for event administration, ranking, MLH administration, pre- and post-event informational e-mails, and occasional messages about hackathons in-line with '} 
-                    <a href="https://mlh.io/privacy">
+                    <a className="alt-link" href="https://mlh.io/privacy">
                       {'the MLH Privacy Policy.'}
                     </a>
                     {' Further, I agree to the terms of both the '}
-                    <a href="https://github.com/MLH/mlh-policies/tree/master/prize-terms-and-conditions">
+                    <a className="alt-link" href="https://github.com/MLH/mlh-policies/tree/master/prize-terms-and-conditions">
                       {'MLH Contest Terms and Conditions'}
                     </a>
                     {' and '} 
-                    <a href="https://mlh.io/privacy">
+                    <a className="alt-link" href="https://mlh.io/privacy">
                       {'the MLH Privacy Policy.'}
                     </a>
                   </label>
@@ -312,7 +312,7 @@ class InfoPrompt extends React.Component {
               </div>
               <div className="col-12 text-center">
                 <button className="btn btn-primary UC custom-btn p-3"
-                  onClick={this.save}
+                  onClick={this.preSave}
                   type="submit"
                   value="save"
                 >
@@ -358,7 +358,7 @@ InfoPrompt.propTypes = {
   updateUser: PropTypes.func.isRequired,
   upResume: PropTypes.func.isRequired,
   logoutUser: PropTypes.func.isRequired,
-  save: PropTypes.func.isRequired,
+  preSave: PropTypes.func.isRequired,
   toggleCOC: PropTypes.func.isRequired,
   toggleShare: PropTypes.func.isRequired,
   userStatus: PropTypes.string.isRequired
@@ -375,7 +375,7 @@ function mapDispatchToProps(dispatch) {
     updateUser: userActions.updateUser,
     upResume: userActions.upResume,
     logoutUser: logoutUser,
-    save: userActions.save,
+    preSave: userActions.preSave,
     toggleCOC: userActions.toggleCOC,
     toggleShare: userActions.toggleShare
   }, dispatch);

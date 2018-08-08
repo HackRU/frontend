@@ -14,6 +14,11 @@ export const loginUser = (data) => (
     //set the authdata cookie
     dispatch(setCookie('authdata', body));
 
+    
+    dispatch({
+      type: USER_DATA.SET_FLASH,
+      flash: ''
+    });
     dispatch({
       type: VIEW_CONTROL.SET_LOGIN_STATUS,
       loggedIn: true
@@ -70,6 +75,10 @@ export const logoutUser = (userState) => (
           type: VIEW_CONTROL.SET_LOGIN_STATUS,
           loggedIn: false
         });
+        dispatch({
+          type: USER_DATA.SET_FLASH,
+          flash: ''
+        });
         return;
 
       } else {
@@ -83,13 +92,13 @@ export const logoutUser = (userState) => (
       //interrupt: register partiallly
       userState.userInfo.registration_status = 'registered';
 
-      if(window.confirm('We\'re still missing some personal information from you.  Do you wish to save your changes and finish registering later?')) {
+      if(window.confirm('We\'re still missing some personal information from you.  Do you wish to save your changes and finish up later?')) {
                   
         //save all unsaved changes
         dispatch(save(userState));
         dispatch({
           type: LOGIN_MNGMNT.SET_ERROR,
-          errorMessage: 'Changes have been automatically saved.  Please remember to come back and fill out the required fields.' 
+          errorMessage: 'Changes have been saved.  Please remember to come back and fill out the required fields.' 
         });
         //remove the authdata cookie
         dispatch(removeCookie('authdata'));
@@ -97,6 +106,10 @@ export const logoutUser = (userState) => (
         dispatch({
           type: VIEW_CONTROL.SET_LOGIN_STATUS,
           loggedIn: false
+        });
+        dispatch({
+          type: USER_DATA.SET_FLASH,
+          flash: ''
         });
         return;
 
@@ -114,7 +127,7 @@ export const logoutUser = (userState) => (
       dispatch(save(userState));
       dispatch({
         type: LOGIN_MNGMNT.SET_ERROR,
-        errorMessage: 'Changes have been automatically saved. We will contact you if there any updates.'
+        errorMessage: 'Changes have been saved. We will contact you if there any updates.'
       });
 
       //remove the authdata cookie
@@ -123,6 +136,10 @@ export const logoutUser = (userState) => (
       dispatch({
         type: VIEW_CONTROL.SET_LOGIN_STATUS,
         loggedIn: false
+      });
+      dispatch({
+        type: USER_DATA.SET_FLASH,
+        flash: ''
       });
     }
 
