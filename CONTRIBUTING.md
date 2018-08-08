@@ -6,7 +6,7 @@
 4.  [Style Guide](#style-guide-heman-is-an-occupational-hazard-and-we-need-linters)
 
 ## RTFH
-**Make sure you read the**[handbook!](https://github.com/HackRU/handbook/blob/master/architects.md)
+**Make sure you read the** [handbook!](https://github.com/HackRU/handbook/blob/master/architects.md)
 **Make sure to watch the repo so you can get notified of updates!**
 
 ## Naming Your Feature Branch
@@ -36,7 +36,7 @@ fi
 ```
 
 
-## Naming your Variables
+## Naming Your Variables
 
 In general, we don't really have a strict style ruling for this.  Please view the various files to get the idea.
 
