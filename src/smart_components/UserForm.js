@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 
 import AttendancePrompt from 'smart_components/AttendancePrompt';
 import InfoPrompt from 'smart_components/InfoPrompt';
+import AdminDashboard from './AdminDashboard';
 
 
 class UserForm extends React.Component{
@@ -41,6 +42,7 @@ class UserForm extends React.Component{
           </div>
         </div>
         <InfoPrompt userStatus={status}/>
+        <AdminDashboard userInfo={status} />
       </div>
     
     );
