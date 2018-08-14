@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 
 import AttendancePrompt from 'smart_components/AttendancePrompt';
 import InfoPrompt from 'smart_components/InfoPrompt';
-import AdminDashboard from './AdminDashboard';
+import AdminDashboard from 'smart_components/AdminDashboard';
 
 
 class UserForm extends React.Component{
