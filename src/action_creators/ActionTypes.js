@@ -10,6 +10,11 @@ export const VIEW_CONTROL = {
 };
 
 
+//Admin actions
+export const ADMIN_DATA = {
+  UPDATE_DATA: 'UPDATE_DATA',
+};
+
 
 //LoginManager actions
 export const LOGIN_MNGMNT = {

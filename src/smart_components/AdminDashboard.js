@@ -6,11 +6,14 @@ import { connect } from 'react-redux';
 
 //InfoPrompt.js
 
-// import { bindActionCreators } from 'redux';
+import { bindActionCreators } from 'redux';
 
 // import formConfig from 'resources/formConfig';
 
-// import { logoutUser } from 'action_creators/ViewActions';
+
+import { AdminManager } from 'reducers/AdminManager';
+
+import { AdminActions } from 'action_creators/AdminActions';
 
 // import Select, { Creatable, AsyncCreatable, Async } from 'react-select';
 import 'styles/react-select.css';
@@ -27,7 +30,6 @@ class AdminDashboard extends React.Component {
 
   doQuery() {
     let grps = {};
-    let userManager = this.props.userManager;
 
     document.querySelectorAll('.agg-filter')
       .forEach(inp => {
@@ -36,31 +38,11 @@ class AdminDashboard extends React.Component {
         grps[key] = '$' + key;
       });
 
-    fetch(resURLS.lcsReadURL, {
-      method: 'POST',
-      mode: 'cors',
-      credentials: 'omit',
-      headers: {
-      //'Accept': 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        'email': userManager.userInfoEmail,
-        'token': userManager.token,
-        'query': [{'$group': {'_id': grps, 'count': {'$sum': 1}}}],
-        'aggregate': true
-      })
-    }).then(resp => resp.json())
-      .then(data => {
-        if(data.statusCode === 200) {
-          console.log('sucessful query');
-          this.setState({results: data.body});
-        } else {
-          console.log('failed query');
-          this.setState({results: [{'_id': 'error', 'count': data.body}]});
-        }
-      });
 
+    let queryOut = [{'$group': {'_id': grps, 'count': {'$sum': 1}}}];
+    
+    let user = this.props.userManager;
+    this.props.AdminActions.updateData(user.userInfoEmail, user.token, queryOut);
   }
 
   render() {
@@ -112,12 +94,7 @@ AdminDashboard.propTypes = {
   userManager: PropTypes.shape({
     userInfoEmail: PropTypes.string,
     token: PropTypes.string,
-    hasResume: PropTypes.bool,
     userInfo: PropTypes.object,
-    hasUnsavedChanges: PropTypes.bool,
-    flash: PropTypes.string,
-    codeOfConduct: PropTypes.bool,
-    dataSharing: PropTypes.bool
   }).isRequired,
   viewController: PropTypes.shape({
     isAdmin: PropTypes.bool
@@ -131,4 +108,10 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, null) (AdminDashboard);
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({
+    updateData: AdminActions.queryDB,
+  }, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps) (AdminDashboard);
