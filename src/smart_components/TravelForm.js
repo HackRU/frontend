@@ -1,5 +1,5 @@
 //TravelForm.js
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 
 import { bindActionCreators } from 'redux';
@@ -44,125 +44,93 @@ class TravelForm extends React.Component {
     this.props.readyTravel(false);
   }
 
-  showTravelForm = (userStatus) => {
-    
-    let user = this.props.userManager.userInfo;
-    if(userStatus === 'coming' && (!user.travelling_from || !user.travelling_from.estimate)) {
-    
-      //user has not yet applied for travel reimbursement
-      return (
-        <span>
-          <br/>
-          <input
-            defaultChecked={user.travelling_from && user.travelling_from.is_real}
-            id="toggle-travel-stuff"
-            onClick={this.toggleTravel}
-            type="checkbox"
-          />
-          <label htmlFor="toggle-travel-stuff">
-            <h5 className="blue">
-              {'I request travel reimbursement'}
-            </h5>
-          </label>
-        </span>
-      );
-    } 
+  showTravelForm = (userStatus, travelling_from) => (
+    userStatus === 'coming' && (!travelling_from || !travelling_from.estimate) && ( 
+      <span>
+        <br/>
+        <input
+          defaultChecked={travelling_from && travelling_from.is_real}
+          id="toggle-travel-stuff"
+          onClick={this.toggleTravel}
+          type="checkbox"
+        />
+        <label htmlFor="toggle-travel-stuff">
+          <h5 className="blue">
+            {'I request travel reimbursement'}
+          </h5>
+        </label>
+      </span>
+    )
+  )
+
+  renderTransportOption = (travelling_from, value, label) => {
+    console.log(travelling_from, value);
+    return (<Fragment>
+      <input checked={travelling_from.mode === value}
+        name="preferred-transport"
+        onClick={this.selectMode}
+        type="radio"
+        value={value}
+      />
+      <label>
+        <p className="blue mr-1">
+          { label }
+        </p>
+      </label>
+    </Fragment>);
   }
 
-  getTravelInfo = () => {
-    
-    let user = this.props.userManager.userInfo;
-    if(user.travelling_from && user.travelling_from.is_real && !user.travelling_from.estimate) {
-
+  getTravelInfo = (travelling_from) => (
+    travelling_from && travelling_from.is_real && !travelling_from.estimate && (
       //user has not filed for a reimbursement estimate
-      return (
+      <div>
+        <h4 className="font-weight-bold blue">
+          {'Location of Origin (include City and State)'}
+        </h4>
+        <Autocomplete
+          className="form-control mx-3"
+          componentRestrictions={{country: 'us'}}
+          onChange={this.updateDestination}
+          onPlaceSelected={this.selectDestination}
+          placeholder="Where are you travelling from?"
+          type={['(cities)']}
+          value={travelling_from.formatted_address}
+        />
         <div>
-          <h4 className="font-weight-bold blue">
-            {'Location of Origin (include City and State)'}
-          </h4>
-          <Autocomplete
-            className="form-control mx-3"
-            componentRestrictions={{country: 'us'}}
-            onChange={this.updateDestination}
-            onPlaceSelected={this.selectDestination}
-            placeholder="Where are you travelling from?"
-            type={['(cities)']}
-            value={user.travelling_from && user.travelling_from.formatted_address}
-          />
-          <div>
-            <h6 className="blue mt-3">
-              {'Preferred mode of transport:'}
-            </h6>
-          </div>
-          <input checked={user.travelling_from.mode === 'bus'}
-            name="preferred-transport"
-            onClick={this.selectMode}
-            type="radio"
-            value="bus"
-          />
-          <label>
-            <p className="blue mr-1">
-              {'Bus'}
-            </p>
-          </label>
-          <input checked={user.travelling_from.mode === 'train'}
-            name="preferred-transport"
-            onClick={this.selectMode}
-            type="radio"
-            value="train"
-          />
-          <label>
-            <p className="blue mr-1">
-              {'Train'}
-            </p>
-          </label>
-          <input checked={user.travelling_from.mode === 'car'}
-            name="preferred-transport"
-            onClick={this.selectMode}
-            type="radio"
-            value="car"
-          />
-          <label>
-            <p className="blue mr-1">
-              {'Car'}
-            </p>
-          </label>
-          <button 
-            className={'btn btn-primary UC custom-btn p-3 my-1' + (!this.props.userManager.travelReady && ' disabled')} 
-            onClick={this.requestTravel}
-            type="button"
-          >
-            {this.props.userManager.travelReady? 'Update Travel Information' : 'Please choose a location from the dropdown to change it.'}
-          </button>
+          <h6 className="blue mt-3">
+            {'Preferred mode of transport:'}
+          </h6>
         </div>
-      );
-    }
-  }
+        { this.renderTransportOption(travelling_from, 'bus', 'Bus') }
+        { this.renderTransportOption(travelling_from, 'train', 'Train') }
+        { this.renderTransportOption(travelling_from, 'car', 'Car') }
+        <button 
+          className={'btn btn-primary UC custom-btn p-3 my-1' + (!this.props.userManager.travelReady && ' disabled')} 
+          onClick={this.requestTravel}
+          type="button"
+        >
+          {this.props.userManager.travelReady ? 'Update Travel Information' : 'Please choose a location from the dropdown to change it.'}
+        </button>
+      </div>
+    )
+  )
 
-  getEstimate = () => {
-    
-    let user = this.props.userManager.userInfo;
-    if(user.travelling_from && user.travelling_from.estimate) {
-
-      let prompt = 'Estimated reimbursement: $' + user.travelling_from.estimate;
-
-      return(
-        //estimate already calculated
-        <div>
-          <h4 className="font-weight-bold blue">
-            {prompt}
-          </h4>
-          {'Please be prepared to '}<strong>{'show us all receipts '}</strong>{'related to your reimbursement on the day of HackRU.  Please keep in mind you '}<strong>{'must submit a project to Devpost and demo on Sunday '}</strong>{'to receive your travel reimbursement in the form of an Amazon giftcard.'}
-        </div>
-      );
-    }
-  }
+  getEstimate = (travelling_from) => (
+    travelling_from && travelling_from.estimate && (
+      <div>
+        <h4 className="font-weight-bold blue">
+          { 'Estimated reimbursement: $' + travelling_from.estimate }
+        </h4>
+        {'Please be prepared to '}<strong>{'show us all receipts '}</strong>{'related to your reimbursement on the day of HackRU.  Please keep in mind you '}<strong>{'must submit a project to Devpost and demo on Sunday '}</strong>{'to receive your travel reimbursement in the form of an Amazon giftcard.'}
+      </div>
+    )
+  )
 
   render = () => (
     <div>
-      {this.showTravelForm(this.props.userStatus)}
-      {this.getTravelInfo()}
-      {this.getEstimate()}
+      { this.showTravelForm(this.props.userStatus, this.props.userManager.userInfo.travelling_from) }
+      { this.getTravelInfo(this.props.userManager.userInfo.travelling_from) }
+      { this.getEstimate(this.props.userManager.userInfo.travelling_from) }
     </div>
   )
 }
