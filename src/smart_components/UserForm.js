@@ -7,18 +7,10 @@ import { connect } from 'react-redux';
 import AttendancePrompt from 'smart_components/AttendancePrompt';
 import InfoPrompt from 'smart_components/InfoPrompt';
 
-
 class UserForm extends React.Component{
 
-  
-
   render() {
-
-    let status = this.props.viewController.userStatus;
-    if(!status) {
-      //loading
-      status = 'Loading...';
-    }
+    const status = this.props.viewController.userStatus || 'Loading...';
     return (   
       <div>
         <div className="content-section"
@@ -35,18 +27,16 @@ class UserForm extends React.Component{
                 <h2 className="SC SC-white"> 
                   {'Status: ' + status} 
                 </h2>
-                <AttendancePrompt userStatus={status}/>
+                {/* TODO FIX THIS */}
+                <AttendancePrompt userStatus={'coming'}/>
               </div>
             </form>
           </div>
         </div>
         <InfoPrompt userStatus={status}/>
-      </div>
-    
+      </div> 
     );
-  
   }
-
 }
 
 UserForm.propTypes = {
