@@ -158,21 +158,13 @@ class TravelForm extends React.Component {
     }
   }
 
-  render() {
-    
-    let toggleForm  = this.showTravelForm(this.props.userStatus);
-    let reimbursementForm = this.getTravelInfo();
-    let estimate = this.getEstimate();
-
-
-    return (
-      <div>
-        {toggleForm}
-        {reimbursementForm}
-        {estimate}
-      </div>
-    );
-  }
+  render = () => (
+    <div>
+      {this.showTravelForm(this.props.userStatus)}
+      {this.getTravelInfo()}
+      {this.getEstimate()}
+    </div>
+  )
 }
 
 TravelForm.propTypes = {
