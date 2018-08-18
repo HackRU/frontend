@@ -66,7 +66,6 @@ export const updateTravel = (userState, key, value) => (
 
     let travellingFrom = userState.userInfo.travelling_from;
     if(!travellingFrom || (typeof(travellingFrom) === 'string')) {
-
       //no travel info yet
       travellingFrom = {};
     }
@@ -616,15 +615,13 @@ export const sendTravelInfo = (userState) => (
 
 export const toggleTravel = (userState) => (
   (dispatch) => {
-
     let user = userState.userInfo;
     
     let isReal = !(user.travelling_from && user.travelling_from.is_real); //toggle request status
     
-    updateTravel(userState, 'is_real', isReal);
+    updateTravel(userState, 'is_real', isReal)(dispatch);
 
     if(!isReal) {
-
       //update when toggled off..?
       fetch(resURLS.lcsUpdateURL, {
         method: 'POST',
@@ -657,7 +654,6 @@ export const toggleTravel = (userState) => (
           }
         })
         .catch(err => {
-          
           //unexpected error
           dispatch(showCaughtError(err));
         });
