@@ -10,42 +10,14 @@ import { checkCookies } from 'action_creators/UserActions';
 import LoginForm from 'smart_components/LoginForm';
 import UserForm from 'smart_components/UserForm';
 
-
-
 class LoginManagement extends React.Component {
-
   componentDidMount() {
-    //console.log('cookies check');
     this.props.checkCookies();
   }
-  
-  
 
-  render() {
-    
-    const Fragment = React.Fragment;
-
-    const loggedIn = this.props.viewController.loggedIn;
-
-    let activeForm = null;
-
-    if(loggedIn === true) {
-
-      //user form
-      activeForm = <UserForm />;
-    } else {
-
-      //login form
-      activeForm = <LoginForm />;
-    }
-
-    return (
-      <Fragment>
-        {activeForm}
-      </Fragment>
-    );
-  }
-
+  render = () => (
+    this.props.viewController.loggedIn ? <UserForm /> : <LoginForm />
+  )
 }
 
 LoginManagement.propTypes = {
