@@ -619,7 +619,7 @@ export const toggleTravel = (userState) => (
     
     let isReal = !(user.travelling_from && user.travelling_from.is_real); //toggle request status
     
-    updateTravel(userState, 'is_real', isReal)(dispatch);
+    dispatch(updateTravel(userState, 'is_real', isReal));
 
     if(!isReal) {
       //update when toggled off..?
