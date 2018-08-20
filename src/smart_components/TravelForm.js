@@ -27,7 +27,6 @@ class TravelForm extends React.Component {
   }
 
   selectMode = (e) => {
-    e.preventDefault();
     let mode = e.target.value;
     this.props.updateTravel(this.props.userManager, 'mode', mode);
   }
@@ -63,11 +62,10 @@ class TravelForm extends React.Component {
     )
   )
 
-  renderTransportOption = (travelling_from, value, label) => {
-    console.log(travelling_from, value);
-    return (<Fragment>
-      <input checked={travelling_from.mode === value}
-        name="preferred-transport"
+  renderTransportOption = (travelling_from, value, label) => (
+    <Fragment>
+      <input
+        checked={travelling_from.mode === value}
         onClick={this.selectMode}
         type="radio"
         value={value}
@@ -77,8 +75,8 @@ class TravelForm extends React.Component {
           { label }
         </p>
       </label>
-    </Fragment>);
-  }
+    </Fragment>
+  )
 
   getTravelInfo = (travelling_from) => (
     travelling_from && travelling_from.is_real && !travelling_from.estimate && (
