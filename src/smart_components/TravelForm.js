@@ -44,8 +44,8 @@ class TravelForm extends React.Component {
     this.props.readyTravel(false);
   }
 
-  showTravelForm = (userStatus, travelling_from) => (
-    userStatus === 'coming' && (!travelling_from || !travelling_from.estimate) && ( 
+  showTravelForm = (travelling_from) => (
+    (!travelling_from || !travelling_from.estimate) && ( 
       <span>
         <br/>
         <input
@@ -128,7 +128,7 @@ class TravelForm extends React.Component {
 
   render = () => (
     <div>
-      { this.showTravelForm(this.props.userStatus, this.props.userManager.userInfo.travelling_from) }
+      { this.showTravelForm(this.props.userManager.userInfo.travelling_from) }
       { this.getTravelInfo(this.props.userManager.userInfo.travelling_from) }
       { this.getEstimate(this.props.userManager.userInfo.travelling_from) }
     </div>
@@ -149,7 +149,6 @@ TravelForm.propTypes = {
   readyTravel: PropTypes.func.isRequired,
   toggleTravel: PropTypes.func.isRequired,
   updateTravel: PropTypes.func.isRequired,
-  userStatus: PropTypes.string.isRequired
 };
 
 function mapStateToProps(state) {

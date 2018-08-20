@@ -51,7 +51,6 @@ class AttendancePrompt extends React.Component {
       >
         <h6 className="my-0">{'Not Attending'}</h6>
       </button>
-      <TravelForm userStatus={this.props.userStatus}/>
     </Fragment>
   )
 
@@ -67,6 +66,7 @@ class AttendancePrompt extends React.Component {
   render = () => (
     <div>
       { this.reflectPrompt(this.props.userStatus) }
+      <TravelForm />
     </div>
   )
 }
