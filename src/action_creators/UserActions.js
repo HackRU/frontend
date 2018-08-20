@@ -71,7 +71,6 @@ export const updateTravel = (userState, key, value) => (
     }
     travellingFrom[key] = value;
     dispatch(updateUser(userState, 'travelling_from', travellingFrom));
-    //console.log(userState);
   }
 );
 
