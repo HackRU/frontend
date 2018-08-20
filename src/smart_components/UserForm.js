@@ -27,8 +27,7 @@ class UserForm extends React.Component{
                 <h2 className="SC SC-white"> 
                   {'Status: ' + status} 
                 </h2>
-                {/* TODO FIX THIS */}
-                <AttendancePrompt userStatus={'coming'}/>
+                <AttendancePrompt userStatus={status}/>
               </div>
             </form>
           </div>
