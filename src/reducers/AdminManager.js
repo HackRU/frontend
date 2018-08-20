@@ -3,7 +3,7 @@ import { ADMIN_DATA } from 'action_creators/ActionTypes';
 
 //what we want to manage
 const initialState = {
-  queryData: '',
+  queryData: null,
 };
 
 const AdminManager = (state = initialState, action) => {
@@ -11,7 +11,7 @@ const AdminManager = (state = initialState, action) => {
     case ADMIN_DATA.UPDATE_DATA:
       return {
         ...state, 
-        data: action.data
+        queryData: action.data
       };
     default: 
       return state;
