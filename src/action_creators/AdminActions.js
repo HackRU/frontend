@@ -1,12 +1,10 @@
 //AdminActions.js
 
-
 import { ADMIN_DATA } from 'action_creators/ActionTypes';
 import resURLS from 'resources/resURLS';
 
 export const queryDB = (userEmail, token, query) => (
   (dispatch) => {
-    
     fetch(resURLS.lcsReadURL, {
       method: 'POST',
       mode: 'cors',
@@ -22,24 +20,18 @@ export const queryDB = (userEmail, token, query) => (
         'aggregate': true
       })
     }).then(resp => resp.json())
-      .then(data => {
-        if(data.statusCode === 200)
+      .then(datap => {
+        if(datap.statusCode === 200)
           dispatch({
             type: ADMIN_DATA.UPDATE_DATA,
-            data: 'Fatal Error'
+            data: datap.body
           });
         else
           dispatch({
             type: ADMIN_DATA.UPDATE_DATA,
-            data: {results: [{'_id': 'error', 'count': data.body}]}
+            data: 'Fatal Error'
           });
       });
-
-
-
-
-
-
 
     
   }
