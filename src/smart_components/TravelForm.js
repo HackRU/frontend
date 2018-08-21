@@ -47,23 +47,21 @@ class TravelForm extends React.Component {
     this.props.readyTravel(false);
   }
 
-  showTravelForm = (travelling_from) => (
-    (!travelling_from || !travelling_from.estimate) && ( 
-      <span>
-        <br/>
-        <input
-          defaultChecked={travelling_from && travelling_from.is_real}
-          id="toggle-travel-stuff"
-          onClick={this.toggleTravel}
-          type="checkbox"
-        />
-        <label htmlFor="toggle-travel-stuff">
-          <h5 className="blue">
-            {'I request travel reimbursement'}
-          </h5>
-        </label>
-      </span>
-    )
+  showTravelForm = (travelling_from) => ( 
+    <span>
+      <br/>
+      <input
+        defaultChecked={travelling_from && travelling_from.is_real}
+        id="toggle-travel-stuff"
+        onClick={this.toggleTravel}
+        type="checkbox"
+      />
+      <label htmlFor="toggle-travel-stuff">
+        <h5 className="blue">
+          {'I request travel reimbursement'}
+        </h5>
+      </label>
+    </span>
   )
 
   renderTransportOption = (travelling_from, value, label) => (
@@ -83,8 +81,7 @@ class TravelForm extends React.Component {
   )
 
   getTravelInfo = (travelling_from) => (
-    travelling_from && travelling_from.is_real && !travelling_from.estimate && (
-      //user has not filed for a reimbursement estimate
+    travelling_from && travelling_from.is_real && (
       <div>
         <h4 className="font-weight-bold blue">
           {'Location of Origin (include City and State)'}
@@ -118,13 +115,10 @@ class TravelForm extends React.Component {
   )
 
   getEstimate = (travelling_from) => (
-    travelling_from && travelling_from.estimate && (
-      <div>
-        <h4 className="font-weight-bold blue">
-          { 'Estimated reimbursement: $' + travelling_from.estimate }
-        </h4>
+    travelling_from && (
+      <Fragment>
         {'Please be prepared to '}<strong>{'show us all receipts '}</strong>{'related to your reimbursement on the day of HackRU.  Please keep in mind you '}<strong>{'must submit a project to Devpost and demo on Sunday '}</strong>{'to receive your travel reimbursement in the form of an Amazon giftcard.'}
-      </div>
+      </Fragment>
     )
   )
 
