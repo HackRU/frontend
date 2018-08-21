@@ -36,6 +36,10 @@ class TravelForm extends React.Component {
     this.props.toggleTravel(this.props.userManager);
   }
 
+  requestTravel = (e) => {
+    this.props.sendTravelInfo(this.props.userManager);
+  }
+
   updateDestination = (e) => {
     e.preventDefault();
     let address = e.target.value;
@@ -147,6 +151,7 @@ TravelForm.propTypes = {
   readyTravel: PropTypes.func.isRequired,
   toggleTravel: PropTypes.func.isRequired,
   updateTravel: PropTypes.func.isRequired,
+  sendTravelInfo: PropTypes.func.isRequired,
 };
 
 function mapStateToProps(state) {
@@ -160,7 +165,8 @@ function mapDispatchToProps(dispatch) {
     finalizeTravel: userActions.finalizeTravel,
     readyTravel: userActions.readyTravel,
     toggleTravel: userActions.toggleTravel,
-    updateTravel: userActions.updateTravel
+    updateTravel: userActions.updateTravel,
+    sendTravelInfo: userActions.sendTravelInfo,
   }, dispatch);
 }
 
