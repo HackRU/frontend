@@ -585,9 +585,8 @@ export const sendTravelInfo = (userState) => (
         auth: userState.token
       })
     }).then(data => data.json())
-      .then(resp => {
-        
-        if(resp.statuscode === 200) {
+      .then(resp => { 
+        if(resp.statusCode === 200) {
           
           //successful update
           dispatch(updateUser(userState, 'travelling_from', travellingFrom));
