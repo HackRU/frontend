@@ -1,5 +1,5 @@
 //AttendancePrompt.js
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 
 import { bindActionCreators } from 'redux';
@@ -27,58 +27,48 @@ class AttendancePrompt extends React.Component {
     this.props.cancelAttendance(this.props.userManager);
   }
 
+  renderCheckedIn = () => (
+    <div>
+      <h1 className="blue my-3">{'Welcome to HackRU!'}</h1>
+      <h6 className="blue">{'In case of an emergency, call RUPD: 732-932-7211'}</h6>
+    </div>
+  )
+
+  renderAttendance = () => (
+    <Fragment> 
+      <div className="blue">
+        <h3>{this.props.userManager.upperFlash}</h3>
+      </div>
+      <button className="btn btn-primary UC custom-btn p-3 my-1 mx-md-1"
+        onClick={this.confirmAttendance}
+        type="button"
+      >
+        <h6 className="my-0">{'Attending'}</h6>
+      </button>
+      <button className="btn btn-primary UC custom-btn p-3 my-1"
+        onClick={this.cancelAttendance}
+        type="button"
+      >
+        <h6 className="my-0">{'Not Attending'}</h6>
+      </button>
+    </Fragment>
+  )
+
     
   reflectPrompt = (userStatus) => {
-
-    if(userStatus === 'Loading...') {
-      //return nothing
-      return;
-
-    } else if(userStatus === 'checked in') {
-
-      //checked in
-      return (
-        <div>
-          <h1 className="blue my-3">{'Welcome to HackRU!'}</h1>
-          <h6 className="blue">{'In case of an emergency, call RUPD: 732-932-7211'}</h6>
-        </div>
-      );
+    if(userStatus === 'checkedIn') {
+      return this.renderCheckedIn();
     } else if (userStatus !== 'unregistered' && userStatus !== 'pending' && userStatus !== 'waitlist' && userStatus !== 'checked in') {
-      //confirming
-
-      const Fragment = React.Fragment;
-      return (
-        <Fragment> 
-          <div className="blue">
-            <h3>{this.props.userManager.upperFlash}</h3>
-          </div>
-          <button className="btn btn-primary UC custom-btn p-3 my-1 mx-md-1"
-            onClick={this.confirmAttendance}
-            type="button"
-          >
-            <h6 className="my-0">{'Attending'}</h6>
-          </button>
-          <button className="btn btn-primary UC custom-btn p-3 my-1"
-            onClick={this.cancelAttendance}
-            type="button"
-          >
-            <h6 className="my-0">{'Not Attending'}</h6>
-          </button>
-          <TravelForm userStatus={userStatus}/>
-        </Fragment>
-      );
-    } 
+      return this.renderAttendance();
+    }
   }
 
-  render() {
-
-    let confirmation = this.reflectPrompt(this.props.userStatus);
-    return (
-      <div>
-        {confirmation}
-      </div>
-    );
-  }
+  render = () => (
+    <div>
+      { this.reflectPrompt(this.props.userStatus) }
+      <TravelForm />
+    </div>
+  )
 }
 
 AttendancePrompt.propTypes = {
