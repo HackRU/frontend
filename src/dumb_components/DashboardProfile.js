@@ -53,7 +53,7 @@ class DashboardProfile extends React.Component {
           {firstName + ' ' + lastName}
         </h2>
         {giveSaveOption}
-        <h6>
+        <h6 className="profile-text">
           <a href="#" onClick={this.logout}>
             {'Logout'}
           </a>
@@ -87,7 +87,7 @@ class DashboardProfile extends React.Component {
           </h6> 
           <br />
         </span>
-        <h6>
+        <h6 className="profile-text">
           <i className="fab fa-github fa-fw" /> 
           <a href={'http://github.com/' + github}
             target="_blank"

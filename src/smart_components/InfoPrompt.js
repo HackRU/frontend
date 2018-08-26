@@ -193,7 +193,7 @@ class InfoPrompt extends React.Component {
               {'Your Info:'}
             </span>
           </h2>
-          <div className="content-section-desc your-info">
+          <div className="content-section-desc">
             <form>  
               <span>
                 {user && 
@@ -270,11 +270,11 @@ class InfoPrompt extends React.Component {
                     onChange={this.toggleCOC}
                     checked={codeOfConduct}
                   />
-                  <label className="form-check-label"
+                  <label className="form-check-label blue"
                     htmlFor="code-of-conduct-box"
                   >
                     {'I have read and agree to the '} 
-                    <a className="alt-link" href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf">
+                    <a className="" href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf">
                       {'MLH Code of Conduct.'}
                     </a>
                   </label>
@@ -320,7 +320,7 @@ class InfoPrompt extends React.Component {
                     {'Save Changes'}
                   </h6>
                 </button>
-                <button className="btn btn-primary UC custom-btn mx-2 p-3"
+                <button className="btn btn-primary UC custom-btn mx-2 my-1 p-3"
                   onClick={this.logout}
                   type="submit"
                   value="logout"
