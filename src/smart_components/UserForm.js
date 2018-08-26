@@ -24,7 +24,7 @@ class UserForm extends React.Component{
           <div className="content-section-desc register-root">
             <form className="form-group">
               <div className="text-center">
-                <h2 className="SC SC-white"> 
+                <h2 className="SC blue"> 
                   {'Status: ' + status} 
                 </h2>
                 <AttendancePrompt userStatus={status}/>
