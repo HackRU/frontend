@@ -33,7 +33,7 @@ class SlackContainer extends Component {
     this.state.text.map(message => ({
       // Strip brackets and colon artifacts from slack
       // Do not match patterns with interior whitespace
-      text: message.text && message.text.replace(/(:[^:\s]*:)|(<[^>\s]*>)/g, ''),
+      text: message.text && message.text.replace(/(:[^:\s]*:)|(<[^>\s]*>)/g, '').trim(),
       date: new Date(message.ts * 1000).toLocaleDateString(),
       time: new Date(message.ts * 1000).toLocaleTimeString()
     }))
