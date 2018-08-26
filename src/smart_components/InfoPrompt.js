@@ -305,10 +305,12 @@ class InfoPrompt extends React.Component {
                 </div>
               </div>
               }
-              <div className="form-group row my-2 mx-1">
-                <h4 className="blue">
-                  {flash}
-                </h4>
+              <div className="form-group text-center row my-2 mx-1">
+                <label className="col-12 col-form-label mb-2 mt-2">
+                  <h4 className="text-lg p-xs-2 p-md-3 badge badge-purple">
+                    {flash}
+                  </h4>
+                </label>
               </div>
               <div className="col-12 text-center">
                 <button className="btn btn-primary UC custom-btn p-3"
