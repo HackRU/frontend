@@ -144,7 +144,7 @@ class DashboardProfile extends React.Component {
     return (
       <div className="col-xs-12 col-md-2" id="dashboard-profile">
         <div className="row">
-          <div className="col-12 text-center">
+          <div className="col-12 text-center my-3">
             <a href="http://hackru.org/"><img id="profile-logo" alt="" src={resURLS.logoURL}/></a>
           </div>
           <div className="col-10 offset-1 text-center mt-4 mb-5" id="qr-border" style={style}>
