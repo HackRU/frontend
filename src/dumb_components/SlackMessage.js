@@ -14,8 +14,8 @@ class SlackMessage extends Component {
 
 SlackMessage.propTypes = {
   contents: PropTypes.string.isRequired,
-  date: PropTypes.date.isRequired,
-  time: PropTypes.data.isRequired,
+  date: PropTypes.instanceOf(Date).isRequired,
+  time: PropTypes.instanceOf(Date).isRequired,
 };
 
 export default SlackMessage;
