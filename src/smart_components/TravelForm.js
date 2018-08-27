@@ -84,7 +84,7 @@ class TravelForm extends React.Component {
     travelling_from && travelling_from.is_real && (
       <div>
         <h4 className="font-weight-bold blue">
-          {'Location of Origin (include City and State)'}
+          {'Location of Origin (City and State)'}
         </h4>
         <Autocomplete
           className="form-control mx-3"
