@@ -59,7 +59,7 @@ class AttendancePrompt extends React.Component {
     if(userStatus === 'checkedIn') {
       return this.renderCheckedIn();
     } else if (userStatus !== 'unregistered' && userStatus !== 'pending' && userStatus !== 'waitlist' && userStatus !== 'checked in') {
-      return this.renderAttendance();
+      return userStatus === 'Loading...' ? '' : this.renderAttendance();
     }
   }
 
