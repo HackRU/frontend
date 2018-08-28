@@ -67,7 +67,7 @@ class TravelForm extends React.Component {
   )
 
   renderTransportOption = (travelling_from, value, label) => (
-    <Fragment>
+    <div>
       <input
         checked={travelling_from.mode === value}
         onClick={this.selectMode}
@@ -79,7 +79,7 @@ class TravelForm extends React.Component {
           { label }
         </p>
       </label>
-    </Fragment>
+    </div>
   )
 
   getTravelInfo = (travelling_from) => (
