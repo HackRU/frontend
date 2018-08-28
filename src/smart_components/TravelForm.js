@@ -120,7 +120,7 @@ class TravelForm extends React.Component {
     travelling_from && (
       <Fragment>
         <br />
-        {'Please be prepared to '}<strong>{'show us all receipts '}</strong>{'related to your reimbursement on the day of HackRU.  Please keep in mind you '}<strong>{'must submit a project to Devpost and demo on Sunday '}</strong>{'to receive your travel reimbursement in the form of an Amazon giftcard.'}
+        {'Please be prepared to '}<strong>{'show us all receipts '}</strong>{'related to your reimbursement on the day of HackRU.  Please keep in mind you '}<strong>{'must submit a project to Devpost and demo on Sunday '}</strong>{'to receive your travel reimbursement.'}
       </Fragment>
     )
   )
