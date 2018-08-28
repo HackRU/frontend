@@ -8,7 +8,7 @@ import DashboardProfile from 'dumb_components/DashboardProfile';
 import Events from 'dumb_components/Events';
 import InfoSection from 'dumb_components/InfoSection';
 import ImportantLinks from 'dumb_components/ImportantLinks';
-import SlackContainer from 'dumb_components/Slack';
+//import SlackContainer from 'smart_components/SlackContainer';
 
 import LoginManagement from 'smart_components/LoginManagement';
 
