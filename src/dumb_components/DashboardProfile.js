@@ -53,7 +53,7 @@ class DashboardProfile extends React.Component {
           {firstName + ' ' + lastName}
         </h2>
         {giveSaveOption}
-        <h6>
+        <h6 className="profile-text">
           <a href="#" onClick={this.logout}>
             {'Logout'}
           </a>
@@ -87,7 +87,7 @@ class DashboardProfile extends React.Component {
           </h6> 
           <br />
         </span>
-        <h6>
+        <h6 className="profile-text">
           <i className="fab fa-github fa-fw" /> 
           <a href={'http://github.com/' + github}
             target="_blank"
@@ -144,7 +144,7 @@ class DashboardProfile extends React.Component {
     return (
       <div className="col-xs-12 col-md-2" id="dashboard-profile">
         <div className="row">
-          <div className="col-12 text-center">
+          <div className="col-12 text-center my-3">
             <a href="http://hackru.org/"><img id="profile-logo" alt="" src={resURLS.logoURL}/></a>
           </div>
           <div className="col-10 offset-1 text-center mt-4 mb-5" id="qr-border" style={style}>
