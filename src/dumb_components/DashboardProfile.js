@@ -40,7 +40,7 @@ class DashboardProfile extends React.Component {
     const major = (user.major)? user.major: '';
     const giveSaveOption = (this.props.userManager.hasUnsavedChanges === true)? 
       (
-        <h6>
+        <h6 className="profile-text">
           <a href="." onClick={this.save}>
             {'Save Changes'}
           </a>
