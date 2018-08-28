@@ -27,7 +27,7 @@ componentDidMount() {
 render() {
   let articles = this.props.data.map(function (articleData, index) {
   return (
-    <div> {articleData.title.$t}<br>{articles}</div>
+    <div> {articleData.title.$t}<br>{articles}</div>;
   );
 }
 
