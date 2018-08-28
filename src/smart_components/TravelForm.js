@@ -48,20 +48,22 @@ class TravelForm extends React.Component {
   }
 
   showTravelForm = (travelling_from) => ( 
-    <span>
-      <br/>
-      <input
-        defaultChecked={travelling_from && travelling_from.is_real}
-        id="toggle-travel-stuff"
-        onClick={this.toggleTravel}
-        type="checkbox"
-      />
-      <label htmlFor="toggle-travel-stuff">
-        <h5 className="blue">
-          {'I request travel reimbursement'}
-        </h5>
-      </label>
-    </span>
+    travelling_from && (
+      <span>
+        <br/>
+        <input
+          defaultChecked={travelling_from && travelling_from.is_real}
+          id="toggle-travel-stuff"
+          onClick={this.toggleTravel}
+          type="checkbox"
+        />
+        <label htmlFor="toggle-travel-stuff">
+          <h5 className="blue">
+            {'I request travel reimbursement'}
+          </h5>
+        </label>
+      </span>
+    )
   )
 
   renderTransportOption = (travelling_from, value, label) => (
@@ -117,6 +119,7 @@ class TravelForm extends React.Component {
   getEstimate = (travelling_from) => (
     travelling_from && (
       <Fragment>
+        <br />
         {'Please be prepared to '}<strong>{'show us all receipts '}</strong>{'related to your reimbursement on the day of HackRU.  Please keep in mind you '}<strong>{'must submit a project to Devpost and demo on Sunday '}</strong>{'to receive your travel reimbursement in the form of an Amazon giftcard.'}
       </Fragment>
     )
