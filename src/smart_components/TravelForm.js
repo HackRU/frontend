@@ -115,12 +115,10 @@ class TravelForm extends React.Component {
   )
 
   getEstimate = (travelling_from) => (
-    travelling_from && (
-      <Fragment>
-        <br />
-        {'Please be prepared to '}<strong>{'show us all receipts '}</strong>{'related to your reimbursement on the day of HackRU.  Please keep in mind you '}<strong>{'must submit a project to Devpost and demo on Sunday '}</strong>{'to receive your travel reimbursement.'}
-      </Fragment>
-    )
+    <Fragment>
+      <br />
+      {'Please be prepared to '}<strong>{'show us all receipts '}</strong>{'related to your reimbursement on the day of HackRU.  Please keep in mind you '}<strong>{'must submit a project to Devpost and demo on Sunday '}</strong>{'to receive your travel reimbursement.'}
+    </Fragment>
   )
 
   render = () => (
