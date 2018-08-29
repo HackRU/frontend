@@ -48,22 +48,20 @@ class TravelForm extends React.Component {
   }
 
   showTravelForm = (travelling_from) => ( 
-    travelling_from && (
-      <span>
-        <br/>
-        <input
-          defaultChecked={travelling_from && travelling_from.is_real}
-          id="toggle-travel-stuff"
-          onClick={this.toggleTravel}
-          type="checkbox"
-        />
-        <label htmlFor="toggle-travel-stuff">
-          <h5 className="blue">
-            {'I request travel reimbursement'}
-          </h5>
-        </label>
-      </span>
-    )
+    <span>
+      <br/>
+      <input
+        defaultChecked={travelling_from && travelling_from.is_real}
+        id="toggle-travel-stuff"
+        onClick={this.toggleTravel}
+        type="checkbox"
+      />
+      <label htmlFor="toggle-travel-stuff">
+        <h5 className="blue">
+          {'I request travel reimbursement'}
+        </h5>
+      </label>
+    </span>
   )
 
   renderTransportOption = (travelling_from, value, label) => (
