@@ -65,7 +65,7 @@ class TravelForm extends React.Component {
   )
 
   renderTransportOption = (travelling_from, value, label) => (
-    <Fragment>
+    <div>
       <input
         checked={travelling_from.mode === value}
         onClick={this.selectMode}
@@ -77,18 +77,17 @@ class TravelForm extends React.Component {
           { label }
         </p>
       </label>
-    </Fragment>
+    </div>
   )
 
   getTravelInfo = (travelling_from) => (
     travelling_from && travelling_from.is_real && (
       <div>
         <h4 className="font-weight-bold blue">
-          {'Location of Origin (include City and State)'}
+          {'Location of Origin (City and State)'}
         </h4>
         <Autocomplete
           className="form-control mx-3"
-          componentRestrictions={{country: 'us'}}
           onChange={this.updateDestination}
           onPlaceSelected={this.selectDestination}
           placeholder="Where are you travelling from?"
@@ -103,6 +102,7 @@ class TravelForm extends React.Component {
         { this.renderTransportOption(travelling_from, 'bus', 'Bus') }
         { this.renderTransportOption(travelling_from, 'train', 'Train') }
         { this.renderTransportOption(travelling_from, 'car', 'Car') }
+        { this.renderTransportOption(travelling_from, 'plane', 'Plane') }
         <button 
           className={'btn btn-primary UC custom-btn p-3 my-1' + (!this.props.userManager.travelReady && ' disabled')} 
           onClick={this.requestTravel}
