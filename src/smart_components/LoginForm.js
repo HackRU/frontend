@@ -73,7 +73,7 @@ class LoginForm extends React.Component {
             <form className="form-group">
               <div className="form-group row my-3"> {/*EMAIL FIELD*/}
                 <label className="col-lg-3 col-form-label" htmlFor="email-input">
-                  <h4 className="font-weight-bold blue-nohover">{'EMAIL'}</h4>
+                  <h4 className="font-weight-bold blue">{'EMAIL'}</h4>
                 </label>
                 <div className="col-lg-9">
                   <input className="form-control form-control"
@@ -86,7 +86,7 @@ class LoginForm extends React.Component {
               </div>
               <div className="form-group row my-1"> {/*PASSWORD FIELD*/}
                 <label className="col-lg-3 col-form-label" htmlFor="pw-input">
-                  <h4 className="font-weight-bold blue-nohover">{'PASSWORD'}</h4>
+                  <h4 className="font-weight-bold blue">{'PASSWORD'}</h4>
                 </label>
                 <div className="col-lg-9">
                   <input className="form-control form-control"
@@ -96,8 +96,8 @@ class LoginForm extends React.Component {
                   />
                 </div>
               </div>
-              <div className="form-group row text-center"> {/*ERROR MESSAGE*/}
-                <h4 className="col-lg-10 offset-lg-1 text-lg badge badge-danger mb-4 mt-4" >{this.props.loginManager.errorMessage}</h4>
+              <div className="row text-center"> {/*ERROR MESSAGE*/}
+                <label className="col-12 col-form-label mb-2 mt-2"><h4 className="text-lg p-xs-2 p-md-3 badge badge-purple">{this.props.loginManager.errorMessage}</h4></label>
                 {this.props.loginManager.errorMessage && 
                     (!this.props.loginManager.magicLink || this.props.loginManager.forgottenPassword) &&
                     <div className="col-12">
@@ -110,15 +110,15 @@ class LoginForm extends React.Component {
                     </div>
                 }
               </div>
-              <div className="form-group row mt-0">
+              <div className="form-group row mt-2">
                 <div className="col-12 text-center">
-                  <button className="btn btn-primary custom-btn p-xs-2 p-md-3"
+                  <button className="btn btn-primary custom-btn p-xs-2 p-md-3 mr-2"
                     onClick={this.login}
                     type="button"
                   >
                     <h6 className="UC">{'Login'}</h6>
                   </button>
-                  <button className="btn btn-primary p-xs-2 p-md-3"
+                  <button className="btn btn-primary custom-btn my-1 p-xs-2 p-md-3"
                     onClick={this.signUp}
                     type="button"
                   >

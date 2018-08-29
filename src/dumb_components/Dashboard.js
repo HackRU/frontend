@@ -8,7 +8,7 @@ import DashboardProfile from 'dumb_components/DashboardProfile';
 import Events from 'dumb_components/Events';
 import InfoSection from 'dumb_components/InfoSection';
 import ImportantLinks from 'dumb_components/ImportantLinks';
-import SlackContainer from 'dumb_components/Slack';
+//import SlackContainer from 'smart_components/SlackContainer';
 
 import LoginManagement from 'smart_components/LoginManagement';
 
@@ -35,7 +35,7 @@ class Dashboard extends React.Component {
       {/*BEGIN RIGHT SIDE OF DASHBOARD*/}
       <div className="col-xs-12 col-md-10 offset-md-2" id="dashboard-content">
         <div className="row mb-5"> {/*row mb-5 begin*/}
-          <div className="col-xs-12 col-md-8 offset-md-2 mb-3">
+          <div className="col-xs-12 col-lg-10 offset-lg-1 mb-3">
             <div id="register-root">
               <LoginManagement /> {/*LoginManagement component goes here*/}
             </div>
@@ -67,7 +67,7 @@ class Dashboard extends React.Component {
             </div>
           </Fragment>
           }
-          <div className="col-xs-12 col-md-8 offset-md-2 mb-3" id="register-root"> {/*original col-xs-12 col-md-3 mb-3, no id*/}
+          <div className="col-xs-12 col-lg-10 offset-lg-1 mb-3"> {/*original col-xs-12 col-md-3 mb-3, no id*/}
             <InfoSection />
           </div> 
         </div> {/*row mb-5 end*/}
