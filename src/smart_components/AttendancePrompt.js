@@ -36,9 +36,6 @@ class AttendancePrompt extends React.Component {
 
   renderAttendance = () => (
     <Fragment> 
-      <div className="blue">
-        <h3>{this.props.userManager.upperFlash}</h3>
-      </div>
       <button className="btn btn-primary UC custom-btn p-3 my-1 mx-md-1"
         onClick={this.confirmAttendance}
         type="button"
@@ -65,6 +62,13 @@ class AttendancePrompt extends React.Component {
 
   render = () => (
     <div>
+      <div className="form-group text-center row my-2 mx-1">
+        <label className="col-12 col-form-label mb-2 mt-2">
+          <h4 className="text-lg p-xs-2 p-md-3 badge badge-purple">
+            {this.props.userManager.upperFlash}
+          </h4>
+        </label>
+      </div>
       { this.reflectPrompt(this.props.userStatus) }
       <TravelForm />
     </div>
