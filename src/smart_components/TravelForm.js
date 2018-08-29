@@ -90,7 +90,6 @@ class TravelForm extends React.Component {
         </h4>
         <Autocomplete
           className="form-control mx-3"
-          componentRestrictions={{country: 'us'}}
           onChange={this.updateDestination}
           onPlaceSelected={this.selectDestination}
           placeholder="Where are you travelling from?"
