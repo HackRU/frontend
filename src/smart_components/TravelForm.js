@@ -104,6 +104,7 @@ class TravelForm extends React.Component {
         { this.renderTransportOption(travelling_from, 'bus', 'Bus') }
         { this.renderTransportOption(travelling_from, 'train', 'Train') }
         { this.renderTransportOption(travelling_from, 'car', 'Car') }
+        { this.renderTransportOption(travelling_from, 'plane', 'Plane') }
         <button 
           className={'btn btn-primary UC custom-btn p-3 my-1' + (!this.props.userManager.travelReady && ' disabled')} 
           onClick={this.requestTravel}
