@@ -196,24 +196,25 @@ class InfoPrompt extends React.Component {
           <div className="content-section-desc">
             <form>  
               <span>
-                {user && 
-                    Object.keys(formConfig).map(key => (
-                      <div className="form-group row mb-4"
-                        key={key}
-                      >
-                        <label className="col-lg-8"
-                          htmlFor={'input-' + key}
-                        >
-                          <h4 className="font-weight-bold blue">
-                            {key.replace(/_/g, ' ').toUpperCase()} 
-                            <i>
-                              {formConfig[key]['required'] === true ? ' (required)' : ' (optional)'}
-                            </i>
-                          </h4>
-                        </label>
-                        {this.parseConfig(key)}
-                      </div>
-                    ))
+                <div className="alert alert-warning" role="alert">
+                  <a className="list-inline-item text-danger">* --<i>required</i></a>
+                  <a className="list-inline-item text-primary">&emsp;&emsp;# --<i>optional</i></a>
+                </div>
+                {user && Object.keys(formConfig).map(key => (
+                  <div className="form-group row mb-4" 
+                    key={key}
+                  >
+                    <label className="col-lg-8" 
+                      htmlFor={'input-' + key}
+                    >
+                      <h4 className="font-weight-bold blue">
+                        {key.replace(/_/g, ' ').toUpperCase()} 
+                        {formConfig[key]['required'] === true ? <a className="text-danger"> *</a> : <a className="text-primary"> #</a>}
+                      </h4>
+                    </label>
+                    {this.parseConfig(key)}
+                  </div>
+                ))
                 }
               </span>
               <div className="form-group row mb-4">
@@ -222,9 +223,7 @@ class InfoPrompt extends React.Component {
                 >
                   <h4 className="font-weight-bold blue">
                     {'SHORT ANSWER'}
-                    <i>
-                      {' (required)'}
-                    </i>
+                    {<a className="text-danger"> *</a>}
                   </h4> 
                   {'What are you looking for from your experience at HackRU?'}
                 </label>
@@ -240,9 +239,7 @@ class InfoPrompt extends React.Component {
                 >
                   <h4 className="font-weight-bold blue">
                     {'RESUME'}
-                    <i>
-                      {' (optional)'}
-                    </i>
+                    {<a className="text-primary"> #</a>}
                   </h4>
                   {(hasResume)? 'You have uploaded a resume already.': 'Please upload a copy!'}
                 </label>
@@ -257,9 +254,7 @@ class InfoPrompt extends React.Component {
               <div className="form-group row mb-4 mx-1">
                 <h4 className="font-weight-bold blue">
                   {'MLH NOTICES'}
-                  <i>
-                    {' (required)'}
-                  </i>
+                  {<a className="text-danger"> *</a>}
                 </h4>
                 <br />
                 <br />
