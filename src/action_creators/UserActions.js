@@ -558,18 +558,16 @@ export const cancelAttendance = (userState) => (
 
 export const sendTravelInfo = (userState) => (
   (dispatch) => {
-
     if(userState.travelReady !== true) {
-
       //do nothing, no notifications if the TravelForm is not ready
       return;
     }
-
-    //let travelMode = document.querySelector('input[name="preferred-transport"]:checked').value; 
-
     let travellingFrom = userState.userInfo.travelling_from;
-    //travellingFrom.mode = travelMode; 
 
+    dispatch({
+      type: USER_DATA.SET_UPPER_FLASH,
+      upperFlash: 'Awaiting response...'
+    });
     fetch(resURLS.lcsUpdateURL, {
       method: 'POST',
       mode: 'cors',
@@ -587,7 +585,6 @@ export const sendTravelInfo = (userState) => (
     }).then(data => data.json())
       .then(resp => { 
         if(resp.statusCode === 200) {
-          
           //successful update
           dispatch(updateUser(userState, 'travelling_from', travellingFrom));
           dispatch({
