@@ -53,10 +53,15 @@ class AttendancePrompt extends React.Component {
 
     
   reflectPrompt = (userStatus) => {
-    if(userStatus === 'checkedIn') {
+    if(userStatus === 'Checked in!') {
+      //no menu if checked in
       return this.renderCheckedIn();
-    } else if (userStatus !== 'unregistered' && userStatus !== 'pending' && userStatus !== 'waitlist' && userStatus !== 'checked in') {
+    } else if (userStatus === 'Accepted! Please RSVP' || userStatus === 'Planning to attend' || userStatus === 'Not planning to attend') {
+      //allow menu for the three states which allow users to change attendance status
       return userStatus === 'Loading...' ? '' : this.renderAttendance();
+    } else {
+      //show nothing otherwise
+      return '';
     }
   }
 

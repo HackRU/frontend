@@ -10,7 +10,7 @@ import InfoPrompt from 'smart_components/InfoPrompt';
 class UserForm extends React.Component{
 
   render() {
-    const status = this.props.viewController.userStatus || 'Loading...';
+    const status = this.props.viewController.userStatus;
     return (   
       <div>
         <div className="content-section"
@@ -32,7 +32,7 @@ class UserForm extends React.Component{
             </form>
           </div>
         </div>
-        <InfoPrompt userStatus={status}/>
+        <InfoPrompt/>
       </div> 
     );
   }
