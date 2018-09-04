@@ -91,7 +91,7 @@ const formConfig = {
   'ethnicity': {
     'select': true,
     'options': (q) => {
-      let options = ['American Indian or Alaskan Native', 'Asian / Pacific Islander', 'Black or African American', 'Hispanic', 'White/Caucasian']
+      let options = ['American Indian or Alaskan Native', 'Asian / Pacific Islander', 'Black or African American', 'Hispanic', 'White / Caucasian']
         .map(v => ({'value': v, 'label': v}));
       if(!(options.find(o => o.value === q)) && q) {
         options.push({'label': q, 'value': q});

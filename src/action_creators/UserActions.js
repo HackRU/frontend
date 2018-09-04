@@ -770,12 +770,31 @@ const getStatus = (user) => (
   (dispatch) => {
 
     let status = user && user.registration_status;
-    if(status && (status === 'registered' || status === 'rejected')) {
 
-      //we don't show a rejection status
-      status = 'pending';
+    const displayStatuses = {
+      'unregistered': 'Not registered',
+      'registered': 'Application submitted',
+      'rejected': 'Application submitted',
+      'checked_in': 'Checked in!',
+      'confirmation': 'Accepted! Please RSVP',
+      'coming': 'Planning to attend',
+      'not_coming': 'Not planning to attend',
+      'confirmed': 'Attendance confirmed!',
+      'waitlist': 'Application submitted'
+    };
 
-      //implicity, this means user agreed to codeOfConduct and dataSharing
+    let message = displayStatuses[status];
+
+    if(!message) {
+
+      //assume it's loading if there's no status yet
+      message = 'Loading your info...';
+    }
+
+    if(message !== 'Not registered') {
+
+      //check to pre-fill codeOfConduct and dataSharing
+      //if the user registered, implicitly they also agreed to both
       dispatch({
         type: USER_DATA.SET_COC, 
         codeOfConduct: true
@@ -784,23 +803,22 @@ const getStatus = (user) => (
         type: USER_DATA.SET_SHARE,
         dataSharing: true
       });
-    } else if(status && status === 'confirmation') {
-
-      //accepted and awaiting user confirmation
-      status = 'pending confirmation';
-    } else if(status) {
-
-      //use whatever's there
-      status = status.replace('_', ' ').replace('-', ' '); //Yes I'm lazy.
     } else {
 
-      //none of the above, not set yet
-      status = 'Loading';//kind of hacky
+      //user did not register, set both to false by default
+      dispatch({
+        type: USER_DATA.SET_COC, 
+        codeOfConduct: false
+      });
+      dispatch({
+        type: USER_DATA.SET_SHARE,
+        dataSharing: false
+      });
     }
 
     dispatch({
       type: VIEW_CONTROL.SET_STATUS,
-      userStatus: status
+      userStatus: message
     });
   }
 );

@@ -181,7 +181,7 @@ class InfoPrompt extends React.Component {
     let flash = this.props.userManager.flash;
     
 
-    if(user && this.props.userStatus !== 'checked in') {
+    if(user) {
       
       //user has not checked in yet, render the prompts
       prompts = (
@@ -362,8 +362,7 @@ InfoPrompt.propTypes = {
   logoutUser: PropTypes.func.isRequired,
   preSave: PropTypes.func.isRequired,
   toggleCOC: PropTypes.func.isRequired,
-  toggleShare: PropTypes.func.isRequired,
-  userStatus: PropTypes.string.isRequired
+  toggleShare: PropTypes.func.isRequired
 };
 
 function mapStateToProps(state) {
