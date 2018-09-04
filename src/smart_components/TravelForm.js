@@ -49,7 +49,6 @@ class TravelForm extends React.Component {
 
   showTravelForm = (travelling_from) => ( 
     <span>
-      <br/>
       <input
         defaultChecked={travelling_from && travelling_from.is_real}
         id="toggle-travel-stuff"
@@ -87,7 +86,7 @@ class TravelForm extends React.Component {
           {'Location of Origin (City and State)'}
         </h4>
         <Autocomplete
-          className="form-control mx-3"
+          className="form-control my-"
           onChange={this.updateDestination}
           onPlaceSelected={this.selectDestination}
           placeholder="Where are you travelling from?"
@@ -117,7 +116,7 @@ class TravelForm extends React.Component {
   getEstimate = (travelling_from) => (
     travelling_from && travelling_from.is_real && (
       <Fragment>
-        {'Please be prepared to '}<strong>{'show us all receipts '}</strong>{'related to your reimbursement on the day of HackRU.  Please keep in mind you '}<strong>{'must submit a project to Devpost and demo on Sunday '}</strong>{'to receive your travel reimbursement in the form of an Amazon giftcard.'}
+        <span>{'Please be prepared to '}<strong>{'show us all receipts '}</strong>{'related to your reimbursement on the day of HackRU.  Please keep in mind you '}<strong>{'must submit a project to Devpost and demo on Sunday '}</strong>{'to receive your travel reimbursement in the form of an Amazon giftcard.'}</span>
       </Fragment>
     )
   )

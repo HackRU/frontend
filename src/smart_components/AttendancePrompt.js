@@ -67,8 +67,8 @@ class AttendancePrompt extends React.Component {
 
   render = () => (
     <div>
-      <div className="form-group text-center row my-2 mx-1">
-        <label className="col-12 col-form-label mb-2 mt-2">
+      <div className="form-group text-center row">
+        <label className="col-12 col-form-label mt-2">
           <h4 className="text-lg p-xs-2 p-md-3 badge badge-purple">
             {this.props.userManager.upperFlash}
           </h4>
