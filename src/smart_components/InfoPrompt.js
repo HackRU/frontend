@@ -196,10 +196,9 @@ class InfoPrompt extends React.Component {
           <div className="content-section-desc">
             <form>  
               <span>
-                <div className="alert alert-warning" role="alert">
-                  <a className="list-inline-item text-danger">* --<i>required</i></a>
-                  <a className="list-inline-item text-primary">&emsp;&emsp;# --<i>optional</i></a>
-                </div>
+                
+                <p className="pb-2 text-danger">{'* -- '}{'Indicates a required field'}</p>
+                
                 {user && Object.keys(formConfig).map(key => (
                   <div className="form-group row mb-4" 
                     key={key}
