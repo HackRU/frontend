@@ -208,7 +208,7 @@ class InfoPrompt extends React.Component {
                     >
                       <h4 className="font-weight-bold blue">
                         {key.replace(/_/g, ' ').toUpperCase()} 
-                        {formConfig[key]['required'] === true ? <a className="text-danger"> *</a> : <a className="text-primary"> #</a>}
+                        {formConfig[key]['required'] === true ? <a className="text-danger"> {'*'}</a>: <span></span>}
                       </h4>
                     </label>
                     {this.parseConfig(key)}
@@ -238,7 +238,6 @@ class InfoPrompt extends React.Component {
                 >
                   <h4 className="font-weight-bold blue">
                     {'RESUME'}
-                    {<a className="text-primary"> #</a>}
                   </h4>
                   {(hasResume)? 'You have uploaded a resume already.': 'Please upload a copy!'}
                 </label>
