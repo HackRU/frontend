@@ -71,6 +71,11 @@ export const updateTravel = (userState, key, value) => (
     }
     travellingFrom[key] = value;
     dispatch(updateUser(userState, 'travelling_from', travellingFrom));
+    //hacky way to suppress save changes on sidebar
+    dispatch({
+      type: USER_DATA.HAS_UNSAVED_CHANGES,
+      hasUnsavedChanges: false
+    });
   }
 );
 
@@ -591,6 +596,12 @@ export const sendTravelInfo = (userState) => (
             type: USER_DATA.SET_UPPER_FLASH,
             upperFlash: 'Travel update successful.  Updates on reimbursement to follow.'
           });
+          
+          //hacky way to suppress save changes on sidebar
+          dispatch({
+            type: USER_DATA.HAS_UNSAVED_CHANGES,
+            hasUnsavedChanges: false
+          });
         } else {
 
           //unsuccessful update
@@ -661,6 +672,12 @@ export const readyTravel = (ready) => (
     dispatch({
       type: USER_DATA.SET_TRAVEL_READY,
       travelReady: ready
+    });
+
+    //hacky way to suppress save changes on sidebar
+    dispatch({
+      type: USER_DATA.HAS_UNSAVED_CHANGES,
+      hasUnsavedChanges: false
     });
   }
 );
