@@ -34,6 +34,8 @@ class Dashboard extends React.Component {
       {/*END LEFT SIDE OF DASHBOARD*/}
       {/*BEGIN RIGHT SIDE OF DASHBOARD*/}
       <div className="col-xs-12 col-md-10 offset-md-2" id="dashboard-content">
+        <img className="overlay-design d-none d-lg-block overlay-one" alt="ufo" src="../assets/icons/hackethon_alien_noplat_2.png" />  
+        <img className="overlay-design d-none d-lg-block overlay-two" alt="ufo" src="../assets/icons/hackethon_alien_noplat_2.png" />
         <div className="row mb-5"> {/*row mb-5 begin*/}
           <div className="col-xs-12 col-lg-10 offset-lg-1 mb-3">
             <div id="register-root">
