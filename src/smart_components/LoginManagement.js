@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 
 import { checkCookies } from 'action_creators/UserActions';
 
+import AdminForm from 'smart_components/AdminForm';
 import LoginForm from 'smart_components/LoginForm';
 import UserForm from 'smart_components/UserForm';
 
@@ -18,38 +19,17 @@ class LoginManagement extends React.Component {
     //console.log('cookies check');
     this.props.checkCookies();
   }
-  
-  
 
-  render() {
-    
-    const Fragment = React.Fragment;
-
-    const loggedIn = this.props.viewController.loggedIn;
-
-    let activeForm = null;
-
-    if(loggedIn === true) {
-
-      //user form
-      activeForm = <UserForm />;
-    } else {
-
-      //login form
-      activeForm = <LoginForm />;
-    }
-
-    return (
-      <Fragment>
-        {activeForm}
-      </Fragment>
-    );
-  }
-
+  render = () => (
+    this.props.viewController.loggedIn ?
+      (this.props.viewController.isAdmin ? <AdminForm /> : <UserForm />) :
+      <LoginForm />
+  )
 }
 
 LoginManagement.propTypes = {
   viewController: PropTypes.shape({
+    isAdmin: PropTypes.bool.isRequred,
     loggedIn: PropTypes.bool.isRequired
   }),
   checkCookies: PropTypes.func.isRequired
