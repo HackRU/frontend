@@ -11,6 +11,7 @@
 @font-face {
   font-family: "Helvetica Regular";
   src: url(../fonts/helvetica-regular.otf); }
+  
 .text-left-not-xs, .text-left-not-sm, .text-left-not-md, .text-left-not-lg {
   text-align: left; }
 
@@ -191,12 +192,13 @@ a:hover, a:focus {
 .min-quarter-height {
   min-height: 25vh; }
 
-.btn, .row-title-box .row-title, .faq-q, .spons-level, .perk-row .perk-desc, .splogo-text, .footer a, .li-nav-bar .nav-item:hover .nav-link, .li-section-title-box .li-section-title, .social-link-card p, .li-footer a, .li-mobile-footer a {
-  font-family: "Helvetica Regular", sans-serif; 
+h1,h2,h3,h4,h5,h6,.btn, .row-title-box .row-title, .faq-q, .spons-level, .perk-row .perk-desc, .splogo-text, .footer a, .li-nav-bar .nav-item:hover .nav-link, .li-section-title-box .li-section-title, .social-link-card p, .li-footer a, .li-mobile-footer a {
+  font-family: "Circular Std Bold", sans-serif;
+
 }
 
 .bold-text {
-  font-family: "Helvetica Regular", sans-serif;
+  font-family: "Circular Std Bold", sans-serif; 
   font-size: 1.6rem;
   white-space: nowrap;
 }
