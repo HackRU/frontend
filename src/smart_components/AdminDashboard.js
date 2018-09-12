@@ -38,85 +38,75 @@ class AdminDashboard extends React.Component {
     console.log('Query Output');
     console.log(queryOut);
     let user = this.props.userManager;
-    
     this.props.updateData(user.userInfoEmail, user.token, queryOut);
   }
 
   render() {
-    
-    let adminDashboard = this.props.viewController.isAdmin;
     let userInfo = this.props.userManager.userInfo;
     let adminQueryData = this.props.adminManager.queryData;
-    console.log(adminDashboard);
-
-    if (adminDashboard) {
-      return (
-        <div>
-          <div className="content-section" id="announcements-div">
-            <h2 className="content-section-title">
-              <span className="u-highlight">{'Admin Dashboard:'}</span>
-            </h2>
-            <div className="content-section-desc register-root">
-              <form className="form-group">
-                <div className="text-center">
-                  <div className="col-lg-12 text-center">
-                    {Object.keys(userInfo).map(k =>
-                      (<div className="form-check form-check-inline">
-                        <input className="agg-filter form-check-input"
-                          id={'aggregate-' + k}
-                          type="checkbox"
-                        />
-                        <label className="form-check-label form-text" htmlFor={'aggregate-' + k} >{k}</label>
-                      </div>)
-                    )}
-                  </div>
-                  <br />
-                  <div className="col-lg-12 text-center">
-                    <button className="btn btn-primary custom-btn p-3  mx-1 my-3 text-center"
-                      onClick={this.doQuery}
-                      type="button"
-                    ><h4 className="my-0">{'Query the DB'}</h4></button>
-                  </div>
+    return (
+      <div>
+        <div className="content-section" id="announcements-div">
+          <h2 className="content-section-title">
+            <span className="u-highlight">{'Admin Dashboard:'}</span>
+          </h2>
+          <div className="content-section-desc register-root">
+            <form className="form-group">
+              <div className="text-center">
+                <div className="col-lg-12 text-center">
+                  {Object.keys(userInfo).map(k =>
+                    (<div className="form-check form-check-inline">
+                      <input className="agg-filter form-check-input"
+                        id={'aggregate-' + k}
+                        type="checkbox"
+                      />
+                      <label className="form-check-label form-text" htmlFor={'aggregate-' + k} >{k}</label>
+                    </div>)
+                  )}
                 </div>
-              </form>
-            </div>
-          </div>
-          <div className="content-section" id="announcements-div">
-            <h2 className="content-section-title">
-              <span className="u-highlight">{'Query Results '}</span>
-            </h2>
-            <div className="content-section-desc register-root">
-              <table className="table table-dark table-fixed smaller-font">
-                <thead className="thead-dark">
-                  <tr> 
-                    { adminQueryData &&
-                    Object.keys(adminQueryData[0]._id)
-                      .map(v => (<th key={v} className="col white">{JSON.stringify(v)}</th>))
-                    }
-                    <th className="col white">{'Counts'}</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  { adminQueryData && 
-                  adminQueryData.map(count =>
-                    (<tr>
-                      {Object.values(count._id)
-                        .map(v => (<td key={v} className="col white">{JSON.stringify(v)}</td>))
-                      }
-                      <td className="col white">{count.count}</td>
-                    </tr>)
-                  )
-                  }
-                </tbody>
-              </table>
-            </div>
+                <br />
+                <div className="col-lg-12 text-center">
+                  <button className="btn btn-primary custom-btn p-3  mx-1 my-3 text-center"
+                    onClick={this.doQuery}
+                    type="button"
+                  ><h4 className="my-0">{'Query the DB'}</h4></button>
+                </div>
+              </div>
+            </form>
           </div>
         </div>
-      );
-    } else {
-      return null;
-    }
-    
+        <div className="content-section" id="announcements-div">
+          <h2 className="content-section-title">
+            <span className="u-highlight">{'Query Results '}</span>
+          </h2>
+          <div className="content-section-desc register-root">
+            <table className="table table-dark table-fixed smaller-font">
+              <thead className="thead-dark">
+                <tr> 
+                  { adminQueryData &&
+                  Object.keys(adminQueryData[0]._id)
+                    .map(v => (<th key={v} className="col white">{JSON.stringify(v)}</th>))
+                  }
+                  <th className="col white">{'Counts'}</th>
+                </tr>
+              </thead>
+              <tbody>
+                { adminQueryData && 
+                adminQueryData.map(count =>
+                  (<tr>
+                    {Object.values(count._id)
+                      .map(v => (<td key={v} className="col white">{JSON.stringify(v)}</td>))
+                    }
+                    <td className="col white">{count.count}</td>
+                  </tr>)
+                )
+                }
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    );
   }
 }
 
