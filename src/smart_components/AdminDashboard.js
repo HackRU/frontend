@@ -1,9 +1,8 @@
-
 import React from 'react';
 import PropTypes from 'prop-types';
+import VotingModal from 'VotingModal';
 
 import { connect } from 'react-redux';
-
 
 import { bindActionCreators } from 'redux';
 
@@ -46,6 +45,7 @@ class AdminDashboard extends React.Component {
     let adminQueryData = this.props.adminManager.queryData;
     return (
       <div>
+        <VotingModal user={userInfo} token={userInfo.token} />
         <div className="content-section" id="announcements-div">
           <h2 className="content-section-title">
             <span className="u-highlight">{'Admin Dashboard:'}</span>
@@ -82,7 +82,7 @@ class AdminDashboard extends React.Component {
           <div className="content-section-desc register-root">
             <table className="table table-dark table-fixed smaller-font">
               <thead className="thead-dark">
-                <tr> 
+                <tr>
                   { adminQueryData &&
                   Object.keys(adminQueryData[0]._id)
                     .map(v => (<th key={v} className="col white">{JSON.stringify(v)}</th>))
@@ -91,7 +91,7 @@ class AdminDashboard extends React.Component {
                 </tr>
               </thead>
               <tbody>
-                { adminQueryData && 
+                { adminQueryData &&
                 adminQueryData.map(count =>
                   (<tr>
                     {Object.values(count._id)
@@ -121,7 +121,8 @@ AdminDashboard.propTypes = {
   }).isRequired,
   adminManager: PropTypes.shape({
     queryData: PropTypes.array
-  }).isRequired
+  }).isRequired,
+  updateData: PropTypes.func.isRequired,
 };
 
 function mapStateToProps(state) {
