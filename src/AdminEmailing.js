@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {instanceOf} from 'prop-types';
 import ModalError from './modalerror';
+import resURLs from 'resources/resURLS';
 
 class AdminEmailing extends React.Component {
   constructor (props){
@@ -16,7 +17,8 @@ class AdminEmailing extends React.Component {
   }
 
   componentWillMount(){
-    fetch('https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/mlhtest/email-templates', {
+    // TODO: does this route even still exist
+    fetch(resURLs.lcsEmailTemplates, {
       method: 'POST',
       mode: 'cors',
       credentials: 'omit',
@@ -47,7 +49,7 @@ class AdminEmailing extends React.Component {
       {'$sort': {'create_time': 1}}
     ].concat(isEvery ? [] : [{'$limit': document.getElementById('email-how-many-recipients').value}]);
 
-    fetch('https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/mlhtest/send-email', {
+    fetch(resURLs.lcsSendEmails, {
       method: 'POST',
       mode: 'cors',
       credentials: 'omit',
@@ -78,7 +80,7 @@ class AdminEmailing extends React.Component {
       .forEach(p => perms.push(p.value));
     const emails = document.getElementById('emails').value.split('\n');
 
-    fetch('https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/mlhtest/createmagiclink', {
+    fetch(resURLs.magicURL, {
       method: 'POST',
       mode: 'cors',
       credentials: 'omit',
@@ -98,7 +100,7 @@ class AdminEmailing extends React.Component {
       .then(templates => {
         if(templates.statusCode === 200){
           console.log('nani');
-          fetch('https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/mlhtest/send-emails', {
+          fetch(resURLs.sendEmails, {
             method: 'POST',
             mode: 'cors',
             credentials: 'omit',
