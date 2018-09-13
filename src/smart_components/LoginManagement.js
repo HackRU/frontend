@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 
 import { checkCookies } from 'action_creators/UserActions';
 
-import AdminForm from 'smart_components/AdminForm';
+import AdminForm from 'smart_components/AdminDashboard';
 import LoginForm from 'smart_components/LoginForm';
 import UserForm from 'smart_components/UserForm';
 
