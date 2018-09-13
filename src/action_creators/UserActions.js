@@ -66,13 +66,16 @@ export const updateTravel = (userState, key, value) => (
 
     let travellingFrom = userState.userInfo.travelling_from;
     if(!travellingFrom || (typeof(travellingFrom) === 'string')) {
-
       //no travel info yet
       travellingFrom = {};
     }
     travellingFrom[key] = value;
     dispatch(updateUser(userState, 'travelling_from', travellingFrom));
-    //console.log(userState);
+    //hacky way to suppress save changes on sidebar
+    dispatch({
+      type: USER_DATA.HAS_UNSAVED_CHANGES,
+      hasUnsavedChanges: false
+    });
   }
 );
 
@@ -560,18 +563,16 @@ export const cancelAttendance = (userState) => (
 
 export const sendTravelInfo = (userState) => (
   (dispatch) => {
-
     if(userState.travelReady !== true) {
-
       //do nothing, no notifications if the TravelForm is not ready
       return;
     }
-
-    //let travelMode = document.querySelector('input[name="preferred-transport"]:checked').value; 
-
     let travellingFrom = userState.userInfo.travelling_from;
-    //travellingFrom.mode = travelMode; 
 
+    dispatch({
+      type: USER_DATA.SET_UPPER_FLASH,
+      upperFlash: 'Awaiting response...'
+    });
     fetch(resURLS.lcsUpdateURL, {
       method: 'POST',
       mode: 'cors',
@@ -587,15 +588,19 @@ export const sendTravelInfo = (userState) => (
         auth: userState.token
       })
     }).then(data => data.json())
-      .then(resp => {
-        
-        if(resp.statuscode === 200) {
-          
+      .then(resp => { 
+        if(resp.statusCode === 200) {
           //successful update
           dispatch(updateUser(userState, 'travelling_from', travellingFrom));
           dispatch({
             type: USER_DATA.SET_UPPER_FLASH,
             upperFlash: 'Travel update successful.  Updates on reimbursement to follow.'
+          });
+          
+          //hacky way to suppress save changes on sidebar
+          dispatch({
+            type: USER_DATA.HAS_UNSAVED_CHANGES,
+            hasUnsavedChanges: false
           });
         } else {
 
@@ -616,15 +621,13 @@ export const sendTravelInfo = (userState) => (
 
 export const toggleTravel = (userState) => (
   (dispatch) => {
-
     let user = userState.userInfo;
     
     let isReal = !(user.travelling_from && user.travelling_from.is_real); //toggle request status
     
-    updateTravel(userState, 'is_real', isReal);
+    dispatch(updateTravel(userState, 'is_real', isReal));
 
     if(!isReal) {
-
       //update when toggled off..?
       fetch(resURLS.lcsUpdateURL, {
         method: 'POST',
@@ -657,7 +660,6 @@ export const toggleTravel = (userState) => (
           }
         })
         .catch(err => {
-          
           //unexpected error
           dispatch(showCaughtError(err));
         });
@@ -670,6 +672,12 @@ export const readyTravel = (ready) => (
     dispatch({
       type: USER_DATA.SET_TRAVEL_READY,
       travelReady: ready
+    });
+
+    //hacky way to suppress save changes on sidebar
+    dispatch({
+      type: USER_DATA.HAS_UNSAVED_CHANGES,
+      hasUnsavedChanges: false
     });
   }
 );
@@ -779,12 +787,31 @@ const getStatus = (user) => (
   (dispatch) => {
 
     let status = user && user.registration_status;
-    if(status && (status === 'registered' || status === 'rejected')) {
 
-      //we don't show a rejection status
-      status = 'pending';
+    const displayStatuses = {
+      'unregistered': 'Not registered',
+      'registered': 'Application submitted',
+      'rejected': 'Application submitted',
+      'checked_in': 'Checked in!',
+      'confirmation': 'Accepted! Please RSVP',
+      'coming': 'Planning to attend',
+      'not_coming': 'Not planning to attend',
+      'confirmed': 'Attendance confirmed!',
+      'waitlist': 'Application submitted'
+    };
 
-      //implicity, this means user agreed to codeOfConduct and dataSharing
+    let message = displayStatuses[status];
+
+    if(!message) {
+
+      //assume it's loading if there's no status yet
+      message = 'Loading your info...';
+    }
+
+    if(message !== 'Not registered') {
+
+      //check to pre-fill codeOfConduct and dataSharing
+      //if the user registered, implicitly they also agreed to both
       dispatch({
         type: USER_DATA.SET_COC, 
         codeOfConduct: true
@@ -793,23 +820,22 @@ const getStatus = (user) => (
         type: USER_DATA.SET_SHARE,
         dataSharing: true
       });
-    } else if(status && status === 'confirmation') {
-
-      //accepted and awaiting user confirmation
-      status = 'pending confirmation';
-    } else if(status) {
-
-      //use whatever's there
-      status = status.replace('_', ' ').replace('-', ' '); //Yes I'm lazy.
     } else {
 
-      //none of the above, not set yet
-      status = 'Loading';//kind of hacky
+      //user did not register, set both to false by default
+      dispatch({
+        type: USER_DATA.SET_COC, 
+        codeOfConduct: false
+      });
+      dispatch({
+        type: USER_DATA.SET_SHARE,
+        dataSharing: false
+      });
     }
 
     dispatch({
       type: VIEW_CONTROL.SET_STATUS,
-      userStatus: status
+      userStatus: message
     });
   }
 );

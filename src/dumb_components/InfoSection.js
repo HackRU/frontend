@@ -6,7 +6,7 @@ import React from 'react';
 const InfoSection = () => (	
   <div className="content-section" id="info-div">
     <h2 className="content-section-title">
-      <span className="u-highlight">{'Info'}</span></h2>
+      <span className="u-highlight">{'Event Info:'}</span></h2>
     <div className="content-section-desc" id="info-list">
 
       <h5 className="content-title">{'Date'}</h5>

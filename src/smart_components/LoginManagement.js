@@ -11,12 +11,8 @@ import AdminForm from 'smart_components/AdminDashboard';
 import LoginForm from 'smart_components/LoginForm';
 import UserForm from 'smart_components/UserForm';
 
-
-
 class LoginManagement extends React.Component {
-
   componentDidMount() {
-    //console.log('cookies check');
     this.props.checkCookies();
   }
 

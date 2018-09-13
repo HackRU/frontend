@@ -181,7 +181,7 @@ class InfoPrompt extends React.Component {
     let flash = this.props.userManager.flash;
     
 
-    if(user && this.props.userStatus !== 'checked in') {
+    if(user) {
       
       //user has not checked in yet, render the prompts
       prompts = (
@@ -193,27 +193,27 @@ class InfoPrompt extends React.Component {
               {'Your Info:'}
             </span>
           </h2>
-          <div className="content-section-desc your-info">
+          <div className="content-section-desc">
             <form>  
               <span>
-                {user && 
-                    Object.keys(formConfig).map(key => (
-                      <div className="form-group row mb-4"
-                        key={key}
-                      >
-                        <label className="col-lg-8"
-                          htmlFor={'input-' + key}
-                        >
-                          <h4 className="font-weight-bold blue">
-                            {key.replace(/_/g, ' ').toUpperCase()} 
-                            <i>
-                              {formConfig[key]['required'] === true ? ' (required)' : ' (optional)'}
-                            </i>
-                          </h4>
-                        </label>
-                        {this.parseConfig(key)}
-                      </div>
-                    ))
+                
+                <p className="pb-2 text-danger">{'* -- '}{'Indicates a required field'}</p>
+                
+                {user && Object.keys(formConfig).map(key => (
+                  <div className="form-group row mb-4" 
+                    key={key}
+                  >
+                    <label className="col-lg-8" 
+                      htmlFor={'input-' + key}
+                    >
+                      <h4 className="font-weight-bold blue">
+                        {key.replace(/_/g, ' ').toUpperCase()} 
+                        {formConfig[key]['required'] === true ? <a className="text-danger"> {'*'}</a>: <span />}
+                      </h4>
+                    </label>
+                    {this.parseConfig(key)}
+                  </div>
+                ))
                 }
               </span>
               <div className="form-group row mb-4">
@@ -222,9 +222,7 @@ class InfoPrompt extends React.Component {
                 >
                   <h4 className="font-weight-bold blue">
                     {'SHORT ANSWER'}
-                    <i>
-                      {' (required)'}
-                    </i>
+                    {<a className="text-danger"> *</a>}
                   </h4> 
                   {'What are you looking for from your experience at HackRU?'}
                 </label>
@@ -240,9 +238,6 @@ class InfoPrompt extends React.Component {
                 >
                   <h4 className="font-weight-bold blue">
                     {'RESUME'}
-                    <i>
-                      {' (optional)'}
-                    </i>
                   </h4>
                   {(hasResume)? 'You have uploaded a resume already.': 'Please upload a copy!'}
                 </label>
@@ -257,9 +252,7 @@ class InfoPrompt extends React.Component {
               <div className="form-group row mb-4 mx-1">
                 <h4 className="font-weight-bold blue">
                   {'MLH NOTICES'}
-                  <i>
-                    {' (required)'}
-                  </i>
+                  {<a className="text-danger"> *</a>}
                 </h4>
                 <br />
                 <br />
@@ -270,11 +263,11 @@ class InfoPrompt extends React.Component {
                     onChange={this.toggleCOC}
                     checked={codeOfConduct}
                   />
-                  <label className="form-check-label"
+                  <label className="form-check-label blue"
                     htmlFor="code-of-conduct-box"
                   >
                     {'I have read and agree to the '} 
-                    <a className="alt-link" href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf">
+                    <a className="" href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf">
                       {'MLH Code of Conduct.'}
                     </a>
                   </label>
@@ -305,10 +298,12 @@ class InfoPrompt extends React.Component {
                 </div>
               </div>
               }
-              <div className="form-group row my-2 mx-1">
-                <h4 className="blue">
-                  {flash}
-                </h4>
+              <div className="form-group text-center row my-2 mx-1">
+                <label className="col-12 col-form-label mb-2 mt-2">
+                  <h4 className="text-lg p-xs-2 p-md-3 badge badge-purple">
+                    {flash}
+                  </h4>
+                </label>
               </div>
               <div className="col-12 text-center">
                 <button className="btn btn-primary UC custom-btn p-3"
@@ -320,7 +315,7 @@ class InfoPrompt extends React.Component {
                     {'Save Changes'}
                   </h6>
                 </button>
-                <button className="btn btn-primary UC custom-btn mx-2 p-3"
+                <button className="btn btn-primary UC custom-btn mx-2 my-1 p-3"
                   onClick={this.logout}
                   type="submit"
                   value="logout"
@@ -360,8 +355,7 @@ InfoPrompt.propTypes = {
   logoutUser: PropTypes.func.isRequired,
   preSave: PropTypes.func.isRequired,
   toggleCOC: PropTypes.func.isRequired,
-  toggleShare: PropTypes.func.isRequired,
-  userStatus: PropTypes.string.isRequired
+  toggleShare: PropTypes.func.isRequired
 };
 
 function mapStateToProps(state) {
