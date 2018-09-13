@@ -152,7 +152,7 @@ class AdminEmailing extends React.Component {
             // <button onClick={this.sendEmails} className="btn btn-primary custom-btn p-3 mx-1 my-3">Send thingy I described</button>
         }
         <div>
-          Email these addresses: (each email on a line) <textarea id="emails"></textarea>
+          Email these addresses: (each email on a line) <textarea id="emails" />
           to be <input type="checkbox" name="magiclink-permission" value="director"/>director
           <input type="checkbox" name="magiclink-permission" value="judge"/>judge
           <input type="checkbox" name="magiclink-permission" value="organizer"/>organizer

@@ -6,7 +6,7 @@ const initialState = {
   loggedIn: false,
   isAdmin: false,
   applyForm: '', 
-  userStatus: ''
+  userStatus: 'Loading your info...'
 };
 
 const ViewController = (state = initialState, action) => {

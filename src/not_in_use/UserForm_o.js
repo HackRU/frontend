@@ -799,7 +799,8 @@ class UserForm extends React.Component {
           </span>
           }
           { github && <h6><i className="fab fa-github fa-fw" /> <a href={'http://github.com/' + github}
-            target="_blank">{github}</a></h6> }
+            target="_blank"
+          >{github}</a></h6> }
         </div>,
         document.getElementById('register-sidebar'));
 
@@ -963,12 +964,12 @@ class UserForm extends React.Component {
               { this.state.user &&
             Object.keys(formConfig)
               .map(key =>
-                <div className="form-group row mb-4">
+                (<div className="form-group row mb-4">
                   <label className="col-lg-8"
                     htmlFor={'input-' + key}
                   ><h4 className="font-weight-bold blue">{key.replace(/_/g, ' ').toUpperCase()}</h4></label>
                   {parseInput(key)}
-                </div>
+                </div>)
               )
               }
             </span>

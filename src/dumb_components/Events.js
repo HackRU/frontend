@@ -44,7 +44,7 @@ class Events extends React.Component {
     return (
       <div className="">
         {this.state.summary && this.state.summary.map(key =>
-          <span>
+          (<span>
             <h5 className="content-title">
               {(key.summary)}
             </h5>    
@@ -55,7 +55,7 @@ class Events extends React.Component {
               <br/> 
               {key.location && ' Location: ' + key.location}
             </p>
-          </span>        
+          </span>)        
         )}
       </div>
     );
