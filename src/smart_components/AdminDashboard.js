@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import VotingModal from 'VotingModal';
+import AdminEmailing from 'AdminEmailing';
 
 import { connect } from 'react-redux';
 
@@ -43,9 +44,11 @@ class AdminDashboard extends React.Component {
   render() {
     let userInfo = this.props.userManager.userInfo;
     let adminQueryData = this.props.adminManager.queryData;
+    console.log(adminQueryData);
     return (
       <div>
-        <VotingModal user={userInfo} token={userInfo.token} />
+        { /* TODO: how to loop through users <VotingModal user={userInfo} token={userInfo.token} /> */}
+        <AdminEmailing user={userInfo} token={userInfo.token} />
         <div className="content-section" id="announcements-div">
           <h2 className="content-section-title">
             <span className="u-highlight">{'Admin Dashboard:'}</span>
