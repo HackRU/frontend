@@ -1,4 +1,5 @@
 import React from 'react';
+import resURLs from 'resources/resURLS';
 
 class VotingModal extends React.Component {
 
@@ -32,7 +33,7 @@ class VotingModal extends React.Component {
       ]);
 
 
-    fetch('https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/mlhtest/read', {
+    fetch(resURLs.lcsReadURL, {
       method: 'POST',
       mode: 'cors',
       credentials: 'omit',
@@ -96,7 +97,7 @@ class VotingModal extends React.Component {
       };
     }
 
-    fetch('https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/mlhtest/update', {
+    fetch(resURLs.lcsReadURL, {
       method: 'POST',
       mode: 'cors',
       credentials: 'omit',
@@ -129,7 +130,7 @@ class VotingModal extends React.Component {
     const hax0r = this.state.hacker;
     this.setState({hacker: undefined, loadingMsg: 'Voted down. Next hacker coming...'});
 
-    fetch('https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/mlhtest/update', {
+    fetch(resURLs.lcsUpdateURL, {
       method: 'POST',
       mode: 'cors',
       credentials: 'omit',
@@ -165,7 +166,7 @@ class VotingModal extends React.Component {
     const hax0r = this.state.hacker;
     this.setState({hacker: undefined, loadingMsg: 'Skipped. Here\'s another one...'});
 
-    fetch('https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/mlhtest/update', {
+    fetch(resURLs.lcsUpdateURL, {
       method: 'POST',
       mode: 'cors',
       credentials: 'omit',
