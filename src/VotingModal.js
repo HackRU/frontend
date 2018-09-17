@@ -203,20 +203,8 @@ class VotingModal extends React.Component {
         onKeyDown={(e) => this.processKey(e)}
         tabIndex="0"
       >
-        <div className="modal-header">
-          <h4 className="modal-title font-modal mr-3"
-            id="exampleModalLongTitle"
-          >Vote on Users</h4><br/>
-          <p className="font-modal">Click on the top of the modal, then use the up and down arrow keys to vote! Left or right arrow skip!</p>
-          <button aria-label="Close"
-            className="close"
-            data-dismiss="modal"
-            type="button"
-          >
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div className="modal-body">
+        <div> {this.state.hacker && 'Click on the top of the panel, then use the up and down arrow keys to vote! Left or right arrow skip!'}</div>
+        <div>
           {
             //hacky ternary... so if !state.hacker, loading
             //else the <div>
@@ -258,24 +246,23 @@ class VotingModal extends React.Component {
           }
           <div>{this.state.error}</div>
         </div>
-        <div className="modal-footer">
-          <button className="btn btn-primary"
-            onClick={this.voteDown}
-            type="button"
-          >Vote Down</button>
-          <button className="btn btn-secondary"
-            data-dismiss="modal"
-            type="button"
-          >Close</button>
-          <button className="btn btn-primary"
-            onClick={this.skip}
-            type="button"
-          >Skip User</button>
-          <button className="btn btn-primary"
-            onClick={this.voteUp}
-            type="button"
-          >Vote Up</button>
-        </div>
+        {
+          this.state.hacker &&
+          <div className="modal-footer">
+            <button className="btn btn-primary"
+              onClick={this.voteDown}
+              type="button"
+            >Vote Down</button>
+            <button className="btn btn-primary"
+              onClick={this.skip}
+              type="button"
+            >Skip User</button>
+            <button className="btn btn-primary"
+              onClick={this.voteUp}
+              type="button"
+            >Vote Up</button>
+          </div>
+        }
       </div>
     );
 
