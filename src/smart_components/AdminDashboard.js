@@ -47,8 +47,14 @@ class AdminDashboard extends React.Component {
     console.log(adminQueryData);
     return (
       <div>
-        { /* TODO: how to loop through users <VotingModal user={userInfo} token={userInfo.token} /> */}
-        <AdminEmailing user={userInfo} token={userInfo.token} />
+        <div className="content-section" id="announcements-div">
+          <h2 className="content-section-title">
+            <span className="u-highlight">Vote on Users</span>
+          </h2>
+          <div className="content-section-desc register-root">
+            <VotingModal user={userInfo} token={userInfo.token} />
+          </div>
+        </div>
         <div className="content-section" id="announcements-div">
           <h2 className="content-section-title">
             <span className="u-highlight">{'Admin Dashboard:'}</span>
@@ -106,6 +112,14 @@ class AdminDashboard extends React.Component {
                 }
               </tbody>
             </table>
+          </div>
+          <div className="content-section" id="announcements-div">
+            <h2 className="content-section-title">
+              <span className="u-highlight">Send Email:</span>
+            </h2>
+            <div className="content-section-desc register-root">
+              <AdminEmailing user={userInfo} token={userInfo.token} />
+            </div>
           </div>
         </div>
       </div>
