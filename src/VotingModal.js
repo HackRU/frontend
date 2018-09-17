@@ -19,8 +19,8 @@ class VotingModal extends React.Component {
   }
 
   componentWillMount(){
-    const userConds = Object.keys(this.state.user.role)
-      .map(k => ({['role.' + k]: (/*k == 'organizer' ||*/ k == 'hacker')}))
+    const userConds = [{'role.hacker': true}]//Object.keys(this.state.user.role)
+      //.map(k => ({['role.' + k]: (/*k == 'organizer' ||*/ k == 'hacker')}))
     //ES6 computed keys ^ ... aren't they cool?!
     //Also, the "k == 'organizer' ||" is for testing.
       .concat([
