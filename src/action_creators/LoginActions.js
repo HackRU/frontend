@@ -8,10 +8,23 @@ import { loginUser } from 'action_creators/ViewActions';
 import resURLS from 'resources/resURLS';
 
 
+export const alertClose = () => (
+  (dispatch) => {
+    
+    dispatch({
+      type: LOGIN_MNGMNT.SET_ERROR, 
+      errorMessage: 'HackRU is not currently accepting new registrants at this time.  You may login and alter the details of an existing application.'
+    });
+  }
+);
+
+
 export const checkURL = () => (
   (dispatch) => {
 
     let urlParams = new URLSearchParams(window.location.search);
+    
+    
     if(urlParams.has('error')) {
       
       dispatch({
