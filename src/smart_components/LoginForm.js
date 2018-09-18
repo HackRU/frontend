@@ -23,6 +23,7 @@ class LoginForm extends React.Component {
 
   componentDidMount() {
     this.props.checkURL();
+    this.props.alertClose();
   }
 
   changeEmail = (e) => {
@@ -118,12 +119,12 @@ class LoginForm extends React.Component {
                   >
                     <h6 className="UC">{'Login'}</h6>
                   </button>
-                  <button className="btn btn-primary custom-btn my-1 p-xs-2 p-md-3"
+                  {/*<button className="btn btn-primary custom-btn my-1 p-xs-2 p-md-3"
                     onClick={this.signUp}
                     type="button"
                   >
                     <h6 className="UC">{'Sign Up'}</h6>
-                  </button>
+                  </button>*/}
                   {/*<button className="btn btn-primary p-xs-2 p-md-3 my-2"
                     onClick={this.onMlhLogin}
                     type="button"
@@ -149,6 +150,7 @@ LoginForm.propTypes = {
     magicLink: PropTypes.string,
     errorMessage: PropTypes.string
   }).isRequired,
+  alertClose: PropTypes.func.isRequired,
   checkURL: PropTypes.func.isRequired,
   changeEmail: PropTypes.func.isRequired,
   changePassword: PropTypes.func.isRequired,
@@ -167,6 +169,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({
+    alertClose: loginActions.alertClose,
     checkURL: loginActions.checkURL,
     changeEmail: loginActions.changeEmail,
     changePassword: loginActions.changePassword,
