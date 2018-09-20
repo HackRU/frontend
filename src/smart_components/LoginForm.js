@@ -140,7 +140,7 @@ class LoginForm extends React.Component {
           <span className="u-highlight">{'Registration is Closed'}</span>
         </h2>
         <div className="content-section-desc register-root">
-          {'HackRU is not currently accepting new registrants at this time. You may login and alter the details of an existing application.'}
+          <p className="content-desc">{'HackRU is not currently accepting new registrants at this time. You may login and alter the details of an existing application.'}</p>
         </div>
       </div>
       
