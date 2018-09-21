@@ -6,7 +6,7 @@ process.env.NODE_ENV = 'development';
 
 let webpackConfPath = '../config/webpack.config.prod'
 if(process.env.NODE_ENV === 'development'){
-  webpackConfPath = '../config/webpack.config.dev'
+  webpackConfPath = '../config/webpack.config.dev_upload'
 }
 
 // Makes the script crash on unhandled rejections instead of silently
