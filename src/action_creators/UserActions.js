@@ -79,51 +79,16 @@ export const updateTravel = (userState, key, value) => (
   }
 );
 
-//NOT IN USE
-export const updateMentor = (mentor, key, value) => (
-  (dispatch) => {
+export const upResume = (userState) => (
+  async (dispatch) => {
 
-    mentor[key] = value;
+    //upload resume to S3
+    const response = await uploadResume(userState.userInfoEmail);
+    dispatch(confirmResume(response === 'Successfully uploaded resume.'));
     dispatch({
-      type: USER_DATA.SET_MENTOR_INFO,
-      mentorInfo: mentor
+      type: USER_DATA.SET_FLASH,
+      flash: response
     });
-  }
-);
-
-//NOT IN USE
-export const updateVolunteer = (area) => (
-  (dispatch) => {
-    dispatch({
-      type: USER_DATA.SET_VOLUNTEER_AREA,
-      volunteerArea: area
-    });
-  }
-);
-
-//NOT IN USE
-export const setShifts = (shifts, role) => (
-  (dispatch) => {
-    
-    if(role === 'volunteer') {
-      
-      //update volunteer shifts
-      dispatch({
-        type: USER_DATA.SET_VOLUNTEER_TIMES,
-        volunteerTimes: shifts
-      });
-    } else if(role === 'mentor') {
-      
-      //update mentor shifts
-      dispatch({
-        type: USER_DATA.SET_MENTOR_TIMES,
-        mentorTimes: shifts
-      });
-    } else {
-      
-      //do nothing
-      return;
-    }
   }
 );
 
@@ -155,18 +120,20 @@ export const preSave = (userState) => (
   (dispatch) => {
     
     const done = dispatch(checkUserReq(userState));
-    
-    if(done === false) {
-      
-      //unregistered
 
-      alert('Your info will be saved but you will not be registered until you agree to the MLH Code of Conduct and Data Sharing Policy.');
-      userState.userInfo.registration_status = 'unregistered';
-    } else {
+    if(userState.userInfo.registration_status === 'unregistered' || userState.userInfo.registration_status === 'registered') {
+      if(done === false) {
+        
+        //unregistered
+
+        alert('Your info will be saved but you will not be registered until you agree to the MLH Code of Conduct and Data Sharing Policy.');
+        userState.userInfo.registration_status = 'unregistered';
+      } else {
+        
+        //unfinished or true
+        userState.userInfo.registration_status = 'registered';
       
-      //unfinished or true
-      userState.userInfo.registration_status = 'registered';
-    
+      }
     }
 
     dispatch(save(userState));
@@ -237,224 +204,6 @@ export const save = (userState) => (
       });
   }
 ); 
-
-//NOT IN USE
-export const applyMentor = (userState) => (
-  (dispatch) => {
-
-    let mentorUpdate = {
-      'role.mentor': {
-        skills: userState.mentorInfo,
-        times: userState.mentorTimes
-      }
-    };
-
-
-    fetch(resURLS.lcsUpdateURL, {
-      method: 'POST',
-      mode: 'cors',
-      credentials: 'omit',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        updates: {'$set': mentorUpdate},
-        user_email: userState.userInfoEmail,
-        auth_email: userState.userInfoEmail,
-        auth: userState.token
-      })
-    }).then(data => data.json())
-      .then(resp => {
-        
-        if(resp.statusCode === 200) {
-
-          //successful application
-          dispatch({
-            type: USER_DATA.SET_EXTRA_FLASH,
-            extraFlash: 'Thank you for your interest in becoming a mentor.  We will be in contact with you shortly.'
-          });
-        } else {
-
-          //unsuccessful application
-          dispatch({
-            type: USER_DATA.SET_EXTRA_FLASH,
-            extraFlash: 'Mentor application failed.\n' + resp.body
-          });
-        }
-      })
-      .catch(err => {
-
-        //unexpected error
-        dispatch(showCaughtError(err.toString()));
-      }); 
-  }
-);
-
-//NOT IN USE
-export const unapplyMentor = (userState) => (
-  (dispatch) => {
-    
-    let mentorUpdate = {
-      'role.mentor': null
-    };
-    
-    fetch(resURLS.lcsUpdateURL, {
-      method: 'POST',
-      mode: 'cors',
-      credentials: 'omit',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        updates: mentorUpdate,
-        user_email: userState.userInfoEmail,
-        auth_email: userState.userInfoEmail,
-        auth: userState.token
-      })
-    }).then(data => data.json())
-      .then(resp => {
-      
-        if(resp.statusCode === 200) {
-
-          //successful un-application
-          dispatch({
-            type: USER_DATA.SET_EXTRA_FLASH,
-            extraFlash: 'Application rescinded.'
-          });
-        } else {
-
-          //unsuccessful un-application
-          dispatch({
-            type: USER_DATA.SET_EXTRA_FLASH,
-            extraFlash: 'Role update failed.\n' + resp.body
-          });
-        }
-      })
-      .catch(err => {
-
-        //unexpected error
-        dispatch(showCaughtError(err.toString()));
-      }); 
-  }
-);
-
-
-//NOT IN USE
-export const applyVolunteer = (userState) => (
-  (dispatch) => {
-
-    let volunteerUpdate = {
-      'role.volunteer': {
-        area: userState.volunteerArea,
-        times: userState.volunteerTimes
-      }
-    };
-
-
-    fetch(resURLS.lcsUpdateURL, {
-      method: 'POST',
-      mode: 'cors',
-      credentials: 'omit',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        updates: {'$set': volunteerUpdate},
-        user_email: userState.userInfoEmail,
-        auth_email: userState.userInfoEmail,
-        auth: userState.token
-      })
-    }).then(data => data.json())
-      .then(resp => {
-        
-        if(resp.statusCode === 200) {
-
-          //successful application
-          dispatch({
-            type: USER_DATA.SET_EXTRA_FLASH,
-            extraFlash: 'Thank you for your interest in becoming a volunteer.  We will be in contact with you shortly.'
-          });
-        } else {
-
-          //unsuccessful application
-          dispatch({
-            type: USER_DATA.SET_EXTRA_FLASH,
-            extraFlash: 'Volunteer application failed.\n' + resp.body
-          });
-        }
-      })
-      .catch(err => {
-
-        //unexpected error
-        dispatch(showCaughtError(err.toString()));
-      }); 
-  }
-);
-
-//NOT IN USE
-export const unapplyVolunteer = (userState) => (
-  (dispatch) => {
-    
-    let volunteerUpdate = {
-      'role.volunteer': null
-    };
-    
-    fetch(resURLS.lcsUpdateURL, {
-      method: 'POST',
-      mode: 'cors',
-      credentials: 'omit',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        updates: volunteerUpdate,
-        user_email: userState.userInfoEmail,
-        auth_email: userState.userInfoEmail,
-        auth: userState.token
-      })
-    }).then(data => data.json())
-      .then(resp => {
-      
-        if(resp.statusCode === 200) {
-
-          //successful un-application
-          dispatch({
-            type: USER_DATA.SET_EXTRA_FLASH,
-            extraFlash: 'Application rescinded.'
-          });
-        } else {
-
-          //unsuccessful un-application
-          dispatch({
-            type: USER_DATA.SET_EXTRA_FLASH,
-            extraFlash: 'Role update failed.\n' + resp.body
-          });
-        }
-      })
-      .catch(err => {
-
-        //unexpected error
-        dispatch(showCaughtError(err.toString()));
-      }); 
-  }
-);
-
-export const upResume = (userState) => (
-  async (dispatch) => {
-
-    //upload resume to S3
-    const response = await uploadResume(userState.userInfoEmail);
-    dispatch(confirmResume(response === 'Successfully uploaded resume.'));
-    dispatch({
-      type: USER_DATA.SET_FLASH,
-      flash: response
-    });
-  }
-);
 
 export const confirmAttendance = (userState) => (
   (dispatch) => {
@@ -534,11 +283,12 @@ export const cancelAttendance = (userState) => (
         if(resp.statusCode === 200) {
           
           //successful update
-          dispatch(updateUser(userState, 'registration_status', 'not_coming'));
-          
+          dispatch(updateUser(userState, 'registration_status', 'not-coming'));
+
+          /*
           if(userState.userInfo.travelling_from) {
             dispatch(updateTravel(userState, 'is_real', false));
-          }
+          }*/
           dispatch({
             type: USER_DATA.SET_UPPER_FLASH,
             upperFlash: 'Attendance canceled.'
@@ -788,14 +538,15 @@ const getStatus = (user) => (
 
     let status = user && user.registration_status;
 
+    console.log(status);
     const displayStatuses = {
       'unregistered': 'Not registered',
       'registered': 'Application submitted',
       'rejected': 'Application submitted',
-      'checked_in': 'Checked in!',
+      'checked-in': 'Checked in!',
       'confirmation': 'Accepted! Please RSVP',
       'coming': 'Planning to attend',
-      'not_coming': 'Not planning to attend',
+      'not-coming': 'Not planning to attend',
       'confirmed': 'Attendance confirmed!',
       'waitlist': 'Application submitted'
     };
@@ -910,7 +661,9 @@ export const checkUserReq = (userState) => (
       //mlh not filled out
       return false;
     } else {
+      return true; //lol
       
+      /*TODO: Get the fuck rid of this shitty code and make it work better via modals for next sem
       let user = userState.userInfo;
       let reqFields = Object.keys(formConfig).filter(f => formConfig[f].required === true)
         .map(k => {
@@ -966,7 +719,7 @@ export const checkUserReq = (userState) => (
           return 'unfinished';
         }
         return true;
-      }
+      }*/
       
     }
   }
