@@ -41,11 +41,18 @@ class AttendancePrompt extends React.Component {
         && this.props.userManager.userInfo.travelling_from.estimate > 0){
       return (
         <h5 className="blue">
-          We can offer you up to
-          <strong> ${this.props.userManager.userInfo.travelling_from.estimate} </strong>
-          in reimbursement. In order to receive this, you have to
-          <strong> show us all your receipts</strong> and
-          <strong> submit to our Devpost on Sunday morning</strong>.
+          {'We can offer you up to'}
+          <strong>
+            {' $' + this.props.userManager.userInfo.travelling_from.estimate}
+          </strong>
+          {' in reimbursement. In order to receive this, you have to'}
+          <strong>
+            {' show us all your receipts'}
+          </strong> 
+          {' and'}
+          <strong>
+            {' submit to our Devpost on Sunday morning'}
+          </strong>.
         </h5>
       );
     }else{
@@ -58,12 +65,14 @@ class AttendancePrompt extends React.Component {
       <button className="btn btn-primary UC custom-btn p-3 my-1 mx-md-1"
         onClick={this.confirmAttendance}
         type="button"
+        disabled={this.props.userManager.userInfo.registration_status === 'coming'}
       >
         <h6 className="my-0">{'Attending'}</h6>
       </button>
       <button className="btn btn-primary UC custom-btn p-3 my-1"
         onClick={this.cancelAttendance}
         type="button"
+        disabled={this.props.userManager.userInfo.registration_status === 'not-coming'}
       >
         <h6 className="my-0">{'Not Attending'}</h6>
       </button>
@@ -71,17 +80,18 @@ class AttendancePrompt extends React.Component {
     </Fragment>
   )
 
-    
+
+  //so janky
   reflectPrompt = (userStatus) => {
     if(userStatus === 'Checked in!') {
       //no menu if checked in
       return this.renderCheckedIn();
     } else if (userStatus === 'Accepted! Please RSVP' || userStatus === 'Planning to attend' || userStatus === 'Not planning to attend') {
       //allow menu for the three states which allow users to change attendance status
-      return userStatus === 'Loading...' ? '' : this.renderAttendance();
+      return userStatus === 'Loading  your info...' ? '' : this.renderAttendance();
     } else {
       //show nothing otherwise
-      return (<TravelForm />);
+      return userStatus === 'Loading your info...' ? '': <TravelForm />;
     }
   }
 
