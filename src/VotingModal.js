@@ -1,4 +1,5 @@
 import React from 'react';
+import resURLs from 'resources/resURLS';
 
 class VotingModal extends React.Component {
 
@@ -18,8 +19,8 @@ class VotingModal extends React.Component {
   }
 
   componentWillMount(){
-    const userConds = Object.keys(this.state.user.role)
-      .map(k => ({['role.' + k]: (/*k == 'organizer' ||*/ k == 'hacker')}))
+    const userConds = [{'role.hacker': true}]//Object.keys(this.state.user.role)
+      //.map(k => ({['role.' + k]: (/*k == 'organizer' ||*/ k == 'hacker')}))
     //ES6 computed keys ^ ... aren't they cool?!
     //Also, the "k == 'organizer' ||" is for testing.
       .concat([
@@ -32,7 +33,7 @@ class VotingModal extends React.Component {
       ]);
 
 
-    fetch('https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/mlhtest/read', {
+    fetch(resURLs.lcsReadURL, {
       method: 'POST',
       mode: 'cors',
       credentials: 'omit',
@@ -96,7 +97,7 @@ class VotingModal extends React.Component {
       };
     }
 
-    fetch('https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/mlhtest/update', {
+    fetch(resURLs.lcsReadURL, {
       method: 'POST',
       mode: 'cors',
       credentials: 'omit',
@@ -129,7 +130,7 @@ class VotingModal extends React.Component {
     const hax0r = this.state.hacker;
     this.setState({hacker: undefined, loadingMsg: 'Voted down. Next hacker coming...'});
 
-    fetch('https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/mlhtest/update', {
+    fetch(resURLs.lcsUpdateURL, {
       method: 'POST',
       mode: 'cors',
       credentials: 'omit',
@@ -165,7 +166,7 @@ class VotingModal extends React.Component {
     const hax0r = this.state.hacker;
     this.setState({hacker: undefined, loadingMsg: 'Skipped. Here\'s another one...'});
 
-    fetch('https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/mlhtest/update', {
+    fetch(resURLs.lcsUpdateURL, {
       method: 'POST',
       mode: 'cors',
       credentials: 'omit',
@@ -202,20 +203,8 @@ class VotingModal extends React.Component {
         onKeyDown={(e) => this.processKey(e)}
         tabIndex="0"
       >
-        <div className="modal-header">
-          <h4 className="modal-title font-modal mr-3"
-            id="exampleModalLongTitle"
-          >Vote on Users</h4><br/>
-          <p className="font-modal">Click on the top of the modal, then use the up and down arrow keys to vote! Left or right arrow skip!</p>
-          <button aria-label="Close"
-            className="close"
-            data-dismiss="modal"
-            type="button"
-          >
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div className="modal-body">
+        <div> {this.state.hacker && 'Click on the top of the panel, then use the up and down arrow keys to vote! Left or right arrow skip!'}</div>
+        <div>
           {
             //hacky ternary... so if !state.hacker, loading
             //else the <div>
@@ -257,24 +246,23 @@ class VotingModal extends React.Component {
           }
           <div>{this.state.error}</div>
         </div>
-        <div className="modal-footer">
-          <button className="btn btn-primary"
-            onClick={this.voteDown}
-            type="button"
-          >Vote Down</button>
-          <button className="btn btn-secondary"
-            data-dismiss="modal"
-            type="button"
-          >Close</button>
-          <button className="btn btn-primary"
-            onClick={this.skip}
-            type="button"
-          >Skip User</button>
-          <button className="btn btn-primary"
-            onClick={this.voteUp}
-            type="button"
-          >Vote Up</button>
-        </div>
+        {
+          this.state.hacker &&
+          <div className="modal-footer">
+            <button className="btn btn-primary"
+              onClick={this.voteDown}
+              type="button"
+            >Vote Down</button>
+            <button className="btn btn-primary"
+              onClick={this.skip}
+              type="button"
+            >Skip User</button>
+            <button className="btn btn-primary"
+              onClick={this.voteUp}
+              type="button"
+            >Vote Up</button>
+          </div>
+        }
       </div>
     );
 

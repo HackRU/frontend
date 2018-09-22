@@ -208,7 +208,7 @@ class InfoPrompt extends React.Component {
                     >
                       <h4 className="font-weight-bold blue">
                         {key.replace(/_/g, ' ').toUpperCase()} 
-                        {formConfig[key]['required'] === true ? <a className="text-danger"> {'*'}</a>: <span></span>}
+                        {formConfig[key]['required'] === true ? <a className="text-danger"> {'*'}</a>: <span />}
                       </h4>
                     </label>
                     {this.parseConfig(key)}
