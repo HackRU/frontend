@@ -15,6 +15,7 @@ class AttendancePrompt extends React.Component {
     this.confirmAttendance = this.confirmAttendance.bind(this);
     this.cancelAttendance = this.cancelAttendance.bind(this);
     this.reflectPrompt = this.reflectPrompt.bind(this);
+    this.travelReimbursementEstimate = this.travelReimbursementEstimate.bind(this);
   }
 
   confirmAttendance = (e) => {
@@ -34,6 +35,24 @@ class AttendancePrompt extends React.Component {
     </div>
   )
 
+  travelReimbursementEstimate = () => {
+    if(this.props.userManager.userInfo.travelling_from
+        && this.props.userManager.userInfo.travelling_from.estimate
+        && this.props.userManager.userInfo.travelling_from.estimate > 0){
+      return (
+        <h5 className="blue">
+          We can offer you up to
+          <strong> ${this.props.userManager.userInfo.travelling_from.estimate} </strong>
+          in reimbursement. In order to receive this, you have to
+          <strong> show us all your receipts</strong> and
+          <strong> submit to our Devpost on Sunday morning</strong>.
+        </h5>
+      );
+    }else{
+      return '';
+    }
+  }
+
   renderAttendance = () => (
     <Fragment> 
       <button className="btn btn-primary UC custom-btn p-3 my-1 mx-md-1"
@@ -48,6 +67,7 @@ class AttendancePrompt extends React.Component {
       >
         <h6 className="my-0">{'Not Attending'}</h6>
       </button>
+      {this.travelReimbursementEstimate()}
     </Fragment>
   )
 
@@ -61,7 +81,7 @@ class AttendancePrompt extends React.Component {
       return userStatus === 'Loading...' ? '' : this.renderAttendance();
     } else {
       //show nothing otherwise
-      return '';
+      return (<TravelForm />);
     }
   }
 
@@ -75,7 +95,6 @@ class AttendancePrompt extends React.Component {
         </label>
       </div>
       { this.reflectPrompt(this.props.userStatus) }
-      <TravelForm />
     </div>
   )
 }
