@@ -92,7 +92,7 @@ class Admin extends React.Component {
 
               { this.state.user &&
         Object.keys(this.state.user).map(k =>
-          <div className="form-check form-check-inline">
+          (<div className="form-check form-check-inline">
             <input className="agg-filter form-check-input"
               id={'aggregate-' + k}
               type="checkbox"
@@ -100,7 +100,7 @@ class Admin extends React.Component {
             <label className="form-check-label form-text"
               htmlFor={'aggregate-' + k}
             >{k}</label>
-          </div>
+          </div>)
         )
               }
             </div>
@@ -128,12 +128,12 @@ class Admin extends React.Component {
               <tbody>
                 { this.state.results &&
             this.state.results.map(count =>
-              <tr>
+              (<tr>
                 {Object.values(count._id)
                   .map(v => (<td className="col">{JSON.stringify(v)}</td>))
                 }
                 <td className="col">{count.count}</td>
-              </tr>
+              </tr>)
             )
                 }
               </tbody>

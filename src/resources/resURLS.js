@@ -23,9 +23,11 @@ const resURLS = {
   lcsAuthURL: LCS + 'authorize',
   lcsConsumeURL: LCS + 'consume',
   lcsCreateURL: LCS + 'create',
+  lcsEmailTemplates: LCS + 'email-templates',
   lcsMagicURL: LCS + 'createmagiclink',
   lcsQRURL: LCS + 'qr',
   lcsReadURL: LCS + 'read',
+  lcsSendEmails: LCS + 'send-emails',
   lcsUpdateURL: LCS + 'update',
 
   //NOT USED
