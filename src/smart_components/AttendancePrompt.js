@@ -37,17 +37,24 @@ class AttendancePrompt extends React.Component {
 
   travelReimbursementEstimate = () => {
     if(this.props.userManager.userInfo.travelling_from
-        && this.props.userManager.userInfo.travelling_from.estimate
-        && this.props.userManager.userInfo.travelling_from.estimate > 0){
-      return (
-        <h5 className="blue">
-          We can offer you up to
-          <strong> ${this.props.userManager.userInfo.travelling_from.estimate} </strong>
-          in reimbursement. In order to receive this, you have to
-          <strong> show us all your receipts</strong> and
-          <strong> submit to our Devpost on Sunday morning</strong>.
-        </h5>
-      );
+        && this.props.userManager.userInfo.travelling_from.estimate){
+      if(this.props.userManager.userInfo.travelling_from.estimate > 0){
+        return (
+            <h5 className="blue">
+            We can offer you up to
+            <strong> ${this.props.userManager.userInfo.travelling_from.estimate} </strong>
+            in reimbursement. In order to receive this, you have to
+            <strong> show us all your receipts</strong> and
+            <strong> submit to our Devpost on Sunday morning</strong>.
+            </h5>
+        );
+      }else{
+        return (
+            <h5 className="blue">
+              Unfortunately, we cannot offer you any travel reimbursement.
+            </h5>
+        );
+      }
     }else{
       return '';
     }
