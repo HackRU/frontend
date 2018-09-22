@@ -127,7 +127,7 @@ export const logoutUser = (userState) => (
       dispatch(save(userState));
       dispatch({
         type: LOGIN_MNGMNT.SET_ERROR,
-        errorMessage: 'Changes have been saved. We will contact you if there any updates.'
+        errorMessage: 'Changes have been saved. Please check your email and social media for event updates!'
       });
 
       //remove the authdata cookie
