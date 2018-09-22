@@ -2,11 +2,14 @@
 
 // Do this as the first thing so that any code reading it knows the right env.
 process.env.BABEL_ENV = 'production';
-process.env.NODE_ENV = 'development';
+process.env.NODE_ENV = process.env.NODE_ENV || 'production';
 
 let webpackConfPath = '../config/webpack.config.prod'
 if(process.env.NODE_ENV === 'development'){
+  console.log('I think I in dev');
   webpackConfPath = '../config/webpack.config.dev_upload'
+}else{
+  console.log('I think I not in dev');
 }
 
 // Makes the script crash on unhandled rejections instead of silently
