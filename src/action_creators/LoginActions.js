@@ -8,10 +8,13 @@ import { loginUser } from 'action_creators/ViewActions';
 import resURLS from 'resources/resURLS';
 
 
+
 export const checkURL = () => (
   (dispatch) => {
 
     let urlParams = new URLSearchParams(window.location.search);
+    
+    
     if(urlParams.has('error')) {
       
       dispatch({

@@ -118,12 +118,12 @@ class LoginForm extends React.Component {
                   >
                     <h6 className="UC">{'Login'}</h6>
                   </button>
-                  <button className="btn btn-primary custom-btn my-1 p-xs-2 p-md-3"
+                  {/*<button className="btn btn-primary custom-btn my-1 p-xs-2 p-md-3"
                     onClick={this.signUp}
                     type="button"
                   >
                     <h6 className="UC">{'Sign Up'}</h6>
-                  </button>
+                  </button>*/}
                   {/*<button className="btn btn-primary p-xs-2 p-md-3 my-2"
                     onClick={this.onMlhLogin}
                     type="button"
@@ -135,7 +135,14 @@ class LoginForm extends React.Component {
             </form>
           </div>
         </div>
+        <h2 className="content-section-title mt-4">
+          <span className="u-highlight">{'Registration is Closed!'}</span>
+        </h2>
+        <div className="content-section-desc register-root">
+          <p className="content-desc">{'HackRU is not currently accepting new registrants at this time. You may login and alter the details of an existing application.'}</p>
+        </div>
       </div>
+      
     );
   }
 }
