@@ -8,6 +8,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import * as adminActions from 'action_creators/AdminActions';
+import ContentSection from 'dumb_components/ContentSection';
 
 // import Select, { Creatable, AsyncCreatable, Async } from 'react-select';
 import 'styles/react-select.css';
@@ -47,81 +48,61 @@ class AdminDashboard extends React.Component {
     console.log(adminQueryData);
     return (
       <div>
-        <div className="content-section" id="announcements-div">
-          <h2 className="content-section-title">
-            <span className="u-highlight">{'Vote on Users'}</span>
-          </h2>
-          <div className="content-section-desc register-root">
-            <VotingModal user={userInfo} token={userInfo.token} />
-          </div>
-        </div>
-        <div className="content-section" id="announcements-div">
-          <h2 className="content-section-title">
-            <span className="u-highlight">{'Admin Dashboard:'}</span>
-          </h2>
-          <div className="content-section-desc register-root">
-            <form className="form-group">
-              <div className="text-center">
-                <div className="col-lg-12 text-center">
-                  {Object.keys(userInfo).map(k =>
-                    (<div className="form-check form-check-inline">
-                      <input className="agg-filter form-check-input"
-                        id={'aggregate-' + k}
-                        type="checkbox"
-                      />
-                      <label className="form-check-label form-text" htmlFor={'aggregate-' + k} >{k}</label>
-                    </div>)
-                  )}
-                </div>
-                <br />
-                <div className="col-lg-12 text-center">
-                  <button className="btn btn-primary custom-btn p-3  mx-1 my-3 text-center"
-                    onClick={this.doQuery}
-                    type="button"
-                  ><h4 className="my-0">{'Query the DB'}</h4></button>
-                </div>
+        <ContentSection registerRoot title="Vote on Users">
+          <VotingModal user={userInfo} token={userInfo.token} />
+        </ContentSection>
+        <ContentSection registerRoot title="Admin Dashboard:">
+          <form className="form-group">
+            <div className="text-center">
+              <div className="col-lg-12 text-center">
+                {Object.keys(userInfo).map(k =>
+                  (<div className="form-check form-check-inline">
+                    <input className="agg-filter form-check-input"
+                      id={'aggregate-' + k}
+                      type="checkbox"
+                    />
+                    <label className="form-check-label form-text" htmlFor={'aggregate-' + k} >{k}</label>
+                  </div>)
+                )}
               </div>
-            </form>
-          </div>
-        </div>
-        <div className="content-section" id="announcements-div">
-          <h2 className="content-section-title">
-            <span className="u-highlight">{'Query Results '}</span>
-          </h2>
-          <div className="content-section-desc register-root">
-            <table className="table table-dark table-fixed smaller-font">
-              <thead className="thead-dark">
-                <tr>
-                  { adminQueryData &&
-                  Object.keys(adminQueryData[0]._id)
-                    .map(v => (<th key={v} className="col white">{JSON.stringify(v)}</th>))
-                  }
-                  <th className="col white">{'Counts'}</th>
-                </tr>
-              </thead>
-              <tbody>
-                { adminQueryData &&
-                adminQueryData.map(count =>
-                  (<tr>
-                    {Object.values(count._id)
-                      .map(v => (<td key={v} className="col white">{JSON.stringify(v)}</td>))
-                    }
-                    <td className="col white">{count.count}</td>
-                  </tr>)
-                )
-                }
-              </tbody>
-            </table>
-          </div>
-          <div className="content-section" id="announcements-div">
-            <h2 className="content-section-title">
-              <span className="u-highlight">{'Send Email:'}</span>
-            </h2>
-            <div className="content-section-desc register-root">
-              <AdminEmailing user={userInfo} token={userInfo.token} />
+              <br />
+              <div className="col-lg-12 text-center">
+                <button className="btn btn-primary custom-btn p-3  mx-1 my-3 text-center"
+                  onClick={this.doQuery}
+                  type="button"
+                ><h4 className="my-0">{'Query the DB'}</h4></button>
+              </div>
             </div>
-          </div>
-        </div>
+          </form>
+        </ContentSection>
+        <ContentSection registerRoot title="Query Results:">
+          <table className="table table-dark table-fixed smaller-font">
+            <thead className="thead-dark">
+              <tr>
+                { adminQueryData &&
+                Object.keys(adminQueryData[0]._id)
+                  .map(v => (<th key={v} className="col white">{JSON.stringify(v)}</th>))
+                }
+                <th className="col white">{'Counts'}</th>
+              </tr>
+            </thead>
+            <tbody>
+              { adminQueryData &&
+              adminQueryData.map(count =>
+                (<tr>
+                  {Object.values(count._id)
+                    .map(v => (<td key={v} className="col white">{JSON.stringify(v)}</td>))
+                  }
+                  <td className="col white">{count.count}</td>
+                </tr>)
+              )
+              }
+            </tbody>
+          </table>
+        </ContentSection>
+        <ContentSection registerRoot title="Send Email:">
+          <AdminEmailing user={userInfo} token={userInfo.token} />
+        </ContentSection>
       </div>
     );
   }
