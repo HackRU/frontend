@@ -11,7 +11,7 @@ const ContentSection = ({ children, registerRoot, sectionID, title }) => (
         </span>
       </h2>
     }
-    <div className={'content-section-desc' + registerRoot ? 'register-root' : ''} id={sectionID}>
+    <div className={'content-section-desc' + (registerRoot ? ' register-root' : '')} id={sectionID}>
       { children }
     </div>
   </div>
