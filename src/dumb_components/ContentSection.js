@@ -7,7 +7,7 @@ const ContentSection = ({ children, registerRoot, sectionID, title }) => (
     {
       title && <h2 className="content-section-title">
         <span className="u-highlight">
-          title
+          { title }
         </span>
       </h2>
     }
