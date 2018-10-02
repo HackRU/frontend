@@ -19,9 +19,9 @@ const ContentSection = ({ children, registerRoot, sectionID, title }) => (
 
 ContentSection.propTypes = {
   children: PropTypes.element.isRequired,
-  registerRoot: PropTypes.boolean.isOptional,
-  sectionID: PropTypes.string.isOptional,
-  title: PropTypes.string.isOptional,
+  registerRoot: PropTypes.boolean,
+  sectionID: PropTypes.string,
+  title: PropTypes.string,
 };
 
 export default ContentSection;
