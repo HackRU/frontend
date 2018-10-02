@@ -127,7 +127,7 @@ class DashboardProfile extends React.Component {
       
       let status = this.props.viewController.userStatus;
       let qr = this.props.userManager.qr;
-      if(qr && (status === 'coming' || status === 'waitlist' || status === 'checked in')) {
+      if(qr && (status === 'coming' || status === 'waitlist' || status === 'checked_in')) {
 
         //can use qr code
         style = {display: 'block'};
