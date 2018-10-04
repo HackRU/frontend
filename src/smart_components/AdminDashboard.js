@@ -48,10 +48,10 @@ class AdminDashboard extends React.Component {
     console.log(adminQueryData);
     return (
       <div>
-        <ContentSection registerRoot title="Vote on Users">
+        <ContentSection bodyClasses="register-root" title="Vote on Users">
           <VotingModal user={userInfo} token={userInfo.token} />
         </ContentSection>
-        <ContentSection registerRoot title="Admin Dashboard:">
+        <ContentSection bodyClasses="register-root" title="Admin Dashboard:">
           <form className="form-group">
             <div className="text-center">
               <div className="col-lg-12 text-center">
@@ -75,7 +75,7 @@ class AdminDashboard extends React.Component {
             </div>
           </form>
         </ContentSection>
-        <ContentSection registerRoot title="Query Results:">
+        <ContentSection bodyClasses="register-root" title="Query Results:">
           <table className="table table-dark table-fixed smaller-font">
             <thead className="thead-dark">
               <tr>
@@ -100,7 +100,7 @@ class AdminDashboard extends React.Component {
             </tbody>
           </table>
         </ContentSection>
-        <ContentSection registerRoot title="Send Email:">
+        <ContentSection bodyClasses="register-root" title="Send Email:">
           <AdminEmailing user={userInfo} token={userInfo.token} />
         </ContentSection>
       </div>

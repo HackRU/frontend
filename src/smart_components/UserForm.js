@@ -13,7 +13,7 @@ class UserForm extends React.Component {
     const status = this.props.viewController.userStatus;
     return (
       <div>
-        <ContentSection registerRoot title="Status:">
+        <ContentSection bodyClasses="register-root" title="Status:">
           <form className="form-group">
             <div className="text-center">
               <h2 className="SC blue">
