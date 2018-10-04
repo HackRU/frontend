@@ -125,9 +125,9 @@ class DashboardProfile extends React.Component {
       
       header = this.listInfo(this.props.userManager.userInfo);
       
-      let status = this.props.viewController.userStatus;
+      let status = this.props.userManager.userInfo.registration_status;
       let qr = this.props.userManager.qr;
-      if(qr && (status === 'coming' || status === 'waitlist' || status === 'checked_in')) {
+      if(qr && (status === 'coming' || status === 'confirmed' || status === 'waitlist' || status === 'checked-in')) {
 
         //can use qr code
         style = {display: 'block'};
@@ -170,7 +170,8 @@ DashboardProfile.propTypes = {
       github: PropTypes.string,
       school: PropTypes.string,
       level_of_study: PropTypes.string,
-      major: PropTypes.string
+      major: PropTypes.string,
+      registration_status: PropTypes.string
     }).isRequired,
     qr: PropTypes.string.isRequired,
     hasUnsavedChanges: PropTypes.bool.isRequired
