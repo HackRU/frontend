@@ -16,19 +16,22 @@ const resURLS = {
   cutoffBDate: 'October 6, 2000',
 
   //colors
-  background: [232, 246, 252],
-  foreground: [37, 71, 158],
+  background: [255, 255, 255],
+  foreground: [120, 82, 201],
 
   //back-end API
   lcsAuthURL: LCS + 'authorize',
   lcsConsumeURL: LCS + 'consume',
   lcsCreateURL: LCS + 'create',
   lcsEmailTemplates: LCS + 'email-templates',
+  lcsEventsURL: LCS + 'dayof-events',
   lcsMagicURL: LCS + 'createmagiclink',
   lcsQRURL: LCS + 'qr',
   lcsReadURL: LCS + 'read',
   lcsSendEmails: LCS + 'send-emails',
+  lcsSlackURL: LCS + 'dayof-slack',
   lcsUpdateURL: LCS + 'update',
+  
 
   //NOT USED
 
