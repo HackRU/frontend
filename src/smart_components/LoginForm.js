@@ -63,7 +63,7 @@ class LoginForm extends React.Component {
 
   render = () => (
     <Fragment>
-      <ContentSection registerRoot title="Login:">
+      <ContentSection bodyClasses="regiser-root" title="Login:">
         <div className="react-form">
           <form className="form-group">
             <div className="form-group row my-3"> {/*EMAIL FIELD*/}
@@ -130,7 +130,7 @@ class LoginForm extends React.Component {
           </form>
         </div>
       </ContentSection>
-      <ContentSection registerRoot title="Registration is Closed!">
+      <ContentSection bodyClasses="regiser-root" headerClasses="mt-4" title="Registration is Closed!">
         <p className="content-desc">{'HackRU is not currently accepting new registrants at this time. You may login and alter the details of an existing application.'}</p>
       </ContentSection>
     </Fragment>

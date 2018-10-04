@@ -2,16 +2,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const ContentSection = ({ children, registerRoot, sectionID, title }) => (
+const ContentSection = ({ children, bodyClasses, headerClasses, sectionID, title }) => (
   <div className="content-section">
     {
-      title && <h2 className="content-section-title">
+      title && <h2 className={'content-section-title ' + (headerClasses || '')}>
         <span className="u-highlight">
           { title }
         </span>
       </h2>
     }
-    <div className={'content-section-desc' + (registerRoot ? ' register-root' : '')} id={sectionID}>
+    <div className={'content-section-desc ' + (bodyClasses || '')} id={sectionID}>
       { children }
     </div>
   </div>
@@ -19,7 +19,8 @@ const ContentSection = ({ children, registerRoot, sectionID, title }) => (
 
 ContentSection.propTypes = {
   children: PropTypes.element.isRequired,
-  registerRoot: PropTypes.boolean,
+  bodyClasses: PropTypes.string,
+  headerClasses: PropTypes.string,
   sectionID: PropTypes.string,
   title: PropTypes.string,
 };
