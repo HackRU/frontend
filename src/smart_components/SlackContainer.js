@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import SlackMessage from 'dumb_components/SlackMessage';
+import resURLS from 'resources/resURLS';
 
 class SlackContainer extends Component {
 
@@ -15,7 +16,7 @@ class SlackContainer extends Component {
 
   async loadData() {
     try {
-      const res = await fetch('https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/mlhtest/dayof-slack', {
+      const res = await fetch(resURLS.lcsSlackURL, {
         mode: 'cors',
         credentials: 'omit'
       });

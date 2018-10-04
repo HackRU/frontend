@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import resURLS from 'resources/resURLS';
 
 class Events extends React.Component {
 
@@ -21,7 +22,7 @@ class Events extends React.Component {
 
   async loadData() {
     try {
-      const res = await fetch('https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/mlhtest/dayof-events',
+      const res = await fetch(resURLS.lcsEventsURL,
         {
           mode: 'cors',
           credentials: 'omit'
