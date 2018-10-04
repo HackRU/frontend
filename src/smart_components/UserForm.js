@@ -6,34 +6,25 @@ import { connect } from 'react-redux';
 
 import AttendancePrompt from 'smart_components/AttendancePrompt';
 import InfoPrompt from 'smart_components/InfoPrompt';
+import ContentSection from 'dumb_components/ContentSection';
 
-class UserForm extends React.Component{
-
+class UserForm extends React.Component {
   render() {
     const status = this.props.viewController.userStatus;
-    return (   
+    return (
       <div>
-        <div className="content-section"
-          id="announcements-div"
-        >
-          <h2 className="content-section-title">
-            <span className="u-highlight">
-              {'Status:'}
-            </span>
-          </h2>
-          <div className="content-section-desc register-root">
-            <form className="form-group">
-              <div className="text-center">
-                <h2 className="SC blue"> 
-                  {'Status: ' + status} 
-                </h2>
-                <AttendancePrompt userStatus={status}/>
-              </div>
-            </form>
-          </div>
-        </div>
+        <ContentSection bodyClasses="register-root" title="Status:">
+          <form className="form-group">
+            <div className="text-center">
+              <h2 className="SC blue">
+                {'Status: ' + status}
+              </h2>
+              <AttendancePrompt userStatus={status}/>
+            </div>
+          </form>
+        </ContentSection>
         <InfoPrompt/>
-      </div> 
+      </div>
     );
   }
 }
