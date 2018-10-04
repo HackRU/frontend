@@ -13,6 +13,7 @@ import { logoutUser } from 'action_creators/ViewActions';
 import Select, { Creatable, AsyncCreatable, Async } from 'react-select';
 import 'styles/react-select.css';
 
+import ContentSection from 'dumb_components/ContentSection';
 
 class InfoPrompt extends React.Component {
 
@@ -179,156 +180,143 @@ class InfoPrompt extends React.Component {
     let codeOfConduct = this.props.userManager.codeOfConduct;
     let dataSharing = this.props.userManager.dataSharing;
     let flash = this.props.userManager.flash;
-    
 
     if(user) {
-      
       //user has not checked in yet, render the prompts
       prompts = (
-        <div className="content-section mt-4"
-          id="announcements-div"
-        >
-          <h2 className="content-section-title">
-            <span className="u-highlight">
-              {'Your Info:'}
-            </span>
-          </h2>
-          <div className="content-section-desc">
-            <form>  
-              <span>
-                
-                <p className="pb-2 text-danger">{'* -- '}{'Indicates a required field'}</p>
-                
-                {user && Object.keys(formConfig).map(key => (
-                  <div className="form-group row mb-4" 
-                    key={key}
-                  >
-                    <label className="col-lg-8" 
-                      htmlFor={'input-' + key}
-                    >
-                      <h4 className="font-weight-bold blue">
-                        {key.replace(/_/g, ' ').toUpperCase()} 
-                        {formConfig[key]['required'] === true ? <a className="text-danger"> {'*'}</a>: <span />}
-                      </h4>
-                    </label>
-                    {this.parseConfig(key)}
-                  </div>
-                ))
-                }
-              </span>
-              <div className="form-group row mb-4">
-                <label className="col-lg-8 blue"
-                  htmlFor="resumeupload"
+        <ContentSection title="Your Info:">
+          <form>
+            <span>
+              <p className="pb-2 text-danger">{'* -- '}{'Indicates a required field'}</p>
+              {user && Object.keys(formConfig).map(key => (
+                <div className="form-group row mb-4" 
+                  key={key}
                 >
-                  <h4 className="font-weight-bold blue">
-                    {'SHORT ANSWER'}
-                    {<a className="text-danger"> *</a>}
-                  </h4> 
-                  {'What are you looking for from your experience at HackRU?'}
-                </label>
-                <textarea className="form-control mx-3"
-                  id="input-short_answer"
-                  onChange={this.changeKeyByEvent}
-                  value={(user)? user.short_answer : ''}
-                />
-              </div>
-              <div className="form-group row mb-4">
-                <label className="col-lg-8 blue"
-                  htmlFor="resumeupload"
-                >
-                  <h4 className="font-weight-bold blue">
-                    {'RESUME'}
-                  </h4>
-                  {(hasResume)? 'You have uploaded a resume already.': 'Please upload a copy!'}
-                </label>
-                <input className="form-control mx-3"
-                  id="resumeupload"
-                  onChange={this.upResume}
-                  type="file"
-                  accept="image/*, .pdf, .txt"
-                />
-              </div>
-              {user.registration_status !== 'registered' &&
-              <div className="form-group row mb-4 mx-1">
-                <h4 className="font-weight-bold blue">
-                  {'MLH NOTICES'}
-                  {<a className="text-danger"> *</a>}
-                </h4>
-                <br />
-                <br />
-                <div className="col-12 form-check mb-4 blue-nohover">
-                  <input className="form-check-input mr-4"
-                    id="code-of-conduct-box"
-                    type="checkbox"
-                    onChange={this.toggleCOC}
-                    checked={codeOfConduct}
-                  />
-                  <label className="form-check-label blue"
-                    htmlFor="code-of-conduct-box"
+                  <label className="col-lg-8" 
+                    htmlFor={'input-' + key}
                   >
-                    {'I have read and agree to the '} 
-                    <a className="" href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf">
-                      {'MLH Code of Conduct.'}
-                    </a>
+                    <h4 className="font-weight-bold blue">
+                      {key.replace(/_/g, ' ').toUpperCase()} 
+                      {formConfig[key]['required'] === true ? <a className="text-danger"> {'*'}</a>: <span />}
+                    </h4>
                   </label>
+                  {this.parseConfig(key)}
                 </div>
-                <div className="col-12 form-check mb-4 blue-nohover">
-                  <input className="form-check-input mr-4"
-                    id="data-sharing-box"
-                    type="checkbox"
-                    onChange={this.toggleShare}
-                    checked={dataSharing}
-                  />
-                  <label className="form-check-label blue-hover"
-                    htmlFor="data-sharing-box"
-                  >
-                    {'I authorize you to share my application/registration information for event administration, ranking, MLH administration, pre- and post-event informational e-mails, and occasional messages about hackathons in-line with '} 
-                    <a className="alt-link" href="https://mlh.io/privacy">
-                      {'the MLH Privacy Policy.'}
-                    </a>
-                    {' Further, I agree to the terms of both the '}
-                    <a className="alt-link" href="https://github.com/MLH/mlh-policies/tree/master/prize-terms-and-conditions">
-                      {'MLH Contest Terms and Conditions'}
-                    </a>
-                    {' and '} 
-                    <a className="alt-link" href="https://mlh.io/privacy">
-                      {'the MLH Privacy Policy.'}
-                    </a>
-                  </label>
-                </div>
-              </div>
+              ))
               }
-              <div className="form-group text-center row my-2 mx-1">
-                <label className="col-12 col-form-label mb-2 mt-2">
-                  <h4 className="text-lg p-xs-2 p-md-3 badge badge-purple">
-                    {flash}
-                  </h4>
+            </span>
+            <div className="form-group row mb-4">
+              <label className="col-lg-8 blue"
+                htmlFor="resumeupload"
+              >
+                <h4 className="font-weight-bold blue">
+                  {'SHORT ANSWER'}
+                  {<a className="text-danger"> *</a>}
+                </h4> 
+                {'What are you looking for from your experience at HackRU?'}
+              </label>
+              <textarea className="form-control mx-3"
+                id="input-short_answer"
+                onChange={this.changeKeyByEvent}
+                value={(user)? user.short_answer : ''}
+              />
+            </div>
+            <div className="form-group row mb-4">
+              <label className="col-lg-8 blue"
+                htmlFor="resumeupload"
+              >
+                <h4 className="font-weight-bold blue">
+                  {'RESUME'}
+                </h4>
+                {(hasResume)? 'You have uploaded a resume already.': 'Please upload a copy!'}
+              </label>
+              <input className="form-control mx-3"
+                id="resumeupload"
+                onChange={this.upResume}
+                type="file"
+                accept="image/*, .pdf, .txt"
+              />
+            </div>
+            {user.registration_status !== 'registered' &&
+            <div className="form-group row mb-4 mx-1">
+              <h4 className="font-weight-bold blue">
+                {'MLH NOTICES'}
+                {<a className="text-danger"> *</a>}
+              </h4>
+              <br />
+              <br />
+              <div className="col-12 form-check mb-4 blue-nohover">
+                <input className="form-check-input mr-4"
+                  id="code-of-conduct-box"
+                  type="checkbox"
+                  onChange={this.toggleCOC}
+                  checked={codeOfConduct}
+                />
+                <label className="form-check-label blue"
+                  htmlFor="code-of-conduct-box"
+                >
+                  {'I have read and agree to the '} 
+                  <a className="" href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf">
+                    {'MLH Code of Conduct.'}
+                  </a>
                 </label>
               </div>
-              <div className="col-12 text-center">
-                <button className="btn btn-primary UC custom-btn p-3"
-                  onClick={this.preSave}
-                  type="submit"
-                  value="save"
+              <div className="col-12 form-check mb-4 blue-nohover">
+                <input className="form-check-input mr-4"
+                  id="data-sharing-box"
+                  type="checkbox"
+                  onChange={this.toggleShare}
+                  checked={dataSharing}
+                />
+                <label className="form-check-label blue-hover"
+                  htmlFor="data-sharing-box"
                 >
-                  <h6 className="UC">
-                    {'Save Changes'}
-                  </h6>
-                </button>
-                <button className="btn btn-primary UC custom-btn mx-2 my-1 p-3"
-                  onClick={this.logout}
-                  type="submit"
-                  value="logout"
-                >
-                  <h6 className="UC">
-                    {'Logout'}
-                  </h6>
-                </button>
+                  {'I authorize you to share my application/registration information for event administration, ranking, MLH administration, pre- and post-event informational e-mails, and occasional messages about hackathons in-line with '} 
+                  <a className="alt-link" href="https://mlh.io/privacy">
+                    {'the MLH Privacy Policy.'}
+                  </a>
+                  {' Further, I agree to the terms of both the '}
+                  <a className="alt-link" href="https://github.com/MLH/mlh-policies/tree/master/prize-terms-and-conditions">
+                    {'MLH Contest Terms and Conditions'}
+                  </a>
+                  {' and '} 
+                  <a className="alt-link" href="https://mlh.io/privacy">
+                    {'the MLH Privacy Policy.'}
+                  </a>
+                </label>
               </div>
-            </form>
-          </div>
-        </div>
-      );  
+            </div>
+            }
+            <div className="form-group text-center row my-2 mx-1">
+              <label className="col-12 col-form-label mb-2 mt-2">
+                <h4 className="text-lg p-xs-2 p-md-3 badge badge-purple">
+                  {flash}
+                </h4>
+              </label>
+            </div>
+            <div className="col-12 text-center">
+              <button className="btn btn-primary UC custom-btn p-3"
+                onClick={this.preSave}
+                type="submit"
+                value="save"
+              >
+                <h6 className="UC">
+                  {'Save Changes'}
+                </h6>
+              </button>
+              <button className="btn btn-primary UC custom-btn mx-2 my-1 p-3"
+                onClick={this.logout}
+                type="submit"
+                value="logout"
+              >
+                <h6 className="UC">
+                  {'Logout'}
+                </h6>
+              </button>
+            </div>
+          </form>
+        </ContentSection>
+      );
     }
 
     return (

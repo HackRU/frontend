@@ -8,6 +8,7 @@ import DashboardProfile from 'dumb_components/DashboardProfile';
 import Events from 'dumb_components/Events';
 import InfoSection from 'dumb_components/InfoSection';
 import ImportantLinks from 'dumb_components/ImportantLinks';
+import ContentSection from 'dumb_components/ContentSection';
 //import SlackContainer from 'smart_components/SlackContainer';
 
 import LoginManagement from 'smart_components/LoginManagement';
@@ -58,14 +59,9 @@ class Dashboard extends React.Component {
               </div>
             </div>
             <div className="col-xs-12 col-md-4 mb-3">
-              <div className="content-section" id="upcoming-div">
-                <h2 className="content-section-title">
-                  <span className="u-highlight">{'Upcoming'}</span>
-                </h2>
-                <div className="content-section-desc" id="upcoming-list">
-                  <Events /> {/*Events component goes here*/}
-                </div>
-              </div>
+              <ContentSection sectionID="upcoming-list" title="Upcoming">
+                <Events /> {/*Events component goes here*/}
+              </ContentSection>
             </div>
           </Fragment>
           }
