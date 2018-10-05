@@ -63,7 +63,7 @@ class LoginForm extends React.Component {
 
   render = () => (
     <Fragment>
-      <ContentSection bodyClasses="regiser-root" title="Login:">
+      <ContentSection bodyClasses="register-root" title="Login">
         <div className="react-form">
           <form className="form-group">
             <div className="form-group row my-3"> {/*EMAIL FIELD*/}
@@ -113,12 +113,12 @@ class LoginForm extends React.Component {
                 >
                   <h6 className="UC">{'Login'}</h6>
                 </button>
-                {/*<button className="btn btn-primary custom-btn my-1 p-xs-2 p-md-3"
+                <button className="btn btn-primary custom-btn my-1 p-xs-2 p-md-3"
                   onClick={this.signUp}
                   type="button"
                 >
                   <h6 className="UC">{'Sign Up'}</h6>
-                </button>*/}
+                </button>
                 {/*<button className="btn btn-primary p-xs-2 p-md-3 my-2"
                   onClick={this.onMlhLogin}
                   type="button"

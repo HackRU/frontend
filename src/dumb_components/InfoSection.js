@@ -3,7 +3,7 @@ import React from 'react';
 import ContentSection from 'dumb_components/ContentSection';
 
 const InfoSection = () => (
-  <ContentSection sectionID="info-list" title="Event Info:">
+  <ContentSection sectionID="info-list" title="Event Info">
     <h5 className="content-title">{'Date'}</h5>
     <p className="content-desc">
       {'October 6th-7th'}
