@@ -1,6 +1,7 @@
 //resURLS.js
 const testLCS = 'https://7c5l6v7ip3.execute-api.us-west-2.amazonaws.com/lcs-test/';
 const deployLCS = 'https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/mlhtest/';
+const miscEP = 'http://hackru-misc.s3-website-us-west-2.amazonaws.com/';
 
 let LCS = deployLCS;
 if(process.env.NODE_ENV === 'development') {
@@ -31,6 +32,8 @@ const resURLS = {
   lcsSendEmails: LCS + 'send-emails',
   lcsSlackURL: LCS + 'dayof-slack',
   lcsUpdateURL: LCS + 'update',
+
+  miscMap: miscEP + 'floorplan.jpg'
   
 
   //NOT USED
