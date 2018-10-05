@@ -37,27 +37,27 @@ class Dashboard extends React.Component {
         <img className="overlay-design d-none d-lg-block overlay-one" alt="ufo" src="../assets/icons/hackethon_alien_noplat_2.png" />  
         <img className="overlay-design d-none d-lg-block overlay-two" alt="ufo" src="../assets/icons/hackethon_alien_noplat_2.png" />
         <div className="row mb-5"> {/*row mb-5 begin*/}
-          <div className="col-xs-12 col-md-5 offset-lg-1 mb-3" id="announcements-list">
+          {/*<div className="col-xs-12 col-md-6 col-lg-5 offset-lg-1 offset-md-0 mb-3">
             <ContentSection sectionID="announcements-list" title="Announcements">
               <SlackContainer />
             </ContentSection>
-          </div>
-          <div className="col-xs-12 col-md-5 mb-3">
+          </div>*/}
+          {/*<div className="col-xs-12 col-md-6 col-lg-5 mb-3">
             <ContentSection sectionID="upcoming-list" title="Upcoming">
-              <Events /> {/*Events component goes here*/}
+              <Events /> {/*Events component goes here}
             </ContentSection>
-          </div>
+          </div>*/}
         </div> {/*row mb-5 end*/}
         <div className="row mb-5"> {/*row mb-5 begin*/}
           <div className="col-xs-12 col-lg-10 offset-lg-1 mb-3">
             <div id="register-root">
               <LoginManagement /> {/*LoginManagement component goes here*/}
             </div>
-            <div id="register-more" />
+            {<div id="register-more" />}
           </div>
         </div> {/*row mb-5 end*/}
         <div className = "row mb-5"> {/*row mb-5 begin*/}
-          <div className="col-xs-12 col-lg-10 offset-md-1 mb-3"> {/*original col-xs-12 col-md-3 mb-3, no id*/}
+          <div className="col-xs-12 col-md-12 col-lg-10 offset-lg-1 offset-md-0 mb-3"> {/*original col-xs-12 col-md-3 mb-3, no id*/}
             <InfoSection />
           </div>
         </div> {/*row mb-5 end*/}

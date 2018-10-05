@@ -198,10 +198,6 @@ button {
   overflow-y: scroll;
 }
 
-::-webkit-scrollbar {
-    width: 0px;
-    background: transparent; /* make scrollbar transparent */
-}
 
 .u-highlight {
     display: inline-block;
@@ -269,6 +265,7 @@ button {
     border-width: 2px;
     border-radius: 20px;
 }
+
 .image-divider img{
   width: 100%;
 }
@@ -309,4 +306,21 @@ button {
   .sub, iframe {
     margin: 0 auto;
   }
+}
+
+::-webkit-scrollbar {
+  
+  width: 10px;
+  background: none;
+}
+
+::-webkit-scrollbar-thumb {
+
+  border-radius: 5px;
+  background: #7852C9;
+}
+
+::webkit-scrollbar-track {
+  
+  border-radius: 5px;
 }
