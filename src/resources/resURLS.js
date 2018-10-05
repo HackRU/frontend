@@ -33,7 +33,7 @@ const resURLS = {
   lcsSlackURL: LCS + 'dayof-slack',
   lcsUpdateURL: LCS + 'update',
 
-  miscMap: miscEP + 'floorplan.jpg'
+  miscMap: miscEP + 'floorplan.jpg',
   
 
   //NOT USED
