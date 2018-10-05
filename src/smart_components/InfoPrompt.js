@@ -184,7 +184,7 @@ class InfoPrompt extends React.Component {
     if(user) {
       //user has not checked in yet, render the prompts
       prompts = (
-        <ContentSection title="Your Info:">
+        <ContentSection title="Your Info">
           <form>
             <span>
               <p className="pb-2 text-danger">{'* -- '}{'Indicates a required field'}</p>

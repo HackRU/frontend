@@ -13,6 +13,7 @@ import SlackContainer from 'smart_components/SlackContainer';
 
 import LoginManagement from 'smart_components/LoginManagement';
 
+import resURLS from 'resources/resURLS';
 //import Slack from 'components/Slack';
 //import Events from 'components/Events';
 
@@ -44,7 +45,7 @@ class Dashboard extends React.Component {
           </div>
           <div className="col-xs-12 col-md-6 col-lg-5 mb-3">
             <ContentSection sectionID="upcoming-list" title="Upcoming">
-              <Events />
+              <Events /> {/*Events component goes here*/}
             </ContentSection>
           </div>
         </div> {/*row mb-5 end*/}
@@ -56,9 +57,18 @@ class Dashboard extends React.Component {
             {<div id="register-more" />}
           </div>
         </div> {/*row mb-5 end*/}
-        <div className = "row mb-5"> {/*row mb-5 begin*/}
+        <div className= "row mb-5"> {/*row mb-5 begin*/}
           <div className="col-xs-12 col-md-12 col-lg-10 offset-lg-1 offset-md-0 mb-3"> {/*original col-xs-12 col-md-3 mb-3, no id*/}
             <InfoSection />
+          </div>
+        </div> {/*row mb-5 end*/}
+        <div className= "row mb-5"> {/*row mb-5 begin*/}
+          <div className="col-xs-12 col-md-12 col-lg-10 offset-lg-1 offset-md-0 mb-3">
+            <ContentSection sectionID="image" title="Floorplan">
+              <a href={resURLS.miscMap} target="_blank">
+                <img className="img-fluid" src={resURLS.miscMap} />
+              </a>  
+            </ContentSection>
           </div>
         </div> {/*row mb-5 end*/}
         <div className="row mb-5"> {/*row mb-5 nested begin*/}
