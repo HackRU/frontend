@@ -23,6 +23,18 @@ const InfoSection = () => (
       {'Click '}<a href="https://docs.google.com/forms/d/e/1FAIpQLSdGuoY6ATqMlOxOqoiP8FPyzgWMGg60gVzryvUrQBjV6T8h-w/viewform">{'here'}</a>{' to sign up'}
     </p>
     */}
+
+    <h5 className="content-title">{'Other'}</h5>
+    <p className="content-desc font-weight-bold blue">
+      <a className="blue" href="./waiver.pdf" target="_blank">
+        {'Click here for the waiver'}
+      </a>
+      <br />
+      <a className="blue" href="./menu.pdf" target="_blank">
+        {'Click here for the menu'}
+      </a>
+    </p>
+    
     <h5 className="content-title">{'Questions?'}</h5>
     <p className="content-desc">
       {'Email us at '}<a href="mailto:info@hackru.org">{'info@hackru.org'}</a>
