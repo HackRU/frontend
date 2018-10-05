@@ -545,8 +545,8 @@ const getStatus = (user) => (
       'rejected': 'Application submitted',
       'checked-in': 'Checked in!',
       'confirmation': 'Accepted! Please RSVP',
-      'coming': 'Planning to attend',
-      'not-coming': 'Not planning to attend',
+      'coming': 'Attending',
+      'not-coming': 'Not Attending',
       'confirmed': 'Attendance confirmed!',
       'waitlist': 'Application submitted'
     };
