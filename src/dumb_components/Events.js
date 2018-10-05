@@ -14,9 +14,7 @@ class Events extends React.Component {
   }
 
   state = {
-    dataIsBody: {
-      summary: [],
-    },
+    body: []
   }
 
 
@@ -28,9 +26,8 @@ class Events extends React.Component {
           credentials: 'omit'
         });
       const blocks = await res.json();
-      const dataBody = blocks;
       this.setState({
-        text: blocks.body
+        body: blocks.body
       });
     } catch (e) {
       console.log(e);
@@ -44,19 +41,19 @@ class Events extends React.Component {
 
     return (
       <div className="">
-        {this.state.summary && this.state.summary.map(key =>
+        {this.state.body && this.state.body.map(key =>
           (<span>
             <h5 className="content-title">
               {(key.summary)}
-            </h5>    
-            <p className="content-desc mb-3">   
+            </h5>
+            <p className="content-desc mb-3">
               <span className="font-weight-bold">
-                {day(key.start.dateTime)} {tConvert(time(key.start.dateTime))} - {tConvert(time(key.end.dateTime))} 
+                { `${day(key.start.dateTime)} ${tConvert(time(key.start.dateTime))} - ${tConvert(time(key.end.dateTime))}` }
               </span>
-              <br/> 
+              <br/>
               {key.location && ' Location: ' + key.location}
             </p>
-          </span>)        
+          </span>)
         )}
       </div>
     );

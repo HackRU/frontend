@@ -37,16 +37,16 @@ class Dashboard extends React.Component {
         <img className="overlay-design d-none d-lg-block overlay-one" alt="ufo" src="../assets/icons/hackethon_alien_noplat_2.png" />  
         <img className="overlay-design d-none d-lg-block overlay-two" alt="ufo" src="../assets/icons/hackethon_alien_noplat_2.png" />
         <div className="row mb-5"> {/*row mb-5 begin*/}
-          {/*<div className="col-xs-12 col-md-6 col-lg-5 offset-lg-1 offset-md-0 mb-3">
+          <div className="col-xs-12 col-md-6 col-lg-5 offset-lg-1 offset-md-0 mb-3">
             <ContentSection sectionID="announcements-list" title="Announcements">
               <SlackContainer />
             </ContentSection>
-          </div>*/}
-          {/*<div className="col-xs-12 col-md-6 col-lg-5 mb-3">
+          </div>
+          <div className="col-xs-12 col-md-6 col-lg-5 mb-3">
             <ContentSection sectionID="upcoming-list" title="Upcoming">
-              <Events /> {/*Events component goes here}
+              <Events />
             </ContentSection>
-          </div>*/}
+          </div>
         </div> {/*row mb-5 end*/}
         <div className="row mb-5"> {/*row mb-5 begin*/}
           <div className="col-xs-12 col-lg-10 offset-lg-1 mb-3">

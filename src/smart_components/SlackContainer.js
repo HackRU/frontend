@@ -30,20 +30,19 @@ class SlackContainer extends Component {
     }
   }
 
-  getMessages = () => (
-    this.state.text.map(message => ({
-      // Strip brackets and colon artifacts from slack
-      // Do not match patterns with interior whitespace
-      text: message.text && message.text.replace(/(:[^:\s]*:)|(<[^>\s]*>)/g, '').trim(),
-      date: new Date(message.ts * 1000).toLocaleDateString(),
-      time: new Date(message.ts * 1000).toLocaleTimeString()
-    }))
-  )
-
   render = () => (
     <div>
       {
-        this.getMessages().map((message, index) => <SlackMessage key={index} message={message} />)
+        this.state.text
+          .filter(message => message.text && message.ts)
+          .map(message => ({
+            // Strip brackets and colon artifacts from slack
+            // Do not match patterns with interior whitespace
+            text: message.text && message.text.replace(/(:[^:\s]*:)|(<[^>\s]*>)/g, '').trim(),
+            date: new Date(message.ts * 1000).toLocaleDateString(),
+            time: new Date(message.ts * 1000).toLocaleTimeString()
+          }))
+          .map((message, index) => <SlackMessage key={index} message={message} />)
       }
     </div>
   )
