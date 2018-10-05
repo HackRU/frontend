@@ -44,7 +44,7 @@ class Dashboard extends React.Component {
           </div>
           <div className="col-xs-12 col-md-6 col-lg-5 mb-3">
             <ContentSection sectionID="upcoming-list" title="Upcoming">
-              <Events />
+              <Events /> {/*Events component goes here*/}
             </ContentSection>
           </div>
         </div> {/*row mb-5 end*/}
