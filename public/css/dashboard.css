@@ -73,7 +73,7 @@ h1, h2, h3, h4, h5, h6, p {
 
 .profile-text {
     text-overflow: ellipsis;
-    overflow: scroll;
+    /*overflow: scroll;*/
 }
 
 #dashboard-content {
@@ -308,19 +308,21 @@ button {
   }
 }
 
-::-webkit-scrollbar {
-  
-  width: 10px;
-  background: none;
-}
 
-::-webkit-scrollbar-thumb {
 
-  border-radius: 5px;
-  background: #7852C9;
-}
+  ::-webkit-scrollbar {
+    
+    width: 10px;
+    background: none;
+  }
 
-::webkit-scrollbar-track {
-  
-  border-radius: 5px;
-}
+  ::-webkit-scrollbar-thumb {
+
+    border-radius: 5px;
+    background: #7852C9;
+  }
+
+  ::-webkit-scrollbar-track {
+    
+    border-radius: 5px;
+  }
