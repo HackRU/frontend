@@ -130,9 +130,9 @@ class LoginForm extends React.Component {
           </form>
         </div>
       </ContentSection>
-      <ContentSection bodyClasses="regiser-root" headerClasses="mt-4" title="Registration is Closed!">
+      {/*<ContentSection bodyClasses="regiser-root" headerClasses="mt-4" title="Registration is Closed!">
         <p className="content-desc">{'HackRU is not currently accepting new registrants at this time. You may login and alter the details of an existing application.'}</p>
-      </ContentSection>
+      </ContentSection>*/}
     </Fragment>
   );
 }
