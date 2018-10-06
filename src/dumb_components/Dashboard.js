@@ -5,6 +5,7 @@ import 'styles/index.css';
 import 'styles/App.css';
 
 import DashboardProfile from 'dumb_components/DashboardProfile';
+import DetailLinks from 'dumb_components/DetailLinks';
 import Events from 'dumb_components/Events';
 import InfoSection from 'dumb_components/InfoSection';
 import ImportantLinks from 'dumb_components/ImportantLinks';
@@ -38,6 +39,11 @@ class Dashboard extends React.Component {
         <img className="overlay-design d-none d-lg-block overlay-one" alt="ufo" src="../assets/icons/hackethon_alien_noplat_2.png" />  
         <img className="overlay-design d-none d-lg-block overlay-two" alt="ufo" src="../assets/icons/hackethon_alien_noplat_2.png" />
         <div className="row mb-5"> {/*row mb-5 begin*/}
+          <div className="col-xs-12 col-lg-10 offset-lg-1 mb-3">
+            <ContentSection title="Important Links">
+              <DetailLinks />
+            </ContentSection>
+          </div>
           <div className="col-xs-12 col-md-6 col-lg-5 offset-lg-1 offset-md-0 mb-3">
             <ContentSection sectionID="announcements-list" title="Announcements">
               <SlackContainer />
