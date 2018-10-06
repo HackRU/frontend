@@ -2,16 +2,31 @@
 import React from 'react';
 import ContentSection from 'dumb_components/ContentSection';
 
+import resURLS from 'resources/resURLS';
+
 const InfoSection = () => (
   <ContentSection sectionID="info-list" title="Event Info">
     <h5 className="content-title">{'Date'}</h5>
     <p className="content-desc">
       {'October 6th-7th'}
     </p>
-    <h5 className="content-title">{'Location'}</h5>
-    <span className="font-weight-bold blue"><a className="blue" href="https://goo.gl/maps/SLPeZQ4PCfH2" target="_blank"  >{'College Ave Student Center'}</a></span>
+    <h5 className="content-title">{'Location'}</h5>    
     <p className="content-desc">
-      {'126 College Ave'}<br />{'New Brunswick, '}<br />{'NJ 08901'}
+      <span className="font-weight-bold blue">
+        <a className="blue"
+          href="https://goo.gl/maps/SLPeZQ4PCfH2" 
+          target="_blank" 
+          rel="noopener noreferrer"
+        >
+          {'College Ave Student Center'}
+        </a>
+      </span>
+      <br />
+      {'126 College Ave'}
+      <br />
+      {'New Brunswick, '}
+      <br />
+      {'NJ 08901'}
     </p>
     {/*
     <h5 className="content-title">{'Devpost'}</h5>
@@ -24,15 +39,21 @@ const InfoSection = () => (
     </p>
     */}
 
-    <h5 className="content-title">{'Other'}</h5>
-    <p className="content-desc font-weight-bold blue">
-      <a className="blue" href="./waiver.pdf" target="_blank">
-        {'Click here for the waiver'}
-      </a>
-      <br />
-      <a className="blue" href="./menu.pdf" target="_blank">
-        {'Click here for the menu'}
-      </a>
+    <h5 className="content-title">{'**Important Details**'}</h5>
+    <p className="content-desc">
+      <span className="font-weight-bold blue">
+        <a className="blue" href={resURLS.waiver} target="_blank" rel="noopener noreferrer">
+          {'Click here for the event waiver'}
+        </a>
+        <br />
+        <a className="blue" href={resURLS.menu} target="_blank" rel="noopener noreferrer">
+          {'Click here for the menu'}
+        </a>
+        <br />
+        <a className="blue" href={resURLS.devpost} target="_blank" rel="noopener noreferrer">
+          {'Click here to go the event Devpost'}
+        </a>
+      </span>
     </p>
     
     <h5 className="content-title">{'Questions?'}</h5>

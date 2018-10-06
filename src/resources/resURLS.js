@@ -35,6 +35,9 @@ const resURLS = {
 
   miscMap: miscEP + 'floorplan.jpg',
   
+  waiver: 'waiver.pdf',
+  menu: 'menu.pdf',
+  devpost: 'https://hackru-f18.devpost.com/',
 
   //NOT USED
 
