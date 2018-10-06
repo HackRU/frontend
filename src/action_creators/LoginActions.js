@@ -233,7 +233,8 @@ export const signUp = (user) => (
         },
         body: JSON.stringify({
           email: user.email,
-          password: user.password
+          password: user.password,
+          registration_status: 'waitlist'
         })
       }).then(resp => resp.json())
         .then(data => {
