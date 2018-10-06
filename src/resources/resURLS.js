@@ -38,6 +38,7 @@ const resURLS = {
   waiver: 'waiver.pdf',
   menu: 'menu.pdf',
   devpost: 'https://hackru-f18.devpost.com/',
+  slack: 'http://bit.ly/hackruf18',
 
   //NOT USED
 
