@@ -39,6 +39,7 @@ const resURLS = {
   menu: 'menu.pdf',
   devpost: 'https://hackru-f18.devpost.com/',
   slack: 'http://bit.ly/hackruf18',
+  helpq: 'https://hackru-helpq.herokuapp.com/',
 
   //NOT USED
 
