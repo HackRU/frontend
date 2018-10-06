@@ -6,29 +6,6 @@ import resURLS from 'resources/resURLS';
 
 const InfoSection = () => (
   <ContentSection sectionID="info-list" title="Event Info">
-
-    <h5 className="content-title">{'Important Details'}</h5>
-    <p className="content-desc">
-      <span className="font-weight-bold blue">
-        <a className="blue" href={resURLS.waiver} target="_blank" rel="noopener noreferrer">
-          {'Click here for the event waiver'}
-        </a>
-        <br />
-        <a className="blue" href={resURLS.devpost} target="_blank" rel="noopener noreferrer">
-          {'Click here to go the event Devpost'}
-        </a>
-        <br />
-        <a className="blue" href={resURLS.slack} target="_blank" rel="noopener noreferrer">
-          {'Click here to join the event Slack'}
-        </a>
-        <br />
-        <a className="blue" href={resURLS.menu} target="_blank" rel="noopener noreferrer">
-          {'Click here for the food menu'}
-        </a>
-      </span>
-    </p>
-
-
     <h5 className="content-title">{'Date'}</h5>
     <p className="content-desc">
       {'October 6th-7th'}
