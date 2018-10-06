@@ -36,7 +36,7 @@ class Events extends React.Component {
 
   render () {
 
-    const day = (dt) => (dt.split('T')[0].split('-')[2] === '6')? 'Saturday': 'Sunday';
+    const day = (dt) => (dt.split('T')[0].split('-')[2] === '06')? 'Saturday': 'Sunday';
     const time = (dt) => dt.split('T')[1].split('-')[0];
 
     return (
