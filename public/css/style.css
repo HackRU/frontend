@@ -102,7 +102,7 @@ body {
 }
 
 .gold, .faq-q {
-  color: #FFDF00 !important;
+  color: #0b4538 !important;
   text-transform: uppercase;
   font-weight: bold;
   font-size: 20px;
@@ -138,23 +138,23 @@ body {
   background: none !important; }
 
 .theme-purple {
-  color: #7852C9; }
+  color: #26E8BD; }
 
 .theme-red {
-  color: #7852C9; }
+  color: #26E8BD; }
 
 .text-black {
   color: black; }
 
 .bg-gradient, .bg-splash, #hero, .about-map-container, .progress-bar, .li-footer, .li-mobile-footer {
-  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#7b4397+0,dc2430+100 */
-  background: #39275E;
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#53DEBF+0,dc2430+100 */
+  background: #5A7A96;
   /* Old browsers */
-  background: -moz-linear-gradient(-45deg, #39275E 0%, #7852C9 100%);
+  background: -moz-linear-gradient(-45deg, #5A7A96 0%, #26E8BD 100%);
   /* FF3.6-15 */
-  background: -webkit-linear-gradient(-45deg, #39275E 0%, #7852C9 100%);
+  background: -webkit-linear-gradient(-45deg, #5A7A96 0%, #26E8BD 100%);
   /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(135deg, #39275E 0%, #7852C9 100%);
+  background: linear-gradient(135deg, #5A7A96 0%, #26E8BD 100%);
   /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='$color-purple', endColorstr='$color-red', GradientType=1);
   /* IE6-9 fallback on horizontal gradient */ }
@@ -164,10 +164,10 @@ body {
   background-size: cover; }
 
 a {
-  color: #7852C9;
+  color: #26E8BD;
 }
 a:hover, a:focus {
-  color: #39275E;
+  color: #5A7A96;
 }
 
 .z-top {
@@ -211,13 +211,13 @@ h1,h2,h3,h4,h5,h6,.btn, .row-title-box .row-title, .faq-q, .spons-level, .perk-r
   font-family: "Helvetica Regular", sans-serif; }
 
 .btn {
-  background-color: #FFF242;
-  color: #000000;
+  background-color: #FF80CF;
+  color: #FFFFFF;
   border: none; }
   .btn:hover {
-    background-color: #39275E; }
+    background-color: #5A7A96; }
   .btn:active {
-    background-color: #39275E;
+    background-color: #5A7A96;
     border: none; }
   .btn:focus {
     color: white;
@@ -229,13 +229,13 @@ h1,h2,h3,h4,h5,h6,.btn, .row-title-box .row-title, .faq-q, .spons-level, .perk-r
   border: 1px solid; }
 
 .btn-attend.btn.active, .btn-attend.btn:active {
-  background-color: #7B4397;
-  border: 1px solid #7B4397;
+  background-color: #53DEBF;
+  border: 1px solid #53DEBF;
   outline: none;
   box-shadow: none !important; }
 
 .btn-attend.btn.hover, .btn-attend.btn:hover {
-  border-color: #7B4397; }
+  border-color: #53DEBF; }
 
 .btn-group label {
   margin-bottom: 0; }
@@ -281,7 +281,7 @@ h1,h2,h3,h4,h5,h6,.btn, .row-title-box .row-title, .faq-q, .spons-level, .perk-r
     margin: 10px;
   }
     #nav-bar a:hover {
-      color: #FFF242; }
+      color: #FF80CF; }
   #nav-bar .nav-bar-link, #nav-bar .nav-bar-logo {
     display: inline-block;
     vertical-align: middle;
@@ -306,7 +306,7 @@ h1,h2,h3,h4,h5,h6,.btn, .row-title-box .row-title, .faq-q, .spons-level, .perk-r
     padding-top: 30px; }
 
 #sponsorship-hero {
-  color: #7B4397;
+  color: #53DEBF;
   background-color: white; }
 
 #hero-img {
@@ -353,7 +353,7 @@ h1,h2,h3,h4,h5,h6,.btn, .row-title-box .row-title, .faq-q, .spons-level, .perk-r
   color: white;
   margin-bottom: 30px; }
 .faq-a a {
-  color: #FFF242;
+  color: #FF80CF;
 }
 
 .spons-level {
@@ -363,7 +363,7 @@ h1,h2,h3,h4,h5,h6,.btn, .row-title-box .row-title, .faq-q, .spons-level, .perk-r
 .spons-level-button {
   color: white; }
   .spons-level-button:hover {
-    background-color: #7B4397 !important; }
+    background-color: #53DEBF !important; }
 
 .perk-row .perk-select-col {
   /*Horizontal*/
@@ -392,11 +392,11 @@ h1,h2,h3,h4,h5,h6,.btn, .row-title-box .row-title, .faq-q, .spons-level, .perk-r
     line-height: 4vh; }
 
 #sp-email, #sp-message {
-  border: 1px #7B4397 solid; }
+  border: 1px #53DEBF solid; }
 
 .splogo {
   width: 100%;
-  border: 1px #7852C9 dotted;
+  border: 1px #26E8BD dotted;
   border-radius: 25px;
   padding: 15px; }
 
@@ -407,7 +407,7 @@ h1,h2,h3,h4,h5,h6,.btn, .row-title-box .row-title, .faq-q, .spons-level, .perk-r
 
 .footer {
   height: 10vh;
-  color: #7852C9;
+  color: #26E8BD;
   background-color: #white; }
   .footer .text-vcenter {
     margin: 0;
@@ -415,7 +415,7 @@ h1,h2,h3,h4,h5,h6,.btn, .row-title-box .row-title, .faq-q, .spons-level, .perk-r
   .footer .social-links {
     font-size: 175%; }
   .footer a {
-    color: #7852C9;
+    color: #26E8BD;
     line-height: 10vh;
     padding: 15px 10px; }
   .footer .footer-logo {
@@ -423,7 +423,7 @@ h1,h2,h3,h4,h5,h6,.btn, .row-title-box .row-title, .faq-q, .spons-level, .perk-r
     height: calc(10vh*0.45); }
 
 .li-nav-bar {
-  background-color: #7B4397;
+  background-color: #53DEBF;
   background-image: url(../assets/bg-splash.jpg);
   background-size: cover; }
   .li-nav-bar .li-nav-bar-logo {
@@ -504,7 +504,7 @@ h1,h2,h3,h4,h5,h6,.btn, .row-title-box .row-title, .faq-q, .spons-level, .perk-r
   padding-right: 25px; }
 
 .ru-card {
-  border: #7B4397 solid 1px;
+  border: #53DEBF solid 1px;
   padding: 0px 25px 25px 25px;
   margin-bottom: 25px;
   border-radius: 10px; }
@@ -516,7 +516,7 @@ h1,h2,h3,h4,h5,h6,.btn, .row-title-box .row-title, .faq-q, .spons-level, .perk-r
   margin-bottom: 30px;
   font-weight: bold; }
   .ru-card-title span {
-    color: #7B4397;
+    color: #53DEBF;
     padding: 10px 20px;
     border-radius: 10px; }
 
@@ -551,7 +551,7 @@ h1,h2,h3,h4,h5,h6,.btn, .row-title-box .row-title, .faq-q, .spons-level, .perk-r
 }
 
 .skew a {
-  color: #FFF242;
+  color: #0b4538;
 }
 
 .c {
