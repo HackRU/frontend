@@ -93,11 +93,11 @@ class Admin extends React.Component {
               { this.state.user &&
         Object.keys(this.state.user).map(k =>
           (<div className="form-check form-check-inline">
-            <input className="agg-filter form-check-input"
+            <input className="form-check-input agg-filter"
               id={'aggregate-' + k}
               type="checkbox"
             />
-            <label className="form-check-label form-text"
+            <label className="form-check-label"
               htmlFor={'aggregate-' + k}
             >{k}</label>
           </div>)
