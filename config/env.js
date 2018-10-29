@@ -22,6 +22,7 @@ var dotenvFiles = [
   // since normally you expect tests to produce the same
   // results for everyone
   NODE_ENV !== 'test' && `${paths.dotenv}.local`,
+  paths.nodepath,
   paths.dotenv,
 ].filter(Boolean);
 
