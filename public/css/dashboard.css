@@ -1,7 +1,7 @@
 :root {
     --color-zero: #ffffff;
-    --color-one: #7852C9; /* RGB = 35,169,225 */
-    --color-two: #39275E; /* RGB = 31,74,181 */
+    --color-one: #26E8BD; /* RGB = 35,169,225 */
+    --color-two: #5A7A96; /* RGB = 31,74,181 */
 }
 
 
@@ -85,7 +85,7 @@ h1, h2, h3, h4, h5, h6, p {
     padding-bottom: 40px;
     
     /* background: rgba(239, 232, 255, 0.1);  */
-    background-image: linear-gradient(to bottom right, rgb(248, 246, 254), rgb(197, 183, 228))
+    background-image: linear-gradient(to bottom right, rgb(248, 246, 254), rgb(171, 255, 235))
 }
 
 
@@ -319,7 +319,7 @@ button {
   ::-webkit-scrollbar-thumb {
 
     border-radius: 5px;
-    background: #7852C9;
+    background: #5FFFDC;
   }
 
   ::-webkit-scrollbar-track {
