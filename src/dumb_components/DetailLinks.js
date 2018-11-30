@@ -2,21 +2,19 @@ import React from 'react';
 import resURLS from 'resources/resURLS';
 
 const Detail = ({ iconClass, link, text }) => (
-  <div className="col-xs-1 col-md-2 text-center ">
-    <a href={link} target="_blank" rel="noopener noreferrer">
-      <h1>
-        <i className={`${iconClass} theme-red blue`} aria-hidden="true" />
-      </h1>
-      <h6 className="about-icon-desc text-uppercase bold-text blue">
-        { text }
-      </h6>
-    </a>
-  </div>
+  <a href={link} role="button" className="col-xs-1 col-md-2 btn btn-outline-primary text-center blue" target="_blank" rel="noopener noreferrer">
+    <h1>
+      <i className={`${iconClass} `} aria-hidden="true" />
+    </h1>
+    <h6 className="about-icon-desc text-uppercase bold-text">
+      { text }
+    </h6>
+  </a>
 );
 
 const DetailLinks = () => (
 
-  <div className="row offset-sm-0 offset-md-1" style={{color: 'red'}}>
+  <div className="row offset-sm-0 d-flex justify-content-center" >
     <Detail iconClass="fa fa-file" link={resURLS.waiver} text="Waiver" />
     <Detail iconClass="fa fa-code" link={resURLS.devpost} text="DevPost" />
     <Detail iconClass="fab fa-slack-hash" link={resURLS.slack} text="Slack" />
