@@ -86,40 +86,30 @@
     text-align: justify; } }
 body {
   overflow-x: hidden;
-  background: #white;
+
 }
 
 .bronze {
   color: #C96F0D !important; 
-  font-weight: bold;
-  font-size: 20px;
 }
 
 .silver {
   color: #B7B7B7 !important;
-  font-weight: bold;
-  font-size: 20px;
 }
 
 .gold, .faq-q {
-  color: #0b4538 !important;
+  color: #d3f8f0 !important;
   text-transform: uppercase;
-  font-weight: bold;
-  font-size: 20px;
 }
 
 .plat {
   color: #D8D8D8 !important; 
   text-transform: uppercase;
-  font-weight: bold;
-  font-size: 20px;
 }
 
 .titlepack {
   color: white !important;
   text-transform: uppercase;
-  font-weight: bold;
-  font-size: 20px;
 }
 
 .bg-bronze {
@@ -166,6 +156,7 @@ body {
 a {
   color: #26E8BD;
 }
+
 a:hover, a:focus {
   color: #5A7A96;
 }
@@ -192,26 +183,30 @@ a:hover, a:focus {
 .min-quarter-height {
   min-height: 25vh; }
 
+
+
 h1,h2,h3,h4,h5,h6,.btn, .row-title-box .row-title, .faq-q, .spons-level, .perk-row .perk-desc, .splogo-text, .footer a, .li-nav-bar .nav-item:hover .nav-link, .li-section-title-box .li-section-title, .social-link-card p, .li-footer a, .li-mobile-footer a {
   font-family: "Circular Std Bold", sans-serif;
 
 }
 
+
+/* Check where this is used and remove! */
 .bold-text {
   font-family: "Circular Std Bold", sans-serif; 
-  font-size: 1.6rem;
-  white-space: nowrap;
+/*  font-size: 1.6rem; */
+
 }
 
 .season-text {
-  font-size: 2.7rem;
+/*  font-size: 2.7rem; */
 }
 
 *, input, select, textarea {
   font-family: "Helvetica Regular", sans-serif; }
 
 .btn {
-  background-color: #FF80CF;
+  background-color: #E6008E;
   color: #FFFFFF;
   border: none; }
   .btn:hover {
@@ -281,7 +276,7 @@ h1,h2,h3,h4,h5,h6,.btn, .row-title-box .row-title, .faq-q, .spons-level, .perk-r
     margin: 10px;
   }
     #nav-bar a:hover {
-      color: #FF80CF; }
+      color: #E6008E; }
   #nav-bar .nav-bar-link, #nav-bar .nav-bar-logo {
     display: inline-block;
     vertical-align: middle;
@@ -353,7 +348,7 @@ h1,h2,h3,h4,h5,h6,.btn, .row-title-box .row-title, .faq-q, .spons-level, .perk-r
   color: white;
   margin-bottom: 30px; }
 .faq-a a {
-  color: #FF80CF;
+    color: #E6008E;
 }
 
 .spons-level {
@@ -371,7 +366,7 @@ h1,h2,h3,h4,h5,h6,.btn, .row-title-box .row-title, .faq-q, .spons-level, .perk-r
   background-position: top;
   background-size: 8px 1px;
   background-repeat: repeat-x; 
-  font-size: 1.3rem;
+/*  font-size: 1.3rem; */
 }
 
 .perk-row .perk-select {
@@ -551,7 +546,7 @@ h1,h2,h3,h4,h5,h6,.btn, .row-title-box .row-title, .faq-q, .spons-level, .perk-r
 }
 
 .skew a {
-  color: #0b4538;
+  color: #d3f8f0;
 }
 
 .c {
