@@ -9,8 +9,9 @@ import React, { Component } from "react"; // Default react imports for the compo
 import { BrowserRouter, Route, Switch } from "react-router-dom"; // React router components
 import {
     LandingPage,
-    SchedulePage,
+    DashboardPage,
     E404 } from "./components/Pages"; // Router Pages
+import MLHBadge from "./MLHBadge";
 /***************************************************************IMPORTS***************************************************************/
 
 /*****************************************************************APP*****************************************************************/
@@ -23,11 +24,16 @@ import {
 class App extends Component {
     render() {
         return (
-            <BrowserRouter>
+            <BrowserRouter style={{ width: "100%" }}>
+                {/* BrowserRouter wil allow us to switch between the different pages in our SPA based on the URL routing */}
                 <div>
+                    {/* We need to show this on our webpage at all times, so we're just going to dump it in the root */}
+                    <MLHBadge />
                     <Switch>
+                        {/* This is where the URL routing magic actually happens */}
                         <Route exact path="/" component={LandingPage} />
-                        <Route exact path="/schedule" component={SchedulePage} />
+                        <Route exact path="/dashboard" component={DashboardPage} />
+                        {/* If none of the other urls were matched, we will show a 404 page to the user */}
                         <Route component={E404} />
                     </Switch>
                 </div>

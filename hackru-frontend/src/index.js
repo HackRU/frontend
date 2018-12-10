@@ -5,11 +5,13 @@
  * Created 12/09/18
  */
 /***************************************************************IMPORTS***************************************************************/
-import React from "react";
-import ReactDOM from "react-dom";
-import { register, unregister } from "./serviceWorker";
-import App from "./App";
-import strings from "./Strings";
+import React from "react"; // Required react dependencies
+import ReactDOM from "react-dom"; // Required react dependencies
+import { register, unregister } from "./serviceWorker"; // Service worker dependencies
+import App from "./App"; // Default app and component to be rendered
+import { defaults } from "./Defaults"; // The standard list of strings that we will be using throughout the application
+import "bootstrap/dist/css/bootstrap.min.css"; // Boostrap import
+import "./index.css";
 /***************************************************************IMPORTS***************************************************************/
 
 /*****************************************************************APP*****************************************************************/
@@ -22,7 +24,7 @@ import strings from "./Strings";
  */
 function main(worker) {
     // Render the default title
-    ReactDOM.render(strings.title, document.getElementById("title"))
+    ReactDOM.render(defaults.title, document.getElementById("title"))
     // Render the default root object
     ReactDOM.render(<App />, document.getElementById("root"));
     // Decide whether or not we need to enable the default serviceworker
