@@ -7,14 +7,14 @@
 /***************************************************************IMPORTS***************************************************************/
 import React from "react";
 import ReactDOM from "react-dom";
-import { Route, Link, BrowserRouter as Router } from 'react-router-dom'
-import {register as swRegister, unregister as swUnregister} from "./serviceWorker";
+import { register, unregister } from "./serviceWorker";
+import App from "./App";
+import strings from "./Strings";
 /***************************************************************IMPORTS***************************************************************/
 
 /*****************************************************************APP*****************************************************************/
 /**
- * Application entry point. Here we decide what to actually render to the user based on the url. We also control sitewide variables
- * and states here.
+ * Application entry point. Here we render the standard root components that are standard to all pages in the website
  * 
  * @param {boolean} worker Toggle the default react service worker.
  *      We default this to false because enabling the service worker brings with it application caching, which causes production
@@ -22,13 +22,14 @@ import {register as swRegister, unregister as swUnregister} from "./serviceWorke
  */
 function main(worker) {
     // Render the default title
-    ReactDOM.render("HackRU Spring 2019", document.getElementById("title"))
-    ReactDOM.render(<div>Shivan</div>, document.getElementById("root"));
+    ReactDOM.render(strings.title, document.getElementById("title"))
+    // Render the default root object
+    ReactDOM.render(<App />, document.getElementById("root"));
     // Decide whether or not we need to enable the default serviceworker
     if (worker) {
-        swRegister();
+        register();
     } else {
-        swUnregister();
+        unregister();
     }
 }
 main(false)
