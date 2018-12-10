@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 
-class Schedule extends Component {
+class Dashboard extends Component {
     render() {
         return (
             <div className="App">
-                Schedule
+                Dashboard
             </div>
         );
     }
 }
 
-export default Schedule;
+export default Dashboard;
