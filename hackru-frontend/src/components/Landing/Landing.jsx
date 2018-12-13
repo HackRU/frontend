@@ -9,6 +9,7 @@ import React, { Component } from "react";
 import { Container, Row } from "reactstrap";
 import Navigation from "./Navigation";
 import Home from "./Sections/Home";
+import HomePOC from "./Sections/HomePOC";
 import { navlinks } from "../../Defaults";
 /***************************************************************IMPORTS***************************************************************/
 
@@ -33,15 +34,27 @@ class LandingPage extends Component {
                 </Row>
             ))
         }
-        return (
-            <Container id="LandingPage" fluid>
-                <Navigation />
-                <Row id="section" style={{ ...sectionStyle, background: "url(./assets/splash-bg-lowglow.png)", backgroundSize: "cover" }}>
-                    <Home />
-                </Row>
-                {rows}
-            </Container>
-        );
+        let poc = true;
+        if (!poc) {
+            return (
+                <Container id="LandingPage" fluid>
+                    <Navigation />
+                    <Row id="section" style={{ ...sectionStyle, background: "url(./assets/splash-bg-lowglow.png)", backgroundSize: "cover" }}>
+                        <Home />
+                    </Row>
+                    {rows}
+                </Container>
+            );
+        } else {
+            return (
+                <Container id="LandingPage" fluid>
+                    <Row id="section" style={{ ...sectionStyle, background: "url(./assets/background.png)", backgroundSize: "cover" }}>
+                        <HomePOC />
+                    </Row>
+                    {rows}
+                </Container>
+            );
+        }
     }
 }
 /*****************************************************************APP*****************************************************************/
