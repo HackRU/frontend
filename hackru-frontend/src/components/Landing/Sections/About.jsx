@@ -15,7 +15,7 @@ import React, { Component } from "react";
 class About extends Component {
     render() {
         return (
-            <div>
+            <div style={{ zIndex: "10", backgroundColor: "rgba(255, 255, 255, 1)", width: "100%" }}>
                 About
             </div>
         )
