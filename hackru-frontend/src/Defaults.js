@@ -19,7 +19,8 @@ const defaults =  {
     "locationText": "College Avenue Student Center",
     "universityText": "Rutgers University",
     "mobileWidthThresholdSensitive": 1500,
-    "mobileWidthThresholdRelaxed": 1200
+    "mobileWidthThresholdRelaxed": 1200,
+    "poc": true
 }
 /***************************************************************STRINGS***************************************************************/
 

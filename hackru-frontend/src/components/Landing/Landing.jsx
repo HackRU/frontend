@@ -10,7 +10,8 @@ import { Container, Row } from "reactstrap";
 import Navigation from "./Navigation";
 import Home from "./Sections/Home";
 import HomePOC from "./Sections/HomePOC";
-import { navlinks } from "../../Defaults";
+import Aliens from "./Aliens";
+import { defaults, navlinks } from "../../Defaults";
 /***************************************************************IMPORTS***************************************************************/
 
 /*****************************************************************APP*****************************************************************/
@@ -21,7 +22,7 @@ import { navlinks } from "../../Defaults";
 class LandingPage extends Component {
     render() {
         let sectionStyle = {
-            "minHeight": "100vh"
+            minHeight: "100vh",
         }
         let rows = [];
         let keys = Object.keys(navlinks);
@@ -29,13 +30,12 @@ class LandingPage extends Component {
             let url = navlinks[keys[i]].url.substring(1);
             let component = navlinks[keys[i]].component;
             rows.push((
-                <Row id={url} style={{ ...sectionStyle }}>
+                <Row key={url} id={url} style={{ ...sectionStyle }}>
                     {component}
                 </Row>
             ))
         }
-        let poc = true;
-        if (!poc) {
+        if (!defaults.poc) {
             return (
                 <Container id="LandingPage" fluid>
                     <Navigation />
@@ -47,8 +47,15 @@ class LandingPage extends Component {
             );
         } else {
             return (
-                <Container id="LandingPage" fluid>
-                    <Row id="section" style={{ ...sectionStyle, background: "url(./assets/background.png)", backgroundSize: "cover" }}>
+                <Container id="LandingPage" fluid style={{ ...sectionStyle, backgroundColor: "#354a5f" }}>
+                    <div style={{ position: "fixed", zIndex: 1, width: "100%", height: "100%", left: 0, top: 0, opacity: 0.5 }}>
+                        <Aliens />
+                        test
+                    </div>
+                    <div style={{ position: "fixed", zIndex: 2, width: "100%", height: "100%", left: 0, top: 0, background: "url(./assets/background.png)", backgroundSize: "cover", opacity: 0.5 }}>
+
+                    </div>
+                    <Row id="section" style={{ ...sectionStyle }}>
                         <HomePOC />
                     </Row>
                     {rows}
