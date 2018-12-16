@@ -11,7 +11,6 @@ import { register, unregister } from "./serviceWorker"; // Service worker depend
 import App from "./App"; // Default app and component to be rendered
 import { defaults } from "./Defaults"; // The standard list of strings that we will be using throughout the application
 import "bootstrap/dist/css/bootstrap.min.css"; // Boostrap import
-import "./index.css";
 /***************************************************************IMPORTS***************************************************************/
 
 /*****************************************************************APP*****************************************************************/
