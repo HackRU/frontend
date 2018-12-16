@@ -6,12 +6,15 @@
  */
 /***************************************************************IMPORTS***************************************************************/
 import React, { Component } from "react";
-import { Container, Row } from "reactstrap";
+import { Container, Row, Col } from "reactstrap";
 import Navigation from "./Navigation";
 import Home from "./Sections/Home";
 import HomePOC from "./Sections/HomePOC";
 import Aliens from "./Aliens";
-import { defaults, navlinks } from "../../Defaults";
+import { ParallaxProvider } from "react-scroll-parallax";
+import { defaults, navlinks, theme } from "../../Defaults";
+import ScrollableAnchor from "react-scrollable-anchor";
+import { Icon } from "react-fa";
 /***************************************************************IMPORTS***************************************************************/
 
 /*****************************************************************APP*****************************************************************/
@@ -27,13 +30,19 @@ class LandingPage extends Component {
         let rows = [];
         let keys = Object.keys(navlinks);
         for (let i = 0; i < keys.length; i++) {
-            let url = navlinks[keys[i]].url.substring(1);
-            let component = navlinks[keys[i]].component;
-            rows.push((
-                <Row key={url} id={url} style={{ ...sectionStyle }}>
-                    {component}
-                </Row>
-            ))
+            if (navlinks[keys[i]].enabled) {
+                let url = navlinks[keys[i]].url.substring(1);
+                let component = navlinks[keys[i]].component;
+                rows.push((
+                    <ScrollableAnchor key={url} id={url}>
+                        <div>
+                            <Row style={{ ...sectionStyle }}>
+                                {component}
+                            </Row>
+                        </div>
+                    </ScrollableAnchor>
+                ));
+            }
         }
         if (!defaults.poc) {
             return (
@@ -47,18 +56,53 @@ class LandingPage extends Component {
             );
         } else {
             return (
-                <Container id="LandingPage" fluid style={{ ...sectionStyle, backgroundColor: "#354a5f" }}>
+                <Container id="LandingPage" fluid style={{ ...sectionStyle, backgroundColor: theme.secondary[1] }}>
+                    <ParallaxProvider>
                     <div style={{ position: "fixed", zIndex: 1, width: "100%", height: "100%", left: 0, top: 0, opacity: 0.5 }}>
                         <Aliens />
-                        test
                     </div>
                     <div style={{ position: "fixed", zIndex: 2, width: "100%", height: "100%", left: 0, top: 0, background: "url(./assets/background.png)", backgroundSize: "cover", opacity: 0.5 }}>
 
                     </div>
-                    <Row id="section" style={{ ...sectionStyle }}>
-                        <HomePOC />
-                    </Row>
+                    <ScrollableAnchor id="home">
+                        <div>
+                            <Row id="section" style={{ ...sectionStyle }}>
+                                <HomePOC />
+                            </Row>
+                        </div>
+                    </ScrollableAnchor>
                     {rows}
+                    </ParallaxProvider>
+                    <div>
+                        <Row style={{ height: 250, overflowY: "hidden", marginTop: -100 }}>
+                            <div className="bg-gradient-left skew-left" style={{ marginTop: 100, padding: 0, left: 0, zIndex: "15", height: "100%", width: "100%" }}>
+                                <div className="skew-right" style={{ padding: 85, textAlign: "center" }}>
+                                    <Container fluid>
+                                        <Row>
+                                            <Col>
+                                                <a href="https://mlh.io/" target="_blank" rel="noopener noreferrer">
+                                                    <img style={{ width: 150, marginTop: -25 }} src="https://static.mlh.io/brand-assets/logo/official/mlh-logo-black.svg" alt="MLH logo" />
+                                                </a>
+                                                <a href="http://usacs.rutgers.edu/" target="_blank" rel="noopener noreferrer">
+                                                    <img style={{ width: 200, marginTop: -40, marginLeft: 25 }} src="./assets/icons/usacs-logo-black.svg" alt="MLH logo" />
+                                                </a>
+                                            </Col>
+                                            <Col>
+                                                <a style={{ color: "white", marginLeft: 10, marginRight: 10 }} href="mailto:info@hackru.org" class="social-links" target="_blank" rel="noopener noreferrer"><Icon size="2x" name="envelope" /></a>
+                                                <a style={{ color: "white", marginLeft: 10, marginRight: 10 }} href="https://www.facebook.com/theHackRU/" class="social-links" target="_blank" rel="noopener noreferrer"><Icon size="2x" name="facebook-square" /></a>
+                                                <a style={{ color: "white", marginLeft: 10, marginRight: 10 }} href="https://www.instagram.com/thehackru/" class="social-links" target="_blank" rel="noopener noreferrer"><Icon size="2x" name="instagram" /></a>
+                                                <a style={{ color: "white", marginLeft: 10, marginRight: 10 }} href="https://medium.com/the-hackru" class="social-links" target="_blank" rel="noopener noreferrer"><Icon size="2x" name="medium" /></a>
+                                                <a style={{ color: "white", marginLeft: 10, marginRight: 10 }} href="https://twitter.com/theHackRU" class="social-links" target="_blank" rel="noopener noreferrer"><Icon size="2x" name="twitter-square" /></a>
+                                            </Col>
+                                            <Col>
+                                                <a style={{ color: "white" }} href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf" target="_blank" rel="noopener noreferrer">MLH's Code of Conduct</a>
+                                            </Col>
+                                        </Row>
+                                    </Container>
+                                </div>
+                            </div>
+                        </Row>
+                    </div>
                 </Container>
             );
         }
