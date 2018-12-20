@@ -33,12 +33,12 @@ const navlinks = {
     },
     "Schedule": {
          "url": "#schedule",
-         "enabled": false,
+         "enabled": true,
          "component": (<Schedule />)
     },
     "Sponsors": {
         "url": "#sponsoers",
-        "enabled": false,
+        "enabled": true,
         "component": (<Sponsors />)
     },
     "FAQs": {

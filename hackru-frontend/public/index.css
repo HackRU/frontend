@@ -1,4 +1,13 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway+Dots');
+
+body::-webkit-scrollbar { 
+    display: none; 
+}
+
+p {
+    font-family: "Circular Std Bold", sans-serif;
+}
+
 #navigation-link {
     font-family: "Circular Std Bold", sans-serif;
     color: white;
@@ -38,22 +47,48 @@
     -webkit-transition: all 0.3s ease-in-out 0s;
     transition: all 0.3s ease-in-out 0s;
 }
+
+
 .theme-home-link:hover:before {
     visibility: visible;
     -webkit-transform: scaleX(1);
     transform: scaleX(1);
 }
+
+.color-priority {
+    width: 100%; 
+    color:  #ffffff !important;
+    z-index: 10;
+}
+
 .bg-gradient-right {
     background: #5A7A96;
     background: linear-gradient(135deg, #5A7A9600, #26E8BD);
+    width: 100vw; 
+    z-index: 10;
 }
+
 .bg-gradient-left {
     background: #5A7A96;
     background: linear-gradient(135deg, #26E8BD, #5A7A9600 );
+    width: 100vw; 
+    z-index: 10;
 }
-.skew-right {
+
+.bg-no-gradient {
+    background: #5A7A96;
+    background: linear-gradient(135deg, rgba(58, 78, 96, 0.516), rgba(69, 94, 116, 0.502) );
+    width: 100vw; 
+    z-index: 10;
+}
+
+.skew-right, .skew-left {
+    padding-top: 2em;
+    padding-bottom: 2em;
+}
+.skew-right { 
     transform: skew(0deg, -4deg);
 }
 .skew-left {
-  transform: skew(0deg, 4deg);
+    transform: skew(0deg, 4deg);
 }
