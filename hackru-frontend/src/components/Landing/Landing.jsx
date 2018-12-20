@@ -25,31 +25,51 @@ import { Icon } from "react-fa";
 class LandingPage extends Component {
     render() {
         let sectionStyle = {
-            minHeight: "100vh",
+            //minHeight: "100vh",
         }
+        let sectionClasses = "col-lg-8 offset-lg-2 col-xs-12 offset-xs-0 skew-left color-priority";
+
         let rows = [];
         let keys = Object.keys(navlinks);
         for (let i = 0; i < keys.length; i++) {
             if (navlinks[keys[i]].enabled) {
                 let url = navlinks[keys[i]].url.substring(1);
                 let component = navlinks[keys[i]].component;
-                rows.push((
-                    <ScrollableAnchor key={url} id={url}>
-                        <div>
-                            <Row style={{ ...sectionStyle }}>
-                                {component}
-                            </Row>
-                        </div>
-                    </ScrollableAnchor>
-                ));
+                if (i % 2 === 0) {
+                    rows.push((
+                        <ScrollableAnchor key={url} id={url}>
+                            <div>
+                                <Row style={{ ...sectionStyle }}> 
+                                    <div className="bg-gradient-right skew-right" >
+                                        <div className={sectionClasses}>
+                                            {component}
+                                        </div>
+                                    </div>
+                                </Row>
+                            </div>
+                        </ScrollableAnchor>
+                    ));
+                } else {
+                    rows.push((
+                        <ScrollableAnchor key={url} id={url}>
+                            <Row style={{ ...sectionStyle }}> 
+                                <div className="bg-no-gradient skew-right" >
+                                    <div className={sectionClasses}>
+                                        {component}
+                                    </div>
+                                </div>
+                            </Row> 
+                        </ScrollableAnchor>
+                    ));
+                } 
             }
         }
         if (!defaults.poc) {
             return (
                 <Container id="LandingPage" fluid>
                     <Navigation />
-                    <Row id="section" style={{ ...sectionStyle, background: "url(./assets/splash-bg-lowglow.png)", backgroundSize: "cover" }}>
-                        <Home />
+                    <Row id="section" style={{ ...sectionStyle, background: "url(./assets/splash-bg-lowglow.png)", backgroundSize: "cover" }}>   
+                        <Home />   
                     </Row>
                     {rows}
                 </Container>
@@ -75,8 +95,8 @@ class LandingPage extends Component {
                     </ParallaxProvider>
                     <div>
                         <Row style={{ height: 250, overflowY: "hidden", marginTop: -100 }}>
-                            <div className="bg-gradient-left skew-left" style={{ marginTop: 100, padding: 0, left: 0, zIndex: "15", height: "100%", width: "100%" }}>
-                                <div className="skew-right" style={{ padding: 85, textAlign: "center" }}>
+                            <div className="bg-gradient-right skew-right" style={{ marginTop: 100, padding: 0, left: 0, zIndex: "15", height: "100%", width: "100%" }}>
+                                <div className="skew-left" style={{ padding: 85, textAlign: "center" }}>
                                     <Container fluid>
                                         <Row>
                                             <Col>
@@ -84,7 +104,7 @@ class LandingPage extends Component {
                                                     <img style={{ width: 150, marginTop: -25 }} src="https://static.mlh.io/brand-assets/logo/official/mlh-logo-black.svg" alt="MLH logo" />
                                                 </a>
                                                 <a href="http://usacs.rutgers.edu/" target="_blank" rel="noopener noreferrer">
-                                                    <img style={{ width: 200, marginTop: -40, marginLeft: 25 }} src="./assets/icons/usacs-logo-black.svg" alt="MLH logo" />
+                                                    <img style={{ width: 100, marginTop: -40, marginLeft: 25 }} src="./assets/icons/usacs-logo-black.svg" alt="MLH logo" />
                                                 </a>
                                             </Col>
                                             <Col>

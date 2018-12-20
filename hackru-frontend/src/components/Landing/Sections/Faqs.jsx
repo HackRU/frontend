@@ -34,7 +34,7 @@ class FAQs extends Component {
             cols = 12;
         }
         return (
-            <div style={{ zIndex: "11", width: "100%", padding: 100, color: "white" }}>
+            <div>
                 <h1 className="display-1 theme-font">FAQs</h1>
                 <hr style={{ backgroundColor: "rgba(255, 255, 255, 0.5)" }} />
                 <Container fluid>
