@@ -16,7 +16,8 @@ class Sponsors extends Component {
     render() {
         return (
             <div>
-                Sponsors
+                <h1 className="display-1 theme-font mb-3">Sponsorship</h1>
+                <p className=""> Our Spring 2019 Sponsors list is coming soon.  In the meantime, if you are interested in sponsoring HackRU, please email <a href="emailto:sponsorship@hackru.org">sponsorship@hackru.org</a>.</p>
             </div>
         )
     }
