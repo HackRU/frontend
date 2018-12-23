@@ -28,7 +28,7 @@ class LandingPage extends Component {
         let sectionStyle = {
             //minHeight: "100vh",
         }
-        let sectionClasses = "col-lg-8 offset-lg-2 col-xs-12 offset-xs-0 skew-left color-priority";
+        let sectionClasses = "col-lg-10 offset-lg-1 col-xs-12 offset-xs-0 skew-left color-priority";
 
         let rows = [];
         let keys = Object.keys(navlinks);
