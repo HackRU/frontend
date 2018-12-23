@@ -53,13 +53,15 @@ class LandingPage extends Component {
                 } else {
                     rows.push((
                         <ScrollableAnchor key={url} id={url}>
-                            <Row style={{ ...sectionStyle }}> 
-                                <div className="bg-no-gradient skew-right" >
-                                    <div className={sectionClasses}>
-                                        {component}
+                            <div>
+                                <Row style={{ ...sectionStyle }}> 
+                                    <div className="bg-no-gradient skew-right" >
+                                        <div className={sectionClasses}>
+                                            {component}
+                                        </div>
                                     </div>
-                                </div>
-                            </Row> 
+                                </Row> 
+                            </div>
                         </ScrollableAnchor>
                     ));
                 } 
