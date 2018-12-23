@@ -18,7 +18,7 @@ class Schedule extends Component {
             <div>
                 <div class="row">
                     <div class="col-12">
-                        <h1 class="display-1 theme-font" id="schedule">Schedule</h1>
+                        <h1 class="display-4 theme-font" id="schedule">Schedule</h1>
                     </div>
                 </div>
             
