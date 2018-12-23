@@ -30,7 +30,7 @@ class Schedule extends Component {
                         <thead>
                             <tr>
                                 <th scope="col">Time</th>
-                                <th scope="col">Event</th>
+                                <th scope="col" >Event</th>
                                 <th scope="col">Location</th>
                             </tr>
                         </thead>
@@ -54,7 +54,7 @@ class Schedule extends Component {
                     </table>
                 </div>
 
-                <div class="col-12 mt-5 mt-lg-0 col-lg-6 text-center">
+                <div class="col-12 mt-5 mt-lg-0 col-lg-6">
                     <h3 class="text-center mb-2">Sunday</h3>
                     <table class="table table-hover">
                         <thead>
