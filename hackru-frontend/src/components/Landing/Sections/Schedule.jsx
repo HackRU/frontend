@@ -36,19 +36,29 @@ class Schedule extends Component {
                         </thead>
                         <tbody>
                             <tr>
-                            <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
+                            <th scope="row">10:00 AM</th>
+                                <td>Check-in</td>
+                                <td>Main Lobby</td>
                             </tr>
                             <tr>
-                            <th scope="row">2</th>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
+                            <th scope="row">11:00 AM</th>
+                                <td>Lunch</td>
+                                <td>Food Table</td>
                             </tr>
                             <tr>
-                            <th scope="row">3</th>
-                                <td>Larry</td>
-                                <td>the Bird</td>
+                            <th scope="row">11:30 AM</th>
+                                <td>Opening Ceremonies</td>
+                                <td>Main Stage</td>
+                            </tr>
+                            <tr>
+                            <th scope="row">1:00 PM</th>
+                                <td>Hacking Begins</td>
+                                <td>Hacking Stations</td>
+                            </tr>
+                            <tr>
+                            <th scope="row">6:00 PM</th>
+                                <td>Dinner</td>
+                                <td>Food Table</td>
                             </tr>
                         </tbody>
                     </table>
@@ -66,19 +76,39 @@ class Schedule extends Component {
                         </thead>
                         <tbody>
                             <tr>
-                            <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
+                            <th scope="row">12:00 AM</th>
+                                <td>Midnight Surprise</td>
+                                <td>(it's a surprise)</td>
                             </tr>
                             <tr>
-                            <th scope="row">2</th>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
+                            <th scope="row">2:00 AM</th>
+                                <td>Midnight Snack</td>
+                                <td>Food Table</td>
                             </tr>
                             <tr>
-                            <th scope="row">3</th>
-                                <td>Larry</td>
-                                <td>the Bird</td>
+                            <th scope="row">7:30 AM</th>
+                                <td>Breakfast</td>
+                                <td>Food Table</td>
+                            </tr>
+                            <tr>
+                            <th scope="row">11:30 AM</th>
+                                <td>Hacking Ends</td>
+                                <td>Hacking Stations</td>
+                            </tr>
+                            <tr>
+                            <th scope="row">11:30 AM</th>
+                                <td>Lunch</td>
+                                <td>Food Table</td>
+                            </tr>
+                            <tr>
+                            <th scope="row">12:00 AM</th>
+                                <td>Demos Begin</td>
+                                <td>Food Table</td>
+                            </tr>
+                            <tr>
+                            <th scope="row">2:00 PM</th>
+                                <td>Closing Ceremonies</td>
+                                <td>Food Table</td>
                             </tr>
                         </tbody>
                     </table>
