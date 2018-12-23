@@ -83,7 +83,7 @@ p {
 }
 
 .skew-right, .skew-left {
-    padding-top: 2em;
+    padding-top: 3em;
     padding-bottom: 2em;
 }
 .skew-right { 
@@ -91,4 +91,8 @@ p {
 }
 .skew-left {
     transform: skew(0deg, 4deg);
+}
+
+.footer-logo {
+    height: calc(10vh*0.45);
 }
