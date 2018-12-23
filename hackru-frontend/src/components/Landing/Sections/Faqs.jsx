@@ -36,7 +36,7 @@ class FAQs extends Component {
         return (
             <div>
                 <h1 className="display-4 theme-font">FAQs</h1>
-                <hr style={{ backgroundColor: "rgba(255, 255, 255, 0.5)" }} />
+                <hr  />
                 <Container fluid>
                     <Row>
                         <Col xs={cols}>
@@ -73,7 +73,7 @@ class FAQs extends Component {
                       </Col>
                     </Row>
                 </Container>
-                <hr style={{ backgroundColor: "rgba(255, 255, 255, 0.5)" }} />
+                <hr  />
             </div>
         )
     }

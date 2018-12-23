@@ -16,12 +16,13 @@ class Schedule extends Component {
     render() {
         return (
             <div>
-                <div class="row">
-                    <div class="col-12">
-                        <h1 class="display-4 theme-font" id="schedule">Schedule</h1>
-                    </div>
+                
+            <div class="row">
+                <div class="col-12">
+                    <h1 class="display-4 theme-font" id="schedule">Schedule</h1>
                 </div>
-            
+            </div>
+            <hr />
 
             <div class="row row-content-box">
                 <div class="col-12 col-lg-6">
