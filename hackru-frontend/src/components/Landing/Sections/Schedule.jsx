@@ -101,14 +101,14 @@ class Schedule extends Component {
                                 <td>Food Table</td>
                             </tr>
                             <tr>
-                            <th scope="row">12:00 AM</th>
+                            <th scope="row">12:00 PM</th>
                                 <td>Demos Begin</td>
-                                <td>Food Table</td>
+                                <td>Hacking Area</td>
                             </tr>
                             <tr>
                             <th scope="row">2:00 PM</th>
                                 <td>Closing Ceremonies</td>
-                                <td>Food Table</td>
+                                <td>Main Stage</td>
                             </tr>
                         </tbody>
                     </table>
