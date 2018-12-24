@@ -37,7 +37,7 @@ const navlinks = {
          "component": (<Schedule />)
     },
     "Sponsors": {
-        "url": "#sponsoers",
+        "url": "#sponsors",
         "enabled": true,
         "component": (<Sponsors />)
     },

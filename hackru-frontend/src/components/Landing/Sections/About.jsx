@@ -27,7 +27,7 @@ class About extends Component {
                 <h2>When and Where?</h2>
                 <p className="lead" style={{ textAlign: "justify" }}>HackRU is from March 9th to 10th, 2019 at the College Ave Student Center in New Brunswick, NJ. The College Ave Student Center is located at 126 College Ave, New Brunswick, NJ 08901.</p>
                 <iframe title="about-map" frameBorder={0} src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1516.8805467681675!2d-74.45265422104657!3d40.5026657080946!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c3c6555ac2d7f7%3A0x8820e7c83ea74250!2sCollege+Avenue+Student+Center!5e0!3m2!1sen!2sus!4v1502828160852" width="100%" style={{ minHeight: "300px", height: "100%" }}></iframe>
-                <hr style={{ backgroundColor: "rgba(255, 255, 255, 0.5)" }} />
+                <hr  />
              </div>
         )
     }
