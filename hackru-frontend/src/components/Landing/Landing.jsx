@@ -22,17 +22,14 @@ import ScrollableAnchor from "react-scrollable-anchor";
  */
 class LandingPage extends Component {
     render() {
-        let sectionStyle = {
-            //minHeight: "100vh",
-        }
         let sectionClasses = "col-lg-10 offset-lg-1 col-xs-12 offset-xs-0 skew-left color-priority";
-
         let rows = [];
         let keys = Object.keys(navlinks);
         for (let i = 0; i < keys.length; i++) {
             if (navlinks[keys[i]].enabled) {
                 let url = navlinks[keys[i]].url.substring(1);
                 let component = navlinks[keys[i]].component;
+                // Toggle the green skewed sections
                 let className = "bg-no-gradient skew-right";
                 if (i % 2 === 0) {
                     className = "bg-gradient-right skew-right";
@@ -40,7 +37,7 @@ class LandingPage extends Component {
                 rows.push((
                     <ScrollableAnchor key={url} id={url}>
                         <div>
-                            <Row style={{ ...sectionStyle }}>
+                            <Row className="section">
                                 <div className={className} >
                                     <div className={sectionClasses}>
                                         {component}
@@ -53,7 +50,7 @@ class LandingPage extends Component {
             }
         }
         return (
-            <Container id="LandingPage" fluid style={{ ...sectionStyle, backgroundColor: theme.secondary[1] }}>
+            <Container id="LandingPage" className="section" fluid style={{ backgroundColor: theme.secondary[1] }}>
                 <ParallaxProvider>
                     <div style={{ position: "fixed", zIndex: 1, width: "100%", height: "100%", left: 0, top: 0, opacity: 0.5 }}>
                         <FlyingLogo url={"./assets/icons/hru-alien-noplat-white.png"} />
@@ -61,7 +58,7 @@ class LandingPage extends Component {
                     <div style={{ position: "fixed", zIndex: 2, width: "100%", height: "100%", left: 0, top: 0, background: "url(./assets/background.png)", backgroundSize: "cover", opacity: 0.5 }}></div>
                     <ScrollableAnchor id="home">
                         <div>
-                            <Row id="section" style={{ ...sectionStyle }}>
+                            <Row className="section">
                                 <Home />
                             </Row>
                         </div>
