@@ -4,7 +4,11 @@ body::-webkit-scrollbar {
     display: none; 
 }
 
-p {
+a:link {
+    color: #FF80CF;
+}
+
+h1 p {
     font-family: "Circular Std Bold", sans-serif;
 }
 
