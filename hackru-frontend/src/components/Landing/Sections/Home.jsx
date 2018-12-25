@@ -1,82 +1,87 @@
 /**
  * @author Shivan Modha
- * @description Landing Page: Home Component 
+ * @description Landing Page: Home Component
  * @version 0.0.1
  * Created 12/10/18
  */
 /***************************************************************IMPORTS***************************************************************/
 import React, { Component } from "react";
-import { Container, Row, Col } from "reactstrap";
-import { defaults } from "../../../Defaults";
+import { Container, Row, Col, Button } from "reactstrap";
+import { defaults, theme, navlinks } from "../../../Defaults";
+import { Parallax } from "react-scroll-parallax";
 /***************************************************************IMPORTS***************************************************************/
 
-/*****************************************************************HOME****************************************************************/
+/****************************************************************ABOUT****************************************************************/
 /**
  * Home component for the landing page
  */
 class Home extends Component {
-    /**
-    * Object constructor
-    * @param {object} props React properties that are passed in to this component 
-    */
     constructor(props) {
         super(props);
-        // Add a onresize event listener so that we can switch the navigation to mobile
-        window.addEventListener("resize", () => {
-            // Recalculate the mobile, and change the state to trigger a render
-            this.setState({
-                isMobile: window.innerWidth <= defaults.mobileWidthThresholdRelaxed,
-            });
-        })
+        this._event_onResize = this._event_onResize.bind(this);
+        window.addEventListener("resize", this._event_onResize);
     }
-    /**
-     * The first pre-render state
-     */
-    componentWillMount() {
-        // Set the initial state so that the render function works properly
+    _event_onResize() {
         this.setState({
-            isMobile: window.innerWidth <= defaults.mobileWidthThresholdRelaxed,
+            mobile: (window.innerWidth < defaults.mobileWidthThresholdRelaxed)
         });
     }
+    componentWillMount() {
+        this._event_onResize();
+    }
     render() {
-        if (!this.state.isMobile) {
+        let navigation = [];
+        let keys = Object.keys(navlinks);
+        for (let i = 0; i < keys.length; i++) {
+            if (navlinks[keys[i]].enabled) {
+                navigation.push(
+                    <p className="lead" key={keys[i]}><a href={navlinks[keys[i]].url} className="theme-home-link" style={{ color: theme.primary[0] + "ff", textDecoration: "none" }}>{keys[i]}</a></p>
+                )
+            }
+        }
+        let navContainer = (
+            <div>
+                {navigation}
+                <hr style={{ backgroundColor: "rgba(255, 255, 255, 0.15)", width: "100px" }} />
+                <Button outline color="dark" style={{ color: theme.primary[1], border: "none", borderRadius: 0 }}>Sign Up</Button>
+                <Button outline color="dark" style={{ color: "rgba(255, 255, 255, 0.5)", border: "none", borderRadius: 0 }}>Login</Button>
+            </div>
+        );
+        if (!this.state.mobile) {
             return (
-                <Container fluid id="landing-section" style={{ marginLeft: "15%" }}>
-                    <Row style={{ marginTop: "350px", marginBottom: "30vh" }}>
-                        <Col xs={5}>
-                            <h1 className="display-3">{defaults.title}</h1>
-                            <h1>{defaults.dateText}</h1>
-                            <br />
-                            <h3>{defaults.locationText}</h3>
-                            <h3>{defaults.universityText}</h3>
+                <Container fluid id="landing-section" style={{ zIndex: 3, width: "100%", minHeight: "100vh", textAlign: "center", userSelect: "none" }}>
+                    <Row style={{ minWidth: "100%", minHeight: "100vh" }} className="d-flex align-items-center">
+                        <Col xs={2}></Col>
+                        <Col xs={8} style={{ display: "block" }}>
+                            <img id="alien" src="./assets/icons/hru-alien-noplat-color.png" style={{ maxHeight: "400px", maxWidth: "100%", background: "radial-gradient(#5A7A96AA, #5A7A9600, #5A7A9633)", borderRadius: "100%" }} alt="" />
+                            <h1 className="display-1 theme-font">{defaults.title.split(" ")[0]}</h1>
+                            <h2 className="theme-font">{defaults.dateText}</h2>
                         </Col>
-                        <Col xs={5}>
-                            <img id="hero-img" src="./assets/icons/hackethon_alien_noplat_2.png" alt=""/>
+                        <Col xs={2} style={{ overflow: "hidden", paddingTop: 10, paddingBottom: 10 }}>
+                            <Parallax offsetXMin={-100} offsetXMax={100}>
+                                {navContainer}
+                            </Parallax>
                         </Col>
                     </Row>
                 </Container>
             )
         } else {
             return (
-                <Container fluid id="landing-section" style={{ marginLeft: "5%", marginRight: "5%" }}>
-                    <Row style={{ marginTop: "350px", marginBottom: "30vh", textAlign: "center" }}>
-                        <div style={{ textAlign: "center", width: "100%" }}>
-                            <h1 className="display-4" style={{ textAlign: "center" }}>{defaults.title}</h1>
-                            <h1 style={{ textAlign: "center" }}>{defaults.dateText}</h1>
-                            <br />
-                            <h3 style={{ textAlign: "center" }}>{defaults.locationText}</h3>
-                            <h3 style={{ textAlign: "center" }}>{defaults.universityText}</h3>
-                        </div>
-                        <div style={{ textAlign: "center", width: "100%" }}>
-                            <img style={{ maxWidth: "100%", maxHeight: "500px" }} src="./assets/icons/hackethon_alien_noplat_2.png" alt="" />
-                        </div>
+                <Container fluid id="landing-section" style={{ zIndex: 3, width: "100%", minHeight: "100vh", textAlign: "center", userSelect: "none" }}>
+                    <Row style={{ minWidth: "100%", minHeight: "100vh" }} className="d-flex align-items-center">
+                        <Col style={{ display: "block" }}>
+                            <img id="alien" src="./assets/icons/hru-alien-noplat-color.png" style={{ maxHeight: "400px", maxWidth: "100%", background: "radial-gradient(#5A7A96AA, #5A7A9600, #5A7A9633)", borderRadius: "100%" }} alt="" />
+                            <h1 className="display-3 theme-font">{defaults.title.split(" ")[0]}</h1>
+                            <h2 className="theme-font">{defaults.dateText}</h2>
+                            {navContainer}
+                        </Col>
                     </Row>
                 </Container>
             )
         }
     }
 }
-/*****************************************************************HOME****************************************************************/
+/****************************************************************ABOUT****************************************************************/
 
 /***************************************************************EXPORTS***************************************************************/
 export default Home;
