@@ -1,8 +1,7 @@
 
 /***************************************************************IMPORTS***************************************************************/
 import React, { Component } from "react";
-import { Container, Row, Col } from "reactstrap";
-import { theme } from "../../../Defaults";
+import { Row } from "reactstrap";
 import { Icon } from "react-fa";
 /***************************************************************IMPORTS***************************************************************/
 
@@ -21,7 +20,7 @@ class Footer extends Component {
                             <div className="row">
                                 <div className="col-12 text-center col-lg-4">
                                     <h6 className="align-middle">
-                                        <a style={{ color: "white", marginLeft: 10, marginRight: 10 }} href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf" target="_blank">MLH's Code of Conduct</a>
+                                        <a style={{ color: "white", marginLeft: 10, marginRight: 10 }} href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf" target="_blank" rel="noopener noreferrer">MLH's Code of Conduct</a>
                                     </h6>
                                 </div>
 
@@ -38,10 +37,10 @@ class Footer extends Component {
 
                                 <div className="col-12 mb-5 mb-lg-0 text-center col-lg-4 align-middle">
 
-                                    <a href="https://mlh.io/" target="_blank">
+                                    <a href="https://mlh.io/" target="_blank" rel="noopener noreferrer">
                                         <img className="footer-logo" src="https://static.mlh.io/brand-assets/logo/official/mlh-logo-white.png" alt="MLH logo" />
                                     </a>
-                                    <a href="http://usacs.rutgers.edu/" target="_blank">
+                                    <a href="http://usacs.rutgers.edu/" target="_blank" rel="noopener noreferrer">
                                         <img className="footer-logo" src="./assets/icons/usacs-logo.svg" alt="USACS logo" />
                                     </a>
                                     
