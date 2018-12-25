@@ -6,7 +6,7 @@
  */
 /***************************************************************IMPORTS***************************************************************/
 import React, { Component } from "react";
-import { Container, Row, Col } from "reactstrap";
+import { Container, Row } from "reactstrap";
 import Navigation from "./Navigation";
 import Home from "./Sections/Home";
 import Footer from "./Sections/Footer"
@@ -15,7 +15,6 @@ import Aliens from "./Aliens";
 import { ParallaxProvider } from "react-scroll-parallax";
 import { defaults, navlinks, theme } from "../../Defaults";
 import ScrollableAnchor from "react-scrollable-anchor";
-import { Icon } from "react-fa";
 /***************************************************************IMPORTS***************************************************************/
 
 /*****************************************************************APP*****************************************************************/
