@@ -29,10 +29,7 @@ class FAQs extends Component {
         this._event_onResize();
     }
     render() {
-        let cols = 6;
-        if (this.state.mobile) {
-            cols = 12;
-        }
+        let cols = (this.state.mobile) ? (12) : (6);
         return (
             <div>
                 <h1 className="display-4 theme-font">FAQs</h1>

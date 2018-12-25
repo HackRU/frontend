@@ -1,6 +1,6 @@
 /**
  * @author Shivan Modha
- * @description Landing Page: Alien Background
+ * @description Landing Page: Flying Logos Background
  * @version 0.0.1
  * Created 12/15/18
  */
@@ -12,7 +12,7 @@ import React, { Component } from "react";
 /**
  * Alien Background Component
  */
-class Aliens extends Component {
+class FlyingLogo extends Component {
     constructor(props) {
         super(props);
         this._event_onResize = this._event_onResize.bind(this);
@@ -25,7 +25,7 @@ class Aliens extends Component {
         this.y = 0;
         this.image = new Image();
         this.image.onload = this._event_onInitializeRenderer;
-        this.image.src = "./assets/icons/hru-alien-noplat-white.png";
+        this.image.src = this.props.url;
     }
     _event_onResize() {
         if (this.canvas) {
@@ -38,7 +38,7 @@ class Aliens extends Component {
         this.y = e.y;
     }
     _event_onInitializeRenderer() {
-        this.aliens = [];
+        this.logos = [];
         this.canvas = document.getElementById("drawable");
         window.addEventListener("resize", this._event_onResize);
         this._event_onResize();
@@ -52,8 +52,8 @@ class Aliens extends Component {
         this.counter--;
         if (this.counter <= 0) {
             let size = Math.floor(Math.random() * 50) + 50;
-            if (this.aliens.length < 5) {
-                this.aliens.push({
+            if (this.logos.length < 5) {
+                this.logos.push({
                     x: Math.floor(Math.random() * this.canvas.width) - (size / 2),
                     y: this.canvas.height,
                     width: size,
@@ -63,11 +63,11 @@ class Aliens extends Component {
             }
             this.counter = this.maxCount;
         }
-        for (let i = 0; i < this.aliens.length; i++) {
-            let alien = this.aliens[i];
+        for (let i = 0; i < this.logos.length; i++) {
+            let alien = this.logos[i];
             alien.y -= alien.speed;
             if (alien.y < -400) {
-                this.aliens.splice(i, 1);
+                this.logos.splice(i, 1);
                 i--;
             }
         }
@@ -75,8 +75,8 @@ class Aliens extends Component {
     _event_onRender() {
         if (this.context && this.context.clearRect && this.canvas) {
             this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
-            for (let i = 0; i < this.aliens.length; i++) {
-                let alien = this.aliens[i];
+            for (let i = 0; i < this.logos.length; i++) {
+                let alien = this.logos[i];
                 this.context.globalAlpha = 1;
                 this.context.drawImage(this.image, alien.x, alien.y, alien.width, alien.height);
                 for (let j = 0; j < 100; j++) {
@@ -99,5 +99,5 @@ class Aliens extends Component {
 /****************************************************************ABOUT****************************************************************/
 
 /***************************************************************EXPORTS***************************************************************/
-export default Aliens;
+export default FlyingLogo;
 /***************************************************************EXPORTS***************************************************************/
