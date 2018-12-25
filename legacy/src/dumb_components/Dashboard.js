@@ -28,7 +28,7 @@ import resURLS from 'resources/resURLS';
 
 class Dashboard extends React.Component {
   render = () => (
-    <div id="dashboard-content">
+    <div className="col-12" id="dashboard-content">
       <img className="overlay-design d-none d-lg-block overlay-one" alt="ufo" src="../assets/icons/hackethon_alien_noplat_2.png" />  
       <img className="overlay-design d-none d-lg-block overlay-two" alt="ufo" src="../assets/icons/hackethon_alien_noplat_2.png" />
       <div className="row mb-5"> {/*row mb-5 begin*/}
