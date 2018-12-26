@@ -27,7 +27,7 @@ class LandingPage extends Component {
         for (let i = 0; i < keys.length; i++) {
             if (navlinks[keys[i]].enabled) {
                 let url = navlinks[keys[i]].url.substring(1);
-                let component = navlinks[keys[i]].component;
+                let component = navlinks[keys[i]].component({ isMobile: this.props.isMobile });
                 // Toggle the green skewed sections
                 let className = "bg-no-gradient skew-right";
                 if (i % 2 === 0) {
@@ -54,7 +54,7 @@ class LandingPage extends Component {
                     <ScrollableAnchor id="home">
                         <div>
                             <Row className="section">
-                                <Home />
+                                <Home isMobile={this.props.isMobile} />
                             </Row>
                         </div>
                     </ScrollableAnchor>

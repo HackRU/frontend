@@ -14,6 +14,7 @@ import {
     E404 } from "./components/Pages"; // Router Pages
 import FlyingLogo from "./FlyingLogo" // The logos that go up through the page
 import MLHBadge from "./MLHBadge"; // We need this to qualify as an official MLH event
+import { defaults } from "./Defaults";
 /***************************************************************IMPORTS***************************************************************/
 
 /*****************************************************************APP*****************************************************************/
@@ -24,6 +25,19 @@ import MLHBadge from "./MLHBadge"; // We need this to qualify as an official MLH
  * page, and whether or not they are signed in.
  */
 class App extends Component {
+    constructor(props) {
+        super(props);
+        this._event_onResize = this._event_onResize.bind(this);
+        window.addEventListener("resize", this._event_onResize);
+    }
+    _event_onResize() {
+        this.setState({
+            isMobile: (window.innerWidth < defaults.mobileWidthThresholdRelaxed)
+        });
+    }
+    componentWillMount() {
+        this._event_onResize();
+    }
     render() {
         return (
             <BrowserRouter style={{ width: "100%" }}>
@@ -40,7 +54,7 @@ class App extends Component {
                     <div style={{ position: "fixed", zIndex: 2, width: "100%", height: "100%", left: 0, top: 0, background: "url(./assets/hru-background-small.png)", backgroundSize: "cover", opacity: 0.5 }}></div>
                     <Switch>
                         {/* This is where the URL routing magic actually happens */}
-                        <Route exact path="/" component={LandingPage} />
+                        <Route exact path="/" render={(props) => <LandingPage {...props} isMobile={this.state.isMobile} />} />
                         <Route exact path="/login" component={LoginPage} />
                         <Route exact path="/dashboard" component={DashboardPage} />
                         {/* If none of the other urls were matched, we will show a 404 page to the user */}

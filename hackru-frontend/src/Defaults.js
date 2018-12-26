@@ -29,22 +29,22 @@ const navlinks = {
     "About Us": {
         "url": "#about",
         "enabled": true,
-        "component": (<About />)
+        "component": (props) => <About {...props} />
     },
     "Schedule": {
          "url": "#schedule",
          "enabled": true,
-         "component": (<Schedule />)
+         "component": (props) => <Schedule {...props} />
     },
     "Sponsors": {
         "url": "#sponsors",
         "enabled": true,
-        "component": (<Sponsors />)
+        "component": (props) => <Sponsors {...props} />
     },
     "FAQs": {
         "url": "#faqs",
         "enabled": true,
-        "component": (<FAQs />)
+        "component": (props) => <FAQs {...props} />
     }
 }
 /***************************************************************NAVLINK***************************************************************/
