@@ -6,10 +6,11 @@
  */
 /***************************************************************IMPORTS***************************************************************/
 import React, { Component } from "react";
-import { Container, Col, Input, InputGroup, InputGroupAddon, Form, FormGroup, Button, FormText } from "reactstrap";
+import { Container, Col, Input, InputGroup, InputGroupAddon, Form, FormGroup, Button, FormText, Alert } from "reactstrap";
 import { theme } from "../Defaults";
 import { Icon } from "react-fa";
 import { Link } from "react-router-dom";
+import { HashLoader } from "react-spinners";
 /***************************************************************IMPORTS***************************************************************/
 
 /*****************************************************************APP*****************************************************************/
@@ -17,46 +18,88 @@ import { Link } from "react-router-dom";
  * Signup application for "/signup"
  */
 class SignUpPage extends Component {
+    componentWillMount() {
+        this.setState({
+            loading: false,
+            done: false,
+            errors: ""
+        });
+    }
     render() {
+        let innerText = "Join us at HackRU!";
+        let innerForm = (
+            <div>
+                <FormGroup row>
+                    <Col xs={6} style={{ margin: 0, paddingLeft: 0, paddingRight: 7 }}>
+                        <Input required id="first" type="text" placeholder="first name" style={{ borderRadius: 0, background: "rgba(255, 255, 255, 0.2)", border: "none", color: "black" }} />
+                    </Col>
+                    <Col xs={6} style={{ margin: 0, paddingRight: 0, paddingLeft: 7 }}>
+                        <Input required id="last" type="text" placeholder="last name" style={{ borderRadius: 0, background: "rgba(255, 255, 255, 0.2)", border: "none", color: "black" }} />
+                    </Col>
+                </FormGroup>
+                <FormGroup row>
+                    <Input required type="email" id="email" placeholder="email" style={{ borderRadius: 0, background: "rgba(255, 255, 255, 0.2)", border: "none", color: "black" }} />
+                </FormGroup>
+                <hr style={{ background: "rgba(255, 255, 255, 0.25)" }} />
+                <FormGroup row>
+                    <Input required type="password" id="password" placeholder="password" style={{ borderRadius: 0, background: "rgba(255, 255, 255, 0.2)", border: "none", color: "black" }} />
+                </FormGroup>
+                <FormGroup row>
+                    <InputGroup>
+                        <Input required type="password" id="conpassword" placeholder="confirm password" style={{ borderRadius: 0, background: "rgba(255, 255, 255, 0.2)", border: "none", color: "black" }} />
+                        <InputGroupAddon addonType="append">
+                            <Button color="success" style={{ borderRadius: 0 }}><Icon name="chevron-right" /></Button>
+                        </InputGroupAddon>
+                    </InputGroup>
+                </FormGroup>
+            </div>
+        );
+        if (this.state.loading) {
+            innerForm = (<div style={{ display: "block", width: "100%" }} align="center"><HashLoader color={theme.accent[0]} /> </div>);
+            innerText = "";
+        }
+        if (this.state.done) {
+            innerForm = (<Alert style={{ background: "rgba(0, 255, 0, 0.25)", border: "none", color: "white" }} color="success">You have Successfully Signed Up!</Alert>)
+            innerText = "";
+        }
+        let errors = null;
+        if (this.state.errors !== "") {
+            errors = (<Alert style={{ background: "rgba(255, 0, 0, 0.25)", border: "none", color: "white" }} color="danger">{this.state.errors}</Alert>)
+        }
         let contents = (
             <div style={{ padding: 30 }}>
                 <h1 className="display-1 theme-font">Sign Up</h1>
-                <p className="lead">Join us at HackRU!</p>
+                <p className="lead">{innerText}</p>
                 <Form onSubmit={(e) => {
                     e.preventDefault();
-                    let email = document.getElementById("email").value;
-                    let password = document.getElementById("password").value;
-                    this.props.profile.SignUp(email, password, (msg) => {
-                        if (msg) {
-                            console.log(msg);
-                        } else {
-                            console.log("YAYA");
-                        }
-                    });
+                    if (!this.state.loading) {
+                        this.setState({
+                            loading: true,
+                            errors: ""
+                        });
+                        let firstName = document.getElementById("first").value;
+                        let lastName = document.getElementById("last").value;
+                        let email = document.getElementById("email").value;
+                        let password = document.getElementById("password").value;
+                        let confirmPassword = document.getElementById("conpassword").value;
+                        this.props.profile.SignUp(firstName, lastName, email, password, confirmPassword, (msg) => {
+                            if (msg) {
+                                this.setState({
+                                    loading: false,
+                                    errors: msg
+                                });
+                            } else {
+                                this.setState({
+                                    loading: false,
+                                    done: true,
+                                    errors: ""
+                                });
+                            }
+                        });
+                    }
                 }}>
-                    <FormGroup row>
-                        <Col xs={6} style={{ margin: 0, paddingLeft: 0, paddingRight: 7 }}>
-                            <Input required id="First" type="text" placeholder="first name" style={{ borderRadius: 0, background: "rgba(255, 255, 255, 0.2)", border: "none", color: "black" }} />
-                        </Col>
-                        <Col xs={6} style={{ margin: 0, paddingRight: 0, paddingLeft: 7 }}>
-                            <Input required id="Last" type="text" placeholder="last name" style={{ borderRadius: 0, background: "rgba(255, 255, 255, 0.2)", border: "none", color: "black" }} />
-                        </Col>
-                    </FormGroup>
-                    <FormGroup row>
-                        <Input required type="email" id="email" placeholder="email" style={{ borderRadius: 0, background: "rgba(255, 255, 255, 0.2)", border: "none", color: "black" }} />
-                    </FormGroup>
-                    <hr style={{ background: "rgba(255, 255, 255, 0.25)" }} />
-                    <FormGroup row>
-                        <Input required type="password" id="password" placeholder="password" style={{ borderRadius: 0, background: "rgba(255, 255, 255, 0.2)", border: "none", color: "black" }} />
-                    </FormGroup>
-                    <FormGroup row>
-                        <InputGroup>
-                            <Input required type="password" id="conpassword" placeholder="confirm password" style={{ borderRadius: 0, background: "rgba(255, 255, 255, 0.2)", border: "none", color: "black" }} />
-                            <InputGroupAddon addonType="append">
-                                <Button color="success" style={{ borderRadius: 0 }}><Icon name="chevron-right" /></Button>
-                            </InputGroupAddon>
-                        </InputGroup>
-                    </FormGroup>
+                    {errors}
+                    {innerForm}
                     <FormText><Link to="/login" style={{ color: "rgba(255, 255, 255, 0.5)" }}>Already a member? Login!</Link></FormText>
                     <FormText><Link to="/" style={{ color: "rgba(255, 255, 255, 0.5)" }}>Return Home</Link></FormText>
                 </Form>

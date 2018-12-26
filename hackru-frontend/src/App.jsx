@@ -6,7 +6,7 @@
  */
 /***************************************************************IMPORTS***************************************************************/
 import React, { Component } from "react"; // Default react imports for the component
-import { BrowserRouter, Route, Switch } from "react-router-dom"; // React router components
+import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom"; // React router components
 import {
     LandingPage,
     DashboardPage,
@@ -75,6 +75,7 @@ class App extends Component {
                         <Route exact path="/" render={(props) => <LandingPage {...props} isMobile={this.state.isMobile} profile={this.state.profile} />} />
                         <Route exact path="/login" render={(props) => <LoginPage {...props} isMobile={this.state.isMobile} profile={this.state.profile} />} />
                         <Route exact path="/signup" render={(props) => <SignUpPage {...props} isMobile={this.state.isMobile} profile={this.state.profile} />} />
+                        <Route exact path="/logout" component={() => { this.state.profile.Logout(); this.setState({ profile: this.state.profile }); return (<Redirect to="/" />); }} />
                         <Route exact path="/dashboard" render={(props) => <DashboardPage {...props} isMobile={this.state.isMobile} profile={this.state.profile} />} />
                         {/* If none of the other urls were matched, we will show a 404 page to the user */}
                         <Route component={E404} />
