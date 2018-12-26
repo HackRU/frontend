@@ -59,6 +59,10 @@ const ENDPOINTS = {
      * Default user url, expects
      */
     "getUserData": BASE + "/read",
+    /**
+     * Default user update information, expects
+     */
+    "update": BASE + "/update"
 }
 /**
  * Standard profile handler for the entire application
@@ -68,6 +72,7 @@ class Profile {
         this.Login = this.Login.bind(this);
         this.Logout = this.Logout.bind(this);
         this.SignUp = this.SignUp.bind(this);
+        this._login = this._login.bind(this);
         this._token = cookie.load("token");
         this._email = cookie.load("email");
         this._valid_until = Date.parse(cookie.load("valid_until"));
@@ -82,32 +87,129 @@ class Profile {
         if (this.isLoggedIn) {
             callback("User is already logged in");
         } else {
-            request({
-                method: "POST",
-                uri: ENDPOINTS.login,
-                body: {
-                    email: email,
-                    password: password
-                },
-                json: true
-            }, (error, response, body) => {
-                if (error) {
-                    callback("An error occured when attempting login");
-                } else {
-                    if (body.statusCode === 403) {
-                        callback("Invalid email or password")
+            if (!email) {
+                callback("Invalid email");
+            } else if (!password) {
+                callback("Invalid password");
+            } else {
+                request({
+                    method: "POST",
+                    uri: ENDPOINTS.login,
+                    body: {
+                        email: email,
+                        password: password
+                    },
+                    json: true
+                }, (error, response, body) => {
+                    if (error) {
+                        callback("An error occured when attempting login");
                     } else {
-                        callback();
+                        if (body.statusCode === 403) {
+                            callback("Invalid email or password")
+                        } else if (body.statusCode === 200) {
+                            let data = JSON.parse(body.body);
+                            let token = data.auth.token;
+                            let valid_until = data.auth.valid_until;
+                            this._login(email, token, valid_until);
+                            callback();
+                        } else {
+                            callback(body.body);
+                        }
                     }
-                }
-            });
+                });
+            }
         }
     }
-    SignUp(email, password) {
-
+    SignUp(firstname, lastname, email, password, confirmpassword, callback) {
+        if (this.isLoggedIn) {
+            callback("User is already logged in");
+        } else {
+            if (!firstname) {
+                callback("invalid first name");
+            } else if (!lastname) {
+                callback("Invalid last name");
+            } else if (!email) {
+                callback("Invalid email");
+            } else if (!password) {
+                callback("Invalid password");
+            } else if (!confirmpassword) {
+                callback("Invalid password");
+            } else if (password !== confirmpassword) {
+                callback("Passwords don't match");
+            } else {
+                request({
+                    method: "POST",
+                    uri: ENDPOINTS.signup,
+                    body: {
+                        email: email,
+                        password: password,
+                        registration_status: "<< IDK WHAT THE REGISTRATION STATUS ENUMS ARE >>" //"waitlist" is one of them
+                    },
+                    json: true
+                }, (error, response, body) => {
+                    if (error) {
+                        callback("An error occured when attempting signup");
+                    } else {
+                        console.log(body);
+                        if (body.statusCode === 400) {
+                            callback("User with email " + email + " already exists")
+                        } else if (body.statusCode === 200) {
+                            // Set the first and last name
+                            let data = JSON.parse(body.body);
+                            let token = data.auth.token;
+                            let valid_until = data.auth.valid_until;
+                            request({
+                                "method": "POST",
+                                uri: ENDPOINTS.update,
+                                body: {
+                                    updates: {
+                                        "$set": {
+                                            "first_name": firstname,
+                                            "last_name": lastname
+                                        }
+                                    },
+                                    user_email: email,
+                                    auth_email: email,
+                                    auth: token
+                                },
+                                json: true
+                            }, (error, response, body) => {
+                                if (error) {
+                                    console.error(error);
+                                } else {
+                                    if (body.statusCode === 200) {
+                                        this._login(email, token, valid_until);
+                                        callback();
+                                    } else {
+                                        callback(body.body);
+                                    }
+                                }
+                            });
+                        } else {
+                            callback(body.body);
+                        }
+                    }
+                });
+            }
+        }
+    }
+    _login(email, token, valid_until) {
+        cookie.save("token", token);
+        cookie.save("email", email);
+        cookie.save("valid_until", valid_until);
+        this.isLoggedIn = true;
+        this._token = token;
+        this._email = email;
+        this._valid_until = Date.parse(valid_until);
     }
     Logout() {
-
+        cookie.remove("token");
+        cookie.remove("email");
+        cookie.remove("valid_until");
+        this._token = null;
+        this._email = null;
+        this._valid_until = null;
+        this.isLoggedIn = false;
     }
 }
 /***************************************************************PROFILE***************************************************************/

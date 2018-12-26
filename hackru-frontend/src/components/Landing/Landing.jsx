@@ -54,7 +54,7 @@ class LandingPage extends Component {
                     <ScrollableAnchor id="home">
                         <div>
                             <Row className="section">
-                                <Home isMobile={this.props.isMobile} />
+                                <Home isMobile={this.props.isMobile} profile={this.props.profile} />
                             </Row>
                         </div>
                     </ScrollableAnchor>

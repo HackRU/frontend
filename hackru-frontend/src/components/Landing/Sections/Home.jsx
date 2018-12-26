@@ -27,12 +27,19 @@ class Home extends Component {
                 )
             }
         }
+        let dashboardbtns = [];
+        if (this.props.profile.isLoggedIn) {
+            dashboardbtns.push(<p key={"p"} className="lead"><Link to="/dashboard" className="theme-home-link" style={{ color: theme.accent[1] + "ff", textDecoration: "none" }}>Dashboard</Link></p>);
+            dashboardbtns.push(<p key={"o"} className="lead"><Link to="/logout" className="theme-home-link" style={{ color: theme.accent[1] + "ff", textDecoration: "none" }}>Logout</Link></p>);
+        } else {
+            dashboardbtns.push(<p key={"u"} className="lead"><Link to="/signup" className="theme-home-link" style={{ color: theme.accent[1] + "ff", textDecoration: "none" }}>Sign Up</Link></p>);
+            dashboardbtns.push(<p key={"i"} className="lead"><Link to="/login" className="theme-home-link" style={{ color: theme.accent[1] + "ff", textDecoration: "none" }}>Login</Link></p>);
+        }
         let navContainer = (
             <div>
                 {navigation}
                 <hr style={{ backgroundColor: "rgba(255, 255, 255, 0.15)", width: "100px" }} />
-                <p className="lead"><Link to="/signup" className="theme-home-link" style={{ color: theme.accent[1] + "ff", textDecoration: "none" }}>Sign Up</Link></p>
-                <p className="lead"><Link to="/login" className="theme-home-link" style={{ color: theme.accent[1] + "ff", textDecoration: "none" }}>Login</Link></p>
+                {dashboardbtns}
             </div>
         );
         if (!this.props.isMobile) {
