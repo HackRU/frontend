@@ -17,34 +17,47 @@ import { Icon } from "react-fa";
  */
 class LoginPage extends Component {
     render() {
-        return (
-            <Container fluid style={{ width: "100%", height: "100vh", textAlign: "center", backgroundColor: theme.secondary[1] }} className="d-flex align-items-center">
-                <Col />
-                <Col xs={3} style={{ display: "block", zIndex: 3, color: "white", background: "rgba(255, 255, 255, 0.05)" }}>
-                    <div style={{ padding: 30 }}>
-                        <h1 className="display-1 theme-font">Login</h1>
-                        <p className="lead">Welcome to HackRU!</p>
-                        <Form>
-                            <FormGroup row>
-                                <InputGroup>
-                                    <Input required id="email" type="email" placeholder="email" style={{ borderRadius: 0, background: "rgba(255, 255, 255, 0.2)", border: "none", color: "black" }} />
-                                </InputGroup>
-                            </FormGroup>
-                            <FormGroup row>
-                                <InputGroup>
-                                    <Input required type="password" id="password" placeholder="password" style={{ borderRadius: 0, background: "rgba(255, 255, 255, 0.2)", border: "none", color: "black" }} />
-                                    <InputGroupAddon addonType="append">
-                                        <Button color="success" style={{ borderRadius: 0 }}><Icon name="chevron-right" /></Button>
-                                    </InputGroupAddon>
-                                </InputGroup>
-                            </FormGroup>
-                            <FormText><a href="/signup" style={{ color: "rgba(255, 255, 255, 0.5)" }}>Not a member? Create an Account!</a></FormText>
-                        </Form>
-                    </div>
-                </Col>
-                <Col />
-            </Container>
+        let contents = (
+            <div style={{ padding: 30 }}>
+                <h1 className="display-1 theme-font">Login</h1>
+                <p className="lead">Welcome to HackRU!</p>
+                <Form>
+                    <FormGroup row>
+                        <InputGroup>
+                            <Input required id="email" type="email" placeholder="email" style={{ borderRadius: 0, background: "rgba(255, 255, 255, 0.2)", border: "none", color: "black" }} />
+                        </InputGroup>
+                    </FormGroup>
+                    <FormGroup row>
+                        <InputGroup>
+                            <Input required type="password" id="password" placeholder="password" style={{ borderRadius: 0, background: "rgba(255, 255, 255, 0.2)", border: "none", color: "black" }} />
+                            <InputGroupAddon addonType="append">
+                                <Button color="success" style={{ borderRadius: 0 }}><Icon name="chevron-right" /></Button>
+                            </InputGroupAddon>
+                        </InputGroup>
+                    </FormGroup>
+                    <FormText><a href="/signup" style={{ color: "rgba(255, 255, 255, 0.5)" }}>Not a member? Create an Account!</a></FormText>
+                </Form>
+            </div>
         );
+        if (!this.props.isMobile) {
+            return (
+                <Container fluid style={{ width: "100%", minHeight: "100vh", textAlign: "center", backgroundColor: theme.secondary[1] }} className="d-flex align-items-center">
+                    <Col />
+                    <Col xs={3} style={{ display: "block", zIndex: 3, color: "white", background: "rgba(255, 255, 255, 0.05)" }}>
+                        {contents}
+                    </Col>
+                    <Col />
+                </Container>
+            );
+        } else {
+            return (
+                <Container fluid style={{ width: "100%", minHeight: "100vh", textAlign: "center", backgroundColor: theme.secondary[1] }} className="d-flex align-items-center">
+                    <Col xs={12} style={{ display: "block", zIndex: 3, color: "white", background: "rgba(255, 255, 255, 0.05)" }}>
+                        {contents}
+                    </Col>
+                </Container>
+            );
+        }
     }
 }
 /*****************************************************************APP*****************************************************************/

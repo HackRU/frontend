@@ -25,19 +25,32 @@ import { defaults } from "./Defaults";
  * page, and whether or not they are signed in.
  */
 class App extends Component {
+    /**
+     * Bind all of the other method components, and set up the initial event handlers
+     * @param {Object} props React JSON object that represents the props
+     */
     constructor(props) {
         super(props);
         this._event_onResize = this._event_onResize.bind(this);
         window.addEventListener("resize", this._event_onResize);
     }
+    /**
+     * Handle whenever the window resizes due to a user window resize or a zoom
+     */
     _event_onResize() {
         this.setState({
             isMobile: (window.innerWidth < defaults.mobileWidthThresholdRelaxed)
         });
     }
+    /**
+     * As soon as react is ready, set the initial state
+     */
     componentWillMount() {
         this._event_onResize();
     }
+    /**
+     * React render method, what the user sees on the screen
+     */
     render() {
         return (
             <BrowserRouter style={{ width: "100%" }}>
@@ -55,8 +68,8 @@ class App extends Component {
                     <Switch>
                         {/* This is where the URL routing magic actually happens */}
                         <Route exact path="/" render={(props) => <LandingPage {...props} isMobile={this.state.isMobile} />} />
-                        <Route exact path="/login" component={LoginPage} />
-                        <Route exact path="/dashboard" component={DashboardPage} />
+                        <Route exact path="/login" render={(props) => <LoginPage {...props} isMobile={this.state.isMobile} />} />
+                        <Route exact path="/dashboard" render={(props) => <DashboardPage {...props} isMobile={this.state.isMobile} />} />
                         {/* If none of the other urls were matched, we will show a 404 page to the user */}
                         <Route component={E404} />
                     </Switch>
