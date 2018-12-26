@@ -26,11 +26,11 @@ class Footer extends Component {
 
                                 <div className="col-12 col-lg-4 text-center align-middle">
 
-                                    <a style={{ color: "white", marginLeft: 10, marginRight: 10 }} href="mailto:info@hackru.org" class="social-links" target="_blank" rel="noopener noreferrer"><Icon size="2x" name="envelope" /></a>
-                                    <a style={{ color: "white", marginLeft: 10, marginRight: 10 }} href="https://www.facebook.com/theHackRU/" class="social-links" target="_blank" rel="noopener noreferrer"><Icon size="2x" name="facebook-square" /></a>
-                                    <a style={{ color: "white", marginLeft: 10, marginRight: 10 }} href="https://www.instagram.com/thehackru/" class="social-links" target="_blank" rel="noopener noreferrer"><Icon size="2x" name="instagram" /></a>
-                                    <a style={{ color: "white", marginLeft: 10, marginRight: 10 }} href="https://medium.com/the-hackru" class="social-links" target="_blank" rel="noopener noreferrer"><Icon size="2x" name="medium" /></a>
-                                    <a style={{ color: "white", marginLeft: 10, marginRight: 10 }} href="https://twitter.com/theHackRU" class="social-links" target="_blank" rel="noopener noreferrer"><Icon size="2x" name="twitter-square" /></a>
+                                    <a style={{ color: "white", marginLeft: 10, marginRight: 10 }} href="mailto:info@hackru.org" className="social-links" target="_blank" rel="noopener noreferrer"><Icon size="2x" name="envelope" /></a>
+                                    <a style={{ color: "white", marginLeft: 10, marginRight: 10 }} href="https://www.facebook.com/theHackRU/" className="social-links" target="_blank" rel="noopener noreferrer"><Icon size="2x" name="facebook-square" /></a>
+                                    <a style={{ color: "white", marginLeft: 10, marginRight: 10 }} href="https://www.instagram.com/thehackru/" className="social-links" target="_blank" rel="noopener noreferrer"><Icon size="2x" name="instagram" /></a>
+                                    <a style={{ color: "white", marginLeft: 10, marginRight: 10 }} href="https://medium.com/the-hackru" className="social-links" target="_blank" rel="noopener noreferrer"><Icon size="2x" name="medium" /></a>
+                                    <a style={{ color: "white", marginLeft: 10, marginRight: 10 }} href="https://twitter.com/theHackRU" className="social-links" target="_blank" rel="noopener noreferrer"><Icon size="2x" name="twitter-square" /></a>
 
                                 </div>
 
