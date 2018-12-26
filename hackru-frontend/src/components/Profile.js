@@ -211,6 +211,16 @@ class Profile {
         this._valid_until = null;
         this.isLoggedIn = false;
     }
+    Get(callback) {
+        if (this.isLoggedIn) {
+
+        } else {
+            callback("Please log in");
+        }
+    }
+    Set(data, callback) {
+
+    }
 }
 /***************************************************************PROFILE***************************************************************/
 
