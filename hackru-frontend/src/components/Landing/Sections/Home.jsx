@@ -6,7 +6,7 @@
  */
 /***************************************************************IMPORTS***************************************************************/
 import React, { Component } from "react";
-import { Container, Row, Col, Button } from "reactstrap";
+import { Container, Row, Col } from "reactstrap";
 import { defaults, theme, navlinks } from "../../../Defaults";
 import { Parallax } from "react-scroll-parallax";
 import { Link } from "react-router-dom";
@@ -31,8 +31,8 @@ class Home extends Component {
             <div>
                 {navigation}
                 <hr style={{ backgroundColor: "rgba(255, 255, 255, 0.15)", width: "100px" }} />
-                <Button outline color="dark" style={{ color: theme.accent[1], border: "none", borderRadius: 0 }}>Sign Up</Button>
-                <Link to="/login"><Button outline color="dark" style={{ color: "rgba(255, 255, 255, 0.5)", border: "none", borderRadius: 0 }}>Login</Button></Link>
+                <p className="lead"><Link to="/signup" className="theme-home-link" style={{ color: theme.accent[1] + "ff", textDecoration: "none" }}>Sign Up</Link></p>
+                <p className="lead"><Link to="/login" className="theme-home-link" style={{ color: theme.accent[1] + "ff", textDecoration: "none" }}>Login</Link></p>
             </div>
         );
         if (!this.props.isMobile) {
