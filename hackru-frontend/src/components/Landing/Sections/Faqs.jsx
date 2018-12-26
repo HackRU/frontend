@@ -7,7 +7,7 @@
 /***************************************************************IMPORTS***************************************************************/
 import React, { Component } from "react";
 import { Container, Row, Col } from "reactstrap";
-import { defaults, theme } from "../../../Defaults";
+import { theme } from "../../../Defaults";
 /***************************************************************IMPORTS***************************************************************/
 
 /*****************************************************************FAQS****************************************************************/
@@ -15,21 +15,8 @@ import { defaults, theme } from "../../../Defaults";
  * FAQs component for the landing page
  */
 class FAQs extends Component {
-    constructor(props) {
-        super(props);
-        this._event_onResize = this._event_onResize.bind(this);
-        window.addEventListener("resize", this._event_onResize);
-    }
-    _event_onResize() {
-        this.setState({
-            mobile: window.innerWidth < defaults.mobileWidthThresholdRelaxed
-        });
-    }
-    componentWillMount() {
-        this._event_onResize();
-    }
     render() {
-        let cols = (this.state.mobile) ? (12) : (6);
+        let cols = (this.props.isMobile) ? (12) : (6);
         return (
             <div>
                 <h1 className="display-4 theme-font">FAQs</h1>

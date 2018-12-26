@@ -17,19 +17,6 @@ import { Link } from "react-router-dom";
  * Home component for the landing page
  */
 class Home extends Component {
-    constructor(props) {
-        super(props);
-        this._event_onResize = this._event_onResize.bind(this);
-        window.addEventListener("resize", this._event_onResize);
-    }
-    _event_onResize() {
-        this.setState({
-            mobile: (window.innerWidth < defaults.mobileWidthThresholdRelaxed)
-        });
-    }
-    componentWillMount() {
-        this._event_onResize();
-    }
     render() {
         let navigation = [];
         let keys = Object.keys(navlinks);
@@ -48,7 +35,7 @@ class Home extends Component {
                 <Link to="/login"><Button outline color="dark" style={{ color: "rgba(255, 255, 255, 0.5)", border: "none", borderRadius: 0 }}>Login</Button></Link>
             </div>
         );
-        if (!this.state.mobile) {
+        if (!this.props.isMobile) {
             return (
                 <Container fluid id="landing-section" style={{ zIndex: 3, width: "100%", minHeight: "100vh", textAlign: "center", userSelect: "none" }}>
                     <Row style={{ minWidth: "100%", minHeight: "100vh" }} className="d-flex align-items-center">
