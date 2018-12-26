@@ -9,6 +9,7 @@ import React, { Component } from "react";
 import { Container, Row, Col, Button } from "reactstrap";
 import { defaults, theme, navlinks } from "../../../Defaults";
 import { Parallax } from "react-scroll-parallax";
+import { Link } from "react-router-dom";
 /***************************************************************IMPORTS***************************************************************/
 
 /****************************************************************ABOUT****************************************************************/
@@ -43,8 +44,8 @@ class Home extends Component {
             <div>
                 {navigation}
                 <hr style={{ backgroundColor: "rgba(255, 255, 255, 0.15)", width: "100px" }} />
-                <Button outline color="dark" style={{ color: theme.primary[1], border: "none", borderRadius: 0 }}>Sign Up</Button>
-                <Button outline color="dark" style={{ color: "rgba(255, 255, 255, 0.5)", border: "none", borderRadius: 0 }}>Login</Button>
+                <Button outline color="dark" style={{ color: theme.accent[1], border: "none", borderRadius: 0 }}>Sign Up</Button>
+                <Link to="/login"><Button outline color="dark" style={{ color: "rgba(255, 255, 255, 0.5)", border: "none", borderRadius: 0 }}>Login</Button></Link>
             </div>
         );
         if (!this.state.mobile) {

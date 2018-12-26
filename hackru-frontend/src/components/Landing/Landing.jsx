@@ -9,7 +9,6 @@ import React, { Component } from "react";
 import { Container, Row } from "reactstrap";
 import Footer from "./Sections/Footer"
 import Home from "./Sections/Home";
-import FlyingLogo from "./FlyingLogo";
 import { ParallaxProvider } from "react-scroll-parallax";
 import { navlinks, theme } from "../../Defaults";
 import ScrollableAnchor from "react-scrollable-anchor";
@@ -52,10 +51,6 @@ class LandingPage extends Component {
         return (
             <Container id="LandingPage" className="section" fluid style={{ backgroundColor: theme.secondary[1] }}>
                 <ParallaxProvider>
-                    <div style={{ position: "fixed", zIndex: 1, width: "100%", height: "100%", left: 0, top: 0, opacity: 0.5 }}>
-                        <FlyingLogo url={"./assets/icons/hru-alien-noplat-white.png"} />
-                    </div>
-                    <div style={{ position: "fixed", zIndex: 2, width: "100%", height: "100%", left: 0, top: 0, background: "url(./assets/background.png)", backgroundSize: "cover", opacity: 0.5 }}></div>
                     <ScrollableAnchor id="home">
                         <div>
                             <Row className="section">
