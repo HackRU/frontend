@@ -11,6 +11,7 @@ import { theme } from "../Defaults";
 import { Icon } from "react-fa";
 import { Link } from "react-router-dom";
 import { HashLoader } from "react-spinners";
+import { Redirect } from "react-router-dom";
 /***************************************************************IMPORTS***************************************************************/
 
 /*****************************************************************APP*****************************************************************/
@@ -59,7 +60,7 @@ class SignUpPage extends Component {
             innerText = "";
         }
         if (this.state.done) {
-            innerForm = (<Alert style={{ background: "rgba(0, 255, 0, 0.25)", border: "none", color: "white" }} color="success">You have Successfully Signed Up!</Alert>)
+            innerForm = (<Redirect to="/dashboard" />)
             innerText = "";
         }
         let errors = null;
