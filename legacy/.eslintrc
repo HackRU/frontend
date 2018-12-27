@@ -11,8 +11,8 @@
 								"single"
 						],
 						"linebreak-style": [
-								2,
-								"unix"
+								0,
+								"windows"
 						],
 						"semi": [
 								2,

@@ -10,7 +10,7 @@ import { Container, Col, Input, InputGroup, InputGroupAddon, Form, FormGroup, Bu
 import { theme } from "../Defaults";
 import { Icon } from "react-fa";
 import { Link } from "react-router-dom";
-import { HashLoader } from "react-spinners";
+import { RingLoader } from "react-spinners";
 import { Redirect } from "react-router-dom";
 /***************************************************************IMPORTS***************************************************************/
 
@@ -56,7 +56,7 @@ class SignUpPage extends Component {
             </div>
         );
         if (this.state.loading) {
-            innerForm = (<div style={{ display: "block", width: "100%" }} align="center"><HashLoader color={theme.accent[0]} /> </div>);
+            innerForm = (<div style={{ display: "block", width: "100%" }} align="center"><RingLoader color={theme.primary[0]} /> </div>);
             innerText = "";
         }
         if (this.state.done) {
