@@ -28,26 +28,27 @@ class SignUpPage extends Component {
     }
     render() {
         let innerText = "Join us at HackRU!";
+        let inputStyle = { borderRadius: 0, background: "rgba(255, 255, 255, 0.2)", border: "none", color: "white" };
         let innerForm = (
             <div>
                 <FormGroup row>
                     <Col xs={6} style={{ margin: 0, paddingLeft: 0, paddingRight: 7 }}>
-                        <Input required id="first" type="text" placeholder="first name" style={{ borderRadius: 0, background: "rgba(255, 255, 255, 0.2)", border: "none", color: "black" }} />
+                        <Input required id="first" type="text" placeholder="first name" style={inputStyle} />
                     </Col>
                     <Col xs={6} style={{ margin: 0, paddingRight: 0, paddingLeft: 7 }}>
-                        <Input required id="last" type="text" placeholder="last name" style={{ borderRadius: 0, background: "rgba(255, 255, 255, 0.2)", border: "none", color: "black" }} />
+                        <Input required id="last" type="text" placeholder="last name" style={inputStyle} />
                     </Col>
                 </FormGroup>
                 <FormGroup row>
-                    <Input required type="email" id="email" placeholder="email" style={{ borderRadius: 0, background: "rgba(255, 255, 255, 0.2)", border: "none", color: "black" }} />
+                    <Input required type="email" id="email" placeholder="email" style={inputStyle} />
                 </FormGroup>
                 <hr style={{ background: "rgba(255, 255, 255, 0.25)" }} />
                 <FormGroup row>
-                    <Input required type="password" id="password" placeholder="password" style={{ borderRadius: 0, background: "rgba(255, 255, 255, 0.2)", border: "none", color: "black" }} />
+                    <Input required type="password" id="password" placeholder="password" style={inputStyle} />
                 </FormGroup>
                 <FormGroup row>
                     <InputGroup>
-                        <Input required type="password" id="conpassword" placeholder="confirm password" style={{ borderRadius: 0, background: "rgba(255, 255, 255, 0.2)", border: "none", color: "black" }} />
+                        <Input required type="password" id="conpassword" placeholder="confirm password" style={inputStyle} />
                         <InputGroupAddon addonType="append">
                             <Button color="success" style={{ borderRadius: 0 }}><Icon name="chevron-right" /></Button>
                         </InputGroupAddon>
