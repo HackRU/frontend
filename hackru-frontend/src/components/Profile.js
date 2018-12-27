@@ -7,13 +7,14 @@
 /***************************************************************IMPORTS***************************************************************/
 import cookie from "react-cookies";
 import request from "request";
+import { defaults } from "../Defaults";
 /***************************************************************IMPORTS***************************************************************/
 
 /***************************************************************PROFILE***************************************************************/
 /**
  * Configure the all of the urls that we will need to access the rest api
  */
-const BASE = (process.env.NODE_ENV && process.env.NODE_ENV === "development") ? ("https://7c5l6v7ip3.execute-api.us-west-2.amazonaws.com/lcs-test") : ("https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/mlhtest");
+const BASE = (process.env.NODE_ENV && process.env.NODE_ENV === "development") ? (defaults.rest.dev) : (defaults.rest.prod);
 const ENDPOINTS = {
     /**
      * Default login url
