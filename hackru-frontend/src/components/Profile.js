@@ -58,7 +58,7 @@ const ENDPOINTS = {
     /**
      * Default user url, expects
      */
-    "getUserData": BASE + "/read",
+    "userData": BASE + "/read",
     /**
      * Default user update information, expects
      */
@@ -148,7 +148,7 @@ class Profile {
                     json: true
                 }, (error, response, body) => {
                     if (error) {
-                        callback("An error occured when attempting signup");
+                        callback("An error occured when attempting signup. Failed at 1/2");
                     } else {
                         console.log(body);
                         if (body.statusCode === 400) {
@@ -175,7 +175,7 @@ class Profile {
                                 json: true
                             }, (error, response, body) => {
                                 if (error) {
-                                    console.error(error);
+                                    callback("An error occured when attempting signup. Failed at 2/2")
                                 } else {
                                     if (body.statusCode === 200) {
                                         this._login(email, token, valid_until);
@@ -213,9 +213,30 @@ class Profile {
     }
     Get(callback) {
         if (this.isLoggedIn) {
-
+            request({
+                method: "POST",
+                uri: ENDPOINTS.userData,
+                body: {
+                    email: this._email,
+                    token: this._token,
+                    query: {
+                        email: this._email
+                    }
+                },
+                json: true
+            }, (error, response, body) => {
+                if (error) {
+                    callback("An error occured retrieving data", null)
+                } else {
+                    if (body.statusCode === 200) {
+                        callback(null, body.body[0]);
+                    } else {
+                        callback(body.body, null);
+                    }
+                }
+            });
         } else {
-            callback("Please log in");
+            callback("Please log in", null);
         }
     }
     Set(data, callback) {

@@ -69,7 +69,7 @@ class App extends Component {
                     <div style={{ position: "fixed", zIndex: 1, width: "100%", height: "100%", left: 0, top: 0, opacity: 0.5 }}>
                         <FlyingLogo url={"./assets/icons/hru-alien-noplat-white.png"} />
                     </div>
-                    <div style={{ position: "fixed", zIndex: 2, width: "100%", height: "100%", left: 0, top: 0, background: "url(./assets/hru-background-small.png)", backgroundSize: "cover", opacity: 0.5 }}></div>
+                    <div style={{ position: "fixed", zIndex: 2, width: "100%", height: "100%", left: 0, top: 0, background: "url(./assets/hru-background-small.png)", backgroundSize: "cover", opacity: 0.25 }}></div>
                     <Switch>
                         {/* This is where the URL routing magic actually happens */}
                         <Route exact path="/" render={(props) => <LandingPage {...props} isMobile={this.state.isMobile} profile={this.state.profile} />} />
