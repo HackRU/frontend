@@ -40,6 +40,10 @@ class Dashboard extends Component {
 
             } else {
                 if (data) {
+                    delete data.auth;
+                    delete data.role;
+                    delete data.day_of;
+                    delete data.email;
                     console.log(data);
                     this.setState({
                         user: data,
@@ -90,6 +94,15 @@ class Dashboard extends Component {
             ); // This is such a sexy loading screen, I am totally going to use this again in my other applications
         }
         let user = this.state.user;
+        if (!user.phone_number) {
+            user.phone_number = "";
+        }
+        if (!user.ethnicity) {
+            user.ethnicity = "";
+        }
+        if (!user.how_you_heard_about_hackru) {
+            user.how_you_heard_about_hackru = "";
+        }
         let inputStyle = { backgroundColor: "rgba(255, 255, 255, 0.1)", border: "0", borderRadius: 0, color: "white" };
         let mobile = this.props.isMobile;
         return (
@@ -122,31 +135,42 @@ class Dashboard extends Component {
                                 </ListGroupItem>
                                 <Collapse isOpen={this.state.openDetails}>
                                     <ListGroupItem style={{ background: theme.primary[1] + "1F", borderRadius: 0 }}>
-                                        <Form>
+                                        <Form onSubmit={(e) => {
+                                            e.preventDefault();
+                                            this.setState({
+                                                loading: true
+                                            });
+                                            console.log(this.state.user);
+                                            this.props.profile.Set(this.state.user, (msg) => {
+                                                this.setState({
+                                                    loading: false
+                                                });
+                                            });
+                                        }}>
                                             <h4>About you</h4>
                                             <FormGroup row>
                                                 <Col xs={(mobile) ? 12 : 6}>
-                                                        <Label for="first">First Name</Label>
-                                                        <Input id="first" type="text" placeholder="John" style={inputStyle} />
+                                                    <Label for="first">First Name</Label>
+                                                    <Input required id="first" type="text" placeholder="John" style={inputStyle} value={user.first_name} onChange={(e) => { user.first_name = e.target.value; this.setState({ user: user }); }} />
                                                 </Col>
                                                 <Col xs={(mobile) ? 12 : 6}>
-                                                        <Label for="last">Last Name</Label>
-                                                        <Input id="last" type="text" placeholder="Doe" style={inputStyle} />
+                                                    <Label for="last">Last Name</Label>
+                                                    <Input required id="last" type="text" placeholder="Doe" style={inputStyle} value={user.last_name} onChange={(e) => { user.last_name = e.target.value; this.setState({ user: user }); }} />
                                                 </Col>
                                             </FormGroup>
                                             <FormGroup row>
                                                 <Col xs={(mobile) ? 12 : 4}>
                                                     <Label for="number">Phone Number</Label>
-                                                    <Input id="number" type="text" placeholder="(***) ***-****" style={inputStyle} />
+                                                    <Input required id="number" type="text" placeholder="(***) ***-****" style={inputStyle} value={user.phone_number} onChange={(e) => { user.phone_number = e.target.value; this.setState({ user: user }); }} />
                                                 </Col>
                                                 <Col xs={(mobile) ? 12 : 4}>
                                                     <Label for="dob">Date of Birth</Label>
-                                                    <Input id="dob" type="date" placeholder="mm/dd/yyyy" style={inputStyle} />
+                                                    <Input required id="dob" type="date" placeholder="mm/dd/yyyy" style={inputStyle} value={user.date_of_birth} onChange={(e) => { user.date_of_birth = e.target.value; this.setState({ user: user }); }} />
                                                 </Col>
                                                 <Col xs={(mobile) ? 12 : 4}>
                                                     <Label for="size">Shirt Size</Label>
                                                     <div className="forcestyle">
-                                                        <Select id="size" options={[
+                                                        <Select id="size" value={{ value: user.shirt_size, label: user.shirt_size }} onChange={(e) => { user.shirt_size = e.value; this.setState({ user: user }); }} options={[
                                                             { value: "Unisex XS", label: "Unisex XS" },
                                                             { value: "Unisex S", label: "Unisex S" },
                                                             { value: "Unisex M", label: "Unisex M" },
@@ -159,7 +183,7 @@ class Dashboard extends Component {
                                                 <Col xs={(mobile) ? 12 : 6}>
                                                     <Label for="gender">Gender</Label>
                                                     <div className="forcestyle">
-                                                        <Creatable id="gender" options={[
+                                                        <Creatable id="gender" value={{ value: user.gender, label: user.gender }} onChange={(e) => { user.gender = e.value; this.setState({ user: user }); }} options={[
                                                             { value: "Female", label: "Female" },
                                                             { value: "Male", label: "Male" },
                                                             { value: "Other", label: "Other" },
@@ -169,7 +193,7 @@ class Dashboard extends Component {
                                                 <Col xs={(mobile) ? 12 : 6}>
                                                     <Label for="ethnicity">Ethnicity</Label>
                                                     <div className="forcestyle">
-                                                        <Creatable id="ethnicity" options={[
+                                                        <Creatable id="ethnicity" value={{ value: user.ethnicity, label: user.ethnicity }} onChange={(e) => { user.ethnicity = e.value; this.setState({ user: user }); }} options={[
                                                             { value: "American Indian or Alaskan Native", label: "American Indian or Alaskan Native" },
                                                             { value: "Asian/Pacific Islander", label: "Asian/Pacific Islander" },
                                                             { value: "Black or African American", label: "Black or African American" },
@@ -179,26 +203,26 @@ class Dashboard extends Component {
                                             </FormGroup>
                                             <FormGroup>
                                                 <Label for="github">GitHub Handle</Label>
-                                                <Input id="github" type="text" placeholder="hackru" style={inputStyle} />
+                                                <Input id="github" type="text" placeholder="hackru" style={inputStyle} value={user.github} onChange={(e) => { user.github = e.target.value; this.setState({ user: user }); }} />
                                             </FormGroup>
                                             <h4>Education</h4>
                                             <FormGroup row>
                                                 <Col xs={(mobile) ? 12 : 8}>
                                                     <Label for="school">School</Label>
                                                     <div className="forcestyle">
-                                                        <Creatable id="school" options={this.state.schoolList} />
+                                                        <Creatable id="school" value={{ value: user.school, label: user.school }} onChange={(e) => { user.school = e.value; this.setState({ user: user }); }} options={this.state.schoolList} />
                                                     </div>
                                                 </Col>
                                                 <Col xs={(mobile) ? 12 : 4}>
                                                     <Label for="gy">Graduation Year</Label>
-                                                    <Input id="gy" type="number" placeholder="yyyy" style={inputStyle} />
+                                                    <Input required id="gy" type="number" placeholder="yyyy" style={inputStyle} value={user.grad_year} onChange={(e) => { user.grad_year = e.target.value; this.setState({ user: user }); }} />
                                                 </Col>
                                             </FormGroup>
                                             <FormGroup row>
                                                 <Col xs={(mobile) ? 12 : 6}>
                                                     <Label for="los">Level of Study</Label>
                                                     <div className="forcestyle">
-                                                        <Creatable id="los" options={[
+                                                        <Creatable id="los" value={{ value: user.level_of_study, label: user.level_of_study }} onChange={(e) => { user.level_of_study = e.value; this.setState({ user: user }); }} options={[
                                                             { value: "University (Undergraduate)", label: "University (Undergraduate)" },
                                                             { value: "University (Graduate)", label: "University (Graduate)" },
                                                             { value: "Highschool", label: "Highschool" }]} />
@@ -207,23 +231,23 @@ class Dashboard extends Component {
                                                 <Col xs={(mobile) ? 12 : 6}>
                                                     <Label for="los">Major</Label>
                                                     <div className="forcestyle">
-                                                        <Creatable isMulti id="los" options={this.state.majorList} />
+                                                        <Creatable isMulti id="los" value={(user.major.length > 0) ? (user.major.split(";").map(((val) => { return {value: val, label: val}; }))) : ([]) } onChange={(e) => { let majors = ""; for (let i = 0; i < e.length; i++) { majors += ";" + e[i].value; } majors = majors.substring(1); user.major = majors; this.setState({ user: user }); }} options={this.state.majorList} />
                                                     </div>
                                                 </Col>
                                             </FormGroup>
                                             <h4>HackRU</h4>
                                             <FormGroup>
                                                 <Label for="dr">Dietary Restrictions</Label>
-                                                <Input id="dr" type="text" placeholder="Allergies? Vegetarian?" style={inputStyle} />
+                                                <Input required id="dr" type="text" placeholder="Allergies? Vegetarian?" style={inputStyle} value={user.dietary_restrictions} onChange={(e) => { user.dietary_restrictions = e.target.value; this.setState({ user: user }); }} />
                                             </FormGroup>
                                             <FormGroup>
                                                 <Label for="sn">Special Needs</Label>
-                                                <Input id="sn" type="text" placeholder="Anything we should account for?" style={inputStyle} />
+                                                <Input required id="sn" type="text" placeholder="Anything we should account for?" value={user.special_needs} onChange={(e) => { user.special_needs = e.target.value; this.setState({ user: user }); }} style={inputStyle} />
                                             </FormGroup>
                                             <FormGroup>
                                                 <Label for="hear">How did you hear about HackRU?</Label>
                                                 <div className="forcestyle">
-                                                    <Creatable isMulti id="hear" options={[
+                                                    <Creatable isMulti id="hear" value={(user.how_you_heard_about_hackru.length > 0) ? (user.how_you_heard_about_hackru.split(";").map(((val) => { return { value: val, label: val }; }))) : ([])} onChange={(e) => { let majors = ""; for (let i = 0; i < e.length; i++) { majors += ";" + e[i].value; } majors = majors.substring(1); user.how_you_heard_about_hackru = majors; this.setState({ user: user }); }} options={[
                                                         { value: "Facebook", label: "Facebook" },
                                                         { value: "Instagram", label: "Instagram" },
                                                         { value: "MLH Website", label: "MLH Website" },
@@ -236,15 +260,15 @@ class Dashboard extends Component {
                                             </FormGroup>
                                             <FormGroup>
                                                 <Label for="sa">What are you hoping to experience at HackRU?</Label>
-                                                <Input id="sa" type="textarea" placeholder="" style={inputStyle} />
+                                                <Input id="sa" type="textarea" placeholder="" style={inputStyle} value={user.short_answer} onChange={(e) => { user.short_answer = e.target.value; this.setState({ user: user }); }} />
                                             </FormGroup>
                                             <h4>MLH Notices</h4>
                                             <FormGroup>
-                                                <Input id="mlh1" type="checkbox" placeholder="" style={{...inputStyle, marginLeft: 5 }} />
+                                                <Input required id="mlh1" type="checkbox" placeholder="" style={{...inputStyle, marginLeft: 5 }} />
                                                 <Label style={{ marginLeft: 25, textAlign: "justify" }} for="mlh1">I have read and agree to the <a href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf">MLH Code of Conduct</a></Label>
                                             </FormGroup>
                                             <FormGroup>
-                                                <Input id="mlh2" type="checkbox" placeholder="" style={{...inputStyle, marginLeft: 5 }} />
+                                                <Input required id="mlh2" type="checkbox" placeholder="" style={{...inputStyle, marginLeft: 5 }} />
                                                 <Label style={{ marginLeft: 25, textAlign: "justify" }} for="mlh2">I authorize you to share my application/registration information for event administration, ranking, MLH administration, pre- and post-event informational e-mails, and occasional messages about hackathons in-line with the <a href="https://mlh.io/privacy">MLH Privacy Policy</a>. Further, I agree to the terms of both the <a href="https://github.com/MLH/mlh-policies/blob/master/prize-terms-and-conditions/contest-terms.md">MLH Contest Terms and Conditions</a> and the <a href="https://mlh.io/privacy">MLH Privacy Policy</a>.</Label>
                                             </FormGroup>
                                             <div style={{ width: "100%" }} align="right">

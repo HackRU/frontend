@@ -81,7 +81,6 @@ class Profile {
         } else {
             this.isLoggedIn = false;
         }
-        console.log(cookie.loadAll());
     }
     Login(email, password, callback) {
         if (this.isLoggedIn) {
@@ -240,7 +239,33 @@ class Profile {
         }
     }
     Set(data, callback) {
-
+        if (this.isLoggedIn) {
+            request({
+                "method": "POST",
+                uri: ENDPOINTS.update,
+                body: {
+                    updates: {
+                        "$set": data
+                    },
+                    user_email: this._email,
+                    auth_email: this._email,
+                    auth: this._token
+                },
+                json: true
+            }, (error, response, body) => {
+                if (error) {
+                    callback("An error occured when attempting to update data")
+                } else {
+                    if (body.statusCode === 200) {
+                        callback();
+                    } else {
+                        callback(body.body);
+                    }
+                }
+            });
+        } else {
+            callback("Please log in");
+        }
     }
 }
 /***************************************************************PROFILE***************************************************************/
