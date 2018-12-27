@@ -20,8 +20,8 @@ class FAQs extends Component {
         return (
             <div>
                 <h1 className="display-4 theme-font">FAQs</h1>
-                <hr  />
-                <Container fluid>
+                <hr />
+                <Container fluid style={{ textAlign: "justify" }}>
                     <Row>
                         <Col xs={cols}>
                             <h2>What is HackRU?</h2>
@@ -57,7 +57,7 @@ class FAQs extends Component {
                       </Col>
                     </Row>
                 </Container>
-                <hr  />
+                <hr />
             </div>
         )
     }

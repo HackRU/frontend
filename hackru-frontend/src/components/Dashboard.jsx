@@ -6,13 +6,13 @@
  */
 /***************************************************************IMPORTS***************************************************************/
 import React, { Component } from "react";
-import { Container, ListGroup, ListGroupItem, ListGroupItemHeading, ListGroupItemText, Collapse, Form, FormGroup, Input, Label, ButtonGroup, Button, Col } from "reactstrap";
+import { Container, ListGroup, ListGroupItem, ListGroupItemHeading, ListGroupItemText, Collapse, Form, FormGroup, Input, Label, ButtonGroup, Button, Col, UncontrolledAlert } from "reactstrap";
 import { theme } from "../Defaults";
 import { Redirect } from "react-router-dom";
 import { BounceLoader, PulseLoader } from "react-spinners";
 import { Link } from "react-router-dom";
 import { Icon } from "react-fa";
-import Select, { Creatable } from "react-select";
+import Select, { Creatable, AsyncCreatable } from "react-select";
 import request from "request";
 import majors from "./majors.json";
 /***************************************************************IMPORTS***************************************************************/
@@ -29,11 +29,11 @@ class Dashboard extends Component {
         }
         this.setState({
             loading: true,
-            errors: [],
             user: null,
             openDetails: false,
             schoolList: [],
-            majorList: majorList
+            majorList: majorList,
+            profileMSG: null
         });
         this.props.profile.Get((msg, data) => {
             if (msg) {
@@ -44,7 +44,6 @@ class Dashboard extends Component {
                     delete data.role;
                     delete data.day_of;
                     delete data.email;
-                    console.log(data);
                     this.setState({
                         user: data,
                         loading: false
@@ -105,6 +104,14 @@ class Dashboard extends Component {
         }
         let inputStyle = { backgroundColor: "rgba(255, 255, 255, 0.1)", border: "0", borderRadius: 0, color: "white" };
         let mobile = this.props.isMobile;
+        let profileMSGS = null;
+        if (this.state.profileMSG) {
+            if (this.state.profileMSG[0] === 0) {
+                profileMSGS = (<UncontrolledAlert color="success" style={{ background: "rgba(0, 255, 0, 0.25)", border: "none", color: "white" }} >{this.state.profileMSG[1]}</UncontrolledAlert>);
+            } else {
+                profileMSGS = (<UncontrolledAlert color="danger" style={{ background: "rgba(255, 0, 0, 0.25)", border: "none", color: "white" }}>{this.state.profileMSG[1]}</UncontrolledAlert>);
+            }
+        }
         return (
             <Container fluid style={{ width: "100%", minHeight: "100vh", textAlign: "center", backgroundColor: theme.secondary[1] }} className="d-flex align-items-center">
                 <div style={{ zIndex: 3, color: "white", width: "100%" }} align="center">
@@ -138,15 +145,25 @@ class Dashboard extends Component {
                                         <Form onSubmit={(e) => {
                                             e.preventDefault();
                                             this.setState({
-                                                loading: true
-                                            });
-                                            console.log(this.state.user);
-                                            this.props.profile.Set(this.state.user, (msg) => {
-                                                this.setState({
-                                                    loading: false
+                                                loading: true,
+                                                profileMSG: null
+                                            }, () => {
+                                                this.props.profile.Set(this.state.user, (msg) => {
+                                                    if (msg) {
+                                                        this.setState({
+                                                            loading: false,
+                                                            profileMSG: [1, msg]
+                                                        });
+                                                    } else {
+                                                        this.setState({
+                                                            loading: false,
+                                                            profileMSG: [0, "Profile Updated!"]
+                                                        });
+                                                    }
                                                 });
                                             });
                                         }}>
+                                            {profileMSGS}
                                             <h4>About you</h4>
                                             <FormGroup row>
                                                 <Col xs={(mobile) ? 12 : 6}>
@@ -210,7 +227,15 @@ class Dashboard extends Component {
                                                 <Col xs={(mobile) ? 12 : 8}>
                                                     <Label for="school">School</Label>
                                                     <div className="forcestyle">
-                                                        <Creatable id="school" value={{ value: user.school, label: user.school }} onChange={(e) => { user.school = e.value; this.setState({ user: user }); }} options={this.state.schoolList} />
+                                                        <AsyncCreatable id="school" value={{ value: user.school, label: user.school }} onChange={(e) => { user.school = e.value; this.setState({ user: user }); }} cacheOptions defaultOptions loadOptions={(inputValue, callback) => {
+                                                            if (inputValue) {
+                                                                callback(this.state.schoolList.filter((i) => {
+                                                                    return i.label.toLowerCase().includes(inputValue.toLowerCase());
+                                                                }));
+                                                            } else {
+                                                                callback(this.state.schoolList);
+                                                            }
+                                                        }} />
                                                     </div>
                                                 </Col>
                                                 <Col xs={(mobile) ? 12 : 4}>
