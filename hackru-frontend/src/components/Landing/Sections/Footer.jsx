@@ -30,10 +30,10 @@ class Footer extends Component {
                                     <a style={{ color: "white", marginLeft: 10, marginRight: 10 }} href="https://twitter.com/theHackRU" className="social-links" target="_blank" rel="noopener noreferrer"><Icon size="2x" name="twitter-square" /></a>
                                 </div>
                                 <div className="col-12 mb-5 mb-lg-0 text-center col-lg-4 align-middle">
-                                    <a href="https://mlh.io/" target="_blank" rel="noopener noreferrer">
+                                    <a style={{marginRight: 10 }} href="https://mlh.io/" target="_blank" rel="noopener noreferrer">
                                         <img className="footer-logo" src="https://static.mlh.io/brand-assets/logo/official/mlh-logo-white.png" alt="MLH logo" />
                                     </a>
-                                    <a href="http://usacs.rutgers.edu/" target="_blank" rel="noopener noreferrer">
+                                    <a style={{marginRight: 10 }} href="http://usacs.rutgers.edu/" target="_blank" rel="noopener noreferrer">
                                         <img className="footer-logo" src="./assets/icons/usacs-logo.svg" alt="USACS logo" />
                                     </a>
                                 </div>

@@ -117,11 +117,12 @@ class Dashboard extends Component {
                 <div style={{ zIndex: 3, color: "white", width: "100%" }} align="center">
                     <Container>
                         <div style={{ width: "100%", textAlign: "left", marginBottom: 0 }}>
+                            <h1 style={{textAlign: "center"}}><img width="250" alt="logo" src="./assets/icons/assetsSVG/hru-logo-small-green.svg" ></img></h1>
                             <h1 className="display-4 theme-font">Welcome, {user.first_name}</h1>
-                            <div style={{ display: "inline-block", margin: 10 }}><p className="lead"><Link to="/" className="theme-home-link" style={{ color: theme.secondary[0] + "ff", textDecoration: "none" }}>Home</Link></p></div>
-                            <div style={{ display: "inline-block", margin: 10 }}><p className="lead"><Link to="/logout" className="theme-home-link" style={{ color: theme.secondary[0] + "ff", textDecoration: "none" }}>Logout</Link></p></div>
-                            <div style={{ display: "inline-block", margin: 10 }}><p className="lead"><a href="/resources/waiver.pdf" className="theme-home-link" style={{ color: theme.secondary[0] + "ff", textDecoration: "none" }}>Waiver</a></p></div>
-                            <div style={{ display: "inline-block", margin: 10 }}><p className="lead"><a href="/resources/menu.pdf" className="theme-home-link" style={{ color: theme.secondary[0] + "ff", textDecoration: "none" }}>Food</a></p></div>
+                            <div style={{ display: "inline-block", marginRight: 20 }}><p className="lead"><Link to="/" className="theme-home-link" style={{ color: theme.primary[0] + "ff", textDecoration: "none" }}>Home</Link></p></div>
+                            <div style={{ display: "inline-block", marginRight: 20 }}><p className="lead"><a href="/resources/waiver.pdf" className="theme-home-link" style={{ color: theme.primary[0] + "ff", textDecoration: "none" }}>Waiver</a></p></div>
+                            <div style={{ display: "inline-block", marginRight: 20 }}><p className="lead"><a href="/resources/menu.pdf" className="theme-home-link" style={{ color: theme.primary[0] + "ff", textDecoration: "none" }}>Food</a></p></div>
+                            <div style={{ display: "inline-block", marginRight: 20 }}><p className="lead"><Link to="/logout" className="theme-home-link" style={{ color: theme.accent[0] + "ff", textDecoration: "none" }}>Logout</Link></p></div>
                         </div>
                         <div style={{ width: "100%", textAlign: "left" }}>
                             <p className="lead">Event Information</p>
@@ -133,7 +134,7 @@ class Dashboard extends Component {
                         <div style={{ width: "100%", textAlign: "left" }}>
                             <p className="lead">User Profile</p>
                         </div>
-                        <div style={{ width: "100%", textAlign: "left" }}>
+                        <div style={{ width: "100%", textAlign: "left", marginBottom: 25 }}>
                             <ListGroup>
                                 <ListGroupItem tag="button" href="#" action style={{ background: theme.primary[0] + "2F", color: theme.primary[1] + "FF", borderRadius: 0 }} onClick={(e) => { this.setState({ openDetails: !this.state.openDetails }) }}>
                                     <ListGroupItemHeading>Basics</ListGroupItemHeading>
@@ -298,8 +299,8 @@ class Dashboard extends Component {
                                             </FormGroup>
                                             <div style={{ width: "100%" }} align="right">
                                                 <ButtonGroup>
-                                                    <Button type="reset" outline color="danger">Clear</Button>
-                                                    <Button type="submit" color="success">Update</Button>
+                                                    <Button style={{backgroundColor: theme.accent[0], marginRight: 10 }} type="reset" >Clear</Button>
+                                                    <Button style={{backgroundColor: theme.primary[0] }} type="submit" >Update</Button>
                                                 </ButtonGroup>
                                             </div>
                                         </Form>
