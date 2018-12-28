@@ -25,8 +25,8 @@ class Home extends Component {
         for (let i = 0; i < keys.length; i++) {
             if (navlinks[keys[i]].enabled) {
                 navigation.push(
-                    <p className="lead" key={keys[i]}><a href={navlinks[keys[i]].url} className="theme-home-link" style={{ color: theme.primary[0] + "ff", textDecoration: "none" }}>{keys[i]}</a></p>
-                );
+                    <p className="lead" key={keys[i]}><a href={navlinks[keys[i]].url} className="theme-home-link" style={{ textDecoration: "none" }}>{keys[i]}</a></p>
+                )
             }
         }
         let dashboardbtns = [];

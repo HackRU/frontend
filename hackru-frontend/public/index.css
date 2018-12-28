@@ -25,19 +25,22 @@ body::-webkit-scrollbar {
 }
 
 a:link {
-    color: rgba(248, 165, 255, 1);
+    color: rgba(38, 232, 184, 1);
+    transition: color 0.5s ease;
 }
 
 a:link:hover {
-    color: rgba(38, 232, 184, 1);
+    color: rgb(255, 255, 255);
+    text-decoration: none;
 }
 
 a:visited {
-    color: rgba(255, 128, 207, 1);
+    color: rgba(38, 232, 184, 1);
 }
 
 a:visited:hover {
-    color: rgba(38, 232, 184, 0.4);
+    color: rgb(255, 255, 255);
+    text-decoration: none;
 }
 
 .btn:hover{
@@ -45,7 +48,7 @@ a:visited:hover {
     color: rgba(90, 122, 150, 1) !important;
 }
 
-h1 p {
+h1, h2, h3, h4, h5, h6, p {
     font-family: "Circular Std Bold", sans-serif;
 }
 
