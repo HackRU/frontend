@@ -27,9 +27,9 @@ class Logo extends Component {
 						targets: "path",
 						strokeDashoffset: [anime.setDashoffset, 0],
 						easing: "easeInOutExpo",
-						duration: 5000,
+						duration: 7500,
 						direction: "alternate",
-						delay: function (el, i) { return i * 250 },
+						delay: (el, i) => { return 1000; },
 						loop: true
 					});
 				});

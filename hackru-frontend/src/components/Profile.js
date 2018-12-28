@@ -143,7 +143,7 @@ class Profile {
                     body: {
                         email: email,
                         password: password,
-                        registration_status: "<< IDK WHAT THE REGISTRATION STATUS ENUMS ARE >>" //"waitlist" is one of them
+                        registration_status: "unregistered" //"waitlist" is one of them
                     },
                     json: true
                 }, (error, response, body) => {
@@ -254,6 +254,7 @@ class Profile {
                 },
                 json: true
             }, (error, response, body) => {
+                console.log(body);
                 if (error) {
                     callback("An error occured when attempting to update data")
                 } else {

@@ -33,10 +33,14 @@ class LandingPage extends Component {
                 if (i % 2 === 0) {
                     className = "bg-gradient-right skew-right";
                 }
+                let style = {};
+                if (navlinks[keys[i]].fullHeight) {
+                    style["minHeight"] = "100vh";
+                }
                 rows.push((
                     <ScrollableAnchor key={url} id={url}>
                         <div>
-                            <Row className="section">
+                            <Row className="section" style={style}>
                                 <div className={className} >
                                     <div className={sectionClasses}>
                                         {component}
@@ -54,7 +58,7 @@ class LandingPage extends Component {
                     <ScrollableAnchor id="home">
                         <div>
                             <Row className="section">
-                                <Home isMobile={this.props.isMobile} profile={this.props.profile} />
+                                <Home isMobile={this.props.isMobile} profile={this.props.profile} loggedout={this.props.loggedout} dismissAlert={this.props.dismissAlert} />
                             </Row>
                         </div>
                     </ScrollableAnchor>

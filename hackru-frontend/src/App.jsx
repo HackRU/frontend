@@ -15,8 +15,8 @@ import {
     E404 } from "./components/Pages"; // Router Pages
 import FlyingLogo from "./FlyingLogo" // The logos that go up through the page
 import MLHBadge from "./MLHBadge"; // We need this to qualify as an official MLH event
-import { defaults } from "./Defaults";
-import { Profile } from "./components/Profile";
+import { defaults } from "./Defaults"; // Get a handle to the default application settings
+import { Profile } from "./components/Profile"; // User profile storage
 /***************************************************************IMPORTS***************************************************************/
 
 /*****************************************************************APP*****************************************************************/
@@ -50,7 +50,8 @@ class App extends Component {
     componentWillMount() {
         this._event_onResize();
         this.setState({
-            profile: new Profile()
+            profile: new Profile(),
+            loggedout: false
         });
     }
     /**
@@ -72,10 +73,10 @@ class App extends Component {
                     <div style={{ position: "fixed", zIndex: 2, width: "100%", height: "100%", left: 0, top: 0, background: "url(./assets/hru-background-large.png)", backgroundSize: "cover", opacity: 0.25 }}></div>
                     <Switch>
                         {/* This is where the URL routing magic actually happens */}
-                        <Route exact path="/" render={(props) => <LandingPage {...props} isMobile={this.state.isMobile} profile={this.state.profile} />} />
+                        <Route exact path="/" render={(props) => <LandingPage {...props} isMobile={this.state.isMobile} profile={this.state.profile} loggedout={this.state.loggedout} dismissAlert={() => { this.setState({ loggedout: false }); }} />} />
                         <Route exact path="/login" render={(props) => <LoginPage {...props} isMobile={this.state.isMobile} profile={this.state.profile} />} />
                         <Route exact path="/signup" render={(props) => <SignUpPage {...props} isMobile={this.state.isMobile} profile={this.state.profile} />} />
-                        <Route exact path="/logout" component={() => { this.state.profile.Logout(); this.setState({ profile: this.state.profile }); return (<Redirect to="/" />); }} />
+                        <Route exact path="/logout" component={() => { this.state.profile.Logout(); this.setState({ profile: this.state.profile, loggedout: true }); return (<Redirect to="/" />); }} />
                         <Route exact path="/dashboard" render={(props) => <DashboardPage {...props} isMobile={this.state.isMobile} profile={this.state.profile} />} />
                         {/* If none of the other urls were matched, we will show a 404 page to the user */}
                         <Route component={E404} />
