@@ -6,7 +6,7 @@
  */
 /***************************************************************IMPORTS***************************************************************/
 import React, { Component } from "react";
-import { Container, ListGroup, ListGroupItem, ListGroupItemHeading, ListGroupItemText, Collapse, Form, FormGroup, Input, Label, ButtonGroup, Button, Col, UncontrolledAlert } from "reactstrap";
+import { Container, ListGroup, ListGroupItem, ListGroupItemHeading, ListGroupItemText, Collapse, Form, FormGroup, Input, Label, Button, Row, Col, UncontrolledAlert } from "reactstrap";
 import { theme } from "../Defaults";
 import { Redirect } from "react-router-dom";
 import { BounceLoader, PulseLoader } from "react-spinners";
@@ -117,12 +117,18 @@ class Dashboard extends Component {
                 <div style={{ zIndex: 3, color: "white", width: "100%" }} align="center">
                     <Container>
                         <div style={{ width: "100%", textAlign: "left", marginBottom: 0 }}>
-                            <h1 style={{textAlign: "center"}}><img width="250" alt="logo" src="./assets/icons/assetsSVG/hru-logo-small-green.svg" ></img></h1>
-                            <h1 className="display-4 theme-font">Welcome, {user.first_name}</h1>
-                            <div style={{ display: "inline-block", marginRight: 20 }}><p className="lead"><Link to="/" className="theme-home-link" style={{ color: theme.primary[0] + "ff", textDecoration: "none" }}>Home</Link></p></div>
-                            <div style={{ display: "inline-block", marginRight: 20 }}><p className="lead"><a href="/resources/waiver.pdf" className="theme-home-link" style={{ color: theme.primary[0] + "ff", textDecoration: "none" }}>Waiver</a></p></div>
-                            <div style={{ display: "inline-block", marginRight: 20 }}><p className="lead"><a href="/resources/menu.pdf" className="theme-home-link" style={{ color: theme.primary[0] + "ff", textDecoration: "none" }}>Food</a></p></div>
-                            <div style={{ display: "inline-block", marginRight: 20 }}><p className="lead"><Link to="/logout" className="theme-home-link" style={{ color: theme.accent[0] + "ff", textDecoration: "none" }}>Logout</Link></p></div>
+                            <Row>
+                                <Col md={9} xs={12}>
+                                    <h1 className="display-4 theme-font">Welcome, {user.first_name}</h1>
+                                    <div style={{ display: "inline-block", marginRight: 20 }}><p className="lead"><Link to="/" className="theme-home-link" style={{ color: theme.primary[0] + "ff", textDecoration: "none" }}>Home</Link></p></div>
+                                    {/* <div style={{ display: "inline-block", marginRight: 20 }}><p className="lead"><a href="/resources/waiver.pdf" className="theme-home-link" style={{ color: theme.primary[0] + "ff", textDecoration: "none" }}>Waiver</a></p></div>
+                                    <div style={{ display: "inline-block", marginRight: 20 }}><p className="lead"><a href="/resources/menu.pdf" className="theme-home-link" style={{ color: theme.primary[0] + "ff", textDecoration: "none" }}>Food</a></p></div> */}
+                                    <div style={{ display: "inline-block", marginRight: 20 }}><p className="lead"><Link to="/logout" className="theme-home-link" style={{ color: theme.accent[0] + "ff", textDecoration: "none" }}>Logout</Link></p></div>
+                                </Col>
+                                <Col style={{ textAlign: "center" }} md={3} xs={12}>
+                                    <img width="250"  style={{ marginTop: 0 }} alt="logo" src="./assets/icons/hru-logo-green.svg" />
+                                </Col>
+                            </Row>
                         </div>
                         <div style={{ width: "100%", textAlign: "left" }}>
                             <p className="lead">Event Information</p>
@@ -298,10 +304,8 @@ class Dashboard extends Component {
                                                 <Label style={{ marginLeft: 25, textAlign: "justify" }} for="mlh2">I authorize you to share my application/registration information for event administration, ranking, MLH administration, pre- and post-event informational e-mails, and occasional messages about hackathons in-line with the <a href="https://mlh.io/privacy">MLH Privacy Policy</a>. Further, I agree to the terms of both the <a href="https://github.com/MLH/mlh-policies/blob/master/prize-terms-and-conditions/contest-terms.md">MLH Contest Terms and Conditions</a> and the <a href="https://mlh.io/privacy">MLH Privacy Policy</a>.</Label>
                                             </FormGroup>
                                             <div style={{ width: "100%" }} align="right">
-                                                <ButtonGroup>
-                                                    <Button style={{backgroundColor: theme.accent[0], marginRight: 10 }} type="reset" >Clear</Button>
-                                                    <Button style={{backgroundColor: theme.primary[0] }} type="submit" >Update</Button>
-                                                </ButtonGroup>
+                                                <Button style={{ backgroundColor: theme.accent[0], marginRight: 10 }} type="reset" >Clear</Button>
+                                                <Button style={{ backgroundColor: theme.primary[0] }} type="submit" >Update</Button>
                                             </div>
                                         </Form>
                                     </ListGroupItem>

@@ -6,10 +6,11 @@
  */
 /***************************************************************IMPORTS***************************************************************/
 import React, { Component } from "react";
-import { Container, Row, Col } from "reactstrap";
+import { Container, Row, Col, Button } from "reactstrap";
 import { defaults, theme, navlinks } from "../../../Defaults";
 import { Parallax } from "react-scroll-parallax";
 import { Link } from "react-router-dom";
+import { Icon } from "react-fa";
 import Logo from "./Logo";
 /***************************************************************IMPORTS***************************************************************/
 
@@ -50,13 +51,18 @@ class Home extends Component {
                         <Col xs={2}></Col>
                         <Col xs={8} style={{ display: "block" }}>
                             <Logo src="./assets/icons/hru-logo.svg" />
-                            <h2 style={{ marginTop: -100 }} className="display-5 theme-font">{defaults.dateText}</h2>
+                            <h2 style={{ marginTop: 15 }} className="display-4 theme-font">Hackathon at Rutgers University</h2>
+                            <h2 className="lead theme-font"><Icon style={{ marginRight: 5 }} name="map-marker" /> {defaults.locationText}</h2>
+                            <h2 className="lead theme-font"><Icon style={{ marginRight: 5 }} name="calendar" /> {defaults.dateText}</h2>
                         </Col>
                         <Col xs={2} style={{ overflow: "hidden", paddingTop: 10, paddingBottom: 10 }}>
                             <Parallax offsetXMin={-100} offsetXMax={100}>
                                 {navContainer}
                             </Parallax>
                         </Col>
+                        <div style={{ position: "absolute", bottom: 10, textAlign: "center", width: "100%" }}>
+                            <Button href="#about" outline style={{ border: "none" }} ><Icon name="chevron-down" /> More Information</Button>
+                        </div>
                     </Row>
                 </Container>
             )
@@ -65,8 +71,10 @@ class Home extends Component {
                 <Container fluid id="landing-section" style={{ zIndex: 3, width: "100%", minHeight: "100vh", textAlign: "center", userSelect: "none" }}>
                     <Row style={{ minWidth: "100%", minHeight: "100vh" }} className="d-flex align-items-center">
                         <Col style={{ display: "block" }}>
-                            <Logo src="./assets/icons/hru-logo.svg" />
-                            <h2 style={{ marginTop: -100, marginBottom: 100 }} className="display-5 theme-font">{defaults.dateText}</h2>
+                            <Logo noCircle src="./assets/icons/hru-logo.svg" />
+                            <h2 style={{ marginTop: -75 }} className="display-4 theme-font">Hackathon at Rutgers University</h2>
+                            <h2 className="lead theme-font"><Icon style={{ marginRight: 5 }} name="map-marker" /> {defaults.locationText}</h2>
+                            <h2 className="lead theme-font"><Icon style={{ marginRight: 5 }} name="calendar" /> {defaults.dateText}</h2>
                             {navContainer}
                         </Col>
                     </Row>
