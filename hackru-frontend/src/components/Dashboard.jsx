@@ -250,7 +250,7 @@ class Dashboard extends Component {
                                                         <Creatable id="los" value={{ value: user.level_of_study, label: user.level_of_study }} onChange={(e) => { user.level_of_study = e.value; this.setState({ user: user }); }} options={[
                                                             { value: "University (Undergraduate)", label: "University (Undergraduate)" },
                                                             { value: "University (Graduate)", label: "University (Graduate)" },
-                                                            { value: "Highschool", label: "Highschool" }]} />
+                                                            { value: "High School", label: "High School" }]} />
                                                     </div>
                                                 </Col>
                                                 <Col xs={(mobile) ? 12 : 6}>

@@ -10,6 +10,7 @@ import { Container, Row, Col } from "reactstrap";
 import { defaults, theme, navlinks } from "../../../Defaults";
 import { Parallax } from "react-scroll-parallax";
 import { Link } from "react-router-dom";
+import Logo from "./Logo";
 /***************************************************************IMPORTS***************************************************************/
 
 /****************************************************************ABOUT****************************************************************/
@@ -48,9 +49,8 @@ class Home extends Component {
                     <Row style={{ minWidth: "100%", minHeight: "100vh" }} className="d-flex align-items-center">
                         <Col xs={2}></Col>
                         <Col xs={8} style={{ display: "block" }}>
-                            <img id="alien" src="./assets/icons/hru-alien-noplat-color.png" style={{ maxHeight: "400px", maxWidth: "100%", background: "radial-gradient(#5A7A96AA, #5A7A9600, #5A7A9633)", borderRadius: "100%" }} alt="" />
-                            <h1 className="display-1 theme-font">{defaults.title.split(" ")[0]}</h1>
-                            <h2 className="theme-font">{defaults.dateText}</h2>
+                            <Logo src="./assets/icons/hru-logo.svg" />
+                            <h2 style={{ marginTop: -100 }} className="display-5 theme-font">{defaults.dateText}</h2>
                         </Col>
                         <Col xs={2} style={{ overflow: "hidden", paddingTop: 10, paddingBottom: 10 }}>
                             <Parallax offsetXMin={-100} offsetXMax={100}>
@@ -65,9 +65,8 @@ class Home extends Component {
                 <Container fluid id="landing-section" style={{ zIndex: 3, width: "100%", minHeight: "100vh", textAlign: "center", userSelect: "none" }}>
                     <Row style={{ minWidth: "100%", minHeight: "100vh" }} className="d-flex align-items-center">
                         <Col style={{ display: "block" }}>
-                            <img id="alien" src="./assets/icons/hru-alien-noplat-color.png" style={{ maxHeight: "400px", maxWidth: "100%", background: "radial-gradient(#5A7A96AA, #5A7A9600, #5A7A9633)", borderRadius: "100%" }} alt="" />
-                            <h1 className="display-3 theme-font">{defaults.title.split(" ")[0]}</h1>
-                            <h2 className="theme-font">{defaults.dateText}</h2>
+                            <Logo src="./assets/icons/hru-logo.svg" />
+                            <h2 style={{ marginTop: -100, marginBottom: 100 }} className="display-5 theme-font">{defaults.dateText}</h2>
                             {navContainer}
                         </Col>
                     </Row>
