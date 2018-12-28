@@ -15,7 +15,7 @@ class Footer extends Component {
             <div>
                 <Row style={{ height: 300, overflowY: "hidden", marginTop: -100 }}>
                     <div className="bg-gradient-right skew-right" style={{ marginTop: 100, padding: 0, left: 0, zIndex: "15", height: "100%", width: "100%" }}>
-                        <div className="skew-left" style={{ padding: 55, textAlign: "center" }}>
+                        <div className="skew-left" style={{ padding: 55, paddingTop: 85, textAlign: "center" }}>
                             <div className="row">
                                 <div className="col-12 text-center col-lg-4">
                                     <h6 className="align-middle">

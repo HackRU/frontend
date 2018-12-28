@@ -41,11 +41,9 @@ class Logo extends Component {
 			file: ""
 		});
 	}
-	componentDidMount() {
-	}
 	render() {
 		return (
-			<Container style={{ height: 400, maxWidth: 400, background: "radial-gradient(#5A7A96AA, #5A7A9600, #5A7A9633)", borderRadius: "100%", color: theme.primary[0] + "AF" }} className="d-flex align-items-center">
+			<Container style={{ minHeight: 400, maxWidth: 400, background: (this.props.noCircle) ? ("") : ("radial-gradient(#5A7A96AA, #5A7A9600, #5A7A9633)"), borderRadius: "100%", color: theme.primary[0] + "AF" }} className="d-flex align-items-center">
 				<Col xs={12} dangerouslySetInnerHTML={{ __html: this.state.file }} />
 			</Container>
 		);
