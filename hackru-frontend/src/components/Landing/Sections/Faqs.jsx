@@ -19,7 +19,7 @@ import FaqsCollapse from './FaqsCollapse';
 const FAQTextOne = {
     one: {
       title: 'What is HackRU?',
-      text: [<p>HackRU is a 24-hour hackathon at Rutgers University. We welcome hundreds of students to join us in building awesome software and hardware projects. Industry experts and mentors come from all over the country to create an environment that fosters an atmosphere of learning through tech talks and one-on-one guidance. We encourage beginner and advanced hackers alike to challenge themselves and expand their skills.</p>]
+      text: [<p key={1}>HackRU is a 24-hour hackathon at Rutgers University. We welcome hundreds of students to join us in building awesome software and hardware projects. Industry experts and mentors come from all over the country to create an environment that fosters an atmosphere of learning through tech talks and one-on-one guidance. We encourage beginner and advanced hackers alike to challenge themselves and expand their skills.</p>]
     },
     two: {
         title: 'What should I bring?',
@@ -39,7 +39,7 @@ const FAQTextOne = {
     },
     six: {
         title: 'I have more questions!',
-        text: [<span>Reach out to us at <a href="mailto:info@hackru.org"> info@hackru.org!</a> We'll be happy to answer.</span>]
+        text: [<span key={1}>Reach out to us at <a href="mailto:info@hackru.org"> info@hackru.org!</a> We'll be happy to answer.</span>]
     }
 
 }
@@ -94,12 +94,12 @@ class FAQs extends Component {
                     <Row>
                         <Col xs={cols}>
                             {Object.keys(FAQTextOne).map((key, index) =>
-                                <FaqsCollapse key={index} cat={FAQTextOne[key]} />
+                                <FaqsCollapse key={index + "1"} cat={FAQTextOne[key]} />
                             )}
                         </Col>
                         <Col xs={cols}>
                             {Object.keys(FAQTextTwo).map((key, index) =>
-                                <FaqsCollapse key={index} cat={FAQTextTwo[key]} />
+                                <FaqsCollapse key={index + "2"} cat={FAQTextTwo[key]} />
                             )}                 
                       </Col>
                     </Row>
