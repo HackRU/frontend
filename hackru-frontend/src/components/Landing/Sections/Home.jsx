@@ -6,7 +6,7 @@
  */
 /***************************************************************IMPORTS***************************************************************/
 import React, { Component } from "react";
-import { Container, Row, Col, Button } from "reactstrap";
+import { Container, Row, Col, Button, Alert } from "reactstrap";
 import { defaults, theme, navlinks } from "../../../Defaults";
 import { Parallax } from "react-scroll-parallax";
 import { Link } from "react-router-dom";
@@ -26,7 +26,7 @@ class Home extends Component {
             if (navlinks[keys[i]].enabled) {
                 navigation.push(
                     <p className="lead" key={keys[i]}><a href={navlinks[keys[i]].url} className="theme-home-link" style={{ color: theme.primary[0] + "ff", textDecoration: "none" }}>{keys[i]}</a></p>
-                )
+                );
             }
         }
         let dashboardbtns = [];
@@ -44,12 +44,17 @@ class Home extends Component {
                 {dashboardbtns}
             </div>
         );
+        let loggoutMsg = null;
+        if (this.props.loggedout) {
+            loggoutMsg = (<Alert style={{ border: "none", background: "rgba(0, 255, 0, 0.25)", color: "white" }} color="success" isOpen={this.props.loggedout} toggle={this.props.dismissAlert}>You are logged out</Alert>)
+        }
         if (!this.props.isMobile) {
             return (
                 <Container fluid id="landing-section" style={{ zIndex: 3, width: "100%", minHeight: "100vh", textAlign: "center", userSelect: "none" }}>
                     <Row style={{ minWidth: "100%", minHeight: "100vh" }} className="d-flex align-items-center">
                         <Col xs={2}></Col>
                         <Col xs={8} style={{ display: "block" }}>
+                            {loggoutMsg}
                             <Logo src="./assets/icons/hru-logo.svg" />
                             <h2 style={{ marginTop: 15 }} className="display-4 theme-font">Hackathon at Rutgers University</h2>
                             <h2 className="lead theme-font"><Icon style={{ marginRight: 5 }} name="map-marker" /> {defaults.locationText}</h2>
@@ -71,6 +76,7 @@ class Home extends Component {
                 <Container fluid id="landing-section" style={{ zIndex: 3, width: "100%", minHeight: "100vh", textAlign: "center", userSelect: "none" }}>
                     <Row style={{ minWidth: "100%", minHeight: "100vh" }} className="d-flex align-items-center">
                         <Col style={{ display: "block" }}>
+                            {loggoutMsg}
                             <Logo noCircle src="./assets/icons/hru-logo.svg" />
                             <h2 style={{ marginTop: -75 }} className="display-4 theme-font">Hackathon at Rutgers University</h2>
                             <h2 className="lead theme-font"><Icon style={{ marginRight: 5 }} name="map-marker" /> {defaults.locationText}</h2>

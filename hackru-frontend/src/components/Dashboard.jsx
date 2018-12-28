@@ -40,14 +40,16 @@ class Dashboard extends Component {
 
             } else {
                 if (data) {
+                    console.log(data);
                     delete data.auth;
                     delete data.role;
                     delete data.day_of;
                     delete data.email;
                     this.setState({
                         user: data,
-                        loading: false
-                    })
+                        loading: false,
+                        openDetails: (data.registration_status !== "registered")
+                    });
                 }
             }
         });
@@ -112,6 +114,21 @@ class Dashboard extends Component {
                 profileMSGS = (<UncontrolledAlert color="danger" style={{ background: "rgba(255, 0, 0, 0.25)", border: "none", color: "white" }}>{this.state.profileMSG[1]}</UncontrolledAlert>);
             }
         }
+        let applicationStatus = null;
+        if (user.registration_status === "registered") {
+            applicationStatus = (
+                <div>
+                    <h1>Pending</h1>
+                </div>
+            );
+        } else {
+            applicationStatus = (
+                <div>
+                    <h1>Incomplete</h1>
+                    <p>Please fill out the user profile to complete your application</p>
+                </div>
+            )
+        }
         return (
             <Container fluid style={{ width: "100%", minHeight: "100vh", textAlign: "center", backgroundColor: theme.secondary[1] }} className="d-flex align-items-center">
                 <div style={{ zIndex: 3, color: "white", width: "100%" }} align="center">
@@ -131,11 +148,10 @@ class Dashboard extends Component {
                             </Row>
                         </div>
                         <div style={{ width: "100%", textAlign: "left" }}>
-                            <p className="lead">Event Information</p>
+                            <p className="lead">Application Status</p>
                         </div>
                         <div style={{ width: "100%" }}>
-                            <h1>¯\_(ツ)_/¯</h1>
-                            <p>Check again later</p>
+                            {applicationStatus}
                         </div>
                         <div style={{ width: "100%", textAlign: "left" }}>
                             <p className="lead">User Profile</p>
@@ -151,9 +167,14 @@ class Dashboard extends Component {
                                     <ListGroupItem style={{ background: theme.primary[1] + "1F", borderRadius: 0 }}>
                                         <Form onSubmit={(e) => {
                                             e.preventDefault();
+                                            // If the form is even submitted, then we know that both the mlh text boxes have been pressed, so we are going to set the mlh tag to true
+                                            let user = this.state.user;
+                                            user.mlh = true;
+                                            user.registration_status = "registered";
                                             this.setState({
                                                 loading: true,
-                                                profileMSG: null
+                                                profileMSG: null,
+                                                user: user
                                             }, () => {
                                                 this.props.profile.Set(this.state.user, (msg) => {
                                                     if (msg) {

@@ -33,21 +33,25 @@ const navlinks = {
     "About Us": {
         "url": "#about",
         "enabled": true,
+        "fullHeight": false,
         "component": (props) => <About {...props} />
     },
     "Schedule": {
-         "url": "#schedule",
-         "enabled": true,
-         "component": (props) => <Schedule {...props} />
+        "url": "#schedule",
+        "enabled": true,
+        "fullHeight": false,
+        "component": (props) => <Schedule {...props} />
     },
     "Sponsors": {
         "url": "#sponsors",
         "enabled": true,
+        "fullHeight": false,
         "component": (props) => <Sponsors {...props} />
     },
     "FAQs": {
         "url": "#faqs",
         "enabled": true,
+        "fullHeight": false,
         "component": (props) => <FAQs {...props} />
     }
 }
