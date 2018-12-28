@@ -21,15 +21,28 @@ body::-webkit-scrollbar {
 }
 
 ::placeholder {
-    color: rgba(0, 0, 0, 0.5) !important;
+    color: rgba(255, 255, 255, 0.3) !important;
 }
 
 a:link {
-    color: rgba(255, 255, 0, 1);
+    color: rgba(248, 165, 255, 1);
+}
+
+a:link:hover {
+    color: rgba(38, 232, 184, 1);
 }
 
 a:visited {
-    color: rgba(255, 255, 0, 0.5);
+    color: rgba(255, 128, 207, 1);
+}
+
+a:visited:hover {
+    color: rgba(38, 232, 184, 0.4);
+}
+
+.btn:hover{
+    background-color: rgba(255, 255, 255, 1) !important;
+    color: rgba(90, 122, 150, 1) !important;
 }
 
 h1 p {
@@ -38,6 +51,10 @@ h1 p {
 
 hr {
     background-color: rgba(255, 255, 255, 0.5);
+}
+
+h4{
+    color: rgba(95, 255, 220, 1) !important;
 }
 
 #navigation-link {
