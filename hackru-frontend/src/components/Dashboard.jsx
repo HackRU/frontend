@@ -206,7 +206,7 @@ class Dashboard extends Component {
                                             <FormGroup row>
                                                 <Col xs={(mobile) ? 12 : 4}>
                                                     <Label for="number">Phone Number</Label>
-                                                    <Input required id="number" type="text" placeholder="(***) ***-****" style={inputStyle} value={user.phone_number} onChange={(e) => { user.phone_number = e.target.value; this.setState({ user: user }); }} />
+                                                    <Input id="number" type="text" placeholder="(***) ***-****" style={inputStyle} value={user.phone_number} onChange={(e) => { user.phone_number = e.target.value; this.setState({ user: user }); }} />
                                                 </Col>
                                                 <Col xs={(mobile) ? 12 : 4}>
                                                     <Label for="dob">Date of Birth</Label>
@@ -215,7 +215,7 @@ class Dashboard extends Component {
                                                 <Col xs={(mobile) ? 12 : 4}>
                                                     <Label for="size">Shirt Size</Label>
                                                     <div className="forcestyle">
-                                                        <Select id="size" value={{ value: user.shirt_size, label: user.shirt_size }} onChange={(e) => { user.shirt_size = e.value; this.setState({ user: user }); }} options={[
+                                                        <Select required id="size" value={{ value: user.shirt_size, label: user.shirt_size }} onChange={(e) => { user.shirt_size = e.value; this.setState({ user: user }); }} options={[
                                                             { value: "Unisex XS", label: "Unisex XS" },
                                                             { value: "Unisex S", label: "Unisex S" },
                                                             { value: "Unisex M", label: "Unisex M" },
@@ -291,11 +291,11 @@ class Dashboard extends Component {
                                             <h4>HackRU</h4>
                                             <FormGroup>
                                                 <Label for="dr">Dietary Restrictions</Label>
-                                                <Input required id="dr" type="text" placeholder="Allergies? Vegetarian?" style={inputStyle} value={user.dietary_restrictions} onChange={(e) => { user.dietary_restrictions = e.target.value; this.setState({ user: user }); }} />
+                                                <Input id="dr" type="text" placeholder="Allergies? Vegetarian?" style={inputStyle} value={user.dietary_restrictions} onChange={(e) => { user.dietary_restrictions = e.target.value; this.setState({ user: user }); }} />
                                             </FormGroup>
                                             <FormGroup>
                                                 <Label for="sn">Special Needs</Label>
-                                                <Input required id="sn" type="text" placeholder="Anything we should account for?" value={user.special_needs} onChange={(e) => { user.special_needs = e.target.value; this.setState({ user: user }); }} style={inputStyle} />
+                                                <Input id="sn" type="text" placeholder="Anything we should account for?" value={user.special_needs} onChange={(e) => { user.special_needs = e.target.value; this.setState({ user: user }); }} style={inputStyle} />
                                             </FormGroup>
                                             <FormGroup>
                                                 <Label for="hear">How did you hear about HackRU?</Label>
