@@ -25,8 +25,9 @@ body::-webkit-scrollbar {
 }
 
 a:link {
-    color: rgba(38, 232, 184, 1);
+    color: rgba(95,255,220, 1);
     transition: color 0.5s ease;
+    text-decoration-line: underline;
 }
 
 a:link:hover {
@@ -35,7 +36,7 @@ a:link:hover {
 }
 
 a:visited {
-    color: rgba(38, 232, 184, 1);
+    color: rgba(95,255,220, 0.8);
 }
 
 a:visited:hover {
@@ -91,6 +92,11 @@ h4{
     color: #ffffff;
     font-size: 100%; 
 }
+
+.footer .social-links:hover{
+    color: rgba(95, 255, 222, 1);
+}
+
 .footer a {
     color: #26E8BD;
     line-height: 10vh;
@@ -100,8 +106,6 @@ h4{
     display: inline-block;
     height: calc(10vh*0.45); 
 }
-
-
 
 #navigation-link {
     font-family: "Circular Std Bold", sans-serif;
@@ -188,4 +192,8 @@ h4{
     transform: skew(0deg, 4deg);
 }
 
+.table-hover:hover{
+    color: rgba(95, 255, 220, 1) !important;
+    text-decoration: none;
+}
 
