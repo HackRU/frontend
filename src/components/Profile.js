@@ -137,6 +137,22 @@ class Profile {
             } else if (password !== confirmpassword) {
                 callback("Passwords don't match");
             } else {
+                /*
+                From the legacy code. These are all of the fields of registration_status, and what they mean
+                ```jsx
+                const displayStatuses = {
+                    'unregistered': 'Not registered',
+                    'registered': 'Application submitted',
+                    'rejected': 'Application submitted',
+                    'checked-in': 'Checked in!',
+                    'confirmation': 'Accepted! Please RSVP',
+                    'coming': 'Attending',
+                    'not-coming': 'Not Attending',
+                    'confirmed': 'Attendance confirmed!',
+                    'waitlist': 'Application submitted'
+                };
+                ```
+                */
                 request({
                     method: "POST",
                     uri: ENDPOINTS.signup,
