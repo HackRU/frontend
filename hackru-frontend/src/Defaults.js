@@ -20,7 +20,11 @@ const defaults =  {
     "universityText": "Rutgers University",
     "mobileWidthThresholdSensitive": 1500,
     "mobileWidthThresholdRelaxed": 1200,
-    "poc": true
+    "poc": true,
+    "rest": {
+        "dev": "https://7c5l6v7ip3.execute-api.us-west-2.amazonaws.com/lcs-test",
+        "prod": "https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/mlhtest"
+    }
 }
 /***************************************************************STRINGS***************************************************************/
 
@@ -29,22 +33,26 @@ const navlinks = {
     "About Us": {
         "url": "#about",
         "enabled": true,
-        "component": (<About />)
+        "fullHeight": false,
+        "component": (props) => <About {...props} />
     },
     "Schedule": {
-         "url": "#schedule",
-         "enabled": true,
-         "component": (<Schedule />)
+        "url": "#schedule",
+        "enabled": true,
+        "fullHeight": false,
+        "component": (props) => <Schedule {...props} />
     },
     "Sponsors": {
         "url": "#sponsors",
         "enabled": true,
-        "component": (<Sponsors />)
+        "fullHeight": false,
+        "component": (props) => <Sponsors {...props} />
     },
     "FAQs": {
         "url": "#faqs",
         "enabled": true,
-        "component": (<FAQs />)
+        "fullHeight": false,
+        "component": (props) => <FAQs {...props} />
     }
 }
 /***************************************************************NAVLINK***************************************************************/

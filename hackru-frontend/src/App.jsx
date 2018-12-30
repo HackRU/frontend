@@ -1,17 +1,22 @@
 /**
  * @author Shivan Modha
  * @description App object class, which is the first thing to be rendered
- * @version 0.0.1
+ * @version 0.0.2
  * Created 12/09/18
  */
 /***************************************************************IMPORTS***************************************************************/
 import React, { Component } from "react"; // Default react imports for the component
-import { BrowserRouter, Route, Switch } from "react-router-dom"; // React router components
+import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom"; // React router components
 import {
     LandingPage,
     DashboardPage,
+    LoginPage,
+    SignUpPage,
     E404 } from "./components/Pages"; // Router Pages
-import MLHBadge from "./MLHBadge";
+import FlyingLogo from "./FlyingLogo" // The logos that go up through the page
+import MLHBadge from "./MLHBadge"; // We need this to qualify as an official MLH event
+import { defaults } from "./Defaults"; // Get a handle to the default application settings
+import { Profile } from "./components/Profile"; // User profile storage
 /***************************************************************IMPORTS***************************************************************/
 
 /*****************************************************************APP*****************************************************************/
@@ -22,6 +27,36 @@ import MLHBadge from "./MLHBadge";
  * page, and whether or not they are signed in.
  */
 class App extends Component {
+    /**
+     * Bind all of the other method components, and set up the initial event handlers
+     * @param {Object} props React JSON object that represents the props
+     */
+    constructor(props) {
+        super(props);
+        this._event_onResize = this._event_onResize.bind(this);
+        window.addEventListener("resize", this._event_onResize);
+    }
+    /**
+     * Handle whenever the window resizes due to a user window resize or a zoom
+     */
+    _event_onResize() {
+        this.setState({
+            isMobile: (window.innerWidth < defaults.mobileWidthThresholdRelaxed)
+        });
+    }
+    /**
+     * As soon as react is ready, set the initial state
+     */
+    componentWillMount() {
+        this._event_onResize();
+        this.setState({
+            profile: new Profile(),
+            loggedout: false
+        });
+    }
+    /**
+     * React render method, what the user sees on the screen
+     */
     render() {
         return (
             <BrowserRouter style={{ width: "100%" }}>
@@ -29,10 +64,20 @@ class App extends Component {
                 <div>
                     {/* We need to show this on our webpage at all times, so we're just going to dump it in the root */}
                     <MLHBadge />
+                    {/* We put the background here so that even after the page reroutes to different urls, the flying
+                        logos will stay constant, allowing for a seemless user experience. First, we render the logos
+                        then we render the background ontop of them, allowing the logos to fly behind the clouds */}
+                    <div style={{ position: "fixed", zIndex: 1, width: "100%", height: "100%", left: 0, top: 0, opacity: 0.5 }}>
+                        <FlyingLogo url={"./assets/icons/greenwingstarasset.png"} />
+                    </div>
+                    <div style={{ position: "fixed", zIndex: 2, width: "100%", height: "100%", left: 0, top: 0, background: "url(./assets/hru-background-large.png)", backgroundSize: "cover", opacity: 0.25 }}></div>
                     <Switch>
                         {/* This is where the URL routing magic actually happens */}
-                        <Route exact path="/" component={LandingPage} />
-                        <Route exact path="/dashboard" component={DashboardPage} />
+                        <Route exact path="/" render={(props) => <LandingPage {...props} isMobile={this.state.isMobile} profile={this.state.profile} loggedout={this.state.loggedout} dismissAlert={() => { this.setState({ loggedout: false }); }} />} />
+                        <Route exact path="/login" render={(props) => <LoginPage {...props} isMobile={this.state.isMobile} profile={this.state.profile} />} />
+                        <Route exact path="/signup" render={(props) => <SignUpPage {...props} isMobile={this.state.isMobile} profile={this.state.profile} />} />
+                        <Route exact path="/logout" component={() => { this.state.profile.Logout(); this.setState({ profile: this.state.profile, loggedout: true }); return (<Redirect to="/" />); }} />
+                        <Route exact path="/dashboard" render={(props) => <DashboardPage {...props} isMobile={this.state.isMobile} profile={this.state.profile} />} />
                         {/* If none of the other urls were matched, we will show a 404 page to the user */}
                         <Route component={E404} />
                     </Switch>
