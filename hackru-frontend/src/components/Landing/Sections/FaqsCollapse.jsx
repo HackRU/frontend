@@ -19,11 +19,11 @@ class FaqsCollapse extends React.Component {
         let cat = this.props.cat;
 
         return (
-            <div>
+            <div className="faq">
                 <strong>
-                    <h3 className="theme-font" onClick={this.toggle}>{cat.title} <Icon className="pull-right" name={(this.state.collapse) ? ("chevron-up") : ("chevron-down")} /></h3>
+                    <h5 className="" onClick={this.toggle}>{cat.title} <Icon className="faq-hover pull-right" name={(this.state.collapse) ? ("chevron-up") : ("chevron-down")} /></h5>
                 </strong>
-                <hr />
+                <hr className="faq-hover"/>
                 <Collapse className="mb-3" isOpen={this.state.collapse}>{cat.text}</Collapse>
             </div>
         );

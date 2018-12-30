@@ -56,9 +56,52 @@ hr {
     background-color: rgba(255, 255, 255, 0.5);
 }
 
+.faq hr {
+    height: 2px;
+    transition: all 0.5s ease;
+}
+
+.faq:hover hr {
+    background-color: #26E8BD;;
+}
+
+
 h4{
     color: rgba(95, 255, 220, 1) !important;
 }
+
+.footer-border {
+    min-height: 10vh;
+    padding-bottom: 200px;
+}
+
+.footer {
+    height: 10vh;
+    margin-top: -10vh;
+    color: #26E8BD;
+    background-color:#26E8BD;
+    padding-top: 20px;
+    background: linear-gradient(135deg, #5A7A9600, #26E8BD); 
+}
+.footer .text-vcenter {
+    margin: 0;
+    line-height: 10vh; 
+}
+.footer .social-links {
+    color: #ffffff;
+    font-size: 100%; 
+}
+.footer a {
+    color: #26E8BD;
+    line-height: 10vh;
+    padding: 15px 10px; 
+}
+.footer .footer-logo {
+    display: inline-block;
+    height: calc(10vh*0.45); 
+}
+
+
 
 #navigation-link {
     font-family: "Circular Std Bold", sans-serif;
@@ -145,7 +188,4 @@ h4{
     transform: skew(0deg, 4deg);
 }
 
-.footer-logo {
-    height: calc(10vh*0.45);
-}
 
