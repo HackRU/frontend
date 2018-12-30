@@ -20,7 +20,7 @@ class Footer extends Component {
                             <div className="row">
                                 <div className="col-12 text-center col-lg-4">
                                     <h6 className="align-middle mb-4">
-                                        <a style={{ color: "white", marginLeft: 10, marginRight: 10 }} href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf" target="_blank" rel="noopener noreferrer">MLH's Code of Conduct</a>
+                                        <a style={{color: "white", marginLeft: 10, marginRight: 10 }} href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf" target="_blank" rel="noopener noreferrer">MLH's Code of Conduct</a>
                                     </h6>
                                 </div>
                                 <div className="col-12 col-lg-4 text-center align-middle mb-4 my-2">
