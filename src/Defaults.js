@@ -10,6 +10,7 @@ import About from "./components/Landing/Sections/About";
 import Schedule from "./components/Landing/Sections/Schedule";
 import Sponsors from "./components/Landing/Sections/Sponsors";
 import FAQs from "./components/Landing/Sections/Faqs";
+import Footer from "./components/Landing/Sections/Footer";
 /***************************************************************IMPORTS***************************************************************/
 
 /***************************************************************STRINGS***************************************************************/
@@ -53,6 +54,13 @@ const navlinks = {
         "enabled": true,
         "fullHeight": false,
         "component": (props) => <FAQs {...props} />
+    },
+    "Footer": {
+        "url": "#footer",
+        "enabled": true,
+        "fullHeight": false,
+        "skew": false,
+        "component": (props) => <Footer {...props} />
     }
 }
 /***************************************************************NAVLINK***************************************************************/
