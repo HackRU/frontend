@@ -1,49 +1,37 @@
-//index.js
-import React from 'react';
-import ReactDOM from 'react-dom';
-import Cookies from 'js-cookie';
+/**
+ * @author Shivan Modha
+ * @description Application Root. This is the first thing that the code executes
+ * @version 3.1.2
+ * Created 12/09/18
+ */
+/***************************************************************IMPORTS***************************************************************/
+import React from "react"; // Required react dependencies
+import ReactDOM from "react-dom"; // Required react dependencies
+import { register, unregister } from "./serviceWorker"; // Service worker dependencies
+import App from "./App"; // Default app and component to be rendered
+import { defaults } from "./Defaults"; // The standard list of strings that we will be using throughout the application
+import "bootstrap/dist/css/bootstrap.min.css"; // Boostrap import
+/***************************************************************IMPORTS***************************************************************/
 
-import { createStore, applyMiddleware, compose } from 'redux';
-import { Provider } from 'react-redux';
-import reduxThunk from 'redux-thunk';
-import { createCookieMiddleware } from 'redux-cookie';
-
-import 'styles/index.css';
-import 'styles/App.css';
-
-import Dashboard from 'dumb_components/Dashboard';
-
-import rootReducer from 'reducers/rootReducer';
-import registerServiceWorker from 'registerServiceWorker';
-	
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const store = createStore(rootReducer, composeEnhancers(applyMiddleware(reduxThunk, createCookieMiddleware(Cookies))));
-
-
-//ReactDOM.render(<CookiesProvider><App /></CookiesProvider>, document.getElementById('register-root'));
-//ReactDOM.render(<Slack></Slack>, document.getElementById('announcements-list'));
-//ReactDOM.render(<Events></Events>, document.getElementById('upcoming-list'));
-
-// ReactDOM.render(<Col messageText="thisistext" />, document.getElementById('second-root')); <-- what this
-
-//store.subscribe(() => (console.log(store.getState())));
-
-
-class App extends React.Component {
-  
-  render() {
-    
-
-    return (
-      <Provider store={store}>		
-        <Dashboard />
-      </Provider>
-    );
-  }
+/*****************************************************************APP*****************************************************************/
+/**
+ * Application entry point. Here we render the standard root components that are standard to all pages in the website
+ * 
+ * @param {boolean} worker Toggle the default react service worker.
+ *      We default this to false because enabling the service worker brings with it application caching, which causes production
+ *      issues during version updates. If you would like to know about this issue in depth, read through the react documentation.
+ */
+function main(worker) {
+    // Render the default title
+    ReactDOM.render(defaults.title, document.getElementById("title"))
+    // Render the default root object
+    ReactDOM.render(<App />, document.getElementById("root"));
+    // Decide whether or not we need to enable the default serviceworker
+    if (worker) {
+        register();
+    } else {
+        unregister();
+    }
 }
-
-ReactDOM.render(<App />, document.getElementById('dashboard-full'));
-registerServiceWorker();
-
-export default App;
-
+main(false)
+/*****************************************************************APP*****************************************************************/
