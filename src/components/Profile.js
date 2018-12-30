@@ -63,7 +63,11 @@ const ENDPOINTS = {
     /**
      * Default user update information, expects
      */
-    "update": BASE + "/update"
+    "update": BASE + "/update",
+    /**
+     * Create forgot magic link to reset password
+     */
+    "forgot": BASE + "/createmagiclink",
 }
 /**
  * Standard profile handler for the entire application
@@ -125,7 +129,7 @@ class Profile {
             callback("User is already logged in");
         } else {
             if (!firstname) {
-                callback("invalid first name");
+                callback("Invalid first name");
             } else if (!lastname) {
                 callback("Invalid last name");
             } else if (!email) {
@@ -283,6 +287,35 @@ class Profile {
             });
         } else {
             callback("Please log in");
+        }
+    }
+    Forgot(email, callback) {
+        if (this.isLoggedIn) {
+            callback("User is already logged in");
+        } else {
+            if (!email) {
+                callback("Invalid email");
+            } else {
+                request({
+                    method: "POST",
+                    uri: ENDPOINTS.forgot,
+                    body: {
+                        email: email,
+                        forgot: true
+                    },
+                    json: true
+                }, (error, response, body) => {
+                    if (error) {
+                        callback("An error occured when attempting to generate user");
+                    } else {
+                        if (body.statusCode === 200) {
+                            callback();
+                        } else {
+                            callback(body.body);
+                        }
+                    }
+                });
+            }
         }
     }
 }

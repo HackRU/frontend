@@ -1,8 +1,8 @@
 /**
  * @author Shivan Modha
- * @description The standard login page
+ * @description Oops, I forgot my password!
  * @version 0.0.1
- * Created 12/25/18
+ * Created 12/30/18
  */
 /***************************************************************IMPORTS***************************************************************/
 import React, { Component } from "react";
@@ -16,9 +16,9 @@ import { Redirect } from "react-router-dom";
 
 /*****************************************************************APP*****************************************************************/
 /**
- * Login application for "/login"
+ * Forgot my password application for "/forgot"
  */
-class LoginPage extends Component {
+class ForgotPage extends Component {
     componentWillMount() {
         this.setState({
             loading: false,
@@ -27,17 +27,12 @@ class LoginPage extends Component {
         });
     }
     render() {
-        let innerText = "Welcome to HackRU!";
+        let innerText = "Password reset";
         let innerForm = (
             <div>
                 <FormGroup row>
                     <InputGroup>
-                        <Input required id="email" type="email" placeholder="email" style={{ borderRadius: 0, background: "rgba(255, 255, 255, 0.2)", border: "none", color: "white" }} />
-                    </InputGroup>
-                </FormGroup>
-                <FormGroup row>
-                    <InputGroup>
-                        <Input required type="password" id="password" placeholder="password" style={{ borderRadius: 0, background: "rgba(255, 255, 255, 0.2)", border: "none", color: "white" }} />
+                        <Input required type="email" id="email" placeholder="email" style={{ borderRadius: 0, background: "rgba(255, 255, 255, 0.2)", border: "none", color: "white" }} />
                         <InputGroupAddon addonType="append">
                             <Button color="success" style={{ borderRadius: 0 }}><Icon name="chevron-right" /></Button>
                         </InputGroupAddon>
@@ -50,8 +45,8 @@ class LoginPage extends Component {
             innerText = "";
         }
         if (this.state.done) {
-            innerForm = (<Redirect to="/dashboard" />)
-            innerText = "";
+            innerForm = "";
+            innerText = "A link has been sent to your email";
         }
         let errors = null;
         if (this.state.errors !== "") {
@@ -59,7 +54,7 @@ class LoginPage extends Component {
         }
         let contents = (
             <div style={{ padding: 30 }}>
-                <h1 className="display-1 theme-font">Login</h1>
+                <h1 className="display-1 theme-font">Reset</h1>
                 <p className="lead">{innerText}</p>
                 <Form onSubmit={(e) => {
                     e.preventDefault();
@@ -69,8 +64,7 @@ class LoginPage extends Component {
                             errors: ""
                         });
                         let email = document.getElementById("email").value;
-                        let password = document.getElementById("password").value;
-                        this.props.profile.Login(email, password, (msg) => {
+                        this.props.profile.Forgot(email, (msg) => {
                             if (msg) {
                                 this.setState({
                                     loading: false,
@@ -88,8 +82,6 @@ class LoginPage extends Component {
                 }}>
                     {errors}
                     {innerForm}
-                    <FormText><Link to="/signup" style={{ color: "rgba(255, 255, 255, 0.5)" }}>Not a member? Create an Account!</Link></FormText>
-                    <FormText><Link to="/forgot" style={{ color: "rgba(255, 255, 255, 0.5)" }}>Forgot your password?</Link></FormText>
                     <FormText><Link to="/" style={{ color: "rgba(255, 255, 255, 0.5)" }}>Return Home</Link></FormText>
                 </Form>
             </div>
@@ -118,5 +110,5 @@ class LoginPage extends Component {
 /*****************************************************************APP*****************************************************************/
 
 /***************************************************************EXPORTS***************************************************************/
-export default LoginPage;
+export default ForgotPage;
 /***************************************************************EXPORTS***************************************************************/
