@@ -5,15 +5,19 @@
  * Created 12/09/18
  */
 /***************************************************************IMPORTS***************************************************************/
-import LandingPage from "./Landing/Landing"
-import DashboardPage from "./Dashboard"
-import E404 from "./Errors/E404"
+import LandingPage from "./Landing/Landing";
+import DashboardPage from "./Dashboard";
+import LoginPage from "./Login";
+import SignUpPage from "./Signup";
+import E404 from "./Errors/E404";
 /***************************************************************IMPORTS***************************************************************/
 
 /***************************************************************EXPORTS***************************************************************/
 export {
     LandingPage,
     DashboardPage,
+    LoginPage,
+    SignUpPage,
     E404
 }
 /***************************************************************EXPORTS***************************************************************/
