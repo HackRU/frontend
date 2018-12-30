@@ -78,6 +78,7 @@ class App extends Component {
                         <Route exact path="/signup" render={(props) => <SignUpPage {...props} isMobile={this.state.isMobile} profile={this.state.profile} />} />
                         <Route exact path="/logout" component={() => { this.state.profile.Logout(); this.setState({ profile: this.state.profile, loggedout: true }); return (<Redirect to="/" />); }} />
                         <Route exact path="/dashboard" render={(props) => <DashboardPage {...props} isMobile={this.state.isMobile} profile={this.state.profile} />} />
+                        <Route exact path="/live" render={(props) => <Redirect to="/" />} /> {/* We will be implementing this in the future */}
                         {/* If none of the other urls were matched, we will show a 404 page to the user */}
                         <Route component={E404} />
                     </Switch>
