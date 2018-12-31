@@ -1,8 +1,8 @@
 /**
  * @author Shivan Modha
- * @description The standard login page
+ * @description Component to handle all magic links
  * @version 0.0.1
- * Created 12/25/18
+ * Created 12/30/18
  */
 /***************************************************************IMPORTS***************************************************************/
 import React, { Component } from "react";
@@ -12,13 +12,19 @@ import { Icon } from "react-fa";
 import { Link } from "react-router-dom";
 import { RingLoader } from "react-spinners";
 import { Redirect } from "react-router-dom";
+import LoginPage from "./Login";
 /***************************************************************IMPORTS***************************************************************/
 
 /*****************************************************************APP*****************************************************************/
 /**
- * Login application for "/login"
+ * Magic link handler component
  */
-class LoginPage extends Component {
+class MagicPage extends Component {
+    constructor(props) {
+        super(props);
+        this.renderForgot = this.renderForgot.bind(this);
+        this.renderLogin = this.renderLogin.bind(this);
+    }
     componentWillMount() {
         this.setState({
             loading: false,
@@ -26,10 +32,25 @@ class LoginPage extends Component {
             errors: ""
         });
     }
+    /**
+     * Default render method, which will check to see what will render
+     */
     render() {
+        return <p>test</p>
+        /*let mlurl = this.props.match.params.mlurl;
+        if (mlurl.includes("forgot-")) {
+            return this.renderForgot();
+        } else {
+            return this.renderLogin();
+        }*/
+    }
+    /**
+     * Forgot Password
+     */
+    renderForgot() {
         // Check if the user is already logged in
         if (this.props.profile.isLoggedIn) {
-            return ( <Redirect to="/dashboard" />);
+            return (<Redirect to="/dashboard" />);
         }
         let innerText = "Welcome to HackRU!";
         let innerForm = (
@@ -118,9 +139,15 @@ class LoginPage extends Component {
             );
         }
     }
+    /**
+     * Render login component
+     */
+    renderLogin() {
+        return <p>test</p>
+    }
 }
 /*****************************************************************APP*****************************************************************/
 
 /***************************************************************EXPORTS***************************************************************/
-export default LoginPage;
+export default MagicPage;
 /***************************************************************EXPORTS***************************************************************/

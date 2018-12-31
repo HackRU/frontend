@@ -11,7 +11,6 @@ import { theme } from "../Defaults";
 import { Icon } from "react-fa";
 import { Link } from "react-router-dom";
 import { RingLoader } from "react-spinners";
-import { Redirect } from "react-router-dom";
 /***************************************************************IMPORTS***************************************************************/
 
 /*****************************************************************APP*****************************************************************/
