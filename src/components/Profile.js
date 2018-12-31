@@ -68,6 +68,10 @@ const ENDPOINTS = {
      * Create forgot magic link to reset password
      */
     "forgot": BASE + "/createmagiclink",
+    /**
+     * Reset password from magic link to reset password
+     */
+    "resetpassword": BASE + "/consume",
 }
 /**
  * Standard profile handler for the entire application
@@ -306,7 +310,7 @@ class Profile {
                     json: true
                 }, (error, response, body) => {
                     if (error) {
-                        callback("An error occured when attempting to generate user");
+                        callback("An error occured when attempting to general url");
                     } else {
                         if (body.statusCode === 200) {
                             callback();
@@ -316,6 +320,41 @@ class Profile {
                     }
                 });
             }
+        }
+    }
+    Reset(email, password, conpassword, magic, callback) {
+        if (!password) {
+            callback("Input a new password");
+        } else if (!conpassword) {
+            callback("Confirm your new password");
+        } else if (password !== conpassword) {
+            callback("Passwords don't match!")
+        } else {
+            request({
+                method: "POST",
+                uri: ENDPOINTS.resetpassword,
+                body: {
+                    email: email,
+                    forgot: true,
+                    password: password,
+                    link: magic
+                },
+                json: true
+            }, (error, response, body) => {
+                if (error) {
+                    callback("An error occured when attempting to reset password");
+                } else {
+                    if (body.errorMessage && body.errorMessage.includes("timed out")) {
+                        callback("Link expired");
+                    } else if (body.errorMessage) {
+                        callback(body.errorMessage);
+                    } else if (body.statusCode === 200) {
+                        callback();
+                    } else {
+                        callback(body.body);
+                    }
+                }
+            });
         }
     }
 }

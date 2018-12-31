@@ -11,7 +11,6 @@ import { theme } from "../Defaults";
 import { Icon } from "react-fa";
 import { Link } from "react-router-dom";
 import { RingLoader } from "react-spinners";
-import { Redirect } from "react-router-dom";
 import LoginPage from "./Login";
 /***************************************************************IMPORTS***************************************************************/
 
@@ -36,23 +35,18 @@ class MagicPage extends Component {
      * Default render method, which will check to see what will render
      */
     render() {
-        return <p>test</p>
-        /*let mlurl = this.props.match.params.mlurl;
+        let mlurl = this.props.match.params.mlurl;
         if (mlurl.includes("forgot-")) {
             return this.renderForgot();
         } else {
             return this.renderLogin();
-        }*/
+        }
     }
     /**
      * Forgot Password
      */
     renderForgot() {
-        // Check if the user is already logged in
-        if (this.props.profile.isLoggedIn) {
-            return (<Redirect to="/dashboard" />);
-        }
-        let innerText = "Welcome to HackRU!";
+        let innerText = "Change your password";
         let innerForm = (
             <div>
                 <FormGroup row>
@@ -62,7 +56,12 @@ class MagicPage extends Component {
                 </FormGroup>
                 <FormGroup row>
                     <InputGroup>
-                        <Input required type="password" id="password" placeholder="password" style={{ borderRadius: 0, background: "rgba(255, 255, 255, 0.2)", border: "none", color: "white" }} />
+                        <Input required id="password" type="password" placeholder="new password" style={{ borderRadius: 0, background: "rgba(255, 255, 255, 0.2)", border: "none", color: "white" }} />
+                    </InputGroup>
+                </FormGroup>
+                <FormGroup row>
+                    <InputGroup>
+                        <Input required type="password" id="conpassword" placeholder="confirm password" style={{ borderRadius: 0, background: "rgba(255, 255, 255, 0.2)", border: "none", color: "white" }} />
                         <InputGroupAddon addonType="append">
                             <Button color="success" style={{ borderRadius: 0 }}><Icon name="chevron-right" /></Button>
                         </InputGroupAddon>
@@ -75,8 +74,8 @@ class MagicPage extends Component {
             innerText = "";
         }
         if (this.state.done) {
-            innerForm = (<Redirect to="/dashboard" />)
-            innerText = "";
+            innerForm = <FormText><Link to="/login" style={{ color: "rgba(255, 255, 255, 0.5)" }}>Login</Link></FormText>;
+            innerText = "Password changed!";
         }
         let errors = null;
         if (this.state.errors !== "") {
@@ -84,7 +83,7 @@ class MagicPage extends Component {
         }
         let contents = (
             <div style={{ padding: 30 }}>
-                <h1 className="display-1 theme-font">Login</h1>
+                <h1 className="display-1 theme-font">Reset</h1>
                 <p className="lead">{innerText}</p>
                 <Form onSubmit={(e) => {
                     e.preventDefault();
@@ -95,7 +94,8 @@ class MagicPage extends Component {
                         });
                         let email = document.getElementById("email").value;
                         let password = document.getElementById("password").value;
-                        this.props.profile.Login(email, password, (msg) => {
+                        let conpass = document.getElementById("conpassword").value;
+                        this.props.profile.Reset(email, password, conpass, this.props.match.params.mlurl.replace("forgot-", "forgot-"), (msg) => {
                             if (msg) {
                                 this.setState({
                                     loading: false,
@@ -113,8 +113,6 @@ class MagicPage extends Component {
                 }}>
                     {errors}
                     {innerForm}
-                    <FormText><Link to="/signup" style={{ color: "rgba(255, 255, 255, 0.5)" }}>Not a member? Create an Account!</Link></FormText>
-                    <FormText><Link to="/forgot" style={{ color: "rgba(255, 255, 255, 0.5)" }}>Forgot your password?</Link></FormText>
                     <FormText><Link to="/" style={{ color: "rgba(255, 255, 255, 0.5)" }}>Return Home</Link></FormText>
                 </Form>
             </div>
@@ -143,7 +141,7 @@ class MagicPage extends Component {
      * Render login component
      */
     renderLogin() {
-        return <p>test</p>
+        return <LoginPage {...this.props} />
     }
 }
 /*****************************************************************APP*****************************************************************/
