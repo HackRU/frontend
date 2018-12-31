@@ -49,10 +49,8 @@ class ResumeUploader extends Component {
                     id="resume"
                     onChange={this.uploadHandler}
                     type="file"
+                    label={this.state.labelText}
                 />
-                <label className="custom-file-label" htmlFor="resume">
-                    { this.state.labelText }
-                </label>
             </FormGroup>
         </div>
     )
