@@ -23,7 +23,7 @@ class Home extends Component {
         let navigation = [];
         let keys = Object.keys(navlinks);
         for (let i = 0; i < keys.length; i++) {
-            if (navlinks[keys[i]].enabled) {
+            if (navlinks[keys[i]].enabled && !navlinks[keys[i]].hideLink) {
                 navigation.push(
                     <p className="lead" key={keys[i]}><a href={navlinks[keys[i]].url} className="theme-home-link" style={{ textDecoration: "none" }}>{keys[i]}</a></p>
                 )
