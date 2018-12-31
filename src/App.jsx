@@ -117,7 +117,6 @@ class App extends Component {
                         <Route exact path="/forgot" render={(props) => <ForgotPage {...props} {...componentProps} />} />
                         <Route exact path="/magic/:mlurl" render={(props) => <MagicPage {...props} {...componentProps} />} />
                         <Route exact path="/dashboard" render={(props) => <DashboardPage {...props} {...componentProps} />} />
-                        <Route exact path="/live" render={(props) => <Redirect to="/" />} /> {/* We will be implementing this in the future */}
                         {/* If none of the other urls were matched, we will show a 404 page to the user */}
                         <Route component={E404} />
                     </Switch>
