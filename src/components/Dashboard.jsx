@@ -12,6 +12,7 @@ import { Redirect } from "react-router-dom";
 import { BounceLoader, PulseLoader } from "react-spinners";
 import { Link } from "react-router-dom";
 import { Icon } from "react-fa";
+import ResumeUploader from './Dashboard/ResumeUploader'
 import Select, { Creatable, AsyncCreatable } from "react-select";
 import request from "request";
 import majors from "./majors.json";
@@ -44,7 +45,6 @@ class Dashboard extends Component {
                     delete data.auth;
                     delete data.role;
                     delete data.day_of;
-                    delete data.email;
                     this.setState({
                         user: data,
                         loading: false,
@@ -315,6 +315,7 @@ class Dashboard extends Component {
                                                 <Label for="sa">What are you hoping to experience at HackRU?</Label>
                                                 <Input id="sa" type="textarea" placeholder="" style={inputStyle} value={user.short_answer} onChange={(e) => { user.short_answer = e.target.value; this.setState({ user: user }); }} />
                                             </FormGroup>
+                                            <ResumeUploader userEmail={this.state.user.email} />
                                             <h4>MLH Notices</h4>
                                             <FormGroup>
                                                 <Input required id="mlh1" type="checkbox" placeholder="" style={{...inputStyle, marginLeft: 5 }} />
