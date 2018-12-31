@@ -188,9 +188,3 @@ h4{
 .skew-left {
     transform: skew(0deg, 4deg);
 }
-
-.table-hover:hover{
-    color: rgba(95, 255, 220, 1) !important;
-    text-decoration: none;
-}
-
