@@ -27,6 +27,10 @@ class SignUpPage extends Component {
         });
     }
     render() {
+        // Check if the user is already logged in
+        if (this.props.profile.isLoggedIn) {
+            return (<Redirect to="/dashboard" />);
+        }
         let innerText = "Join us at HackRU!";
         let inputStyle = { borderRadius: 0, background: "rgba(255, 255, 255, 0.2)", border: "none", color: "white" };
         let innerForm = (

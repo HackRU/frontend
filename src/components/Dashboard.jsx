@@ -37,10 +37,9 @@ class Dashboard extends Component {
         });
         this.props.profile.Get((msg, data) => {
             if (msg) {
-
+                console.error(msg);
             } else {
                 if (data) {
-                    console.log(data);
                     delete data.auth;
                     delete data.role;
                     delete data.day_of;
