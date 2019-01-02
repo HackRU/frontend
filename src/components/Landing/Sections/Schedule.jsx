@@ -26,7 +26,7 @@ class Schedule extends Component {
 
                 <div className="row row-content-box">
                     <div className="col-12 col-lg-6">
-                        <h3 className="text-center mb-2" style={{color: "#F8A5FF"}}>Saturday</h3>
+                        <h3 className="text-center mb-2">Saturday</h3>
                         <table className="table table-hover">
                             <thead>
                                 <tr>
@@ -66,7 +66,7 @@ class Schedule extends Component {
                     </div>
 
                     <div className="col-12 mt-5 mt-lg-0 col-lg-6">
-                        <h3 className="text-center mb-2" style={{color: "#F8A5FF"}}>Sunday</h3>
+                        <h3 className="text-center mb-2">Sunday</h3>
                         <table className="table table-hover">
                             <thead>
                                 <tr>
