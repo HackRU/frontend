@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway+Dots');
 
+:root {
+    --primary-color: #26E8BD;
+    --secondary-color: #FF80CF;
+    --thrid-color: #5A7A96;
+}  
+
 body::-webkit-scrollbar { 
     display: none; 
 }
@@ -25,7 +31,7 @@ body::-webkit-scrollbar {
 }
 
 a:link {
-    color: rgba(95,255,220, 1);
+    color: var(--primary-color);
     transition: color 0.5s ease;
 }
 
@@ -35,7 +41,7 @@ a:link:hover {
 }
 
 a:visited {
-    color: rgba(95,255,220, 0.8);
+    color: var(--primary-color);
 }
 
 a:visited:hover {
@@ -62,20 +68,20 @@ hr {
 }
 
 .faq:hover hr {
-    background-color: #26E8BD;;
+    background-color: var(--primary-color);
 }
 
 
 h4{
-    color: rgba(95, 255, 220, 1) !important;
+    color: var(--primary-color) !important;
 }
 
 
 .footer {
-    color: #26E8BD;
-    background-color:#26E8BD;
+    color: var(--primary-color);
+    background-color:var(--primary-color);
     padding-top: 20px;
-    background: linear-gradient(135deg, #5A7A9600, #26E8BD); 
+    background: linear-gradient(135deg, #5A7A9600, var(--primary-color)); 
 }
 .footer .text-vcenter {
     margin: 0;
@@ -87,11 +93,11 @@ h4{
 }
 
 .footer .social-links:hover{
-    color: rgba(95, 255, 222, 1);
+    color: var(--primary-color);
 }
 
 .footer a {
-    color: #26E8BD;
+    color: var(--primary-color);
     line-height: 10vh;
     padding: 15px 10px; 
 }
@@ -155,14 +161,14 @@ h4{
 
 .bg-gradient-right {
     background: #5A7A96;
-    background: linear-gradient(135deg, #5A7A9600, #26E8BD);
+    background: linear-gradient(135deg, #5A7A9600, var(--primary-color));
     width: 100vw; 
     z-index: 10;
 }
 
 .bg-gradient-left {
     background: #5A7A96;
-    background: linear-gradient(135deg, #26E8BD, #5A7A9600 );
+    background: linear-gradient(135deg, var(--primary-color), #5A7A9600 );
     width: 100vw; 
     z-index: 10;
 }
