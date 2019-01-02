@@ -70,14 +70,8 @@ h4{
     color: rgba(95, 255, 220, 1) !important;
 }
 
-.footer-border {
-    min-height: 10vh;
-    padding-bottom: 200px;
-}
 
 .footer {
-    height: 10vh;
-    margin-top: -10vh;
     color: #26E8BD;
     background-color:#26E8BD;
     padding-top: 20px;

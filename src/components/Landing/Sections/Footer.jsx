@@ -14,8 +14,7 @@ class Footer extends Component {
         return (
             <div>
                 <Row>
-                    <div className="footer-border bg-no-gradient"></div>
-                    <div className="footer" style={{ zIndex: 15, height: "100%", width: "100%" }}>
+                    <div className="footer bg-no-gradient" style={{zIndex: 15}}>
                         <Row style={{ marginRight: 0, textAlign: "center" }}>
                             <div className="text-center col-lg-4" style={{ padding: 0 }}>
                                 <h6 className="align-middle mb-4">
