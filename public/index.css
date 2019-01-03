@@ -103,6 +103,12 @@ h4{
 
 .custom-checkbox .custom-control-input:checked~.custom-control-label::before{
     background-color: #26E8BD !important;
+
+.custom-file-label {
+    border: none !important;
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    color: white !important;
+    border-radius: 0px !important;
 }
 
 #navigation-link {
