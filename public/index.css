@@ -101,7 +101,9 @@ h4{
     height: calc(10vh*0.45); 
 }
 
-
+.custom-checkbox .custom-control-input:checked~.custom-control-label::before{
+    background-color: #26E8BD !important;
+}
 
 #navigation-link {
     font-family: "Circular Std Bold", sans-serif;
