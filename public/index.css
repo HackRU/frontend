@@ -2,8 +2,11 @@
 
 :root {
     --primary-color: #26E8BD;
-    --secondary-color: #FF80CF;
-    --thrid-color: #5A7A96;
+    --primary-color-altt: #5FFFDC;
+    --secondary-color: #5A7A96;
+    --secondary-color-alt: #354a5f;
+    --accent-color: #FF80CF;
+    --accent-color-alt: #F8A5FF;
 }  
 
 body::-webkit-scrollbar { 
