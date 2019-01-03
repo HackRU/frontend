@@ -2,84 +2,66 @@
 
 :root {
     --primary-color: #26E8BD;
-    --primary-color-altt: #5FFFDC;
+    --primary-color-alt: #5FFFDC;
     --secondary-color: #5A7A96;
     --secondary-color-alt: #354a5f;
     --accent-color: #FF80CF;
     --accent-color-alt: #F8A5FF;
-}  
-
+}
 body::-webkit-scrollbar { 
     display: none; 
 }
-
 ::selection {
     background-color: rgba(255, 255, 255, 0.25);
 }
-
 .forcestyle div[class^="css-"] {
     background: rgba(255, 255, 255, 0.05);
     border-radius: 0px;
     border: 0;
     color: white;
 }
-
 .forcestyle div[id^="react-select-"] {
     background: rgba(255, 255, 255, 0.75);
     color: black;
 }
-
 ::placeholder {
     color: rgba(255, 255, 255, 0.3) !important;
 }
-
 a:link {
     color: var(--primary-color);
     transition: color 0.5s ease;
 }
-
 a:link:hover {
     color: rgb(255, 255, 255);
     text-decoration: none;
 }
-
 a:visited {
     color: var(--primary-color);
 }
-
 a:visited:hover {
     color: rgb(255, 255, 255);
     text-decoration: none;
 }
-
 .btn:hover{
     background-color: rgba(255, 255, 255, 1) !important;
     color: rgba(90, 122, 150, 1) !important;
 }
-
 h1, h2, h3, h4, h5, h6, p {
     font-family: "Circular Std Bold", sans-serif;
 }
-
 hr {
     background-color: rgba(255, 255, 255, 0.5);
 }
-
 .faq hr {
     height: 2px;
     transition: all 0.5s ease;
 }
-
 .faq:hover hr {
     background-color: var(--primary-color);
 }
-
-
 h4{
     color: var(--primary-color) !important;
 }
-
-
 .footer {
     color: var(--primary-color);
     background-color:var(--primary-color);
@@ -108,7 +90,12 @@ h4{
     display: inline-block;
     height: calc(10vh*0.45); 
 }
-
+.custom-file-label {
+    border: none !important;
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    color: white !important;
+    border-radius: 0px !important;
+}
 #navigation-link {
     font-family: "Circular Std Bold", sans-serif;
     color: white;
@@ -148,39 +135,32 @@ h4{
     -webkit-transition: all 0.3s ease-in-out 0s;
     transition: all 0.3s ease-in-out 0s;
 }
-
-
 .theme-home-link:hover:before {
     visibility: visible;
     -webkit-transform: scaleX(1);
     transform: scaleX(1);
 }
-
 .color-priority {
     width: 100%; 
     color:  #ffffff !important;
     z-index: 10;
 }
-
 .bg-gradient-right {
     background: #5A7A96;
     background: linear-gradient(135deg, #5A7A9600, var(--primary-color));
     width: 100vw; 
     z-index: 10;
 }
-
 .bg-gradient-left {
     background: #5A7A96;
     background: linear-gradient(135deg, var(--primary-color), #5A7A9600 );
     width: 100vw; 
     z-index: 10;
 }
-
 .bg-no-gradient {
     width: 100vw;
     z-index: 10;
 }
-
 .skew-right, .skew-left {
     padding-top: 3em;
     padding-bottom: 2em;
