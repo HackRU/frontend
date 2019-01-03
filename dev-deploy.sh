@@ -8,4 +8,4 @@ AWS_SECRET_ACCESS_KEY="$SECRET"
 #empty bucket, then upload
 aws s3 rm s3://hackru-frontend --recursive
 aws s3 cp --recursive build s3://hackru-frontend --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers
-aws cloudfront create-invalidation ---distribution-id "E1G9Y2VX0F41B6"  --paths "/*"
+aws cloudfront create-invalidation --distribution-id "E1G9Y2VX0F41B6"  --paths "/*"
