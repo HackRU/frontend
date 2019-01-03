@@ -318,12 +318,16 @@ class Dashboard extends Component {
                                             <ResumeUploader userEmail={this.state.user.email} />
                                             <h4>MLH Notices</h4>
                                             <FormGroup>
-                                                <Input required id="mlh1" type="checkbox" placeholder="" style={{...inputStyle, marginLeft: 5 }} />
-                                                <Label style={{ marginLeft: 25, textAlign: "justify" }} for="mlh1">I have read and agree to the <a href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf">MLH Code of Conduct</a></Label>
+                                                <div className="custom-control custom-checkbox">
+                                                    <input required type="checkbox" className="custom-control-input" id="mlh1"/>
+                                                    <label className="custom-control-label" for="mlh1">I have read and agree to the <a href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf">MLH Code of Conduct</a></label>
+                                                </div>
                                             </FormGroup>
                                             <FormGroup>
-                                                <Input required id="mlh2" type="checkbox" placeholder="" style={{...inputStyle, marginLeft: 5 }} />
-                                                <Label style={{ marginLeft: 25, textAlign: "justify" }} for="mlh2">I authorize you to share my application/registration information for event administration, ranking, MLH administration, pre- and post-event informational e-mails, and occasional messages about hackathons in-line with the <a href="https://mlh.io/privacy">MLH Privacy Policy</a>. Further, I agree to the terms of both the <a href="https://github.com/MLH/mlh-policies/blob/master/prize-terms-and-conditions/contest-terms.md">MLH Contest Terms and Conditions</a> and the <a href="https://mlh.io/privacy">MLH Privacy Policy</a>.</Label>
+                                                <div className="custom-control custom-checkbox">
+                                                    <input required type="checkbox" className="custom-control-input" id="mlh2" />
+                                                    <label className="custom-control-label" for="mlh2">I authorize you to share my application/registration information for event administration, ranking, MLH administration, pre- and post-event informational e-mails, and occasional messages about hackathons in-line with the <a href="https://mlh.io/privacy">MLH Privacy Policy</a>. Further, I agree to the terms of both the <a href="https://github.com/MLH/mlh-policies/blob/master/prize-terms-and-conditions/contest-terms.md">MLH Contest Terms and Conditions</a> and the <a href="https://mlh.io/privacy">MLH Privacy Policy</a>.</label>
+                                                </div>
                                             </FormGroup>
                                             <div style={{ width: "100%" }} align="right">
                                                 <Button style={{ backgroundColor: theme.accent[0], marginRight: 10 }} type="reset" >Clear</Button>
