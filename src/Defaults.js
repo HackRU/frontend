@@ -71,10 +71,19 @@ const navlinks = {
 /***************************************************************NAVLINK***************************************************************/
 
 /****************************************************************THEME****************************************************************/
+// To unify styling between javascript and css, we define these variables in "index.css" as a variable, and proceed to get a handle
+// to the respective values through JavaScript
+let computedStyle = getComputedStyle(document.body);
 const theme = {
-    "primary": ["#26E8BD", "#5FFFDC"],
-    "secondary": ["#5A7A96", "#354a5f"],
-    "accent": ["#FF80CF", "#F8A5FF"]
+    "primary": [
+        computedStyle.getPropertyValue("--primary-color"),
+        computedStyle.getPropertyValue("--primary-color-alt")],
+    "secondary": [
+        computedStyle.getPropertyValue("--secondary-color"),
+        computedStyle.getPropertyValue("--secondary-color-alt")],
+    "accent": [
+        computedStyle.getPropertyValue("--accent-color"),
+        computedStyle.getPropertyValue("--accent-color-alt")]
 }
 /****************************************************************THEME****************************************************************/
 
