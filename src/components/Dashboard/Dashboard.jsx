@@ -1,41 +1,31 @@
-/**
- * @author Shivan Modha
- * @description The standard login page
- * @version 0.1.2
- * Created 12/09/18
- */
-/***************************************************************IMPORTS***************************************************************/
 import React, { Component } from "react";
-import { Container, ListGroup, ListGroupItem, ListGroupItemHeading, ListGroupItemText, Collapse, Form, FormGroup, Input, Label, Button, Row, Col, UncontrolledAlert } from "reactstrap";
-import { theme } from "../Defaults";
+import { Container, ListGroup, ListGroupItem, ListGroupItemHeading, ListGroupItemText, Collapse, Form, FormGroup, Input, Label, Button, Row, Col } from "reactstrap";
+import { theme } from "../../Defaults";
 import { Redirect } from "react-router-dom";
-import { BounceLoader, PulseLoader } from "react-spinners";
 import { Link } from "react-router-dom";
 import { Icon } from "react-fa";
-import ResumeUploader from './Dashboard/ResumeUploader'
+import ApplicationStatus from './ApplicationStatus';
+import Loading from './Loading';
+import ProfileMessage from './ProfileMessage';
+import ResumeUploader from './ResumeUploader';
 import Select, { Creatable, AsyncCreatable } from "react-select";
 import request from "request";
 import majors from "./majors.json";
-/***************************************************************IMPORTS***************************************************************/
 
-/**************************************************************DASHBOARD**************************************************************/
-/**
- * Application dashboard
- */
 class Dashboard extends Component {
+    state = {
+        loading: 'Loading your personal dashboard...',
+        user: null,
+        openDetails: false,
+        schoolList: [],
+        majorList: majors.items.map(major => ({
+            value: major,
+            label: major
+        })),
+        profileMSG: null
+    }
+
     componentWillMount() {
-        let majorList = [];
-        for (let i = 0; i < majors.items.length; i++) {
-            majorList.push({ value: majors.items[i], label: majors.items[i] });
-        }
-        this.setState({
-            loading: true,
-            user: null,
-            openDetails: false,
-            schoolList: [],
-            majorList: majorList,
-            profileMSG: null
-        });
         this.props.profile.Get((msg, data) => {
             if (msg) {
                 console.error(msg);
@@ -52,82 +42,31 @@ class Dashboard extends Component {
                 }
             }
         });
-        request.get("https://raw.githubusercontent.com/MLH/mlh-policies/master/schools.csv", {}, (error, response, body) => {
-            let list = body.split("\n");
-            let completeList = [];
-            for (let i = 1; i < list.length; i++) {
-                let itm = list[i];
-                if (itm.startsWith("\"")) {
-                    itm = itm.substring(1, itm.length - 2);
-                }
-                completeList.push({ value: itm, label: itm });
-            }
+        request.get("https://raw.githubusercontent.com/MLH/mlh-policies/master/schools.csv", {}, (_err, _resp, body) => {
             this.setState({
-                schoolList: completeList
+                schoolList: body.split("\n")
+                    .map(item => {
+                        item = item.startsWith('"') ? item.substring(1, item.length - 2) : item;
+                        return { value: item, label: item }
+                    })
             });
         });
     }
+
     render() {
         // Authorized personal only!
         if (!this.props.profile.isLoggedIn) {
-            return (<Redirect to="/login"/>)
+            return (<Redirect to="/login"/>);
         }
         if (this.state.loading) {
-            return (
-                <Container fluid style={{ width: "100%", minHeight: "100vh", textAlign: "center", backgroundColor: theme.secondary[1] }} className="d-flex align-items-center">
-                    <div style={{ width: "100%", color: "rgba(255, 255, 255, 0.1)" }} align="center">
-                        <div style={{ display: "inline-block" }}>
-                            <h1 className="display-1">L</h1>
-                        </div>
-                        <div style={{ display: "inline-block" }}>
-                            <BounceLoader color="rgba(255, 255, 255, 0.1)" />
-                        </div>
-                        <div style={{ display: "inline-block" }}>
-                            <h1 className="display-1">ading</h1>
-                        </div>
-                        <div style={{ display: "inline-block" }}>
-                            <PulseLoader color="rgba(255, 255, 255, 0.1)" />
-                        </div>
-                        <p className="lead">Configuring your personalized dashboard</p>
-                    </div>
-                </Container>
-            ); // This is such a sexy loading screen, I am totally going to use this again in my other applications
+            return (<Loading text={this.state.loading} />)
         }
         let user = this.state.user;
-        if (!user.phone_number) {
-            user.phone_number = "";
-        }
-        if (!user.ethnicity) {
-            user.ethnicity = "";
-        }
-        if (!user.how_you_heard_about_hackru) {
-            user.how_you_heard_about_hackru = "";
-        }
+        user.phone_number = user.phone_number || "";
+        user.ethnicity = user.ethnicity || "";
+        user.how_you_heard_about_hackru = user.how_you_heard_about_hackru || "";
         let inputStyle = { backgroundColor: "rgba(255, 255, 255, 0.1)", border: "0", borderRadius: 0, color: "white" };
         let mobile = this.props.isMobile;
-        let profileMSGS = null;
-        if (this.state.profileMSG) {
-            if (this.state.profileMSG[0] === 0) {
-                profileMSGS = (<UncontrolledAlert color="success" style={{ background: "rgba(0, 255, 0, 0.25)", border: "none", color: "white" }} >{this.state.profileMSG[1]}</UncontrolledAlert>);
-            } else {
-                profileMSGS = (<UncontrolledAlert color="danger" style={{ background: "rgba(255, 0, 0, 0.25)", border: "none", color: "white" }}>{this.state.profileMSG[1]}</UncontrolledAlert>);
-            }
-        }
-        let applicationStatus = null;
-        if (user.registration_status === "registered") {
-            applicationStatus = (
-                <div>
-                    <h1>Pending</h1>
-                </div>
-            );
-        } else {
-            applicationStatus = (
-                <div>
-                    <h1>Incomplete</h1>
-                    <p>Please fill out the user profile to complete your application</p>
-                </div>
-            )
-        }
         return (
             <Container fluid style={{ width: "100%", minHeight: "100vh", textAlign: "center", backgroundColor: theme.secondary[1] }} className="d-flex align-items-center">
                 <div style={{ zIndex: 3, color: "white", width: "100%" }} align="center">
@@ -136,9 +75,13 @@ class Dashboard extends Component {
                             <Row>
                                 <Col md={9} xs={12}>
                                     <h1 className="display-4 theme-font">Welcome, {user.first_name}</h1>
-                                    <div style={{ display: "inline-block", marginRight: 20 }}><p className="lead"><Link to="/" className="theme-home-link" style={{ color: theme.primary[0] + "ff", textDecoration: "none" }}>Home</Link></p></div>
-                                    {/* <div style={{ display: "inline-block", marginRight: 20 }}><p className="lead"><a href="/resources/waiver.pdf" className="theme-home-link" style={{ color: theme.primary[0] + "ff", textDecoration: "none" }}>Waiver</a></p></div>
-                                    <div style={{ display: "inline-block", marginRight: 20 }}><p className="lead"><a href="/resources/menu.pdf" className="theme-home-link" style={{ color: theme.primary[0] + "ff", textDecoration: "none" }}>Food</a></p></div> */}
+                                    <div style={{ display: "inline-block", marginRight: 20 }}>
+                                        <p className="lead">
+                                            <Link to="/" className="theme-home-link" style={{ color: theme.primary[0] + "ff", textDecoration: "none" }}>
+                                                Home
+                                            </Link>
+                                        </p>
+                                    </div>
                                     <div style={{ display: "inline-block", marginRight: 20 }}><p className="lead"><Link to="/logout" className="theme-home-link" style={{ color: theme.accent[0] + "ff", textDecoration: "none" }}>Logout</Link></p></div>
                                 </Col>
                                 <Col style={{ textAlign: "center" }} md={3} xs={12}>
@@ -146,12 +89,7 @@ class Dashboard extends Component {
                                 </Col>
                             </Row>
                         </div>
-                        <div style={{ width: "100%", textAlign: "left" }}>
-                            <p className="lead">Application Status</p>
-                        </div>
-                        <div style={{ width: "100%" }}>
-                            {applicationStatus}
-                        </div>
+                        <ApplicationStatus status={user.registration_status} />
                         <div style={{ width: "100%", textAlign: "left" }}>
                             <p className="lead">User Profile</p>
                         </div>
@@ -171,26 +109,21 @@ class Dashboard extends Component {
                                             user.mlh = true;
                                             user.registration_status = "registered";
                                             this.setState({
-                                                loading: true,
+                                                loading: 'Saving your information',
                                                 profileMSG: null,
-                                                user: user
+                                                user,
                                             }, () => {
-                                                this.props.profile.Set(this.state.user, (msg) => {
-                                                    if (msg) {
-                                                        this.setState({
-                                                            loading: false,
-                                                            profileMSG: [1, msg]
-                                                        });
-                                                    } else {
-                                                        this.setState({
-                                                            loading: false,
-                                                            profileMSG: [0, "Profile Updated!"]
-                                                        });
-                                                    }
+                                                this.props.profile.Set(this.state.user, (err) => {
+                                                    this.setState({
+                                                        loading: false,
+                                                        profileMSG: err ?
+                                                            { success: true, value: err } :
+                                                            { success: false, value: 'Profile Updated!' }
+                                                    })
                                                 });
                                             });
                                         }}>
-                                            {profileMSGS}
+                                            <ProfileMessage message={this.state.profileMSG} />
                                             <h4>About you</h4>
                                             <FormGroup row>
                                                 <Col xs={(mobile) ? 12 : 6}>
@@ -343,8 +276,5 @@ class Dashboard extends Component {
         );
     }
 }
-/**************************************************************DASHBOARD**************************************************************/
 
-/***************************************************************EXPORTS***************************************************************/
 export default Dashboard;
-/***************************************************************EXPORTS***************************************************************/
