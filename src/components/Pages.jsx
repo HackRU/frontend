@@ -6,7 +6,7 @@
  */
 /***************************************************************IMPORTS***************************************************************/
 import LandingPage from "./Landing/Landing";
-import DashboardPage from "./Dashboard";
+import DashboardPage from "./Dashboard/Dashboard";
 import LoginPage from "./Login";
 import SignUpPage from "./Signup";
 import ForgotPage from "./Forgot";
