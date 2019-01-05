@@ -171,3 +171,9 @@ h4{
 .skew-left {
     transform: skew(0deg, 4deg);
 }
+.forminput {
+    border-radius: 0 !important;
+    background: rgba(255, 255, 255, 0.2) !important;
+    border: none !important;
+    color: white !important;
+}

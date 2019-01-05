@@ -65,9 +65,7 @@ class App extends Component {
      * @param {String} magic Magic link from lcs 
      */
     setMagic(magic) {
-        this.setState({
-            magic: magic
-        });
+        this.setState({ magic });
     }
     /**
      * Dismiss the log out alert

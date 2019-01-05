@@ -32,27 +32,26 @@ class SignUpPage extends Component {
             return (<Redirect to="/dashboard" />);
         }
         let innerText = "Join us at HackRU!";
-        let inputStyle = { borderRadius: 0, background: "rgba(255, 255, 255, 0.2)", border: "none", color: "white" };
         let innerForm = (
             <div>
                 <FormGroup row>
                     <Col xs={6} style={{ margin: 0, paddingLeft: 0, paddingRight: 7 }}>
-                        <Input required id="first" type="text" placeholder="first name" style={inputStyle} />
+                        <Input required id="first" type="text" placeholder="first name" className="forminput" />
                     </Col>
                     <Col xs={6} style={{ margin: 0, paddingRight: 0, paddingLeft: 7 }}>
-                        <Input required id="last" type="text" placeholder="last name" style={inputStyle} />
+                        <Input required id="last" type="text" placeholder="last name" className="forminput" />
                     </Col>
                 </FormGroup>
                 <FormGroup row>
-                    <Input required type="email" id="email" placeholder="email" style={inputStyle} />
+                    <Input required type="email" id="email" placeholder="email" className="forminput" />
                 </FormGroup>
                 <hr style={{ background: "rgba(255, 255, 255, 0.25)" }} />
                 <FormGroup row>
-                    <Input required type="password" id="password" placeholder="password" style={inputStyle} />
+                    <Input required type="password" id="password" placeholder="password" className="forminput" />
                 </FormGroup>
                 <FormGroup row>
                     <InputGroup>
-                        <Input required type="password" id="conpassword" placeholder="confirm password" style={inputStyle} />
+                        <Input required type="password" id="conpassword" placeholder="confirm password" className="forminput" />
                         <InputGroupAddon addonType="append">
                             <Button color="success" style={{ borderRadius: 0 }}><Icon name="chevron-right" /></Button>
                         </InputGroupAddon>
