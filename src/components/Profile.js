@@ -121,7 +121,7 @@ class Profile {
                             this._login(email, token, valid_until);
                             callback();
                         } else {
-                            callback(body.body);
+                            callback((body.body) ? (body.body) : ("Unexpected Error"));
                         }
                     }
                 });
@@ -205,12 +205,12 @@ class Profile {
                                         this._login(email, token, valid_until);
                                         callback();
                                     } else {
-                                        callback(body.body);
+                                        callback((body.body) ? (body.body) : ("Unexpected Error"));
                                     }
                                 }
                             });
                         } else {
-                            callback(body.body);
+                            callback((body.body) ? (body.body) : ("Unexpected Error"));
                         }
                     }
                 });
@@ -255,7 +255,7 @@ class Profile {
                     if (body.statusCode === 200) {
                         callback(null, body.body[0]);
                     } else {
-                        callback(body.body, null);
+                        callback((body.body) ? (body.body) : ("Unexpected Error"), null);
                     }
                 }
             });
@@ -285,7 +285,7 @@ class Profile {
                     if (body.statusCode === 200) {
                         callback();
                     } else {
-                        callback(body.body);
+                        callback((body.body) ? (body.body) : ("Unexpected Error"));
                     }
                 }
             });
@@ -315,7 +315,7 @@ class Profile {
                         if (body.statusCode === 200) {
                             callback();
                         } else {
-                            callback(body.body);
+                            callback((body.body) ? (body.body) : ("Unexpected Error"));
                         }
                     }
                 });
@@ -351,7 +351,7 @@ class Profile {
                     } else if (body.statusCode === 200) {
                         callback();
                     } else {
-                        callback(body.body);
+                        callback((body.body) ? (body.body) : ("Unexpected Error"));
                     }
                 }
             });
