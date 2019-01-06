@@ -126,25 +126,25 @@ class Dashboard extends Component {
                                             <h4>About you</h4>
                                             <FormGroup row>
                                                 <Col xs={(mobile) ? 12 : 6}>
-                                                    <Label for="first">First Name</Label>
+                                                    <Label htmlFor="first">First Name</Label>
                                                     <Input required id="first" type="text" placeholder="John" value={user.first_name} onChange={(e) => { user.first_name = e.target.value; this.setState({ user: user }); }} />
                                                 </Col>
                                                 <Col xs={(mobile) ? 12 : 6}>
-                                                    <Label for="last">Last Name</Label>
+                                                    <Label htmlFor="last">Last Name</Label>
                                                     <Input required id="last" type="text" placeholder="Doe" value={user.last_name} onChange={(e) => { user.last_name = e.target.value; this.setState({ user: user }); }} />
                                                 </Col>
                                             </FormGroup>
                                             <FormGroup row>
                                                 <Col xs={(mobile) ? 12 : 4}>
-                                                    <Label for="number">Phone Number</Label>
+                                                    <Label htmlFor="number">Phone Number</Label>
                                                     <Input id="number" type="text" placeholder="(***) ***-****" value={user.phone_number} onChange={(e) => { user.phone_number = e.target.value; this.setState({ user: user }); }} />
                                                 </Col>
                                                 <Col xs={(mobile) ? 12 : 4}>
-                                                    <Label for="dob">Date of Birth</Label>
+                                                    <Label htmlFor="dob">Date of Birth</Label>
                                                     <Input required id="dob" type="date" placeholder="mm/dd/yyyy" value={user.date_of_birth} onChange={(e) => { user.date_of_birth = e.target.value; this.setState({ user: user }); }} />
                                                 </Col>
                                                 <Col xs={(mobile) ? 12 : 4}>
-                                                    <Label for="size">Shirt Size</Label>
+                                                    <Label htmlFor="size">Shirt Size</Label>
                                                     <div className="forcestyle">
                                                         <Select required id="size" value={{ value: user.shirt_size, label: user.shirt_size }} onChange={(e) => { user.shirt_size = e.value; this.setState({ user: user }); }} options={[
                                                             { value: "Unisex XS", label: "Unisex XS" },
@@ -157,7 +157,7 @@ class Dashboard extends Component {
                                             </FormGroup>
                                             <FormGroup row>
                                                 <Col xs={(mobile) ? 12 : 6}>
-                                                    <Label for="gender">Gender</Label>
+                                                    <Label htmlFor="gender">Gender</Label>
                                                     <div className="forcestyle">
                                                         <Creatable id="gender" value={{ value: user.gender, label: user.gender }} onChange={(e) => { user.gender = e.value; this.setState({ user: user }); }} options={[
                                                             { value: "Female", label: "Female" },
@@ -167,7 +167,7 @@ class Dashboard extends Component {
                                                     </div>
                                                 </Col>
                                                 <Col xs={(mobile) ? 12 : 6}>
-                                                    <Label for="ethnicity">Ethnicity</Label>
+                                                    <Label htmlFor="ethnicity">Ethnicity</Label>
                                                     <div className="forcestyle">
                                                         <Creatable id="ethnicity" value={{ value: user.ethnicity, label: user.ethnicity }} onChange={(e) => { user.ethnicity = e.value; this.setState({ user: user }); }} options={[
                                                             { value: "American Indian or Alaskan Native", label: "American Indian or Alaskan Native" },
@@ -178,13 +178,13 @@ class Dashboard extends Component {
                                                 </Col>
                                             </FormGroup>
                                             <FormGroup>
-                                                <Label for="github">GitHub Handle</Label>
+                                                <Label htmlFor="github">GitHub Handle</Label>
                                                 <Input id="github" type="text" placeholder="hackru"  value={user.github} onChange={(e) => { user.github = e.target.value; this.setState({ user: user }); }} />
                                             </FormGroup>
                                             <h4>Education</h4>
                                             <FormGroup row>
                                                 <Col xs={(mobile) ? 12 : 8}>
-                                                    <Label for="school">School</Label>
+                                                    <Label htmlFor="school">School</Label>
                                                     <div className="forcestyle">
                                                         <AsyncCreatable id="school" value={{ value: user.school, label: user.school }} onChange={(e) => { user.school = e.value; this.setState({ user: user }); }} cacheOptions defaultOptions loadOptions={(inputValue, callback) => {
                                                             if (inputValue) {
@@ -198,13 +198,13 @@ class Dashboard extends Component {
                                                     </div>
                                                 </Col>
                                                 <Col xs={(mobile) ? 12 : 4}>
-                                                    <Label for="gy">Graduation Year</Label>
+                                                    <Label htmlFor="gy">Graduation Year</Label>
                                                     <Input required id="gy" type="number" placeholder="yyyy"  value={user.grad_year} onChange={(e) => { user.grad_year = e.target.value; this.setState({ user: user }); }} />
                                                 </Col>
                                             </FormGroup>
                                             <FormGroup row>
                                                 <Col xs={(mobile) ? 12 : 6}>
-                                                    <Label for="los">Level of Study</Label>
+                                                    <Label htmlFor="los">Level of Study</Label>
                                                     <div className="forcestyle">
                                                         <Creatable id="los" value={{ value: user.level_of_study, label: user.level_of_study }} onChange={(e) => { user.level_of_study = e.value; this.setState({ user: user }); }} options={[
                                                             { value: "University (Undergraduate)", label: "University (Undergraduate)" },
@@ -213,7 +213,7 @@ class Dashboard extends Component {
                                                     </div>
                                                 </Col>
                                                 <Col xs={(mobile) ? 12 : 6}>
-                                                    <Label for="los">Major</Label>
+                                                    <Label htmlFor="los">Major</Label>
                                                     <div className="forcestyle">
                                                         <Creatable isMulti id="los" value={(user.major.length > 0) ? (user.major.split(";").map(((val) => { return {value: val, label: val}; }))) : ([]) } onChange={(e) => { let majors = ""; for (let i = 0; i < e.length; i++) { majors += ";" + e[i].value; } majors = majors.substring(1); user.major = majors; this.setState({ user: user }); }} options={this.state.majorList} />
                                                     </div>
@@ -221,15 +221,15 @@ class Dashboard extends Component {
                                             </FormGroup>
                                             <h4>HackRU</h4>
                                             <FormGroup>
-                                                <Label for="dr">Dietary Restrictions</Label>
+                                                <Label htmlFor="dr">Dietary Restrictions</Label>
                                                 <Input id="dr" type="text" placeholder="Allergies? Vegetarian?"  value={user.dietary_restrictions} onChange={(e) => { user.dietary_restrictions = e.target.value; this.setState({ user: user }); }} />
                                             </FormGroup>
                                             <FormGroup>
-                                                <Label for="sn">Special Needs</Label>
+                                                <Label htmlFor="sn">Special Needs</Label>
                                                 <Input id="sn" type="text" placeholder="Anything we should account for?" value={user.special_needs} onChange={(e) => { user.special_needs = e.target.value; this.setState({ user: user }); }}  />
                                             </FormGroup>
                                             <FormGroup>
-                                                <Label for="hear">How did you hear about HackRU?</Label>
+                                                <Label htmlFor="hear">How did you hear about HackRU?</Label>
                                                 <div className="forcestyle">
                                                     <Creatable isMulti id="hear" value={(user.how_you_heard_about_hackru.length > 0) ? (user.how_you_heard_about_hackru.split(";").map(((val) => { return { value: val, label: val }; }))) : ([])} onChange={(e) => { let majors = ""; for (let i = 0; i < e.length; i++) { majors += ";" + e[i].value; } majors = majors.substring(1); user.how_you_heard_about_hackru = majors; this.setState({ user: user }); }} options={[
                                                         { value: "Facebook", label: "Facebook" },
@@ -243,7 +243,7 @@ class Dashboard extends Component {
                                                 </div>
                                             </FormGroup>
                                             <FormGroup>
-                                                <Label for="sa">What are you hoping to experience at HackRU?</Label>
+                                                <Label htmlFor="sa">What are you hoping to experience at HackRU?</Label>
                                                 <Input id="sa" type="textarea" placeholder=""  value={user.short_answer} onChange={(e) => { user.short_answer = e.target.value; this.setState({ user: user }); }} />
                                             </FormGroup>
                                             <ResumeUploader userEmail={this.state.user.email} />
@@ -251,13 +251,13 @@ class Dashboard extends Component {
                                             <FormGroup>
                                                 <div className="custom-control custom-checkbox">
                                                     <input required type="checkbox" className="custom-control-input" id="mlh1"/>
-                                                    <label className="custom-control-label" for="mlh1">I have read and agree to the <a href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf">MLH Code of Conduct</a></label>
+                                                    <label className="custom-control-label" htmlFor="mlh1">I have read and agree to the <a href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf">MLH Code of Conduct</a></label>
                                                 </div>
                                             </FormGroup>
                                             <FormGroup>
                                                 <div className="custom-control custom-checkbox">
                                                     <input required type="checkbox" className="custom-control-input" id="mlh2" />
-                                                    <label className="custom-control-label" for="mlh2">I authorize you to share my application/registration information for event administration, ranking, MLH administration, pre- and post-event informational e-mails, and occasional messages about hackathons in-line with the <a href="https://mlh.io/privacy">MLH Privacy Policy</a>. Further, I agree to the terms of both the <a href="https://github.com/MLH/mlh-policies/blob/master/prize-terms-and-conditions/contest-terms.md">MLH Contest Terms and Conditions</a> and the <a href="https://mlh.io/privacy">MLH Privacy Policy</a>.</label>
+                                                    <label className="custom-control-label" htmlFor="mlh2">I authorize you to share my application/registration information for event administration, ranking, MLH administration, pre- and post-event informational e-mails, and occasional messages about hackathons in-line with the <a href="https://mlh.io/privacy">MLH Privacy Policy</a>. Further, I agree to the terms of both the <a href="https://github.com/MLH/mlh-policies/blob/master/prize-terms-and-conditions/contest-terms.md">MLH Contest Terms and Conditions</a> and the <a href="https://mlh.io/privacy">MLH Privacy Policy</a>.</label>
                                                 </div>
                                             </FormGroup>
                                             <div style={{ width: "100%" }} align="right">
