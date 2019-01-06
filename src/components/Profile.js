@@ -14,7 +14,7 @@ import { defaults } from "../Defaults";
 /**
  * Configure the all of the urls that we will need to access the rest api
  */
-const BASE = (process.env.NODE_ENV && process.env.NODE_ENV === "development") ? (defaults.rest.dev) : (defaults.rest.prod);
+const BASE = ((process.env.NODE_ENV && process.env.NODE_ENV === "development") || window.location.origin.includes("dev.hackru.org")) ? (defaults.rest.dev) : (defaults.rest.prod);
 const ENDPOINTS = {
     /**
      * Default login url
