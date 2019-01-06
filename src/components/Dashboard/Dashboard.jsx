@@ -43,13 +43,12 @@ class Dashboard extends Component {
             }
         });
         request.get("https://raw.githubusercontent.com/MLH/mlh-policies/master/schools.csv", {}, (_err, _resp, body) => {
-            this.setState({
-                schoolList: body.split("\n")
-                    .map(item => {
-                        item = item.startsWith('"') ? item.substring(1, item.length - 2) : item;
-                        return { value: item, label: item }
-                    })
-            });
+            let schoolList = body.split("\n").map(item => {
+                    item = item.startsWith('"') ? item.substring(1, item.length - 2) : item;
+                    return { value: item, label: item }
+                });
+            schoolList.splice(0, 1); // We remove the first element because we don't like it
+            this.setState({ schoolList });
         });
     }
 

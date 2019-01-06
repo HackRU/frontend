@@ -14,7 +14,7 @@
     --input-border: none;
     --input-color: rgba(255, 255, 255, 1);
     --input-border-radius: 0px;
-    --select-background: rgba(255, 255, 255, 0.75);
+    --select-background: rgba(255, 255, 255, 1);
     --select-color: rgba(0, 0, 0, 1);
     --select-input-background: rgba(255, 255, 255, 0.075);
     /* Hero Image */
@@ -181,9 +181,18 @@ input, textarea, .custom-file-label {
     border: var(--input-border);
     color: var(--input-color);
 }
+.forcestyle div[class^="css-"] div[class^="css-"] div[class^="css-"] div[class^="css-"] {
+    background: transparent;
+    border-radius: var(--input-border-radius);
+    border: var(--input-border);
+    color: var(--input-color);
+}
+.forcestyle div[class^="css-"] div[class^="css-"] div[class^="css-"] div[class^="css-"] input {
+    background: transparent !important;
+}
 .forcestyle div[id^="react-select-"] {
-    background: var(--select-background);
-    color: var(--select-color);
+    background: var(--select-background) !important;
+    color: var(--select-color) !important;
 }
 .custom-checkbox .custom-control-input:checked~.custom-control-label::before{
     background-color: var(--primary-color) !important;
