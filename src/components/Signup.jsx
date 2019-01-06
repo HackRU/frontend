@@ -36,22 +36,22 @@ class SignUpPage extends Component {
             <div>
                 <FormGroup row>
                     <Col xs={6} style={{ margin: 0, paddingLeft: 0, paddingRight: 7 }}>
-                        <Input required id="first" type="text" placeholder="first name" className="forminput" />
+                        <Input required id="first" type="text" placeholder="first name" />
                     </Col>
                     <Col xs={6} style={{ margin: 0, paddingRight: 0, paddingLeft: 7 }}>
-                        <Input required id="last" type="text" placeholder="last name" className="forminput" />
+                        <Input required id="last" type="text" placeholder="last name" />
                     </Col>
                 </FormGroup>
                 <FormGroup row>
-                    <Input required type="email" id="email" placeholder="email" className="forminput" />
+                    <Input required type="email" id="email" placeholder="email" />
                 </FormGroup>
                 <hr style={{ background: "rgba(255, 255, 255, 0.25)" }} />
                 <FormGroup row>
-                    <Input required type="password" id="password" placeholder="password" className="forminput" />
+                    <Input required type="password" id="password" placeholder="password" />
                 </FormGroup>
                 <FormGroup row>
                     <InputGroup>
-                        <Input required type="password" id="conpassword" placeholder="confirm password" className="forminput" />
+                        <Input required type="password" id="conpassword" placeholder="confirm password" />
                         <InputGroupAddon addonType="append">
                             <Button color="success" style={{ borderRadius: 0 }}><Icon name="chevron-right" /></Button>
                         </InputGroupAddon>

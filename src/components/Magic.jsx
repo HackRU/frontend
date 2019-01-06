@@ -51,17 +51,17 @@ class MagicPage extends Component {
             <div>
                 <FormGroup row>
                     <InputGroup>
-                        <Input required id="email" type="email" placeholder="email" className="forminput" />
+                        <Input required id="email" type="email" placeholder="email" />
                     </InputGroup>
                 </FormGroup>
                 <FormGroup row>
                     <InputGroup>
-                        <Input required id="password" type="password" placeholder="new password" className="forminput" />
+                        <Input required id="password" type="password" placeholder="new password" />
                     </InputGroup>
                 </FormGroup>
                 <FormGroup row>
                     <InputGroup>
-                        <Input required type="password" id="conpassword" placeholder="confirm password" className="forminput" />
+                        <Input required type="password" id="conpassword" placeholder="confirm password" />
                         <InputGroupAddon addonType="append">
                             <Button color="success" style={{ borderRadius: 0 }}><Icon name="chevron-right" /></Button>
                         </InputGroupAddon>

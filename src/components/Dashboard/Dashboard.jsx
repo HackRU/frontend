@@ -65,7 +65,6 @@ class Dashboard extends Component {
         user.phone_number = user.phone_number || "";
         user.ethnicity = user.ethnicity || "";
         user.how_you_heard_about_hackru = user.how_you_heard_about_hackru || "";
-        let inputStyle = { backgroundColor: "rgba(255, 255, 255, 0.1)", border: "0", borderRadius: 0, color: "white" };
         let mobile = this.props.isMobile;
         return (
             <Container fluid style={{ width: "100%", minHeight: "100vh", textAlign: "center", backgroundColor: theme.secondary[1] }} className="d-flex align-items-center">
@@ -128,21 +127,21 @@ class Dashboard extends Component {
                                             <FormGroup row>
                                                 <Col xs={(mobile) ? 12 : 6}>
                                                     <Label for="first">First Name</Label>
-                                                    <Input required id="first" type="text" placeholder="John" style={inputStyle} value={user.first_name} onChange={(e) => { user.first_name = e.target.value; this.setState({ user: user }); }} />
+                                                    <Input required id="first" type="text" placeholder="John" value={user.first_name} onChange={(e) => { user.first_name = e.target.value; this.setState({ user: user }); }} />
                                                 </Col>
                                                 <Col xs={(mobile) ? 12 : 6}>
                                                     <Label for="last">Last Name</Label>
-                                                    <Input required id="last" type="text" placeholder="Doe" style={inputStyle} value={user.last_name} onChange={(e) => { user.last_name = e.target.value; this.setState({ user: user }); }} />
+                                                    <Input required id="last" type="text" placeholder="Doe" value={user.last_name} onChange={(e) => { user.last_name = e.target.value; this.setState({ user: user }); }} />
                                                 </Col>
                                             </FormGroup>
                                             <FormGroup row>
                                                 <Col xs={(mobile) ? 12 : 4}>
                                                     <Label for="number">Phone Number</Label>
-                                                    <Input id="number" type="text" placeholder="(***) ***-****" style={inputStyle} value={user.phone_number} onChange={(e) => { user.phone_number = e.target.value; this.setState({ user: user }); }} />
+                                                    <Input id="number" type="text" placeholder="(***) ***-****" value={user.phone_number} onChange={(e) => { user.phone_number = e.target.value; this.setState({ user: user }); }} />
                                                 </Col>
                                                 <Col xs={(mobile) ? 12 : 4}>
                                                     <Label for="dob">Date of Birth</Label>
-                                                    <Input required id="dob" type="date" placeholder="mm/dd/yyyy" style={inputStyle} value={user.date_of_birth} onChange={(e) => { user.date_of_birth = e.target.value; this.setState({ user: user }); }} />
+                                                    <Input required id="dob" type="date" placeholder="mm/dd/yyyy" value={user.date_of_birth} onChange={(e) => { user.date_of_birth = e.target.value; this.setState({ user: user }); }} />
                                                 </Col>
                                                 <Col xs={(mobile) ? 12 : 4}>
                                                     <Label for="size">Shirt Size</Label>
@@ -180,7 +179,7 @@ class Dashboard extends Component {
                                             </FormGroup>
                                             <FormGroup>
                                                 <Label for="github">GitHub Handle</Label>
-                                                <Input id="github" type="text" placeholder="hackru" style={inputStyle} value={user.github} onChange={(e) => { user.github = e.target.value; this.setState({ user: user }); }} />
+                                                <Input id="github" type="text" placeholder="hackru"  value={user.github} onChange={(e) => { user.github = e.target.value; this.setState({ user: user }); }} />
                                             </FormGroup>
                                             <h4>Education</h4>
                                             <FormGroup row>
@@ -200,7 +199,7 @@ class Dashboard extends Component {
                                                 </Col>
                                                 <Col xs={(mobile) ? 12 : 4}>
                                                     <Label for="gy">Graduation Year</Label>
-                                                    <Input required id="gy" type="number" placeholder="yyyy" style={inputStyle} value={user.grad_year} onChange={(e) => { user.grad_year = e.target.value; this.setState({ user: user }); }} />
+                                                    <Input required id="gy" type="number" placeholder="yyyy"  value={user.grad_year} onChange={(e) => { user.grad_year = e.target.value; this.setState({ user: user }); }} />
                                                 </Col>
                                             </FormGroup>
                                             <FormGroup row>
@@ -223,11 +222,11 @@ class Dashboard extends Component {
                                             <h4>HackRU</h4>
                                             <FormGroup>
                                                 <Label for="dr">Dietary Restrictions</Label>
-                                                <Input id="dr" type="text" placeholder="Allergies? Vegetarian?" style={inputStyle} value={user.dietary_restrictions} onChange={(e) => { user.dietary_restrictions = e.target.value; this.setState({ user: user }); }} />
+                                                <Input id="dr" type="text" placeholder="Allergies? Vegetarian?"  value={user.dietary_restrictions} onChange={(e) => { user.dietary_restrictions = e.target.value; this.setState({ user: user }); }} />
                                             </FormGroup>
                                             <FormGroup>
                                                 <Label for="sn">Special Needs</Label>
-                                                <Input id="sn" type="text" placeholder="Anything we should account for?" value={user.special_needs} onChange={(e) => { user.special_needs = e.target.value; this.setState({ user: user }); }} style={inputStyle} />
+                                                <Input id="sn" type="text" placeholder="Anything we should account for?" value={user.special_needs} onChange={(e) => { user.special_needs = e.target.value; this.setState({ user: user }); }}  />
                                             </FormGroup>
                                             <FormGroup>
                                                 <Label for="hear">How did you hear about HackRU?</Label>
@@ -245,7 +244,7 @@ class Dashboard extends Component {
                                             </FormGroup>
                                             <FormGroup>
                                                 <Label for="sa">What are you hoping to experience at HackRU?</Label>
-                                                <Input id="sa" type="textarea" placeholder="" style={inputStyle} value={user.short_answer} onChange={(e) => { user.short_answer = e.target.value; this.setState({ user: user }); }} />
+                                                <Input id="sa" type="textarea" placeholder=""  value={user.short_answer} onChange={(e) => { user.short_answer = e.target.value; this.setState({ user: user }); }} />
                                             </FormGroup>
                                             <ResumeUploader userEmail={this.state.user.email} />
                                             <h4>MLH Notices</h4>

@@ -316,6 +316,9 @@ class Profile {
                             callback();
                         } else {
                             callback((body.body) ? (body.body) : ("Unexpected Error"));
+                            if (body.errorMessage) {
+                                console.log(body.errorMessage);
+                            }
                         }
                     }
                 });
