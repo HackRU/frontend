@@ -76,8 +76,29 @@ const theme = {
         computedStyle.getPropertyValue("--secondary-color-alt")],
     "accent": [
         computedStyle.getPropertyValue("--accent-color"),
-        computedStyle.getPropertyValue("--accent-color-alt")]
+        computedStyle.getPropertyValue("--accent-color-alt")],
 }
+// Populate the theme variable with css variables
+let varList = [
+    // Form Inputs
+    "input-background",
+    "input-placeholder",
+    "input-border",
+    "input-color",
+    "input-border-radius",
+    "select-background",
+    "select-color",
+    "select-input-background",
+    // Hero Image
+    "hero-width",
+    "hero-height",
+    "hero-border-radius",
+    "hero-background"
+];
+varList.forEach((element) => {
+    theme[element] = computedStyle.getPropertyValue("--" + element);
+    return element;
+});
 
 export {
     defaults,

@@ -43,7 +43,7 @@ class Logo extends Component {
 	}
 	render() {
 		return (
-			<Container style={{ minHeight: 400, maxWidth: 400, background: (this.props.noCircle) ? ("") : ("radial-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0))"), borderRadius: "35%", color: theme.primary[0] + "AF" }} className="d-flex align-items-center">
+			<Container style={{ minHeight: theme["hero-height"], maxWidth: theme["hero-width"], background: (this.props.noCircle) ? ("") : (theme["hero-background"]), borderRadius: theme["hero-border-radius"], color: theme.primary[0] + "AF" }} className="d-flex align-items-center">
 				<Col xs={12} dangerouslySetInnerHTML={{ __html: this.state.file }} />
 			</Container>
 		);

@@ -31,7 +31,7 @@ class ForgotPage extends Component {
             <div>
                 <FormGroup row>
                     <InputGroup>
-                        <Input required type="email" id="email" placeholder="email" className="forminput" />
+                        <Input required type="email" id="email" placeholder="email" />
                         <InputGroupAddon addonType="append">
                             <Button color="success" style={{ borderRadius: 0 }}><Icon name="chevron-right" /></Button>
                         </InputGroupAddon>
