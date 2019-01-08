@@ -10,6 +10,7 @@ import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom"; // Re
 import {
     LandingPage,
     DashboardPage,
+    SponsorshipPage,
     LoginPage,
     ForgotPage,
     SignUpPage,
@@ -116,6 +117,7 @@ class App extends Component {
                         <Route exact path="/forgot" render={(props) => <ForgotPage {...props} {...componentProps} />} />
                         <Route exact path="/magic/:mlurl" render={(props) => <MagicPage {...props} {...componentProps} />} />
                         <Route exact path="/dashboard" render={(props) => <DashboardPage {...props} {...componentProps} />} />
+                        <Route exact path="/sponsorship" render={(props) => <SponsorshipPage {...props} {...componentProps} />} />
                         {/* If none of the other urls were matched, we will show a 404 page to the user */}
                         <Route component={E404} />
                     </Switch>

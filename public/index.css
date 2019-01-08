@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway+Dots');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i');
+
 /* Variables */
 :root {
     /* Theme Colors */
@@ -65,7 +67,7 @@ h4{
 
 /* Theme Nav/Font */
 .theme-font {
-    font-family: 'Raleway Dots', cursive;
+    font-family: 'Open Sans', cursive;
 }
 .theme-home-link {
     position: relative;
@@ -197,3 +199,54 @@ input, textarea, .custom-file-label {
 .custom-checkbox .custom-control-input:checked~.custom-control-label::before{
     background-color: var(--primary-color) !important;
 }
+
+.bronze {
+    color: #C96F0D !important; 
+    font-weight: bold;
+    font-size: 20px;
+}
+  
+.silver {
+    color: #B7B7B7 !important;
+    font-weight: bold;
+    font-size: 20px;
+}
+  
+.gold, .faq-q {
+    color: #FFDF00 !important;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 20px;
+}
+  
+.plat {
+    color: #D8D8D8 !important; 
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 20px;
+}
+  
+.titlepack {
+    color: var(--primary-color) !important;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.perk-row .perk-select-col {
+    /*Horizontal*/
+    background-image: linear-gradient(to right, white 12.5%, rgba(255, 255, 255, 0) 0%);
+    background-position: top;
+    background-size: 8px 1px;
+    background-repeat: repeat-x; 
+    font-size: 1.3rem;
+}
+.perk-row .perk-select {
+    text-align: center; }
+  
+.perk-row h5, .perk-row p {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    margin: 0; }
+
+.c {font-size: 1.3rem;}
