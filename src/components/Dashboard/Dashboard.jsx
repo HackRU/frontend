@@ -267,6 +267,7 @@ class Dashboard extends Component {
                             </Form>
                         </Section>
                         <Section
+                            className="mb-5"
                             title='Travel Reimbursements'
                             subtitle="Let us know where you're coming from!"
                         >
