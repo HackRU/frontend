@@ -347,9 +347,7 @@ class Profile {
                 if (error) {
                     callback("An error occured when attempting to reset password");
                 } else {
-                    if (body.errorMessage && body.errorMessage.includes("timed out")) {
-                        callback("Link expired");
-                    } else if (body.errorMessage) {
+                    if (body.errorMessage) {
                         callback(body.errorMessage);
                     } else if (body.statusCode === 200) {
                         callback();
