@@ -1,8 +1,8 @@
 /**
  * @author Shivan Modha
- * @description The standard signup page
+ * @description Component to handle all magic links
  * @version 0.0.1
- * Created 12/26/18
+ * Created 12/30/18
  */
 /***************************************************************IMPORTS***************************************************************/
 import React, { Component } from "react";
@@ -11,14 +11,19 @@ import { theme } from "../Defaults";
 import { Icon } from "react-fa";
 import { Link } from "react-router-dom";
 import { RingLoader } from "react-spinners";
-import { Redirect } from "react-router-dom";
+import LoginPage from "./Login";
 /***************************************************************IMPORTS***************************************************************/
 
 /*****************************************************************APP*****************************************************************/
 /**
- * Signup application for "/signup"
+ * Magic link handler component
  */
-class SignUpPage extends Component {
+class MagicPage extends Component {
+    constructor(props) {
+        super(props);
+        this.renderForgot = this.renderForgot.bind(this);
+        this.renderLogin = this.renderLogin.bind(this);
+    }
     componentWillMount() {
         this.setState({
             loading: false,
@@ -26,28 +31,33 @@ class SignUpPage extends Component {
             errors: ""
         });
     }
+    /**
+     * Default render method, which will check to see what will render
+     */
     render() {
-        // Check if the user is already logged in
-        if (this.props.profile.isLoggedIn) {
-            return (<Redirect to="/dashboard" />);
+        let mlurl = this.props.match.params.mlurl;
+        if (mlurl.includes("forgot-")) {
+            return this.renderForgot();
+        } else {
+            return this.renderLogin();
         }
-        let innerText = "Join us at HackRU!";
+    }
+    /**
+     * Forgot Password
+     */
+    renderForgot() {
+        let innerText = "Change your password";
         let innerForm = (
             <div>
                 <FormGroup row>
-                    <Col xs={6} style={{ margin: 0, paddingLeft: 0, paddingRight: 7 }}>
-                        <Input required id="first" type="text" placeholder="first name" />
-                    </Col>
-                    <Col xs={6} style={{ margin: 0, paddingRight: 0, paddingLeft: 7 }}>
-                        <Input required id="last" type="text" placeholder="last name" />
-                    </Col>
+                    <InputGroup>
+                        <Input required id="email" type="email" placeholder="email" />
+                    </InputGroup>
                 </FormGroup>
                 <FormGroup row>
-                    <Input required type="email" id="email" placeholder="email" />
-                </FormGroup>
-                <hr style={{ background: "rgba(255, 255, 255, 0.25)" }} />
-                <FormGroup row>
-                    <Input required type="password" id="password" placeholder="password" />
+                    <InputGroup>
+                        <Input required id="password" type="password" placeholder="new password" />
+                    </InputGroup>
                 </FormGroup>
                 <FormGroup row>
                     <InputGroup>
@@ -64,8 +74,8 @@ class SignUpPage extends Component {
             innerText = "";
         }
         if (this.state.done) {
-            innerForm = (<Redirect to="/dashboard" />)
-            innerText = "";
+            innerForm = <FormText><Link to="/login" style={{ color: "rgba(255, 255, 255, 0.5)" }}>Login</Link></FormText>;
+            innerText = "Password changed!";
         }
         let errors = null;
         if (this.state.errors !== "") {
@@ -73,7 +83,7 @@ class SignUpPage extends Component {
         }
         let contents = (
             <div style={{ padding: 30 }}>
-                <h1 className="display-1 theme-font">Sign Up</h1>
+                <h1 className="display-1 theme-font">Reset</h1>
                 <p className="lead">{innerText}</p>
                 <Form onSubmit={(e) => {
                     e.preventDefault();
@@ -82,12 +92,10 @@ class SignUpPage extends Component {
                             loading: true,
                             errors: ""
                         });
-                        let firstName = document.getElementById("first").value;
-                        let lastName = document.getElementById("last").value;
                         let email = document.getElementById("email").value;
                         let password = document.getElementById("password").value;
-                        let confirmPassword = document.getElementById("conpassword").value;
-                        this.props.profile.SignUp(firstName, lastName, email, password, confirmPassword, (msg) => {
+                        let conpass = document.getElementById("conpassword").value;
+                        this.props.profile.Reset(email, password, conpass, this.props.match.params.mlurl.replace("forgot-", "forgot-"), (msg) => {
                             if (msg) {
                                 this.setState({
                                     loading: false,
@@ -105,7 +113,6 @@ class SignUpPage extends Component {
                 }}>
                     {errors}
                     {innerForm}
-                    <FormText><Link to="/login" style={{ color: "rgba(255, 255, 255, 0.5)" }}>Already a member? Login!</Link></FormText>
                     <FormText><Link to="/" style={{ color: "rgba(255, 255, 255, 0.5)" }}>Return Home</Link></FormText>
                 </Form>
             </div>
@@ -130,9 +137,15 @@ class SignUpPage extends Component {
             );
         }
     }
+    /**
+     * Render login component
+     */
+    renderLogin() {
+        return <LoginPage {...this.props} />
+    }
 }
 /*****************************************************************APP*****************************************************************/
 
 /***************************************************************EXPORTS***************************************************************/
-export default SignUpPage;
+export default MagicPage;
 /***************************************************************EXPORTS***************************************************************/

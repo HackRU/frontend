@@ -4,12 +4,12 @@
  * @version 0.0.1
  * Created 12/09/18
  */
-/***************************************************************IMPORTS***************************************************************/
 import React from "react";
 import About from "./components/Landing/Sections/About";
 import Schedule from "./components/Landing/Sections/Schedule";
 import Sponsors from "./components/Landing/Sections/Sponsors";
 import FAQs from "./components/Landing/Sections/Faqs";
+import Footer from "./components/Landing/Sections/Footer";
 
 const defaults =  {
     "title": "HackRU Spring 2019",
@@ -30,33 +30,75 @@ const navlinks = {
     "About Us": {
         "url": "#about",
         "enabled": true,
+        "hideLink": false,
         "fullHeight": false,
         "component": (props) => <About {...props} />
     },
     "Schedule": {
         "url": "#schedule",
         "enabled": true,
+        "hideLink": false,
         "fullHeight": false,
         "component": (props) => <Schedule {...props} />
     },
     "Sponsors": {
         "url": "#sponsors",
         "enabled": true,
+        "hideLink": false,
         "fullHeight": false,
         "component": (props) => <Sponsors {...props} />
     },
     "FAQs": {
         "url": "#faqs",
         "enabled": true,
+        "hideLink": false,
         "fullHeight": false,
         "component": (props) => <FAQs {...props} />
+    },
+    "Footer": {
+        "url": "#footer",
+        "enabled": true,
+        "hideLink": true,
+        "fullHeight": false,
+        "skew": false,
+        "component": (props) => <Footer {...props} />
     }
 }
+// To unify styling between javascript and css, we define these variables in "index.css" as a variable, and proceed to get a handle
+// to the respective values through JavaScript
+let computedStyle = getComputedStyle(document.body);
 const theme = {
-    "primary": ["#26E8BD", "#5FFFDC"],
-    "secondary": ["#5A7A96", "#354a5f"],
-    "accent": ["#FF80CF", "#F8A5FF"]
+    "primary": [
+        computedStyle.getPropertyValue("--primary-color"),
+        computedStyle.getPropertyValue("--primary-color-alt")],
+    "secondary": [
+        computedStyle.getPropertyValue("--secondary-color"),
+        computedStyle.getPropertyValue("--secondary-color-alt")],
+    "accent": [
+        computedStyle.getPropertyValue("--accent-color"),
+        computedStyle.getPropertyValue("--accent-color-alt")],
 }
+// Populate the theme variable with css variables
+let varList = [
+    // Form Inputs
+    "input-background",
+    "input-placeholder",
+    "input-border",
+    "input-color",
+    "input-border-radius",
+    "select-background",
+    "select-color",
+    "select-input-background",
+    // Hero Image
+    "hero-width",
+    "hero-height",
+    "hero-border-radius",
+    "hero-background"
+];
+varList.forEach((element) => {
+    theme[element] = computedStyle.getPropertyValue("--" + element);
+    return element;
+});
 
 export {
     defaults,

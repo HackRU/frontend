@@ -7,7 +7,6 @@
 /***************************************************************IMPORTS***************************************************************/
 import React, { Component } from "react";
 import { Container, Row } from "reactstrap";
-import Footer from "./Sections/Footer"
 import Home from "./Sections/Home";
 import { ParallaxProvider } from "react-scroll-parallax";
 import { navlinks, theme } from "../../Defaults";
@@ -29,9 +28,15 @@ class LandingPage extends Component {
                 let url = navlinks[keys[i]].url.substring(1);
                 let component = navlinks[keys[i]].component({ isMobile: this.props.isMobile });
                 // Toggle the green skewed sections
-                let className = "bg-no-gradient skew-right";
-                if (i % 2 === 0) {
-                    className = "bg-gradient-right skew-right";
+                let className = ""
+                if (i !== keys.length - 1) {
+                    className = "bg-no-gradient skew-right";
+                    if (i % 2 === 0) {
+                        className = "bg-gradient-right skew-right";
+                    }
+                } else {
+                    // The footer is a special type of human being...
+                    sectionClasses = "col-lg-12 offset-lg-0 col-xs-12 offset-xs-0 color-priority";
                 }
                 let style = {};
                 if (navlinks[keys[i]].fullHeight) {
@@ -64,9 +69,6 @@ class LandingPage extends Component {
                     </ScrollableAnchor>
                     {rows}
                 </ParallaxProvider>
-                <div>
-                    <Footer />
-                </div>
             </Container>
         );
     }
