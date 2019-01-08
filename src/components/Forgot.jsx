@@ -1,8 +1,8 @@
 /**
  * @author Shivan Modha
- * @description The standard signup page
+ * @description Oops, I forgot my password!
  * @version 0.0.1
- * Created 12/26/18
+ * Created 12/30/18
  */
 /***************************************************************IMPORTS***************************************************************/
 import React, { Component } from "react";
@@ -11,14 +11,13 @@ import { theme } from "../Defaults";
 import { Icon } from "react-fa";
 import { Link } from "react-router-dom";
 import { RingLoader } from "react-spinners";
-import { Redirect } from "react-router-dom";
 /***************************************************************IMPORTS***************************************************************/
 
 /*****************************************************************APP*****************************************************************/
 /**
- * Signup application for "/signup"
+ * Forgot my password application for "/forgot"
  */
-class SignUpPage extends Component {
+class ForgotPage extends Component {
     componentWillMount() {
         this.setState({
             loading: false,
@@ -27,31 +26,12 @@ class SignUpPage extends Component {
         });
     }
     render() {
-        // Check if the user is already logged in
-        if (this.props.profile.isLoggedIn) {
-            return (<Redirect to="/dashboard" />);
-        }
-        let innerText = "Join us at HackRU!";
+        let innerText = "Password reset";
         let innerForm = (
             <div>
                 <FormGroup row>
-                    <Col xs={6} style={{ margin: 0, paddingLeft: 0, paddingRight: 7 }}>
-                        <Input required id="first" type="text" placeholder="first name" />
-                    </Col>
-                    <Col xs={6} style={{ margin: 0, paddingRight: 0, paddingLeft: 7 }}>
-                        <Input required id="last" type="text" placeholder="last name" />
-                    </Col>
-                </FormGroup>
-                <FormGroup row>
-                    <Input required type="email" id="email" placeholder="email" />
-                </FormGroup>
-                <hr style={{ background: "rgba(255, 255, 255, 0.25)" }} />
-                <FormGroup row>
-                    <Input required type="password" id="password" placeholder="password" />
-                </FormGroup>
-                <FormGroup row>
                     <InputGroup>
-                        <Input required type="password" id="conpassword" placeholder="confirm password" />
+                        <Input required type="email" id="email" placeholder="email" />
                         <InputGroupAddon addonType="append">
                             <Button color="success" style={{ borderRadius: 0 }}><Icon name="chevron-right" /></Button>
                         </InputGroupAddon>
@@ -64,8 +44,8 @@ class SignUpPage extends Component {
             innerText = "";
         }
         if (this.state.done) {
-            innerForm = (<Redirect to="/dashboard" />)
-            innerText = "";
+            innerForm = "";
+            innerText = "A link has been sent to your email";
         }
         let errors = null;
         if (this.state.errors !== "") {
@@ -73,7 +53,7 @@ class SignUpPage extends Component {
         }
         let contents = (
             <div style={{ padding: 30 }}>
-                <h1 className="display-1 theme-font">Sign Up</h1>
+                <h1 className="display-1 theme-font">Reset</h1>
                 <p className="lead">{innerText}</p>
                 <Form onSubmit={(e) => {
                     e.preventDefault();
@@ -82,12 +62,8 @@ class SignUpPage extends Component {
                             loading: true,
                             errors: ""
                         });
-                        let firstName = document.getElementById("first").value;
-                        let lastName = document.getElementById("last").value;
                         let email = document.getElementById("email").value;
-                        let password = document.getElementById("password").value;
-                        let confirmPassword = document.getElementById("conpassword").value;
-                        this.props.profile.SignUp(firstName, lastName, email, password, confirmPassword, (msg) => {
+                        this.props.profile.Forgot(email, (msg) => {
                             if (msg) {
                                 this.setState({
                                     loading: false,
@@ -105,7 +81,6 @@ class SignUpPage extends Component {
                 }}>
                     {errors}
                     {innerForm}
-                    <FormText><Link to="/login" style={{ color: "rgba(255, 255, 255, 0.5)" }}>Already a member? Login!</Link></FormText>
                     <FormText><Link to="/" style={{ color: "rgba(255, 255, 255, 0.5)" }}>Return Home</Link></FormText>
                 </Form>
             </div>
@@ -134,5 +109,5 @@ class SignUpPage extends Component {
 /*****************************************************************APP*****************************************************************/
 
 /***************************************************************EXPORTS***************************************************************/
-export default SignUpPage;
+export default ForgotPage;
 /***************************************************************EXPORTS***************************************************************/

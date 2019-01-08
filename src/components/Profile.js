@@ -14,7 +14,7 @@ import { defaults } from "../Defaults";
 /**
  * Configure the all of the urls that we will need to access the rest api
  */
-const BASE = (process.env.NODE_ENV && process.env.NODE_ENV === "development") ? (defaults.rest.dev) : (defaults.rest.prod);
+const BASE = ((process.env.NODE_ENV && process.env.NODE_ENV === "development") || window.location.origin.includes("dev.hackru.org")) ? (defaults.rest.dev) : (defaults.rest.prod);
 const ENDPOINTS = {
     /**
      * Default login url
@@ -63,7 +63,15 @@ const ENDPOINTS = {
     /**
      * Default user update information, expects
      */
-    "update": BASE + "/update"
+    "update": BASE + "/update",
+    /**
+     * Create forgot magic link to reset password
+     */
+    "forgot": BASE + "/createmagiclink",
+    /**
+     * Reset password from magic link to reset password
+     */
+    "resetpassword": BASE + "/consume",
 }
 /**
  * Standard profile handler for the entire application
@@ -113,7 +121,7 @@ class Profile {
                             this._login(email, token, valid_until);
                             callback();
                         } else {
-                            callback(body.body);
+                            callback((body.body) ? (body.body) : ("Unexpected Error"));
                         }
                     }
                 });
@@ -125,7 +133,7 @@ class Profile {
             callback("User is already logged in");
         } else {
             if (!firstname) {
-                callback("invalid first name");
+                callback("Invalid first name");
             } else if (!lastname) {
                 callback("Invalid last name");
             } else if (!email) {
@@ -137,6 +145,22 @@ class Profile {
             } else if (password !== confirmpassword) {
                 callback("Passwords don't match");
             } else {
+                /*
+                From the legacy code. These are all of the fields of registration_status, and what they mean
+                ```jsx
+                const displayStatuses = {
+                    'unregistered': 'Not registered',
+                    'registered': 'Application submitted',
+                    'rejected': 'Application submitted',
+                    'checked-in': 'Checked in!',
+                    'confirmation': 'Accepted! Please RSVP',
+                    'coming': 'Attending',
+                    'not-coming': 'Not Attending',
+                    'confirmed': 'Attendance confirmed!',
+                    'waitlist': 'Application submitted'
+                };
+                ```
+                */
                 request({
                     method: "POST",
                     uri: ENDPOINTS.signup,
@@ -181,12 +205,12 @@ class Profile {
                                         this._login(email, token, valid_until);
                                         callback();
                                     } else {
-                                        callback(body.body);
+                                        callback((body.body) ? (body.body) : ("Unexpected Error"));
                                     }
                                 }
                             });
                         } else {
-                            callback(body.body);
+                            callback((body.body) ? (body.body) : ("Unexpected Error"));
                         }
                     }
                 });
@@ -231,7 +255,7 @@ class Profile {
                     if (body.statusCode === 200) {
                         callback(null, body.body[0]);
                     } else {
-                        callback(body.body, null);
+                        callback((body.body) ? (body.body) : ("Unexpected Error"), null);
                     }
                 }
             });
@@ -261,12 +285,79 @@ class Profile {
                     if (body.statusCode === 200) {
                         callback();
                     } else {
-                        callback(body.body);
+                        callback((body.body) ? (body.body) : ("Unexpected Error"));
                     }
                 }
             });
         } else {
             callback("Please log in");
+        }
+    }
+    Forgot(email, callback) {
+        if (this.isLoggedIn) {
+            callback("User is already logged in");
+        } else {
+            if (!email) {
+                callback("Invalid email");
+            } else {
+                request({
+                    method: "POST",
+                    uri: ENDPOINTS.forgot,
+                    body: {
+                        email: email,
+                        forgot: true
+                    },
+                    json: true
+                }, (error, response, body) => {
+                    if (error) {
+                        callback("An error occured when attempting to general url");
+                    } else {
+                        if (body.statusCode === 200) {
+                            callback();
+                        } else {
+                            callback((body.body) ? (body.body) : ("Unexpected Error"));
+                            if (body.errorMessage) {
+                                console.log(body.errorMessage);
+                            }
+                        }
+                    }
+                });
+            }
+        }
+    }
+    Reset(email, password, conpassword, magic, callback) {
+        if (!password) {
+            callback("Input a new password");
+        } else if (!conpassword) {
+            callback("Confirm your new password");
+        } else if (password !== conpassword) {
+            callback("Passwords don't match!")
+        } else {
+            request({
+                method: "POST",
+                uri: ENDPOINTS.resetpassword,
+                body: {
+                    email: email,
+                    forgot: true,
+                    password: password,
+                    link: magic
+                },
+                json: true
+            }, (error, response, body) => {
+                if (error) {
+                    callback("An error occured when attempting to reset password");
+                } else {
+                    if (body.errorMessage && body.errorMessage.includes("timed out")) {
+                        callback("Link expired");
+                    } else if (body.errorMessage) {
+                        callback(body.errorMessage);
+                    } else if (body.statusCode === 200) {
+                        callback();
+                    } else {
+                        callback((body.body) ? (body.body) : ("Unexpected Error"));
+                    }
+                }
+            });
         }
     }
 }

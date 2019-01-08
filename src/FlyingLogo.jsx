@@ -43,7 +43,7 @@ class FlyingLogo extends Component {
         window.addEventListener("resize", this._event_onResize);
         this._event_onResize();
         this.context = this.canvas.getContext("2d");
-        this.maxCount = 250;
+        this.maxCount = 500;
         this.counter = this.maxCount;
         setInterval(this._event_onUpdate, 1);
         setInterval(this._event_onRender, 2);
@@ -52,13 +52,13 @@ class FlyingLogo extends Component {
         this.counter--;
         if (this.counter <= 0) {
             let size = Math.floor(Math.random() * 50) + 50;
-            if (this.logos.length < 5) {
+            if (this.logos.length < 3) {
                 this.logos.push({
                     x: Math.floor(Math.random() * this.canvas.width) - (size / 2),
                     y: this.canvas.height,
                     width: size,
                     height: size,
-                    speed: Math.floor(Math.random() * 5) + 1
+                    speed: Math.floor(Math.random() * 2) + 1
                 });
             }
             this.counter = this.maxCount;
@@ -79,7 +79,7 @@ class FlyingLogo extends Component {
                 let alien = this.logos[i];
                 this.context.globalAlpha = 1;
                 this.context.drawImage(this.image, alien.x, alien.y, alien.width, alien.height);
-                for (let j = 0; j < 100; j++) {
+                for (let j = 0; j < 50; j += 2) {
                     this.context.globalAlpha = 1.0 / j;
                     this.context.drawImage(this.image, alien.x, alien.y + (j * 5), alien.width, alien.height);
                 }
