@@ -113,6 +113,7 @@ class Dashboard extends Component {
                         <Section
                             title='Basics'
                             subtitle="Introduce yourself, don't be shy!"
+                            isOpen={this.state.openDetails}
                         >
                             <Form onSubmit={(e) => {
                                 e.preventDefault();
