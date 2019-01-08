@@ -105,7 +105,7 @@ class TravelForm extends Component {
                 </FormGroup>}
                 <div style={{ width: "100%" }} align="right">
                     <Button
-                        className={!valid && 'disabled'}
+                        className={valid ? '' : 'disabled'}
                         disabled={!valid}
                         style={{ backgroundColor: valid ? theme.primary[0] : theme.disabled[0] }}
                         type="submit" >Update</Button>
