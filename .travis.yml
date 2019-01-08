@@ -1,0 +1,23 @@
+language: node_js
+node_js:
+  - "8"
+before_install:
+  - npm i -g npm@3
+
+# Encrypted secrets
+env:
+  - secret: nbpsDfGRh3onajAR+tco2yn7qS27SJGdCTCwdL+CWB90RWacLvWxkVxFHc4dY71jX/t2UPSRbDrBkqvwzv5Y/Wf1BVIBxNL9dG6V/HgOdh9bqMZmHxubkF4UdBrAd6AJ7y01i36RxPK4t+pa4tJi0ghs0bZXz9FgSKQ/BgzVyDGnsj6MVuYcywrxpJnsr3YDGZe/hKrDFtRAnCZTODz6MIZMGShaBCmOgwq2GikRkLtra0QshAStFDE4HLig7VUEJ+oODoXzpclTpX260H6uTrawd4N2s0eKJTTHS837pEZCRdcE4iNB0m413+/l9kcPWW0WpxHgEs6CL397EmJEATknwq/kJXsgz/1eGn+DDSJDPF2EXBEsw5cwrDYazbADS0YXCaclF/8lfbeYDT6PAwdx+bSg2LwLiku9KzVFqLyuFoEvv2SbydWauOAW1WRYz0+fcR1G86hkVK6yXbaQyfadn/EhhT+OlPrMigl2nJHAUXFX9S+aVUpDmSqyh1gnldyznWJ2V9K+sYUiHO6JZedG6eMiQyVZ8lslfZtclw9pNHEp2xec1db7DnFfk29UpcEwCRTQGHf5bnZCgwjOPMGMQr7EOb4Egh/IPeYZr41f9zcIq3aaeva0fpFpsQh0UsJngm/S2+tTS6wey6+0UWkUvHI2lsEv3/DQb+rBhpw=
+  - secret: M7sE9/jpulpD7XbZf+2YQWJMZFRXdcwpU2YlJH4Cp01o9jZgPg/nkNl/uhOgAa9wRyH46ez5TTFJHpMMEdhOOw1v65JQkBt7Osht+8gL9nFWbotALktJdQFmsK3uWgelx6q5iJn90YJzvXQM5+HDFBWaWfItKI9G5OMo+KG4TUWDn9XNjUQj7IsxkJ7vMk1z8/dVxp7ALZPiVe2KC61fSvbTvy4D6+S47iQHIcL9u8TG01PbS20NRaZwmstsOF1COAHEZbCEOQgdwNkJJJkKghFkrh2Njv6q/Ibhggt5jqLyCwnGC+R+93lDu0NT5LNKObf+A447eTMAykz/bO+a7ZPd2b70lniwddeO+9JZzEn1dNCty5HNaF9krREbzs213XPhXL9gsqvgQw9Skhj0olF8IYK3dJHKhyXX9+Xakydu32W5Y+JoX2M2qtHACTuh58+RHxA/npv0PtFqEOZLkxmPoVxiEh6DQRTpcQjA7ysjrd0+Fh9Ce5bi7HUPS3JxbkE/hexAHaHywlzxQGCmxICTl248glsOdX+X/03YyPFZAH16eB3LFbGZYMAVP4gyK5tXhMiFRVW/bbrj0RIwvsqp6lDZRmOJW8EyYj8EwGsRoB8WCRJ9kd+9qY9z8/ErdO/+TwBU0sROCQSYWBlMLV+vTxfU7jY6TdA+wTp9iHc=
+
+# Deploy to dev on pushes to dev-deploy
+deploy:
+  provider: script
+  script: dev-deploy.sh
+  on:
+    branch: dev-deploy
+# Deploy to prod on pushes to prod-deploy
+deploy:
+  provider: script
+  script: prod-deploy.sh
+  on:
+    branch: prod-deploy
