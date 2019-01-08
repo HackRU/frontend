@@ -97,6 +97,11 @@ class TravelForm extends Component {
                             />
                         </div>
                     </Col>
+                    <Col xs={12} style={{ marginTop: '1em' }}>
+                        <p>
+                            If you request travel reimbursement, please be prepared to <strong>show us all receipts </strong> related to your reimbursement on the day of HackRU.  Please keep in mind you <strong> must submit a project to Devpost and demo on Sunday </strong> to receive your travel reimbursement.
+                        </p>
+                    </Col>
                 </FormGroup>}
                 <div style={{ width: "100%" }} align="right">
                     <Button
@@ -104,9 +109,6 @@ class TravelForm extends Component {
                         disabled={!valid}
                         style={{ backgroundColor: valid ? theme.primary[0] : theme.disabled[0] }}
                         type="submit" >Update</Button>
-                </div>
-                <div>
-                    If you request travel reimbursement, please be prepared to <strong>show us all receipts </strong> related to your reimbursement on the day of HackRU.  Please keep in mind you <strong> must submit a project to Devpost and demo on Sunday </strong> to receive your travel reimbursement.
                 </div>
             </Form>
         )
