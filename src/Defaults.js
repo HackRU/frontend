@@ -77,6 +77,9 @@ const theme = {
     "accent": [
         computedStyle.getPropertyValue("--accent-color"),
         computedStyle.getPropertyValue("--accent-color-alt")],
+    "disabled": [
+        computedStyle.getPropertyValue("--disabled-color")
+    ]
 }
 // Populate the theme variable with css variables
 let varList = [

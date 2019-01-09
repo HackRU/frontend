@@ -26,3 +26,6 @@ yarn-error.log*
 .swp
 .vscode/
 .idea/
+
+# Secrets
+src/secrets.js
