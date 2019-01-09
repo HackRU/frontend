@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { Button, Col, Form, FormGroup, Label } from 'reactstrap';
+import { Button, Col, Form, FormGroup, Label, Input } from 'reactstrap';
 import { theme } from "../../Defaults";
 import { Creatable } from "react-select";
-// NOTE: This dependency requires a script tag in index.html!
 import Autocomplete from 'react-google-autocomplete';
+import ReactDependentScript from 'react-dependent-script';
+import { MAP_KEY } from '../../secrets.js';
 
 // The form on the dashboard to collect travel information
 // It takes three props:
@@ -64,20 +65,29 @@ class TravelForm extends Component {
                     <Col xs={(mobile) ? 12 : 6}>
                         <Label>Travelling From</Label>
                         <div className="forcestyle">
-                            <Autocomplete
-                                className="form-control"
-                                onChange={(place) => this.setState({ formatted_addr: place.target.value })}
-                                onPlaceSelected={(place) => (
-                                    this.setState({
-                                        formatted_addr: place.formatted_address,
-                                        addr_ready: true
-                                    })
-                                )}
-                                placeholder="Where are you travelling from?"
-                                required
-                                type={['(cities)']}
-                                value={formatted_addr || ''}
-                            />
+                            <ReactDependentScript
+                                loadingComponent={<Input
+                                    disabled
+                                    required
+                                    placeholder="Where are you travelling from? (Loading...)"
+                                />}
+                                scripts={[`https://maps.googleapis.com/maps/api/js?key=${MAP_KEY}&libraries=places`]}
+                            >
+                                <Autocomplete
+                                    className="form-control"
+                                    onChange={(place) => this.setState({ formatted_addr: place.target.value })}
+                                    onPlaceSelected={(place) => (
+                                        this.setState({
+                                            formatted_addr: place.formatted_address,
+                                            addr_ready: true
+                                        })
+                                    )}
+                                    placeholder="Where are you travelling from?"
+                                    required
+                                    type={['(cities)']}
+                                    value={formatted_addr || ''}
+                                />
+                            </ReactDependentScript>
                         </div>
                     </Col>
                     <Col xs={(mobile) ? 12 : 6}>
