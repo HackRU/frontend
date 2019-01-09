@@ -11,7 +11,9 @@ import {
     LandingPage,
     DashboardPage,
     LoginPage,
+    ForgotPage,
     SignUpPage,
+    MagicPage,
     E404 } from "./components/Pages"; // Router Pages
 import FlyingLogo from "./FlyingLogo" // The logos that go up through the page
 import MLHBadge from "./MLHBadge"; // We need this to qualify as an official MLH event
@@ -34,6 +36,9 @@ class App extends Component {
     constructor(props) {
         super(props);
         this._event_onResize = this._event_onResize.bind(this);
+        this.setMagic = this.setMagic.bind(this);
+        this.getComponentProps = this.getComponentProps.bind(this);
+        this.dismissLoggedOutAlert = this.dismissLoggedOutAlert.bind(this);
         window.addEventListener("resize", this._event_onResize);
     }
     /**
@@ -51,13 +56,43 @@ class App extends Component {
         this._event_onResize();
         this.setState({
             profile: new Profile(),
+            loggedout: false,
+            magic: ""
+        });
+    }
+    /**
+     * Set the application magic link
+     * @param {String} magic Magic link from lcs 
+     */
+    setMagic(magic) {
+        this.setState({ magic });
+    }
+    /**
+     * Dismiss the log out alert
+     */
+    dismissLoggedOutAlert() {
+        this.setState({
             loggedout: false
         });
+    }
+    /**
+     * Returns a JSON object of the standard properties that we will send to each component
+     */
+    getComponentProps() {
+        return {
+            magic: this.state.magic,
+            setMagic: this.state.setMagic,
+            isMobile: this.state.isMobile,
+            profile: this.state.profile,
+            loggedout: this.state.loggedout,
+            dismissAlert: this.dismissLoggedOutAlert
+        };
     }
     /**
      * React render method, what the user sees on the screen
      */
     render() {
+        let componentProps = this.getComponentProps();
         return (
             <BrowserRouter style={{ width: "100%" }}>
                 {/* BrowserRouter wil allow us to switch between the different pages in our SPA based on the URL routing */}
@@ -67,17 +102,20 @@ class App extends Component {
                     {/* We put the background here so that even after the page reroutes to different urls, the flying
                         logos will stay constant, allowing for a seemless user experience. First, we render the logos
                         then we render the background ontop of them, allowing the logos to fly behind the clouds */}
-                    <div style={{ position: "fixed", zIndex: 1, width: "100%", height: "100%", left: 0, top: 0, opacity: 0.5 }}>
-                        <FlyingLogo url={"./assets/icons/greenwingstarasset.png"} />
+                    <div style={{ position: "fixed", zIndex: 0, width: "100%", height: "100%", left: 0, top: 0, opacity: 0.5 }}>
+                        <FlyingLogo url={"/assets/icons/greenwingstarasset.png"} />
                     </div>
-                    <div style={{ position: "fixed", zIndex: 2, width: "100%", height: "100%", left: 0, top: 0, background: "url(./assets/hru-background-large.png)", backgroundSize: "cover", opacity: 0.25 }}></div>
+                    <div style={{ position: "fixed", zIndex: 1, width: "100%", height: "100%", left: 0, top: 0, background: "url(/assets/hru-background-large.png)", backgroundSize: "cover", opacity: 0.25 }}></div>
+                    <div style={{ position: "fixed", zIndex: 2, width: "100%", height: "100%", left: 0, top: 0, backgroundColor: "rgb(0, 0, 0)", backgroundSize: "cover", opacity: 0.25 }}></div>
                     <Switch>
                         {/* This is where the URL routing magic actually happens */}
-                        <Route exact path="/" render={(props) => <LandingPage {...props} isMobile={this.state.isMobile} profile={this.state.profile} loggedout={this.state.loggedout} dismissAlert={() => { this.setState({ loggedout: false }); }} />} />
-                        <Route exact path="/login" render={(props) => <LoginPage {...props} isMobile={this.state.isMobile} profile={this.state.profile} />} />
-                        <Route exact path="/signup" render={(props) => <SignUpPage {...props} isMobile={this.state.isMobile} profile={this.state.profile} />} />
+                        <Route exact path="/" render={(props) => <LandingPage {...props} {...componentProps} />} />
+                        <Route exact path="/login" render={(props) => <LoginPage {...props} {...componentProps} />} />
+                        <Route exact path="/signup" render={(props) => <SignUpPage {...props} {...componentProps} />} />
                         <Route exact path="/logout" component={() => { this.state.profile.Logout(); this.setState({ profile: this.state.profile, loggedout: true }); return (<Redirect to="/" />); }} />
-                        <Route exact path="/dashboard" render={(props) => <DashboardPage {...props} isMobile={this.state.isMobile} profile={this.state.profile} />} />
+                        <Route exact path="/forgot" render={(props) => <ForgotPage {...props} {...componentProps} />} />
+                        <Route exact path="/magic/:mlurl" render={(props) => <MagicPage {...props} {...componentProps} />} />
+                        <Route exact path="/dashboard" render={(props) => <DashboardPage {...props} {...componentProps} />} />
                         {/* If none of the other urls were matched, we will show a 404 page to the user */}
                         <Route component={E404} />
                     </Switch>

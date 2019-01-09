@@ -27,17 +27,21 @@ class LoginPage extends Component {
         });
     }
     render() {
+        // Check if the user is already logged in
+        if (this.props.profile.isLoggedIn) {
+            return ( <Redirect to="/dashboard" />);
+        }
         let innerText = "Welcome to HackRU!";
         let innerForm = (
             <div>
                 <FormGroup row>
                     <InputGroup>
-                        <Input required id="email" type="email" placeholder="email" style={{ borderRadius: 0, background: "rgba(255, 255, 255, 0.2)", border: "none", color: "white" }} />
+                        <Input required id="email" type="email" placeholder="email" />
                     </InputGroup>
                 </FormGroup>
                 <FormGroup row>
                     <InputGroup>
-                        <Input required type="password" id="password" placeholder="password" style={{ borderRadius: 0, background: "rgba(255, 255, 255, 0.2)", border: "none", color: "white" }} />
+                        <Input required type="password" id="password" placeholder="password" />
                         <InputGroupAddon addonType="append">
                             <Button color="success" style={{ borderRadius: 0 }}><Icon name="chevron-right" /></Button>
                         </InputGroupAddon>
@@ -89,6 +93,7 @@ class LoginPage extends Component {
                     {errors}
                     {innerForm}
                     <FormText><Link to="/signup" style={{ color: "rgba(255, 255, 255, 0.5)" }}>Not a member? Create an Account!</Link></FormText>
+                    <FormText><Link to="/forgot" style={{ color: "rgba(255, 255, 255, 0.5)" }}>Forgot your password?</Link></FormText>
                     <FormText><Link to="/" style={{ color: "rgba(255, 255, 255, 0.5)" }}>Return Home</Link></FormText>
                 </Form>
             </div>
