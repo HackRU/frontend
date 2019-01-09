@@ -3,7 +3,7 @@ import { Container, Row, Col, Button } from "reactstrap";
 import { defaults, sponsorshipLinks } from "../../../Defaults";
 import { Parallax } from "react-scroll-parallax";
 import { Icon } from "react-fa";
-import Logo from "../../Landing/Sections/Logo";
+import LogoAnim from "./LogoAnim";
 
 class Main extends Component {
     render() {
@@ -29,7 +29,11 @@ class Main extends Component {
                     <Row style={{ minWidth: "100%", minHeight: "100vh" }} className="d-flex align-items-center">
                         <Col xs={2}></Col>
                         <Col xs={8} style={{ display: "block" }}>
-                            <Logo src="./assets/icons/hru-logo.svg" />
+                        <Row className="align-items-center" style={{paddingLeft: 110}}>
+                            <LogoAnim src="./assets/icons/assetsSVG/whitegriffinasset.svg" />
+                            <img width="300" src="./assets/icons/hru-logo-small-green.png" alt="logo"></img>
+                            <LogoAnim src="./assets/icons/assetsSVG/whitegriffinassetleft.svg" />
+                        </Row>
                             <h2 style={{ marginTop: 15 }} className="display-4 theme-font">Sponsor HackRU Spring 2019</h2>
                             <h2 className="lead theme-font"><Icon style={{ marginRight: 5 }} name="map-marker" /> {defaults.locationText}</h2>
                             <h2 className="lead theme-font"><Icon style={{ marginRight: 5 }} name="calendar" /> {defaults.dateText}</h2>
@@ -39,8 +43,8 @@ class Main extends Component {
                                 {navContainer}
                             </Parallax>
                         </Col>
-                        <div style={{ position: "absolute", bottom: 10, textAlign: "center", width: "100%" }}>
-                            <Button href="#about" outline style={{ border: "none" }} ><Icon name="chevron-down" /> Explore</Button>
+                        <div style={{ position: "absolute", bottom: 10, textAlign: "center", width: "100%", paddingBottom: 20 }}>
+                            <Button href="#about" outline style={{ border: "none"}} ><Icon name="chevron-down" /> Explore</Button>
                         </div>
                     </Row>
                 </Container>
@@ -50,7 +54,11 @@ class Main extends Component {
                 <Container fluid id="landing-section" style={{ zIndex: 3, width: "100%", minHeight: "100vh", textAlign: "center", userSelect: "none" }}>
                     <Row style={{ minWidth: "100%", minHeight: "100vh" }} className="d-flex align-items-center">
                         <Col style={{ display: "block" }}>
-                            <Logo noCircle src="./assets/icons/hru-logo.svg" />
+                            <Row className="align-items-center" style={{paddingLeft: 80}}>
+                                <LogoAnim src="./assets/icons/assetsSVG/whitegriffinasset.svg" />
+                                <img width="300" src="./assets/icons/hru-logo-small-green.png" alt="logo"></img>
+                                <LogoAnim src="./assets/icons/assetsSVG/whitegriffinassetleft.svg" />
+                            </Row>
                             <h2 style={{ marginTop: -75 }} className="display-4 theme-font">Sponsor HackRU Spring 2019</h2>
                             <h2 className="lead theme-font"><Icon style={{ marginRight: 5 }} name="map-marker" /> {defaults.locationText}</h2>
                             <h2 className="lead theme-font"><Icon style={{ marginRight: 5 }} name="calendar" /> {defaults.dateText}</h2>
