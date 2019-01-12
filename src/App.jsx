@@ -46,7 +46,7 @@ class App extends Component {
      */
     _event_onResize() {
         this.setState({
-            isMobile: (window.innerWidth < defaults.mobileWidthThresholdRelaxed)
+            isMobile: (window.innerWidth < defaults.mobileWidthThresholdRelaxed) || (window.innerHeight < defaults.mobileHeightThresholdRelaxed)
         });
     }
     /**

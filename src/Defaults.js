@@ -18,6 +18,7 @@ const defaults =  {
     "universityText": "Rutgers University",
     "mobileWidthThresholdSensitive": 1500,
     "mobileWidthThresholdRelaxed": 1200,
+    "mobileHeightThresholdRelaxed": 650,
     "poc": true,
     "rest": {
         "dev": "https://7c5l6v7ip3.execute-api.us-west-2.amazonaws.com/lcs-test",
