@@ -2,7 +2,10 @@ import React from 'react';
 import { Container } from 'reactstrap';
 import { BounceLoader, PulseLoader } from "react-spinners";
 import { theme } from '../../Defaults';
-
+/**
+ * Render a loading  screen
+ * @param {String} Text Loading subtext
+ */
 const Loading = ({ text }) => (
     <Container fluid style={{ width: "100%", minHeight: "100vh", textAlign: "center", backgroundColor: theme.secondary[1] }} className="d-flex align-items-center">
         <div style={{ width: "100%", color: "rgba(255, 255, 255, 0.1)" }} align="center">
