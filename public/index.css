@@ -11,6 +11,10 @@
     --accent-color: #FF80CF;
     --accent-color-alt: #F8A5FF;
     --disabled-color: #BDBDBD;
+    --hover-color: rgba(255, 255, 255, 0.5);
+    --hover-background-color: #26E8BDA0;
+    --active-color: rgba(255, 255, 255, 0.5);
+    --active-background-color: #5A7A96A0;
     /* Fonts */
     --header-font: 'Raleway Dots', serif;
     --text-font: 'Open Sans', sans-serif;
@@ -48,19 +52,25 @@ a:link {
     transition: color 0.5s ease;
 }
 a:link:hover {
-    color: rgb(255, 255, 255);
+    color: var(--hover-color);
     text-decoration: none;
 }
 a:visited {
     color: var(--primary-color);
 }
 a:visited:hover {
-    color: rgb(255, 255, 255);
+    color: var(--hover-color);
     text-decoration: none;
 }
-.btn:hover{
-    background-color: rgba(255, 255, 255, 1) !important;
-    color: rgba(90, 122, 150, 1) !important;
+.btn:hover {
+    transition: background-color 0.5s;
+    background-color: var(--hover-background-color) !important;
+    color: var(--hover-color) !important;
+}
+.btn:active {
+    transition: background-color 0.5s;
+    background-color: var(--active-background-color) !important;
+    color: var(--active-color) !important;
 }
 h1, h2, h3, h4, h5, h6, p {
     font-family: var(--text-font);
