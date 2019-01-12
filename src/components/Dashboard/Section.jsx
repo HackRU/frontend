@@ -7,14 +7,21 @@ import { theme } from "../../Defaults";
  * It takes four props, 'children', 'isOpen' (if it is initially expanded), 'title', and 'subtitle'
  */
 class Section extends Component {
+    /**
+     * Set the default object state
+     * @param {Object} props React properties 
+     */
     constructor(props) {
         super(props)
         this.state = {
             isOpen: props.isOpen
         }
     }
+    /**
+     * The default render method
+     */
     render() {
-        const { children, title, subtitle, isOpen, ...rest } = this.props;
+        let { children, title, subtitle, isOpen, ...rest } = this.props;
         return (
             <div style={{ width: "100%", textAlign: "left", marginBottom: 25 }} {...rest} >
                 <ListGroup>

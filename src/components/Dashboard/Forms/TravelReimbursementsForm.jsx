@@ -65,11 +65,7 @@ class TravelReimbursementsForm extends Component {
                             <Label>Travelling From</Label>
                             <div className="forcestyle">
                                 <ReactDependentScript
-                                    loadingComponent={<Input
-                                        disabled
-                                        required
-                                        placeholder="Where are you travelling from? (Loading...)"
-                                    /> } scripts={["https://maps.googleapis.com/maps/api/js?key=" + MAP_KEY + "&libraries=places"]}>
+                                    loadingComponent={<Input disabled required placeholder="Where are you travelling from? (Loading...)" />} scripts={["https://maps.googleapis.com/maps/api/js?key=" + MAP_KEY + "&libraries=places"]}>
                                     <Autocomplete
                                         className="form-control"
                                         onChange={(place) => this.setState({ formatted_addr: place.target.value })}
