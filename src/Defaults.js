@@ -19,6 +19,7 @@ const defaults =  {
     "mobileWidthThresholdSensitive": 1500,
     "mobileWidthThresholdRelaxed": 1200,
     "mobileHeightThresholdRelaxed": 650,
+    "enableFlyingLogo": false,
     "poc": true,
     "rest": {
         "dev": "https://7c5l6v7ip3.execute-api.us-west-2.amazonaws.com/lcs-test",

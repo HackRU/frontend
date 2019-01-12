@@ -103,7 +103,7 @@ class App extends Component {
                         logos will stay constant, allowing for a seemless user experience. First, we render the logos
                         then we render the background ontop of them, allowing the logos to fly behind the clouds */}
                     <div style={{ position: "fixed", zIndex: 0, width: "100%", height: "100%", left: 0, top: 0, opacity: 0.5 }}>
-                        <FlyingLogo url={"/assets/icons/greenwingstarasset.png"} />
+                        {defaults.enableFlyingLogo && (<FlyingLogo url={"/assets/icons/greenwingstarasset.png"} />)}
                     </div>
                     <div style={{ position: "fixed", zIndex: 1, width: "100%", height: "100%", left: 0, top: 0, background: "url(/assets/hru-background-large.png)", backgroundSize: "cover", opacity: 0.25 }}></div>
                     <div style={{ position: "fixed", zIndex: 2, width: "100%", height: "100%", left: 0, top: 0, backgroundColor: "rgb(0, 0, 0)", backgroundSize: "cover", opacity: 0.25 }}></div>
