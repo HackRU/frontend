@@ -8,10 +8,10 @@ import Section from './Section';
 import Loading from './Loading';
 import ProfileMessage from './ProfileMessage';
 import ResumeUploader from './ResumeUploader';
-import TravelForm from './TravelForm';
+import TravelReimbursementsForm from './Forms/TravelReimbursementsForm';
 import Select, { Creatable, AsyncCreatable } from "react-select";
 import request from "request";
-import majors from "./majors.json";
+import majors from "./Resources/majors.json";
 
 class Dashboard extends Component {
     state = {
@@ -110,11 +110,7 @@ class Dashboard extends Component {
                             <p className="lead">User Profile</p>
                         </div>
                         <ProfileMessage message={this.state.profileMSG} />
-                        <Section
-                            title='Basics'
-                            subtitle="Introduce yourself, don't be shy!"
-                            isOpen={this.state.openDetails}
-                        >
+                        <Section title="Basics" subtitle="Introduce yourself, don't be shy!" isOpen={this.state.openDetails} >
                             <Form onSubmit={(e) => {
                                 e.preventDefault();
                                 // If the form is even submitted, then we know that both the mlh text boxes have been pressed, so we are going to set the mlh tag to true
@@ -266,19 +262,11 @@ class Dashboard extends Component {
                                 </div>
                             </Form>
                         </Section>
-                        <Section
-                            className="mb-5"
-                            title='Travel Reimbursements'
-                            subtitle="Let us know where you're coming from!"
-                        >
-                            <TravelForm
-                                mobile={mobile}
-                                travelling_from={user.travelling_from}
-                                onSubmit={(travel) => {
+                        <Section className="mb-5" title="Travel Reimbursements" subtitle="Let us know where you're coming from!">
+                            <TravelReimbursementsForm mobile={mobile} travelling_from={user.travelling_from} onSubmit={(travel) => {
                                     user.travelling_from = travel;
                                     this.submitUser(user)
-                                }}
-                            />
+                                }} />
                         </Section>
                     </Container>
                 </div>
