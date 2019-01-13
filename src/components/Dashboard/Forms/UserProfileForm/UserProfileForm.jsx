@@ -15,6 +15,7 @@ class UserProfileForm extends Component {
             user: this.props.user,
             edit: (this.props.user.registration_status !== "registered"),
             checkedState1: this.props.user.registration_status === "registered",
+            checkedState2: this.props.user.registration_status === "registered"
         });
     }
     updateUser(user) {
@@ -165,7 +166,7 @@ class UserProfileForm extends Component {
                     </FormGroup>
                     <FormGroup>
                         <div className="custom-control custom-checkbox">
-                            <input required type="checkbox" className="custom-control-input" id="mlh2" />
+                            <input required type="checkbox" className="custom-control-input" id="mlh2" checked={this.state.checkedState2} onChange={() => { this.setState({ checkedState2: !this.state.checkedState2 }) }} />
                             <label className="custom-control-label" for="mlh2">I authorize you to share my application/registration information for event administration, ranking, MLH administration, pre- and post-event informational e-mails, and occasional messages about hackathons in-line with the <a href="https://mlh.io/privacy">MLH Privacy Policy</a>. Further, I agree to the terms of both the <a href="https://github.com/MLH/mlh-policies/blob/master/prize-terms-and-conditions/contest-terms.md">MLH Contest Terms and Conditions</a> and the <a href="https://mlh.io/privacy">MLH Privacy Policy</a>.</label>
                         </div>
                     </FormGroup>
