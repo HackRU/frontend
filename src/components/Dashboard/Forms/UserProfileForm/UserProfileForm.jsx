@@ -44,9 +44,17 @@ class UserProfileForm extends Component {
     render() {
         let mobile = this.props.mobile;
         let user = this.state.user;
+        let mlhnotices = [];
+        if (this.state.checkedState1) {
+            mlhnotices.push("mlh1");
+        }
+        if (this.state.checkedState2) {
+            mlhnotices.push("mlh2");
+        }
+        let model = { mlhnotices }
         if (this.state.edit) {
             return (
-                <AvForm onValidSubmit={(event, error, values) => {
+                <AvForm model={model} onValidSubmit={(event, error, values) => {
                     this.props.onSubmit(this.state.user);
                 }}>
                     <h4>About you</h4>
@@ -198,8 +206,8 @@ class UserProfileForm extends Component {
                     </FormGroup>
                     <ResumeUploader userEmail={this.state.user.email} edit={this.state.edit} regStyle={{}} />
                     <AvCheckboxGroup name="mlhnotices" className="custom-av-checkbox" label={<h4>MLH Notices</h4>} required validate={{ required: { value: true, errorMessag: "Please review these MLH guidelines" }, min: { value: 2, errorMessage: "You must select both of these checkboxes" } }}>
-                        <AvCheckbox customInput checked={this.state.checkedState1} onChange={() => { this.setState({ checkedState1: !this.state.checkedState1 }) }} label={<p>I have read and agree to the <a href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf">MLH Code of Conduct</a></p>} value={1} />
-                        <AvCheckbox customInput checked={this.state.checkedState2} onChange={() => { this.setState({ checkedState2: !this.state.checkedState2 }) }} label={<p>I authorize you to share my application/registration information for event administration, ranking, MLH administration, pre- and post-event informational e-mails, and occasional messages about hackathons in-line with the <a href="https://mlh.io/privacy">MLH Privacy Policy</a>. Further, I agree to the terms of both the <a href="https://github.com/MLH/mlh-policies/blob/master/prize-terms-and-conditions/contest-terms.md">MLH Contest Terms and Conditions</a> and the <a href="https://mlh.io/privacy">MLH Privacy Policy</a>.</p>} value={2} />
+                        <AvCheckbox name="mlh1" customInput onChange={() => { this.setState({ checkedState1: !this.state.checkedState1 }) }} label={<p>I have read and agree to the <a href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf">MLH Code of Conduct</a></p>} value={"mlh1"} />
+                        <AvCheckbox name="mlh2" customInput onChange={() => { this.setState({ checkedState2: !this.state.checkedState2 }) }} label={<p>I authorize you to share my application/registration information for event administration, ranking, MLH administration, pre- and post-event informational e-mails, and occasional messages about hackathons in-line with the <a href="https://mlh.io/privacy">MLH Privacy Policy</a>. Further, I agree to the terms of both the <a href="https://github.com/MLH/mlh-policies/blob/master/prize-terms-and-conditions/contest-terms.md">MLH Contest Terms and Conditions</a> and the <a href="https://mlh.io/privacy">MLH Privacy Policy</a>.</p>} value={"mlh2"} />
                     </AvCheckboxGroup>
                     <div style={{ width: "100%" }} align="right">
                         <Button style={{ backgroundColor: theme.accent[0], marginRight: 10 }} type="reset" >Clear</Button>
