@@ -13,7 +13,8 @@ class UserProfileForm extends Component {
     componentWillMount() {
         this.setState({
             user: this.props.user,
-            edit: (this.props.user.registration_status !== "registered")
+            edit: (this.props.user.registration_status !== "registered"),
+            checkedState1: this.props.user.registration_status === "registered",
         });
     }
     updateUser(user) {
@@ -158,7 +159,7 @@ class UserProfileForm extends Component {
                     <h4>MLH Notices</h4>
                     <FormGroup>
                         <div className="custom-control custom-checkbox">
-                            <input required type="checkbox" className="custom-control-input" id="mlh1" />
+                            <input required type="checkbox" className="custom-control-input" id="mlh1" checked={this.state.checkedState1} onChange={() => { this.setState({ checkedState1: !this.state.checkedState1 }) }} />
                             <label className="custom-control-label" for="mlh1">I have read and agree to the <a href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf">MLH Code of Conduct</a></label>
                         </div>
                     </FormGroup>
