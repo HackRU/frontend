@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { CustomInput, FormGroup } from "reactstrap";
-import { defaults } from "../../../Defaults";
+import { defaults } from "../../../../Defaults";
 /**
  * A file picker widget that lets a user upload a resume to the S3 bucket
  * If the user has a resume, they may upload one again, but the widget will indicate they don't need to
@@ -11,7 +11,7 @@ class ResumeUploader extends Component {
      * Set the initial state
      */
     state = {
-        labelText: 'Choose a PDF to upload.'
+        labelText: this.props.edit ? "Choose a PDF to upload." : "Nothing yet"
     }
     /**
      * Make a request to S3
@@ -54,7 +54,7 @@ class ResumeUploader extends Component {
         <div>
             <h4> Upload a Resume </h4>
             <FormGroup>
-                <CustomInput accept=".pdf" id="resume" onChange={this.uploadHandler} type="file" label={this.state.labelText} />
+                {this.props.edit ? <CustomInput accept=".pdf" id="resume" onChange={this.uploadHandler} type="file" label={this.state.labelText} /> : <p style={this.props.regStyle}>{this.state.labelText}</p>}
             </FormGroup>
         </div>
     )
