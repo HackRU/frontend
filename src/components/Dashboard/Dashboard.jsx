@@ -9,22 +9,14 @@ import Loading from './Loading';
 import ProfileMessage from './ProfileMessage';
 import TravelReimbursementsForm from './Forms/TravelReimbursementsForm';
 import UserProfileForm from "./Forms/UserProfileForm/UserProfileForm";
-import request from "request";
-import majors from "./Resources/majors.json";
 
 class Dashboard extends Component {
     state = {
-        loading: 'Loading your personal dashboard...',
+        loading: "Loading your personal dashboard...",
         user: null,
         openDetails: false,
-        schoolList: [],
-        majorList: majors.items.map(major => ({
-            value: major,
-            label: major
-        })),
         profileMSG: null
     }
-
     componentWillMount() {
         this.props.profile.Get((msg, data) => {
             if (msg) {
@@ -37,21 +29,12 @@ class Dashboard extends Component {
                     this.setState({
                         user: data,
                         loading: false,
-                        openDetails: (data.registration_status !== "registered")
+                        openDetails: (data.registration_status === "unregistered")
                     });
                 }
             }
         });
-        request.get("https://raw.githubusercontent.com/MLH/mlh-policies/master/schools.csv", {}, (_err, _resp, body) => {
-            let schoolList = body.split("\n").map(item => {
-                    item = item.startsWith('"') ? item.substring(1, item.length - 2) : item;
-                    return { value: item, label: item }
-                });
-            schoolList.splice(0, 1); // We remove the first element because we don't like it
-            this.setState({ schoolList });
-        });
     }
-
     submitUser = (user) => {
         this.setState({
             loading: 'Saving your information',
@@ -68,7 +51,6 @@ class Dashboard extends Component {
             });
         });
     }
-
     render() {
         // Authorized personal only!
         if (!this.props.profile.isLoggedIn) {

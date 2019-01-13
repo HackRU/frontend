@@ -1,9 +1,13 @@
 import React, { Component } from "react";
-import { Form, FormGroup, Input, Label, Button, Col } from "reactstrap";
+import { FormGroup, Input, Label, Button, Col } from "reactstrap";
+import { AvForm, AvField, AvCheckboxGroup, AvCheckbox } from "availity-reactstrap-validation";
 import Select, { Creatable, AsyncCreatable } from "react-select";
 import ResumeUploader from "./ResumeUploader";
+import CustomAVInput from "./CustomAVInput";
 import { Icon } from "react-fa";
 import { theme } from "../../../../Defaults";
+import request from "request";
+import majors from "./majors.json";
 
 class UserProfileForm extends Component {
     constructor(props) {
@@ -13,9 +17,22 @@ class UserProfileForm extends Component {
     componentWillMount() {
         this.setState({
             user: this.props.user,
-            edit: (this.props.user.registration_status !== "registered"),
-            checkedState1: this.props.user.registration_status === "registered",
-            checkedState2: this.props.user.registration_status === "registered"
+            edit: (this.props.user.registration_status === "unregistered"),
+            schoolList: [],
+            majorList: majors.items.map(major => ({
+                value: major,
+                label: major
+            })),
+            checkedState1: (this.props.user.registration_status !== "unregistered"),
+            checkedState2: (this.props.user.registration_status !== "unregistered")
+        });
+        request.get("https://raw.githubusercontent.com/MLH/mlh-policies/master/schools.csv", {}, (_err, _resp, body) => {
+            let schoolList = body.split("\n").map(item => {
+                item = item.startsWith('"') ? item.substring(1, item.length - 2) : item;
+                return { value: item, label: item }
+            });
+            schoolList.splice(0, 1); // We remove the first element because we don't like it
+            this.setState({ schoolList });
         });
     }
     updateUser(user) {
@@ -29,62 +46,80 @@ class UserProfileForm extends Component {
         let user = this.state.user;
         if (this.state.edit) {
             return (
-                <Form onSubmit={(e) => {
-                    e.preventDefault();
+                <AvForm onValidSubmit={(event, error, values) => {
                     this.props.onSubmit(this.state.user);
                 }}>
                     <h4>About you</h4>
                     <FormGroup row>
                         <Col xs={(mobile) ? 12 : 6}>
-                            <Label for="first">First Name *</Label>
-                            <Input required id="first" type="text" placeholder="John" value={user.first_name} onChange={(e) => { user.first_name = e.target.value; this.updateUser(user); }} />
+                            <AvField name="first" label="First Name *" type="text" placeholder="John" value={user.first_name} onChange={(e) => { user.first_name = e.target.value; this.updateUser(user); }} validate={{
+                                required: { value: true, errorMessage: "Invalid first name" },
+                                pattern: { value: "^[A-Za-z0-9]+$", errorMessage: "Invalid character" },
+                                minLength: { value: 1, errorMessage: "Invalid length" },
+                                maxLength: { value: 100, errorMessage: "Invalid length" } }} />
                         </Col>
                         <Col xs={(mobile) ? 12 : 6}>
-                            <Label for="last">Last Name *</Label>
-                            <Input required id="last" type="text" placeholder="Doe" value={user.last_name} onChange={(e) => { user.last_name = e.target.value; this.updateUser(user); }} />
+                            <AvField name="last" label="Last Name *" type="text" placeholder="Doe" value={user.last_name} onChange={(e) => { user.last_name = e.target.value; this.updateUser(user); }} validate={{
+                                required: { value: true, errorMessage: "Invalid last name" },
+                                pattern: { value: "^[A-Za-z0-9]+$", errorMessage: "Invalid character" },
+                                minLength: { value: 1, errorMessage: "Invalid length" },
+                                maxLength: { value: 100, errorMessage: "Invalid length" } }} />
                         </Col>
                     </FormGroup>
                     <FormGroup row>
                         <Col xs={(mobile) ? 12 : 4}>
-                            <Label for="number">Phone Number</Label>
-                            <Input id="number" type="text" placeholder="(***) ***-****" value={user.phone_number} onChange={(e) => { user.phone_number = e.target.value; this.updateUser(user); }} />
+                            <AvField name="number" label="Number" type="text" placeholder="(***) ***-****" value={user.phone_number} onChange={(e) => { user.phone_number = e.target.value; this.updateUser(user); }} validate={{
+                                required: { value: false },
+                                tel: { value: true, errorMessage: "Invalid number" } }} />
                         </Col>
                         <Col xs={(mobile) ? 12 : 4}>
-                            <Label for="dob">Date of Birth *</Label>
-                            <Input required id="dob" type="date" placeholder="mm/dd/yyyy" value={user.date_of_birth} onChange={(e) => { user.date_of_birth = e.target.value; this.updateUser(user); }} />
+                            <AvField name="dob" label="Date of Birth *" type="date" placeholder="mm/dd/yyyy" value={user.date_of_birth} onChange={(e) => { user.date_of_birth = e.target.value; this.updateUser(user); }} validate={{
+                                required: { value: true, errorMessage: "Invalid date of birth" },
+                                dateRange: {
+                                    format: "MM/DD/YYYY",
+                                    start: {
+                                        value: "01/01/1920"
+                                    },
+                                    end: {
+                                        value: "01/01/2018"
+                                    }
+                                } }} />
                         </Col>
                         <Col xs={(mobile) ? 12 : 4}>
-                            <Label for="size">Shirt Size</Label>
-                            <div className="forcestyle">
-                                <Select required id="size" value={{ value: user.shirt_size, label: user.shirt_size }} onChange={(e) => { user.shirt_size = e.value; this.updateUser(user); }} options={[
-                                    { value: "Unisex XS", label: "Unisex XS" },
-                                    { value: "Unisex S", label: "Unisex S" },
-                                    { value: "Unisex M", label: "Unisex M" },
-                                    { value: "Unisex L", label: "Unisex L" },
-                                    { value: "Unisex XL", label: "Unisex XL" }]} />
-                            </div>
+                            <CustomAVInput name="size" label="Shirt Size *" value={user.shirt_size} validate={{ required: { value: true, errorMessage: "Invalid shirt size" } }}>
+                                <div className="forcestyle">
+                                    <Select required id="size" value={{ value: user.shirt_size, label: user.shirt_size }} onChange={(e) => { user.shirt_size = e.value; this.updateUser(user); }} options={[
+                                        { value: "Unisex XS", label: "Unisex XS" },
+                                        { value: "Unisex S", label: "Unisex S" },
+                                        { value: "Unisex M", label: "Unisex M" },
+                                        { value: "Unisex L", label: "Unisex L" },
+                                        { value: "Unisex XL", label: "Unisex XL" }]} />
+                                </div>
+                            </CustomAVInput>
                         </Col>
                     </FormGroup>
                     <FormGroup row>
                         <Col xs={(mobile) ? 12 : 6}>
-                            <Label for="gender">Gender</Label>
-                            <div className="forcestyle">
-                                <Creatable id="gender" value={{ value: user.gender, label: user.gender }} onChange={(e) => { user.gender = e.value; this.updateUser(user); }} options={[
-                                    { value: "Female", label: "Female" },
-                                    { value: "Male", label: "Male" },
-                                    { value: "Other", label: "Other" },
-                                    { value: "Prefer not to say", label: "Prefer not to say" }]} />
-                            </div>
+                            <CustomAVInput name="gender" label="Gender *" value={user.gender} validate={{ required: { value: true, errorMessage: "Invalid input"} }}>
+                                <div className="forcestyle">
+                                    <Creatable id="gender" value={{ value: user.gender, label: user.gender }} onChange={(e) => { user.gender = e.value; this.updateUser(user); }} options={[
+                                        { value: "Female", label: "Female" },
+                                        { value: "Male", label: "Male" },
+                                        { value: "Other", label: "Other" },
+                                        { value: "Prefer not to say", label: "Prefer not to say" }]} />
+                                </div>
+                            </CustomAVInput>
                         </Col>
                         <Col xs={(mobile) ? 12 : 6}>
-                            <Label for="ethnicity">Ethnicity</Label>
-                            <div className="forcestyle">
-                                <Creatable id="ethnicity" value={{ value: user.ethnicity, label: user.ethnicity }} onChange={(e) => { user.ethnicity = e.value; this.updateUser(user); }} options={[
-                                    { value: "American Indian or Alaskan Native", label: "American Indian or Alaskan Native" },
-                                    { value: "Asian/Pacific Islander", label: "Asian/Pacific Islander" },
-                                    { value: "Black or African American", label: "Black or African American" },
-                                    { value: "White/Caucasian", label: "White/Caucasian" }]} />
-                            </div>
+                            <CustomAVInput name="ethnicity" label="Ethnicity *" value={user.ethnicity} validate={{ required: { value: true, errorMessage: "Invalid input" } }}>
+                                <div className="forcestyle">
+                                    <Creatable id="ethnicity" value={{ value: user.ethnicity, label: user.ethnicity }} onChange={(e) => { user.ethnicity = e.value; this.updateUser(user); }} options={[
+                                        { value: "American Indian or Alaskan Native", label: "American Indian or Alaskan Native" },
+                                        { value: "Asian/Pacific Islander", label: "Asian/Pacific Islander" },
+                                        { value: "Black or African American", label: "Black or African American" },
+                                        { value: "White/Caucasian", label: "White/Caucasian" }]} />
+                                </div>
+                            </CustomAVInput>
                         </Col>
                     </FormGroup>
                     <FormGroup>
@@ -94,39 +129,44 @@ class UserProfileForm extends Component {
                     <h4>Education</h4>
                     <FormGroup row>
                         <Col xs={(mobile) ? 12 : 8}>
-                            <Label for="school">School</Label>
-                            <div className="forcestyle">
-                                <AsyncCreatable id="school" value={{ value: user.school, label: user.school }} onChange={(e) => { user.school = e.value; this.updateUser(user); }} cacheOptions defaultOptions loadOptions={(inputValue, callback) => {
-                                    if (inputValue) {
-                                        callback(this.state.schoolList.filter((i) => {
-                                            return i.label.toLowerCase().includes(inputValue.toLowerCase());
-                                        }));
-                                    } else {
-                                        callback(this.state.schoolList);
-                                    }
-                                }} />
-                            </div>
+                            <CustomAVInput name="school" label="School *" value={user.school} validate={{ required: { value: true, errorMessage: "Invalid school" } }}>
+                                <div className="forcestyle">
+                                    <AsyncCreatable id="school" value={{ value: user.school, label: user.school }} onChange={(e) => { user.school = e.value; this.updateUser(user); }} cacheOptions defaultOptions loadOptions={(inputValue, callback) => {
+                                        if (inputValue) {
+                                            callback(this.state.schoolList.filter((i) => {
+                                                return i.label.toLowerCase().includes(inputValue.toLowerCase());
+                                            }));
+                                        } else {
+                                            callback(this.state.schoolList);
+                                        }
+                                    }} />
+                                </div>
+                            </CustomAVInput>
                         </Col>
                         <Col xs={(mobile) ? 12 : 4}>
-                            <Label for="gy">Graduation Year</Label>
-                            <Input required id="gy" type="number" placeholder="yyyy" value={user.grad_year} onChange={(e) => { user.grad_year = e.target.value; this.updateUser(user); }} />
+                            <AvField name="gy" label="Graduation Year *" type="number" placeholder="yyyy" value={user.grad_year} onChange={(e) => { user.grad_year = e.target.value; this.updateUser(user); }} validate={{
+                                required: { value: true, errorMessage: "Invalid graduation year" },
+                                max: { value: 2030, errorMessage: "Graduation year must be between 2019 and 2030" },
+                                min: { value: 2019, errorMessage: "Graduation year must be between 2019 and 2030" } }} />
                         </Col>
                     </FormGroup>
                     <FormGroup row>
                         <Col xs={(mobile) ? 12 : 6}>
-                            <Label for="los">Level of Study</Label>
-                            <div className="forcestyle">
-                                <Creatable id="los" value={{ value: user.level_of_study, label: user.level_of_study }} onChange={(e) => { user.level_of_study = e.value; this.updateUser(user); }} options={[
-                                    { value: "University (Undergraduate)", label: "University (Undergraduate)" },
-                                    { value: "University (Graduate)", label: "University (Graduate)" },
-                                    { value: "High School", label: "High School" }]} />
-                            </div>
+                            <CustomAVInput name="los" label="Level of Study *" value={user.level_of_study} validate={{ required: { value: true, errorMessage: "Invalid level of study" } }}>
+                                <div className="forcestyle">
+                                    <Creatable id="los" value={{ value: user.level_of_study, label: user.level_of_study }} onChange={(e) => { user.level_of_study = e.value; this.updateUser(user); }} options={[
+                                        { value: "University (Undergraduate)", label: "University (Undergraduate)" },
+                                        { value: "University (Graduate)", label: "University (Graduate)" },
+                                        { value: "High School", label: "High School" }]} />
+                                </div>
+                            </CustomAVInput>
                         </Col>
                         <Col xs={(mobile) ? 12 : 6}>
-                            <Label for="los">Major</Label>
-                            <div className="forcestyle">
-                                <Creatable isMulti id="los" value={(user.major.length > 0) ? (user.major.split(";").map(((val) => { return { value: val, label: val }; }))) : ([])} onChange={(e) => { let majors = ""; for (let i = 0; i < e.length; i++) { majors += ";" + e[i].value; } majors = majors.substring(1); user.major = majors; this.updateUser(user); }} options={this.state.majorList} />
-                            </div>
+                            <CustomAVInput name="major" label="Major *" value={user.major} validate={{ required: { value: true, errorMessage: "Invalid major" } }}>
+                                <div className="forcestyle">
+                                    <Creatable isMulti id="los" value={(user.major.length > 0) ? (user.major.split(";").map(((val) => { return { value: val, label: val }; }))) : ([])} onChange={(e) => { let majors = ""; for (let i = 0; i < e.length; i++) { majors += ";" + e[i].value; } majors = majors.substring(1); user.major = majors; this.updateUser(user); }} options={this.state.majorList} />
+                                </div>
+                            </CustomAVInput>
                         </Col>
                     </FormGroup>
                     <h4>HackRU</h4>
@@ -157,24 +197,15 @@ class UserProfileForm extends Component {
                         <Input id="sa" type="textarea" placeholder="" value={user.short_answer} onChange={(e) => { user.short_answer = e.target.value; this.updateUser(user); }} />
                     </FormGroup>
                     <ResumeUploader userEmail={this.state.user.email} edit={this.state.edit} regStyle={{}} />
-                    <h4>MLH Notices</h4>
-                    <FormGroup>
-                        <div className="custom-control custom-checkbox">
-                            <input required type="checkbox" className="custom-control-input" id="mlh1" checked={this.state.checkedState1} onChange={() => { this.setState({ checkedState1: !this.state.checkedState1 }) }} />
-                            <label className="custom-control-label" for="mlh1">I have read and agree to the <a href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf">MLH Code of Conduct</a></label>
-                        </div>
-                    </FormGroup>
-                    <FormGroup>
-                        <div className="custom-control custom-checkbox">
-                            <input required type="checkbox" className="custom-control-input" id="mlh2" checked={this.state.checkedState2} onChange={() => { this.setState({ checkedState2: !this.state.checkedState2 }) }} />
-                            <label className="custom-control-label" for="mlh2">I authorize you to share my application/registration information for event administration, ranking, MLH administration, pre- and post-event informational e-mails, and occasional messages about hackathons in-line with the <a href="https://mlh.io/privacy">MLH Privacy Policy</a>. Further, I agree to the terms of both the <a href="https://github.com/MLH/mlh-policies/blob/master/prize-terms-and-conditions/contest-terms.md">MLH Contest Terms and Conditions</a> and the <a href="https://mlh.io/privacy">MLH Privacy Policy</a>.</label>
-                        </div>
-                    </FormGroup>
+                    <AvCheckboxGroup name="mlhnotices" className="custom-av-checkbox" label={<h4>MLH Notices</h4>} required validate={{ required: { value: true, errorMessag: "Please review these MLH guidelines" }, min: { value: 2, errorMessage: "You must select both of these checkboxes" } }}>
+                        <AvCheckbox customInput checked={this.state.checkedState1} onChange={() => { this.setState({ checkedState1: !this.state.checkedState1 }) }} label={<p>I have read and agree to the <a href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf">MLH Code of Conduct</a></p>} value={1} />
+                        <AvCheckbox customInput checked={this.state.checkedState2} onChange={() => { this.setState({ checkedState2: !this.state.checkedState2 }) }} label={<p>I authorize you to share my application/registration information for event administration, ranking, MLH administration, pre- and post-event informational e-mails, and occasional messages about hackathons in-line with the <a href="https://mlh.io/privacy">MLH Privacy Policy</a>. Further, I agree to the terms of both the <a href="https://github.com/MLH/mlh-policies/blob/master/prize-terms-and-conditions/contest-terms.md">MLH Contest Terms and Conditions</a> and the <a href="https://mlh.io/privacy">MLH Privacy Policy</a>.</p>} value={2} />
+                    </AvCheckboxGroup>
                     <div style={{ width: "100%" }} align="right">
                         <Button style={{ backgroundColor: theme.accent[0], marginRight: 10 }} type="reset" >Clear</Button>
                         <Button style={{ backgroundColor: theme.primary[0] }} type="submit" >Update</Button>
                     </div>
-                </Form>
+                </AvForm>
             )
         } else {
             let pStyle = {
