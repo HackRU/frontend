@@ -56,7 +56,7 @@ class TravelReimbursementsForm extends Component {
                             checked={is_real}
                             onChange={(e) => this.setState({ is_real: !is_real })}
                         />
-                        <label className="custom-control-label" for="request-travel">I request travel reimbursements</label>
+                        <label className="custom-control-label" htmlFor="request-travel">I request travel reimbursements</label>
                     </div>
                 </FormGroup>
                 <Collapse isOpen={this.state.is_real}>

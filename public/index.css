@@ -219,3 +219,19 @@ input, textarea, .custom-file-label {
 .custom-checkbox .custom-control-input:checked~.custom-control-label::before{
     background-color: var(--primary-color) !important;
 }
+.custom-av-checkbox div {
+    background-color: transparent;
+}
+.custom-av-checkbox div div label p {
+    color: var(--input-color);
+}
+/* Form validator */
+.avfield-hide-inner {
+    visibility: hidden;
+}
+.invalid-feedback, .text-danger label {
+    color: var(--accent-color) !important;
+}
+.custom-av-checkbox .is-invalid div label p {
+    color: var(--accent-color) !important;
+}
