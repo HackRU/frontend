@@ -8,7 +8,7 @@ import Section from './Section';
 import Loading from './Loading';
 import ProfileMessage from './ProfileMessage';
 import TravelReimbursementsForm from './Forms/TravelReimbursementsForm';
-import UserProfileForm from "./Forms/UserProfileForm";
+import UserProfileForm from "./Forms/UserProfileForm/UserProfileForm";
 import request from "request";
 import majors from "./Resources/majors.json";
 
@@ -113,8 +113,6 @@ class Dashboard extends Component {
                             <UserProfileForm mobile={mobile} user={user} onChange={(user) => {
                                 this.setState({ user: user });
                             }} onSubmit={(user) => {
-                                // If the form is even submitted, then we know that both the mlh text boxes have been pressed, so we are going to set the mlh tag to true
-                                user.mlh = true;
                                 user.registration_status = "registered";
                                 this.submitUser(user)
                             }} />
@@ -131,5 +129,4 @@ class Dashboard extends Component {
         );
     }
 }
-
 export default Dashboard;
