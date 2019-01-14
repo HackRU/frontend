@@ -174,6 +174,7 @@ class Profile {
                     if (error) {
                         callback("An error occured when attempting signup. Failed at 1/2");
                     } else {
+                        console.log(body);
                         if (body.statusCode === 400) {
                             callback("User with email " + email + " already exists")
                         } else if (body.statusCode === 200) {
@@ -277,6 +278,7 @@ class Profile {
                 },
                 json: true
             }, (error, response, body) => {
+                console.log(body);
                 if (error) {
                     callback("An error occured when attempting to update data")
                 } else {

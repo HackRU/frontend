@@ -5,7 +5,9 @@ import { UncontrolledAlert } from 'reactstrap';
  * @param {String} message The displayed message 
  */
 const ProfileMessage = ({ message }) => (
-    message && <UncontrolledAlert color={message.success ? 'success' : 'danger'} style={{ background: "rgba(0, 255, 0, 0.25)", border: "none", color: "white" }}>
+    message && <UncontrolledAlert
+            color={message.success ? 'success' : 'danger'}
+            style={{ background: "rgba(0, 255, 0, 0.25)", border: "none", color: "white" }} >
         { message.value }
     </UncontrolledAlert>
 )
