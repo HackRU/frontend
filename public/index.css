@@ -196,6 +196,7 @@ input, textarea, .custom-file-label {
     background: var(--input-background) !important;
     border: var(--input-border) !important;
     color: var(--input-color) !important;
+    z-index: 0 !important;
 }
 .forcestyle div[class^="css-"] {
     background: var(--select-input-background);
