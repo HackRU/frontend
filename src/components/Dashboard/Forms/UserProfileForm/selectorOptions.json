@@ -1,0 +1,37 @@
+{
+    "Shirt Size": [
+        { "value": "Unisex XS", "label": "Unisex XS" },
+        { "value": "Unisex S", "label": "Unisex S" },
+        { "value": "Unisex M", "label": "Unisex M" },
+        { "value": "Unisex L", "label": "Unisex L" },
+        { "value": "Unisex XL", "label": "Unisex XL" }
+    ],
+    "Gender": [
+        { "value": "Female", "label": "Female" },
+        { "value": "Male", "label": "Male" },
+        { "value": "Other", "label": "Other" },
+        { "value": "Prefer not to say", "label": "Prefer not to say" }
+    ],
+    "Ethnicity": [
+        { "value": "American Indian or Alaskan Native", "label": "American Indian or Alaskan Native" },
+        { "value": "Asian/Pacific Islander", "label": "Asian/Pacific Islander" },
+        { "value": "Hispanic or Latino", "label": "Hispanic or Latino" },
+        { "value": "Black or African American", "label": "Black or African American" },
+        { "value": "White/Caucasian", "label": "White/Caucasian" }
+    ],
+    "Level of Study": [
+        { "value": "University (Undergraduate)", "label": "University (Undergraduate)" },
+        { "value": "University (Graduate)", "label": "University (Graduate)" },
+        { "value": "High School", "label": "High School" }
+    ],
+    "Hear": [
+        { "value": "Facebook", "label": "Facebook" },
+        { "value": "Instagram", "label": "Instagram" },
+        { "value": "MLH Website", "label": "MLH Website" },
+        { "value": "Mailing List", "label": "Mailing List" },
+        { "value": "Medium", "label": "Medium" },
+        { "value": "Reddit", "label": "Reddit" },
+        { "value": "Twitch", "label": "Twitch" },
+        { "value": "Youtube", "label": "Youtube" }
+    ]
+}
