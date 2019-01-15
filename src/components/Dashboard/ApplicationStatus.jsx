@@ -1,12 +1,15 @@
-import React, { Fragment } from 'react';
-
-// Turn the 'registration_status' from LCS into something user-friendly
+import React, { Fragment } from "react";
+/**
+ * Turn the 'registration_status' from LCS into something user-friendly
+ * @param {String} status Render the status of the users application
+ */
 const ApplicationStatus = ({ status }) => (
     <Fragment>
         <div style={{ width: "100%", textAlign: "left" }}>
             <p className="lead">Application Status</p>
         </div>
         {
+            // For now, registered == pending
             status === 'registered' ? (
                 <div>
                     <h1>Pending</h1>
