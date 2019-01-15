@@ -8,6 +8,7 @@ import { Icon } from "react-fa";
 import { theme } from "../../../../Defaults";
 import request from "request";
 import majors from "./majors.json";
+import selectorOptions from "./selectorOptions.json";
 
 class UserProfileForm extends Component {
     constructor(props) {
@@ -96,12 +97,7 @@ class UserProfileForm extends Component {
                         <Col xs={(mobile) ? 12 : 4}>
                             <CustomAVInput name="size" label="Shirt Size *" value={user.shirt_size} validate={{ required: { value: true, errorMessage: "Invalid shirt size" } }}>
                                 <div className="forcestyle">
-                                    <Select required id="size" value={{ value: user.shirt_size, label: user.shirt_size }} onChange={(e) => { user.shirt_size = e.value; this.updateUser(user); }} options={[
-                                        { value: "Unisex XS", label: "Unisex XS" },
-                                        { value: "Unisex S", label: "Unisex S" },
-                                        { value: "Unisex M", label: "Unisex M" },
-                                        { value: "Unisex L", label: "Unisex L" },
-                                        { value: "Unisex XL", label: "Unisex XL" }]} />
+                                    <Select required id="size" value={{ value: user.shirt_size, label: user.shirt_size }} onChange={(e) => { user.shirt_size = e.value; this.updateUser(user); }} options={selectorOptions["Shirt Size"]} />
                                 </div>
                             </CustomAVInput>
                         </Col>
@@ -110,22 +106,14 @@ class UserProfileForm extends Component {
                         <Col xs={(mobile) ? 12 : 6}>
                             <CustomAVInput name="gender" label="Gender *" value={user.gender} validate={{ required: { value: true, errorMessage: "Invalid input"} }}>
                                 <div className="forcestyle">
-                                    <Creatable id="gender" value={{ value: user.gender, label: user.gender }} onChange={(e) => { user.gender = e.value; this.updateUser(user); }} options={[
-                                        { value: "Female", label: "Female" },
-                                        { value: "Male", label: "Male" },
-                                        { value: "Other", label: "Other" },
-                                        { value: "Prefer not to say", label: "Prefer not to say" }]} />
+                                    <Creatable id="gender" value={{ value: user.gender, label: user.gender }} onChange={(e) => { user.gender = e.value; this.updateUser(user); }} options={selectorOptions["Gender"]} />
                                 </div>
                             </CustomAVInput>
                         </Col>
                         <Col xs={(mobile) ? 12 : 6}>
                             <CustomAVInput name="ethnicity" label="Ethnicity *" value={user.ethnicity} validate={{ required: { value: true, errorMessage: "Invalid input" } }}>
                                 <div className="forcestyle">
-                                    <Creatable id="ethnicity" value={{ value: user.ethnicity, label: user.ethnicity }} onChange={(e) => { user.ethnicity = e.value; this.updateUser(user); }} options={[
-                                        { value: "American Indian or Alaskan Native", label: "American Indian or Alaskan Native" },
-                                        { value: "Asian/Pacific Islander", label: "Asian/Pacific Islander" },
-                                        { value: "Black or African American", label: "Black or African American" },
-                                        { value: "White/Caucasian", label: "White/Caucasian" }]} />
+                                    <Creatable id="ethnicity" value={{ value: user.ethnicity, label: user.ethnicity }} onChange={(e) => { user.ethnicity = e.value; this.updateUser(user); }} options={selectorOptions["Ethnicity"]} />
                                 </div>
                             </CustomAVInput>
                         </Col>
@@ -162,10 +150,7 @@ class UserProfileForm extends Component {
                         <Col xs={(mobile) ? 12 : 6}>
                             <CustomAVInput name="los" label="Level of Study *" value={user.level_of_study} validate={{ required: { value: true, errorMessage: "Invalid level of study" } }}>
                                 <div className="forcestyle">
-                                    <Creatable id="los" value={{ value: user.level_of_study, label: user.level_of_study }} onChange={(e) => { user.level_of_study = e.value; this.updateUser(user); }} options={[
-                                        { value: "University (Undergraduate)", label: "University (Undergraduate)" },
-                                        { value: "University (Graduate)", label: "University (Graduate)" },
-                                        { value: "High School", label: "High School" }]} />
+                                    <Creatable id="los" value={{ value: user.level_of_study, label: user.level_of_study }} onChange={(e) => { user.level_of_study = e.value; this.updateUser(user); }} options={selectorOptions["Level of Study"]} />
                                 </div>
                             </CustomAVInput>
                         </Col>
@@ -189,15 +174,7 @@ class UserProfileForm extends Component {
                     <FormGroup>
                         <Label for="hear">How did you hear about HackRU?</Label>
                         <div className="forcestyle">
-                            <Creatable isMulti id="hear" value={(user.how_you_heard_about_hackru.length > 0) ? (user.how_you_heard_about_hackru.split(";").map(((val) => { return { value: val, label: val }; }))) : ([])} onChange={(e) => { let majors = ""; for (let i = 0; i < e.length; i++) { majors += ";" + e[i].value; } majors = majors.substring(1); user.how_you_heard_about_hackru = majors; this.updateUser(user); }} options={[
-                                { value: "Facebook", label: "Facebook" },
-                                { value: "Instagram", label: "Instagram" },
-                                { value: "MLH Website", label: "MLH Website" },
-                                { value: "Mailing List", label: "Mailing List" },
-                                { value: "Medium", label: "Medium" },
-                                { value: "Reddit", label: "Reddit" },
-                                { value: "Twitch", label: "Twitch" },
-                                { value: "Youtube", label: "Youtube" }]} />
+                            <Creatable isMulti id="hear" value={(user.how_you_heard_about_hackru.length > 0) ? (user.how_you_heard_about_hackru.split(";").map(((val) => { return { value: val, label: val }; }))) : ([])} onChange={(e) => { let majors = ""; for (let i = 0; i < e.length; i++) { majors += ";" + e[i].value; } majors = majors.substring(1); user.how_you_heard_about_hackru = majors; this.updateUser(user); }} options={selectorOptions["Hear"]} />
                         </div>
                     </FormGroup>
                     <FormGroup>
