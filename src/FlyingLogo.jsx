@@ -19,10 +19,6 @@ class FlyingLogo extends Component {
         this._event_onInitializeRenderer = this._event_onInitializeRenderer.bind(this);
         this._event_onRender = this._event_onRender.bind(this);
         this._event_onUpdate = this._event_onUpdate.bind(this);
-        this._event_onMouseMove = this._event_onMouseMove.bind(this);
-        window.addEventListener("mousemove", this._event_onMouseMove);
-        this.x = 0;
-        this.y = 0;
         this.image = new Image();
         this.image.onload = this._event_onInitializeRenderer;
         this.image.src = this.props.url;
@@ -33,10 +29,6 @@ class FlyingLogo extends Component {
             this.canvas.height = window.innerHeight;
         }
     }
-    _event_onMouseMove(e) {
-        this.x = e.x;
-        this.y = e.y;
-    }
     _event_onInitializeRenderer() {
         this.logos = [];
         this.canvas = document.getElementById("drawable");
@@ -45,7 +37,7 @@ class FlyingLogo extends Component {
         this.context = this.canvas.getContext("2d");
         this.maxCount = 500;
         this.counter = this.maxCount;
-        setInterval(this._event_onUpdate, 1);
+        setInterval(this._event_onUpdate, 2);
         setInterval(this._event_onRender, 2);
     }
     _event_onUpdate() {
@@ -77,12 +69,7 @@ class FlyingLogo extends Component {
             this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
             for (let i = 0; i < this.logos.length; i++) {
                 let alien = this.logos[i];
-                this.context.globalAlpha = 1;
                 this.context.drawImage(this.image, alien.x, alien.y, alien.width, alien.height);
-                for (let j = 0; j < 50; j += 2) {
-                    this.context.globalAlpha = 1.0 / j;
-                    this.context.drawImage(this.image, alien.x, alien.y + (j * 5), alien.width, alien.height);
-                }
             }
         } else {
             this.canvas = document.getElementById("drawable");
