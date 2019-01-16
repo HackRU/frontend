@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { FormGroup, Input, Label, Button, Col } from "reactstrap";
+import { FormGroup, Input, Label, Button, Col, UncontrolledAlert } from "reactstrap";
 import { AvForm, AvField, AvCheckboxGroup, AvCheckbox } from "availity-reactstrap-validation";
 import Select, { Creatable, AsyncCreatable } from "react-select";
 import ResumeUploader from "./ResumeUploader";
@@ -25,7 +25,8 @@ class UserProfileForm extends Component {
                 label: major
             })),
             checkedState1: (this.props.user.registration_status !== "unregistered"),
-            checkedState2: (this.props.user.registration_status !== "unregistered")
+            checkedState2: (this.props.user.registration_status !== "unregistered"),
+            message: null
         });
         request.get("https://raw.githubusercontent.com/MLH/mlh-policies/master/schools.csv", {}, (_err, _resp, body) => {
             let schoolList = body.split("\n").map(item => {
@@ -53,10 +54,16 @@ class UserProfileForm extends Component {
             mlhnotices.push("mlh2");
         }
         let model = { mlhnotices }
+        let message = null;
+        if (this.state.message) {
+            message = (<UncontrolledAlert color="danger">{this.state.message}</UncontrolledAlert>)
+        }
         if (this.state.edit) {
             return (
                 <AvForm model={model} onValidSubmit={(event, error, values) => {
                     this.props.onSubmit(this.state.user);
+                }} onInvalidSubmit={(event, error, values) => {
+                    this.setState({ message: null }, () => { this.setState({ message: "Some fields are invalid." }) });
                 }}>
                     <h4>About you</h4>
                     <FormGroup row>
@@ -186,6 +193,7 @@ class UserProfileForm extends Component {
                         <AvCheckbox name="mlh1" customInput onChange={() => { this.setState({ checkedState1: !this.state.checkedState1 }) }} label={<p>I have read and agree to the <a href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf">MLH Code of Conduct</a></p>} value={"mlh1"} />
                         <AvCheckbox name="mlh2" customInput onChange={() => { this.setState({ checkedState2: !this.state.checkedState2 }) }} label={<p>I authorize you to share my application/registration information for event administration, ranking, MLH administration, pre- and post-event informational e-mails, and occasional messages about hackathons in-line with the <a href="https://mlh.io/privacy">MLH Privacy Policy</a>. Further, I agree to the terms of both the <a href="https://github.com/MLH/mlh-policies/blob/master/prize-terms-and-conditions/contest-terms.md">MLH Contest Terms and Conditions</a> and the <a href="https://mlh.io/privacy">MLH Privacy Policy</a>.</p>} value={"mlh2"} />
                     </AvCheckboxGroup>
+                    {message}
                     <div style={{ width: "100%" }} align="right">
                         <Button style={{ backgroundColor: theme.accent[0], marginRight: 10 }} type="reset" >Clear</Button>
                         <Button style={{ backgroundColor: theme.primary[0] }} type="submit" >Update</Button>
