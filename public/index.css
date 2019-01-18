@@ -72,6 +72,9 @@ a:visited:hover {
     background-color: var(--active-background-color) !important;
     color: var(--active-color) !important;
 }
+.bg-gradient-left a, .bg-gradient-right a {
+    color: var(--secondary-color-alt);
+}
 h1, h2, h3, h4, h5, h6, p {
     font-family: var(--text-font);
 }
