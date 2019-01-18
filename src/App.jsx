@@ -1,10 +1,3 @@
-/**
- * @author Shivan Modha
- * @description App object class, which is the first thing to be rendered
- * @version 0.0.2
- * Created 12/09/18
- */
-/***************************************************************IMPORTS***************************************************************/
 import React, { Component } from "react"; // Default react imports for the component
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom"; // React router components
 import {
@@ -19,9 +12,7 @@ import FlyingLogo from "./FlyingLogo" // The logos that go up through the page
 import MLHBadge from "./MLHBadge"; // We need this to qualify as an official MLH event
 import { defaults } from "./Defaults"; // Get a handle to the default application settings
 import { Profile } from "./components/Profile"; // User profile storage
-/***************************************************************IMPORTS***************************************************************/
 
-/*****************************************************************APP*****************************************************************/
 /**
  * Root application class. This is the object rendered in <div id="root" />
  * 
@@ -124,8 +115,5 @@ class App extends Component {
         );
     }
 }
-/*****************************************************************APP*****************************************************************/
 
-/***************************************************************EXPORTS***************************************************************/
 export default App;
-/***************************************************************EXPORTS***************************************************************/
