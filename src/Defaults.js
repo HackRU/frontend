@@ -1,9 +1,3 @@
-/**
- * @author Shivan Modha
- * @description Application default settings
- * @version 0.0.1
- * Created 12/09/18
- */
 import React from "react";
 import About from "./components/Landing/Sections/About";
 import Schedule from "./components/Landing/Sections/Schedule";

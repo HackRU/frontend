@@ -1,10 +1,3 @@
-/**
- * @author Shivan Modha
- * @description Component to handle all magic links
- * @version 0.0.1
- * Created 12/30/18
- */
-/***************************************************************IMPORTS***************************************************************/
 import React, { Component } from "react";
 import { Container, Col, Input, InputGroup, InputGroupAddon, Form, FormGroup, Button, FormText, Alert } from "reactstrap";
 import { theme } from "../Defaults";
@@ -12,9 +5,7 @@ import { Icon } from "react-fa";
 import { Link } from "react-router-dom";
 import { RingLoader } from "react-spinners";
 import LoginPage from "./Login";
-/***************************************************************IMPORTS***************************************************************/
 
-/*****************************************************************APP*****************************************************************/
 /**
  * Magic link handler component
  */
@@ -144,8 +135,5 @@ class MagicPage extends Component {
         return <LoginPage {...this.props} />
     }
 }
-/*****************************************************************APP*****************************************************************/
 
-/***************************************************************EXPORTS***************************************************************/
 export default MagicPage;
-/***************************************************************EXPORTS***************************************************************/
