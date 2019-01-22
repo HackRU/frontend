@@ -1,19 +1,10 @@
-/**
- * @author Shivan Modha
- * @description Oops, I forgot my password!
- * @version 0.0.1
- * Created 12/30/18
- */
-/***************************************************************IMPORTS***************************************************************/
 import React, { Component } from "react";
 import { Container, Col, Input, InputGroup, InputGroupAddon, Form, FormGroup, Button, FormText, Alert } from "reactstrap";
 import { theme } from "../Defaults";
 import { Icon } from "react-fa";
 import { Link } from "react-router-dom";
 import { RingLoader } from "react-spinners";
-/***************************************************************IMPORTS***************************************************************/
 
-/*****************************************************************APP*****************************************************************/
 /**
  * Forgot my password application for "/forgot"
  */
@@ -106,8 +97,5 @@ class ForgotPage extends Component {
         }
     }
 }
-/*****************************************************************APP*****************************************************************/
 
-/***************************************************************EXPORTS***************************************************************/
 export default ForgotPage;
-/***************************************************************EXPORTS***************************************************************/

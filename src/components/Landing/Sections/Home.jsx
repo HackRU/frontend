@@ -1,10 +1,3 @@
-/**
- * @author Shivan Modha
- * @description Landing Page: Home Component
- * @version 0.0.1
- * Created 12/10/18
- */
-/***************************************************************IMPORTS***************************************************************/
 import React, { Component } from "react";
 import { Container, Row, Col, Button, Alert } from "reactstrap";
 import { defaults, theme, navlinks } from "../../../Defaults";
@@ -12,9 +5,7 @@ import { Parallax } from "react-scroll-parallax";
 import { Link } from "react-router-dom";
 import { Icon } from "react-fa";
 import Logo from "./Logo";
-/***************************************************************IMPORTS***************************************************************/
 
-/****************************************************************ABOUT****************************************************************/
 /**
  * Home component for the landing page
  */
@@ -89,8 +80,5 @@ class Home extends Component {
         }
     }
 }
-/****************************************************************ABOUT****************************************************************/
 
-/***************************************************************EXPORTS***************************************************************/
 export default Home;
-/***************************************************************EXPORTS***************************************************************/

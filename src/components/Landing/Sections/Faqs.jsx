@@ -1,16 +1,8 @@
-/**
- * @author Shivan Modha
- * @description Landing Page: FAQs Component 
- * @version 0.0.1
- * Created 12/10/18
- */
-/***************************************************************IMPORTS***************************************************************/
+
 import React, { Component } from "react";
 import { Container, Row, Col} from "reactstrap";
 import FaqsCollapse from './FaqsCollapse';
-/***************************************************************IMPORTS***************************************************************/
 
-/*****************************************************************FAQS****************************************************************/
 /**
  * FAQs component for the landing page
  */
