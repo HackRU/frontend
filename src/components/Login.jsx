@@ -1,10 +1,3 @@
-/**
- * @author Shivan Modha
- * @description The standard login page
- * @version 0.0.1
- * Created 12/25/18
- */
-/***************************************************************IMPORTS***************************************************************/
 import React, { Component } from "react";
 import { Container, Col, Input, InputGroup, InputGroupAddon, Form, FormGroup, Button, FormText, Alert } from "reactstrap";
 import { theme } from "../Defaults";
@@ -12,9 +5,7 @@ import { Icon } from "react-fa";
 import { Link } from "react-router-dom";
 import { RingLoader } from "react-spinners";
 import { Redirect } from "react-router-dom";
-/***************************************************************IMPORTS***************************************************************/
 
-/*****************************************************************APP*****************************************************************/
 /**
  * Login application for "/login"
  */
@@ -119,8 +110,5 @@ class LoginPage extends Component {
         }
     }
 }
-/*****************************************************************APP*****************************************************************/
 
-/***************************************************************EXPORTS***************************************************************/
 export default LoginPage;
-/***************************************************************EXPORTS***************************************************************/

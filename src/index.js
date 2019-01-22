@@ -1,19 +1,9 @@
-/**
- * @author Shivan Modha
- * @description Application Root. This is the first thing that the code executes
- * @version 3.1.2
- * Created 12/09/18
- */
-/***************************************************************IMPORTS***************************************************************/
 import React from "react"; // Required react dependencies
 import ReactDOM from "react-dom"; // Required react dependencies
 import { register, unregister } from "./serviceWorker"; // Service worker dependencies
 import App from "./App"; // Default app and component to be rendered
 import { defaults } from "./Defaults"; // The standard list of strings that we will be using throughout the application
 import "bootstrap/dist/css/bootstrap.min.css"; // Boostrap import
-/***************************************************************IMPORTS***************************************************************/
-
-/*****************************************************************APP*****************************************************************/
 /**
  * Application entry point. Here we render the standard root components that are standard to all pages in the website
  * 
@@ -34,4 +24,3 @@ function main(worker) {
     }
 }
 main(false)
-/*****************************************************************APP*****************************************************************/
