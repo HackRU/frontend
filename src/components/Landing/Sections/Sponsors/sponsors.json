@@ -1,0 +1,66 @@
+{
+    "sections": [
+        {
+            "name": "TITLE",
+            "color": "sponsors-title-color",
+            "enabled": false,
+            "root": "./assets/sponsors/title/",
+            "children": []
+        },
+        {
+            "name": "PLATINUM",
+            "color": "sponsors-platinum-color",
+            "enabled": false,
+            "root": "./assets/sponsors/platinum/",
+            "children": []
+        },
+        {
+            "name": "GOLD",
+            "color": "sponsors-gold-color",
+            "enabled": false,
+            "root": "./assets/sponsors/gold/",
+            "children": []
+        },
+        {
+            "name": "SILVER",
+            "color": "sponsors-silver-color",
+            "enabled": true,
+            "root": "./assets/sponsors/silver/",
+            "children": [
+                {
+                    "name": "iCIMS",
+                    "image": "icims.png",
+                    "url": "https://www.icims.com/"
+                },
+                {
+                    "name": "Siemens",
+                    "image": "Siemens.eps",
+                    "url": "https://www.siemens.com/us/en/home.html"
+                },
+                {
+                    "name": "Twilio",
+                    "image": "twilio.png",
+                    "url": "https://www.twilio.com/"
+                }
+            ]
+        },
+        {
+            "name": "BRONZE",
+            "color": "sponsors-bronze-color",
+            "enabled": true,
+            "root": "./assets/sponsors/bronze/",
+            "children": [
+                {
+                    "name": "Linode",
+                    "image": "linode.png",
+                    "url": "https://www.linode.com/"
+                },
+                {
+                    "name": "Two Six Labs",
+                    "image": "twosixlabs.png",
+                    "url": "https://www.twosixlabs.com/"
+                }
+            ]
+        }
+    ]
+}

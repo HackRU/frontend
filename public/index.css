@@ -32,6 +32,12 @@
     --hero-height: 400px;
     --hero-border-radius: 35%;
     --hero-background: radial-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0));
+    /* Sponsor Colors */
+    --sponsors-title-color: var(--primary-color);
+    --sponsors-platinum-color: #D8D8D8;
+    --sponsors-gold-color: #FFDF00;
+    --sponsors-silver-color: #B7B7B7;
+    --sponsors-bronze-color: #C96F0D;
 }
 
 /* Global look and feel */
