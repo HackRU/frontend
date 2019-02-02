@@ -4,6 +4,10 @@
             "name": "TITLE",
             "color": "sponsors-title-color",
             "enabled": false,
+            "size": {
+                "width": 1000,
+                "height": 1000
+            },
             "root": "./assets/sponsors/title/",
             "children": []
         },
@@ -11,6 +15,10 @@
             "name": "PLATINUM",
             "color": "sponsors-platinum-color",
             "enabled": false,
+            "size": {
+                "width": 800,
+                "height": 800
+            },
             "root": "./assets/sponsors/platinum/",
             "children": []
         },
@@ -18,6 +26,10 @@
             "name": "GOLD",
             "color": "sponsors-gold-color",
             "enabled": false,
+            "size": {
+                "width": 600,
+                "height": 600
+            },
             "root": "./assets/sponsors/gold/",
             "children": []
         },
@@ -25,6 +37,10 @@
             "name": "SILVER",
             "color": "sponsors-silver-color",
             "enabled": true,
+            "size": {
+                "width": 400,
+                "height": 400
+            },
             "root": "./assets/sponsors/silver/",
             "children": [
                 {
@@ -34,7 +50,7 @@
                 },
                 {
                     "name": "Siemens",
-                    "image": "Siemens.eps",
+                    "image": "Siemens.png",
                     "url": "https://www.siemens.com/us/en/home.html"
                 },
                 {
@@ -48,17 +64,21 @@
             "name": "BRONZE",
             "color": "sponsors-bronze-color",
             "enabled": true,
+            "size": {
+                "width": 200,
+                "height": 200
+            },
             "root": "./assets/sponsors/bronze/",
             "children": [
-                {
-                    "name": "Linode",
-                    "image": "linode.png",
-                    "url": "https://www.linode.com/"
-                },
                 {
                     "name": "Two Six Labs",
                     "image": "twosixlabs.png",
                     "url": "https://www.twosixlabs.com/"
+                },
+                {
+                    "name": "Linode",
+                    "image": "linode.png",
+                    "url": "https://www.linode.com/"
                 }
             ]
         }
