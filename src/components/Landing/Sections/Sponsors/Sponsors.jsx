@@ -10,7 +10,7 @@ class Sponsors extends Component {
         for (let i = 0; i < SponsorDeclaration["sections"].length; i++) {
             if (SponsorDeclaration["sections"][i]["enabled"]) {
                 renderList.push(
-                    <SponsorContainer key={i} isMobile={this.props.isMobile} declaration={SponsorDeclaration["sections"][i]} />
+                    <SponsorContainer key={i} showName={false} isMobile={this.props.isMobile} declaration={SponsorDeclaration["sections"][i]} />
                 );
             }
         }

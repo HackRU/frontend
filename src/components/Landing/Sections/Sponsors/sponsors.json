@@ -38,8 +38,8 @@
             "color": "sponsors-silver-color",
             "enabled": true,
             "size": {
-                "width": 400,
-                "height": 400
+                "width": 300,
+                "height": 300
             },
             "root": "./assets/sponsors/silver/",
             "children": [
