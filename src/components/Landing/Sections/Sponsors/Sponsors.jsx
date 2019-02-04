@@ -15,10 +15,12 @@ class Sponsors extends Component {
             }
         }
         return (
-            <div>
+            <div >
                 <h1 className="display-4 theme-font mb-3">Sponsors</h1>
                 <hr />
+                <div className="sponsorship-background">
                 {renderList}
+                </div>
             </div>
         )
     }

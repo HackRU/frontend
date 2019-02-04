@@ -20,9 +20,9 @@ class SponsorContainer extends Component {
                             </h2>
                         </Col>
                     </Row>}
-                <Row style={{ width: "100%" }} className="d-flex align-items-center">
+                <div style={{ width: "100%" }} className="d-flex align-items-center">
                     {sponsors}
-                </Row>
+                </div>
             </Container>
         );
     }
