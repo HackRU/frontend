@@ -20,7 +20,7 @@ class SponsorContainer extends Component {
                             </h2>
                         </Col>
                     </Row>}
-                <div style={{ width: "100%" }} className="d-flex align-items-center">
+                <div className="d-flex justify-content-center">
                     {sponsors}
                 </div>
             </Container>
