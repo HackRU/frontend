@@ -57,6 +57,21 @@
                     "name": "Twilio",
                     "image": "twilio.png",
                     "url": "https://www.twilio.com/"
+                },
+                {
+                    "name": "iCIMS",
+                    "image": "icims.png",
+                    "url": "https://www.icims.com/"
+                },
+                {
+                    "name": "Siemens",
+                    "image": "Siemens.png",
+                    "url": "https://www.siemens.com/us/en/home.html"
+                },
+                {
+                    "name": "Twilio",
+                    "image": "twilio.png",
+                    "url": "https://www.twilio.com/"
                 }
             ]
         },

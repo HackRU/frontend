@@ -20,7 +20,7 @@ class SponsorContainer extends Component {
                             </h2>
                         </Col>
                     </Row>}
-                <div className="d-flex justify-content-center">
+                <div className="d-flex justify-content-center flex-wrap">
                     {sponsors}
                 </div>
             </Container>
