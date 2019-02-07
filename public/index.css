@@ -229,6 +229,7 @@ input, textarea, .custom-file-label {
 .custom-av-checkbox div div label p {
     color: var(--input-color);
 }
+
 /* Form validator */
 .avfield-hide-inner {
     visibility: hidden;
@@ -238,4 +239,22 @@ input, textarea, .custom-file-label {
 }
 .custom-av-checkbox .is-invalid div label p {
     color: var(--accent-color) !important;
+}
+
+/* Dashboard Alerts */
+.profile-alert {
+    border: none !important;
+    color: white !important;
+}
+.profile-alert.profile-alert-success {
+    background: rgba(0, 255, 0, 0.25) !important;
+}
+.profile-alert.profile-alert-danger {
+    background: rgba(255, 0, 0, 0.25) !important;
+}
+.profile-alert.profile-alert-info {
+    background: rgba(0, 255, 255, 0.25) !important;
+}
+.profile-alert.profile-alert-warning {
+    background: rgba(255, 255, 0, 0.25) !important;
 }

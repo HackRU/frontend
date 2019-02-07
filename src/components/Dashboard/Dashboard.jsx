@@ -18,6 +18,21 @@ class Dashboard extends Component {
         profileMSG: null
     }
     componentWillMount() {
+        if (this.props.magic) {
+            this.props.profile.Eat(this.props.magic, (msg) => {
+                if (msg) {
+                    console.error(msg);
+                    this.setState({
+                        profileMSG: { color: "warning", value: msg }
+                    });
+                } else {
+                    this.setState({
+                        profileMSG: { color: "info", value: "Magic link applied!" }
+                    });
+                }
+                this.props.clearMagic();
+            });
+        }
         this.props.profile.Get((msg, data) => {
             if (msg) {
                 console.error(msg);
@@ -45,8 +60,8 @@ class Dashboard extends Component {
                 this.setState({
                     loading: false,
                     profileMSG: err ?
-                        { success: true, value: err } :
-                        { success: false, value: 'Profile Updated!' }
+                        { color: "danger", value: err } :
+                        { color: "success", value: 'Profile Updated!' }
                 })
             });
         });
