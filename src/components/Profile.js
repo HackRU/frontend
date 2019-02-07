@@ -366,7 +366,7 @@ class Profile {
                 body: {
                     email: this._email,
                     link: magic,
-                    auth: this._token
+                    token: this._token
                 },
                 json: true
             }, (error, response, body) => {
