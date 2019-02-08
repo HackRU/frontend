@@ -32,6 +32,12 @@
     --hero-height: 400px;
     --hero-border-radius: 35%;
     --hero-background: radial-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0));
+    /* Sponsor Colors */
+    --sponsors-title-color: var(--primary-color);
+    --sponsors-platinum-color: #D8D8D8;
+    --sponsors-gold-color: #FFDF00;
+    --sponsors-silver-color: #B7B7B7;
+    --sponsors-bronze-color: #C96F0D;
 }
 
 /* Global look and feel */
@@ -239,6 +245,22 @@ input, textarea, .custom-file-label {
 }
 .custom-av-checkbox .is-invalid div label p {
     color: var(--accent-color) !important;
+}
+
+.sponsor-item-image {
+    transition: all .2s ease-in-out;
+    max-width: 100%;
+} 
+
+.sponsorship-background {
+    background: var(--active-color) !important;
+    border-radius: 25px;
+    margin-bottom: 25px;
+}
+
+
+.sponsor-item-image:hover {
+    transform: scale(1.3);
 }
 
 /* Dashboard Alerts */
