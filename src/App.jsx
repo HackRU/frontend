@@ -28,6 +28,7 @@ class App extends Component {
         super(props);
         this._event_onResize = this._event_onResize.bind(this);
         this.setMagic = this.setMagic.bind(this);
+        this.clearMagic = this.clearMagic.bind(this);
         this.getComponentProps = this.getComponentProps.bind(this);
         this.dismissLoggedOutAlert = this.dismissLoggedOutAlert.bind(this);
         window.addEventListener("resize", this._event_onResize);
@@ -45,10 +46,11 @@ class App extends Component {
      */
     componentWillMount() {
         this._event_onResize();
+        let prof = new Profile();
         this.setState({
-            profile: new Profile(),
+            profile: prof,
             loggedout: false,
-            magic: ""
+            magic: prof.GetMagic() // In case there is already a magic link, we need to load it in.
         });
     }
     /**
@@ -56,7 +58,15 @@ class App extends Component {
      * @param {String} magic Magic link from lcs 
      */
     setMagic(magic) {
+        this.state.profile.SetMagic(magic);
         this.setState({ magic });
+    }
+    /**
+     * Reset the magic link in both the state and cookies
+     */
+    clearMagic() {
+        this.state.profile.ClearMagic();
+        this.setState({ magic: "" });
     }
     /**
      * Dismiss the log out alert
@@ -72,7 +82,8 @@ class App extends Component {
     getComponentProps() {
         return {
             magic: this.state.magic,
-            setMagic: this.state.setMagic,
+            setMagic: this.setMagic,
+            clearMagic: this.clearMagic,
             isMobile: this.state.isMobile,
             profile: this.state.profile,
             loggedout: this.state.loggedout,

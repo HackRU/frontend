@@ -4,8 +4,7 @@ import { theme } from "../Defaults";
 import { Icon } from "react-fa";
 import { Link } from "react-router-dom";
 import { RingLoader } from "react-spinners";
-import LoginPage from "./Login";
-
+import { Redirect } from "react-router-dom";
 /**
  * Magic link handler component
  */
@@ -16,6 +15,8 @@ class MagicPage extends Component {
         this.renderLogin = this.renderLogin.bind(this);
     }
     componentWillMount() {
+        let mlurl = this.props.match.params.mlurl;
+        this.props.setMagic(mlurl);
         this.setState({
             loading: false,
             done: false,
@@ -132,7 +133,7 @@ class MagicPage extends Component {
      * Render login component
      */
     renderLogin() {
-        return <LoginPage {...this.props} />
+        return <Redirect to="/login" />
     }
 }
 

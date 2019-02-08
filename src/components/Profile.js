@@ -63,6 +63,10 @@ const ENDPOINTS = {
      * Reset password from magic link to reset password
      */
     "resetpassword": BASE + "/consume",
+    /**
+     * Digest magic links
+     */
+    "magic": BASE + "/consume",
 }
 /**
  * Standard profile handler for the entire application
@@ -73,9 +77,9 @@ class Profile {
         this.Logout = this.Logout.bind(this);
         this.SignUp = this.SignUp.bind(this);
         this._login = this._login.bind(this);
-        this._token = cookie.load("token");
-        this._email = cookie.load("email");
-        this._valid_until = Date.parse(cookie.load("valid_until"));
+        this._token = cookie.load("token", { path: "/" });
+        this._email = cookie.load("email", { path: "/" });
+        this._valid_until = Date.parse(cookie.load("valid_until", { path: "/" }));
         if (this._token && this._email && this._valid_until && this._valid_until > Date.now()) {
             this.isLoggedIn = true;
         } else {
@@ -221,6 +225,7 @@ class Profile {
         cookie.remove("token");
         cookie.remove("email");
         cookie.remove("valid_until");
+        cookie.remove("magic");
         this._token = null;
         this._email = null;
         this._valid_until = null;
@@ -348,6 +353,45 @@ class Profile {
                 }
             });
         }
+    }
+    Eat(magic, callback) {
+        if (!magic) {
+            callback("Input a valid magic link");
+        } else if (!this.isLoggedIn) {
+            callback("User needs to be logged in");
+        } else {
+            request({
+                method: "POST",
+                uri: ENDPOINTS.magic,
+                body: {
+                    email: this._email,
+                    link: magic,
+                    token: this._token
+                },
+                json: true
+            }, (error, response, body) => {
+                if (error) {
+                    callback("An error occured while digesting the magic link");
+                } else {
+                    if (body.errorMessage) {
+                        callback(body.errorMessage);
+                    } else if (body.statusCode === 200) {
+                        callback();
+                    } else {
+                        callback((body.body) ? (body.body) : ("Unexpected Error"));
+                    }
+                }
+            });
+        }
+    }
+    ClearMagic() {
+        cookie.remove("magic", { path: "/" });
+    }
+    SetMagic(magic) {
+        cookie.save("magic", magic, { path: "/" });
+    }
+    GetMagic() {
+        return cookie.load("magic", { path: "/" });
     }
 }
 
