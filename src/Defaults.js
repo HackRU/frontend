@@ -19,7 +19,8 @@ const defaults =  {
         "dev": "https://7c5l6v7ip3.execute-api.us-west-2.amazonaws.com/lcs-test",
         "prod": "https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/mlhtest",
         "resumes": "https://hackru-resumes.s3.amazonaws.com",
-    }
+    },
+    "sponsorshipLogos": "https://s3-us-west-2.amazonaws.com/hackru-misc/sponsorship-logos/"
 }
 
 const navlinks = {

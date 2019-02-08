@@ -253,6 +253,7 @@ input, textarea, .custom-file-label {
 .sponsorship-background {
     background: var(--active-color) !important;
     border-radius: 25px;
+    margin-bottom: 25px;
 }
 
 

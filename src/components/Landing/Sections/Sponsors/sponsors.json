@@ -8,7 +8,7 @@
                 "width": 1000,
                 "height": 1000
             },
-            "root": "./assets/sponsors/title/",
+            "root": "title/",
             "children": []
         },
         {
@@ -19,7 +19,7 @@
                 "width": 800,
                 "height": 800
             },
-            "root": "./assets/sponsors/platinum/",
+            "root": "platinum/",
             "children": []
         },
         {
@@ -30,7 +30,7 @@
                 "width": 600,
                 "height": 600
             },
-            "root": "./assets/sponsors/gold/",
+            "root": "gold/",
             "children": []
         },
         {
@@ -41,7 +41,7 @@
                 "width": 300,
                 "height": 300
             },
-            "root": "./assets/sponsors/silver/",
+            "root": "silver/",
             "children": [
                 {
                     "name": "iCIMS",
@@ -83,7 +83,7 @@
                 "width": 200,
                 "height": 200
             },
-            "root": "./assets/sponsors/bronze/",
+            "root": "/bronze/",
             "children": [
                 {
                     "name": "Two Six Labs",
