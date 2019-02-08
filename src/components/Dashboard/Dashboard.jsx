@@ -86,7 +86,19 @@ class Dashboard extends Component {
                                 </Col>
                             </Row>
                         </div>
-                        <ApplicationStatus status={user.registration_status} />
+
+                        <ApplicationStatus
+                            onComing={() => {
+                                user.registration_status = 'coming'
+                                this.submitUser(user)
+                            }}
+                            onNotComing={() => {
+                                user.registration_status = 'not_coming'
+                                this.submitUser(user)
+                            }}
+                            status={user.registration_status}
+                        />
+
                         <div style={{ width: "100%", textAlign: "left" }}>
                             <p className="lead">User Profile</p>
                         </div>
@@ -99,6 +111,7 @@ class Dashboard extends Component {
                                 this.submitUser(user)
                             }} />
                         </Section>
+
                         <Section className="mb-5" title="Travel Reimbursements" subtitle="Let us know where you're coming from!">
                             <TravelReimbursementsForm mobile={mobile} travelling_from={user.travelling_from} onSubmit={(travel) => {
                                     user.travelling_from = travel;
