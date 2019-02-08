@@ -1,7 +1,7 @@
 import React from "react";
 import About from "./components/Landing/Sections/About";
 import Schedule from "./components/Landing/Sections/Schedule";
-import Sponsors from "./components/Landing/Sections/Sponsors";
+import Sponsors from "./components/Landing/Sections/Sponsors/Sponsors.jsx";
 import FAQs from "./components/Landing/Sections/Faqs";
 import Footer from "./components/Landing/Sections/Footer";
 
@@ -19,7 +19,8 @@ const defaults =  {
         "dev": "https://7c5l6v7ip3.execute-api.us-west-2.amazonaws.com/lcs-test",
         "prod": "https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/mlhtest",
         "resumes": "https://hackru-resumes.s3.amazonaws.com",
-    }
+    },
+    "sponsorshipLogos": "https://s3-us-west-2.amazonaws.com/hackru-misc/sponsorship-logos/"
 }
 
 const navlinks = {
@@ -92,7 +93,13 @@ let varList = [
     "hero-width",
     "hero-height",
     "hero-border-radius",
-    "hero-background"
+    "hero-background",
+    // Sponsors
+    "sponsors-title-color",
+    "sponsors-platinum-color",
+    "sponsors-gold-color",
+    "sponsors-silver-color",
+    "sponsors-bronze-color"
 ];
 varList.forEach((element) => {
     theme[element] = computedStyle.getPropertyValue("--" + element);
