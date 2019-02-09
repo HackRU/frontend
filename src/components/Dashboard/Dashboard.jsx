@@ -96,6 +96,7 @@ class Dashboard extends Component {
                                 user.registration_status = 'not_coming'
                                 this.submitUser(user)
                             }}
+                            reimbursement={user.travelling_from && user.travelling_from.reimbursement}
                             status={user.registration_status}
                         />
 

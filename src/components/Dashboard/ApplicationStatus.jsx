@@ -6,7 +6,7 @@ import { theme } from "../../Defaults";
  * Turn the 'registration_status' from LCS into something user-friendly
  * @param {String} status Render the status of the users application
  */
-const ApplicationStatus = ({ status, onComing, onNotComing }) => (
+const ApplicationStatus = ({ status, onComing, onNotComing, reimbursement }) => (
     <Fragment>
         <div style={{ width: "100%", textAlign: "left" }}>
             <p className="lead">Application Status</p>
@@ -15,7 +15,7 @@ const ApplicationStatus = ({ status, onComing, onNotComing }) => (
     </Fragment>
 )
 
-const applicationBody = (status, onComing, onNotComing) => {
+const applicationBody = (status, onComing, onNotComing, reimbursement) => {
     switch(status) {
         case 'registered':
             return (<div>
@@ -30,16 +30,18 @@ const applicationBody = (status, onComing, onNotComing) => {
             return (<div>
                 <h1> Accepted </h1>
                 <p> You've been accepted to HackRU! </p>
+                <Reimbursement reimbursement={reimbursement} />
                 <AcceptButton onAccept={onComing} />
                 <DeclineButton onDecline={onNotComing} />
             </div>)
         case 'coming':
             return (<div>
-            <h1> Coming </h1>
-            <p> You're coming! We're excited to see you there. </p>
-            <AcceptButton disabled />
-            <DeclineButton onDecline={onNotComing} />
-        </div>)
+                <h1> Coming </h1>
+                <p> You're coming! We're excited to see you there. </p>
+                <Reimbursement reimbursement={reimbursement} />
+                <AcceptButton disabled />
+                <DeclineButton onDecline={onNotComing} />
+            </div>)
         case 'not_coming':
             return (<div>
                 <h1> Not Coming </h1>
@@ -51,6 +53,7 @@ const applicationBody = (status, onComing, onNotComing) => {
             return (<div>
                 <h1> Confirmed </h1>
                 <p> You're all set! Feel free to email <a href="mailto:info@hackru.org">info@hackru.org</a> with any questions. </p>
+                <Reimbursement reimbursement={reimbursement} />
             </div>)
         case 'waitlist':
             return (<div>
@@ -66,10 +69,10 @@ const applicationBody = (status, onComing, onNotComing) => {
     }
 }
 
-const AcceptButton = ({ onComing, disabled }) => (
+const AcceptButton = ({ onAccept, disabled }) => (
     <Button
         disabled={disabled}
-        onClick={(e) => !disabled && onComing(e)}
+        onClick={(e) => !disabled && onAccept(e)}
         style={{ backgroundColor: disabled ? theme.disabled[0] : theme.primary[0] }}
     >
         Coming
@@ -84,6 +87,12 @@ const DeclineButton = ({ onDecline, disabled }) => (
     >
         Not Coming
     </Button>
+)
+
+const Reimbursement = ({ reimbursement }) => (
+    reimbursement ? <p>
+        Your estimated reimbursement value is <strong>${reimbursement.toFixed(2)}.</strong> Please note that reimbursement will be given in the form of Amazon giftcards, and you will only be granted reimbursement <strong>if you submit a hack to DevPost and demonstrate your hack.</strong>
+    </p> : <p> You are not eligible to receive any travel reimbursement </p>
 )
 
 export default ApplicationStatus;
