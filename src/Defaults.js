@@ -23,7 +23,7 @@ const defaults =  {
     },
     "sponsorshipLogos": "https://s3-us-west-2.amazonaws.com/hackru-misc/sponsorship-logos/",
     "partnerLogos": "https://s3-us-west-2.amazonaws.com/hackru-misc/partners-logos/"
-    
+    "sponsorshipLogos": "https://s3-us-west-2.amazonaws.com/hackru-misc/sponsorship-logos/"
 }
 
 const navlinks = {
