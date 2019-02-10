@@ -158,10 +158,8 @@ h4{
     font-weight: 600;
 }
 .footer {
-    color: var(--primary-color);
-    background-color:var(--primary-color);
-    padding-top: 20px;
-    background: linear-gradient(135deg, #5A7A9600, var(--primary-color)); 
+    margin-top: 30px;
+    padding-top: 20px; 
 }
 .footer .text-vcenter {
     margin: 0;
