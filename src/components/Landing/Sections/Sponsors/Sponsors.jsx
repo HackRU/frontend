@@ -33,15 +33,13 @@ class Sponsors extends Component {
 
         if (this.state.sponsorslogos) {
 
-            console.log("Fetch donzo....")
-            console.log(this.state.sponsorslogos);
 
             let SponsorDeclaration = this.state.sponsorslogos.sections;
             console.log(this.state.sponsorslogos);
                 for (let i = 0; i < SponsorDeclaration.length; i++) {
                     if (SponsorDeclaration[i]["enabled"]) {
                         renderList.push(
-                            <SponsorContainer key={i} showName={false} isMobile={this.props.isMobile} declaration={SponsorDeclaration[i]} />
+                            <SponsorContainer key={i} showName={false} isMobile={this.props.isMobile} baseURL={defaults.sponsorshipLogos} declaration={SponsorDeclaration[i]} />
                         );
                     }
                 }

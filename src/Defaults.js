@@ -2,6 +2,7 @@ import React from "react";
 import About from "./components/Landing/Sections/About";
 import Schedule from "./components/Landing/Sections/Schedule";
 import Sponsors from "./components/Landing/Sections/Sponsors/Sponsors.jsx";
+import Partners from "./components/Landing/Sections/Partners.jsx";
 import FAQs from "./components/Landing/Sections/Faqs";
 import Footer from "./components/Landing/Sections/Footer";
 
@@ -20,7 +21,9 @@ const defaults =  {
         "prod": "https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/mlhtest",
         "resumes": "https://hackru-resumes.s3.amazonaws.com",
     },
-    "sponsorshipLogos": "https://s3-us-west-2.amazonaws.com/hackru-misc/sponsorship-logos/"
+    "sponsorshipLogos": "https://s3-us-west-2.amazonaws.com/hackru-misc/sponsorship-logos/",
+    "partnerLogos": "https://s3-us-west-2.amazonaws.com/hackru-misc/partners-logos/"
+    
 }
 
 const navlinks = {
@@ -44,6 +47,13 @@ const navlinks = {
         "hideLink": false,
         "fullHeight": false,
         "component": (props) => <Sponsors {...props} />
+    },
+    "Partners": {
+        "url": "#partners",
+        "enabled": true,
+        "hideLink": false,
+        "fullHeight": false,
+        "component": (props) => <Partners {...props} />
     },
     "FAQs": {
         "url": "#faqs",
