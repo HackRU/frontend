@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { Button } from "reactstrap";
 import { theme } from "../../Defaults";
 
@@ -7,12 +7,12 @@ import { theme } from "../../Defaults";
  * @param {String} status Render the status of the users application
  */
 const ApplicationStatus = ({ status, onComing, onNotComing, reimbursement }) => (
-    <Fragment>
+    <div style={{ marginBottom: 10 }}>
         <div style={{ width: "100%", textAlign: "left" }}>
             <p className="lead">Application Status</p>
         </div>
         { applicationBody(status, onComing, onNotComing) }
-    </Fragment>
+    </div>
 )
 
 const applicationBody = (status, onComing, onNotComing, reimbursement) => {
