@@ -24,7 +24,7 @@ const applicationBody = (status, onComing, onNotComing, reimbursement) => {
         case 'rejected':
             return (<div>
                 <h1> Rejected </h1>
-                <p> We're sorry, but your application to attend HackRU has been rejected. </p>
+                <p> Your application has not been accepted. Unfortunately, we are not able to offer you a spot at HackRU. </p>
             </div>)
         case 'confirmation':
             return (<div>
@@ -58,7 +58,7 @@ const applicationBody = (status, onComing, onNotComing, reimbursement) => {
         case 'waitlist':
             return (<div>
                 <h1> Waitlisted </h1>
-                <p> Your application has been waitlisted. On the day of the event, once waitlist check in opens, if there is space remaining you may check in. You are not guaranteed a spot. </p>
+                <p> Your application has been waitlisted. If there is space on the day of the event, you may check in. </p>
             </div>)
         // TODO: Before day-of, add checked_in
         default:
