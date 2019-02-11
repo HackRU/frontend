@@ -93,7 +93,7 @@ class Dashboard extends Component {
                                 this.submitUser(user)
                             }}
                             onNotComing={() => {
-                                user.registration_status = 'not_coming'
+                                user.registration_status = 'not-coming'
                                 this.submitUser(user)
                             }}
                             reimbursement={user.travelling_from && user.travelling_from.reimbursement}

@@ -42,7 +42,7 @@ const applicationBody = (status, onComing, onNotComing, reimbursement) => {
                 <AcceptButton disabled />
                 <DeclineButton onDecline={onNotComing} />
             </div>)
-        case 'not_coming':
+        case 'not-coming':
             return (<div>
                 <h1> Not Coming </h1>
                 <p> You're not coming. Sorry to see you go! </p>
