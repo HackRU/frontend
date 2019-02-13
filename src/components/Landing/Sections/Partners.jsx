@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { defaults } from "../../../Defaults.js";
-import Loading from '../../Dashboard/Loading';
 import SponsorContainer from "./Sponsors/SponsorContainer.jsx";
 
 /**

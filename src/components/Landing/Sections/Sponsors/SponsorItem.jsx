@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { defaults } from "../../../../Defaults.js";
 
 class SponsorItem extends Component {
     render() {
