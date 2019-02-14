@@ -56,8 +56,11 @@ class Home extends Component {
                                 {navContainer}
                             </Parallax>
                         </Col>
-                        <div style={{ position: "absolute", bottom: 10, textAlign: "center", width: "100%" }}>
+                        <div style={{ position: "absolute", bottom: 10, width: "100%" }}>
                             <Button href="#about" outline style={{ border: "none" }} ><Icon name="chevron-down" /> More Information</Button>
+                        </div>
+                        <div className="skew-right" style={{ position: "absolute", bottom: -25, textAlign: "right", width: "100%", paddingRight: 5, fontSize: 12 }} >
+                            Want to help? Sign up to <a href="https://goo.gl/forms/hAha2d7iVUBoOMu22">volunteer</a> or <a href="https://goo.gl/forms/hvUrr2Ftz5ZD2Fkv1">mentor</a>!
                         </div>
                     </Row>
                 </Container>
@@ -66,13 +69,16 @@ class Home extends Component {
             return (
                 <Container fluid id="landing-section" style={{ zIndex: 3, width: "100%", minHeight: "100vh", textAlign: "center", userSelect: "none" }}>
                     <Row style={{ minWidth: "100%", minHeight: "100vh" }} className="d-flex align-items-center">
-                        <Col style={{ display: "block" }}>
+                        <Col style={{ display: "block", marginBottom: 20 }}>
                             {loggoutMsg}
                             <Logo noCircle src="./assets/icons/hru-logo.svg" />
                             <h2 style={{ marginTop: -75 }} className="display-4 theme-font">Hackathon at Rutgers University</h2>
                             <h2 className="lead theme-font"><Icon style={{ marginRight: 5 }} name="map-marker" /> {defaults.locationText}</h2>
                             <h2 className="lead theme-font"><Icon style={{ marginRight: 5 }} name="calendar" /> {defaults.dateText}</h2>
                             {navContainer}
+                            <div>
+                                Want to help? Sign up to <a href="https://goo.gl/forms/hAha2d7iVUBoOMu22">volunteer</a> or <a href="https://goo.gl/forms/hvUrr2Ftz5ZD2Fkv1">mentor</a>!
+                            </div>
                         </Col>
                     </Row>
                 </Container>
