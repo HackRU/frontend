@@ -67,6 +67,10 @@ const ENDPOINTS = {
      * Digest magic links
      */
     "magic": BASE + "/consume",
+    /**
+     * Get QR codes
+     */
+    "qr": BASE + "/qr",
 }
 /**
  * Standard profile handler for the entire application
@@ -392,6 +396,19 @@ class Profile {
     }
     GetMagic() {
         return cookie.load("magic", { path: "/" });
+    }
+    GetQR(callback) {
+        request({
+            method: "POST",
+            uri: ENDPOINTS.qr,
+            body: {
+                email: this._email,
+                color: [0x26, 0xE8, 0xBD],
+            },
+            json: true
+        }, (error, response, body) => {
+            callback(error, body);
+        });
     }
 }
 
