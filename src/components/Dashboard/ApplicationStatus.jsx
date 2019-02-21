@@ -91,7 +91,9 @@ const DeclineButton = ({ onDecline, disabled }) => (
 
 const Reimbursement = ({ reimbursement }) => (
     reimbursement ? <p>
-        Your estimated reimbursement value is <strong>${reimbursement.toFixed(2)}.</strong> Please note that reimbursement will be given in the form of Amazon giftcards, and you will only be granted reimbursement <strong>if you submit a hack to DevPost and demonstrate your hack.</strong>
+        Your estimated reimbursement value is <strong>${reimbursement.toFixed(2)}.  </strong>   Due to a high number of applicants this semester, we cannot provide your exact travel reimbursement quantity at this time. Displayed here is the minimum amount of reimbursement you are approved for. On the day of, you might qualify for more based on the overall availability of funds (without exceeding the amount you spend or 59 dollars).
+        <br /><br />
+        Please note that reimbursement will be given in the form of Amazon giftcards, and you will only be granted reimbursement <strong>if you submit a hack to DevPost and demonstrate your hack.</strong>
     </p> : <p> You are not eligible to receive any travel reimbursement </p>
 )
 
