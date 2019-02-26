@@ -67,6 +67,10 @@ const ENDPOINTS = {
      * Digest magic links
      */
     "magic": BASE + "/consume",
+    /**
+     * Day of
+     */
+    "dayof": BASE + "/dayof-events"
 }
 /**
  * Standard profile handler for the entire application
@@ -393,6 +397,7 @@ class Profile {
     GetMagic() {
         return cookie.load("magic", { path: "/" });
     }
+    
 }
 
 export { Profile };
