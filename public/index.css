@@ -278,3 +278,12 @@ input, textarea, .custom-file-label {
 .profile-alert.profile-alert-warning {
     background: rgba(255, 255, 0, 0.25) !important;
 }
+
+/* Live */
+.live-links {
+    width: 200px;
+    font-variant: small-caps;
+    border-radius: 10px !important;
+    text-shadow: 0px 0px 10px var(--primary-color);
+    border: none !important;
+}

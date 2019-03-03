@@ -7,7 +7,7 @@ import Links from "./Links.jsx";
 class Live extends Component {
     render() {
         return (
-            <Container fluid style={{ width: "100%", minHeight: "100vh", textAlign: "center", backgroundColor: theme.primary[0] }} className="d-flex align-items-center">
+            <Container fluid style={{ width: "100%", minHeight: "100vh", textAlign: "center", backgroundColor: theme.secondary[1] }} className="d-flex align-items-center">
                 <div style={{ zIndex: 3, color: "white", width: "100%" }} align="center">
                     <Container>
                         <div style={{ width: "100%", textAlign: "left", marginBottom: 0, paddingTop: 35 }}>
