@@ -116,9 +116,38 @@ varList.forEach((element) => {
     theme[element] = computedStyle.getPropertyValue("--" + element);
     return element;
 });
+// Live "important links"
+const liveImportantLinks = [
+    {
+        "title": "Waiver",
+        "href": "",
+        "icon": "file"
+    },
+    {
+        "title": "Devpost",
+        "href": "http://hackru-s19.devpost.com",
+        "icon": "code"
+    },
+    {
+        "title": "Slack",
+        "href": "http://bit.ly/hackru-s19",
+        "icon": "slack"
+    },
+    {
+        "title": "HelpQ",
+        "href": "http://hackru-helpq.herokuapp.com",
+        "icon": "stack-overflow"
+    },
+    {
+        "title": "Food Menu",
+        "href": "",
+        "icon": "cutlery"
+    }
+];
 
 export {
     defaults,
     navlinks,
-    theme
+    theme,
+    liveImportantLinks
 };
