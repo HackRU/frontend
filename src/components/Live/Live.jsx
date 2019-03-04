@@ -4,6 +4,8 @@ import { theme } from "../../Defaults.js";
 import { Link } from "react-router-dom";
 import Map from "./Map.jsx";
 import Links from "./Links.jsx";
+import Schedule from "./Schedule.jsx";
+import Announcements from "./Announcements.jsx";
 class Live extends Component {
     render() {
         return (
@@ -50,16 +52,8 @@ class Live extends Component {
                             </Row>
                         </div>
                         <Links />
-                        <div style={{ marginBottom: 10 }}>
-                            <div style={{ width: "100%", textAlign: "left" }}>
-                                <p className="lead">Announcements</p>
-                            </div>
-                        </div>
-                        <div style={{ marginBottom: 10 }}>
-                            <div style={{ width: "100%", textAlign: "left" }}>
-                                <p className="lead">Schedule</p>
-                            </div>
-                        </div>
+                        <Announcements />
+                        {/* <Schedule /> */}
                         <Map />
                     </Container>
                 </div>

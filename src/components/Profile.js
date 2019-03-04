@@ -68,9 +68,13 @@ const ENDPOINTS = {
      */
     "magic": BASE + "/consume",
     /**
-     * Day of
+     * Day of event schedule
      */
-    "dayof": BASE + "/dayof-events"
+    "schedule": BASE + "/dayof-events",
+    /**
+     * Day of slack
+     */
+    "slack": BASE + "/dayof-slack"
 }
 /**
  * Standard profile handler for the entire application

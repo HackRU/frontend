@@ -120,7 +120,7 @@ varList.forEach((element) => {
 const liveImportantLinks = [
     {
         "title": "Waiver",
-        "href": "",
+        "href": "https://hackru.org/resources/waiver.pdf",
         "icon": "file"
     },
     {
@@ -140,7 +140,7 @@ const liveImportantLinks = [
     },
     {
         "title": "Food Menu",
-        "href": "",
+        "href": "https://s3-us-west-2.amazonaws.com/hackru-misc/menu.pdf",
         "icon": "cutlery"
     }
 ];

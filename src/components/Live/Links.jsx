@@ -1,27 +1,8 @@
 import React, { Component } from "react";
-import request from "request";
 import { Button, ButtonGroup } from "reactstrap";
 import { Icon } from "react-fa";
 import { liveImportantLinks } from "../../Defaults";
-import { ENDPOINTS } from "../Profile";
 class Links extends Component {
-    componentWillMount() {
-        request({
-            uri: ENDPOINTS.dayof,
-            method: "GET",
-            json: true
-        }, (error, response, body) => {
-            if (error) {
-                
-            } else {
-                if (body.statusCode === 200) {
-                    console.log(body);
-                } else {
-                    
-                }
-            }
-        })
-    }
     render() {
         let items = [];
         for (let i = 0; i < liveImportantLinks.length; i++) {
