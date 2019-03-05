@@ -287,3 +287,24 @@ input, textarea, .custom-file-label {
     text-shadow: 0px 0px 2px var(--primary-color);
     border: none !important;
 }
+.live-slack-messages {
+    color: var(--secondary-color) !important;
+    background-color: transparent !important;
+}
+.live-slack-messages-text {
+    color: var(--primary-color-alt) !important;
+}
+.live-slack-page-btn {
+    background-color: var(--input-background) !important;
+    border: 0px solid black !important;
+}
+.live-slack-page-btn:hover {
+    transition: background-color 0.5s;
+    background-color: var(--hover-background-color) !important;
+    color: var(--hover-color) !important;
+}
+.live-slack-page-btn:active {
+    transition: background-color 0.5s;
+    background-color: var(--active-background-color) !important;
+    color: var(--active-color) !important;
+}
