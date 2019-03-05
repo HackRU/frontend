@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import request from "request";
-import { ListGroup, ListGroupItem, ListGroupItemHeading, ListGroupItemText, Pagination, PaginationItem, PaginationLink } from "reactstrap";
+import { ListGroup, ListGroupItem, ListGroupItemText, Pagination, PaginationItem, PaginationLink } from "reactstrap";
 import { ENDPOINTS } from "../Profile";
 import { SyncLoader } from "react-spinners";
 class Announcements extends Component {
@@ -60,22 +60,25 @@ class Announcements extends Component {
                     <p className="lead">Announcements</p>
                     <ListGroup className="live-slack-container" flush>
                         <div style={{ width: "100%", textAlign: "right" }}>
-                            <Pagination className="pull-right" style={{ display: "relative", right: 0 }}>
+                            <Pagination className="live-slack-page-container pull-right">
                                 <PaginationItem>
-                                    <PaginationLink className="live-slack-page-btn" previous href="#" onClick={(e) => {
+                                    <PaginationLink className="live-slack-page-btn" previous onClick={(e) => {
                                         this.setState({
                                             start: (this.state.start - 3 >= 0) ? (this.state.start - 3) : (0)
                                         });
                                     }} />
                                 </PaginationItem>
                                 <PaginationItem>
-                                    <PaginationLink className="live-slack-page-btn" next href="#" onClick={(e) => {
+                                    <PaginationLink className="live-slack-page-btn" next onClick={(e) => {
                                         this.setState({
                                             start: (this.state.start + 3 <= this.state.messages.length - 2) ? (this.state.start + 3) : (this.state.messages.length - 2)
                                         });
                                     }} />
                                 </PaginationItem>
                             </Pagination>
+                            <div className="live-slack-page-text">
+                                Viewing {this.state.start} - {end}
+                            </div>
                         </div>
                         {msgs}
                     </ListGroup>

@@ -297,6 +297,7 @@ input, textarea, .custom-file-label {
 .live-slack-page-btn {
     background-color: var(--input-background) !important;
     border: 0px solid black !important;
+    color: var(--primary-color) !important;
 }
 .live-slack-page-btn:hover {
     transition: background-color 0.5s;
@@ -307,4 +308,12 @@ input, textarea, .custom-file-label {
     transition: background-color 0.5s;
     background-color: var(--active-background-color) !important;
     color: var(--active-color) !important;
+}
+.live-slack-page-container {
+    margin-bottom: 10px;
+    margin-left: 10px;
+}
+.live-slack-page-text {
+    padding-top: 5px;
+    color: var(--secondary-color);
 }
