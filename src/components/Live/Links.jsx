@@ -19,9 +19,7 @@ class Links extends Component {
                 <div style={{ width: "100%", textAlign: "left" }}>
                     <p className="lead">Important Links</p>
                     <div align="center">
-                        <ButtonGroup>
                             {items}
-                        </ButtonGroup>
                     </div>
                 </div>
             </div>

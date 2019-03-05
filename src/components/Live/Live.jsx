@@ -53,7 +53,7 @@ class Live extends Component {
                         </div>
                         <Links />
                         <Announcements />
-                        {/* <Schedule /> */}
+                        <Schedule />
                         <Map />
                     </Container>
                 </div>
