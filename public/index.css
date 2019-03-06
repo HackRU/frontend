@@ -290,6 +290,7 @@ input, textarea, .custom-file-label {
 .live-messages {
     color: var(--secondary-color) !important;
     background-color: transparent !important;
+    border: none !important; 
 }
 .live-messages-text {
     color: var(--primary-color-alt) !important;
