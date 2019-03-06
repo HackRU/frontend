@@ -1,14 +1,13 @@
 import React, { Component } from "react";
 import request from "request";
 import { ENDPOINTS } from "../Profile";
-import BigCalendar from "react-big-calendar";
-import moment from "moment";
-import "react-big-calendar/lib/css/react-big-calendar.css";
+import { ListGroup, ListGroupItem, ListGroupItemText, Pagination, PaginationItem, PaginationLink } from "reactstrap";
+import { SyncLoader } from "react-spinners";
 class Schedule extends Component {
     componentWillMount() {
-        this.localizer = BigCalendar.momentLocalizer(moment);
         this.setState({
-            events: []
+            events: [],
+            start: 0
         }, () => {            
             request({
                 uri: ENDPOINTS.schedule,
@@ -20,7 +19,6 @@ class Schedule extends Component {
                 } else {
                     if (body.statusCode === 200) {
                         let events = [];
-                        console.log(body.body);
                         for (let i = 0; i < body.body.length; i++) {
                             events.push({
                                 id: i,
@@ -29,15 +27,9 @@ class Schedule extends Component {
                                 end: new Date(body.body[i].end.dateTime)
                             });
                         }
-                        events = [
-                            {
-                                id: 14,
-                                title: 'Today',
-                                start: new Date(new Date().setHours(new Date().getHours() - 3)),
-                                end: new Date(new Date().setHours(new Date().getHours() + 3)),
-                            }
-                        ]
-                        console.log(events);
+                        events.sort((a, b) => {
+                            return a.start - b.start;
+                        });
                         this.setState({
                             events: events
                         });
@@ -49,21 +41,57 @@ class Schedule extends Component {
         });
     }
     render() {
-        console.log(this.state.events);
+        let events = [];
+        let end = this.state.start + 10;
+        if (end > this.state.events.length) {
+            end = this.state.events.length;
+        }
+        if (this.state.events.length === 0) {
+            events.push(
+                <div style={{ width: "100%", textAlign: "center" }} align="center" className="align-items-center" key={0}>
+                    <SyncLoader color="rgba(255, 255, 255, 0.25)" />
+                </div>)
+        } else {
+            for (let i = this.state.start; i < end; i++) {
+                let text = this.state.events[i].title;
+                let startTime = this.state.events[i].start.toLocaleString();
+                let endTime = this.state.events[i].end.toLocaleString();
+                events.push(
+                    <ListGroupItem action className="live-messages" key={i}>
+                        <ListGroupItemText className="pull-right">{startTime} - {endTime}</ListGroupItemText>
+                        <ListGroupItemText className="live-messages-text">{text}</ListGroupItemText>
+                    </ListGroupItem>
+                );
+            }
+        }
         return (
             <div style={{ marginBottom: 10 }}>
                 <div style={{ width: "100%", textAlign: "left" }}>
                     <p className="lead">Schedule</p>
-                    <div style={{ height: "1200px" }}>
-                    { this.state.events.length > 0 && 
-                        <BigCalendar
-                            localizer={this.localizer}
-                            events={this.state.events}
-                            startAccessor="startDate"
-                            endAccessor="endDate"
-                            defaultView="day"
-                    selectable /> }
-                    </div>
+                    <ListGroup className="live-container" flush>
+                        <div style={{ width: "100%", textAlign: "right" }}>
+                            <Pagination className="live-page-container pull-right">
+                                <PaginationItem>
+                                    <PaginationLink className="live-page-btn" previous onClick={(e) => {
+                                        this.setState({
+                                            start: (this.state.start - 10 >= 0) ? (this.state.start - 10) : (0)
+                                        });
+                                    }} />
+                                </PaginationItem>
+                                <PaginationItem>
+                                    <PaginationLink className="live-page-btn" next onClick={(e) => {
+                                        this.setState({
+                                            start: (this.state.start + 10 <= this.state.events.length - 10) ? (this.state.start + 10) : (this.state.events.length - 10)
+                                        });
+                                    }} />
+                                </PaginationItem>
+                            </Pagination>
+                            <div className="live-page-text">
+                                Viewing {this.state.start} - {end}
+                            </div>
+                        </div>
+                        {events}
+                    </ListGroup>
                 </div>
             </div>
         )

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button, ButtonGroup } from "reactstrap";
+import { Button } from "reactstrap";
 import { Icon } from "react-fa";
 import { liveImportantLinks } from "../../Defaults";
 class Links extends Component {
@@ -16,10 +16,9 @@ class Links extends Component {
         }
         return (
             <div style={{ marginBottom: 10 }}>
-                <div style={{ width: "100%", textAlign: "left" }}>
-                    <p className="lead">Important Links</p>
+                <div style={{ width: "100%", textAlign: "left", paddingTop: 10 }}>
                     <div align="center">
-                            {items}
+                        {items}
                     </div>
                 </div>
             </div>

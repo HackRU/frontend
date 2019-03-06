@@ -287,33 +287,33 @@ input, textarea, .custom-file-label {
     text-shadow: 0px 0px 2px var(--primary-color);
     border: none !important;
 }
-.live-slack-messages {
+.live-messages {
     color: var(--secondary-color) !important;
     background-color: transparent !important;
 }
-.live-slack-messages-text {
+.live-messages-text {
     color: var(--primary-color-alt) !important;
 }
-.live-slack-page-btn {
+.live-page-btn {
     background-color: var(--input-background) !important;
     border: 0px solid black !important;
     color: var(--primary-color) !important;
 }
-.live-slack-page-btn:hover {
+.live-page-btn:hover {
     transition: background-color 0.5s;
     background-color: var(--hover-background-color) !important;
     color: var(--hover-color) !important;
 }
-.live-slack-page-btn:active {
+.live-page-btn:active {
     transition: background-color 0.5s;
     background-color: var(--active-background-color) !important;
     color: var(--active-color) !important;
 }
-.live-slack-page-container {
+.live-page-container {
     margin-bottom: 10px;
     margin-left: 10px;
 }
-.live-slack-page-text {
+.live-page-text {
     padding-top: 5px;
     color: var(--secondary-color);
 }
