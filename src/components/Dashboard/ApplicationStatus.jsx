@@ -11,7 +11,7 @@ const ApplicationStatus = ({ status, onComing, onNotComing, reimbursement }) => 
         <div style={{ width: "100%", textAlign: "left" }}>
             <p className="lead">Application Status</p>
         </div>
-        { applicationBody(status, onComing, onNotComing) }
+        { applicationBody(status, onComing, onNotComing, reimbursement) }
     </div>
 )
 

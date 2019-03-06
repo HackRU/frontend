@@ -56,11 +56,11 @@ class Home extends Component {
                                 {navContainer}
                             </Parallax>
                         </Col>
-                        <div style={{ position: "absolute", bottom: 10, width: "100%" }}>
-                            <Button href="#about" outline style={{ border: "none" }} ><Icon name="chevron-down" /> More Information</Button>
-                        </div>
                         <div className="skew-right" style={{ position: "absolute", bottom: -25, textAlign: "right", width: "100%", paddingRight: 5, fontSize: 12 }} >
                             Want to help? Sign up to <a href="https://goo.gl/forms/hAha2d7iVUBoOMu22">volunteer</a> or <a href="https://goo.gl/forms/hvUrr2Ftz5ZD2Fkv1">mentor</a>!
+                        </div>
+                        <div style={{ position: "absolute", bottom: 10, left: 10, right: 10, margin: "0 auto"}}>
+                            <Button href="#about" outline style={{ border: "none", zIndex: 1 }} ><Icon name="chevron-down" /> More Information</Button>
                         </div>
                     </Row>
                 </Container>
