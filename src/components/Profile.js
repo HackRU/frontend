@@ -403,8 +403,8 @@ class Profile {
             uri: ENDPOINTS.qr,
             body: {
                 email: this._email,
-                'background': [0x00, 0x57, 0x5c],
-                'color': [0xff, 0xff, 0xff],
+                'background': [0xff, 0xff, 0xff],
+                'color': [0x00, 0x00, 0x00],
                 'transparentBackground': true,
             },
             json: true
