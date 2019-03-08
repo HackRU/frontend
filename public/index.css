@@ -278,3 +278,43 @@ input, textarea, .custom-file-label {
 .profile-alert.profile-alert-warning {
     background: rgba(255, 255, 0, 0.25) !important;
 }
+
+/* Live */
+.live-links {
+    width: 200px;
+    font-variant: small-caps;
+    border-radius: 10px !important;
+    text-shadow: 0px 0px 2px var(--primary-color);
+    border: none !important;
+}
+.live-messages {
+    color: var(--secondary-color) !important;
+    background-color: transparent !important;
+    border: none !important; 
+}
+.live-messages-text {
+    color: var(--primary-color-alt) !important;
+}
+.live-page-btn {
+    background-color: var(--input-background) !important;
+    border: 0px solid black !important;
+    color: var(--primary-color) !important;
+}
+.live-page-btn:hover {
+    transition: background-color 0.5s;
+    background-color: var(--hover-background-color) !important;
+    color: var(--hover-color) !important;
+}
+.live-page-btn:active {
+    transition: background-color 0.5s;
+    background-color: var(--active-background-color) !important;
+    color: var(--active-color) !important;
+}
+.live-page-container {
+    margin-bottom: 10px;
+    margin-left: 10px;
+}
+.live-page-text {
+    padding-top: 5px;
+    color: var(--secondary-color);
+}

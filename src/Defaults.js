@@ -20,6 +20,7 @@ const defaults =  {
         "dev": "https://7c5l6v7ip3.execute-api.us-west-2.amazonaws.com/lcs-test",
         "prod": "https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/mlhtest",
         "resumes": "https://hackru-resumes.s3.amazonaws.com",
+        "s3": "http://hackru-misc.s3-website-us-west-2.amazonaws.com/"
     },
     "sponsorshipLogos": "https://s3-us-west-2.amazonaws.com/hackru-misc/sponsorship-logos/",
     "partnerLogos": "https://s3-us-west-2.amazonaws.com/hackru-misc/partners-logos/"
@@ -115,9 +116,38 @@ varList.forEach((element) => {
     theme[element] = computedStyle.getPropertyValue("--" + element);
     return element;
 });
+// Live "important links"
+const liveImportantLinks = [
+    {
+        "title": "Waiver",
+        "href": "https://hackru.org/resources/waiver.pdf",
+        "icon": "file"
+    },
+    {
+        "title": "Devpost",
+        "href": "http://hackru-s19.devpost.com",
+        "icon": "code"
+    },
+    {
+        "title": "Slack",
+        "href": "http://bit.ly/hackru-s19",
+        "icon": "slack"
+    },
+    {
+        "title": "HelpQ",
+        "href": "http://hackru-helpq.herokuapp.com",
+        "icon": "stack-overflow"
+    },
+    {
+        "title": "Food Menu",
+        "href": "https://s3-us-west-2.amazonaws.com/hackru-misc/menu.pdf",
+        "icon": "cutlery"
+    }
+];
 
 export {
     defaults,
     navlinks,
-    theme
+    theme,
+    liveImportantLinks
 };

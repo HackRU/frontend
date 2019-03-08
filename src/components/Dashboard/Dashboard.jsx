@@ -105,6 +105,13 @@ class Dashboard extends Component {
                                             </Link>
                                         </p>
                                     </div>
+                                    <div style={{ display: "inline-block", marginRight: 20 }}>
+                                        <p className="lead">
+                                            <Link to="/live" className="theme-home-link" style={{ color: theme.primary[0] + "ff", textDecoration: "none" }}>
+                                                Live
+                                            </Link>
+                                        </p>
+                                    </div>
                                     <div style={{ display: "inline-block", marginRight: 20 }}><p className="lead"><Link to="/logout" className="theme-home-link" style={{ color: theme.accent[0] + "ff", textDecoration: "none" }}>Logout</Link></p></div>
                                 </Col>
                                 <Col style={{ textAlign: "center" }} md={3} xs={12}>

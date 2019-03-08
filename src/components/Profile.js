@@ -68,6 +68,13 @@ const ENDPOINTS = {
      */
     "magic": BASE + "/consume",
     /**
+     * Day of event schedule
+     */
+    "schedule": BASE + "/dayof-events",
+    /**
+     * Day of slack
+     */
+    "slack": BASE + "/dayof-slack",
      * Get QR codes
      */
     "qr": BASE + "/qr",
@@ -397,6 +404,7 @@ class Profile {
     GetMagic() {
         return cookie.load("magic", { path: "/" });
     }
+
     GetQR(callback) {
         request({
             method: "POST",
@@ -414,4 +422,4 @@ class Profile {
     }
 }
 
-export { Profile };
+export { Profile, ENDPOINTS };
