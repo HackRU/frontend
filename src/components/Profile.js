@@ -67,6 +67,17 @@ const ENDPOINTS = {
      * Digest magic links
      */
     "magic": BASE + "/consume",
+    /**
+     * Day of event schedule
+     */
+    "schedule": BASE + "/dayof-events",
+    /**
+     * Day of slack
+     */
+    "slack": BASE + "/dayof-slack",
+     * Get QR codes
+     */
+    "qr": BASE + "/qr",
 }
 /**
  * Standard profile handler for the entire application
@@ -393,6 +404,22 @@ class Profile {
     GetMagic() {
         return cookie.load("magic", { path: "/" });
     }
+
+    GetQR(callback) {
+        request({
+            method: "POST",
+            uri: ENDPOINTS.qr,
+            body: {
+                email: this._email,
+                'background': [0xff, 0xff, 0xff],
+                'color': [0x00, 0x00, 0x00],
+                'transparentBackground': true,
+            },
+            json: true
+        }, (error, response, body) => {
+            callback(error, body);
+        });
+    }
 }
 
-export { Profile };
+export { Profile, ENDPOINTS };
