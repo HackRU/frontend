@@ -67,8 +67,9 @@ class Schedule extends Component {
         return (
             <div style={{ marginBottom: 10 }}>
                 <div style={{ width: "100%", textAlign: "left" }}>
-                    <p className="lead">Schedule</p>
+                    <h3>Schedule</h3>
                     <ListGroup className="live-container" flush>
+                        {events}
                         <div style={{ width: "100%", textAlign: "right" }}>
                             <Pagination className="live-page-container pull-right">
                                 <PaginationItem>
@@ -90,7 +91,6 @@ class Schedule extends Component {
                                 Viewing {this.state.start} - {end}
                             </div>
                         </div>
-                        {events}
                     </ListGroup>
                 </div>
             </div>

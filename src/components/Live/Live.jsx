@@ -51,9 +51,13 @@ class Live extends Component {
                                 </Col>
                             </Row>
                         </div>
+                        <hr  style={{ background: "rgba(255, 255, 255, 0.25)" }}/>
                         <Links />
+                        <hr  style={{ background: "rgba(255, 255, 255, 0.25)" }}/>
                         <Announcements />
+                        <hr style={{ background: "rgba(255, 255, 255, 0.25)" }} />
                         <Schedule />
+                        <hr style={{ background: "rgba(255, 255, 255, 0.25)" }} />
                         <Map />
                     </Container>
                 </div>

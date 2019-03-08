@@ -40,7 +40,7 @@ class Announcements extends Component {
             let text = this.state.messages[i].text && this.state.messages[i].text.replace(/(:[^:\s]*:)|(<[^>\s]*>)/g, '').trim();
             let date = new Date(this.state.messages[i].ts * 1000).toLocaleDateString();
             let time = new Date(this.state.messages[i].ts * 1000).toLocaleTimeString();
-            let opacity = ((5 - (num)) / 5.0) + 0.05;
+            let opacity = 100;
             msgs.push(
                 <ListGroupItem action className="live-messages" key={i} style={{ opacity: opacity }}>
                     <ListGroupItemText className="pull-right">{date}, {time}</ListGroupItemText>
@@ -57,8 +57,9 @@ class Announcements extends Component {
         return (
             <div style={{ marginBottom: 10 }}>
                 <div style={{ width: "100%", textAlign: "left" }}>
-                    <p className="lead">Announcements</p>
+                    <h3 className="mb-3">Announcements</h3>
                     <ListGroup className="live-container" flush>
+                        {msgs}
                         <div style={{ width: "100%", textAlign: "right" }}>
                             <Pagination className="live-page-container pull-right">
                                 <PaginationItem>
@@ -80,7 +81,6 @@ class Announcements extends Component {
                                 Viewing {this.state.start} - {end}
                             </div>
                         </div>
-                        {msgs}
                     </ListGroup>
                 </div>
             </div>
