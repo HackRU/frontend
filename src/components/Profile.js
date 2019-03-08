@@ -75,7 +75,7 @@ const ENDPOINTS = {
      * Day of slack
      */
     "slack": BASE + "/dayof-slack",
-     * Get QR codes
+     /* Get QR codes
      */
     "qr": BASE + "/qr",
 }
