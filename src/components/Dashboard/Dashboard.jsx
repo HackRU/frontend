@@ -7,6 +7,7 @@ import ApplicationStatus from './ApplicationStatus';
 import Section from './Section';
 import Loading from './Loading';
 import ProfileMessage from './ProfileMessage';
+import QR from './QR';
 import TravelReimbursementsForm from './Forms/TravelReimbursementsForm';
 import UserProfileForm from "./Forms/UserProfileForm/UserProfileForm";
 
@@ -15,7 +16,8 @@ class Dashboard extends Component {
         loading: "Loading your personal dashboard...",
         user: null,
         openDetails: false,
-        profileMSG: null
+        profileMSG: null,
+        qr: null
     }
     componentWillMount() {
         if (this.props.magic) {
@@ -46,6 +48,15 @@ class Dashboard extends Component {
                         loading: false,
                         openDetails: (data.registration_status === "unregistered")
                     });
+                    this.props.profile.GetQR((msg, qr) => {
+                        if(msg) {
+                            console.error(msg);
+                        } else if(qr) {
+                            this.setState({
+                                qr
+                            })
+                        }
+                    })
                 }
             }
         });
@@ -119,6 +130,11 @@ class Dashboard extends Component {
                                 this.submitUser(user)
                             }}
                             reimbursement={user.travelling_from && user.travelling_from.reimbursement}
+                            status={user.registration_status}
+                        />
+
+                        <QR
+                            data={this.state.qr}
                             status={user.registration_status}
                         />
 
