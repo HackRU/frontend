@@ -135,7 +135,7 @@ const liveImportantLinks = [
     },
     {
         "title": "HelpQ",
-        "href": "http://hackru-helpq.herokuapp.com",
+        "href": "https://hackru-helpq.herokuapp.com",
         "icon": "stack-overflow"
     },
     {
