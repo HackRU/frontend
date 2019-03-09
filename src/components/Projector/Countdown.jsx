@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import AnimatedGrid from "./AnimatedGrid";
-const N = null;
-const C = "white";
+import { theme } from "../../Defaults";
+const N = "rgba(0, 0, 0, 0)";
+const C = theme.primary[0];
 const BITMAP = {
     "0": [
         [C, C, C],
@@ -111,11 +112,11 @@ class Countdown extends Component {
         if (hours.length === 1) {
             hours = "0" + hours;
         }
-        if (minutes !== this.oldMin) {
-            if (this.oldMin !== -1) {
+        if (seconds !== this.oldMin) {
+            if (this.oldMin !== -1 && seconds === 2) {
                 this.refs.grid.animate();
             }
-            this.oldMin = minutes;
+            this.oldMin = seconds;
         }
         minutes = minutes + "";
         if (minutes.length === 1) {
@@ -143,7 +144,7 @@ class Countdown extends Component {
     }
     render() {
         return (
-            <AnimatedGrid ref="grid" width={500} height={500} rows={10} cols={32} template={this.state.template} />
+            <AnimatedGrid padding={0} ref="grid" width={500} height={500} rows={10} cols={32} template={this.state.template} />
         );
     }
 }

@@ -42,7 +42,7 @@ class Schedule extends Component {
     }
     render() {
         let events = [];
-        let end = this.state.start + 10;
+        let end = this.state.start + ((!this.props.hide) ? (10) : (5));
         if (end > this.state.events.length) {
             end = this.state.events.length;
         }
@@ -56,10 +56,14 @@ class Schedule extends Component {
                 let text = this.state.events[i].title;
                 let startTime = this.state.events[i].start.toLocaleString();
                 let endTime = this.state.events[i].end.toLocaleString();
+                let style = {};
+                if (this.props.hide) {
+                    style = { fontSize: 23 }
+                }
                 events.push(
                     <ListGroupItem action className="live-messages" key={i}>
                         <ListGroupItemText className="pull-right">{startTime} - {endTime}</ListGroupItemText>
-                        <ListGroupItemText className="live-messages-text">{text}</ListGroupItemText>
+                        <ListGroupItemText className="live-messages-text" style={style}>{text}</ListGroupItemText>
                     </ListGroupItem>
                 );
             }
@@ -67,9 +71,11 @@ class Schedule extends Component {
         return (
             <div style={{ marginBottom: 10 }}>
                 <div style={{ width: "100%", textAlign: "left" }}>
-                    <h3>Schedule</h3>
+                    { !this.props.hide &&
+                    <h3>Schedule</h3>}
                     <ListGroup className="live-container" flush>
-                        {events}
+                        {events}                        
+                        { !this.props.hide &&
                         <div style={{ width: "100%", textAlign: "right" }}>
                             <Pagination className="live-page-container pull-right">
                                 <PaginationItem>
@@ -90,7 +96,7 @@ class Schedule extends Component {
                             <div className="live-page-text">
                                 Viewing {this.state.start} - {end}
                             </div>
-                        </div>
+                        </div>}
                     </ListGroup>
                 </div>
             </div>
