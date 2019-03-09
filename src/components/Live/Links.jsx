@@ -1,17 +1,18 @@
 import React, { Component } from "react";
-import { Button } from "reactstrap";
-import { Icon } from "react-fa";
+import GlowButton from '../GlowButton';
 import { liveImportantLinks } from "../../Defaults";
+
 class Links extends Component {
     render() {
         let items = [];
         for (let i = 0; i < liveImportantLinks.length; i++) {
             items.push(
-                <Button key={i} href={liveImportantLinks[i].href} className="live-links" size="lg" color="info" outline>
-                    <Icon size="2x" name={liveImportantLinks[i].icon}/>
-                    <br/>                                
-                    {liveImportantLinks[i].title}
-                </Button>
+                <GlowButton
+                    key={i}
+                    href={liveImportantLinks[i].href}
+                    icon={liveImportantLinks[i].icon}
+                    text={liveImportantLinks[i].title}
+                />
             )
         }
         return (
