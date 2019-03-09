@@ -6,7 +6,6 @@ import { SyncLoader } from "react-spinners";
 class Announcements extends Component {
     refresh = () => (
         this.setState({
-            messages: [],
             start: 0
         }, () => {
             request({
@@ -24,6 +23,7 @@ class Announcements extends Component {
     )
 
     componentWillMount() {
+        this.setState({ messages: [] })
         this.refresh();
         setInterval(this.refresh, 30000);
     }
