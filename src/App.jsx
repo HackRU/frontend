@@ -8,6 +8,7 @@ import {
     SignUpPage,
     MagicPage,
     LivePage,
+    ProjectorPage,
     E404 } from "./components/Pages"; // Router Pages
 import FlyingLogo from "./FlyingLogo" // The logos that go up through the page
 import MLHBadge from "./MLHBadge"; // We need this to qualify as an official MLH event
@@ -120,6 +121,7 @@ class App extends Component {
                         <Route exact path="/magic/:mlurl" render={(props) => <MagicPage {...props} {...componentProps} />} />
                         <Route exact path="/dashboard" render={(props) => <DashboardPage {...props} {...componentProps} />} />
                         <Route exact path="/live" render={(props) => <LivePage {...props} {...componentProps} />} />
+                        <Route exact path="/projector" render={(props) => <ProjectorPage {...props} {...componentProps} />} />
                         {/* If none of the other urls were matched, we will show a 404 page to the user */}
                         <Route component={E404} />
                     </Switch>

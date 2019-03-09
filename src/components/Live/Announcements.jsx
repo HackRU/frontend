@@ -39,10 +39,14 @@ class Announcements extends Component {
             let date = new Date(this.state.messages[i].ts * 1000).toLocaleDateString();
             let time = new Date(this.state.messages[i].ts * 1000).toLocaleTimeString();
             let opacity = 100;
+            let style = {};
+            if (this.props.hide) {
+                style = { fontSize: 23 }
+            }
             msgs.push(
                 <ListGroupItem action className="live-messages" key={i} style={{ opacity: opacity }}>
                     <ListGroupItemText className="pull-right">{date}, {time}</ListGroupItemText>
-                    <ListGroupItemText className="live-messages-text">{text}</ListGroupItemText>
+                    <ListGroupItemText className="live-messages-text" style={style}>{text}</ListGroupItemText>
                 </ListGroupItem>
             );
         }
@@ -52,12 +56,15 @@ class Announcements extends Component {
                     <SyncLoader color="rgba(255, 255, 255, 0.25)" />
                 </div>)
         }
+        
         return (
             <div style={{ marginBottom: 10 }}>
                 <div style={{ width: "100%", textAlign: "left" }}>
-                    <h3 className="mb-3">Announcements</h3>
+                    { !this.props.hide &&
+                    <h3 className="mb-3">Announcements</h3> }
                     <ListGroup className="live-container" flush>
                         {msgs}
+                        { !this.props.hide &&
                         <div style={{ width: "100%", textAlign: "right" }}>
                             <Pagination className="live-page-container pull-right">
                                 <PaginationItem>
@@ -78,7 +85,7 @@ class Announcements extends Component {
                             <div className="live-page-text">
                                 Viewing {this.state.start} - {end}
                             </div>
-                        </div>
+                        </div>}
                     </ListGroup>
                 </div>
             </div>
