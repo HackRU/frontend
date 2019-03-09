@@ -4,30 +4,30 @@ import { ListGroup, ListGroupItem, ListGroupItemText, Pagination, PaginationItem
 import { ENDPOINTS } from "../Profile";
 import { SyncLoader } from "react-spinners";
 class Announcements extends Component {
-    componentWillMount() {
+    refresh = () => (
         this.setState({
             messages: [],
             start: 0
-        }, () => {            
+        }, () => {
             request({
                 uri: ENDPOINTS.slack,
                 method: "GET",
                 json: true
             }, (error, response, body) => {
-                if (error) {
-                    
-                } else {
-                    if (body.statusCode === 200) {
-                        this.setState({
-                            messages: body.body
-                        });
-                    } else {
-                        
-                    }
+                if (body.statusCode === 200) {
+                    this.setState({
+                        messages: body.body
+                    });
                 }
             });
-        });
+        })
+    )
+
+    componentWillMount() {
+        this.refresh();
+        setInterval(this.refresh, 30000);
     }
+
     render() {
         let msgs = [];
         let end = this.state.start + 5;
