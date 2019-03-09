@@ -14,8 +14,7 @@ const Projector = () => (
                 </Col>
                 <Col xs={6}>
                     <h1 className="theme-font"> Hacking Ends in </h1>
-                    <h1>
-                    </h1>
+                    <Countdown />
                 </Col>
             </Row>
         </div>

@@ -3,7 +3,7 @@
     "version": "0.1.0",
     "private": true,
     "dependencies": {
-        "animejs": "^2.2.0",
+        "animejs": "^3.0.0",
         "availity-reactstrap-validation": "^2.5.0",
         "bootstrap": "^4.1.3",
         "font-awesome": "^4.7.0",
