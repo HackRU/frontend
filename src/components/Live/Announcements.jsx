@@ -34,9 +34,7 @@ class Announcements extends Component {
         if (end > this.state.messages.length) {
             end = this.state.messages.length;
         }
-        let num = 0;
         for (let i = this.state.start; i < end; i++) {
-            num++;
             let text = this.state.messages[i].text && this.state.messages[i].text.replace(/(:[^:\s]*:)|(<[^>\s]*>)/g, '').trim();
             let date = new Date(this.state.messages[i].ts * 1000).toLocaleDateString();
             let time = new Date(this.state.messages[i].ts * 1000).toLocaleTimeString();

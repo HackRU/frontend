@@ -26,7 +26,7 @@ class CustomAVInput extends Component {s
                 <div ref="avfield">
                     <AvField className="avfield-hide-inner" name={this.props.name} label={this.props.label} type="text" value={this.props.value} validate={this.props.validate} />
                 </div>
-                <div style={{ position: "absolute", top: 32, width: this.state.width }}>
+                <div style={{ position: "absolute", top: 32, width: "calc(100% - 30px)" }}>
                     {this.props.children}
                 </div>
             </div>

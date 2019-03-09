@@ -51,10 +51,11 @@ class Dashboard extends Component {
                     this.props.profile.GetQR((msg, qr) => {
                         if(msg) {
                             console.error(msg);
-                        } else if(qr) {
+                        } else if (qr) {
+                            console.log(qr);
                             this.setState({
                                 qr
-                            })
+                            });
                         }
                     })
                 }
@@ -63,7 +64,7 @@ class Dashboard extends Component {
     }
     submitUser = (user) => {
         this.setState({
-            loading: 'Saving your information',
+            loading: "Saving your information",
             profileMSG: null,
             user,
         }, () => {
@@ -132,12 +133,10 @@ class Dashboard extends Component {
                             reimbursement={user.travelling_from && user.travelling_from.reimbursement}
                             status={user.registration_status}
                         />
-
                         <QR
                             data={this.state.qr}
                             status={user.registration_status}
                         />
-
                         <div style={{ width: "100%", textAlign: "left" }}>
                             <p className="lead">User Profile</p>
                         </div>

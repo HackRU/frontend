@@ -318,3 +318,12 @@ input, textarea, .custom-file-label {
     padding-top: 5px;
     color: var(--secondary-color);
 }
+.qr {
+    max-width: 80%;
+    border-radius: 10px;
+    margin: 10px;
+    transition: transform .8s ease-in-out;
+}
+.qr:hover {
+    transform: rotate(360deg);
+}
