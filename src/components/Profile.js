@@ -405,16 +405,15 @@ class Profile {
     GetMagic() {
         return cookie.load("magic", { path: "/" });
     }
-
     GetQR(callback) {
         request({
             method: "POST",
             uri: ENDPOINTS.qr,
             body: {
                 email: this._email,
-                'background': [0xff, 0xff, 0xff],
-                'color': [0x00, 0x00, 0x00],
-                'transparentBackground': true,
+                background: [0xff, 0xff, 0xff],
+                color: [0x00, 0x00, 0x00],
+                transparentBackground: true,
             },
             json: true
         }, (error, response, body) => {
