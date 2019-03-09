@@ -1,8 +1,8 @@
-import React from 'react';
+import React from "react";
 import { Container, Row, Col } from "reactstrap";
-import Announcements from '../Live/Announcements';
+import Announcements from "../Live/Announcements";
 import { theme } from "../../Defaults.js";
-import Countdown from './Countdown';
+import Countdown from "./Countdown";
 
 const Projector = () => (
     <Container fluid style={{ width: "100%", minHeight: "100vh", textAlign: "center", backgroundColor: theme.secondary[1] }} className="d-flex align-items-center">

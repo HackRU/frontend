@@ -1,126 +1,150 @@
 import React, { Component } from "react";
-import anime from "animejs";
-
-const addNumber = (matrix, num) => {
-    addChar(matrix, numbers[num / 10])
-    addChar(matrix, space)
-    addChar(matrix, numbers[num % 10])
-}
-
-const addChar = (matrix, character) => {
-    for(let i = 0; i < matrix.length; i++) {
-        matrix[i] = matrix[i].concat(character[i])
-        for(let j = 0; j < matrix[i].length; j++) {
-            matrix[i].push(character[i][j])
-        }
-    }
-}
-
-const numbers = [
-    [
-        [ 1, 1, 1 ],
-        [ 1, 0, 1 ],
-        [ 1, 0, 1 ],
-        [ 1, 0, 1 ],
-        [ 1, 1, 1 ],
+import AnimatedGrid from "./AnimatedGrid";
+const N = null;
+const C = "white";
+const BITMAP = {
+    "0": [
+        [C, C, C],
+        [C, N, C],
+        [C, N, C],
+        [C, N, C],
+        [C, C, C]
     ],
-    [
-        [ 0, 1, 0 ],
-        [ 1, 1, 0 ],
-        [ 0, 1, 0 ],
-        [ 0, 1, 0 ],
-        [ 1, 1, 1 ],
+    "1": [
+        [N, C, N],
+        [N, C, N],
+        [N, C, N],
+        [N, C, N],
+        [N, C, N]
     ],
-    [
-        [ 1, 1, 1 ],
-        [ 0, 0, 1 ],
-        [ 1, 1, 1 ],
-        [ 1, 0, 0 ],
-        [ 1, 1, 1 ],
+    "2": [
+        [C, C, C],
+        [N, N, C],
+        [C, C, C],
+        [C, N, N],
+        [C, C, C]
     ],
-    [
-        [ 1, 1, 1 ],
-        [ 0, 0, 1 ],
-        [ 1, 1, 1 ],
-        [ 0, 0, 1 ],
-        [ 1, 1, 1 ],
+    "3": [
+        [C, C, C],
+        [N, N, C],
+        [C, C, C],
+        [N, N, C],
+        [C, C, C]
     ],
-    [
-        [ 1, 0, 1 ],
-        [ 1, 0, 1 ],
-        [ 1, 1, 1 ],
-        [ 0, 0, 1 ],
-        [ 0, 0, 1 ],
+    "4": [
+        [C, N, C],
+        [C, N, C],
+        [C, C, C],
+        [N, N, C],
+        [N, N, C]
     ],
-    [
-        [ 1, 1, 1 ],
-        [ 1, 0, 0 ],
-        [ 1, 1, 1 ],
-        [ 0, 0, 1 ],
-        [ 1, 1, 1 ],
+    "5": [
+        [C, C, C],
+        [C, N, N],
+        [C, C, C],
+        [N, N, C],
+        [C, C, C]
     ],
-    [
-        [ 1, 1, 1 ],
-        [ 1, 0, 0 ],
-        [ 1, 1, 1 ],
-        [ 1, 0, 1 ],
-        [ 1, 1, 1 ],
+    "6": [
+        [C, C, C],
+        [C, N, N],
+        [C, C, C],
+        [C, N, C],
+        [C, C, C]
     ],
-    [
-        [ 1, 1, 1 ],
-        [ 0, 0, 1 ],
-        [ 0, 0, 1 ],
-        [ 0, 0, 1 ],
-        [ 0, 0, 1 ],
+    "7": [
+        [C, C, C],
+        [N, N, C],
+        [N, N, C],
+        [N, N, C],
+        [N, N, C]
     ],
-    [
-        [ 1, 1, 1 ],
-        [ 1, 0, 1 ],
-        [ 1, 1, 1 ],
-        [ 1, 0, 1 ],
-        [ 1, 1, 1 ],
+    "8": [
+        [C, C, C],
+        [C, N, C],
+        [C, C, C],
+        [C, N, C],
+        [C, C, C]
     ],
-    [
-        [ 1, 1, 1 ],
-        [ 1, 0, 1 ],
-        [ 1, 1, 1 ],
-        [ 0, 0, 1 ],
-        [ 1, 1, 1 ],
+    "9": [
+        [C, C, C],
+        [C, N, C],
+        [C, C, C],
+        [N, N, C],
+        [C, C, C]
+    ],
+    ":": [
+        [N, N, N],
+        [N, C, N],
+        [N, N, N],
+        [N, C, N],
+        [N, N, N]
     ]
-]
-
-const colon = [
-    [ 0 ],
-    [ 1 ],
-    [ 0 ],
-    [ 1 ],
-    [ 0 ],
-]
-
-const space = [
-    [ 0 ],
-    [ 0 ],
-    [ 0 ],
-    [ 0 ],
-    [ 0 ],
-]
+}
 class Countdown extends Component {
+    constructor() {
+        super();
+        this.getTimeString = this.getTimeString.bind(this);
+        this.generateTemplate = this.generateTemplate.bind(this);
+    }
     componentWillMount() {
-        anime({
-            targets: ".staggering .el",
-            scale: [
-                {value: .1, easing: 'easeOutSine', duration: 500},
-                {value: 1, easing: 'easeInOutQuad', duration: 1200}
-            ],
-            delay: anime.stagger(200, {grid: [14, 5], from: 'center'})
+        let end = new Date(2019, 3, 10, 11, 30, 0, 0);
+        this.oldMin = -1;
+        this.setState({
+            end: end,
+            template: this.generateTemplate(this.getTimeString(end))
         });
+        setInterval(() => {
+            this.setState({
+                template: this.generateTemplate(this.getTimeString(this.state.end))
+            });
+        }, 1000);
+    }
+    getTimeString(end) {
+        let now = new Date().getTime();
+        let distance = end - now;
+        //let days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        hours = hours + "";
+        if (hours.length === 1) {
+            hours = "0" + hours;
+        }
+        if (minutes !== this.oldMin) {
+            if (this.oldMin !== -1) {
+                this.refs.grid.animate();
+            }
+            this.oldMin = minutes;
+        }
+        minutes = minutes + "";
+        if (minutes.length === 1) {
+            minutes = "0" + minutes;
+        }
+        seconds = seconds + "";
+        if (seconds.length === 1) {
+            seconds = "0" + seconds;
+        }
+        return hours + ":" + minutes + ":" + seconds;
+    }
+    generateTemplate(str) {
+        let template = [];
+        for (let i = 0; i < 10; i++) {
+            template.push([]);
+        }
+        for (let i = 0; i < str.length; i++) {
+            let BIT = BITMAP[str.charAt(i)];
+            for (let j = 0; j < BIT.length; j++) {
+                template[j].push(...BIT[j]);
+                template[j].push(N);
+            }
+        }
+        return template;
     }
     render() {
         return (
-            <div className="staggering">
-                
-            </div>
-        )
+            <AnimatedGrid ref="grid" width={500} height={500} rows={10} cols={32} template={this.state.template} />
+        );
     }
 }
-export default Countdown
+export default Countdown;
