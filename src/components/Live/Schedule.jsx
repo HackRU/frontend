@@ -58,7 +58,7 @@ class Schedule extends Component {
                 let endTime = this.state.events[i].end.toLocaleString();
                 let style = {};
                 if (this.props.hide) {
-                    style = { fontSize: 23 }
+                    style = { fontSize: 30 }
                 }
                 events.push(
                     <ListGroupItem action className="live-messages" key={i}>

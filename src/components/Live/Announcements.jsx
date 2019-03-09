@@ -30,7 +30,7 @@ class Announcements extends Component {
 
     render() {
         let msgs = [];
-        let end = this.state.start + 5;
+        let end = this.state.start + 3;
         if (end > this.state.messages.length) {
             end = this.state.messages.length;
         }
@@ -41,7 +41,7 @@ class Announcements extends Component {
             let opacity = 100;
             let style = {};
             if (this.props.hide) {
-                style = { fontSize: 23 }
+                style = { fontSize: 30 }
             }
             msgs.push(
                 <ListGroupItem action className="live-messages" key={i} style={{ opacity: opacity }}>
