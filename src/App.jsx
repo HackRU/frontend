@@ -13,6 +13,7 @@ import FlyingLogo from "./FlyingLogo" // The logos that go up through the page
 import MLHBadge from "./MLHBadge"; // We need this to qualify as an official MLH event
 import { defaults } from "./Defaults"; // Get a handle to the default application settings
 import { Profile } from "./components/Profile"; // User profile storage
+import Projector from "./components/Projector/Projector";
 
 /**
  * Root application class. This is the object rendered in <div id="root" />
@@ -120,6 +121,7 @@ class App extends Component {
                         <Route exact path="/magic/:mlurl" render={(props) => <MagicPage {...props} {...componentProps} />} />
                         <Route exact path="/dashboard" render={(props) => <DashboardPage {...props} {...componentProps} />} />
                         <Route exact path="/live" render={(props) => <LivePage {...props} {...componentProps} />} />
+                        <Route exact path="/projector" render={(props) => <Projector {...props} {...componentProps} />} />
                         {/* If none of the other urls were matched, we will show a 404 page to the user */}
                         <Route component={E404} />
                     </Switch>
