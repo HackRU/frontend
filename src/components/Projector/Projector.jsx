@@ -9,12 +9,12 @@ const Projector = () => (
         <div style={{ zIndex: 3, color: "white", width: "100%" }} align="center">
             <Row>
                 <Col xs={6}>
+                    <h1 className="theme-font">Live Feed</h1>
                     <Announcements />
                 </Col>
                 <Col xs={6}>
-                    <h1> Hacking Time Remaining </h1>
+                    <h1 className="theme-font"> Hacking Ends in </h1>
                     <h1>
-                        <Countdown />
                     </h1>
                 </Col>
             </Row>

@@ -5,6 +5,7 @@ import SignUpPage from "./Signup";
 import ForgotPage from "./Forgot";
 import MagicPage from "./Magic";
 import LivePage from "./Live/Live";
+import ProjectorPage from "./Projector/Projector";
 import E404 from "./Errors/E404";
 
 export {
@@ -15,5 +16,6 @@ export {
     MagicPage,
     ForgotPage,
     LivePage,
-    E404
+    E404,
+    ProjectorPage
 }
