@@ -6,43 +6,46 @@ import { SyncLoader } from "react-spinners";
 class Schedule extends Component {
     componentWillMount() {
         this.setState({ events: [] })
-
-        setInterval(() => (
-            this.setState({
-                start: 0
-            }, () => {            
-                request({
-                    uri: ENDPOINTS.schedule,
-                    method: "GET",
-                    json: true
-                }, (error, response, body) => {
-                    if (error) {
-                        
-                    } else {
-                        if (body.statusCode === 200) {
-                            let events = [];
-                            for (let i = 0; i < body.body.length; i++) {
-                                events.push({
-                                    id: i,
-                                    title: body.body[i].summary,
-                                    start: new Date(body.body[i].start.dateTime),
-                                    end: new Date(body.body[i].end.dateTime)
-                                });
-                            }
-                            events.sort((a, b) => {
-                                return a.start - b.start;
-                            });
-                            this.setState({
-                                events: events
-                            });
-                        } else {
-                            
-                        }
-                    }
-                });
-            })
-        ), 30000)
+        this.refresh()
+        setInterval(this.refresh, 30000)
     }
+
+    refresh = () => (
+    this.setState({
+            start: 0
+        }, () => {            
+            request({
+                uri: ENDPOINTS.schedule,
+                method: "GET",
+                json: true
+            }, (error, response, body) => {
+                if (error) {
+                    
+                } else {
+                    if (body.statusCode === 200) {
+                        let events = [];
+                        for (let i = 0; i < body.body.length; i++) {
+                            events.push({
+                                id: i,
+                                title: body.body[i].summary,
+                                start: new Date(body.body[i].start.dateTime),
+                                end: new Date(body.body[i].end.dateTime)
+                            });
+                        }
+                        events.sort((a, b) => {
+                            return a.start - b.start;
+                        });
+                        this.setState({
+                            events: events
+                        });
+                    } else {
+                        
+                    }
+                }
+            });
+        })
+    )
+
     render() {
         let events = [];
         let end = this.state.start + ((!this.props.hide) ? (10) : (5));
