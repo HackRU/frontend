@@ -89,7 +89,7 @@ class Countdown extends Component {
         this.generateTemplate = this.generateTemplate.bind(this);
     }
     componentWillMount() {
-        let end = new Date(2019, 3, 10, 11, 30, 0, 0);
+        let end = new Date(2019, 3, 10, 12, 30, 0, 0);
         this.oldMin = -1;
         this.setState({
             end: end,
@@ -108,6 +108,15 @@ class Countdown extends Component {
         let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
         let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        if (hours < 0) {
+            hours = 0;
+        }
+        if (minutes < 0) {
+            minutes = 0;
+        }
+        if (seconds < 0) {
+            seconds = 0;
+        }
         hours = hours + "";
         if (hours.length === 1) {
             hours = "0" + hours;
