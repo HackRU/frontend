@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import AnimatedGrid from "./AnimatedGrid";
+import AnimatedGrid from "../AnimatedGrid";
 import { theme } from "../../Defaults";
 const N = "rgba(0, 0, 0, 0)";
 const C = theme.primary[0];

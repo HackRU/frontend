@@ -23,42 +23,42 @@ const defaults =  {
         "s3": "http://hackru-misc.s3-website-us-west-2.amazonaws.com/"
     },
     "sponsorshipLogos": "https://s3-us-west-2.amazonaws.com/hackru-misc/sponsorship-logos/",
-    "partnerLogos": "https://s3-us-west-2.amazonaws.com/hackru-misc/partners-logos/"
-    
+    "partnerLogos": "https://s3-us-west-2.amazonaws.com/hackru-misc/partners-logos/",
+    "freeze": true
 }
 
 const navlinks = {
     "About Us": {
         "url": "#about",
-        "enabled": true,
+        "enabled": !defaults.freeze,
         "hideLink": false,
         "fullHeight": false,
         "component": (props) => <About {...props} />
     },
     "Schedule": {
         "url": "#schedule",
-        "enabled": true,
+        "enabled": !defaults.freeze,
         "hideLink": false,
         "fullHeight": false,
         "component": (props) => <Schedule {...props} />
     },
     "Sponsors": {
         "url": "#sponsors",
-        "enabled": true,
+        "enabled": !defaults.freeze,
         "hideLink": false,
         "fullHeight": false,
         "component": (props) => <Sponsors {...props} />
     },
     "Partners": {
         "url": "#partners",
-        "enabled": true,
+        "enabled": !defaults.freeze,
         "hideLink": false,
         "fullHeight": false,
         "component": (props) => <Partners {...props} />
     },
     "FAQs": {
         "url": "#faqs",
-        "enabled": true,
+        "enabled": !defaults.freeze,
         "hideLink": false,
         "fullHeight": false,
         "component": (props) => <FAQs {...props} />
