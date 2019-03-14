@@ -185,9 +185,10 @@ class AnimatedGrid extends Component {
             targets: ".staggering .element",
             scale: [
                 {value: .1, easing: "easeOutSine", duration: 500},
-                {value: 1, easing: "easeInOutQuad", duration: 1200}
+                {value: 1, easing: "easeInOutQuad", duration: 2500}
             ],
-            delay: anime.stagger(200, {grid: [cols, rows], from: 'center'}),
+            delay: anime.stagger(50, {grid: [cols, rows], from: 'center'}),
+            loop: true,
         });
     }
     componentDidMount() {
@@ -195,10 +196,11 @@ class AnimatedGrid extends Component {
     }
     render() {
         let grid = [];
-        let width = (this.props.width) ? (this.props.width) : 500;
-        let height = (this.props.height) ? (this.props.height) : 500;
+        let width =  Math.min((this.props.width) ? (this.props.width) : 500, window.innerWidth - 200);
+        let height = Math.min((this.props.height) ? (this.props.height) : 500, window.innerWidth - 200);
         let rows = (this.props.rows) ? (this.props.rows) : 25;
         let cols = (this.props.cols) ? (this.props.cols) : 25;
+        this.width = width;
         let cellWidth = width / cols;
         let cellHeight = height / cols;
         let padding = (this.props.padding) ? (this.props.padding) : 2;
@@ -220,7 +222,7 @@ class AnimatedGrid extends Component {
             }
         }
         return (
-            <div className="staggering">
+            <div style={this.props.style} className="staggering">
                 {grid}
             </div>
         )
@@ -252,7 +254,7 @@ class TextGrid extends Component {
     }
     render() {
         return (
-            <AnimatedGrid padding={0} ref="grid" width={500} height={500} rows={10} cols={70} template={this.state.template} />
+            <AnimatedGrid style={this.props.style} padding={0} ref="grid" width={500} height={500} rows={10} cols={70} template={this.state.template} />
         );
     }
 
