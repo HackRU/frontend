@@ -26,7 +26,8 @@ class Freeze extends Component {
     render() {
         return (
             <Container fluid id="landing-section" style={{ zIndex: 3, width: "100%", minHeight: "100vh", textAlign: "center", userSelect: "none" }}>
-                <Row style={{ minWidth: "100%", minHeight: "100vh" }} >
+
+	      <Row style={{ minWidth: "100%", minHeight: "100vh" }} >
                     <div style={{ display: "block", position: "absolute", top: window.innerHeight / 2, left: (window.innerWidth / 2) - this.state.subWidth }}>
                         <TextGrid ref="anime" text={"HACKRU WILL RETURN"} />
                         <div style={{ marginTop: 75 }}>
@@ -35,7 +36,7 @@ class Freeze extends Component {
                     </div>
                     
                 </Row>
-                <div style={{ display: "block", position: "absolute", bottom: 150, width: "100vw", left: "0" }}>
+                <div style={{ display: "block", position: "absolute", bottom: 150, width: "100%", left: "0" }}>
                     <Row style ={{}} className="d-flex justify-content-center" >
                         <h4>for Fall 2019</h4>
                     </Row>
