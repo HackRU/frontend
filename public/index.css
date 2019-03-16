@@ -44,6 +44,9 @@
 body::-webkit-scrollbar { 
     display: none; 
 }
+html, body {
+    overflow-x: hidden;
+}
 body {
     font-family: var(--text-font) !important;
 }

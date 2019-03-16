@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import { Container, Row } from "reactstrap";
 import Home from "./Sections/Home";
+import Freeze from "./Sections/Freeze";
 import { ParallaxProvider } from "react-scroll-parallax";
-import { navlinks, theme } from "../../Defaults";
+import { defaults, navlinks, theme } from "../../Defaults";
 import ScrollableAnchor from "react-scrollable-anchor";
 
 /**
@@ -54,7 +55,9 @@ class LandingPage extends Component {
                     <ScrollableAnchor id="home">
                         <div>
                             <Row className="section">
-                                <Home isMobile={this.props.isMobile} profile={this.props.profile} loggedout={this.props.loggedout} dismissAlert={this.props.dismissAlert} />
+                                { !defaults.freeze ?
+                                    <Home isMobile={this.props.isMobile} profile={this.props.profile} loggedout={this.props.loggedout} dismissAlert={this.props.dismissAlert} /> :
+                                    <Freeze isMobile={this.props.isMobile} />}
                             </Row>
                         </div>
                     </ScrollableAnchor>
