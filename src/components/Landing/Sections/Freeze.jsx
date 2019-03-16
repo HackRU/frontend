@@ -36,7 +36,7 @@ class Freeze extends Component {
                     </div>
                     
                 </Row>
-                <div style={{ display: "block", position: "absolute", bottom: 150, width: "100%", left: "0" }}>
+                <div style={{ display: "block", position: "absolute", bottom: window.innerHeight / 8, width: "100%", left: "0" }}>
                     <Row style ={{}} className="d-flex justify-content-center" >
                         <h4>for Fall 2019</h4>
                     </Row>
