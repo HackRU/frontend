@@ -17,8 +17,8 @@ const defaults =  {
     "enableFlyingLogo": false,
     "poc": true,
     "rest": {
-        "dev": "https://7c5l6v7ip3.execute-api.us-west-2.amazonaws.com/lcs-test",
-        "prod": "https://m7cwj1fy7c.execute-api.us-west-2.amazonaws.com/mlhtest",
+        "dev": "https://api.hackru.org/dev",
+        "prod": "https://api.hackru.org/prod",
         "resumes": "https://hackru-resumes.s3.amazonaws.com",
         "s3": "http://hackru-misc.s3-website-us-west-2.amazonaws.com/"
     },
