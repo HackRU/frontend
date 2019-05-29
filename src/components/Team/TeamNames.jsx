@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Container, Row, Col } from "reactstrap";
+import {Col } from "reactstrap";
 import Person from './Person.jsx';
 class TeamNames extends Component {
     render() {
