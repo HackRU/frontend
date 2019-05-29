@@ -75,30 +75,37 @@ class Team extends Component {
 				 )
 				:
 				 (
-				    <p> Our organizing teams are not currently accepting applications, but please keep in touch with us by visiting our website, hackru.org, and checking out our social media! </p>
-				)}
+				     <p> Our organizing teams are not currently accepting applications, but please keep in touch with us by visiting our website, hackru.org, and checking out our social media! </p>
+				 )}
 				
 				<h4 className="display-4" > Directors </h4>
 				<Row>
 				    {this.state.directors.map((person) =>
-					<Col xs={6} sm={3}>
+					<Col xs={6} sm={3} style={{marginBottom: 20}}>
 					    <Person key={person.id}
 						    name={person.name} title={person.title}  image={ defaults.teamInfo + 'images/' + person.image} />
 					</Col>
 				    )}
-				    
-				</Row>
+		
+		</Row>
 
-				<h4 className="display-4"> Organizers </h4>
-				
-				<Row>
-				    {this.state.organizers.map((team) =>
-					<Col xs={6} sm={3}>
-					    <TeamNames key={team.id} teamName={team.team_name} people={team.members} />
-					</Col>
-				    )}
-				</Row>
-				
+		<h4 className="display-4"> Organizers </h4>
+
+
+		
+		
+		
+
+		<div className=" row justify-content-center ">
+		{this.state.organizers.map((team) =>
+		    <Col xs={6} sm={4}>
+			<TeamNames key={team.id} teamName={team.team_name} people={team.members} />
+		    </Col>
+		)}
+
+				</div>
+
+
 			    </Container>
 			</div>
 		    </Container>
