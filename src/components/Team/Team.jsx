@@ -10,7 +10,8 @@ class Team extends Component {
     state = {
 	loading: "Our lastest team list is loading ...",
 	directors: null,
-	organizers: null
+	organizers: null,
+	organizer_app: null
     }
     
     componentWillMount() {
@@ -24,6 +25,18 @@ class Team extends Component {
          .then(data =>
              this.setState({
                  directors: data.directors
+             })   
+         )
+
+	fetch(defaults.teamInfo + "organizer_app.json",
+	      {
+		  method: "GET", 
+		  mode: "cors"
+	      }
+	).then(response => response.json())
+         .then(data =>
+             this.setState({
+                 organizer_app: data
              })   
          )
 
@@ -53,8 +66,18 @@ class Team extends Component {
 			<div style={{ zIndex: 3, color: "white", width: "100%", marginTop: 50 }}>
 			    <Container>
 				<h1 className="display-3"> The HackRU Organizing Team </h1>
-				<p> Here falls the team page.  These are the people that make the things happen. </p>
+				<p> The organizing team for HackRU plans and runs the hackathon twice a year, making HackRU the best event it can be for the 700+ participants involved! We strive to organize an event that brings together people interested in working on tech projects. The HackRU organizing team helps to foster a fun, creative, and supportive environment for hackers to learn new tech skills and explore new ideas! </p>
+				<p>Want to help organize a hackathon? Want to be part of a dedicated team? Want to meet some amazing people? Join the HackRU organizing team! </p>
 
+				{this.state.organizer_app ?
+				 (
+				     <p> Our application can be found <a href={this.state.organizer_app.organizer_app}>  here </a>.</p>
+				 )
+				:
+				 (
+				    <p> Our organizing teams are not currently accepting applications, but please keep in touch with us by visiting our website, hackru.org, and checking out our social media! </p>
+				)}
+				
 				<h4 className="display-4" > Directors </h4>
 				<Row>
 				    {this.state.directors.map((person) =>
