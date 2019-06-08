@@ -66,12 +66,12 @@ class Team extends Component {
 			<div style={{ zIndex: 3, color: "white", width: "100%", marginTop: 50 }}>
 			    <Container>
 				<h1 className="display-3"> The HackRU Organizing Team </h1>
-				<p> The organizing team for HackRU plans and runs the hackathon twice a year, making HackRU the best event it can be for the 700+ participants involved! We strive to organize an event that brings together people interested in working on tech projects. The HackRU organizing team helps to foster a fun, creative, and supportive environment for hackers to learn new tech skills and explore new ideas! </p>
-				<p>Want to help organize a hackathon? Want to be part of a dedicated team? Want to meet some amazing people? Join the HackRU organizing team! </p>
+				<p> The organizing team for HackRU plans and runs the hackathon twice a year! We strive to organize an event that brings together people interested in working on tech projects in a fun, creative, and supportive environment.  We hope hackers can learn new tech skills and explore new ideas! </p>
+				
 
 				{this.state.organizer_app.organizer_app ?
 				 (
-				     <p> Our application can be found <a href={this.state.organizer_app.organizer_app}>  here </a>.</p>
+				     <p> Want to help us organize the hackathon and join our dedicated team? Our application can be found <a href={this.state.organizer_app.organizer_app}>  here </a>.</p>
 				 )
 				:
 				 (
@@ -86,22 +86,22 @@ class Team extends Component {
 						    name={person.name} title={person.title}  image={ defaults.teamInfo + 'images/' + person.image} />
 					</Col>
 				    )}
-		
-		</Row>
+				    
+				</Row>
 
-		<h4 className="display-4"> Organizers </h4>
+				<h4 className="display-4"> Organizers </h4>
 
 
-		
-		
-		
+				
+				
+				
 
-		<div className=" row justify-content-center ">
-		{this.state.organizers.map((team) =>
-		    <Col xs={6} sm={4}>
-			<TeamNames key={team.id} teamName={team.team_name} people={team.members} />
-		    </Col>
-		)}
+				<div className=" row justify-content-center ">
+				    {this.state.organizers.map((team) =>
+					<Col xs={6} sm={4}>
+					    <TeamNames key={team.id} teamName={team.team_name} people={team.members} />
+					</Col>
+				    )}
 
 				</div>
 
