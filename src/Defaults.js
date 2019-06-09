@@ -22,9 +22,10 @@ const defaults =  {
         "resumes": "https://hackru-resumes.s3.amazonaws.com",
         "s3": "http://hackru-misc.s3-website-us-west-2.amazonaws.com/"
     },
-    "sponsorshipLogos": "https://s3-us-west-2.amazonaws.com/hackru-misc/sponsorship-logos/",
-    "partnerLogos": "https://s3-us-west-2.amazonaws.com/hackru-misc/partners-logos/",
-    "freeze": true
+    "sponsorshipLogos": "https://s3-us-west-2.amazonaws.com/hackru-internal/sponsorship-logos/",
+    "partnerLogos": "https://s3-us-west-2.amazonaws.com/hackru-internal/partners-logos/",
+    "teamInfo": "https://s3-us-west-2.amazonaws.com/hackru-internal/hackru-team/",
+    "freeze": false
 }
 
 const navlinks = {
