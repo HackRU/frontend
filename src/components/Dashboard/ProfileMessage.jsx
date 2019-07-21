@@ -6,8 +6,9 @@ import { UncontrolledAlert } from "reactstrap";
  */
 const ProfileMessage = ({ message }) => (
     message &&
-        <UncontrolledAlert color={message.color} className={`profile-alert profile-alert-${message.color}`}>
+        <UncontrolledAlert color={message.color}
+            className={`profile-alert profile-alert-${message.color}`}>
             {message.value}
         </UncontrolledAlert>
-)
-export default ProfileMessage
+);
+export default ProfileMessage;

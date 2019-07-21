@@ -1,6 +1,7 @@
 import cookie from "react-cookies";
 import request from "request";
 import { defaults } from "../Defaults";
+import PropTypes from "prop-types";
 
 /**
  * Configure the all of the urls that we will need to access the rest api
@@ -19,7 +20,7 @@ const ENDPOINTS = {
      *         "password": "<PASSWORD>"
      *     }
      * }
-     * @returns 
+     * @returns
      * {
      *     "statusCode": 200,
      *     "isBase64Encoded": false,
@@ -79,7 +80,7 @@ const ENDPOINTS = {
      * Get QR codes
      */
     "qr": BASE + "/qr",
-}
+};
 /**
  * Standard profile handler for the entire application
  */
@@ -120,7 +121,7 @@ class Profile {
                         callback("An error occured when attempting login");
                     } else {
                         if (body.statusCode === 403) {
-                            callback("Invalid email or password")
+                            callback("Invalid email or password");
                         } else if (body.statusCode === 200) {
                             let data = JSON.parse(body.body);
                             let token = data.auth.token;
@@ -183,7 +184,7 @@ class Profile {
                     } else {
                         console.log(body);
                         if (body.statusCode === 400) {
-                            callback("User with email " + email + " already exists")
+                            callback("User with email " + email + " already exists");
                         } else if (body.statusCode === 200) {
                             // Set the first and last name
                             let data = JSON.parse(body.body);
@@ -206,7 +207,7 @@ class Profile {
                                 json: true
                             }, (error, response, body) => {
                                 if (error) {
-                                    callback("An error occured when attempting signup. Failed at 2/2")
+                                    callback("An error occured when attempting signup. Failed at 2/2");
                                 } else {
                                     if (body.statusCode === 200) {
                                         this._login(email, token, valid_until);
@@ -258,7 +259,7 @@ class Profile {
                 json: true
             }, (error, response, body) => {
                 if (error) {
-                    callback("An error occured retrieving data", null)
+                    callback("An error occured retrieving data", null);
                 } else {
                     if (body.statusCode === 200) {
                         callback(null, body.body[0]);
@@ -288,7 +289,7 @@ class Profile {
             }, (error, response, body) => {
                 console.log(body);
                 if (error) {
-                    callback("An error occured when attempting to update data")
+                    callback("An error occured when attempting to update data");
                 } else {
                     if (body.statusCode === 200) {
                         callback();
@@ -339,7 +340,7 @@ class Profile {
         } else if (!conpassword) {
             callback("Confirm your new password");
         } else if (password !== conpassword) {
-            callback("Passwords don't match!")
+            callback("Passwords don't match!");
         } else {
             request({
                 method: "POST",
@@ -422,4 +423,15 @@ class Profile {
     }
 }
 
-export { Profile, ENDPOINTS };
+const ProfileType = {
+    Login: PropTypes.func,
+    Logout: PropTypes.func,
+    SignUp: PropTypes.func,
+    _login: PropTypes.func,
+    _token: PropTypes.func,
+    _email: PropTypes.func,
+    _valid_until: PropTypes.func,
+    isLoggedIn: PropTypes.bool,
+};
+
+export { Profile, ProfileType, ENDPOINTS };

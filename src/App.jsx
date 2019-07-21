@@ -11,7 +11,7 @@ import {
     TeamPage,
     ProjectorPage,
     E404 } from "./components/Pages"; // Router Pages
-import FlyingLogo from "./FlyingLogo" // The logos that go up through the page
+import FlyingLogo from "./FlyingLogo"; // The logos that go up through the page
 import MLHBadge from "./MLHBadge"; // We need this to qualify as an official MLH event
 import { defaults } from "./Defaults"; // Get a handle to the default application settings
 import { Profile } from "./components/Profile"; // User profile storage
@@ -47,7 +47,7 @@ class App extends Component {
     /**
      * As soon as react is ready, set the initial state
      */
-    componentWillMount() {
+    UNSAFE_componentWillMount() {
         this._event_onResize();
         let prof = new Profile();
         this.setState({
@@ -114,18 +114,47 @@ class App extends Component {
                     <div style={{ position: "fixed", zIndex: 2, width: "100%", height: "100%", left: 0, top: 0, backgroundColor: "rgb(0, 0, 0)", backgroundSize: "cover", opacity: 0.25 }}></div>
                     <Switch>
                         {/* This is where the URL routing magic actually happens */}
-                        <Route exact path="/" render={(props) => <LandingPage {...props} {...componentProps} />} />
-			<Route exact path="/team" render={(props) => <TeamPage {...props} {...componentProps} />} />
-			{ !defaults.freeze &&
+                        <Route exact
+                            path="/"
+                            render={(props) => <LandingPage {...props}
+                                {...componentProps} />} />
+                        <Route exact
+                            path="/team"
+                            render={(props) => <TeamPage {...props}
+                                {...componentProps} />} />
+                        { !defaults.freeze &&
                           <div>
-                              <Route exact path="/login" render={(props) => <LoginPage {...props} {...componentProps} />} />
-                              <Route exact path="/signup" render={(props) => <SignUpPage {...props} {...componentProps} />} />
-                              <Route exact path="/logout" component={() => { this.state.profile.Logout(); this.setState({ profile: this.state.profile, loggedout: true }); return (<Redirect to="/" />); }} />
-                              <Route exact path="/forgot" render={(props) => <ForgotPage {...props} {...componentProps} />} />
-                              <Route exact path="/magic/:mlurl" render={(props) => <MagicPage {...props} {...componentProps} />} />
-                              <Route exact path="/dashboard" render={(props) => <DashboardPage {...props} {...componentProps} />} />
-                              <Route exact path="/live" render={(props) => <LivePage {...props} {...componentProps} />} />
-                              <Route exact path="/projector" render={(props) => <ProjectorPage {...props} {...componentProps} />} />
+                              <Route exact
+                                  path="/login"
+                                  render={(props) => <LoginPage {...props}
+                                      {...componentProps} />} />
+                              <Route exact
+                                  path="/signup"
+                                  render={(props) => <SignUpPage {...props}
+                                      {...componentProps} />} />
+                              <Route exact
+                                  path="/logout"
+                                  component={() => { this.state.profile.Logout(); this.setState({ profile: this.state.profile, loggedout: true }); return (<Redirect to="/" />); }} />
+                              <Route exact
+                                  path="/forgot"
+                                  render={(props) => <ForgotPage {...props}
+                                      {...componentProps} />} />
+                              <Route exact
+                                  path="/magic/:mlurl"
+                                  render={(props) => <MagicPage {...props}
+                                      {...componentProps} />} />
+                              <Route exact
+                                  path="/dashboard"
+                                  render={(props) => <DashboardPage {...props}
+                                      {...componentProps} />} />
+                              <Route exact
+                                  path="/live"
+                                  render={(props) => <LivePage {...props}
+                                      {...componentProps} />} />
+                              <Route exact
+                                  path="/projector"
+                                  render={(props) => <ProjectorPage {...props}
+                                      {...componentProps} />} />
                           </div> }
                         {/* If none of the other urls were matched, we will show a 404 page to the user */}
                         <Route component={E404} />

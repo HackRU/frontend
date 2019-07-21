@@ -5,6 +5,8 @@ import Freeze from "./Sections/Freeze";
 import { ParallaxProvider } from "react-scroll-parallax";
 import { defaults, navlinks, theme } from "../../Defaults";
 import ScrollableAnchor from "react-scrollable-anchor";
+import { ProfileType } from "../../Profile";
+import PropTypes from "prop-types";
 
 /**
  * This is the first thing that users will see. It will include information about the upcoming hackathon, an about section, and other
@@ -20,7 +22,7 @@ class LandingPage extends Component {
                 let url = navlinks[keys[i]].url.substring(1);
                 let component = navlinks[keys[i]].component({ isMobile: this.props.isMobile });
                 // Toggle the green skewed sections
-                let className = ""
+                let className = "";
                 if (i !== keys.length - 1) {
                     className = "bg-no-gradient skew-right";
                     if (i % 2 === 0) {
@@ -35,9 +37,11 @@ class LandingPage extends Component {
                     style["minHeight"] = "100vh";
                 }
                 rows.push((
-                    <ScrollableAnchor key={url} id={url}>
+                    <ScrollableAnchor key={url}
+                        id={url}>
                         <div>
-                            <Row className="section" style={style}>
+                            <Row className="section"
+                                style={style}>
                                 <div className={className} >
                                     <div className={sectionClasses}>
                                         {component}
@@ -50,13 +54,19 @@ class LandingPage extends Component {
             }
         }
         return (
-            <Container id="LandingPage" className="section" fluid style={{ backgroundColor: theme.secondary[1] }}>
+            <Container id="LandingPage"
+                className="section"
+                fluid
+                style={{ backgroundColor: theme.secondary[1] }}>
                 <ParallaxProvider>
                     <ScrollableAnchor id="home">
                         <div>
                             <Row className="section">
                                 { !defaults.freeze ?
-                                    <Home isMobile={this.props.isMobile} profile={this.props.profile} loggedout={this.props.loggedout} dismissAlert={this.props.dismissAlert} /> :
+                                    <Home isMobile={this.props.isMobile}
+                                        profile={this.props.profile}
+                                        loggedout={this.props.loggedout}
+                                        dismissAlert={this.props.dismissAlert} /> :
                                     <Freeze isMobile={this.props.isMobile} />}
                             </Row>
                         </div>
@@ -67,5 +77,12 @@ class LandingPage extends Component {
         );
     }
 }
+
+LandingPage.propTypes = {
+    isMobile: PropTypes.bool,
+    profile: ProfileType,
+    loggedout: PropTypes.bool,
+    dismissAlert: PropTypes.func
+};
 
 export default LandingPage;

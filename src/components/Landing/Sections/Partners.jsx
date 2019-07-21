@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { defaults } from "../../../Defaults.js";
 import SponsorContainer from "./Sponsors/SponsorContainer.jsx";
+import PropTypes from "prop-types";
 
 /**
  * Sponsors component for the landing page
@@ -15,23 +16,23 @@ class Sponsors extends Component {
 
     componentWillMount() {
         fetch(defaults.partnerLogos + "partners.json",
-        {
-            method: "GET", 
-            mode: "cors"
-        }
+            {
+                method: "GET", 
+                mode: "cors"
+            }
         ).then(response => response.json())
-        .then(data =>
-            this.setState({
-                partnerLogos: data
-            })   
-        )
+            .then(data =>
+                this.setState({
+                    partnerLogos: data
+                })   
+            );
     }
 
     render() {
         let renderList = [];
 
         if (this.state.partnerLogos) {
-            console.log("THE INTERESTING")
+            console.log("THE INTERESTING");
             // console.log(this.state.partnerLogos)
 
             let SponsorDeclaration = this.state.partnerLogos.sections;
@@ -40,7 +41,11 @@ class Sponsors extends Component {
                 console.log(i);
                 if (SponsorDeclaration[i]["enabled"]) {
                     renderList.push(
-                        <SponsorContainer key={i} showName={false} baseURL={defaults.partnerLogos} isMobile={this.props.isMobile} declaration={SponsorDeclaration[i]} />
+                        <SponsorContainer key={i}
+                            showName={false}
+                            baseURL={defaults.partnerLogos}
+                            isMobile={this.props.isMobile}
+                            declaration={SponsorDeclaration[i]} />
                     );
                 }
             }
@@ -50,10 +55,10 @@ class Sponsors extends Component {
                     <h1 className="display-4 theme-font mb-3">Partners</h1>
                     <hr />
                     <div className="sponsorship-background">
-                    {renderList}
+                        {renderList}
                     </div>
                 </div>
-            )
+            );
         } else {
             return (
                 <div>
@@ -61,11 +66,13 @@ class Sponsors extends Component {
                     <h4> {this.state.loading} </h4>
                     {/* <Loading text={this.state.loading} /> */}
                 </div>
-            )
-        }
-        
-        
+            );
+        }        
     }
 }
+
+Sponsors.propTypes = {
+    isMobile: PropTypes.bool,
+};
 
 export default Sponsors;

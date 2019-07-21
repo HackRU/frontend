@@ -8,14 +8,18 @@ import Schedule from "../Live/Schedule";
 class Projector extends Component {
     render() {
         return (
-            <Container fluid style={{ width: "100%", minHeight: "100vh", textAlign: "center", backgroundColor: theme.secondary[1] }} className="d-flex align-items-center">
-                <div style={{ zIndex: 3, color: "white", width: "100%", padding: 50 }} align="center">
+            <Container fluid
+                style={{ width: "100%", minHeight: "100vh", textAlign: "center", backgroundColor: theme.secondary[1] }}
+                className="d-flex align-items-center">
+                <div style={{ zIndex: 3, color: "white", width: "100%", padding: 50 }}
+                    align="center">
                     <Container fluid>
                         <div style={{ width: "100%", textAlign: "left", marginBottom: 0, paddingTop: 35 }}>
                             <Row style={{ marginBottom: 125 }}>
                                 <Col xs={4}>
                                     <h1 className="display-4">HackRU Ends in</h1>
-                                    <Col md={9} xs={12}>
+                                    <Col md={9}
+                                        xs={12}>
                                         <Countdown />
                                     </Col>
                                 </Col>
@@ -47,4 +51,4 @@ class Projector extends Component {
     }
 }
 
-export default Projector
+export default Projector;

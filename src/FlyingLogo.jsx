@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 
 /**
  * Alien Background Component
@@ -12,7 +13,7 @@ class FlyingLogo extends Component {
         this._event_onUpdate = this._event_onUpdate.bind(this);
         this.image = new Image();
         this.image.onload = this._event_onInitializeRenderer;
-        this.image.src = this.props.url;
+        this.image.src = props.url;
     }
     _event_onResize() {
         if (this.canvas) {
@@ -69,10 +70,14 @@ class FlyingLogo extends Component {
     }
     render() {
         return (
-            <canvas id="drawable">                
+            <canvas id="drawable">
             </canvas>
-        )
+        );
     }
 }
+
+FlyingLogo.propTypes = {
+    url: PropTypes.string,
+};
 
 export default FlyingLogo;

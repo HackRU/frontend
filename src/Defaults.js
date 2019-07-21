@@ -26,7 +26,7 @@ const defaults =  {
     "partnerLogos": "https://s3-us-west-2.amazonaws.com/hackru-internal/partners-logos/",
     "teamInfo": "https://s3-us-west-2.amazonaws.com/hackru-internal/hackru-team/",
     "freeze": false
-}
+};
 
 const navlinks = {
     "About Us": {
@@ -72,7 +72,7 @@ const navlinks = {
         "skew": false,
         "component": (props) => <Footer {...props} />
     }
-}
+};
 // To unify styling between javascript and css, we define these variables in "index.css" as a variable, and proceed to get a handle
 // to the respective values through JavaScript
 let computedStyle = getComputedStyle(document.body);
@@ -89,7 +89,7 @@ const theme = {
     "disabled": [
         computedStyle.getPropertyValue("--disabled-color")
     ]
-}
+};
 // Populate the theme variable with css variables
 let varList = [
     // Form Inputs

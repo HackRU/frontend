@@ -4,6 +4,7 @@ import { Icon } from "react-fa";
 import { Link } from "react-router-dom";
 import { Redirect } from "react-router-dom";
 import AuthForm from "../library/AuthForm";
+import PropTypes from "prop-types";
 
 /**
  * Forgot my password application for "/forgot"
@@ -32,14 +33,19 @@ class ForgotPage extends Component {
         >
             <FormGroup row>
                 <InputGroup>
-                    <Input required type="email" id="email" placeholder="email" />
+                    <Input required
+                        type="email"
+                        id="email"
+                        placeholder="email" />
                     <InputGroupAddon addonType="append">
-                        <Button color="success" style={{ borderRadius: 0 }}><Icon name="chevron-right" /></Button>
+                        <Button color="success"
+                            style={{ borderRadius: 0 }}><Icon name="chevron-right" /></Button>
                     </InputGroupAddon>
                 </InputGroup>
             </FormGroup>
             <FormText>
-                <Link to="/" style={{ color: "rgba(255, 255, 255, 0.5)" }}>
+                <Link to="/"
+                    style={{ color: "rgba(255, 255, 255, 0.5)" }}>
                     Return Home
                 </Link>
             </FormText>
@@ -71,5 +77,13 @@ class ForgotPage extends Component {
         }
     }
 }
+
+ForgotPage.propTypes = {
+    profile: {
+        isLoggedIn: PropTypes.bool,
+        Forgot: PropTypes.func,
+    },
+    isMobile: PropTypes.bool,
+};
 
 export default ForgotPage;

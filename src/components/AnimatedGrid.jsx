@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import anime from "animejs";
 import { theme } from "../Defaults";
+import PropTypes from "prop-types";
+
 const N = "rgba(0, 0, 0, 0)";
 const C = theme.primary[0];
 const BITMAP = {
@@ -172,7 +174,8 @@ const BITMAP = {
         [C, N, C, C],
         [C, N, N, C]
     ],
-}
+};
+
 class AnimatedGrid extends Component {
     constructor() {
         super();
@@ -187,7 +190,7 @@ class AnimatedGrid extends Component {
                 {value: .1, easing: "easeOutSine", duration: 500},
                 {value: 1, easing: "easeInOutQuad", duration: 2500}
             ],
-            delay: anime.stagger(50, {grid: [cols, rows], from: 'center'}),
+            delay: anime.stagger(50, {grid: [cols, rows], from: "center"}),
             loop: true,
         });
     }
@@ -217,15 +220,18 @@ class AnimatedGrid extends Component {
         }
         for (let y = 0; y < rows; y++) {
             for (let x = 0; x < cols; x++) {
-                let color = (y < template.length && x < template[0].length && template[y][x]) ? (template[y][x]) : ("rgba(0, 0, 0, 0)")
-                grid.push(<div key={(y * cols) + x} className="element" style={{ position: "absolute", width: cellWidth, height: cellHeight, minWidth: cellWidth, minHeight: cellHeight, backgroundColor: color, top: y * (cellHeight + padding), left: x * (cellWidth + padding) }} ></div>)
+                let color = (y < template.length && x < template[0].length && template[y][x]) ? (template[y][x]) : ("rgba(0, 0, 0, 0)");
+                grid.push(<div key={(y * cols) + x}
+                    className="element"
+                    style={{ position: "absolute", width: cellWidth, height: cellHeight, minWidth: cellWidth, minHeight: cellHeight, backgroundColor: color, top: y * (cellHeight + padding), left: x * (cellWidth + padding) }} ></div>);
             }
         }
         return (
-            <div style={this.props.style} className="staggering">
+            <div style={this.props.style}
+                className="staggering">
                 {grid}
             </div>
-        )
+        );
     }
 }
 class TextGrid extends Component {
@@ -254,12 +260,35 @@ class TextGrid extends Component {
     }
     render() {
         return (
-            <AnimatedGrid style={this.props.style} padding={0} ref="grid" width={500} height={500} rows={10} cols={70} template={this.state.template} />
+            <AnimatedGrid style={this.props.style}
+                padding={0}
+                ref="grid"
+                width={500}
+                height={500}
+                rows={10}
+                cols={70}
+                template={this.state.template} />
         );
     }
 
 }
-export default AnimatedGrid
+
+AnimatedGrid.propTypes = {
+    rows: PropTypes.number,
+    cols: PropTypes.number,
+    width: PropTypes.number,
+    height: PropTypes.number,
+    padding: PropTypes.number,
+    style: PropTypes.object,
+    template: PropTypes.array,
+};
+
+TextGrid.propTypes = {
+    style: PropTypes.object,
+    text: PropTypes.string,
+};
+
+export default AnimatedGrid;
 export {
     BITMAP, N, C, TextGrid
-}
+};

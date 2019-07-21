@@ -28,7 +28,7 @@ const AuthForm = ({ children, errors, label, loading, isMobile, onSubmit, title 
         >
             <div style={{ padding: 30 }}>
                 <h1 className="display-1 theme-font">{ title }</h1>
-                <p className="lead">{loading ? label: ''}</p>
+                <p className="lead">{loading ? label: ""}</p>
                 <Form onSubmit={onSubmit}>
                     {renderErrors(errors)}
                     <div>
@@ -51,19 +51,20 @@ AuthForm.propTypes = {
 };
 
 const renderSpinner = () => (
-    <div style={{ display: "block", width: "100%" }} align="center">
+    <div style={{ display: "block", width: "100%" }}
+        align="center">
         <RingLoader color={theme.primary[0]} />
     </div>
 );
 
 const renderErrors = (errors) => (
     errors !== ""
-    ? (<Alert
-        style={{ background: "rgba(255, 0, 0, 0.25)", border: "none", color: "white" }}
-        color="danger">
+        ? (<Alert
+            style={{ background: "rgba(255, 0, 0, 0.25)", border: "none", color: "white" }}
+            color="danger">
             {errors}
         </Alert>)
-    : null
+        : null
 );
 
 export default AuthForm;
