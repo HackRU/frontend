@@ -41,6 +41,7 @@
         "not op_mini all"
     ],
     "devDependencies": {
+        "babel-eslint": "9.0.0",
         "env-cmd": "^8.0.2"
     }
 }
