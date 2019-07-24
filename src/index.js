@@ -13,7 +13,7 @@ import "bootstrap/dist/css/bootstrap.min.css"; // Boostrap import
  */
 function main(worker) {
     // Render the default title
-    ReactDOM.render(defaults.title, document.getElementById("title"))
+    ReactDOM.render(defaults.title, document.getElementById("title"));
     // Render the default root object
     ReactDOM.render(<App />, document.getElementById("root"));
     // Decide whether or not we need to enable the default serviceworker
@@ -23,4 +23,4 @@ function main(worker) {
         unregister();
     }
 }
-main(false)
+main(false);

@@ -5,6 +5,8 @@ import { Icon } from "react-fa";
 import { Link } from "react-router-dom";
 import { RingLoader } from "react-spinners";
 import { Redirect } from "react-router-dom";
+import PropTypes from "prop-types";
+
 /**
  * Magic link handler component
  */
@@ -43,35 +45,48 @@ class MagicPage extends Component {
             <div>
                 <FormGroup row>
                     <InputGroup>
-                        <Input required id="email" type="email" placeholder="email" />
+                        <Input required
+                            id="email"
+                            type="email"
+                            placeholder="email" />
                     </InputGroup>
                 </FormGroup>
                 <FormGroup row>
                     <InputGroup>
-                        <Input required id="password" type="password" placeholder="new password" />
+                        <Input required
+                            id="password"
+                            type="password"
+                            placeholder="new password" />
                     </InputGroup>
                 </FormGroup>
                 <FormGroup row>
                     <InputGroup>
-                        <Input required type="password" id="conpassword" placeholder="confirm password" />
+                        <Input required
+                            type="password"
+                            id="conpassword"
+                            placeholder="confirm password" />
                         <InputGroupAddon addonType="append">
-                            <Button color="success" style={{ borderRadius: 0 }}><Icon name="chevron-right" /></Button>
+                            <Button color="success"
+                                style={{ borderRadius: 0 }}><Icon name="chevron-right" /></Button>
                         </InputGroupAddon>
                     </InputGroup>
                 </FormGroup>
             </div>
         );
         if (this.state.loading) {
-            innerForm = (<div style={{ display: "block", width: "100%" }} align="center"><RingLoader color={theme.primary[0]} /> </div>);
+            innerForm = (<div style={{ display: "block", width: "100%" }}
+                align="center"><RingLoader color={theme.primary[0]} /> </div>);
             innerText = "";
         }
         if (this.state.done) {
-            innerForm = <FormText><Link to="/login" style={{ color: "rgba(255, 255, 255, 0.5)" }}>Login</Link></FormText>;
+            innerForm = <FormText><Link to="/login"
+                style={{ color: "rgba(255, 255, 255, 0.5)" }}>Login</Link></FormText>;
             innerText = "Password changed!";
         }
         let errors = null;
         if (this.state.errors !== "") {
-            errors = (<Alert style={{ background: "rgba(255, 0, 0, 0.25)", border: "none", color: "white" }} color="danger">{this.state.errors}</Alert>)
+            errors = (<Alert style={{ background: "rgba(255, 0, 0, 0.25)", border: "none", color: "white" }}
+                color="danger">{this.state.errors}</Alert>);
         }
         let contents = (
             <div style={{ padding: 30 }}>
@@ -105,15 +120,19 @@ class MagicPage extends Component {
                 }}>
                     {errors}
                     {innerForm}
-                    <FormText><Link to="/" style={{ color: "rgba(255, 255, 255, 0.5)" }}>Return Home</Link></FormText>
+                    <FormText><Link to="/"
+                        style={{ color: "rgba(255, 255, 255, 0.5)" }}>Return Home</Link></FormText>
                 </Form>
             </div>
         );
         if (!this.props.isMobile) {
             return (
-                <Container fluid style={{ width: "100%", minHeight: "100vh", textAlign: "center", backgroundColor: theme.secondary[1] }} className="d-flex align-items-center">
+                <Container fluid
+                    style={{ width: "100%", minHeight: "100vh", textAlign: "center", backgroundColor: theme.secondary[1] }}
+                    className="d-flex align-items-center">
                     <Col />
-                    <Col xs={3} style={{ display: "block", zIndex: 3, color: "white", background: "rgba(255, 255, 255, 0.05)" }}>
+                    <Col xs={3}
+                        style={{ display: "block", zIndex: 3, color: "white", background: "rgba(255, 255, 255, 0.05)" }}>
                         {contents}
                     </Col>
                     <Col />
@@ -121,8 +140,11 @@ class MagicPage extends Component {
             );
         } else {
             return (
-                <Container fluid style={{ width: "100%", minHeight: "100vh", textAlign: "center", backgroundColor: theme.secondary[1] }} className="d-flex align-items-center">
-                    <Col xs={12} style={{ display: "block", zIndex: 3, color: "white", background: "rgba(255, 255, 255, 0.05)" }}>
+                <Container fluid
+                    style={{ width: "100%", minHeight: "100vh", textAlign: "center", backgroundColor: theme.secondary[1] }}
+                    className="d-flex align-items-center">
+                    <Col xs={12}
+                        style={{ display: "block", zIndex: 3, color: "white", background: "rgba(255, 255, 255, 0.05)" }}>
                         {contents}
                     </Col>
                 </Container>
@@ -133,8 +155,19 @@ class MagicPage extends Component {
      * Render login component
      */
     renderLogin() {
-        return <Redirect to="/login" />
+        return <Redirect to="/login" />;
     }
 }
+
+MagicPage.propTypes = {
+    match: {
+        params: {
+            mlurl: PropTypes.string,
+        },
+    },
+    isMobile: PropTypes.bool,
+    profile: PropTypes.object,
+    setMagic: PropTypes.bool,
+};
 
 export default MagicPage;

@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { defaults } from "../../../../Defaults.js";
 import SponsorContainer from "./SponsorContainer.jsx";
+import PropTypes from "prop-types";
+
 // import SponsorDeclaration from defaults.sponsorshipLogos;
 /**
  * Sponsors component for the landing page
@@ -15,16 +17,16 @@ class Sponsors extends Component {
 
     componentWillMount() {
         fetch(defaults.sponsorshipLogos + "sponsors.json",
-        {
-            method: "GET", 
-            mode: "cors"
-        }
+            {
+                method: "GET", 
+                mode: "cors"
+            }
         ).then(response => response.json())
-        .then(data =>
-            this.setState({
-                sponsorslogos: data
-            })   
-        )
+            .then(data =>
+                this.setState({
+                    sponsorslogos: data
+                })   
+            );
     }
 
     render() {
@@ -35,23 +37,27 @@ class Sponsors extends Component {
 
             let SponsorDeclaration = this.state.sponsorslogos.sections;
             console.log(this.state.sponsorslogos);
-                for (let i = 0; i < SponsorDeclaration.length; i++) {
-                    if (SponsorDeclaration[i]["enabled"]) {
-                        renderList.push(
-                            <SponsorContainer key={i} showName={false} isMobile={this.props.isMobile} baseURL={defaults.sponsorshipLogos} declaration={SponsorDeclaration[i]} />
-                        );
-                    }
+            for (let i = 0; i < SponsorDeclaration.length; i++) {
+                if (SponsorDeclaration[i]["enabled"]) {
+                    renderList.push(
+                        <SponsorContainer key={i}
+                            showName={false}
+                            isMobile={this.props.isMobile}
+                            baseURL={defaults.sponsorshipLogos}
+                            declaration={SponsorDeclaration[i]} />
+                    );
                 }
+            }
             
             return (
                 <div >
                     <h1 className="display-4 theme-font mb-3">Sponsors</h1>
                     <hr />
                     <div className="sponsorship-background">
-                    {renderList}
+                        {renderList}
                     </div>
                 </div>
-            )
+            );
         } else {
             return (
                 <div>
@@ -59,11 +65,13 @@ class Sponsors extends Component {
                     <h4> {this.state.loading} </h4>
                     {/* <Loading text={this.state.loading} /> */}
                 </div>
-            )
-        }
-        
-        
+            );
+        }       
     }
 }
+
+Sponsors.propTypes = {
+    isMobile: PropTypes.bool,
+};
 
 export default Sponsors;

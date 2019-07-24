@@ -1,18 +1,23 @@
-import React, { Component } from "react";
+import React from "react";
 import { theme } from "../../Defaults";
-class Person extends Component {
-    render() {
-        return (
-	    <div style={{marginBottom: 10}}>
-		{this.props.image &&
-		 <img style={{ borderRadius:80 }} src={this.props.image} alt={this.props.name} />
-		}
-		<h5 style={{marginBottom: 2}}>{this.props.name} </h5>
-		{this.props.title &&
-		 <span style={{color: theme.secondary[0]}}> {this.props.title} </span>
-		}
-	    </div>
-        );
-    }
-}
+import PropTypes from "prop-types";
+
+const Person = ({ image, name, title }) => (
+    <div style={{marginBottom: 10}}>
+        {
+            image && <img style={{ borderRadius:80 }}
+                src={image}
+                alt={name} />
+        }
+        <h5 style={{marginBottom: 2}}> {name} </h5>
+        {title && <span style={{color: theme.secondary[0]}}> {title} </span>}
+    </div>
+);
+
+Person.propTypes = {
+    image: PropTypes.string,
+    name: PropTypes.string,
+    title: PropTypes.string,
+};
+
 export default Person;

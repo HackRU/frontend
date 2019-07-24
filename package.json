@@ -29,7 +29,9 @@
         "start": "env-cmd development react-scripts start",
         "build": "env-cmd build react-scripts build",
         "test": "react-scripts test",
-        "eject": "react-scripts eject"
+        "eject": "react-scripts eject",
+        "lint": "eslint 'src/**' --ignore-pattern '*.json'",
+        "lint-fix": "eslint 'src/**' --ignore-pattern '*.json' --fix"
     },
     "eslintConfig": {
         "extends": "react-app"
@@ -41,7 +43,17 @@
         "not op_mini all"
     ],
     "devDependencies": {
-        "babel-eslint": "9.0.0",
-        "env-cmd": "^8.0.2"
+        "babel-core": "^6.26.3",
+        "babel-eslint": "^9.0.0",
+        "env-cmd": "^8.0.2",
+        "eslint": "^5.16.0",
+        "eslint-config-standard": "^11.0.0",
+        "eslint-config-standard-react": "^6.0.0",
+        "eslint-plugin-import": "^2.13.0",
+        "eslint-plugin-node": "^7.0.1",
+        "eslint-plugin-promise": "^4.0.0",
+        "eslint-plugin-react": "^7.10.0",
+        "eslint-plugin-standard": "^3.1.0",
+        "prettier": "^1.18.2"
     }
 }

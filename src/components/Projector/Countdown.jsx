@@ -71,7 +71,13 @@ class Countdown extends Component {
     }
     render() {
         return (
-            <AnimatedGrid padding={0} ref="grid" width={500} height={500} rows={10} cols={32} template={this.state.template} />
+            <AnimatedGrid padding={0}
+                ref="grid"
+                width={500}
+                height={500}
+                rows={10}
+                cols={32}
+                template={this.state.template} />
         );
     }
 }

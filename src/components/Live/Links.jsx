@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import GlowButton from '../GlowButton';
+import GlowButton from "../GlowButton";
 import { liveImportantLinks } from "../../Defaults";
+import { ProfileType } from "../../Profile";
 
 class Links extends Component {
     render() {
@@ -13,7 +14,7 @@ class Links extends Component {
                     icon={liveImportantLinks[i].icon}
                     text={liveImportantLinks[i].title}
                 />
-            )
+            );
         }
         return (
             <div style={{ marginBottom: 10 }}>
@@ -26,4 +27,9 @@ class Links extends Component {
         );
     }
 }
+
+Links.propTypes = {
+    profile: ProfileType
+};
+
 export default Links;

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import GlowButton from '../../GlowButton';
+import GlowButton from "../../GlowButton";
 
 /**
  * Schedule component for the landing page
@@ -106,7 +106,8 @@ class Schedule extends Component {
                     </div>
                 </div>
                 <hr />
-                <div align="center" style={{ marginBottom: 10 }}>
+                <div align="center"
+                    style={{ marginBottom: 10 }}>
                     <h2> Download the App </h2>
                     <p>
                         Check out HackRU's official app for announcements, schedules, and your personal QR code!
@@ -130,7 +131,7 @@ class Schedule extends Component {
                     </div>
                 </div>
             </div>
-        )
+        );
     }
 }
 
