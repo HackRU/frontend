@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import GlowButton from "../GlowButton";
 import { liveImportantLinks } from "../../Defaults";
-import { ProfileType } from "../../Profile";
+import { ProfileType } from "../Profile";
 
 class Links extends Component {
     render() {

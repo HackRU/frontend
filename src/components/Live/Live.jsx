@@ -6,7 +6,7 @@ import Map from "./Map.jsx";
 import Links from "./Links.jsx";
 import Schedule from "./Schedule.jsx";
 import Announcements from "./Announcements.jsx";
-import { ProfileType } from "../../Profile";
+import { ProfileType } from "../Profile";
 
 class Live extends Component {
     render() {

@@ -4,7 +4,7 @@ import { Icon } from "react-fa";
 import { Link } from "react-router-dom";
 import { Redirect } from "react-router-dom";
 import AuthForm from "../library/AuthForm";
-import { ProfileType } from "../Profile";
+import { ProfileType } from "./Profile";
 import PropTypes from "prop-types";
 
 /**
