@@ -5,7 +5,7 @@ import Freeze from "./Sections/Freeze";
 import { ParallaxProvider } from "react-scroll-parallax";
 import { defaults, navlinks, theme } from "../../Defaults";
 import ScrollableAnchor from "react-scrollable-anchor";
-import { ProfileType } from "../../Profile";
+import { ProfileType } from "../Profile";
 import PropTypes from "prop-types";
 
 /**

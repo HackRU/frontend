@@ -10,7 +10,7 @@ import ProfileMessage from "./ProfileMessage";
 import QR from "./QR";
 import TravelReimbursementsForm from "./Forms/TravelReimbursementsForm";
 import UserProfileForm from "./Forms/UserProfileForm/UserProfileForm";
-import { ProfileType } from "../../Profile";
+import { ProfileType } from "../Profile";
 import PropTypes from "prop-types";
 
 class Dashboard extends Component {
