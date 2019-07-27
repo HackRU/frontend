@@ -92,10 +92,6 @@ h1, h2, h3, h4, h5, h6, p {
 hr {
     background-color: rgba(255, 255, 255, 0.5);
 }
-h4{
-    color: var(--primary-color) !important;
-}
-
 /* Theme Nav/Font */
 .theme-font {
     font-family: var(--header-font);
@@ -128,15 +124,18 @@ h4{
     background: var(--primary-color);
     width: 100vw; 
     z-index: 10;
+    color: var(--secondary-color);
 }
 .bg-gradient-left {
     background: var(--primary-color);
     width: 100vw; 
     z-index: 10;
+    color: var(--secondary-color);
 }
 .bg-no-gradient {
     width: 100vw;
     z-index: 10;
+    color: var(--primary-color);
 }
 .skew-right, .skew-left {
     padding-top: 3em;
@@ -173,11 +172,6 @@ h4{
 .footer .footer-logo {
     display: inline-block;
     height: calc(10vh*0.45); 
-}
-.color-priority {
-    width: 100%; 
-    color:  #ffffff !important;
-    z-index: 10;
 }
 #navigation-link {
     font-family: var(--text-font);
