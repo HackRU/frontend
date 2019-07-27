@@ -229,6 +229,8 @@ input, textarea, .custom-file-label {
 .custom-av-checkbox div div label p {
     color: var(--input-color);
 }
+form .btn, form btn-secondary {
+    color: var(--secondary-color) !important;
 
 /* Form validator */
 .avfield-hide-inner {
