@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Raleway+Dots");
+@import url('https://fonts.googleapis.com/css?family=Titillium+Web&display=swap');
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i");
 
 /* Variables */
@@ -16,8 +16,10 @@
     --active-color: rgba(255, 255, 255, 0.5);
     --active-background-color: #5A7A96A0;
     /* Fonts */
-    --header-font: 'Raleway Dots', serif;
-    --text-font: 'Open Sans', sans-serif;
+    --header-font: 'Titillium Web', sans-serif;
+    --text-font: 'Titillium Web', sans-serif;
+
+/*'Open Sans', sans-serif;  */
     /* Form Inputs */
     --input-background: rgba(255, 255, 255, 0.2);
     --input-placeholder: rgba(255, 255, 255, 0.3);
