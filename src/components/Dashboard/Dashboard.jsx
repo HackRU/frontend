@@ -133,7 +133,7 @@ class Dashboard extends Component {
                                     <img width="250"
                                         style={{ marginTop: 0 }}
                                         alt="logo"
-                                        src="./assets/icons/hru-logo-green.svg" />
+                                        src="./assets/icons/hru-logo-white.svg" />
                                 </Col>
                             </Row>
                         </div>
