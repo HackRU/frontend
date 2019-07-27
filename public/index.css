@@ -162,12 +162,15 @@ hr {
     font-size: 100%; 
 }
 .footer .social-links:hover{
-    color: var(--primary-color);
+    color: var(--hover-color);
 }
 .footer a {
     color: var(--primary-color);
     line-height: 10vh;
     padding: 15px 10px; 
+}
+.footer a:hover {
+   color: var(--hover-color);
 }
 .footer .footer-logo {
     display: inline-block;

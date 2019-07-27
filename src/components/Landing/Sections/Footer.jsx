@@ -16,7 +16,7 @@ class Footer extends Component {
                             <div className="text-center col-lg-4"
                                 style={{ padding: 0 }}>
                                 <h6 className="align-middle mb-4">
-                                    <a style={{color: "white" }}
+                                    <a 
                                         href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf"
                                         target="_blank"
                                         rel="noopener noreferrer">MLH's Code of Conduct</a>
