@@ -183,7 +183,13 @@ hr {
 #landing-section {
     color: white;
 }
-
+.table {
+    background-color: inherit !important;
+    color: inherit !important;
+}
+.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+    color: var(--primary-color);
+}
 /* Form Inputs (Dashboard/Login/Signup/Magic/Forgot) */
 input, textarea, .custom-file-label {
     border-radius: var(--input-border-radius) !important;
