@@ -22,8 +22,9 @@ const AuthForm = ({ children, errors, label, loading, isMobile, onSubmit, title 
         style={{ width: "100%", minHeight: "100vh", textAlign: "center", backgroundColor: theme.secondary[0] }}
         className="d-flex align-items-center"
     >
+        { isMobile ? null : <Col /> }
         <Col
-            xs={isMobile ? 3 : 12}
+            xs={isMobile ? 12 : 3}
             style={{ display: "block", zIndex: 3, color: "white", background: "rgba(255, 255, 255, 0.05)" }}
         >
             <div style={{ padding: 30 }}>
@@ -37,6 +38,7 @@ const AuthForm = ({ children, errors, label, loading, isMobile, onSubmit, title 
                 </Form>
             </div>
         </Col>
+        { isMobile ? null : <Col /> }
     </Container>
 );
 
