@@ -231,6 +231,7 @@ input, textarea, .custom-file-label {
 }
 form .btn, form btn-secondary {
     color: var(--secondary-color) !important;
+}
 
 /* Form validator */
 .avfield-hide-inner {
