@@ -29,7 +29,7 @@ class Section extends Component {
                     <ListGroupItem action
                         tag="button"
                         href="#"
-                        style={{ background: theme.primary[0] + "2F", color: theme.primary[1] + "FF", borderRadius: 0 }}
+                        style={{ background: theme.primary[0] + "2F", color: theme.primary[0] + "FF", borderRadius: 0 }}
                         onClick={() => 
                             this.setState({ isOpen: !this.state.isOpen })
                         }>
