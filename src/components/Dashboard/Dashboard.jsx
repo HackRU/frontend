@@ -102,7 +102,7 @@ class Dashboard extends Component {
                     <Container>
                         <div style={{ width: "100%", textAlign: "left", marginBottom: 0, paddingTop: 35 }}>
                             <Row>
-                                <Col md={9}
+                                <Col md={8}
                                     xs={12}>
                                     <h1 className="display-4 theme-font">Welcome, {user.first_name}</h1>
                                     <div style={{ display: "inline-block", marginRight: 20 }}>
@@ -128,12 +128,12 @@ class Dashboard extends Component {
                                         style={{ color: theme.accent[0] + "ff", textDecoration: "none" }}>Logout</Link></p></div>
                                 </Col>
                                 <Col style={{ textAlign: "center" }}
-                                    md={3}
+                                    md={4}
                                     xs={12}>
-                                    <img width="250"
+                                    <img width="150"
                                         style={{ marginTop: 0 }}
                                         alt="logo"
-                                        src="./assets/icons/hru-logo-green.svg" />
+                                        src="./assets/icons/hru-logo-white.svg" />
                                 </Col>
                             </Row>
                         </div>

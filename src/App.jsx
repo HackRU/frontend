@@ -110,8 +110,6 @@ class App extends Component {
                     <div style={{ position: "fixed", zIndex: 0, width: "100%", height: "100%", left: 0, top: 0, opacity: 0.5 }}>
                         {defaults.enableFlyingLogo && (<FlyingLogo url={"/assets/icons/greenwingstarasset.png"} />)}
                     </div>
-                    <div style={{ position: "fixed", zIndex: 1, width: "100%", height: "100%", left: 0, top: 0, background: "url(/assets/hru-background-large.png)", backgroundSize: "cover", opacity: 0.25 }}></div>
-                    <div style={{ position: "fixed", zIndex: 2, width: "100%", height: "100%", left: 0, top: 0, backgroundColor: "rgb(0, 0, 0)", backgroundSize: "cover", opacity: 0.25 }}></div>
                     <Switch>
                         {/* This is where the URL routing magic actually happens */}
                         <Route exact
