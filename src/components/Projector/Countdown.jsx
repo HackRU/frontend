@@ -11,11 +11,13 @@ class Countdown extends Component {
         this.oldMin = -1;
         this.setState({
             end: end,
-            template: this.generateTemplate(this.getTimeString(end))
+            template: this.generateTemplate(this.getTimeString(end)),
         });
         setInterval(() => {
             this.setState({
-                template: this.generateTemplate(this.getTimeString(this.state.end))
+                template: this.generateTemplate(
+                    this.getTimeString(this.state.end)
+                ),
             });
         }, 1000);
     }
@@ -23,7 +25,9 @@ class Countdown extends Component {
         let now = new Date().getTime();
         let distance = end - now;
         //let days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        let hours = Math.floor(
+            (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+        );
         let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
         let seconds = Math.floor((distance % (1000 * 60)) / 1000);
         if (hours < 0) {
@@ -71,13 +75,15 @@ class Countdown extends Component {
     }
     render() {
         return (
-            <AnimatedGrid padding={0}
+            <AnimatedGrid
+                padding={0}
                 ref="grid"
                 width={500}
                 height={500}
                 rows={10}
                 cols={32}
-                template={this.state.template} />
+                template={this.state.template}
+            />
         );
     }
 }

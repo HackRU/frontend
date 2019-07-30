@@ -18,5 +18,5 @@ export {
     LivePage,
     TeamPage,
     E404,
-    ProjectorPage
+    ProjectorPage,
 };

@@ -8,24 +8,21 @@ import PropTypes from "prop-types";
  * Sponsors component for the landing page
  */
 class Sponsors extends Component {
-
-
     state = {
         loading: "Our lastest sponsors list is loading ...",
-        sponsorslogos: null
-    }
+        sponsorslogos: null,
+    };
 
     componentWillMount() {
-        fetch(defaults.sponsorshipLogos + "sponsors.json",
-            {
-                method: "GET", 
-                mode: "cors"
-            }
-        ).then(response => response.json())
+        fetch(defaults.sponsorshipLogos + "sponsors.json", {
+            method: "GET",
+            mode: "cors",
+        })
+            .then(response => response.json())
             .then(data =>
                 this.setState({
-                    sponsorslogos: data
-                })   
+                    sponsorslogos: data,
+                })
             );
     }
 
@@ -33,29 +30,27 @@ class Sponsors extends Component {
         let renderList = [];
 
         if (this.state.sponsorslogos) {
-
-
             let SponsorDeclaration = this.state.sponsorslogos.sections;
             console.log(this.state.sponsorslogos);
             for (let i = 0; i < SponsorDeclaration.length; i++) {
                 if (SponsorDeclaration[i]["enabled"]) {
                     renderList.push(
-                        <SponsorContainer key={i}
+                        <SponsorContainer
+                            key={i}
                             showName={false}
                             isMobile={this.props.isMobile}
                             baseURL={defaults.sponsorshipLogos}
-                            declaration={SponsorDeclaration[i]} />
+                            declaration={SponsorDeclaration[i]}
+                        />
                     );
                 }
             }
-            
+
             return (
-                <div >
+                <div>
                     <h1 className="display-4 theme-font mb-3">Sponsors</h1>
                     <hr />
-                    <div className="sponsorship-background">
-                        {renderList}
-                    </div>
+                    <div className="sponsorship-background">{renderList}</div>
                 </div>
             );
         } else {
@@ -66,7 +61,7 @@ class Sponsors extends Component {
                     {/* <Loading text={this.state.loading} /> */}
                 </div>
             );
-        }       
+        }
     }
 }
 

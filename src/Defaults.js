@@ -6,89 +6,92 @@ import Partners from "./components/Landing/Sections/Partners.jsx";
 import FAQs from "./components/Landing/Sections/Faqs";
 import Footer from "./components/Landing/Sections/Footer";
 
-const defaults =  {
-    "title": "HackRU Fall 2019",
-    "dateText": "October 19th-20th",
-    "locationText": "College Avenue Student Center",
-    "universityText": "Rutgers University",
-    "mobileWidthThresholdSensitive": 1500,
-    "mobileWidthThresholdRelaxed": 1200,
-    "mobileHeightThresholdRelaxed": 650,
-    "enableFlyingLogo": false,
-    "poc": true,
-    "rest": {
-        "dev": "https://api.hackru.org/dev",
-        "prod": "https://api.hackru.org/prod",
-        "resumes": "https://hackru-resumes.s3.amazonaws.com",
-        "s3": "http://hackru-misc.s3-website-us-west-2.amazonaws.com/"
+const defaults = {
+    title: "HackRU Fall 2019",
+    dateText: "October 19th-20th",
+    locationText: "College Avenue Student Center",
+    universityText: "Rutgers University",
+    mobileWidthThresholdSensitive: 1500,
+    mobileWidthThresholdRelaxed: 1200,
+    mobileHeightThresholdRelaxed: 650,
+    enableFlyingLogo: false,
+    poc: true,
+    rest: {
+        dev: "https://api.hackru.org/dev",
+        prod: "https://api.hackru.org/prod",
+        resumes: "https://hackru-resumes.s3.amazonaws.com",
+        s3: "http://hackru-misc.s3-website-us-west-2.amazonaws.com/",
     },
-    "sponsorshipLogos": "https://s3-us-west-2.amazonaws.com/hackru-internal/sponsorship-logos/",
-    "partnerLogos": "https://s3-us-west-2.amazonaws.com/hackru-internal/partners-logos/",
-    "teamInfo": "https://s3-us-west-2.amazonaws.com/hackru-internal/hackru-team/",
-    "freeze": false
+    sponsorshipLogos:
+        "https://s3-us-west-2.amazonaws.com/hackru-internal/sponsorship-logos/",
+    partnerLogos:
+        "https://s3-us-west-2.amazonaws.com/hackru-internal/partners-logos/",
+    teamInfo: "https://s3-us-west-2.amazonaws.com/hackru-internal/hackru-team/",
+    freeze: false,
 };
 
 const navlinks = {
     "About Us": {
-        "url": "#about",
-        "enabled": !defaults.freeze,
-        "hideLink": false,
-        "fullHeight": false,
-        "component": (props) => <About {...props} />
+        url: "#about",
+        enabled: !defaults.freeze,
+        hideLink: false,
+        fullHeight: false,
+        component: props => <About {...props} />,
     },
-    "Schedule": {
-        "url": "#schedule",
-        "enabled": !defaults.freeze,
-        "hideLink": false,
-        "fullHeight": false,
-        "component": (props) => <Schedule {...props} />
+    Schedule: {
+        url: "#schedule",
+        enabled: !defaults.freeze,
+        hideLink: false,
+        fullHeight: false,
+        component: props => <Schedule {...props} />,
     },
-    "Sponsors": {
-        "url": "#sponsors",
-        "enabled": !defaults.freeze,
-        "hideLink": false,
-        "fullHeight": false,
-        "component": (props) => <Sponsors {...props} />
+    Sponsors: {
+        url: "#sponsors",
+        enabled: !defaults.freeze,
+        hideLink: false,
+        fullHeight: false,
+        component: props => <Sponsors {...props} />,
     },
-    "Partners": {
-        "url": "#partners",
-        "enabled": !defaults.freeze,
-        "hideLink": false,
-        "fullHeight": false,
-        "component": (props) => <Partners {...props} />
+    Partners: {
+        url: "#partners",
+        enabled: !defaults.freeze,
+        hideLink: false,
+        fullHeight: false,
+        component: props => <Partners {...props} />,
     },
-    "FAQs": {
-        "url": "#faqs",
-        "enabled": !defaults.freeze,
-        "hideLink": false,
-        "fullHeight": false,
-        "component": (props) => <FAQs {...props} />
+    FAQs: {
+        url: "#faqs",
+        enabled: !defaults.freeze,
+        hideLink: false,
+        fullHeight: false,
+        component: props => <FAQs {...props} />,
     },
-    "Footer": {
-        "url": "#footer",
-        "enabled": true,
-        "hideLink": true,
-        "fullHeight": false,
-        "skew": false,
-        "component": (props) => <Footer {...props} />
-    }
+    Footer: {
+        url: "#footer",
+        enabled: true,
+        hideLink: true,
+        fullHeight: false,
+        skew: false,
+        component: props => <Footer {...props} />,
+    },
 };
 // To unify styling between javascript and css, we define these variables in "index.css" as a variable, and proceed to get a handle
 // to the respective values through JavaScript
 let computedStyle = getComputedStyle(document.body);
 const theme = {
-    "primary": [
+    primary: [
         computedStyle.getPropertyValue("--primary-color"),
-        computedStyle.getPropertyValue("--primary-color-alt")],
-    "secondary": [
+        computedStyle.getPropertyValue("--primary-color-alt"),
+    ],
+    secondary: [
         computedStyle.getPropertyValue("--secondary-color"),
-        computedStyle.getPropertyValue("--secondary-color-alt")],
-    "accent": [
+        computedStyle.getPropertyValue("--secondary-color-alt"),
+    ],
+    accent: [
         computedStyle.getPropertyValue("--accent-color"),
-        computedStyle.getPropertyValue("--accent-color-alt")],
-    "disabled": [
-        computedStyle.getPropertyValue("--disabled-color")
-    ]
+        computedStyle.getPropertyValue("--accent-color-alt"),
+    ],
+    disabled: [computedStyle.getPropertyValue("--disabled-color")],
 };
 // Populate the theme variable with css variables
 let varList = [
@@ -111,44 +114,39 @@ let varList = [
     "sponsors-platinum-color",
     "sponsors-gold-color",
     "sponsors-silver-color",
-    "sponsors-bronze-color"
+    "sponsors-bronze-color",
 ];
-varList.forEach((element) => {
+varList.forEach(element => {
     theme[element] = computedStyle.getPropertyValue("--" + element);
     return element;
 });
 // Live "important links"
 const liveImportantLinks = [
     {
-        "title": "Waiver",
-        "href": "https://hackru.org/resources/waiver.pdf",
-        "icon": "file"
+        title: "Waiver",
+        href: "https://hackru.org/resources/waiver.pdf",
+        icon: "file",
     },
     {
-        "title": "Devpost",
-        "href": "http://hackru-s19.devpost.com",
-        "icon": "code"
+        title: "Devpost",
+        href: "http://hackru-s19.devpost.com",
+        icon: "code",
     },
     {
-        "title": "Slack",
-        "href": "http://bit.ly/hackru-s19",
-        "icon": "slack"
+        title: "Slack",
+        href: "http://bit.ly/hackru-s19",
+        icon: "slack",
     },
     {
-        "title": "HelpQ",
-        "href": "https://hackru-helpq.herokuapp.com",
-        "icon": "stack-overflow"
+        title: "HelpQ",
+        href: "https://hackru-helpq.herokuapp.com",
+        icon: "stack-overflow",
     },
     {
-        "title": "Food Menu",
-        "href": "https://s3-us-west-2.amazonaws.com/hackru-misc/menu.pdf",
-        "icon": "cutlery"
-    }
+        title: "Food Menu",
+        href: "https://s3-us-west-2.amazonaws.com/hackru-misc/menu.pdf",
+        icon: "cutlery",
+    },
 ];
 
-export {
-    defaults,
-    navlinks,
-    theme,
-    liveImportantLinks
-};
+export { defaults, navlinks, theme, liveImportantLinks };

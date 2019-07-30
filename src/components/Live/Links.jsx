@@ -18,10 +18,10 @@ class Links extends Component {
         }
         return (
             <div style={{ marginBottom: 10 }}>
-                <div style={{ width: "100%", textAlign: "left", paddingTop: 10 }}>
-                    <div align="center">
-                        {items}
-                    </div>
+                <div
+                    style={{ width: "100%", textAlign: "left", paddingTop: 10 }}
+                >
+                    <div align="center">{items}</div>
                 </div>
             </div>
         );
@@ -29,7 +29,7 @@ class Links extends Component {
 }
 
 Links.propTypes = {
-    profile: ProfileType
+    profile: ProfileType,
 };
 
 export default Links;

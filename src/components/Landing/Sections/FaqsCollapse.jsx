@@ -10,7 +10,7 @@ class FaqsCollapse extends React.Component {
     }
     componentWillMount() {
         this.setState({
-            collapse: false
+            collapse: false,
         });
     }
     toggle() {
@@ -21,10 +21,20 @@ class FaqsCollapse extends React.Component {
 
         return (
             <div className="faq">
-                <h5 onClick={this.toggle}>{cat.title} <Icon className="faq-hover pull-right"
-                    name={(this.state.collapse) ? ("chevron-up") : ("chevron-down")} /></h5>
-                <hr className="faq-hover"/>
-                <Collapse isOpen={this.state.collapse}>{cat.text}<div style={{ minHeight: 25 }} /></Collapse>
+                <h5 onClick={this.toggle}>
+                    {cat.title}{" "}
+                    <Icon
+                        className="faq-hover pull-right"
+                        name={
+                            this.state.collapse ? "chevron-up" : "chevron-down"
+                        }
+                    />
+                </h5>
+                <hr className="faq-hover" />
+                <Collapse isOpen={this.state.collapse}>
+                    {cat.text}
+                    <div style={{ minHeight: 25 }} />
+                </Collapse>
             </div>
         );
     }
@@ -34,7 +44,7 @@ FaqsCollapse.propTypes = {
     cat: {
         title: PropTypes.string,
         text: PropTypes.string,
-    }
+    },
 };
 
 export default FaqsCollapse;

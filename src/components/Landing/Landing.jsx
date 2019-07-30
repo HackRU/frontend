@@ -14,13 +14,16 @@ import PropTypes from "prop-types";
  */
 class LandingPage extends Component {
     render() {
-        let sectionClasses = "col-lg-10 offset-lg-1 col-xs-12 offset-xs-0 skew-left color-priority";
+        let sectionClasses =
+            "col-lg-10 offset-lg-1 col-xs-12 offset-xs-0 skew-left color-priority";
         let rows = [];
         let keys = Object.keys(navlinks);
         for (let i = 0; i < keys.length; i++) {
             if (navlinks[keys[i]].enabled) {
                 let url = navlinks[keys[i]].url.substring(1);
-                let component = navlinks[keys[i]].component({ isMobile: this.props.isMobile });
+                let component = navlinks[keys[i]].component({
+                    isMobile: this.props.isMobile,
+                });
                 // Toggle the green skewed sections
                 let className = "";
                 if (i !== keys.length - 1) {
@@ -30,19 +33,18 @@ class LandingPage extends Component {
                     }
                 } else {
                     // The footer is a special type of human being...
-                    sectionClasses = "col-lg-12 offset-lg-0 col-xs-12 offset-xs-0 color-priority";
+                    sectionClasses =
+                        "col-lg-12 offset-lg-0 col-xs-12 offset-xs-0 color-priority";
                 }
                 let style = {};
                 if (navlinks[keys[i]].fullHeight) {
                     style["minHeight"] = "100vh";
                 }
-                rows.push((
-                    <ScrollableAnchor key={url}
-                        id={url}>
+                rows.push(
+                    <ScrollableAnchor key={url} id={url}>
                         <div>
-                            <Row className="section"
-                                style={style}>
-                                <div className={className} >
+                            <Row className="section" style={style}>
+                                <div className={className}>
                                     <div className={sectionClasses}>
                                         {component}
                                     </div>
@@ -50,24 +52,30 @@ class LandingPage extends Component {
                             </Row>
                         </div>
                     </ScrollableAnchor>
-                ));
+                );
             }
         }
         return (
-            <Container id="LandingPage"
+            <Container
+                id="LandingPage"
                 className="section"
                 fluid
-                style={{ backgroundColor: theme.secondary[1] }}>
+                style={{ backgroundColor: theme.secondary[1] }}
+            >
                 <ParallaxProvider>
                     <ScrollableAnchor id="home">
                         <div>
                             <Row className="section">
-                                { !defaults.freeze ?
-                                    <Home isMobile={this.props.isMobile}
+                                {!defaults.freeze ? (
+                                    <Home
+                                        isMobile={this.props.isMobile}
                                         profile={this.props.profile}
                                         loggedout={this.props.loggedout}
-                                        dismissAlert={this.props.dismissAlert} /> :
-                                    <Freeze isMobile={this.props.isMobile} />}
+                                        dismissAlert={this.props.dismissAlert}
+                                    />
+                                ) : (
+                                    <Freeze isMobile={this.props.isMobile} />
+                                )}
                             </Row>
                         </div>
                     </ScrollableAnchor>
@@ -82,7 +90,7 @@ LandingPage.propTypes = {
     isMobile: PropTypes.bool,
     profile: ProfileType,
     loggedout: PropTypes.bool,
-    dismissAlert: PropTypes.func
+    dismissAlert: PropTypes.func,
 };
 
 export default LandingPage;

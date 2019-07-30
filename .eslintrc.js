@@ -25,21 +25,8 @@ module.exports = {
         "react"
     ],
     rules: {
-        "indent": [
-            "error",
-            4
-        ],
-        "quotes": [
-            "error",
-            "double"
-        ],
-        "semi": [
-            "error",
-            "always"
-        ],
         "no-console": "off", // Allow log statements
         "react/display-name": "off", // Allow anonymous components
-        "react/jsx-max-props-per-line": 1,
         "react/no-string-refs": "off",
         "react/no-unescaped-entities": "off",
     },

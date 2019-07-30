@@ -11,29 +11,38 @@ import PropTypes from "prop-types";
  *     validate: JSON Object
  * }
  */
-class CustomAVInput extends Component {s
+class CustomAVInput extends Component {
+    s;
     componentWillMount() {
         this.setState({
-            width: "100%"
+            width: "100%",
         });
     }
     componentDidMount() {
         this.setState({
-            width: this.refs.avfield.offsetWidth
+            width: this.refs.avfield.offsetWidth,
         });
     }
     render() {
         return (
             <div>
                 <div ref="avfield">
-                    <AvField className="avfield-hide-inner"
+                    <AvField
+                        className="avfield-hide-inner"
                         name={this.props.name}
                         label={this.props.label}
                         type="text"
                         value={this.props.value}
-                        validate={this.props.validate} />
+                        validate={this.props.validate}
+                    />
                 </div>
-                <div style={{ position: "absolute", top: 32, width: "calc(100% - 30px)" }}>
+                <div
+                    style={{
+                        position: "absolute",
+                        top: 32,
+                        width: "calc(100% - 30px)",
+                    }}
+                >
                     {this.props.children}
                 </div>
             </div>

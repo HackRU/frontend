@@ -6,174 +6,36 @@ import PropTypes from "prop-types";
 const N = "rgba(0, 0, 0, 0)";
 const C = theme.primary[0];
 const BITMAP = {
-    "0": [
-        [C, C, C],
-        [C, N, C],
-        [C, N, C],
-        [C, N, C],
-        [C, C, C]
-    ],
-    "1": [
-        [N, C, N],
-        [N, C, N],
-        [N, C, N],
-        [N, C, N],
-        [N, C, N]
-    ],
-    "2": [
-        [C, C, C],
-        [N, N, C],
-        [C, C, C],
-        [C, N, N],
-        [C, C, C]
-    ],
-    "3": [
-        [C, C, C],
-        [N, N, C],
-        [C, C, C],
-        [N, N, C],
-        [C, C, C]
-    ],
-    "4": [
-        [C, N, C],
-        [C, N, C],
-        [C, C, C],
-        [N, N, C],
-        [N, N, C]
-    ],
-    "5": [
-        [C, C, C],
-        [C, N, N],
-        [C, C, C],
-        [N, N, C],
-        [C, C, C]
-    ],
-    "6": [
-        [C, C, C],
-        [C, N, N],
-        [C, C, C],
-        [C, N, C],
-        [C, C, C]
-    ],
-    "7": [
-        [C, C, C],
-        [N, N, C],
-        [N, N, C],
-        [N, N, C],
-        [N, N, C]
-    ],
-    "8": [
-        [C, C, C],
-        [C, N, C],
-        [C, C, C],
-        [C, N, C],
-        [C, C, C]
-    ],
-    "9": [
-        [C, C, C],
-        [C, N, C],
-        [C, C, C],
-        [N, N, C],
-        [C, C, C]
-    ],
-    ":": [
-        [N, N, N],
-        [N, C, N],
-        [N, N, N],
-        [N, C, N],
-        [N, N, N]
-    ],
-    "H": [
-        [C, N, C],
-        [C, N, C],
-        [C, C, C],
-        [C, N, C],
-        [C, N, C]
-    ],
-    "A": [
-        [C, C, C],
-        [C, N, C],
-        [C, C, C],
-        [C, N, C],
-        [C, N, C]
-    ],
-    "C": [
-        [C, C, C],
-        [C, N, N],
-        [C, N, N],
-        [C, N, N],
-        [C, C, C]
-    ],
-    "K": [
-        [C, N, C],
-        [C, N, C],
-        [C, C, N],
-        [C, N, C],
-        [C, N, C]
-    ],
-    " ": [
-        [N],
-        [N],
-        [N],
-        [N],
-        [N]
-    ],
-    "R": [
-        [C, C, C],
-        [C, N, C],
-        [C, C, N],
-        [C, N, C],
-        [C, N, C]
-    ],
-    "U": [
-        [C, N, C],
-        [C, N, C],
-        [C, N, C],
-        [C, N, C],
-        [C, C, C]
-    ],
-    "W": [
+    "0": [[C, C, C], [C, N, C], [C, N, C], [C, N, C], [C, C, C]],
+    "1": [[N, C, N], [N, C, N], [N, C, N], [N, C, N], [N, C, N]],
+    "2": [[C, C, C], [N, N, C], [C, C, C], [C, N, N], [C, C, C]],
+    "3": [[C, C, C], [N, N, C], [C, C, C], [N, N, C], [C, C, C]],
+    "4": [[C, N, C], [C, N, C], [C, C, C], [N, N, C], [N, N, C]],
+    "5": [[C, C, C], [C, N, N], [C, C, C], [N, N, C], [C, C, C]],
+    "6": [[C, C, C], [C, N, N], [C, C, C], [C, N, C], [C, C, C]],
+    "7": [[C, C, C], [N, N, C], [N, N, C], [N, N, C], [N, N, C]],
+    "8": [[C, C, C], [C, N, C], [C, C, C], [C, N, C], [C, C, C]],
+    "9": [[C, C, C], [C, N, C], [C, C, C], [N, N, C], [C, C, C]],
+    ":": [[N, N, N], [N, C, N], [N, N, N], [N, C, N], [N, N, N]],
+    H: [[C, N, C], [C, N, C], [C, C, C], [C, N, C], [C, N, C]],
+    A: [[C, C, C], [C, N, C], [C, C, C], [C, N, C], [C, N, C]],
+    C: [[C, C, C], [C, N, N], [C, N, N], [C, N, N], [C, C, C]],
+    K: [[C, N, C], [C, N, C], [C, C, N], [C, N, C], [C, N, C]],
+    " ": [[N], [N], [N], [N], [N]],
+    R: [[C, C, C], [C, N, C], [C, C, N], [C, N, C], [C, N, C]],
+    U: [[C, N, C], [C, N, C], [C, N, C], [C, N, C], [C, C, C]],
+    W: [
         [C, N, C, N, C],
         [C, N, C, N, C],
         [C, N, C, N, C],
         [C, N, C, N, C],
-        [N, C, N, C, N]
+        [N, C, N, C, N],
     ],
-    "I": [
-        [C, C, C],
-        [N, C, N],
-        [N, C, N],
-        [N, C, N],
-        [C, C, C]
-    ],
-    "L": [
-        [C, N, N],
-        [C, N, N],
-        [C, N, N],
-        [C, N, N],
-        [C, C, C]
-    ],
-    "T": [
-        [C, C, C],
-        [N, C, N],
-        [N, C, N],
-        [N, C, N],
-        [N, C, N]
-    ],
-    "E": [
-        [C, C, C],
-        [C, N, N],
-        [C, C, N],
-        [C, N, N],
-        [C, C, C]
-    ],
-    "N": [
-        [C, N, N, C],
-        [C, C, N, C],
-        [C, C, C, C],
-        [C, N, C, C],
-        [C, N, N, C]
-    ],
+    I: [[C, C, C], [N, C, N], [N, C, N], [N, C, N], [C, C, C]],
+    L: [[C, N, N], [C, N, N], [C, N, N], [C, N, N], [C, C, C]],
+    T: [[C, C, C], [N, C, N], [N, C, N], [N, C, N], [N, C, N]],
+    E: [[C, C, C], [C, N, N], [C, C, N], [C, N, N], [C, C, C]],
+    N: [[C, N, N, C], [C, C, N, C], [C, C, C, C], [C, N, C, C], [C, N, N, C]],
 };
 
 class AnimatedGrid extends Component {
@@ -182,15 +44,15 @@ class AnimatedGrid extends Component {
         this.animate = this.animate.bind(this);
     }
     animate() {
-        let rows = (this.props.rows) ? (this.props.rows) : 25;
-        let cols = (this.props.cols) ? (this.props.cols) : 25;
+        let rows = this.props.rows ? this.props.rows : 25;
+        let cols = this.props.cols ? this.props.cols : 25;
         anime({
             targets: ".staggering .element",
             scale: [
-                {value: .1, easing: "easeOutSine", duration: 500},
-                {value: 1, easing: "easeInOutQuad", duration: 2500}
+                { value: 0.1, easing: "easeOutSine", duration: 500 },
+                { value: 1, easing: "easeInOutQuad", duration: 2500 },
             ],
-            delay: anime.stagger(50, {grid: [cols, rows], from: "center"}),
+            delay: anime.stagger(50, { grid: [cols, rows], from: "center" }),
             loop: true,
         });
     }
@@ -199,14 +61,20 @@ class AnimatedGrid extends Component {
     }
     render() {
         let grid = [];
-        let width =  Math.min((this.props.width) ? (this.props.width) : 500, window.innerWidth - 200);
-        let height = Math.min((this.props.height) ? (this.props.height) : 500, window.innerWidth - 200);
-        let rows = (this.props.rows) ? (this.props.rows) : 25;
-        let cols = (this.props.cols) ? (this.props.cols) : 25;
+        let width = Math.min(
+            this.props.width ? this.props.width : 500,
+            window.innerWidth - 200
+        );
+        let height = Math.min(
+            this.props.height ? this.props.height : 500,
+            window.innerWidth - 200
+        );
+        let rows = this.props.rows ? this.props.rows : 25;
+        let cols = this.props.cols ? this.props.cols : 25;
         this.width = width;
         let cellWidth = width / cols;
         let cellHeight = height / cols;
-        let padding = (this.props.padding) ? (this.props.padding) : 2;
+        let padding = this.props.padding ? this.props.padding : 2;
         let template = this.props.template;
         if (!template) {
             template = [];
@@ -220,15 +88,32 @@ class AnimatedGrid extends Component {
         }
         for (let y = 0; y < rows; y++) {
             for (let x = 0; x < cols; x++) {
-                let color = (y < template.length && x < template[0].length && template[y][x]) ? (template[y][x]) : ("rgba(0, 0, 0, 0)");
-                grid.push(<div key={(y * cols) + x}
-                    className="element"
-                    style={{ position: "absolute", width: cellWidth, height: cellHeight, minWidth: cellWidth, minHeight: cellHeight, backgroundColor: color, top: y * (cellHeight + padding), left: x * (cellWidth + padding) }} ></div>);
+                let color =
+                    y < template.length &&
+                    x < template[0].length &&
+                    template[y][x]
+                        ? template[y][x]
+                        : "rgba(0, 0, 0, 0)";
+                grid.push(
+                    <div
+                        key={y * cols + x}
+                        className="element"
+                        style={{
+                            position: "absolute",
+                            width: cellWidth,
+                            height: cellHeight,
+                            minWidth: cellWidth,
+                            minHeight: cellHeight,
+                            backgroundColor: color,
+                            top: y * (cellHeight + padding),
+                            left: x * (cellWidth + padding),
+                        }}
+                    ></div>
+                );
             }
         }
         return (
-            <div style={this.props.style}
-                className="staggering">
+            <div style={this.props.style} className="staggering">
                 {grid}
             </div>
         );
@@ -241,7 +126,7 @@ class TextGrid extends Component {
     }
     componentWillMount() {
         this.setState({
-            template: this.generateTemplate(this.props.text)
+            template: this.generateTemplate(this.props.text),
         });
     }
     generateTemplate(str) {
@@ -260,17 +145,18 @@ class TextGrid extends Component {
     }
     render() {
         return (
-            <AnimatedGrid style={this.props.style}
+            <AnimatedGrid
+                style={this.props.style}
                 padding={0}
                 ref="grid"
                 width={500}
                 height={500}
                 rows={10}
                 cols={70}
-                template={this.state.template} />
+                template={this.state.template}
+            />
         );
     }
-
 }
 
 AnimatedGrid.propTypes = {
@@ -289,6 +175,4 @@ TextGrid.propTypes = {
 };
 
 export default AnimatedGrid;
-export {
-    BITMAP, N, C, TextGrid
-};
+export { BITMAP, N, C, TextGrid };

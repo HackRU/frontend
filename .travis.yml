@@ -4,5 +4,4 @@ node_js:
 before_install:
   - npm i -g npm@3
 script:
-  - npm run lint
-  - npm run build
+  - npm run check

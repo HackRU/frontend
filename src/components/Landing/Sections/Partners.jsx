@@ -7,24 +7,21 @@ import PropTypes from "prop-types";
  * Sponsors component for the landing page
  */
 class Sponsors extends Component {
-
-
     state = {
         loading: "Our lastest partners list is loading ...",
-        partnerLogos: null
-    }
+        partnerLogos: null,
+    };
 
     componentWillMount() {
-        fetch(defaults.partnerLogos + "partners.json",
-            {
-                method: "GET", 
-                mode: "cors"
-            }
-        ).then(response => response.json())
+        fetch(defaults.partnerLogos + "partners.json", {
+            method: "GET",
+            mode: "cors",
+        })
+            .then(response => response.json())
             .then(data =>
                 this.setState({
-                    partnerLogos: data
-                })   
+                    partnerLogos: data,
+                })
             );
     }
 
@@ -41,22 +38,22 @@ class Sponsors extends Component {
                 console.log(i);
                 if (SponsorDeclaration[i]["enabled"]) {
                     renderList.push(
-                        <SponsorContainer key={i}
+                        <SponsorContainer
+                            key={i}
                             showName={false}
                             baseURL={defaults.partnerLogos}
                             isMobile={this.props.isMobile}
-                            declaration={SponsorDeclaration[i]} />
+                            declaration={SponsorDeclaration[i]}
+                        />
                     );
                 }
             }
-            
+
             return (
-                <div >
+                <div>
                     <h1 className="display-4 theme-font mb-3">Partners</h1>
                     <hr />
-                    <div className="sponsorship-background">
-                        {renderList}
-                    </div>
+                    <div className="sponsorship-background">{renderList}</div>
                 </div>
             );
         } else {
@@ -67,7 +64,7 @@ class Sponsors extends Component {
                     {/* <Loading text={this.state.loading} /> */}
                 </div>
             );
-        }        
+        }
     }
 }
 

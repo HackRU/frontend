@@ -16,29 +16,45 @@ Props:
 - onSubmit: the actual function of the form
 - title: the form title
 */
-const AuthForm = ({ children, errors, label, loading, isMobile, onSubmit, title }) => (
+const AuthForm = ({
+    children,
+    errors,
+    label,
+    loading,
+    isMobile,
+    onSubmit,
+    title,
+}) => (
     <Container
         fluid
-        style={{ width: "100%", minHeight: "100vh", textAlign: "center", backgroundColor: theme.secondary[0] }}
+        style={{
+            width: "100%",
+            minHeight: "100vh",
+            textAlign: "center",
+            backgroundColor: theme.secondary[0],
+        }}
         className="d-flex align-items-center"
     >
-        { isMobile ? null : <Col /> }
+        {isMobile ? null : <Col />}
         <Col
             xs={isMobile ? 12 : 3}
-            style={{ display: "block", zIndex: 3, color: "white", background: "rgba(255, 255, 255, 0.05)" }}
+            style={{
+                display: "block",
+                zIndex: 3,
+                color: "white",
+                background: "rgba(255, 255, 255, 0.05)",
+            }}
         >
             <div style={{ padding: 30 }}>
-                <h1 className="display-1 theme-font">{ title }</h1>
-                <p className="lead">{loading ? label: ""}</p>
+                <h1 className="display-1 theme-font">{title}</h1>
+                <p className="lead">{loading ? label : ""}</p>
                 <Form onSubmit={onSubmit}>
                     {renderErrors(errors)}
-                    <div>
-                        {loading ? renderSpinner(): children}
-                    </div>
+                    <div>{loading ? renderSpinner() : children}</div>
                 </Form>
             </div>
         </Col>
-        { isMobile ? null : <Col /> }
+        {isMobile ? null : <Col />}
     </Container>
 );
 
@@ -53,20 +69,23 @@ AuthForm.propTypes = {
 };
 
 const renderSpinner = () => (
-    <div style={{ display: "block", width: "100%" }}
-        align="center">
+    <div style={{ display: "block", width: "100%" }} align="center">
         <RingLoader color={theme.primary[0]} />
     </div>
 );
 
-const renderErrors = (errors) => (
-    errors !== ""
-        ? (<Alert
-            style={{ background: "rgba(255, 0, 0, 0.25)", border: "none", color: "white" }}
-            color="danger">
+const renderErrors = errors =>
+    errors !== "" ? (
+        <Alert
+            style={{
+                background: "rgba(255, 0, 0, 0.25)",
+                border: "none",
+                color: "white",
+            }}
+            color="danger"
+        >
             {errors}
-        </Alert>)
-        : null
-);
+        </Alert>
+    ) : null;
 
 export default AuthForm;

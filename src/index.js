@@ -6,7 +6,7 @@ import { defaults } from "./Defaults"; // The standard list of strings that we w
 import "bootstrap/dist/css/bootstrap.min.css"; // Boostrap import
 /**
  * Application entry point. Here we render the standard root components that are standard to all pages in the website
- * 
+ *
  * @param {boolean} worker Toggle the default react service worker.
  *      We default this to false because enabling the service worker brings with it application caching, which causes production
  *      issues during version updates. If you would like to know about this issue in depth, read through the react documentation.

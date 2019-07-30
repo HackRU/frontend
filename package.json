@@ -31,7 +31,11 @@
         "test": "react-scripts test",
         "eject": "react-scripts eject",
         "lint": "eslint 'src/**' --ignore-pattern '*.json'",
-        "lint-fix": "eslint 'src/**' --ignore-pattern '*.json' --fix"
+        "lint-fix": "eslint 'src/**' --ignore-pattern '*.json' --fix",
+        "fmt": "prettier --write 'src/**'",
+        "fmt-check": "prettier --check 'src/**'",
+        "fix": "npm run lint-fix && npm run fmt",
+        "check": "npm run lint && npm run fmt-check"
     },
     "eslintConfig": {
         "extends": "react-app"
