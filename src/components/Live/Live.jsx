@@ -21,10 +21,7 @@ class Live extends Component {
                 }}
                 className="d-flex align-items-center"
             >
-                <div
-                    style={{ zIndex: 3, color: "white", width: "100%" }}
-                    align="center"
-                >
+                <div style={{ zIndex: 3, color: "white", width: "100%" }} align="center">
                     <Container>
                         <div
                             style={{
@@ -36,9 +33,7 @@ class Live extends Component {
                         >
                             <Row>
                                 <Col md={9} xs={12}>
-                                    <h1 className="display-4 theme-font">
-                                        HackRU Live
-                                    </h1>
+                                    <h1 className="display-4 theme-font">HackRU Live</h1>
                                     <div
                                         style={{
                                             display: "inline-block",
@@ -50,8 +45,7 @@ class Live extends Component {
                                                 to="/"
                                                 className="theme-home-link"
                                                 style={{
-                                                    color:
-                                                        theme.primary[0] + "ff",
+                                                    color: theme.primary[0] + "ff",
                                                     textDecoration: "none",
                                                 }}
                                             >
@@ -73,12 +67,8 @@ class Live extends Component {
                                                           to="/dashboard"
                                                           className="theme-home-link"
                                                           style={{
-                                                              color:
-                                                                  theme
-                                                                      .primary[0] +
-                                                                  "ff",
-                                                              textDecoration:
-                                                                  "none",
+                                                              color: theme.primary[0] + "ff",
+                                                              textDecoration: "none",
                                                           }}
                                                       >
                                                           Dashboard
@@ -97,12 +87,8 @@ class Live extends Component {
                                                           to="/logout"
                                                           className="theme-home-link"
                                                           style={{
-                                                              color:
-                                                                  theme
-                                                                      .accent[0] +
-                                                                  "ff",
-                                                              textDecoration:
-                                                                  "none",
+                                                              color: theme.accent[0] + "ff",
+                                                              textDecoration: "none",
                                                           }}
                                                       >
                                                           Logout
@@ -123,12 +109,8 @@ class Live extends Component {
                                                           to="/login"
                                                           className="theme-home-link"
                                                           style={{
-                                                              color:
-                                                                  theme
-                                                                      .accent[0] +
-                                                                  "ff",
-                                                              textDecoration:
-                                                                  "none",
+                                                              color: theme.accent[0] + "ff",
+                                                              textDecoration: "none",
                                                           }}
                                                       >
                                                           Login
@@ -137,11 +119,7 @@ class Live extends Component {
                                               </div>,
                                           ]}
                                 </Col>
-                                <Col
-                                    style={{ textAlign: "center" }}
-                                    md={3}
-                                    xs={12}
-                                >
+                                <Col style={{ textAlign: "center" }} md={3} xs={12}>
                                     <img
                                         width="250"
                                         style={{ marginTop: 0 }}
@@ -151,21 +129,13 @@ class Live extends Component {
                                 </Col>
                             </Row>
                         </div>
-                        <hr
-                            style={{ background: "rgba(255, 255, 255, 0.25)" }}
-                        />
+                        <hr style={{ background: "rgba(255, 255, 255, 0.25)" }} />
                         <Links />
-                        <hr
-                            style={{ background: "rgba(255, 255, 255, 0.25)" }}
-                        />
+                        <hr style={{ background: "rgba(255, 255, 255, 0.25)" }} />
                         <Announcements />
-                        <hr
-                            style={{ background: "rgba(255, 255, 255, 0.25)" }}
-                        />
+                        <hr style={{ background: "rgba(255, 255, 255, 0.25)" }} />
                         <Schedule />
-                        <hr
-                            style={{ background: "rgba(255, 255, 255, 0.25)" }}
-                        />
+                        <hr style={{ background: "rgba(255, 255, 255, 0.25)" }} />
                         <Map />
                     </Container>
                 </div>

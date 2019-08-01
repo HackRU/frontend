@@ -1,12 +1,5 @@
 import React, { Component } from "react";
-import {
-    Input,
-    InputGroup,
-    InputGroupAddon,
-    FormGroup,
-    Button,
-    FormText,
-} from "reactstrap";
+import { Input, InputGroup, InputGroupAddon, FormGroup, Button, FormText } from "reactstrap";
 import { Icon } from "react-fa";
 import { Link } from "react-router-dom";
 import { Redirect } from "react-router-dom";
@@ -41,12 +34,7 @@ class ForgotPage extends Component {
             >
                 <FormGroup row>
                     <InputGroup>
-                        <Input
-                            required
-                            type="email"
-                            id="email"
-                            placeholder="email"
-                        />
+                        <Input required type="email" id="email" placeholder="email" />
                         <InputGroupAddon addonType="append">
                             <Button color="success" style={{ borderRadius: 0 }}>
                                 <Icon name="chevron-right" />

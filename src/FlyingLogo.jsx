@@ -8,9 +8,7 @@ class FlyingLogo extends Component {
     constructor(props) {
         super(props);
         this._event_onResize = this._event_onResize.bind(this);
-        this._event_onInitializeRenderer = this._event_onInitializeRenderer.bind(
-            this
-        );
+        this._event_onInitializeRenderer = this._event_onInitializeRenderer.bind(this);
         this._event_onRender = this._event_onRender.bind(this);
         this._event_onUpdate = this._event_onUpdate.bind(this);
         this.image = new Image();
@@ -63,13 +61,7 @@ class FlyingLogo extends Component {
             this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
             for (let i = 0; i < this.logos.length; i++) {
                 let alien = this.logos[i];
-                this.context.drawImage(
-                    this.image,
-                    alien.x,
-                    alien.y,
-                    alien.width,
-                    alien.height
-                );
+                this.context.drawImage(this.image, alien.x, alien.y, alien.width, alien.height);
             }
         } else {
             this.canvas = document.getElementById("drawable");

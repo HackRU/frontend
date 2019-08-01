@@ -26,23 +26,15 @@ class SponsorContainer extends Component {
         return (
             <Container fluid style={{ textAlign: "center" }}>
                 {this.props.showName && (
-                    <Row
-                        style={{ width: "100%" }}
-                        className="d-flex align-items-center"
-                    >
+                    <Row style={{ width: "100%" }} className="d-flex align-items-center">
                         <Col xs={12}>
-                            <h2
-                                className="display-4"
-                                style={{ color: theme[declaration.color] }}
-                            >
+                            <h2 className="display-4" style={{ color: theme[declaration.color] }}>
                                 {declaration.name}
                             </h2>
                         </Col>
                     </Row>
                 )}
-                <div className="d-flex justify-content-center flex-wrap">
-                    {sponsors}
-                </div>
+                <div className="d-flex justify-content-center flex-wrap">{sponsors}</div>
             </Container>
         );
     }

@@ -16,15 +16,7 @@ Props:
 - onSubmit: the actual function of the form
 - title: the form title
 */
-const AuthForm = ({
-    children,
-    errors,
-    label,
-    loading,
-    isMobile,
-    onSubmit,
-    title,
-}) => (
+const AuthForm = ({ children, errors, label, loading, isMobile, onSubmit, title }) => (
     <Container
         fluid
         style={{

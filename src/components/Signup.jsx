@@ -1,13 +1,5 @@
 import React, { Component } from "react";
-import {
-    Col,
-    Input,
-    InputGroup,
-    InputGroupAddon,
-    FormGroup,
-    Button,
-    FormText,
-} from "reactstrap";
+import { Col, Input, InputGroup, InputGroupAddon, FormGroup, Button, FormText } from "reactstrap";
 import { Icon } from "react-fa";
 import { Link } from "react-router-dom";
 import { Redirect } from "react-router-dom";
@@ -41,45 +33,19 @@ class SignUpPage extends Component {
                 title="Sign Up"
             >
                 <FormGroup row>
-                    <Col
-                        xs={6}
-                        style={{ margin: 0, paddingLeft: 0, paddingRight: 7 }}
-                    >
-                        <Input
-                            required
-                            id="first"
-                            type="text"
-                            placeholder="first name"
-                        />
+                    <Col xs={6} style={{ margin: 0, paddingLeft: 0, paddingRight: 7 }}>
+                        <Input required id="first" type="text" placeholder="first name" />
                     </Col>
-                    <Col
-                        xs={6}
-                        style={{ margin: 0, paddingRight: 0, paddingLeft: 7 }}
-                    >
-                        <Input
-                            required
-                            id="last"
-                            type="text"
-                            placeholder="last name"
-                        />
+                    <Col xs={6} style={{ margin: 0, paddingRight: 0, paddingLeft: 7 }}>
+                        <Input required id="last" type="text" placeholder="last name" />
                     </Col>
                 </FormGroup>
                 <FormGroup row>
-                    <Input
-                        required
-                        type="email"
-                        id="email"
-                        placeholder="email"
-                    />
+                    <Input required type="email" id="email" placeholder="email" />
                 </FormGroup>
                 <hr style={{ background: "rgba(255, 255, 255, 0.25)" }} />
                 <FormGroup row>
-                    <Input
-                        required
-                        type="password"
-                        id="password"
-                        placeholder="password"
-                    />
+                    <Input required type="password" id="password" placeholder="password" />
                 </FormGroup>
                 <FormGroup row>
                     <InputGroup>
@@ -97,10 +63,7 @@ class SignUpPage extends Component {
                     </InputGroup>
                 </FormGroup>
                 <FormText>
-                    <Link
-                        to="/login"
-                        style={{ color: "rgba(255, 255, 255, 0.5)" }}
-                    >
+                    <Link to="/login" style={{ color: "rgba(255, 255, 255, 0.5)" }}>
                         Already a member? Login!
                     </Link>
                 </FormText>

@@ -1,18 +1,6 @@
 import React, { Component } from "react";
-import {
-    FormGroup,
-    Input,
-    Label,
-    Button,
-    Col,
-    UncontrolledAlert,
-} from "reactstrap";
-import {
-    AvForm,
-    AvField,
-    AvCheckboxGroup,
-    AvCheckbox,
-} from "availity-reactstrap-validation";
+import { FormGroup, Input, Label, Button, Col, UncontrolledAlert } from "reactstrap";
+import { AvForm, AvField, AvCheckboxGroup, AvCheckbox } from "availity-reactstrap-validation";
 import Select, { Creatable, AsyncCreatable } from "react-select";
 import ResumeUploader from "./ResumeUploader";
 import CustomAVInput from "./CustomAVInput";
@@ -37,10 +25,8 @@ class UserProfileForm extends Component {
                 value: major,
                 label: major,
             })),
-            checkedState1:
-                this.props.user.registration_status !== "unregistered",
-            checkedState2:
-                this.props.user.registration_status !== "unregistered",
+            checkedState1: this.props.user.registration_status !== "unregistered",
+            checkedState2: this.props.user.registration_status !== "unregistered",
             message: null,
         });
         request.get(
@@ -48,9 +34,7 @@ class UserProfileForm extends Component {
             {},
             (_err, _resp, body) => {
                 let schoolList = body.split("\n").map(item => {
-                    item = item.startsWith('"')
-                        ? item.substring(1, item.length - 2)
-                        : item;
+                    item = item.startsWith('"') ? item.substring(1, item.length - 2) : item;
                     return { value: item, label: item };
                 });
                 schoolList.splice(0, 1); // We remove the first element because we don't like it
@@ -77,11 +61,7 @@ class UserProfileForm extends Component {
         let model = { mlhnotices };
         let message = null;
         if (this.state.message) {
-            message = (
-                <UncontrolledAlert color="danger">
-                    {this.state.message}
-                </UncontrolledAlert>
-            );
+            message = <UncontrolledAlert color="danger">{this.state.message}</UncontrolledAlert>;
         }
         if (this.state.edit) {
             return (
@@ -343,15 +323,11 @@ class UserProfileForm extends Component {
                                         loadOptions={(inputValue, callback) => {
                                             if (inputValue) {
                                                 callback(
-                                                    this.state.schoolList.filter(
-                                                        i => {
-                                                            return i.label
-                                                                .toLowerCase()
-                                                                .includes(
-                                                                    inputValue.toLowerCase()
-                                                                );
-                                                        }
-                                                    )
+                                                    this.state.schoolList.filter(i => {
+                                                        return i.label
+                                                            .toLowerCase()
+                                                            .includes(inputValue.toLowerCase());
+                                                    })
                                                 );
                                             } else {
                                                 callback(this.state.schoolList);
@@ -415,9 +391,7 @@ class UserProfileForm extends Component {
                                             user.level_of_study = e.value;
                                             this.updateUser(user);
                                         }}
-                                        options={
-                                            selectorOptions["Level of Study"]
-                                        }
+                                        options={selectorOptions["Level of Study"]}
                                     />
                                 </div>
                             </CustomAVInput>
@@ -440,14 +414,12 @@ class UserProfileForm extends Component {
                                         id="los"
                                         value={
                                             user.major.length > 0
-                                                ? user.major
-                                                      .split(";")
-                                                      .map(val => {
-                                                          return {
-                                                              value: val,
-                                                              label: val,
-                                                          };
-                                                      })
+                                                ? user.major.split(";").map(val => {
+                                                      return {
+                                                          value: val,
+                                                          label: val,
+                                                      };
+                                                  })
                                                 : []
                                         }
                                         onChange={e => {
@@ -500,14 +472,12 @@ class UserProfileForm extends Component {
                                 id="hear"
                                 value={
                                     user.how_you_heard_about_hackru.length > 0
-                                        ? user.how_you_heard_about_hackru
-                                              .split(";")
-                                              .map(val => {
-                                                  return {
-                                                      value: val,
-                                                      label: val,
-                                                  };
-                                              })
+                                        ? user.how_you_heard_about_hackru.split(";").map(val => {
+                                              return {
+                                                  value: val,
+                                                  label: val,
+                                              };
+                                          })
                                         : []
                                 }
                                 onChange={e => {
@@ -524,9 +494,7 @@ class UserProfileForm extends Component {
                         </div>
                     </FormGroup>
                     <FormGroup>
-                        <Label for="sa">
-                            What are you hoping to experience at HackRU?
-                        </Label>
+                        <Label for="sa">What are you hoping to experience at HackRU?</Label>
                         <Input
                             id="sa"
                             type="textarea"
@@ -551,13 +519,11 @@ class UserProfileForm extends Component {
                         validate={{
                             required: {
                                 value: true,
-                                errorMessag:
-                                    "Please review these MLH guidelines",
+                                errorMessag: "Please review these MLH guidelines",
                             },
                             min: {
                                 value: 2,
-                                errorMessage:
-                                    "You must select both of these checkboxes",
+                                errorMessage: "You must select both of these checkboxes",
                             },
                         }}
                     >
@@ -589,24 +555,16 @@ class UserProfileForm extends Component {
                             }}
                             label={
                                 <p>
-                                    I authorize you to share my
-                                    application/registration information for
-                                    event administration, ranking, MLH
-                                    administration, pre- and post-event
-                                    informational e-mails, and occasional
-                                    messages about hackathons in-line with the{" "}
-                                    <a href="https://mlh.io/privacy">
-                                        MLH Privacy Policy
-                                    </a>
-                                    . Further, I agree to the terms of both the{" "}
+                                    I authorize you to share my application/registration information
+                                    for event administration, ranking, MLH administration, pre- and
+                                    post-event informational e-mails, and occasional messages about
+                                    hackathons in-line with the{" "}
+                                    <a href="https://mlh.io/privacy">MLH Privacy Policy</a>.
+                                    Further, I agree to the terms of both the{" "}
                                     <a href="https://github.com/MLH/mlh-policies/blob/master/prize-terms-and-conditions/contest-terms.md">
                                         MLH Contest Terms and Conditions
                                     </a>{" "}
-                                    and the{" "}
-                                    <a href="https://mlh.io/privacy">
-                                        MLH Privacy Policy
-                                    </a>
-                                    .
+                                    and the <a href="https://mlh.io/privacy">MLH Privacy Policy</a>.
                                 </p>
                             }
                             value={"mlh2"}
@@ -623,10 +581,7 @@ class UserProfileForm extends Component {
                         >
                             Clear
                         </Button>
-                        <Button
-                            style={{ backgroundColor: theme.primary[0] }}
-                            type="submit"
-                        >
+                        <Button style={{ backgroundColor: theme.primary[0] }} type="submit">
                             Update
                         </Button>
                     </div>
@@ -727,9 +682,7 @@ class UserProfileForm extends Component {
                         {field(user.how_you_heard_about_hackru)}
                     </FormGroup>
                     <FormGroup>
-                        <Label>
-                            What are you hoping to experience at HackRU?
-                        </Label>
+                        <Label>What are you hoping to experience at HackRU?</Label>
                         {field(user.short_answer)}
                     </FormGroup>
                     <ResumeUploader
@@ -745,29 +698,21 @@ class UserProfileForm extends Component {
                                 <a href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf">
                                     MLH Code of Conduct
                                 </a>{" "}
-                                and I authorize you to share my
-                                application/registration information for event
-                                administration, ranking, MLH administration,
-                                pre- and post-event informational e-mails, and
-                                occasional messages about hackathons in-line
-                                with the{" "}
-                                <a href="https://mlh.io/privacy">
-                                    MLH Privacy Policy
-                                </a>
-                                . Further, I agree to the terms of both the{" "}
+                                and I authorize you to share my application/registration information
+                                for event administration, ranking, MLH administration, pre- and
+                                post-event informational e-mails, and occasional messages about
+                                hackathons in-line with the{" "}
+                                <a href="https://mlh.io/privacy">MLH Privacy Policy</a>. Further, I
+                                agree to the terms of both the{" "}
                                 <a href="https://github.com/MLH/mlh-policies/blob/master/prize-terms-and-conditions/contest-terms.md">
                                     MLH Contest Terms and Conditions
                                 </a>{" "}
-                                and the{" "}
-                                <a href="https://mlh.io/privacy">
-                                    MLH Privacy Policy
-                                </a>
-                                .
+                                and the <a href="https://mlh.io/privacy">MLH Privacy Policy</a>.
                             </p>
                         ) : (
                             <p style={{ ...pStyle, color: theme.accent[0] }}>
-                                You have not yet agreed to MLH policies. Please
-                                fill out your user profile.
+                                You have not yet agreed to MLH policies. Please fill out your user
+                                profile.
                             </p>
                         )}
                     </FormGroup>

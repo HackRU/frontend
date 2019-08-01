@@ -164,24 +164,15 @@ class Home extends Component {
                         <Col xs={8} style={{ display: "block" }}>
                             {loggoutMsg}
                             <Logo src="./assets/icons/hru-logo.svg" />
-                            <h2
-                                style={{ marginTop: 15 }}
-                                className="display-4 theme-font"
-                            >
+                            <h2 style={{ marginTop: 15 }} className="display-4 theme-font">
                                 Hackathon at Rutgers University
                             </h2>
                             <h2 className="lead theme-font">
-                                <Icon
-                                    style={{ marginRight: 5 }}
-                                    name="map-marker"
-                                />{" "}
+                                <Icon style={{ marginRight: 5 }} name="map-marker" />{" "}
                                 {defaults.locationText}
                             </h2>
                             <h2 className="lead theme-font">
-                                <Icon
-                                    style={{ marginRight: 5 }}
-                                    name="calendar"
-                                />{" "}
+                                <Icon style={{ marginRight: 5 }} name="calendar" />{" "}
                                 {defaults.dateText}
                             </h2>
                         </Col>
@@ -209,14 +200,8 @@ class Home extends Component {
                             }}
                         >
                             Want to help? Sign up to{" "}
-                            <a href="https://goo.gl/forms/hAha2d7iVUBoOMu22">
-                                volunteer
-                            </a>{" "}
-                            or{" "}
-                            <a href="https://goo.gl/forms/hvUrr2Ftz5ZD2Fkv1">
-                                mentor
-                            </a>
-                            !
+                            <a href="https://goo.gl/forms/hAha2d7iVUBoOMu22">volunteer</a> or{" "}
+                            <a href="https://goo.gl/forms/hvUrr2Ftz5ZD2Fkv1">mentor</a>!
                         </div>
                         <div
                             style={{
@@ -227,11 +212,7 @@ class Home extends Component {
                                 margin: "0 auto",
                             }}
                         >
-                            <Button
-                                href="#about"
-                                outline
-                                style={{ border: "none", zIndex: 1 }}
-                            >
+                            <Button href="#about" outline style={{ border: "none", zIndex: 1 }}>
                                 <Icon name="chevron-down" /> More Information
                             </Button>
                         </div>
@@ -258,37 +239,22 @@ class Home extends Component {
                         <Col style={{ display: "block", marginBottom: 20 }}>
                             {loggoutMsg}
                             <Logo noCircle src="./assets/icons/hru-logo.svg" />
-                            <h2
-                                style={{ marginTop: -75 }}
-                                className="display-4 theme-font"
-                            >
+                            <h2 style={{ marginTop: -75 }} className="display-4 theme-font">
                                 Hackathon at Rutgers University
                             </h2>
                             <h2 className="lead theme-font">
-                                <Icon
-                                    style={{ marginRight: 5 }}
-                                    name="map-marker"
-                                />{" "}
+                                <Icon style={{ marginRight: 5 }} name="map-marker" />{" "}
                                 {defaults.locationText}
                             </h2>
                             <h2 className="lead theme-font">
-                                <Icon
-                                    style={{ marginRight: 5 }}
-                                    name="calendar"
-                                />{" "}
+                                <Icon style={{ marginRight: 5 }} name="calendar" />{" "}
                                 {defaults.dateText}
                             </h2>
                             {navContainer}
                             <div>
                                 Want to help? Sign up to{" "}
-                                <a href="https://goo.gl/forms/hAha2d7iVUBoOMu22">
-                                    volunteer
-                                </a>{" "}
-                                or{" "}
-                                <a href="https://goo.gl/forms/hvUrr2Ftz5ZD2Fkv1">
-                                    mentor
-                                </a>
-                                !
+                                <a href="https://goo.gl/forms/hAha2d7iVUBoOMu22">volunteer</a> or{" "}
+                                <a href="https://goo.gl/forms/hvUrr2Ftz5ZD2Fkv1">mentor</a>!
                             </div>
                         </Col>
                     </Row>

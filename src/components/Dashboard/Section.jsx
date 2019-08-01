@@ -29,10 +29,7 @@ class Section extends Component {
     render() {
         let { children, title, subtitle, ...rest } = this.props;
         return (
-            <div
-                style={{ width: "100%", textAlign: "left", marginBottom: 25 }}
-                {...rest}
-            >
+            <div style={{ width: "100%", textAlign: "left", marginBottom: 25 }} {...rest}>
                 <ListGroup>
                     <ListGroupItem
                         action
@@ -43,19 +40,13 @@ class Section extends Component {
                             color: theme.primary[0] + "FF",
                             borderRadius: 0,
                         }}
-                        onClick={() =>
-                            this.setState({ isOpen: !this.state.isOpen })
-                        }
+                        onClick={() => this.setState({ isOpen: !this.state.isOpen })}
                     >
                         <ListGroupItemHeading>{title}</ListGroupItemHeading>
                         <ListGroupItemText>{subtitle}</ListGroupItemText>
                         <Icon
                             style={{ position: "absolute", right: 25, top: 25 }}
-                            name={
-                                this.state.isOpen
-                                    ? "chevron-up"
-                                    : "chevron-down"
-                            }
+                            name={this.state.isOpen ? "chevron-up" : "chevron-down"}
                         />
                     </ListGroupItem>
                     <Collapse isOpen={this.state.isOpen}>

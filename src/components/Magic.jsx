@@ -56,22 +56,12 @@ class MagicPage extends Component {
             <div>
                 <FormGroup row>
                     <InputGroup>
-                        <Input
-                            required
-                            id="email"
-                            type="email"
-                            placeholder="email"
-                        />
+                        <Input required id="email" type="email" placeholder="email" />
                     </InputGroup>
                 </FormGroup>
                 <FormGroup row>
                     <InputGroup>
-                        <Input
-                            required
-                            id="password"
-                            type="password"
-                            placeholder="new password"
-                        />
+                        <Input required id="password" type="password" placeholder="new password" />
                     </InputGroup>
                 </FormGroup>
                 <FormGroup row>
@@ -102,10 +92,7 @@ class MagicPage extends Component {
         if (this.state.done) {
             innerForm = (
                 <FormText>
-                    <Link
-                        to="/login"
-                        style={{ color: "rgba(255, 255, 255, 0.5)" }}
-                    >
+                    <Link to="/login" style={{ color: "rgba(255, 255, 255, 0.5)" }}>
                         Login
                     </Link>
                 </FormText>
@@ -140,18 +127,13 @@ class MagicPage extends Component {
                                 errors: "",
                             });
                             let email = document.getElementById("email").value;
-                            let password = document.getElementById("password")
-                                .value;
-                            let conpass = document.getElementById("conpassword")
-                                .value;
+                            let password = document.getElementById("password").value;
+                            let conpass = document.getElementById("conpassword").value;
                             this.props.profile.Reset(
                                 email,
                                 password,
                                 conpass,
-                                this.props.match.params.mlurl.replace(
-                                    "forgot-",
-                                    "forgot-"
-                                ),
+                                this.props.match.params.mlurl.replace("forgot-", "forgot-"),
                                 msg => {
                                     if (msg) {
                                         this.setState({
@@ -173,10 +155,7 @@ class MagicPage extends Component {
                     {errors}
                     {innerForm}
                     <FormText>
-                        <Link
-                            to="/"
-                            style={{ color: "rgba(255, 255, 255, 0.5)" }}
-                        >
+                        <Link to="/" style={{ color: "rgba(255, 255, 255, 0.5)" }}>
                             Return Home
                         </Link>
                     </FormText>

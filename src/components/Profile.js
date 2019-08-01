@@ -96,15 +96,8 @@ class Profile {
         this._login = this._login.bind(this);
         this._token = cookie.load("token", { path: "/" });
         this._email = cookie.load("email", { path: "/" });
-        this._valid_until = Date.parse(
-            cookie.load("valid_until", { path: "/" })
-        );
-        if (
-            this._token &&
-            this._email &&
-            this._valid_until &&
-            this._valid_until > Date.now()
-        ) {
+        this._valid_until = Date.parse(cookie.load("valid_until", { path: "/" }));
+        if (this._token && this._email && this._valid_until && this._valid_until > Date.now()) {
             this.isLoggedIn = true;
         } else {
             this.isLoggedIn = false;
@@ -142,9 +135,7 @@ class Profile {
                                 this._login(email, token, valid_until);
                                 callback();
                             } else {
-                                callback(
-                                    body.body ? body.body : "Unexpected Error"
-                                );
+                                callback(body.body ? body.body : "Unexpected Error");
                             }
                         }
                     }
@@ -198,17 +189,11 @@ class Profile {
                     },
                     (error, response, body) => {
                         if (error) {
-                            callback(
-                                "An error occured when attempting signup. Failed at 1/2"
-                            );
+                            callback("An error occured when attempting signup. Failed at 1/2");
                         } else {
                             console.log(body);
                             if (body.statusCode === 400) {
-                                callback(
-                                    "User with email " +
-                                        email +
-                                        " already exists"
-                                );
+                                callback("User with email " + email + " already exists");
                             } else if (body.statusCode === 200) {
                                 // Set the first and last name
                                 let data = JSON.parse(body.body);
@@ -238,26 +223,18 @@ class Profile {
                                             );
                                         } else {
                                             if (body.statusCode === 200) {
-                                                this._login(
-                                                    email,
-                                                    token,
-                                                    valid_until
-                                                );
+                                                this._login(email, token, valid_until);
                                                 callback();
                                             } else {
                                                 callback(
-                                                    body.body
-                                                        ? body.body
-                                                        : "Unexpected Error"
+                                                    body.body ? body.body : "Unexpected Error"
                                                 );
                                             }
                                         }
                                     }
                                 );
                             } else {
-                                callback(
-                                    body.body ? body.body : "Unexpected Error"
-                                );
+                                callback(body.body ? body.body : "Unexpected Error");
                             }
                         }
                     }
@@ -306,10 +283,7 @@ class Profile {
                         if (body.statusCode === 200) {
                             callback(null, body.body[0]);
                         } else {
-                            callback(
-                                body.body ? body.body : "Unexpected Error",
-                                null
-                            );
+                            callback(body.body ? body.body : "Unexpected Error", null);
                         }
                     }
                 }
@@ -337,16 +311,12 @@ class Profile {
                 (error, response, body) => {
                     console.log(body);
                     if (error) {
-                        callback(
-                            "An error occured when attempting to update data"
-                        );
+                        callback("An error occured when attempting to update data");
                     } else {
                         if (body.statusCode === 200) {
                             callback();
                         } else {
-                            callback(
-                                body.body ? body.body : "Unexpected Error"
-                            );
+                            callback(body.body ? body.body : "Unexpected Error");
                         }
                     }
                 }
@@ -374,16 +344,12 @@ class Profile {
                     },
                     (error, response, body) => {
                         if (error) {
-                            callback(
-                                "An error occured when attempting to general url"
-                            );
+                            callback("An error occured when attempting to general url");
                         } else {
                             if (body.statusCode === 200) {
                                 callback();
                             } else {
-                                callback(
-                                    body.body ? body.body : "Unexpected Error"
-                                );
+                                callback(body.body ? body.body : "Unexpected Error");
                                 if (body.errorMessage) {
                                     console.error(body.errorMessage);
                                 }
@@ -416,18 +382,14 @@ class Profile {
                 },
                 (error, response, body) => {
                     if (error) {
-                        callback(
-                            "An error occured when attempting to reset password"
-                        );
+                        callback("An error occured when attempting to reset password");
                     } else {
                         if (body.errorMessage) {
                             callback(body.errorMessage);
                         } else if (body.statusCode === 200) {
                             callback();
                         } else {
-                            callback(
-                                body.body ? body.body : "Unexpected Error"
-                            );
+                            callback(body.body ? body.body : "Unexpected Error");
                         }
                     }
                 }
@@ -453,18 +415,14 @@ class Profile {
                 },
                 (error, response, body) => {
                     if (error) {
-                        callback(
-                            "An error occured while digesting the magic link"
-                        );
+                        callback("An error occured while digesting the magic link");
                     } else {
                         if (body.errorMessage) {
                             callback(body.errorMessage);
                         } else if (body.statusCode === 200) {
                             callback();
                         } else {
-                            callback(
-                                body.body ? body.body : "Unexpected Error"
-                            );
+                            callback(body.body ? body.body : "Unexpected Error");
                         }
                     }
                 }

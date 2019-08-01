@@ -7,12 +7,7 @@ import PropTypes from "prop-types";
  * Turn the 'registration_status' from LCS into something user-friendly
  * @param {String} status Render the status of the users application
  */
-const ApplicationStatus = ({
-    status,
-    onComing,
-    onNotComing,
-    reimbursement,
-}) => (
+const ApplicationStatus = ({ status, onComing, onNotComing, reimbursement }) => (
     <div style={{ marginBottom: 10 }}>
         <div style={{ width: "100%", textAlign: "left" }}>
             <p className="lead">Application Status</p>
@@ -42,8 +37,8 @@ const applicationBody = (status, onComing, onNotComing, reimbursement) => {
                     <h1> Rejected </h1>
                     <p>
                         {" "}
-                        Your application has not been accepted. Unfortunately,
-                        we are not able to offer you a spot at HackRU.{" "}
+                        Your application has not been accepted. Unfortunately, we are not able to
+                        offer you a spot at HackRU.{" "}
                     </p>
                 </div>
             );
@@ -82,10 +77,7 @@ const applicationBody = (status, onComing, onNotComing, reimbursement) => {
                     <h1> Confirmed </h1>
                     <p>
                         {"You're all set! Feel free to email "}
-                        <a href="mailto:info@hackru.org">
-                            info@hackru.org
-                        </a>{" "}
-                        with any questions.{" "}
+                        <a href="mailto:info@hackru.org">info@hackru.org</a> with any questions.{" "}
                     </p>
                     <Reimbursement reimbursement={reimbursement} />
                 </div>
@@ -96,8 +88,8 @@ const applicationBody = (status, onComing, onNotComing, reimbursement) => {
                     <h1> Waitlisted </h1>
                     <p>
                         {" "}
-                        Your application has been waitlisted. If there is space
-                        on the day of the event, you may check in.{" "}
+                        Your application has been waitlisted. If there is space on the day of the
+                        event, you may check in.{" "}
                     </p>
                 </div>
             );
@@ -106,10 +98,7 @@ const applicationBody = (status, onComing, onNotComing, reimbursement) => {
             return (
                 <div>
                     <h1>Incomplete</h1>
-                    <p>
-                        Please fill out the user profile to complete your
-                        application
-                    </p>
+                    <p>Please fill out the user profile to complete your application</p>
                 </div>
             );
     }
@@ -153,20 +142,17 @@ DeclineButton.propTypes = {
 const Reimbursement = ({ reimbursement }) =>
     reimbursement ? (
         <p>
-            Your estimated reimbursement value is{" "}
-            <strong>${reimbursement.toFixed(2)}. </strong> Due to a high number
-            of applicants this semester, we cannot provide your exact travel
-            reimbursement quantity at this time. Displayed here is the minimum
-            amount of reimbursement you are approved for. On the day of, you
-            might qualify for more based on the overall availability of funds
-            (without exceeding the amount you spend or 59 dollars).
+            Your estimated reimbursement value is <strong>${reimbursement.toFixed(2)}. </strong> Due
+            to a high number of applicants this semester, we cannot provide your exact travel
+            reimbursement quantity at this time. Displayed here is the minimum amount of
+            reimbursement you are approved for. On the day of, you might qualify for more based on
+            the overall availability of funds (without exceeding the amount you spend or 59
+            dollars).
             <br />
             <br />
-            Please note that reimbursement will be given in the form of Amazon
-            giftcards, and you will only be granted reimbursement{" "}
-            <strong>
-                if you submit a hack to DevPost and demonstrate your hack.
-            </strong>
+            Please note that reimbursement will be given in the form of Amazon giftcards, and you
+            will only be granted reimbursement{" "}
+            <strong>if you submit a hack to DevPost and demonstrate your hack.</strong>
         </p>
     ) : (
         <p> You are not eligible to receive any travel reimbursement </p>

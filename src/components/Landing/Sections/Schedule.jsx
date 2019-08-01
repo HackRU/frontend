@@ -112,8 +112,8 @@ class Schedule extends Component {
                 <div align="center" style={{ marginBottom: 10 }}>
                     <h2> Download the App </h2>
                     <p>
-                        Check out HackRU's official app for announcements,
-                        schedules, and your personal QR code!
+                        Check out HackRU's official app for announcements, schedules, and your
+                        personal QR code!
                     </p>
                     <div>
                         <GlowButton href="/live" icon="tv" text="Live Page" />

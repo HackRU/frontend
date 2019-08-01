@@ -38,9 +38,7 @@ class Schedule extends Component {
                                 events.push({
                                     id: i,
                                     title: body.body[i].summary,
-                                    start: new Date(
-                                        body.body[i].start.dateTime
-                                    ),
+                                    start: new Date(body.body[i].start.dateTime),
                                     end: new Date(body.body[i].end.dateTime),
                                 });
                             }
@@ -87,10 +85,7 @@ class Schedule extends Component {
                         <ListGroupItemText className="pull-right">
                             {startTime} - {endTime}
                         </ListGroupItemText>
-                        <ListGroupItemText
-                            className="live-messages-text"
-                            style={style}
-                        >
+                        <ListGroupItemText className="live-messages-text" style={style}>
                             {text}
                         </ListGroupItemText>
                     </ListGroupItem>
@@ -113,10 +108,8 @@ class Schedule extends Component {
                                             onClick={() => {
                                                 this.setState({
                                                     start:
-                                                        this.state.start - 10 >=
-                                                        0
-                                                            ? this.state.start -
-                                                              10
+                                                        this.state.start - 10 >= 0
+                                                            ? this.state.start - 10
                                                             : 0,
                                                 });
                                             }}
@@ -130,13 +123,9 @@ class Schedule extends Component {
                                                 this.setState({
                                                     start:
                                                         this.state.start + 10 <=
-                                                        this.state.events
-                                                            .length -
-                                                            10
-                                                            ? this.state.start +
-                                                              10
-                                                            : this.state.events
-                                                                  .length - 10,
+                                                        this.state.events.length - 10
+                                                            ? this.state.start + 10
+                                                            : this.state.events.length - 10,
                                                 });
                                             }}
                                         />

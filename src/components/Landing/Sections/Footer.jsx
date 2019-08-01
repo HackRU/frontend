@@ -10,15 +10,9 @@ class Footer extends Component {
         return (
             <div>
                 <Row>
-                    <div
-                        className="footer bg-no-gradient"
-                        style={{ zIndex: 15 }}
-                    >
+                    <div className="footer bg-no-gradient" style={{ zIndex: 15 }}>
                         <Row style={{ marginRight: 0, textAlign: "center" }}>
-                            <div
-                                className="text-center col-lg-4"
-                                style={{ padding: 0 }}
-                            >
+                            <div className="text-center col-lg-4" style={{ padding: 0 }}>
                                 <h6 className="align-middle mb-4">
                                     <a
                                         href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf"
@@ -78,11 +72,7 @@ class Footer extends Component {
                                 className="mb-5 mb-lg-0 text-center col-lg-4 mb-4 align-middle"
                                 style={{ padding: 0 }}
                             >
-                                <a
-                                    href="https://mlh.io/"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                >
+                                <a href="https://mlh.io/" target="_blank" rel="noopener noreferrer">
                                     <img
                                         className="footer-logo"
                                         src="https://static.mlh.io/brand-assets/logo/official/mlh-logo-white.png"

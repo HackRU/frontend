@@ -24,13 +24,7 @@ const BITMAP = {
     " ": [[N], [N], [N], [N], [N]],
     R: [[C, C, C], [C, N, C], [C, C, N], [C, N, C], [C, N, C]],
     U: [[C, N, C], [C, N, C], [C, N, C], [C, N, C], [C, C, C]],
-    W: [
-        [C, N, C, N, C],
-        [C, N, C, N, C],
-        [C, N, C, N, C],
-        [C, N, C, N, C],
-        [N, C, N, C, N],
-    ],
+    W: [[C, N, C, N, C], [C, N, C, N, C], [C, N, C, N, C], [C, N, C, N, C], [N, C, N, C, N]],
     I: [[C, C, C], [N, C, N], [N, C, N], [N, C, N], [C, C, C]],
     L: [[C, N, N], [C, N, N], [C, N, N], [C, N, N], [C, C, C]],
     T: [[C, C, C], [N, C, N], [N, C, N], [N, C, N], [N, C, N]],
@@ -61,14 +55,8 @@ class AnimatedGrid extends Component {
     }
     render() {
         let grid = [];
-        let width = Math.min(
-            this.props.width ? this.props.width : 500,
-            window.innerWidth - 200
-        );
-        let height = Math.min(
-            this.props.height ? this.props.height : 500,
-            window.innerWidth - 200
-        );
+        let width = Math.min(this.props.width ? this.props.width : 500, window.innerWidth - 200);
+        let height = Math.min(this.props.height ? this.props.height : 500, window.innerWidth - 200);
         let rows = this.props.rows ? this.props.rows : 25;
         let cols = this.props.cols ? this.props.cols : 25;
         this.width = width;
@@ -89,9 +77,7 @@ class AnimatedGrid extends Component {
         for (let y = 0; y < rows; y++) {
             for (let x = 0; x < cols; x++) {
                 let color =
-                    y < template.length &&
-                    x < template[0].length &&
-                    template[y][x]
+                    y < template.length && x < template[0].length && template[y][x]
                         ? template[y][x]
                         : "rgba(0, 0, 0, 0)";
                 grid.push(

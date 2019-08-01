@@ -38,9 +38,7 @@ class Projector extends Component {
                         >
                             <Row style={{ marginBottom: 125 }}>
                                 <Col xs={4}>
-                                    <h1 className="display-4">
-                                        HackRU Ends in
-                                    </h1>
+                                    <h1 className="display-4">HackRU Ends in</h1>
                                     <Col md={9} xs={12}>
                                         <Countdown />
                                     </Col>
@@ -58,9 +56,7 @@ class Projector extends Component {
                             </Row>
                             <Row>
                                 <Col>
-                                    <h1 className="display-4 mb-4">
-                                        Helpful Links
-                                    </h1>
+                                    <h1 className="display-4 mb-4">Helpful Links</h1>
                                     <h1>
                                         Devpost:{" "}
                                         <a href="https://hackru-s19.devpost.com/">

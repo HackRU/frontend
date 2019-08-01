@@ -14,8 +14,7 @@ import PropTypes from "prop-types";
  */
 class LandingPage extends Component {
     render() {
-        let sectionClasses =
-            "col-lg-10 offset-lg-1 col-xs-12 offset-xs-0 skew-left color-priority";
+        let sectionClasses = "col-lg-10 offset-lg-1 col-xs-12 offset-xs-0 skew-left color-priority";
         let rows = [];
         let keys = Object.keys(navlinks);
         for (let i = 0; i < keys.length; i++) {
@@ -33,8 +32,7 @@ class LandingPage extends Component {
                     }
                 } else {
                     // The footer is a special type of human being...
-                    sectionClasses =
-                        "col-lg-12 offset-lg-0 col-xs-12 offset-xs-0 color-priority";
+                    sectionClasses = "col-lg-12 offset-lg-0 col-xs-12 offset-xs-0 color-priority";
                 }
                 let style = {};
                 if (navlinks[keys[i]].fullHeight) {
@@ -45,9 +43,7 @@ class LandingPage extends Component {
                         <div>
                             <Row className="section" style={style}>
                                 <div className={className}>
-                                    <div className={sectionClasses}>
-                                        {component}
-                                    </div>
+                                    <div className={sectionClasses}>{component}</div>
                                 </div>
                             </Row>
                         </div>

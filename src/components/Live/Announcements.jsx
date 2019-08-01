@@ -51,15 +51,9 @@ class Announcements extends Component {
         for (let i = this.state.start; i < end; i++) {
             let text =
                 this.state.messages[i].text &&
-                this.state.messages[i].text
-                    .replace(/(:[^:\s]*:)|(<[^>\s]*>)/g, "")
-                    .trim();
-            let date = new Date(
-                this.state.messages[i].ts * 1000
-            ).toLocaleDateString();
-            let time = new Date(
-                this.state.messages[i].ts * 1000
-            ).toLocaleTimeString();
+                this.state.messages[i].text.replace(/(:[^:\s]*:)|(<[^>\s]*>)/g, "").trim();
+            let date = new Date(this.state.messages[i].ts * 1000).toLocaleDateString();
+            let time = new Date(this.state.messages[i].ts * 1000).toLocaleTimeString();
             let opacity = 100;
             let style = {};
             if (this.props.hide) {
@@ -75,10 +69,7 @@ class Announcements extends Component {
                     <ListGroupItemText className="pull-right">
                         {date}, {time}
                     </ListGroupItemText>
-                    <ListGroupItemText
-                        className="live-messages-text"
-                        style={style}
-                    >
+                    <ListGroupItemText className="live-messages-text" style={style}>
                         {text}
                     </ListGroupItemText>
                 </ListGroupItem>
@@ -100,9 +91,7 @@ class Announcements extends Component {
         return (
             <div style={{ marginBottom: 10 }}>
                 <div style={{ width: "100%", textAlign: "left" }}>
-                    {!this.props.hide && (
-                        <h3 className="mb-3">Announcements</h3>
-                    )}
+                    {!this.props.hide && <h3 className="mb-3">Announcements</h3>}
                     <ListGroup className="live-container" flush>
                         {msgs}
                         {!this.props.hide && (
@@ -115,10 +104,8 @@ class Announcements extends Component {
                                             onClick={() => {
                                                 this.setState({
                                                     start:
-                                                        this.state.start - 3 >=
-                                                        0
-                                                            ? this.state.start -
-                                                              3
+                                                        this.state.start - 3 >= 0
+                                                            ? this.state.start - 3
                                                             : 0,
                                                 });
                                             }}
@@ -132,14 +119,9 @@ class Announcements extends Component {
                                                 this.setState({
                                                     start:
                                                         this.state.start + 3 <=
-                                                        this.state.messages
-                                                            .length -
-                                                            2
-                                                            ? this.state.start +
-                                                              3
-                                                            : this.state
-                                                                  .messages
-                                                                  .length - 2,
+                                                        this.state.messages.length - 2
+                                                            ? this.state.start + 3
+                                                            : this.state.messages.length - 2,
                                                 });
                                             }}
                                         />

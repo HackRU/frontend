@@ -51,8 +51,7 @@ class Dashboard extends Component {
                     this.setState({
                         user: data,
                         loading: false,
-                        openDetails:
-                            data.registration_status === "unregistered",
+                        openDetails: data.registration_status === "unregistered",
                     });
                     this.props.profile.GetQR((msg, qr) => {
                         if (msg) {
@@ -111,10 +110,7 @@ class Dashboard extends Component {
                 }}
                 className="d-flex align-items-center"
             >
-                <div
-                    style={{ zIndex: 3, color: "white", width: "100%" }}
-                    align="center"
-                >
+                <div style={{ zIndex: 3, color: "white", width: "100%" }} align="center">
                     <Container>
                         <div
                             style={{
@@ -140,8 +136,7 @@ class Dashboard extends Component {
                                                 to="/"
                                                 className="theme-home-link"
                                                 style={{
-                                                    color:
-                                                        theme.primary[0] + "ff",
+                                                    color: theme.primary[0] + "ff",
                                                     textDecoration: "none",
                                                 }}
                                             >
@@ -160,8 +155,7 @@ class Dashboard extends Component {
                                                 to="/live"
                                                 className="theme-home-link"
                                                 style={{
-                                                    color:
-                                                        theme.primary[0] + "ff",
+                                                    color: theme.primary[0] + "ff",
                                                     textDecoration: "none",
                                                 }}
                                             >
@@ -180,8 +174,7 @@ class Dashboard extends Component {
                                                 to="/logout"
                                                 className="theme-home-link"
                                                 style={{
-                                                    color:
-                                                        theme.accent[0] + "ff",
+                                                    color: theme.accent[0] + "ff",
                                                     textDecoration: "none",
                                                 }}
                                             >
@@ -190,11 +183,7 @@ class Dashboard extends Component {
                                         </p>
                                     </div>
                                 </Col>
-                                <Col
-                                    style={{ textAlign: "center" }}
-                                    md={4}
-                                    xs={12}
-                                >
+                                <Col style={{ textAlign: "center" }} md={4} xs={12}>
                                     <img
                                         width="150"
                                         style={{ marginTop: 0 }}
@@ -215,15 +204,11 @@ class Dashboard extends Component {
                                 this.submitUser(user);
                             }}
                             reimbursement={
-                                user.travelling_from &&
-                                user.travelling_from.reimbursement
+                                user.travelling_from && user.travelling_from.reimbursement
                             }
                             status={user.registration_status}
                         />
-                        <QR
-                            data={this.state.qr}
-                            status={user.registration_status}
-                        />
+                        <QR data={this.state.qr} status={user.registration_status} />
                         <div style={{ width: "100%", textAlign: "left" }}>
                             <p className="lead">User Profile</p>
                         </div>

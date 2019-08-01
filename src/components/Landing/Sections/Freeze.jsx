@@ -62,20 +62,14 @@ class Freeze extends Component {
                     <Row style={{}} className="d-flex justify-content-center">
                         <h4>for Fall 2019</h4>
                     </Row>
-                    <Row
-                        style={{ marginTop: 20 }}
-                        className="d-flex justify-content-center"
-                    >
+                    <Row style={{ marginTop: 20 }} className="d-flex justify-content-center">
                         <a href="https://hackru1.typeform.com/to/OEtQEO">
                             <Button outline className="">
                                 Join the mailing list
                             </Button>
                         </a>
                     </Row>
-                    <Row
-                        style={{ marginTop: 10 }}
-                        className="d-flex justify-content-center"
-                    >
+                    <Row style={{ marginTop: 10 }} className="d-flex justify-content-center">
                         <a href="https://hackru-s19.devpost.com">
                             <Button outline className="">
                                 Check out past submissions

@@ -22,13 +22,7 @@ class ResumeUploader extends Component {
      */
     makeRequest = params =>
         // Use the userEmail as the S3 key for the upload
-        fetch(
-            defaults.rest.resumes +
-                "/" +
-                encodeURI(this.props.userEmail) +
-                ".pdf",
-            params
-        )
+        fetch(defaults.rest.resumes + "/" + encodeURI(this.props.userEmail) + ".pdf", params)
             .then(response => response.ok) // Was the response not an error?
             .catch(() => false); // If there were any exceptions, we did not succeed
     /**
@@ -43,9 +37,7 @@ class ResumeUploader extends Component {
             body: event.target.files[0], // Use the file from the filepicker
         }).then(success =>
             this.setState({
-                labelText: success
-                    ? "Resume uploaded successfully."
-                    : "Failed to upload resume",
+                labelText: success ? "Resume uploaded successfully." : "Failed to upload resume",
             })
         );
     };
@@ -56,9 +48,7 @@ class ResumeUploader extends Component {
         // Check if the user has already uploaded a resume and update the label accordingly
         this.makeRequest({
             method: "HEAD",
-        }).then(
-            success => success && this.setState({ labelText: "Resume found." })
-        );
+        }).then(success => success && this.setState({ labelText: "Resume found." }));
     }
     /**
      * React render method

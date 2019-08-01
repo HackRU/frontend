@@ -11,22 +11,19 @@ class About extends Component {
                 <hr />
                 <h2>Who and What?</h2>
                 <p>
-                    HackRU is a 24-hour hackathon at Rutgers University. We
-                    welcome hundreds of students to join us in building awesome
-                    software and hardware projects. Industry experts and mentors
-                    come from all over the country to create an environment that
-                    fosters an atmosphere of learning through tech talks and
-                    one-on-one guidance. We encourage beginner and advanced
-                    hackers alike to challenge themselves and expand their
-                    skills. Learn more about HackRU by reading our articles on{" "}
+                    HackRU is a 24-hour hackathon at Rutgers University. We welcome hundreds of
+                    students to join us in building awesome software and hardware projects. Industry
+                    experts and mentors come from all over the country to create an environment that
+                    fosters an atmosphere of learning through tech talks and one-on-one guidance. We
+                    encourage beginner and advanced hackers alike to challenge themselves and expand
+                    their skills. Learn more about HackRU by reading our articles on{" "}
                     <a href="https://medium.com/the-hackru">medium!</a>
                 </p>
                 <h2>When and Where?</h2>
                 <p>
-                    HackRU is from March 9th to 10th, 2019 at the College Ave
-                    Student Center in New Brunswick, NJ. The College Ave Student
-                    Center is located at 126 College Ave, New Brunswick, NJ
-                    08901.
+                    HackRU is from March 9th to 10th, 2019 at the College Ave Student Center in New
+                    Brunswick, NJ. The College Ave Student Center is located at 126 College Ave, New
+                    Brunswick, NJ 08901.
                 </p>
                 <iframe
                     title="about-map"

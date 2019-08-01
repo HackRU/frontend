@@ -25,9 +25,7 @@ class FaqsCollapse extends React.Component {
                     {cat.title}{" "}
                     <Icon
                         className="faq-hover pull-right"
-                        name={
-                            this.state.collapse ? "chevron-up" : "chevron-down"
-                        }
+                        name={this.state.collapse ? "chevron-up" : "chevron-down"}
                     />
                 </h5>
                 <hr className="faq-hover" />

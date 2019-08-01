@@ -12,13 +12,11 @@ const FAQTextOne = {
         title: "What is HackRU?",
         text: [
             <p key={1}>
-                HackRU is a 24-hour hackathon at Rutgers University. We welcome
-                hundreds of students to join us in building awesome software and
-                hardware projects. Industry experts and mentors come from all
-                over the country to create an environment that fosters an
-                atmosphere of learning through tech talks and one-on-one
-                guidance. We encourage beginner and advanced hackers alike to
-                challenge themselves and expand their skills.
+                HackRU is a 24-hour hackathon at Rutgers University. We welcome hundreds of students
+                to join us in building awesome software and hardware projects. Industry experts and
+                mentors come from all over the country to create an environment that fosters an
+                atmosphere of learning through tech talks and one-on-one guidance. We encourage
+                beginner and advanced hackers alike to challenge themselves and expand their skills.
             </p>,
         ],
     },
@@ -39,15 +37,13 @@ const FAQTextOne = {
     },
     five: {
         title: "Can I win anything?",
-        text:
-            "Yes! We'll release more information about prizes as the event draws near.",
+        text: "Yes! We'll release more information about prizes as the event draws near.",
     },
     six: {
         title: "I have more questions!",
         text: [
             <span key={1}>
-                Reach out to us at{" "}
-                <a href="mailto:info@hackru.org"> info@hackru.org!</a> We'll be
+                Reach out to us at <a href="mailto:info@hackru.org"> info@hackru.org!</a> We'll be
                 happy to answer.
             </span>,
         ],
@@ -108,18 +104,12 @@ class FAQs extends Component {
                     <Row>
                         <Col xs={cols}>
                             {Object.keys(FAQTextOne).map((key, index) => (
-                                <FaqsCollapse
-                                    key={index + "1"}
-                                    cat={FAQTextOne[key]}
-                                />
+                                <FaqsCollapse key={index + "1"} cat={FAQTextOne[key]} />
                             ))}
                         </Col>
                         <Col xs={cols}>
                             {Object.keys(FAQTextTwo).map((key, index) => (
-                                <FaqsCollapse
-                                    key={index + "2"}
-                                    cat={FAQTextTwo[key]}
-                                />
+                                <FaqsCollapse key={index + "2"} cat={FAQTextTwo[key]} />
                             ))}
                         </Col>
                     </Row>

@@ -30,9 +30,7 @@ class E404 extends Component {
                             ¯\_(ツ)_/¯, this page doesn't exist
                         </h1>
                         <Link to="/" style={{ color: "white" }}>
-                            <p className="lead">
-                                Click here to go back to land!
-                            </p>
+                            <p className="lead">Click here to go back to land!</p>
                         </Link>
                     </div>
                 </Col>

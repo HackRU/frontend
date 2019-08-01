@@ -69,66 +69,40 @@ class Team extends Component {
                         }}
                     >
                         <Container>
-                            <h1 className="display-3">
-                                {" "}
-                                The HackRU Organizing Team{" "}
-                            </h1>
+                            <h1 className="display-3"> The HackRU Organizing Team </h1>
                             <p>
                                 {" "}
-                                The organizing team for HackRU plans and runs
-                                the hackathon twice a year! We strive to
-                                organize an event that brings together people
-                                interested in working on tech projects in a fun,
-                                creative, and supportive environment. We hope
-                                hackers can learn new tech skills and explore
-                                new ideas!{" "}
+                                The organizing team for HackRU plans and runs the hackathon twice a
+                                year! We strive to organize an event that brings together people
+                                interested in working on tech projects in a fun, creative, and
+                                supportive environment. We hope hackers can learn new tech skills
+                                and explore new ideas!{" "}
                             </p>
 
                             {this.state.organizer_app.organizer_app ? (
                                 <p>
                                     {" "}
-                                    Want to help us organize the hackathon and
-                                    join our dedicated team? Our application can
-                                    be found{" "}
-                                    <a
-                                        href={
-                                            this.state.organizer_app
-                                                .organizer_app
-                                        }
-                                    >
-                                        {" "}
-                                        here{" "}
-                                    </a>
-                                    .
+                                    Want to help us organize the hackathon and join our dedicated
+                                    team? Our application can be found{" "}
+                                    <a href={this.state.organizer_app.organizer_app}> here </a>.
                                 </p>
                             ) : (
                                 <p>
                                     {" "}
-                                    Our organizing teams are not currently
-                                    accepting applications, but please keep in
-                                    touch with us by visiting our website,
-                                    hackru.org, and checking out our social
-                                    media!{" "}
+                                    Our organizing teams are not currently accepting applications,
+                                    but please keep in touch with us by visiting our website,
+                                    hackru.org, and checking out our social media!{" "}
                                 </p>
                             )}
 
                             <h4 className="display-4"> Directors </h4>
                             <Row>
                                 {this.state.directors.map(person => (
-                                    <Col
-                                        key={person.id}
-                                        xs={6}
-                                        sm={3}
-                                        style={{ marginBottom: 20 }}
-                                    >
+                                    <Col key={person.id} xs={6} sm={3} style={{ marginBottom: 20 }}>
                                         <Person
                                             name={person.name}
                                             title={person.title}
-                                            image={
-                                                defaults.teamInfo +
-                                                "images/" +
-                                                person.image
-                                            }
+                                            image={defaults.teamInfo + "images/" + person.image}
                                         />
                                     </Col>
                                 ))}

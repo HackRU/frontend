@@ -19,10 +19,7 @@ const Loading = ({ text }) => (
         }}
         className="d-flex align-items-center"
     >
-        <div
-            style={{ width: "100%", color: "rgba(255, 255, 255, 0.1)" }}
-            align="center"
-        >
+        <div style={{ width: "100%", color: "rgba(255, 255, 255, 0.1)" }} align="center">
             <div style={{ display: "inline-block" }}>
                 <h1 className="display-1">L</h1>
             </div>

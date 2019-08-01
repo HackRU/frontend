@@ -1,13 +1,5 @@
 import React, { Component } from "react";
-import {
-    Button,
-    Col,
-    Form,
-    FormGroup,
-    Label,
-    Input,
-    Collapse,
-} from "reactstrap";
+import { Button, Col, Form, FormGroup, Label, Input, Collapse } from "reactstrap";
 import { theme } from "../../../Defaults";
 import { Creatable } from "react-select";
 import Autocomplete from "react-google-autocomplete";
@@ -55,9 +47,7 @@ class TravelReimbursementsForm extends Component {
         const { is_real, formatted_addr, mode } = this.state;
         let valid =
             !this.state.is_real ||
-            (this.state.addr_ready &&
-                this.state.formatted_addr &&
-                this.state.mode);
+            (this.state.addr_ready && this.state.formatted_addr && this.state.mode);
         return (
             <Form onSubmit={this.onSubmit}>
                 <FormGroup>
@@ -67,14 +57,9 @@ class TravelReimbursementsForm extends Component {
                             className="custom-control-input"
                             id="request-travel"
                             checked={is_real}
-                            onChange={() =>
-                                this.setState({ is_real: !is_real })
-                            }
+                            onChange={() => this.setState({ is_real: !is_real })}
                         />
-                        <label
-                            className="custom-control-label"
-                            htmlFor="request-travel"
-                        >
+                        <label className="custom-control-label" htmlFor="request-travel">
                             I request travel reimbursements
                         </label>
                     </div>
@@ -102,14 +87,12 @@ class TravelReimbursementsForm extends Component {
                                         className="form-control"
                                         onChange={place =>
                                             this.setState({
-                                                formatted_addr:
-                                                    place.target.value,
+                                                formatted_addr: place.target.value,
                                             })
                                         }
                                         onPlaceSelected={place =>
                                             this.setState({
-                                                formatted_addr:
-                                                    place.formatted_address,
+                                                formatted_addr: place.formatted_address,
                                                 addr_ready: true,
                                             })
                                         }
@@ -127,9 +110,7 @@ class TravelReimbursementsForm extends Component {
                                 <Creatable
                                     id="mode"
                                     value={label_obj(mode)}
-                                    onChange={e =>
-                                        this.setState({ mode: e.value })
-                                    }
+                                    onChange={e => this.setState({ mode: e.value })}
                                     options={[
                                         label_obj("bus"),
                                         label_obj("car"),
@@ -142,15 +123,12 @@ class TravelReimbursementsForm extends Component {
                         </Col>
                         <Col xs={12} style={{ marginTop: "1em" }}>
                             <p>
-                                If you request travel reimbursement, please be
-                                prepared to{" "}
-                                <strong>show us all receipts </strong> related
-                                to your reimbursement on the day of HackRU.
-                                Please keep in mind you{" "}
+                                If you request travel reimbursement, please be prepared to{" "}
+                                <strong>show us all receipts </strong> related to your reimbursement
+                                on the day of HackRU. Please keep in mind you{" "}
                                 <strong>
                                     {" "}
-                                    must submit a project to Devpost and demo on
-                                    Sunday{" "}
+                                    must submit a project to Devpost and demo on Sunday{" "}
                                 </strong>{" "}
                                 to receive your travel reimbursement.
                             </p>
@@ -162,9 +140,7 @@ class TravelReimbursementsForm extends Component {
                         className={valid ? "" : "disabled"}
                         disabled={!valid}
                         style={{
-                            backgroundColor: valid
-                                ? theme.primary[0]
-                                : theme.disabled[0],
+                            backgroundColor: valid ? theme.primary[0] : theme.disabled[0],
                         }}
                         type="submit"
                     >

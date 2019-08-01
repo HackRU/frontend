@@ -1,12 +1,5 @@
 import React, { Component } from "react";
-import {
-    Input,
-    InputGroup,
-    InputGroupAddon,
-    FormGroup,
-    Button,
-    FormText,
-} from "reactstrap";
+import { Input, InputGroup, InputGroupAddon, FormGroup, Button, FormText } from "reactstrap";
 import { Icon } from "react-fa";
 import { Link } from "react-router-dom";
 import { Redirect } from "react-router-dom";
@@ -42,22 +35,12 @@ class LoginPage extends Component {
             >
                 <FormGroup row>
                     <InputGroup>
-                        <Input
-                            required
-                            id="email"
-                            type="email"
-                            placeholder="email"
-                        />
+                        <Input required id="email" type="email" placeholder="email" />
                     </InputGroup>
                 </FormGroup>
                 <FormGroup row>
                     <InputGroup>
-                        <Input
-                            required
-                            type="password"
-                            id="password"
-                            placeholder="password"
-                        />
+                        <Input required type="password" id="password" placeholder="password" />
                         <InputGroupAddon addonType="append">
                             <Button color="success" style={{ borderRadius: 0 }}>
                                 <Icon name="chevron-right" />
@@ -66,18 +49,12 @@ class LoginPage extends Component {
                     </InputGroup>
                 </FormGroup>
                 <FormText>
-                    <Link
-                        to="/signup"
-                        style={{ color: "rgba(255, 255, 255, 0.5)" }}
-                    >
+                    <Link to="/signup" style={{ color: "rgba(255, 255, 255, 0.5)" }}>
                         Not a member? Create an Account!
                     </Link>
                 </FormText>
                 <FormText>
-                    <Link
-                        to="/forgot"
-                        style={{ color: "rgba(255, 255, 255, 0.5)" }}
-                    >
+                    <Link to="/forgot" style={{ color: "rgba(255, 255, 255, 0.5)" }}>
                         Forgot your password?
                     </Link>
                 </FormText>

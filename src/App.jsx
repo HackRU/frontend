@@ -122,9 +122,7 @@ class App extends Component {
                         }}
                     >
                         {defaults.enableFlyingLogo && (
-                            <FlyingLogo
-                                url={"/assets/icons/greenwingstarasset.png"}
-                            />
+                            <FlyingLogo url={"/assets/icons/greenwingstarasset.png"} />
                         )}
                     </div>
                     <Switch>
@@ -132,38 +130,24 @@ class App extends Component {
                         <Route
                             exact
                             path="/"
-                            render={props => (
-                                <LandingPage {...props} {...componentProps} />
-                            )}
+                            render={props => <LandingPage {...props} {...componentProps} />}
                         />
                         <Route
                             exact
                             path="/team"
-                            render={props => (
-                                <TeamPage {...props} {...componentProps} />
-                            )}
+                            render={props => <TeamPage {...props} {...componentProps} />}
                         />
                         {!defaults.freeze && (
                             <div>
                                 <Route
                                     exact
                                     path="/login"
-                                    render={props => (
-                                        <LoginPage
-                                            {...props}
-                                            {...componentProps}
-                                        />
-                                    )}
+                                    render={props => <LoginPage {...props} {...componentProps} />}
                                 />
                                 <Route
                                     exact
                                     path="/signup"
-                                    render={props => (
-                                        <SignUpPage
-                                            {...props}
-                                            {...componentProps}
-                                        />
-                                    )}
+                                    render={props => <SignUpPage {...props} {...componentProps} />}
                                 />
                                 <Route
                                     exact
@@ -180,51 +164,30 @@ class App extends Component {
                                 <Route
                                     exact
                                     path="/forgot"
-                                    render={props => (
-                                        <ForgotPage
-                                            {...props}
-                                            {...componentProps}
-                                        />
-                                    )}
+                                    render={props => <ForgotPage {...props} {...componentProps} />}
                                 />
                                 <Route
                                     exact
                                     path="/magic/:mlurl"
-                                    render={props => (
-                                        <MagicPage
-                                            {...props}
-                                            {...componentProps}
-                                        />
-                                    )}
+                                    render={props => <MagicPage {...props} {...componentProps} />}
                                 />
                                 <Route
                                     exact
                                     path="/dashboard"
                                     render={props => (
-                                        <DashboardPage
-                                            {...props}
-                                            {...componentProps}
-                                        />
+                                        <DashboardPage {...props} {...componentProps} />
                                     )}
                                 />
                                 <Route
                                     exact
                                     path="/live"
-                                    render={props => (
-                                        <LivePage
-                                            {...props}
-                                            {...componentProps}
-                                        />
-                                    )}
+                                    render={props => <LivePage {...props} {...componentProps} />}
                                 />
                                 <Route
                                     exact
                                     path="/projector"
                                     render={props => (
-                                        <ProjectorPage
-                                            {...props}
-                                            {...componentProps}
-                                        />
+                                        <ProjectorPage {...props} {...componentProps} />
                                     )}
                                 />
                             </div>
