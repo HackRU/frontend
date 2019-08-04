@@ -13,6 +13,7 @@ import {
     E404 } from "./components/Pages"; // Router Pages
 import FlyingLogo from "./FlyingLogo"; // The logos that go up through the page
 import MLHBadge from "./MLHBadge"; // We need this to qualify as an official MLH event
+import NavBar from "./NavBar";
 import { defaults } from "./Defaults"; // Get a handle to the default application settings
 import { Profile } from "./components/Profile"; // User profile storage
 
@@ -104,6 +105,7 @@ class App extends Component {
                 <div>
                     {/* We need to show this on our webpage at all times, so we're just going to dump it in the root */}
                     <MLHBadge />
+                    <NavBar />
                     {/* We put the background here so that even after the page reroutes to different urls, the flying
                         logos will stay constant, allowing for a seemless user experience. First, we render the logos
                         then we render the background ontop of them, allowing the logos to fly behind the clouds */}
@@ -114,7 +116,7 @@ class App extends Component {
                         {/* This is where the URL routing magic actually happens */}
                         <Route exact
                             path="/"
-                            render={(props) => <LandingPage {...props}
+                            render= {(props) => <LandingPage {...props}
                                 {...componentProps} />} />
                         <Route exact
                             path="/team"
