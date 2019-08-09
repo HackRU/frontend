@@ -79,7 +79,7 @@ class Home extends Component {
                         <Col xs={8}
                             style={{ display: "block" }}>
                             {loggoutMsg}
-                            <Logo src="./assets/icons/hru-logo.svg" />
+                            <Logo noCircle src="./assets/icons/hru-logo.svg" />
                             <h2 style={{ marginTop: 15 }}
                                 className="display-4 theme-font">Hackathon at Rutgers University</h2>
                             <h2 className="lead theme-font"><Icon style={{ marginRight: 5 }}
