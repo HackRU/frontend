@@ -16,7 +16,7 @@ class Schedule extends Component {
                 <hr />
                 <div className="row row-content-box">
                     <div className="col-12 col-lg-6">
-                        <h3 className="text-center mb-2">Saturday <small>3/9/19</small></h3>
+                        <h3 className="text-center mb-2">Saturday <small>10/19/19</small></h3>
                         <table className="table table-hover">
                             <thead>
                                 <tr>
@@ -55,7 +55,7 @@ class Schedule extends Component {
                         </table>
                     </div>
                     <div className="col-12 mt-5 mt-lg-0 col-lg-6">
-                        <h3 className="text-center mb-2">Sunday <small>3/10/19</small></h3>
+                        <h3 className="text-center mb-2">Sunday <small>10/20/19</small></h3>
                         <table className="table table-hover">
                             <thead>
                                 <tr>
