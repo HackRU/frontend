@@ -257,7 +257,7 @@ form .btn, form btn-secondary {
 
 
 .sponsor-item-image:hover {
-    transform: scale(1.3);
+    transform: scale(1.05);
 }
 
 /* Dashboard QR */
