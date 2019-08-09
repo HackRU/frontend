@@ -145,10 +145,11 @@ class App extends Component {
                                   path="/dashboard"
                                   render={(props) => <DashboardPage {...props}
                                       {...componentProps} />} />
-                              <Route exact
+                              {defaults.dayof &&
+			      <Route exact
                                   path="/live"
                                   render={(props) => <LivePage {...props}
-                                      {...componentProps} />} />
+                                      {...componentProps} />} />}
                               <Route exact
                                   path="/projector"
                                   render={(props) => <ProjectorPage {...props}

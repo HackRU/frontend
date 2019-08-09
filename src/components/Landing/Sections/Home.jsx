@@ -57,8 +57,11 @@ class Home extends Component {
                 {navigation}
                 <hr style={{ backgroundColor: "rgba(255, 255, 255, 0.15)", width: "100px" }} />
                 {dashboardbtns}
-                <hr style={{ backgroundColor: "rgba(255, 255, 255, 0.15)", width: "100px" }} />
-                {livelink}
+		{defaults.dayof && 
+		<span>
+			<hr style={{ backgroundColor: "rgba(255, 255, 255, 0.15)", width: "100px" }} />
+                	{livelink}
+		</span>}
             </div>
         );
         let loggoutMsg = null;
