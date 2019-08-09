@@ -26,8 +26,8 @@
     --input-border: none;
     --input-color: rgba(255, 255, 255, 1);
     --input-border-radius: 0px;
-    --select-background: rgba(255, 255, 255, 1);
-    --select-color: rgba(0, 0, 0, 1);
+    --select-background: rgba(0, 0, 0, 1);
+    --select-color: rgba(255, 255, 255, 1);
     --select-input-background: rgba(255, 255, 255, 0.075);
     /* Hero Image */
     --hero-width: 400px;
@@ -221,7 +221,7 @@ input, textarea, .custom-file-label {
     color: var(--select-color) !important;
 }
 .custom-checkbox .custom-control-input:checked~.custom-control-label::before{
-    background-color: var(--primary-color) !important;
+    background-color: var(--accent-color) !important;
 }
 .custom-av-checkbox div {
     background-color: transparent;
