@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import GlowButton from "../../GlowButton";
+import { defaults } from "../../../Defaults";
 
 /**
  * Schedule component for the landing page
@@ -105,7 +106,8 @@ class Schedule extends Component {
                     </div>
                 </div>
                 <hr />
-                <div align="center"
+                {defaults.dayof && 
+		<div align="center"
                     style={{ marginBottom: 10 }}>
                     <h2> Download the App </h2>
                     <p>
@@ -128,7 +130,7 @@ class Schedule extends Component {
                             text='iOS App'
                         />*/}
                     </div>
-                </div>
+                </div>}
             </div>
         );
     }
