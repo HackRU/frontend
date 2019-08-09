@@ -94,11 +94,11 @@ class Home extends Component {
                                 {navContainer}
                             </Parallax>
                         </Col>
-			 { defaults.volunteers &&
+			 { defaults.volunteers.display &&
 			 
                         <div className="skew-right"
                             style={{ position: "absolute", bottom: -25, textAlign: "right", width: "100%", paddingRight: 5, fontSize: 12 }} >
-                            Want to help? Sign up to <a href="https://goo.gl/forms/hAha2d7iVUBoOMu22">volunteer</a> or <a href="https://goo.gl/forms/hvUrr2Ftz5ZD2Fkv1">mentor</a>!
+                            Want to help? Sign up to <a href={defaults.volunteers.vol_url}>volunteer</a> or <a href={defaults.volunteers.mentor_url}>mentor</a>!
                         </div> }
                         <div style={{ position: "absolute", bottom: 10, left: 10, right: 10, margin: "0 auto"}}>
                             <Button href="#about"
@@ -127,7 +127,7 @@ class Home extends Component {
                                 name="calendar" /> {defaults.dateText}</h2>
                             {navContainer}
                             { defaults.volunteers && <div>
-                                Want to help? Sign up to <a href="https://goo.gl/forms/hAha2d7iVUBoOMu22">volunteer</a> or <a href="https://goo.gl/forms/hvUrr2Ftz5ZD2Fkv1">mentor</a>!
+                            Want to help? Sign up to <a href={defaults.volunteers.vol_url}>volunteer</a> or <a href={defaults.volunteers.mentor_url}>mentor</a>!
                             </div>}
                         </Col>
                     </Row>
