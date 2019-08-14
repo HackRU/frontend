@@ -12,7 +12,8 @@ class Sponsors extends Component {
 
     state = {
         loading: "Our lastest sponsors list is loading ...",
-        sponsorslogos: null
+        sponsorslogos: null,
+	partnerLogos: null
     }
 
     componentWillMount() {
@@ -26,15 +27,26 @@ class Sponsors extends Component {
                 this.setState({
                     sponsorslogos: data
                 })   
+	     );
+        fetch(defaults.partnerLogos + "partners.json",
+            {
+                method: "GET", 
+                mode: "cors"
+            }
+        ).then(response => response.json())
+            .then(data =>
+                this.setState({
+                    partnerLogos: data
+                })   
             );
+	
     }
 
     render() {
         let renderList = [];
-
+	let partnerList = [];
+	
         if (this.state.sponsorslogos) {
-
-
             let SponsorDeclaration = this.state.sponsorslogos.sections;
             console.log(this.state.sponsorslogos);
             for (let i = 0; i < SponsorDeclaration.length; i++) {
@@ -48,13 +60,42 @@ class Sponsors extends Component {
                     );
                 }
             }
-            
-            return (
+        }
+        
+	
+        if (this.state.partnerLogos) {
+
+            let PartnerDeclaration = this.state.partnerLogos.sections;
+            console.log(PartnerDeclaration);
+            for (let i = 0; i < PartnerDeclaration.length; i++) {
+                console.log(i);
+                if (PartnerDeclaration[i]["enabled"]) {
+                    partnerList.push(
+                        <SponsorContainer key={i}
+                            showName={false}
+                            baseURL={defaults.partnerLogos}
+                            isMobile={this.props.isMobile}
+                            declaration={PartnerDeclaration[i]} />
+                    );
+                }
+            }
+	}
+
+
+	
+	if (renderList.length > 0 && partnerList.length > 0) {
+	    return (
                 <div >
                     <h1 className="display-4 theme-font mb-3">Sponsors</h1>
                     <hr />
                     <div className="sponsorship-background">
                         {renderList}
+                    </div>
+		     
+		    <h1 className="display-4 theme-font mt-3 mb-3">Partners</h1>
+                    <hr />
+                    <div className="sponsorship-background">
+                        {partnerList}
                     </div>
                 </div>
             );
