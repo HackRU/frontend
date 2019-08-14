@@ -26,7 +26,7 @@ class Home extends Component {
             }
         }
         let dashboardbtns = [];
-        
+
         if (this.props.profile.isLoggedIn) {
             dashboardbtns.push(<p key={"p"}
                 className="lead"><Link to="/dashboard"
@@ -57,11 +57,11 @@ class Home extends Component {
                 {navigation}
                 <hr style={{ backgroundColor: "rgba(255, 255, 255, 0.15)", width: "100px" }} />
                 {dashboardbtns}
-		{defaults.dayof && 
-		<span>
-			<hr style={{ backgroundColor: "rgba(255, 255, 255, 0.15)", width: "100px" }} />
-                	{livelink}
-		</span>}
+                {defaults.dayof && 
+                        <span>
+                            <hr style={{ backgroundColor: "rgba(255, 255, 255, 0.15)", width: "100px" }} />
+                            {livelink}
+                        </span>}
             </div>
         );
         let loggoutMsg = null;
@@ -82,7 +82,8 @@ class Home extends Component {
                         <Col xs={8}
                             style={{ display: "block" }}>
                             {loggoutMsg}
-                            <Logo noCircle src="./assets/icons/hru-logo.svg" />
+                            <Logo noCircle
+                                src="./assets/icons/hru-logo.svg" />
                             <h2 style={{ marginTop: 15 }}
                                 className="display-4 theme-font">Hackathon at Rutgers University</h2>
                             <h2 className="lead theme-font"><Icon style={{ marginRight: 5 }}
@@ -97,12 +98,12 @@ class Home extends Component {
                                 {navContainer}
                             </Parallax>
                         </Col>
-			 { defaults.volunteers.display &&
-			 
-                        <div className="skew-right"
-                            style={{ position: "absolute", bottom: -25, textAlign: "right", width: "100%", paddingRight: 5, fontSize: 12 }} >
-                            Want to help? Sign up to <a href={defaults.volunteers.vol_url}>volunteer</a> or <a href={defaults.volunteers.mentor_url}>mentor</a>!
-                        </div> }
+                        { defaults.volunteers.display &&
+
+                                    <div className="skew-right"
+                                        style={{ position: "absolute", bottom: -25, textAlign: "right", width: "100%", paddingRight: 5, fontSize: 12 }} >
+                                        Want to help? Sign up to <a href={defaults.volunteers.vol_url}>volunteer</a> or <a href={defaults.volunteers.mentor_url}>mentor</a>!
+                                    </div> }
                         <div style={{ position: "absolute", bottom: 10, left: 10, right: 10, margin: "0 auto"}}>
                             <Button href="#about"
                                 outline
@@ -130,7 +131,7 @@ class Home extends Component {
                                 name="calendar" /> {defaults.dateText}</h2>
                             {navContainer}
                             { defaults.volunteers && <div>
-                            Want to help? Sign up to <a href={defaults.volunteers.vol_url}>volunteer</a> or <a href={defaults.volunteers.mentor_url}>mentor</a>!
+                                    Want to help? Sign up to <a href={defaults.volunteers.vol_url}>volunteer</a> or <a href={defaults.volunteers.mentor_url}>mentor</a>!
                             </div>}
                         </Col>
                     </Row>
@@ -146,5 +147,5 @@ Home.propTypes = {
     dismissAlert: PropTypes.bool,
     isMobile: PropTypes.bool,
 };
-                
+
 export default Home;

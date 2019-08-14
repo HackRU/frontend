@@ -27,9 +27,9 @@ const defaults =  {
     "teamInfo": "https://s3-us-west-2.amazonaws.com/hackru-internal/hackru-team/",
     "freeze": false,
     "volunteers": {
-	"display": false,
-	"vol_url": "httplinkhere",
-	"mentor_url": "mentorurlhere"
+        "display": false,
+        "vol_url": "httplinkhere",
+        "mentor_url": "mentorurlhere"
     },
     "dayOf": false
 };

@@ -107,30 +107,30 @@ class Schedule extends Component {
                 </div>
                 <hr />
                 {defaults.dayof && 
-		<div align="center"
-                    style={{ marginBottom: 10 }}>
-                    <h2> Download the App </h2>
-                    <p>
-                        Check out HackRU's official app for announcements, schedules, and your personal QR code!
-                    </p>
-                    <div>
-                        <GlowButton
-                            href='/live'
-                            icon='tv'
-                            text='Live Page'
-                        />
-                        <GlowButton
-                            href='https://play.google.com/store/apps/details?id=org.hackru.oneapp.hackru'
-                            icon='android'
-                            text='Android App'
-                        />
-                        {/*<GlowButton
+                        <div align="center"
+                            style={{ marginBottom: 10 }}>
+                            <h2> Download the App </h2>
+                            <p>
+                                Check out HackRU's official app for announcements, schedules, and your personal QR code!
+                            </p>
+                            <div>
+                                <GlowButton
+                                    href='/live'
+                                    icon='tv'
+                                    text='Live Page'
+                                />
+                                <GlowButton
+                                    href='https://play.google.com/store/apps/details?id=org.hackru.oneapp.hackru'
+                                    icon='android'
+                                    text='Android App'
+                                />
+                                {/*<GlowButton
                             href='https://ios-app.hackru.org/manifest.plist'
                             icon='apple'
                             text='iOS App'
                         />*/}
-                    </div>
-                </div>}
+                            </div>
+                        </div>}
             </div>
         );
     }
