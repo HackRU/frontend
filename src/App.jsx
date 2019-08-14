@@ -15,6 +15,7 @@ import MLHBadge from "./MLHBadge"; // We need this to qualify as an official MLH
 import { defaults } from "./Defaults"; // Get a handle to the default application settings
 import { Profile } from "./components/Profile"; // User profile storage
 import Background from "./Background"; // Standard background object
+import { ParallaxProvider } from "react-scroll-parallax";
 
 /**
  * Root application class. This is the object rendered in <div id="root" />
@@ -99,65 +100,67 @@ class App extends Component {
     render() {
         let componentProps = this.getComponentProps();
         return (
-            <BrowserRouter style={{ width: "100%" }}>
-                {/* BrowserRouter wil allow us to switch between the different pages in our SPA based on the URL routing */}
-                <div>
-                    {/* We need to show this on our webpage at all times, so we're just going to dump it in the root */}
-                    <MLHBadge />
-                    {/* We put the background here so that even after the page reroutes to different urls, the flying
-                        logos will stay constant, allowing for a seemless user experience. First, we render the logos
-                        then we render the background ontop of them, allowing the logos to fly behind the clouds */}
-                    <Background />
-                    <Switch>
-                        {/* This is where the URL routing magic actually happens */}
-                        <Route exact
-                            path="/"
-                            render={(props) => <LandingPage {...props}
-                                {...componentProps} />} />
-                        <Route exact
-                            path="/team"
-                            render={(props) => <TeamPage {...props}
-                                {...componentProps} />} />
-                        { !defaults.freeze &&
-                          <div>
-                              <Route exact
-                                  path="/login"
-                                  render={(props) => <LoginPage {...props}
-                                      {...componentProps} />} />
-                              <Route exact
-                                  path="/signup"
-                                  render={(props) => <SignUpPage {...props}
-                                      {...componentProps} />} />
-                              <Route exact
-                                  path="/logout"
-                                  component={() => { this.state.profile.Logout(); this.setState({ profile: this.state.profile, loggedout: true }); return (<Redirect to="/" />); }} />
-                              <Route exact
-                                  path="/forgot"
-                                  render={(props) => <ForgotPage {...props}
-                                      {...componentProps} />} />
-                              <Route exact
-                                  path="/magic/:mlurl"
-                                  render={(props) => <MagicPage {...props}
-                                      {...componentProps} />} />
-                              <Route exact
-                                  path="/dashboard"
-                                  render={(props) => <DashboardPage {...props}
-                                      {...componentProps} />} />
-                              {defaults.dayof &&
-			      <Route exact
-                                  path="/live"
-                                  render={(props) => <LivePage {...props}
-                                      {...componentProps} />} />}
-                              <Route exact
-                                  path="/projector"
-                                  render={(props) => <ProjectorPage {...props}
-                                      {...componentProps} />} />
-                          </div> }
-                        {/* If none of the other urls were matched, we will show a 404 page to the user */}
-                        <Route component={E404} />
-                    </Switch>
-                </div>
-            </BrowserRouter>
+            <ParallaxProvider>
+                <BrowserRouter style={{ width: "100%" }}>
+                    {/* BrowserRouter wil allow us to switch between the different pages in our SPA based on the URL routing */}
+                    <div className="root-wrapper">
+                        {/* We need to show this on our webpage at all times, so we're just going to dump it in the root */}
+                        <MLHBadge />
+                        {/* We put the background here so that even after the page reroutes to different urls, the flying
+                            logos will stay constant, allowing for a seemless user experience. First, we render the logos
+                            then we render the background ontop of them, allowing the logos to fly behind the clouds */}
+                        <Background />
+                        <Switch>
+                            {/* This is where the URL routing magic actually happens */}
+                            <Route exact
+                                path="/"
+                                render={(props) => <LandingPage {...props}
+                                    {...componentProps} />} />
+                            <Route exact
+                                path="/team"
+                                render={(props) => <TeamPage {...props}
+                                    {...componentProps} />} />
+                            { !defaults.freeze &&
+                            <div>
+                                <Route exact
+                                    path="/login"
+                                    render={(props) => <LoginPage {...props}
+                                        {...componentProps} />} />
+                                <Route exact
+                                    path="/signup"
+                                    render={(props) => <SignUpPage {...props}
+                                        {...componentProps} />} />
+                                <Route exact
+                                    path="/logout"
+                                    component={() => { this.state.profile.Logout(); this.setState({ profile: this.state.profile, loggedout: true }); return (<Redirect to="/" />); }} />
+                                <Route exact
+                                    path="/forgot"
+                                    render={(props) => <ForgotPage {...props}
+                                        {...componentProps} />} />
+                                <Route exact
+                                    path="/magic/:mlurl"
+                                    render={(props) => <MagicPage {...props}
+                                        {...componentProps} />} />
+                                <Route exact
+                                    path="/dashboard"
+                                    render={(props) => <DashboardPage {...props}
+                                        {...componentProps} />} />
+                                {defaults.dayof &&
+                                    <Route exact
+                                        path="/live"
+                                        render={(props) => <LivePage {...props}
+                                            {...componentProps} />} />}
+                                <Route exact
+                                    path="/projector"
+                                    render={(props) => <ProjectorPage {...props}
+                                        {...componentProps} />} />
+                            </div> }
+                            {/* If none of the other urls were matched, we will show a 404 page to the user */}
+                            <Route component={E404} />
+                        </Switch>
+                    </div>
+                </BrowserRouter>
+            </ParallaxProvider>
         );
     }
 }
