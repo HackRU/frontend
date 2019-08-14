@@ -118,7 +118,15 @@ hr {
     -webkit-transform: scaleX(1);
     transform: scaleX(1);
 }
-
+.theme-background {
+    position: fixed;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    left: 0px;
+    top: 0px;
+    opacity: 0.5;
+}
 /* Background Control */
 .bg-gradient-right {
     background: var(--primary-color);
