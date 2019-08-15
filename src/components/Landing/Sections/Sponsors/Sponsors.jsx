@@ -28,7 +28,7 @@ class Sponsors extends Component {
                 this.setState({
                     sponsorslogos: data
                 })   
-             );
+            );
         fetch(defaults.partnerLogos + "partners.json",
             {
                 method: "GET", 
