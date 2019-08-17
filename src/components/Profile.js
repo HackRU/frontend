@@ -423,7 +423,7 @@ class Profile {
     }
 }
 
-const ProfileType = {
+const ProfileType = PropTypes.shape({
     Login: PropTypes.func,
     Logout: PropTypes.func,
     SignUp: PropTypes.func,
@@ -432,6 +432,6 @@ const ProfileType = {
     _email: PropTypes.func,
     _valid_until: PropTypes.func,
     isLoggedIn: PropTypes.bool,
-};
+});
 
 export { Profile, ProfileType, ENDPOINTS };
