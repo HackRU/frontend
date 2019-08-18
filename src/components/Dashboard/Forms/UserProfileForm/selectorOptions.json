@@ -33,5 +33,15 @@
         { "value": "Reddit", "label": "Reddit" },
         { "value": "Twitch", "label": "Twitch" },
         { "value": "Youtube", "label": "Youtube" }
+    ],
+    "dietaryRestrictions": [
+        { "value": "Vegetarian", "label": "Vegetarian" },
+        { "value": "Vegan", "label": "Vegan" },
+        { "value": "Kosher", "label": "Kosher" },
+        { "value": "Hallal", "label": "Hallal" },
+        { "value": "Lactose Intolerant", "label": "Lactose Intolerant" },
+        { "value": "Gluten Free", "label": "Gluten Free" },
+        { "value": "Nut Allergy", "label": "Nut Allergy" },
+        { "value": "None", "label": "None" }
     ]
 }
