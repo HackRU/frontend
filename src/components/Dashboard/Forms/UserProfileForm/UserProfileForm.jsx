@@ -173,7 +173,7 @@ class UserProfileForm extends Component {
                     </FormGroup>
                     <FormGroup>
                         <AvField name="hackathon_count"
-                            label="How Many Hackathons Have You Attended? *"
+                            label="How many hackathons have you attended? *"
                             type="number"
                             placeholder="0"
                             value={user.hackathon_count}
@@ -370,7 +370,7 @@ class UserProfileForm extends Component {
                         </Col>
                     </FormGroup>
                     <FormGroup>
-                        <Label>How Many Hackathons Have you Attended?</Label>
+                        <Label>How many hackathons have you attended?</Label>
                         {field(user.hackathon_count)}
                     </FormGroup>
                     <FormGroup>
