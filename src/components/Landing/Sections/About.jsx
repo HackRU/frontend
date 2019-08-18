@@ -8,7 +8,7 @@ class About extends Component {
     render() {
         return (
             <div>
-	    	<h1 className="display-4 theme-font">About HackRU</h1>
+                <h1 className="display-4 theme-font">About HackRU</h1>
                 <hr />
                 <div className="row mb-3">
                     <div className="col-xs-12 col-sm-6">
