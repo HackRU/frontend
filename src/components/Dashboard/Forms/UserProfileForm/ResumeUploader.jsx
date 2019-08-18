@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { CustomInput, FormGroup } from "reactstrap";
-import { defaults } from "../../../../Defaults";
+import { ProfileType } from "../../../Profile";
 import PropTypes from "prop-types";
 
 /**
@@ -13,41 +13,34 @@ class ResumeUploader extends Component {
      * Set the initial state
      */
     state = {
-        labelText: this.props.edit ? "Choose a PDF to upload." : "Nothing yet"
+        labelText: "Loading...",
+    };
+
+    constructor(props) {
+        console.log(props);
+        super(props);
+        props.profile.DoesResumeExist().then(success => {
+            this.setState({
+                labelText: success ?
+                    "Resume found" :
+                    (this.props.edit ?
+                        "Choose a file to upload" :
+                        "Nothing yet")
+            });
+        });
     }
-    /**
-     * Make a request to S3
-     * @param {Object} params Fetch parameters
-     * @return Success status
-     */
-    makeRequest = (params) => (
-        // Use the userEmail as the S3 key for the upload
-        fetch(defaults.rest.resumes + "/" + encodeURI(this.props.userEmail) + ".pdf", params)
-            .then(response => response.ok) // Was the response not an error?
-            .catch(() => false) // If there were any exceptions, we did not succeed
-    )
+
     /**
      * OnChange event handler
      * @param {Event} event OnChange event handler event object
      */
-    uploadHandler = (event) => {
+    uploadHandler = async (event) => {
         this.setState({ labelText: "Uploading resume..." });
-        // Upload the resume to S3
-        this.makeRequest({
-            method: "PUT",
-            body: event.target.files[0] // Use the file from the filepicker
-        }).then(success => this.setState({
-            labelText: success ? "Resume uploaded successfully." : "Failed to upload resume"
-        }));
-    }
-    /**
-     * Set the original state
-     */
-    componentDidMount() {
-        // Check if the user has already uploaded a resume and update the label accordingly
-        this.makeRequest({
-            method: "HEAD"
-        }).then(success => success && this.setState({ labelText: "Resume found." }));
+        // Make the upload request
+        const res = await this.props.profile.UploadResume(event.target.files[0]);
+        this.setState({
+            labelText: res.ok ? "Resume uploaded successfully." : "Failed to upload resume"
+        });
     }
     /**
      * React render method
@@ -60,7 +53,7 @@ class ResumeUploader extends Component {
                     id="resume"
                     onChange={this.uploadHandler}
                     type="file"
-                    label={this.state.labelText} /> : <p style={this.props.regStyle}>{this.state.labelText}</p>}
+                    label={this.state.labelText} /> : <p>{this.state.labelText}</p>}
             </FormGroup>
         </div>
     )
@@ -68,8 +61,7 @@ class ResumeUploader extends Component {
 
 ResumeUploader.propTypes = {
     edit: PropTypes.bool,
-    regStyle: PropTypes.object,
-    userEmail: PropTypes.string,
+    profile: ProfileType,
 };
 
 export default ResumeUploader;

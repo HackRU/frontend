@@ -80,6 +80,7 @@ const ENDPOINTS = {
      * Get QR codes
      */
     "qr": BASE + "/qr",
+    "resume": BASE + "/resume",
 };
 /**
  * Standard profile handler for the entire application
@@ -419,6 +420,26 @@ class Profile {
             json: true
         }, (error, response, body) => {
             callback(error, body);
+        });
+    }
+    async GetResumeInfo() {
+        return await fetch(ENDPOINTS.resume, {
+            method: "POST",
+            body: {
+                email: this._email,
+                token: this._token,
+            },
+        });
+    }
+    async DoesResumeExist() {
+        const info = await this.GetResumeInfo();
+        return info.exists;
+    }
+    async UploadResume(file) {
+        const info = await this.GetResumeInfo();
+        return await fetch(info.upload, {
+            method: "PUT",
+            body: file,
         });
     }
 }
