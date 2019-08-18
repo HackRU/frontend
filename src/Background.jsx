@@ -150,7 +150,7 @@ class Background extends Component {
         });
     }
     renderImage(icon, top, left, bottom, right, height, transform, multiplier) {
-        let style = { position: "fixed", opacity: 0.5 };
+        let style = { position: "fixed", opacity: 0.25 };
         let scrollFeature = `${this.state.scrollFeature * 100 * multiplier}%`;
         style["top"] = top ? `calc(${top} - ${scrollFeature})` : null;
         style["left"] = left ? left : null;
