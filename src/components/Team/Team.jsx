@@ -84,6 +84,19 @@ class Team extends Component {
 					<p>The VHX team will release volunteer and mentor sign-ups and hold training sessions for volunteers prior to the event.</p>
 				</div>)}
 
+                            {!defaults.volunteers ? 
+                                (
+                                    <div>
+                                        <p> Interested in volunteering? Volunteers help HackRU run smoothly by assisting the organizing team during the event. Sign up to <a href={defaults.volunteers.vol_url}>volunteer</a>.</p>
+                                        <p>Excited to help hackers get their projects up and running? Become a <a href={defaults.volunteers.mentor_url}>mentor</a>!</p>
+                                    </div>
+                                )
+                                :
+                                (
+                                    <div>
+                                        <p>The VHX team will release volunteer and mentor sign-ups and hold training sessions for volunteers prior to the event.</p>
+                                    </div>)}
+
                             <h4 className="display-4" > Directors </h4>
                             <Row>
                                 {this.state.directors.map((person) =>

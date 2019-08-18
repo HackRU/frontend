@@ -10,7 +10,7 @@
     --secondary-color-alt: #C85151; /* Background color */
     --accent-color: #F1BA43; /* Logout, Live button color */
     --accent-color-alt: #F1BA43; /* Dashboard button color NOTE:  Dashboard colors are different across navbar on different pages */
-    --disabled-color: #FF0000; /* Unsure.... */
+    --disabled-color: #EEEEe8; /* Unsure.... */
     --hover-color: rgba(0, 0, 0, 0.9);
     --hover-background-color: #df897f;
     --active-color: rgba(255, 255, 255, 0.5);
