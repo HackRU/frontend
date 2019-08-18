@@ -259,12 +259,17 @@ class UserProfileForm extends Component {
                     </FormGroup>
                     <h4>HackRU</h4>
                     <FormGroup>
-                        <Label for="dr">Dietary Restrictions</Label>
-                        <Input id="dr"
-                            type="text"
-                            placeholder="Allergies? Vegetarian?"
+                        <CustomAVInput name="dr"
+                            label="Dietary Restrictions"
                             value={user.dietary_restrictions}
-                            onChange={(e) => { user.dietary_restrictions = e.target.value; this.updateUser(user); }} />
+                        >
+                            <div className="forcestyle">
+                                <Creatable id="dr"
+                                    value={{ value: user.dietary_restrictions, label: user.dietary_restrictions }}
+                                    onChange={(e) => { user.dietary_restrictions = e.value; this.updateUser(user); }}
+                                    options={selectorOptions.dietaryRestrictions} />
+                            </div>
+                        </CustomAVInput>
                     </FormGroup>
                     <FormGroup>
                         <Label for="sn">Special Needs</Label>
