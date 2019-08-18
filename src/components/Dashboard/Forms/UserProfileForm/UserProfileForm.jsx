@@ -172,6 +172,17 @@ class UserProfileForm extends Component {
                         </Col>
                     </FormGroup>
                     <FormGroup>
+                        <AvField name="hackathon_count"
+                            label="How many hackathons have you attended? *"
+                            type="number"
+                            placeholder="0"
+                            value={user.hackathon_count}
+                            onChange={(e) => { user.hackathon_count = e.target.value; this.updateUser(user); }}
+                            validate={{
+                                required: { value: true, errorMessage: "Invalid hackathon count" },
+                                min: { value: 0, errorMessage: "Hackathon count must be non-negative" } }} />
+                    </FormGroup>
+                    <FormGroup>
                         <Label for="github">GitHub Handle</Label>
                         <Input id="github"
                             type="text"
@@ -357,6 +368,10 @@ class UserProfileForm extends Component {
                             <Label>Ethnicity</Label>
                             {field(user.ethnicity)}
                         </Col>
+                    </FormGroup>
+                    <FormGroup>
+                        <Label>How many hackathons have you attended?</Label>
+                        {field(user.hackathon_count)}
                     </FormGroup>
                     <FormGroup>
                         <Label>GitHub Handle</Label>
