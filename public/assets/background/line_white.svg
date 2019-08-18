@@ -3,17 +3,17 @@
 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 400 400" style="enable-background:new 0 0 400 400;" xml:space="preserve">
 <style type="text/css">
-	.st0{fill:none;}
+	.st0{fill:#FFFFFF;}
 	.st1{fill:#F1BA43;}
-	.st2{fill:none;stroke:#C85151;stroke-width:20;stroke-miterlimit:10;}
-	.st3{fill:none;stroke:#F1BA43;stroke-width:20;stroke-miterlimit:10;}
-	.st4{fill:none;stroke:#4FAB5F;stroke-width:20;stroke-miterlimit:10;}
+	.st2{fill:#FFFFFF;stroke:#C85151;stroke-width:20;stroke-miterlimit:10;}
+	.st3{fill:#FFFFFF;stroke:#F1BA43;stroke-width:20;stroke-miterlimit:10;}
+	.st4{fill:#FFFFFF;stroke:#4FAB5F;stroke-width:20;stroke-miterlimit:10;}
 	.st5{display:none;}
-	.st6{display:inline;fill:none;stroke:#FFFFFF;stroke-width:5;stroke-linecap:round;stroke-miterlimit:10;}
+	.st6{display:inline;fill:#FFFFFF;stroke:#FFFFFF;stroke-width:5;stroke-linecap:round;stroke-miterlimit:10;}
 	.st7{display:inline;fill:url(#_x31_0_dpi_30_x25__4);}
 	.st8{display:inline;fill:#FFFFFF;}
 	.st9{display:inline;}
-	.st10{fill:none;stroke:#FFFFFF;stroke-width:10;stroke-miterlimit:10;}
+	.st10{fill:#FFFFFF;stroke:#FFFFFF;stroke-width:10;stroke-miterlimit:10;}
 </style>
 <pattern  width="28.8" height="28.8" patternUnits="userSpaceOnUse" id="_x31_0_dpi_30_x25__4" viewBox="2.2 -31 28.8 28.8" style="overflow:visible;">
 	<g>
@@ -46,7 +46,7 @@
 </pattern>
 <g id="guides_x2F_ref">
 	
-		<image style="display:none;overflow:visible;" width="2382" height="1670" xlink:href="web/web_home.png"  transform="matrix(0.5 0 0 0.5 -911.5723 -468.0444)">
+	<image style="display:none;overflow:visible;" width="2382" height="1670" xlink:href="web/web_home.png"  transform="matrix(0.5 0 0 0.5 -911.5723 -468.0444)">
 	</image>
 	<path class="st2" d="M-124.5-95.8L-124.5-95.8c-11,0-20,8.9-20,20v0c0,11,8.9,20,20,20h0c11,0,20-8.9,20-20v0
 		C-104.5-86.8-113.4-95.8-124.5-95.8z"/>
