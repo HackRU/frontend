@@ -9,9 +9,17 @@ class NavBar extends Component {
         super(props);
 
         this.toggle = this.toggle.bind(this);
+        this.toggleIfMobile = this.toggleIfMobile.bind(this);
         this.state = {
             isOpen: false
         };
+    }
+    toggleIfMobile() {
+        if (window.innerWidth < 768) {
+            this.setState({
+                isOpen: false
+            });
+        }
     }
     toggle() {
         this.setState({
@@ -52,29 +60,15 @@ class NavBar extends Component {
             navLinks
         )
     }
-    getMobileNavbar() {
-        return (
-            <div>
-                <NavItem>
-                    <NavbarBrand onClick={this.toggle} style={{ color: theme.accent[0] }}>HackRU</NavbarBrand>
-                    <Collapse isOpen={this.state.isOpen} navbar>
-                        <Nav navbar>
-                            {this.getNavLinks()}
-                            {this.getAuthLinks()}
-                        </Nav>
-                    </Collapse>
-                </NavItem>
-            </div>
-        );
-    }
     render() {
         let profile = this.props.profile;
+        let w = window.location.pathname;
         return (
             <Navbar style={{ width: "100%", zIndex: "20", backgroundColor: theme.secondary[1] }} fixed="top" dark expand="md">
                 <Container>
                     <NavbarBrand>
                         <NavbarToggler onClick={this.toggle} style={{ marginRight: 10 }} />
-                        <a style={{ color: theme.accent[0] }} href="/#">HackRU</a>
+                        <a style={{ color: theme.accent[0] }} onClick={this.toggleIfMobile} href="/#">HackRU</a>
                     </NavbarBrand>
                     <Collapse isOpen={this.state.isOpen} navbar>
                         <Nav navbar className="mr-auto">
