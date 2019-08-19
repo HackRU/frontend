@@ -5,15 +5,20 @@ import {
   Nav,
   NavLink,
   NavItem,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
-  Dropdown,
+  Collapse,
+  NavbarToggler,
+  Col,
+  Row,
+  Button,
+  ButtonGroup,
+  ButtonToolbar,
   Container } from 'reactstrap';
+
+import GlowButton from "./components/GlowButton"
 import { defaults, navlinks, theme } from "./Defaults";
 
-const dropdownItemStyle = {
-  color: theme.accent[0]
+const buttonStyle = {
+  border: "1px solid white"
 }
 
 class NavBar extends Component {
@@ -21,84 +26,131 @@ class NavBar extends Component {
     super(props);
 
     this.toggle = this.toggle.bind(this);
-    this.onMouseEnter = this.onMouseEnter.bind(this);
-    this.onMouseLeave = this.onMouseLeave.bind(this);
+    this.toggleIfMobile = this.toggleIfMobile.bind(this);
 
     this.state = {
-      dropdownOpen: false
+      isOpen: false
     };
 
   }
+
+  componentDidMount() {
+    console.log(this.state.isOpen + "  " + this.props.isMobile)
+  }
+
   toggle() {
-    this.setState(prevState => ({
-      dropdownOpen: !prevState.dropdownOpen
-    }));
-  }
-
-  onMouseEnter() {
+    if (this.props.isMobile) {
       this.setState({
-          dropdownOpen: true
+        isOpen: !this.state.isOpen
       });
+    }
   }
 
-  onMouseLeave() {
-      this.setState({
-          dropdownOpen: false
-      });
+  toggleIfMobile() {
+    if (this.props.isMobile) {
+      this.toggle();
+    }
+  }
+  
+
+  getAuthButtons() {
+    if (!this.props.isMobile) {
+      return(
+        <div>
+          <Button style={buttonStyle} color="link" href="/login">Login</Button>{' '}
+          <Button style={buttonStyle} color="link" href="/signup">Sign Up</Button>
+        </div>
+      );
+    }
   }
 
-  getDropdown() {
-    return (
-      <Dropdown onMouseOver={this.onMouseEnter} onMouseLeave={this.onMouseLeave} isOpen={this.state.dropdownOpen} toggle={this.toggle} style={{backgroundColor: 0}}>
-        <DropdownToggle style={{backgroundColor: theme.secondary[1], border:0, outline:0, pointerEvents: "none"}} caret right>
-          Get Started!
-        </DropdownToggle>
-        <DropdownMenu style={{backgroundColor: theme.primary[0]}}>
-          <DropdownItem style={dropdownItemStyle} href="/login">Login</DropdownItem>
-          <DropdownItem style={dropdownItemStyle} href="/signup">Sign Up</DropdownItem>
-        </DropdownMenu>
-      </Dropdown>
-    )
+  getAuthLinks() {
+    return(
+      [<NavLink href="/login" color={theme.accent[1]}>Login</NavLink>,
+      <NavLink href="/signup" color={theme.accent[1]}>Sign Up</NavLink>
+      ]
+    );
   }
 
   getDashboardButton() {
     return (
-      <NavLink href="/dashboard" style={dropdownItemStyle}>Dashboard</NavLink>
+      <Button href="/dashboard" color="link" style={buttonStyle}>Dashboard</Button>
+    )
+  }
+
+  getNavLinks() {
+    
+    let keys = Object.keys(navlinks);
+    let navLinks = [];
+    for (let i = 0; i < keys.length; i++) {
+      navLinks.push(
+        <NavItem>
+          <NavLink href={"/" + navlinks[keys[i]].url} onClick={this.toggleIfMobile}>{keys[i].toString()}</NavLink>
+        </NavItem>
+      );
+    }
+
+    return(
+      navLinks
+    )
+  }
+
+  getMobileNavbar() {
+    return(
+      <Container>
+        <NavItem>
+        <NavbarBrand onClick={this.toggle} style={{color:theme.accent[0]}}>HackRU</NavbarBrand>
+          <Collapse isOpen={this.state.isOpen} navbar>
+            <Nav navbar>
+              {this.getNavLinks()}
+              {this.getAuthLinks()}
+            </Nav>
+          </Collapse>
+        </NavItem>
+      </Container>
+      // [
+      // <NavItem>
+      //   <NavbarToggler onClick={this.toggle}/>
+      //   <Collapse isOpen={this.state.isOpen} navbar>
+      //     <Nav navbar>
+      //       {this.getNavLinks()}
+      //       {this.getAuthLinks()}
+      //     </Nav>
+      //   </Collapse>
+      // </NavItem>
+      //   ,
+      // <NavbarBrand href="/#" className="text-center" style={{color:theme.accent[0]}}>HackRU</NavbarBrand>
+      // ]
+    );
+  }
+
+  getNavbar() {
+    return(
+      [
+      <NavbarBrand href="/#" style={{color:theme.accent[0]}}>HackRU</NavbarBrand>,
+      this.getNavLinks()
+      ]
     )
   }
 
   render() {
 
     let profile = this.props.profile;
+    let isMobile = this.props.isMobile;
 
     return (
-      <Container>
-        <Navbar style={{width: "100%", zIndex: "20", backgroundColor: theme.secondary[1]}} fixed="top" expand="md">
-          <NavbarBrand href="/#home" style={{color: theme.accent[0]}}>HackRU</NavbarBrand>
-          <Nav>
-            <NavItem>
-              <NavLink href={"/" + navlinks["About Us"].url}>About Us</NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink href={"/" + navlinks.Schedule.url}>Schedule</NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink href={"/" + navlinks.Sponsors.url}>Sponsors</NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink href={"/" + navlinks.Partners.url}>Partners</NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink href={"/" + navlinks.FAQs.url}>FAQs</NavLink>
-            </NavItem>
-            <NavLink href="/live" style={dropdownItemStyle}>Live</NavLink>
-          </Nav>
-          <Nav pullRight className="ml-auto">
-            {profile.isLoggedIn ? this.getDashboardButton() : this.getDropdown()}
-          </Nav>
+      <div>
+        <Navbar style={{width: "100%", zIndex: "20", backgroundColor: theme.secondary[1]}} fixed="top" dark expand="md">
+          <Container>
+            <Nav>
+              {isMobile ? this.getMobileNavbar() : this.getNavbar() }
+            </Nav>
+            <div pullRight className="ml-auto">
+              {profile.isLoggedIn ? this.getDashboardButton() : this.getAuthButtons()}
+            </div>
+          </Container>
         </Navbar>
-        <br></br>
-      </Container>
+      </div>
     );
   }
 }
