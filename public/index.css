@@ -10,7 +10,7 @@
     --secondary-color-alt: #C85151; /* Background color */
     --accent-color: #F1BA43; /* Logout, Live button color */
     --accent-color-alt: #F1BA43; /* Dashboard button color NOTE:  Dashboard colors are different across navbar on different pages */
-    --disabled-color: #FF0000; /* Unsure.... */
+    --disabled-color: #EEEEe8; /* Unsure.... */
     --hover-color: rgba(0, 0, 0, 0.9);
     --hover-background-color: #df897f;
     --active-color: rgba(255, 255, 255, 0.5);
@@ -26,8 +26,8 @@
     --input-border: none;
     --input-color: rgba(255, 255, 255, 1);
     --input-border-radius: 0px;
-    --select-background: rgba(255, 255, 255, 1);
-    --select-color: rgba(0, 0, 0, 1);
+    --select-background: rgba(0, 0, 0, 1);
+    --select-color: rgba(255, 255, 255, 1);
     --select-input-background: rgba(255, 255, 255, 0.075);
     /* Hero Image */
     --hero-width: 400px;
@@ -221,7 +221,7 @@ input, textarea, .custom-file-label {
     color: var(--select-color) !important;
 }
 .custom-checkbox .custom-control-input:checked~.custom-control-label::before{
-    background-color: var(--primary-color) !important;
+    background-color: var(--accent-color) !important;
 }
 .custom-av-checkbox div {
     background-color: transparent;
@@ -257,7 +257,7 @@ form .btn, form btn-secondary {
 
 
 .sponsor-item-image:hover {
-    transform: scale(1.3);
+    transform: scale(1.05);
 }
 
 /* Dashboard QR */

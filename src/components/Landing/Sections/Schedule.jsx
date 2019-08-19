@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import GlowButton from "../../GlowButton";
+import { defaults } from "../../../Defaults";
 
 /**
  * Schedule component for the landing page
@@ -16,7 +17,7 @@ class Schedule extends Component {
                 <hr />
                 <div className="row row-content-box">
                     <div className="col-12 col-lg-6">
-                        <h3 className="text-center mb-2">Saturday <small>3/9/19</small></h3>
+                        <h3 className="text-center mb-2">Saturday <small>10/19/19</small></h3>
                         <table className="table table-hover">
                             <thead>
                                 <tr>
@@ -55,7 +56,7 @@ class Schedule extends Component {
                         </table>
                     </div>
                     <div className="col-12 mt-5 mt-lg-0 col-lg-6">
-                        <h3 className="text-center mb-2">Sunday <small>3/10/19</small></h3>
+                        <h3 className="text-center mb-2">Sunday <small>10/20/19</small></h3>
                         <table className="table table-hover">
                             <thead>
                                 <tr>
@@ -105,30 +106,31 @@ class Schedule extends Component {
                     </div>
                 </div>
                 <hr />
-                <div align="center"
-                    style={{ marginBottom: 10 }}>
-                    <h2> Download the App </h2>
-                    <p>
-                        Check out HackRU's official app for announcements, schedules, and your personal QR code!
-                    </p>
-                    <div>
-                        <GlowButton
-                            href='/live'
-                            icon='tv'
-                            text='Live Page'
-                        />
-                        <GlowButton
-                            href='https://play.google.com/store/apps/details?id=org.hackru.oneapp.hackru'
-                            icon='android'
-                            text='Android App'
-                        />
-                        {/*<GlowButton
+                {defaults.dayof && 
+                        <div align="center"
+                            style={{ marginBottom: 10 }}>
+                            <h2> Download the App </h2>
+                            <p>
+                                Check out HackRU's official app for announcements, schedules, and your personal QR code!
+                            </p>
+                            <div>
+                                <GlowButton
+                                    href='/live'
+                                    icon='tv'
+                                    text='Live Page'
+                                />
+                                <GlowButton
+                                    href='https://play.google.com/store/apps/details?id=org.hackru.oneapp.hackru'
+                                    icon='android'
+                                    text='Android App'
+                                />
+                                {/*<GlowButton
                             href='https://ios-app.hackru.org/manifest.plist'
                             icon='apple'
                             text='iOS App'
                         />*/}
-                    </div>
-                </div>
+                            </div>
+                        </div>}
             </div>
         );
     }

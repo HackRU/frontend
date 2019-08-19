@@ -82,36 +82,36 @@ class Schedule extends Component {
             <div style={{ marginBottom: 10 }}>
                 <div style={{ width: "100%", textAlign: "left" }}>
                     { !this.props.hide &&
-                    <h3>Schedule</h3>}
+                        <h3>Schedule</h3>}
                     <ListGroup className="live-container"
                         flush>
                         {events}
                         { !this.props.hide &&
-                        <div style={{ width: "100%", textAlign: "right" }}>
-                            <Pagination className="live-page-container pull-right">
-                                <PaginationItem>
-                                    <PaginationLink className="live-page-btn"
-                                        previous
-                                        onClick={() => {
-                                            this.setState({
-                                                start: (this.state.start - 10 >= 0) ? (this.state.start - 10) : (0)
-                                            });
-                                        }} />
-                                </PaginationItem>
-                                <PaginationItem>
-                                    <PaginationLink className="live-page-btn"
-                                        next
-                                        onClick={() => {
-                                            this.setState({
-                                                start: (this.state.start + 10 <= this.state.events.length - 10) ? (this.state.start + 10) : (this.state.events.length - 10)
-                                            });
-                                        }} />
-                                </PaginationItem>
-                            </Pagination>
-                            <div className="live-page-text">
-                                Viewing {this.state.start} - {end}
-                            </div>
-                        </div>}
+                                    <div style={{ width: "100%", textAlign: "right" }}>
+                                        <Pagination className="live-page-container pull-right">
+                                            <PaginationItem>
+                                                <PaginationLink className="live-page-btn"
+                                                    previous
+                                                    onClick={() => {
+                                                        this.setState({
+                                                            start: (this.state.start - 10 >= 0) ? (this.state.start - 10) : (0)
+                                                        });
+                                                    }} />
+                                            </PaginationItem>
+                                            <PaginationItem>
+                                                <PaginationLink className="live-page-btn"
+                                                    next
+                                                    onClick={() => {
+                                                        this.setState({
+                                                            start: (this.state.start + 10 <= this.state.events.length - 10) ? (this.state.start + 10) : (this.state.events.length - 10)
+                                                        });
+                                                    }} />
+                                            </PaginationItem>
+                                        </Pagination>
+                                        <div className="live-page-text">
+                                                    Viewing {this.state.start} - {end}
+                                        </div>
+                                    </div>}
                     </ListGroup>
                 </div>
             </div>

@@ -172,6 +172,17 @@ class UserProfileForm extends Component {
                         </Col>
                     </FormGroup>
                     <FormGroup>
+                        <AvField name="hackathon_count"
+                            label="How many hackathons have you attended? *"
+                            type="number"
+                            placeholder="0"
+                            value={user.hackathon_count}
+                            onChange={(e) => { user.hackathon_count = e.target.value; this.updateUser(user); }}
+                            validate={{
+                                required: { value: true, errorMessage: "Invalid hackathon count" },
+                                min: { value: 0, errorMessage: "Hackathon count must be non-negative" } }} />
+                    </FormGroup>
+                    <FormGroup>
                         <Label for="github">GitHub Handle</Label>
                         <Input id="github"
                             type="text"
@@ -248,12 +259,17 @@ class UserProfileForm extends Component {
                     </FormGroup>
                     <h4>HackRU</h4>
                     <FormGroup>
-                        <Label for="dr">Dietary Restrictions</Label>
-                        <Input id="dr"
-                            type="text"
-                            placeholder="Allergies? Vegetarian?"
+                        <CustomAVInput name="dr"
+                            label="Dietary Restrictions"
                             value={user.dietary_restrictions}
-                            onChange={(e) => { user.dietary_restrictions = e.target.value; this.updateUser(user); }} />
+                        >
+                            <div className="forcestyle">
+                                <Creatable id="dr"
+                                    value={{ value: user.dietary_restrictions, label: user.dietary_restrictions }}
+                                    onChange={(e) => { user.dietary_restrictions = e.value; this.updateUser(user); }}
+                                    options={selectorOptions.dietaryRestrictions} />
+                            </div>
+                        </CustomAVInput>
                     </FormGroup>
                     <FormGroup>
                         <Label for="sn">Special Needs</Label>
@@ -357,6 +373,10 @@ class UserProfileForm extends Component {
                             <Label>Ethnicity</Label>
                             {field(user.ethnicity)}
                         </Col>
+                    </FormGroup>
+                    <FormGroup>
+                        <Label>How many hackathons have you attended?</Label>
+                        {field(user.hackathon_count)}
                     </FormGroup>
                     <FormGroup>
                         <Label>GitHub Handle</Label>
