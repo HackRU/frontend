@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
 import { Navbar, NavbarBrand, Nav, NavLink, NavItem, Collapse, NavbarToggler, Button, ButtonGroup, Container } from 'reactstrap';
+import { Link } from 'react-router-dom';
 import { navlinks, theme } from "./Defaults";
 const buttonStyle = {
-    border: "1px solid white"
+    border: "1px solid white",
+    color: "white"
 }
+
+const link1 = <Link style={{ textDecoration: 'none' }} to="/login"></Link>
+
 class NavBar extends Component {
     constructor(props) {
         super(props);
@@ -11,27 +16,38 @@ class NavBar extends Component {
         this.toggle = this.toggle.bind(this);
         this.toggleIfMobile = this.toggleIfMobile.bind(this);
         this.handleScroll = this.handleScroll.bind(this);
+        this.handleResize = this.handleResize.bind(this);
 
 
         this.state = {
             isOpen: false,
-            shouldRender: 0
+            shouldRender: 0,
+            badgeHeight: 0,
         };
     }
 
     componentDidMount() {
         window.addEventListener('scroll', this.handleScroll);
+        window.addEventListener('resize', this.handleResize);
+
+        this.handleResize();
     }
 
     componentWillUnmount() {
         window.removeEventListener('scroll', this.handleScroll);
     }
 
-    handleScroll() {
+    handleResize() {
         let badge = document.getElementById("mlh-trust-badge");
-        let badgeHeight = parseFloat(window.getComputedStyle(badge).getPropertyValue("height").replace("px", ""));
+        this.setState({
+            badgeHeight: parseFloat(window.getComputedStyle(badge).getPropertyValue("height").replace("px", ""))
+        });
+    }
+
+    handleScroll() {
+        let badgeHeight = this.state.badgeHeight;
         let offset = window.pageYOffset;
-        
+
         if (offset < badgeHeight) {
             //At top
             this.setState({
@@ -60,17 +76,15 @@ class NavBar extends Component {
     getAuthButtons() {
         return (
             <div>
-                <ButtonGroup>
-                    <Button style={buttonStyle} color="link" href="/login">Login</Button>{' '}
-                    <Button style={buttonStyle} color="link" href="/signup">Sign Up</Button>
-                </ButtonGroup>
+                <Link to="/login" style={{ textDecoration: 'none' }}><Button style={buttonStyle} color="Login">Login</Button></Link>{' '}
+                <Link to="/signup" style={{ textDecoration: 'none' }}><Button style={buttonStyle} color="link">Sign Up</Button></Link>
             </div>
         );
     }
     getDashboardButton() {
         return (
-            <Button href="/dashboard" color="link" style={buttonStyle}>Dashboard</Button>
-        )
+            <Link to="/dashboard" style={{ textDecoration: 'none' }}><Button style={buttonStyle} color="link">Dashboard</Button></Link>
+        );
     }
     getNavLinks() {
         let keys = Object.keys(navlinks);
@@ -107,15 +121,15 @@ class NavBar extends Component {
         <Collapse isOpen={this.state.isOpen} navbar>
             <Nav navbar className="mr-auto">
                 <NavItem>
-                    <NavLink href="/" onClick={this.toggleIfMobile}>Home</NavLink>
+                    <NavLink onClick={this.toggleIfMobile}><Link to="/#">Home</Link></NavLink>
                 </NavItem>
                 <NavItem>
-                    <NavLink href="/live" onClick={this.toggleIfMobile}>Live</NavLink> 
+                    <NavLink onClick={this.toggleIfMobile}><Link to="/live">Live</Link></NavLink> 
                 </NavItem>
             </Nav>
             <Nav navbar className="ml-auto">
                 <NavItem>
-                    <Button style={buttonStyle} color="link" href="/logout">Logout</Button>
+                    <Link to="/logout" style={{ textDecoration: 'none' }}><Button style={buttonStyle} color="link">Logout</Button></Link>
                 </NavItem>
             </Nav>
         </Collapse>
@@ -124,16 +138,17 @@ class NavBar extends Component {
 
     render() {
         let path = window.location.pathname;
+        let onDashboard = (path === "/dashboard");
         return(
-            <Navbar id="navbar" style={{ width: "100%", zIndex: "20", backgroundColor: theme.secondary[1], opacity: this.state.shouldRender, transition: "opacity 1.5s" }} fixed="top" dark expand="md">
+            <Navbar id="navbar" style={{ width: "100%", zIndex: "20", backgroundColor: theme.secondary[1], opacity: this.state.shouldRender | onDashboard, pointerEvents: this.state.shouldRender | onDashboard ? "auto":"none", transition: "opacity 0.5s" }} fixed="top" dark expand="md">
                 <Container>
-                        <NavbarBrand>
-                            <NavbarToggler onClick={this.toggle} style={{ marginRight: 10 }} />
-                            <a style={{ color: theme.accent[0] }} onClick={this.toggleIfMobile} href="/#">HackRU</a>
-                        </NavbarBrand>
-                       { (path === "/dashboard") ? 
-                            this.getDashboardNav() :
-                            this.getLandingNav() }
+                    <NavbarBrand>
+                        <NavbarToggler onClick={this.toggle} style={{ marginRight: 10 }} />
+                        <Link style={{ color: theme.accent[0] }} onClick={this.toggleIfMobile} to="/#">HackRU</Link>
+                    </NavbarBrand>
+                    { onDashboard ? 
+                        this.getDashboardNav() :
+                        this.getLandingNav() }
                 </Container>
             </Navbar> );
     }
