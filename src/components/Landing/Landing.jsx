@@ -7,6 +7,7 @@ import { defaults, navlinks, theme } from "../../Defaults";
 import ScrollableAnchor from "react-scrollable-anchor";
 import { ProfileType } from "../Profile";
 import PropTypes from "prop-types";
+import MLHBadge from "../../MLHBadge";
 
 /**
  * This is the first thing that users will see. It will include information about the upcoming hackathon, an about section, and other
@@ -60,6 +61,7 @@ class LandingPage extends Component {
             }
         }
         return (
+            [<MLHBadge/>,
             <Container id="LandingPage"
                 className="section"
                 fluid
@@ -79,7 +81,7 @@ class LandingPage extends Component {
                     </ScrollableAnchor>
                     {rows}
                 </ParallaxProvider>
-            </Container>
+            </Container>]
         );
     }
 }

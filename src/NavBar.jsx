@@ -37,6 +37,9 @@ class NavBar extends Component {
 
     handleResize() {
         let badge = document.getElementById("mlh-trust-badge");
+        if (badge == null) {
+            return;
+        }
         this.setState({
             badgeHeight: parseFloat(window.getComputedStyle(badge).getPropertyValue("height").replace("px", ""))
         });
@@ -137,8 +140,9 @@ class NavBar extends Component {
     render() {
         let path = window.location.pathname;
         let onDashboard = (path === "/dashboard");
+        let onLanding = (path === "/");
         return(
-            <Navbar id="navbar" style={{ width: "100%", zIndex: "20", backgroundColor: theme.secondary[1], opacity: this.state.shouldRender | onDashboard, pointerEvents: this.state.shouldRender | onDashboard ? "auto":"none", transition: "opacity 0.5s" }} fixed="top" dark expand="md">
+            <Navbar id="navbar" style={{ width: "100%", zIndex: "20", backgroundColor: theme.secondary[1], opacity: this.state.shouldRender | !onLanding, pointerEvents: this.state.shouldRender | !onLanding ? "auto":"none", transition: !onLanding ? "" : "opacity 0.5s" }} fixed="top" dark expand="md">
                 <Container>
                     <NavbarBrand>
                         <NavbarToggler onClick={this.toggle} style={{ marginRight: 10 }} />
