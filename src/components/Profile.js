@@ -440,6 +440,9 @@ class Profile {
         const info = await this.GetResumeInfo();
         return await fetch(info.upload, {
             method: "PUT",
+            headers: {
+                "content-type": "application/pdf",
+            },
             body: file,
         });
     }
