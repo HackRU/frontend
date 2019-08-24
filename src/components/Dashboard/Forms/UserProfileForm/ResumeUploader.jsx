@@ -36,7 +36,7 @@ const ResumeUploader = ({ edit, profile }) => {
                 label={labelText} /> : <p style={pStyle}>{labelText}</p>}
         </FormGroup>
     </div>;
-}
+};
 
 ResumeUploader.propTypes = {
     edit: PropTypes.bool,
