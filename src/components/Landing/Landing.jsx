@@ -15,11 +15,6 @@ import MLHBadge from "../../MLHBadge";
  */
 class LandingPage extends Component {
 
-    componentDidMount() {
-        document.getElementById("mlh-trust-badge").style.opacity = "1";
-        document.getElementById("mlh-trust-badge").style.pointerEvents = "auto";
-    }
-
     render() {
         let sectionClasses = "col-lg-10 offset-lg-1 col-xs-12 offset-xs-0 skew-left color-priority";
         let rows = [];

@@ -66,11 +66,6 @@ class Dashboard extends Component {
 
     }
 
-    componentDidMount() {
-        document.getElementById("mlh-trust-badge").style.opacity = "0";
-        document.getElementById("mlh-trust-badge").style.pointerEvents = "none";
-    }
-
     submitUser = (user) => {
         this.setState({
             loading: "Saving your information",
