@@ -425,11 +425,12 @@ class Profile {
     async GetResumeInfo() {
         return await fetch(ENDPOINTS.resume, {
             method: "POST",
-            body: {
+            mode: "cors",
+            body: JSON.stringify({
                 email: this._email,
                 token: this._token,
-            },
-        });
+            }),
+        }).then(res => res.json());
     }
     async DoesResumeExist() {
         const info = await this.GetResumeInfo();
