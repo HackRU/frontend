@@ -423,7 +423,7 @@ class Profile {
         });
     }
     async GetResumeInfo() {
-        return await fetch(ENDPOINTS.resume, {
+        const json = await fetch(ENDPOINTS.resume, {
             method: "POST",
             mode: "cors",
             body: JSON.stringify({
@@ -431,6 +431,7 @@ class Profile {
                 token: this._token,
             }),
         }).then(res => res.json());
+        return json.body;
     }
     async DoesResumeExist() {
         const info = await this.GetResumeInfo();
@@ -438,6 +439,7 @@ class Profile {
     }
     async UploadResume(file) {
         const info = await this.GetResumeInfo();
+        console.log(info);
         return await fetch(info.upload, {
             method: "PUT",
             headers: {
@@ -457,6 +459,8 @@ const ProfileType = PropTypes.shape({
     _email: PropTypes.func,
     _valid_until: PropTypes.func,
     isLoggedIn: PropTypes.bool,
+    DoesResumeExist: PropTypes.func,
+    UploadResume: PropTypes.func,
 });
 
 export { Profile, ProfileType, ENDPOINTS };
