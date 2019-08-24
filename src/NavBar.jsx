@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
-import { Navbar, NavbarBrand, Nav, NavLink, NavItem, Collapse, NavbarToggler, Button, ButtonGroup, Container } from 'reactstrap';
+import { Navbar, NavbarBrand, Nav, NavLink, NavItem, Collapse, NavbarToggler, Button, Container } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { navlinks, theme } from "./Defaults";
 const buttonStyle = {
     border: "1px solid white",
     color: "white"
 }
-
-const link1 = <Link style={{ textDecoration: 'none' }} to="/login"></Link>
 
 class NavBar extends Component {
     constructor(props) {
@@ -53,7 +51,7 @@ class NavBar extends Component {
             this.setState({
                 shouldRender: 0
             });
-        } else if (this.state.shouldRender == 0 && offset > badgeHeight) {
+        } else if (this.state.shouldRender === 0 && offset > badgeHeight) {
             this.setState({
                 shouldRender: 1
             })
