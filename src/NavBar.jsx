@@ -10,10 +10,12 @@ class NavBar extends Component {
 
         this.toggle = this.toggle.bind(this);
         this.toggleIfMobile = this.toggleIfMobile.bind(this);
+        this.handleScroll = this.handleScroll.bind(this);
+
 
         this.state = {
             isOpen: false,
-            atTop: 0
+            shouldRender: 0
         };
     }
 
@@ -22,20 +24,23 @@ class NavBar extends Component {
     }
 
     componentWillUnmount() {
-        window.addEventListener('scroll', this.handleScroll);
+        window.removeEventListener('scroll', this.handleScroll);
     }
 
-    handleScroll = () => {
+    handleScroll() {
         let badge = document.getElementById("mlh-trust-badge");
-        if (window.pageYOffset < parseFloat(window.getComputedStyle(badge).getPropertyValue("height").replace("px", ""))) {
+        let badgeHeight = parseFloat(window.getComputedStyle(badge).getPropertyValue("height").replace("px", ""));
+        let offset = window.pageYOffset;
+        
+        if (offset < badgeHeight) {
             //At top
             this.setState({
                 shouldRender: 0
             });
-        } else {
+        } else if (this.state.shouldRender == 0 && offset > badgeHeight) {
             this.setState({
                 shouldRender: 1
-            });
+            })
         }
     }
 
@@ -118,23 +123,19 @@ class NavBar extends Component {
     }
 
     render() {
-        if (this.state.shouldRender) {
-            let path = window.location.pathname;
-            return(        
-                <Navbar style={{ width: "100%", zIndex: "20", backgroundColor: theme.secondary[1] }} fixed="top" dark expand="md">
-                    <Container>
-                            <NavbarBrand>
-                                <NavbarToggler onClick={this.toggle} style={{ marginRight: 10 }} />
-                                <a style={{ color: theme.accent[0] }} onClick={this.toggleIfMobile} href="/#">HackRU</a>
-                            </NavbarBrand>
-                           { (path === "/dashboard") ? 
-                                this.getDashboardNav() :
-                                this.getLandingNav() }
-                    </Container>
-                </Navbar> );
-        } else {
-            return([]);
-        }
+        let path = window.location.pathname;
+        return(
+            <Navbar id="navbar" style={{ width: "100%", zIndex: "20", backgroundColor: theme.secondary[1], opacity: this.state.shouldRender, transition: "opacity 1.5s" }} fixed="top" dark expand="md">
+                <Container>
+                        <NavbarBrand>
+                            <NavbarToggler onClick={this.toggle} style={{ marginRight: 10 }} />
+                            <a style={{ color: theme.accent[0] }} onClick={this.toggleIfMobile} href="/#">HackRU</a>
+                        </NavbarBrand>
+                       { (path === "/dashboard") ? 
+                            this.getDashboardNav() :
+                            this.getLandingNav() }
+                </Container>
+            </Navbar> );
     }
 }
 export default NavBar;
