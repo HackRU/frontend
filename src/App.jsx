@@ -20,7 +20,7 @@ import { ParallaxProvider } from "react-scroll-parallax";
 
 /**
  * Root application class. This is the object rendered in <div id="root" />
- * 
+ *
  * This component will handle route handling based on the URL, so that we can show the user specific things based on the requested
  * page, and whether or not they are signed in.
  */
@@ -60,7 +60,7 @@ class App extends Component {
     }
     /**
      * Set the application magic link
-     * @param {String} magic Magic link from lcs 
+     * @param {String} magic Magic link from lcs
      */
     setMagic(magic) {
         this.state.profile.SetMagic(magic);
@@ -105,6 +105,8 @@ class App extends Component {
                 <BrowserRouter style={{ width: "100%" }}>
                     {/* BrowserRouter wil allow us to switch between the different pages in our SPA based on the URL routing */}
                     <div className="root-wrapper">
+                        {/* We need to show this on our webpage at all times, so we're just going to dump it in the root */}
+                        <NavBar profile={this.state.profile}/>
                         {/* We need to show this on our webpage at all times, so we're just going to dump it in the root */}
                         <MLHBadge />
                         {/* We put the background here so that even after the page reroutes to different urls, the flying
