@@ -63,7 +63,9 @@ class Dashboard extends Component {
                 }
             }
         });
+
     }
+
     submitUser = (user) => {
         this.setState({
             loading: "Saving your information",
@@ -97,7 +99,7 @@ class Dashboard extends Component {
             <Container fluid
                 style={{ width: "100%", minHeight: "100vh", textAlign: "center", backgroundColor: theme.secondary[1] }}
                 className="d-flex align-items-center">
-                <div style={{ zIndex: 3, color: "white", width: "100%" }}
+                <div style={{ zIndex: 3, color: "white", width: "100%", paddingTop: "4rem" }}
                     align="center">
                     <Container>
                         <div style={{ width: "100%", textAlign: "left", marginBottom: 0, paddingTop: 35 }}>
@@ -105,7 +107,7 @@ class Dashboard extends Component {
                                 <Col md={8}
                                     xs={12}>
                                     <h1 className="display-4 theme-font">Welcome, {user.first_name}</h1>
-                                    <div style={{ display: "inline-block", marginRight: 20 }}>
+                                    {/* <div style={{ display: "inline-block", marginRight: 20 }}>
                                         <p className="lead">
                                             <Link to="/"
                                                 className="theme-home-link"
@@ -125,7 +127,7 @@ class Dashboard extends Component {
                                     </div>
                                     <div style={{ display: "inline-block", marginRight: 20 }}><p className="lead"><Link to="/logout"
                                         className="theme-home-link"
-                                        style={{ color: theme.accent[0] + "ff", textDecoration: "none" }}>Logout</Link></p></div>
+                                        style={{ color: theme.accent[0] + "ff", textDecoration: "none" }}>Logout</Link></p></div> */}
                                 </Col>
                                 <Col style={{ textAlign: "center" }}
                                     md={4}
