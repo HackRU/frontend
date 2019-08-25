@@ -6,10 +6,6 @@
 
 .customButton:hover {
     background-color: #F1BA43 !important;
-    color: white !important;
-}
-
-.customButton:focus {
-    -webkit-appearance: none !important;
-    outline: none;
+    color: black !important;
+    border-color: black !important;
 }
