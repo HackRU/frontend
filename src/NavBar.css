@@ -1,12 +1,18 @@
 .customButton {
     color: white !important;
     border: 1px solid white !important;
+    border-color: white !important;
     text-decoration: none !important;
+    transition: 1s ease !important;
 }
 
 .customButton:hover {
     background-color: #F1BA43 !important;
     color: black !important;
     border-color: black !important;
-    transition: 1s;
+    transition: 1s ease;
+    -o-transition: 1s ease;
+    -ms-transition: 1s ease;
+    -moz-transition: 1s ease;
+    -webkit-transition: 1s ease;
 }
