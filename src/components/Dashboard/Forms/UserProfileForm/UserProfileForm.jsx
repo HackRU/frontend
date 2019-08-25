@@ -428,17 +428,12 @@ class UserProfileForm extends Component {
                         {user.registration_status === "registered" ? <p style={{ ...pStyle, height: 100 }}>I have read and agree to the <a href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf">MLH Code of Conduct</a> and I authorize you to share my application/registration information for event administration, ranking, MLH administration, pre- and post-event informational e-mails, and occasional messages about hackathons in-line with the <a href="https://mlh.io/privacy">MLH Privacy Policy</a>. Further, I agree to the terms of both the <a href="https://github.com/MLH/mlh-policies/blob/master/prize-terms-and-conditions/contest-terms.md">MLH Contest Terms and Conditions</a> and the <a href="https://mlh.io/privacy">MLH Privacy Policy</a>.</p>
                             : <p style={{...pStyle, color: theme.accent[0] }}>You have not yet agreed to MLH policies. Please fill out your user profile.</p>}
                     </FormGroup>
-                    <div style={{ width: "100%" }}
-                        align="right">
-                        <Button style={{ backgroundColor: theme.primary[0] }}
-                            onClick={() => { this.setState({ edit: true }); }}>Edit</Button>
-                    </div>
                 </div>
             );
         }
     }
 }
-                
+
 
 UserProfileForm.propTypes = {
     user: {
