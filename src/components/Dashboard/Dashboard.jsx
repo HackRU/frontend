@@ -169,7 +169,9 @@ class Dashboard extends Component {
                                 onSubmit={(user) => {
                                     user.registration_status = "registered";
                                     this.submitUser(user);
-                                }} />
+                                }}
+                                profile={this.props.profile}
+                            />
                         </Section>
 
                         <Section className="mb-5"

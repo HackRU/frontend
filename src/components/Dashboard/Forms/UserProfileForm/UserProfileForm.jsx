@@ -9,6 +9,7 @@ import { theme } from "../../../../Defaults";
 import request from "request";
 import majors from "./majors.json";
 import selectorOptions from "./selectorOptions.json";
+import { ProfileType } from "../../../Profile";
 import PropTypes from "prop-types";
 
 class UserProfileForm extends Component {
@@ -297,9 +298,10 @@ class UserProfileForm extends Component {
                             value={user.short_answer}
                             onChange={(e) => { user.short_answer = e.target.value; this.updateUser(user); }} />
                     </FormGroup>
-                    <ResumeUploader userEmail={this.state.user.email}
+                    <ResumeUploader
                         edit={this.state.edit}
-                        regStyle={{}} />
+                        profile={this.props.profile}
+                    />
                     <AvCheckboxGroup name="mlhnotices"
                         className="custom-av-checkbox"
                         label={<h4>MLH Notices</h4>}
@@ -420,9 +422,10 @@ class UserProfileForm extends Component {
                         <Label>What are you hoping to experience at HackRU?</Label>
                         {field(user.short_answer)}
                     </FormGroup>
-                    <ResumeUploader userEmail={this.state.user.email}
+                    <ResumeUploader
                         edit={this.state.edit}
-                        regStyle={pStyle} />
+                        profile={this.props.profile}
+                    />
                     <h4>MLH Notices</h4>
                     <FormGroup>
                         {user.registration_status === "registered" ? <p style={{ ...pStyle, height: 100 }}>I have read and agree to the <a href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf">MLH Code of Conduct</a> and I authorize you to share my application/registration information for event administration, ranking, MLH administration, pre- and post-event informational e-mails, and occasional messages about hackathons in-line with the <a href="https://mlh.io/privacy">MLH Privacy Policy</a>. Further, I agree to the terms of both the <a href="https://github.com/MLH/mlh-policies/blob/master/prize-terms-and-conditions/contest-terms.md">MLH Contest Terms and Conditions</a> and the <a href="https://mlh.io/privacy">MLH Privacy Policy</a>.</p>
@@ -442,6 +445,7 @@ UserProfileForm.propTypes = {
     onChange: PropTypes.func,
     onSubmit: PropTypes.func,
     mobile: PropTypes.bool,
+    profile: ProfileType,
 };
 
 export default UserProfileForm;
