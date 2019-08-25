@@ -8,5 +8,5 @@
     background-color: #F1BA43 !important;
     color: black !important;
     border-color: black !important;
-    transition: color .5s;
+    transition: 1s;
 }
