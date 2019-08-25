@@ -2,10 +2,7 @@ import React, { Component } from 'react';
 import { Navbar, NavbarBrand, Nav, NavLink, NavItem, Collapse, NavbarToggler, Button, Container } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { navlinks, theme } from "./Defaults";
-const buttonStyle = {
-    border: "1px solid white",
-    color: "white"
-}
+import "./NavBar.css"
 
 class NavBar extends Component {
     constructor(props) {
@@ -77,14 +74,14 @@ class NavBar extends Component {
     getAuthButtons() {
         return (
             <div>
-                <Link to="/login" style={{ textDecoration: 'none' }}><Button style={buttonStyle} color="Login">Login</Button></Link>{' '}
-                <Link to="/signup" style={{ textDecoration: 'none' }}><Button style={buttonStyle} color="link">Sign Up</Button></Link>
+                <Link to="/login" class="link"><Button color="link" className="customButton">Login</Button></Link>{' '}
+                <Link to="/signup" ><Button color="link" className="customButton">Sign Up</Button></Link>
             </div>
         );
     }
     getDashboardButton() {
         return (
-            <Link to="/dashboard" style={{ textDecoration: 'none' }}><Button style={buttonStyle} color="link">Dashboard</Button></Link>
+            <Link to="/dashboard" style={{ textDecoration: 'none' }}><Button className="customButton" color="link">Dashboard</Button></Link>
         );
     }
     getNavLinks() {
@@ -130,7 +127,7 @@ class NavBar extends Component {
             </Nav>
             <Nav navbar className="ml-auto">
                 <NavItem>
-                    <Link to="/logout" style={{ textDecoration: 'none' }}><Button style={buttonStyle} color="link">Logout</Button></Link>
+                    <Link to="/logout" style={{ textDecoration: 'none' }}><Button className="customButton" color="link">Logout</Button></Link>
                 </NavItem>
             </Nav>
         </Collapse>

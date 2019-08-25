@@ -1,0 +1,15 @@
+.customButton {
+    color: white !important;
+    border: 1px solid white !important;
+    text-decoration: none !important;
+}
+
+.customButton:hover {
+    background-color: #F1BA43 !important;
+    color: white !important;
+}
+
+.customButton:focus {
+    -webkit-appearance: none !important;
+    outline: none;
+}
