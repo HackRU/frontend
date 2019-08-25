@@ -80,6 +80,7 @@ const ENDPOINTS = {
      * Get QR codes
      */
     "qr": BASE + "/qr",
+    "resume": BASE + "/resume",
 };
 /**
  * Standard profile handler for the entire application
@@ -421,6 +422,32 @@ class Profile {
             callback(error, body);
         });
     }
+    async GetResumeInfo() {
+        const json = await fetch(ENDPOINTS.resume, {
+            method: "POST",
+            mode: "cors",
+            body: JSON.stringify({
+                email: this._email,
+                token: this._token,
+            }),
+        }).then(res => res.json());
+        return json.body;
+    }
+    async DoesResumeExist() {
+        const info = await this.GetResumeInfo();
+        return info.exists;
+    }
+    async UploadResume(file) {
+        const info = await this.GetResumeInfo();
+        console.log(info);
+        return await fetch(info.upload, {
+            method: "PUT",
+            headers: {
+                "content-type": "application/pdf",
+            },
+            body: file,
+        });
+    }
 }
 
 const ProfileType = PropTypes.shape({
@@ -432,6 +459,8 @@ const ProfileType = PropTypes.shape({
     _email: PropTypes.func,
     _valid_until: PropTypes.func,
     isLoggedIn: PropTypes.bool,
+    DoesResumeExist: PropTypes.func,
+    UploadResume: PropTypes.func,
 });
 
 export { Profile, ProfileType, ENDPOINTS };
