@@ -257,14 +257,7 @@ form .btn, form btn-secondary {
 .sponsor-item-image {
     transition: all .2s ease-in-out;
     max-width: 100%;
-} 
-
-.sponsorship-background {
-    background: var(--active-color) !important;
-    border-radius: 25px;
-    margin-bottom: 25px;
 }
-
 
 .sponsor-item-image:hover {
     transform: scale(1.05);
