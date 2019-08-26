@@ -20,7 +20,7 @@ class FaqsCollapse extends React.Component {
         let cat = this.props.cat;
 
         return (
-            <div className="faq">
+            <div style={{ cursor: "pointer" }} >
                 <h5 onClick={this.toggle}>{cat.title} <Icon className="faq-hover pull-right"
                     name={(this.state.collapse) ? ("chevron-up") : ("chevron-down")} /></h5>
                 <hr className="faq-hover"/>
