@@ -10,7 +10,7 @@ class E404 extends Component {
                 className="d-flex align-items-center">
                 <Col />
                 <Col xs={4}
-                    style={{ display: "block", zIndex: 3, color: "white", background: "rgba(255, 0, 0, 0.15)" }}>
+                    style={{ display: "block", zIndex: 3, color: "white", background: "rgba(255, 0, 0, 0)" }}>
                     <div style={{ padding: 30 }}>
                         <h1 className="display-1 theme-font">¯\_(ツ)_/¯, this page doesn't exist</h1>
                         <Link to="/"
