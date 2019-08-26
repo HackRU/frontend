@@ -7,6 +7,7 @@ const imageDefs = [{
     bottom: "-400px",
     right: null,
     height: 1000,
+    opacity: 0.1,
     multiplier: 0.99
 }, {
     source: "./assets/background/square-dotted_white.svg",
@@ -29,14 +30,16 @@ const imageDefs = [{
     left: 400,
     bottom: "140px",
     right: null,
-    height: 200
+    height: 200,
+    opacity: 0.25
 }, {
     source: "./assets/background/target_green.svg",
     top: null,
     left: null,
     bottom: "0px",
     right: 300,
-    height: 400
+    height: 400,
+    opacity: 0.25
 }, {
     source: "./assets/background/circle_white.svg",
     top: null,
@@ -50,7 +53,8 @@ const imageDefs = [{
     left: null,
     bottom: "calc(50%)",
     right: 50,
-    height: 300
+    height: 300,
+    opacity: 1
 }, {
     source: "./assets/background/cross_green.svg",
     top: null,
@@ -58,21 +62,24 @@ const imageDefs = [{
     bottom: "500px",
     right: 300,
     height: 50,
-    multiplier: 0.2
+    opacity: 0.5,
+    multiplier: 1
 }, {
     source: "./assets/background/cross_yellow.svg",
     top: "564px",
     left: null,
     bottom: null,
     right: 325,
-    height: 50
+    height: 50,
+    opacity: 1
 }, {
     source: "./assets/background/circle_green.svg",
     top: "600px",
     left: 400,
     bottom: null,
     right: 300,
-    height: 50
+    height: 50,
+    opacity: 0.25
 }, {
     source: "./assets/background/cross_green.svg",
     top: null,
@@ -80,6 +87,7 @@ const imageDefs = [{
     bottom: "100px",
     right: null,
     height: 50,
+    opacity: 1,
     multiplier: 0.99
 }, {
     source: "./assets/background/line_green.svg",
@@ -88,6 +96,7 @@ const imageDefs = [{
     bottom: "150px",
     right: null,
     height: 750,
+    opacity: 1,
     transform: "rotate(-60deg)"
 }, {
     source: "./assets/background/line_green.svg",
@@ -96,7 +105,8 @@ const imageDefs = [{
     bottom: null,
     right: null,
     height: 750,
-    transform: "rotate(-60deg)"
+    transform: "rotate(-60deg)",
+    opacity: 1
 }, {
     source: "./assets/background/line_yellow.svg",
     top: null,
@@ -104,6 +114,7 @@ const imageDefs = [{
     bottom: "50px",
     right: null,
     height: 750,
+    opacity: 1,
     transform: "rotate(-60deg)"
 }, {
     source: "./assets/background/line_yellow.svg",
@@ -112,6 +123,7 @@ const imageDefs = [{
     bottom: null,
     right: null,
     height: 750,
+    opacity: 1,
     transform: "rotate(-60deg)"
 }
 ];
@@ -149,14 +161,15 @@ class Background extends Component {
             scrollFeature: 0
         });
     }
-    renderImage(icon, top, left, bottom, right, height, transform, multiplier) {
-        let style = { position: "fixed", opacity: 0.25 };
+    renderImage(icon, top, left, bottom, right, height, transform, multiplier, opacity) {
+        let style = { position: "fixed"};
         let scrollFeature = `${this.state.scrollFeature * 100 * multiplier}%`;
         style["top"] = top ? `calc(${top} - ${scrollFeature})` : null;
         style["left"] = left ? left : null;
         style["bottom"] = bottom ? `calc(${bottom} - ${scrollFeature})` : null;
         style["right"] = right ? right : null;
         style["transform"] = transform ? transform : null;
+	style["opacity"] = opacity ? opacity : 0.25;
         return (
             <div style={style}>
                 <img alt={icon.split("/").pop()}
@@ -170,7 +183,7 @@ class Background extends Component {
             let images = [];
             for (let i = 0; i < imageDefs.length; i++) {
                 let image = imageDefs[i];
-                images.push(this.renderImage(image.source, image.top, image.left, image.bottom, image.right, image.height, image.transform, image.multiplier ? 1 - image.multiplier : 1));
+                images.push(this.renderImage(image.source, image.top, image.left, image.bottom, image.right, image.height, image.transform, image.multiplier ? 1 - image.multiplier : 1, image.opacity));
             }
             return (
                 <div className="theme-background"
