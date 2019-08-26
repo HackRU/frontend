@@ -107,8 +107,6 @@ class App extends Component {
                     <div className="root-wrapper">
                         {/* We need to show this on our webpage at all times, so we're just going to dump it in the root */}
                         <NavBar profile={this.state.profile}/>
-                        {/* We need to show this on our webpage at all times, so we're just going to dump it in the root */}
-                        <MLHBadge />
                         {/* We put the background here so that even after the page reroutes to different urls, the flying
                             logos will stay constant, allowing for a seemless user experience. First, we render the logos
                             then we render the background ontop of them, allowing the logos to fly behind the clouds */}
