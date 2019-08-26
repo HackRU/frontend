@@ -124,7 +124,7 @@ class Profile {
                         if (body.statusCode === 403) {
                             callback("Invalid email or password");
                         } else if (body.statusCode === 200) {
-                            let data = JSON.parse(body.body);
+                            let data = body.body;
                             let token = data.auth.token;
                             let valid_until = data.auth.valid_until;
                             this._login(email, token, valid_until);
@@ -188,7 +188,7 @@ class Profile {
                             callback("User with email " + email + " already exists");
                         } else if (body.statusCode === 200) {
                             // Set the first and last name
-                            let data = JSON.parse(body.body);
+                            let data = body.body;
                             let token = data.auth.token;
                             let valid_until = data.auth.valid_until;
                             request({
