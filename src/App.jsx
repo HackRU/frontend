@@ -11,7 +11,6 @@ import {
     TeamPage,
     ProjectorPage,
     E404 } from "./components/Pages"; // Router Pages
-import MLHBadge from "./MLHBadge"; // We need this to qualify as an official MLH event
 import NavBar from "./NavBar";
 import { defaults } from "./Defaults"; // Get a handle to the default application settings
 import { Profile } from "./components/Profile"; // User profile storage
@@ -107,8 +106,6 @@ class App extends Component {
                     <div className="root-wrapper">
                         {/* We need to show this on our webpage at all times, so we're just going to dump it in the root */}
                         <NavBar profile={this.state.profile}/>
-                        {/* We need to show this on our webpage at all times, so we're just going to dump it in the root */}
-                        <MLHBadge />
                         {/* We put the background here so that even after the page reroutes to different urls, the flying
                             logos will stay constant, allowing for a seemless user experience. First, we render the logos
                             then we render the background ontop of them, allowing the logos to fly behind the clouds */}

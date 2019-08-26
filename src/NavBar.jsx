@@ -1,8 +1,9 @@
-import React, { Component } from 'react';
-import { Navbar, NavbarBrand, Nav, NavLink, NavItem, Collapse, NavbarToggler, Button, Container } from 'reactstrap';
-import { Link } from 'react-router-dom';
+import React, { Component } from "react";
+import { Navbar, NavbarBrand, Nav, NavLink, NavItem, Collapse, NavbarToggler, Button, Container } from "reactstrap";
+import { Link } from "react-router-dom";
 import { navlinks, theme } from "./Defaults";
-import "./NavBar.css"
+import { ProfileType } from "./components/Profile";
+import "./NavBar.css";
 
 class NavBar extends Component {
     constructor(props) {
@@ -22,14 +23,14 @@ class NavBar extends Component {
     }
 
     componentDidMount() {
-        window.addEventListener('scroll', this.handleScroll);
-        window.addEventListener('resize', this.handleResize);
+        window.addEventListener("scroll", this.handleScroll);
+        window.addEventListener("resize", this.handleResize);
 
         this.handleResize();
     }
 
     componentWillUnmount() {
-        window.removeEventListener('scroll', this.handleScroll);
+        window.removeEventListener("scroll", this.handleScroll);
     }
 
     handleResize() {
@@ -54,7 +55,7 @@ class NavBar extends Component {
         } else if (this.state.shouldRender === 0 && offset > badgeHeight) {
             this.setState({
                 shouldRender: 1
-            })
+            });
         }
     }
 
@@ -74,14 +75,19 @@ class NavBar extends Component {
     getAuthButtons() {
         return (
             <div>
-                <Link to="/login" class="link"><Button color="link" className="customButton">Login</Button></Link>{' '}
-                <Link to="/signup" ><Button color="link" className="customButton">Sign Up</Button></Link>
+                <Link to="/login"
+                    class="link"><Button color="link"
+                        className="customButton">Login</Button></Link>{" "}
+                <Link to="/signup" ><Button color="link"
+                    className="customButton">Sign Up</Button></Link>
             </div>
         );
     }
     getDashboardButton() {
         return (
-            <Link to="/dashboard" style={{ textDecoration: 'none' }}><Button className="customButton" color="link">Dashboard</Button></Link>
+            <Link to="/dashboard"
+                style={{ textDecoration: "none" }}><Button className="customButton"
+                    color="link">Dashboard</Button></Link>
         );
     }
     getNavLinks() {
@@ -90,47 +96,56 @@ class NavBar extends Component {
         for (let i = 0; i < keys.length - 1; i++) {
             navLinks.push(
                 <NavItem>
-                    <NavLink href={"/" + navlinks[keys[i]].url} onClick={this.toggleIfMobile}>{keys[i].toString()}</NavLink>
+                    <NavLink href={"/" + navlinks[keys[i]].url}
+                        onClick={this.toggleIfMobile}>{keys[i].toString()}</NavLink>
                 </NavItem>
             );
         }
         return (
             navLinks
-        )
+        );
     }
 
     getLandingNav() {
         return (
-        <Collapse isOpen={this.state.isOpen} navbar>
-            <Nav navbar className="mr-auto">
-                {this.getNavLinks()}
-            </Nav>
-            <Nav navbar className="ml-auto">
-                { this.props.profile.isLoggedIn ?
-                    this.getDashboardButton() :
-                    this.getAuthButtons()}
-            </Nav>
-        </Collapse>
+            <Collapse isOpen={this.state.isOpen}
+                navbar>
+                <Nav navbar
+                    className="mr-auto">
+                    {this.getNavLinks()}
+                </Nav>
+                <Nav navbar
+                    className="ml-auto">
+                    { this.props.profile.isLoggedIn ?
+                        this.getDashboardButton() :
+                        this.getAuthButtons()}
+                </Nav>
+            </Collapse>
         );
     }
 
     getDashboardNav() {
         return (
-        <Collapse isOpen={this.state.isOpen} navbar>
-            <Nav navbar className="mr-auto">
-                <NavItem>
-                    <NavLink onClick={this.toggleIfMobile}><Link to="/#">Home</Link></NavLink>
-                </NavItem>
-                <NavItem>
-                    <NavLink onClick={this.toggleIfMobile}><Link to="/live">Live</Link></NavLink> 
-                </NavItem>
-            </Nav>
-            <Nav navbar className="ml-auto">
-                <NavItem>
-                    <Link to="/logout" style={{ textDecoration: 'none' }}><Button className="customButton" color="link">Logout</Button></Link>
-                </NavItem>
-            </Nav>
-        </Collapse>
+            <Collapse isOpen={this.state.isOpen}
+                navbar>
+                <Nav navbar
+                    className="mr-auto">
+                    <NavItem>
+                        <NavLink onClick={this.toggleIfMobile}><Link to="/#">Home</Link></NavLink>
+                    </NavItem>
+                    <NavItem>
+                        <NavLink onClick={this.toggleIfMobile}><Link to="/live">Live</Link></NavLink> 
+                    </NavItem>
+                </Nav>
+                <Nav navbar
+                    className="ml-auto">
+                    <NavItem>
+                        <Link to="/logout"
+                            style={{ textDecoration: "none" }}><Button className="customButton"
+                                color="link">Logout</Button></Link>
+                    </NavItem>
+                </Nav>
+            </Collapse>
         );
     }
 
@@ -139,17 +154,29 @@ class NavBar extends Component {
         let onDashboard = (path === "/dashboard");
         let onLanding = (path === "/");
         return(
-            <Navbar id="navbar" style={{ width: "100%", zIndex: "20", backgroundColor: theme.secondary[1], opacity: this.state.shouldRender | !onLanding, pointerEvents: this.state.shouldRender | !onLanding ? "auto":"none", transition: !onLanding ? "" : "opacity 0.5s" }} fixed="top" dark expand="md">
+            <Navbar id="navbar"
+                style={{ width: "100%", zIndex: "20", backgroundColor: theme.secondary[1], opacity: this.state.shouldRender | !onLanding, pointerEvents: this.state.shouldRender | !onLanding ? "auto":"none", transition: !onLanding ? "" : "opacity 0.5s" }}
+                fixed="top"
+                dark
+                expand="md">
                 <Container>
                     <NavbarBrand>
-                        <NavbarToggler onClick={this.toggle} style={{ marginRight: 10 }} />
-                        <Link style={{ color: theme.accent[0] }} onClick={this.toggleIfMobile} to="/#">HackRU</Link>
+                        <NavbarToggler onClick={this.toggle}
+                            style={{ marginRight: 10 }} />
+                        <Link style={{ color: theme.accent[0] }}
+                            onClick={this.toggleIfMobile}
+                            to="/#">HackRU</Link>
                     </NavbarBrand>
-                    { onDashboard ? 
+                    { onDashboard ?
                         this.getDashboardNav() :
                         this.getLandingNav() }
                 </Container>
             </Navbar> );
     }
 }
+
+NavBar.propTypes = {
+    profile: ProfileType,
+};
+
 export default NavBar;
