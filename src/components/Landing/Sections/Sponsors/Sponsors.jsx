@@ -89,12 +89,11 @@ class Sponsors extends Component {
                 <div >
                     <h1 className="display-4 theme-font mb-3">Sponsors</h1>
                     <hr />
-                    {renderList}
-                    <h4 style={{textAlign: "center"}}> Interested in sponsoring?  Contact us at <a href="mailto:sponsorship@hackru.org"> sponsorship@hackru.org</a>.</h4>
-                     
+                    {renderList}                     
                     <h1 className="display-4 theme-font mt-3 mb-3">Partners</h1>
                     <hr />
                     {partnerList}
+		    <h4 className="my-5" style={{textAlign: "center"}}> Interested in sponsoring?  Contact us at <a href="mailto:sponsorship@hackru.org"> sponsorship@hackru.org</a>.</h4>
                 </div>
             );
         } else {
