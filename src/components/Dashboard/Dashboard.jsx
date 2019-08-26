@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Container, Row, Col } from "reactstrap";
 import { theme } from "../../Defaults";
 import { Redirect } from "react-router-dom";
-import { Link } from "react-router-dom";
 import ApplicationStatus from "./ApplicationStatus";
 import Section from "./Section";
 import Loading from "./Loading";

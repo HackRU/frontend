@@ -11,7 +11,6 @@ import {
     TeamPage,
     ProjectorPage,
     E404 } from "./components/Pages"; // Router Pages
-import MLHBadge from "./MLHBadge"; // We need this to qualify as an official MLH event
 import NavBar from "./NavBar";
 import { defaults } from "./Defaults"; // Get a handle to the default application settings
 import { Profile } from "./components/Profile"; // User profile storage
