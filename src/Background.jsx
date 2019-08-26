@@ -23,6 +23,7 @@ const imageDefs = [{
     bottom: null,
     right: 600,
     height: 300,
+    opacity: 0.1,
     multiplier: 0.8
 }, {
     source: "./assets/background/target_yellow.svg",
@@ -54,7 +55,7 @@ const imageDefs = [{
     bottom: "calc(50%)",
     right: 50,
     height: 300,
-    opacity: 1
+    opacity: 0.75
 }, {
     source: "./assets/background/cross_green.svg",
     top: null,
