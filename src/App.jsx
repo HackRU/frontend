@@ -99,6 +99,51 @@ class App extends Component {
      */
     render() {
         let componentProps = this.getComponentProps();
+        let renderRoutes = [
+            <Route exact
+                path="/login"
+                key="login"
+                render={(props) => <LoginPage {...props}
+                    {...componentProps} />} />,
+            <Route exact
+                path="/signup"
+                key="signup"
+                render={(props) => <SignUpPage {...props}
+                    {...componentProps} />} />,
+            <Route exact
+                path="/logout"
+                key="logout"
+                component={() => { this.state.profile.Logout(); this.setState({ profile: this.state.profile, loggedout: true }); return (<Redirect to="/" />); }} />,
+            <Route exact
+                path="/forgot"
+                key="forgot"
+                render={(props) => <ForgotPage {...props}
+                    {...componentProps} />} />,
+            <Route exact
+                path="/magic/:mlurl"
+                key="magic"
+                render={(props) => <MagicPage {...props}
+                    {...componentProps} />} />,
+            <Route exact
+                path="/dashboard"
+                key="dashboard"
+                render={(props) => <DashboardPage {...props}
+                    {...componentProps} />} />,
+            <Route exact
+                path="/projector"
+                key="projector"
+                render={(props) => <ProjectorPage {...props}
+                    {...componentProps} />} />,
+        ];
+        if (defaults.dayof) {
+            renderRoutes.push(
+                <Route exact
+                    path="/live"
+                    key="live"
+                    render={(props) => <LivePage {...props}
+                        {...componentProps} />} />
+            );
+        }
         return (
             <ParallaxProvider>
                 <BrowserRouter style={{ width: "100%" }}>
@@ -121,40 +166,8 @@ class App extends Component {
                                 render={(props) => <TeamPage {...props}
                                     {...componentProps} />} />
                             { !defaults.freeze &&
-                            <div>
-                                <Route exact
-                                    path="/login"
-                                    render={(props) => <LoginPage {...props}
-                                        {...componentProps} />} />
-                                <Route exact
-                                    path="/signup"
-                                    render={(props) => <SignUpPage {...props}
-                                        {...componentProps} />} />
-                                <Route exact
-                                    path="/logout"
-                                    component={() => { this.state.profile.Logout(); this.setState({ profile: this.state.profile, loggedout: true }); return (<Redirect to="/" />); }} />
-                                <Route exact
-                                    path="/forgot"
-                                    render={(props) => <ForgotPage {...props}
-                                        {...componentProps} />} />
-                                <Route exact
-                                    path="/magic/:mlurl"
-                                    render={(props) => <MagicPage {...props}
-                                        {...componentProps} />} />
-                                <Route exact
-                                    path="/dashboard"
-                                    render={(props) => <DashboardPage {...props}
-                                        {...componentProps} />} />
-                                {defaults.dayof &&
-                                    <Route exact
-                                        path="/live"
-                                        render={(props) => <LivePage {...props}
-                                            {...componentProps} />} />}
-                                <Route exact
-                                    path="/projector"
-                                    render={(props) => <ProjectorPage {...props}
-                                        {...componentProps} />} />
-                            </div> }
+                                renderRoutes
+                            }
                             {/* If none of the other urls were matched, we will show a 404 page to the user */}
                             <Route component={E404} />
                         </Switch>
