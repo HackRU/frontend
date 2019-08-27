@@ -135,7 +135,7 @@ class NavBar extends Component {
                     {defaults.dayof ? 
                         <NavItem>
                             <NavLink onClick={this.toggleIfMobile}><Link to="/live">Live</Link></NavLink> 
-                        </NavItem> : []}
+                        </NavItem> : null}
                 </Nav>
                 <Nav navbar
                     className="ml-auto">
