@@ -114,6 +114,7 @@ class MagicPage extends Component {
                                     done: true,
                                     errors: ""
                                 });
+                                this.props.setMagic(false);
                             }
                         });
                     }
