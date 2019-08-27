@@ -96,8 +96,9 @@ class NavBar extends Component {
         for (let i = 0; i < keys.length - 1; i++) {
             navLinks.push(
                 <NavItem>
-                    <NavLink href={"/" + navlinks[keys[i]].url}
-                        style={{ color: theme.primary[0] }}
+                    <NavLink
+                        className="primary-link"
+                        href={"/" + navlinks[keys[i]].url}
                         onClick={this.toggleIfMobile}>
                         {keys[i].toString()}
                     </NavLink>
@@ -136,8 +137,8 @@ class NavBar extends Component {
                     <NavItem>
                         <NavLink onClick={this.toggleIfMobile}>
                             <Link
-                                to="/#"
-                                style={{ color: theme.primary[0] }}>
+                                className="primary-link"
+                                to="/#"> 
                                 Home
                             </Link>
                         </NavLink>
@@ -145,8 +146,8 @@ class NavBar extends Component {
                     <NavItem>
                         <NavLink onClick={this.toggleIfMobile}>
                             <Link
-                                to="/live"
-                                style={{ color: theme.primary[0] }}>
+                                className="primary-link"
+                                to="/live">
                                 Live
                             </Link>
                         </NavLink> 

@@ -73,6 +73,14 @@ a:visited:hover {
     color: var(--hover-color);
     text-decoration: none;
 }
+.primary-link {
+    color: var(--primary-color) !important;
+    transition: color 0.5s ease;
+}
+.primary-link:hover {
+    color: var(--hover-color) !important;
+    transition: color 0.5s ease;
+}
 .btn:hover {
     transition: background-color 0.5s;
     background-color: var(--hover-background-color) !important;
