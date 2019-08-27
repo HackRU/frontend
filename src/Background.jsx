@@ -170,7 +170,7 @@ class Background extends Component {
         style["bottom"] = bottom ? `calc(${bottom} - ${scrollFeature})` : null;
         style["right"] = right ? right : null;
         style["transform"] = transform ? transform : null;
-	style["opacity"] = opacity ? opacity : 0.25;
+        style["opacity"] = opacity ? opacity : 0.25;
         return (
             <div style={style}>
                 <img alt={icon.split("/").pop()}
