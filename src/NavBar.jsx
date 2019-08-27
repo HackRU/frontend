@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Navbar, NavbarBrand, Nav, NavLink, NavItem, Collapse, NavbarToggler, Button, Container } from "reactstrap";
 import { Link } from "react-router-dom";
-import { navlinks, theme } from "./Defaults";
+import { navlinks, theme, defaults } from "./Defaults";
 import { ProfileType } from "./components/Profile";
 import "./NavBar.css";
 
@@ -75,9 +75,8 @@ class NavBar extends Component {
     getAuthButtons() {
         return (
             <div>
-                <Link to="/login"
-                    class="link"><Button color="link"
-                        className="customButton">Login</Button></Link>{" "}
+                <Link to="/login" ><Button color="link"
+                    className="customButton">Login</Button></Link>{" "}
                 <Link to="/signup" ><Button color="link"
                     className="customButton">Sign Up</Button></Link>
             </div>
@@ -143,15 +142,16 @@ class NavBar extends Component {
                             </Link>
                         </NavLink>
                     </NavItem>
-                    <NavItem>
-                        <NavLink onClick={this.toggleIfMobile}>
-                            <Link
-                                className="primary-link"
-                                to="/live">
-                                Live
-                            </Link>
-                        </NavLink> 
-                    </NavItem>
+                    {defaults.dayof ? 
+                        <NavItem>
+                            <NavLink onClick={this.toggleIfMobile}>
+                                <Link 
+                                    className="primaryLink"
+                                    to="/live">
+                                    Live
+                                </Link>
+                            </NavLink> 
+                        </NavItem> : null}
                 </Nav>
                 <Nav navbar
                     className="ml-auto">
