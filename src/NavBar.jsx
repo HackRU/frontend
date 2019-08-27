@@ -97,7 +97,10 @@ class NavBar extends Component {
             navLinks.push(
                 <NavItem>
                     <NavLink href={"/" + navlinks[keys[i]].url}
-                        onClick={this.toggleIfMobile}>{keys[i].toString()}</NavLink>
+                        style={{ color: theme.primary[0] }}
+                        onClick={this.toggleIfMobile}>
+                        {keys[i].toString()}
+                    </NavLink>
                 </NavItem>
             );
         }
@@ -131,10 +134,22 @@ class NavBar extends Component {
                 <Nav navbar
                     className="mr-auto">
                     <NavItem>
-                        <NavLink onClick={this.toggleIfMobile}><Link to="/#">Home</Link></NavLink>
+                        <NavLink onClick={this.toggleIfMobile}>
+                            <Link
+                                to="/#"
+                                style={{ color: theme.primary[0] }}>
+                                Home
+                            </Link>
+                        </NavLink>
                     </NavItem>
                     <NavItem>
-                        <NavLink onClick={this.toggleIfMobile}><Link to="/live">Live</Link></NavLink> 
+                        <NavLink onClick={this.toggleIfMobile}>
+                            <Link
+                                to="/live"
+                                style={{ color: theme.primary[0] }}>
+                                Live
+                            </Link>
+                        </NavLink> 
                     </NavItem>
                 </Nav>
                 <Nav navbar
