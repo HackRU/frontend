@@ -22,7 +22,7 @@ const MODE_LABELS = {
 
 const label_obj = (mode) => ({
     value: mode,
-    label: MODE_LABELS[mode],
+    label: MODE_LABELS[mode] || mode,
 });
 
 const TravelReimbursementsForm = ({ travelling_from, onSubmit }) => {
