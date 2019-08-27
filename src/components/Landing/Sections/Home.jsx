@@ -21,7 +21,7 @@ class Home extends Component {
                     <p className="lead"
                         key={keys[i]}><a href={navlinks[keys[i]].url}
                             className="theme-home-link"
-                            style={{ textDecoration: "none" }}>{keys[i]}</a></p>
+                            style={{ color: theme.primary[0] + "ff", textDecoration: "none" }}>{keys[i]}</a></p>
                 );
             }
         }
