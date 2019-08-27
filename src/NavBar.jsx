@@ -95,8 +95,12 @@ class NavBar extends Component {
         for (let i = 0; i < keys.length - 1; i++) {
             navLinks.push(
                 <NavItem>
-                    <NavLink href={"/" + navlinks[keys[i]].url}
-                        onClick={this.toggleIfMobile}>{keys[i].toString()}</NavLink>
+                    <NavLink
+                        className="primary-link"
+                        href={"/" + navlinks[keys[i]].url}
+                        onClick={this.toggleIfMobile}>
+                        {keys[i].toString()}
+                    </NavLink>
                 </NavItem>
             );
         }
@@ -130,11 +134,23 @@ class NavBar extends Component {
                 <Nav navbar
                     className="mr-auto">
                     <NavItem>
-                        <NavLink onClick={this.toggleIfMobile}><Link to="/#">Home</Link></NavLink>
+                        <NavLink onClick={this.toggleIfMobile}>
+                            <Link
+                                className="primary-link"
+                                to="/#"> 
+                                Home
+                            </Link>
+                        </NavLink>
                     </NavItem>
                     {defaults.dayof ? 
                         <NavItem>
-                            <NavLink onClick={this.toggleIfMobile}><Link to="/live">Live</Link></NavLink> 
+                            <NavLink onClick={this.toggleIfMobile}>
+                                <Link 
+                                    className="primaryLink"
+                                    to="/live">
+                                    Live
+                                </Link>
+                            </NavLink> 
                         </NavItem> : null}
                 </Nav>
                 <Nav navbar

@@ -321,9 +321,9 @@ class UserProfileForm extends Component {
                     {message}
                     <div style={{ width: "100%" }}
                         align="right">
-                        <Button style={{ backgroundColor: theme.accent[0], marginRight: 10 }}
+                        <Button style={{ backgroundColor: theme.primary[0], marginRight: 10 }}
                             type="reset" >Clear</Button>
-                        <Button style={{ backgroundColor: theme.primary[0] }}
+                        <Button style={{ backgroundColor: theme.accent[0] }}
                             type="submit" >Update</Button>
                     </div>
                 </AvForm>
