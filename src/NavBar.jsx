@@ -76,7 +76,7 @@ class NavBar extends Component {
         return (
             <div>
                 <Link to="/login" ><Button color="link"
-                        className="customButton">Login</Button></Link>{" "}
+                    className="customButton">Login</Button></Link>{" "}
                 <Link to="/signup" ><Button color="link"
                     className="customButton">Sign Up</Button></Link>
             </div>
