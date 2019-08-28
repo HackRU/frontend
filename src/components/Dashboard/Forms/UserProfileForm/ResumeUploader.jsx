@@ -1,19 +1,21 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { CustomInput, FormGroup } from "reactstrap";
 import { ProfileType } from "../../../Profile";
 import { theme } from "../../../../Defaults";
 import PropTypes from "prop-types";
 
-const ResumeUploader = ({ edit, profile }) => {
+const ResumeUploader = React.memo(({ edit, profile }) => {
     const [labelText, setLabelText] = useState("Loading...");
 
-    profile.DoesResumeExist().then(success => {
-        setLabelText(success ?
-            "Resume found" :
-            (edit ?
-                "Choose a file to upload" :
-                "Nothing yet")
-        );
+    useEffect(() => {
+        profile.DoesResumeExist().then(success => {
+            setLabelText(success ?
+                "Resume found" :
+                (edit ?
+                    "Choose a file to upload" :
+                    "Nothing yet")
+            );
+        });
     });
 
     const onUpload = async (event) => {
@@ -36,7 +38,7 @@ const ResumeUploader = ({ edit, profile }) => {
                 label={labelText} /> : <p style={pStyle}>{labelText}</p>}
         </FormGroup>
     </div>;
-};
+});
 
 ResumeUploader.propTypes = {
     edit: PropTypes.bool,
