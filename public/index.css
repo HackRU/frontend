@@ -26,9 +26,8 @@
     --input-border: none;
     --input-color: rgba(255, 255, 255, 1);
     --input-border-radius: 0px;
-    --select-background: rgba(0, 0, 0, 1);
+    --select-background: rgba(100, 0, 0, 1);
     --select-color: rgba(255, 255, 255, 1);
-    --select-input-background: rgba(255, 255, 255, 0.075);
     /* Hero Image */
     --hero-width: 400px;
     --hero-height: 400px;
@@ -220,16 +219,26 @@ input, textarea, .custom-file-label {
     z-index: 0 !important;
 }
 .forcestyle div[class^="css-"] {
-    background: var(--select-input-background);
+    background: var(--input-background);
     border-radius: var(--input-border-radius);
     border: var(--input-border);
     color: var(--input-color);
+}
+.forcestyle div[class^="css-"] div[class^="css-"] {
+    background: none;
+    border: none;
+    box-shadow: none;
+    margin-top: 0px;
+    padding-top: 0px;
 }
 .forcestyle div[class^="css-"] div[class^="css-"] div[class^="css-"] div[class^="css-"] {
     background: transparent;
     border-radius: var(--input-border-radius);
     border: var(--input-border);
     color: var(--input-color);
+}
+.forcestyle div[class^="css-"] div[class^="css-"] div[class^="css-"]:last-child div[class^="css-"] {
+    padding-top: 10px;
 }
 .forcestyle div[class^="css-"] div[class^="css-"] div[class^="css-"] div[class^="css-"] input {
     background: transparent !important;

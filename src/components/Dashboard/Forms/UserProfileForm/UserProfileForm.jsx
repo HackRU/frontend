@@ -203,7 +203,9 @@ class UserProfileForm extends Component {
                                         value={{ value: user.school, label: user.school }}
                                         onChange={(e) => { user.school = e.value; this.updateUser(user); }}
                                         cacheOptions
-                                        defaultOptions
+                                        defaultOptions={this.state.schoolList}
+                                        options={["test"]}
+                                        styles={{ noOptionsMessage: (base) => ({ ...base, visibility: "hidden" }) }}
                                         loadOptions={(inputValue, callback) => {
                                             if (inputValue) {
                                                 callback(this.state.schoolList.filter((i) => {
@@ -259,18 +261,19 @@ class UserProfileForm extends Component {
                         </Col>
                     </FormGroup>
                     <h4>HackRU</h4>
-                    <FormGroup>
-                        <CustomAVInput name="dr"
-                            label="Dietary Restrictions"
-                            value={user.dietary_restrictions}
-                        >
-                            <div className="forcestyle">
-                                <Creatable id="dr"
-                                    value={{ value: user.dietary_restrictions, label: user.dietary_restrictions }}
-                                    onChange={(e) => { user.dietary_restrictions = e.value; this.updateUser(user); }}
-                                    options={selectorOptions.dietaryRestrictions} />
-                            </div>
-                        </CustomAVInput>
+                    <FormGroup row>
+                        <Col>
+                            <CustomAVInput name="dr"
+                                label="Dietary Restrictions"
+                                value={user.dietary_restrictions}>
+                                <div className="forcestyle">
+                                    <Creatable id="dr"
+                                        value={{ value: user.dietary_restrictions, label: user.dietary_restrictions }}
+                                        onChange={(e) => { user.dietary_restrictions = e.value; this.updateUser(user); }}
+                                        options={selectorOptions.dietaryRestrictions} />
+                                </div>
+                            </CustomAVInput>
+                        </Col>
                     </FormGroup>
                     <FormGroup>
                         <Label for="sn">Special Needs</Label>
