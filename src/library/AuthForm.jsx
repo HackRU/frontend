@@ -16,7 +16,7 @@ Props:
 - onSubmit: the actual function of the form
 - title: the form title
 */
-const AuthForm = ({ children, errors, label, loading, isMobile, onSubmit, title }) => (
+const AuthForm = React.memo(({ children, errors, label, loading, isMobile, onSubmit, title }) =>
     <Container
         fluid
         style={{ width: "100%", minHeight: "100vh", textAlign: "center", backgroundColor: theme.secondary[1] }}

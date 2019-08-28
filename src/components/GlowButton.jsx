@@ -3,7 +3,7 @@ import { Button } from "reactstrap";
 import { Icon } from "react-fa";
 import PropTypes from "prop-types";
 
-const GlowButton = ({ href, icon, text }) => (
+const GlowButton = React.memo(({ href, icon, text }) =>
     <Button href={href}
         className="live-links"
         size="lg"

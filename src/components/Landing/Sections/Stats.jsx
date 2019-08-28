@@ -2,7 +2,7 @@ import React from "react";
 import { Row, Col } from "reactstrap";
 import PropTypes from "prop-types";
 
-const Stats = () => (
+const Stats = React.memo(() =>
     <div>
         <h1 className="display-4 theme-font">The Numbers</h1>
         <hr />

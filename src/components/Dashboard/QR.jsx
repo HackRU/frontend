@@ -1,6 +1,6 @@
 import React from "react";
 
-const QR = ({ data, status }) => (
+const QR = React.memo(({ data, status }) =>
     (status === "confirmed" || status === "waitlist" || status ==="coming" || status ==="registered") && data && data.body && <div>
         <img src={data.body}
             className="qr"

@@ -7,7 +7,7 @@ import PropTypes from "prop-types";
  * Turn the 'registration_status' from LCS into something user-friendly
  * @param {String} status Render the status of the users application
  */
-const ApplicationStatus = ({ status, onComing, onNotComing, reimbursement }) => (
+const ApplicationStatus = React.memo(({ status, onComing, onNotComing, reimbursement }) =>
     <div style={{ marginBottom: 10 }}>
         <div style={{ width: "100%", textAlign: "left" }}>
             <p className="lead">Application Status</p>

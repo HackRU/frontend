@@ -3,7 +3,7 @@ import {Col } from "reactstrap";
 import Person from "./Person.jsx";
 import PropTypes from "prop-types";
 
-const TeamNames = ({ people, teamName }) => (
+const TeamNames = React.memo(({ people, teamName }) =>
     <Col>
         <h4> {teamName} </h4>
         {people.map((person) =>

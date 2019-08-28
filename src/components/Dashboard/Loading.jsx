@@ -8,7 +8,7 @@ import PropTypes from "prop-types";
  * Render a loading  screen
  * @param {String} Text Loading subtext
  */
-const Loading = ({ text }) => (
+const Loading = React.memo(({ text }) =>
     <Container fluid
         style={{ width: "100%", minHeight: "100vh", textAlign: "center", backgroundColor: theme.secondary[1] }}
         className="d-flex align-items-center">

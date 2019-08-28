@@ -2,7 +2,7 @@ import React from "react";
 import { theme } from "../../Defaults";
 import PropTypes from "prop-types";
 
-const Person = ({ image, name, title }) => (
+const Person = React.memo(({ image, name, title }) =>
     <div style={{marginBottom: 10}}>
         {
             image && <img style={{ borderRadius:80 }}

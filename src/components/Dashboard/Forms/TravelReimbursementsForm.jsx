@@ -25,7 +25,7 @@ const label_obj = (mode) => ({
     label: MODE_LABELS[mode] || mode,
 });
 
-const TravelReimbursementsForm = ({ travelling_from, onSubmit }) => {
+const TravelReimbursementsForm = React.memo(({ travelling_from, onSubmit }) => {
     // If no travel object is provided, initialize all fields to falsey values
     const travel_state = travelling_from || {
         is_real: false,
@@ -169,7 +169,7 @@ const TravelReimbursementsForm = ({ travelling_from, onSubmit }) => {
             </div>}
         </Form>
     );
-};
+});
 
 TravelReimbursementsForm.propTypes = {
     travelling_from: PropTypes.string,
