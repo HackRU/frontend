@@ -230,6 +230,7 @@ input, textarea, .custom-file-label {
     border: none;
     box-shadow: none;
     margin-top: 0px;
+    padding-top: 0px;
 }
 .forcestyle div[class^="css-"] div[class^="css-"] div[class^="css-"] div[class^="css-"] {
     background: transparent;
