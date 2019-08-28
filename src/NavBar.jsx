@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Navbar, NavbarBrand, Nav, NavLink, NavItem, Collapse, NavbarToggler, Button, Container } from "reactstrap";
 import { Link } from "react-router-dom";
-import { navlinks, theme } from "./Defaults";
+import { navlinks, theme, defaults } from "./Defaults";
 import { ProfileType } from "./components/Profile";
 import "./NavBar.css";
 
@@ -75,9 +75,8 @@ class NavBar extends Component {
     getAuthButtons() {
         return (
             <div>
-                <Link to="/login"
-                    class="link"><Button color="link"
-                        className="customButton">Login</Button></Link>{" "}
+                <Link to="/login" ><Button color="link"
+                    className="customButton">Login</Button></Link>{" "}
                 <Link to="/signup" ><Button color="link"
                     className="customButton">Sign Up</Button></Link>
             </div>
@@ -96,8 +95,12 @@ class NavBar extends Component {
         for (let i = 0; i < keys.length - 1; i++) {
             navLinks.push(
                 <NavItem>
-                    <NavLink href={"/" + navlinks[keys[i]].url}
-                        onClick={this.toggleIfMobile}>{keys[i].toString()}</NavLink>
+                    <NavLink
+                        className="primary-link"
+                        href={"/" + navlinks[keys[i]].url}
+                        onClick={this.toggleIfMobile}>
+                        {keys[i].toString()}
+                    </NavLink>
                 </NavItem>
             );
         }
@@ -131,11 +134,24 @@ class NavBar extends Component {
                 <Nav navbar
                     className="mr-auto">
                     <NavItem>
-                        <NavLink onClick={this.toggleIfMobile}><Link to="/#">Home</Link></NavLink>
+                        <NavLink onClick={this.toggleIfMobile}>
+                            <Link
+                                className="primary-link"
+                                to="/#"> 
+                                Home
+                            </Link>
+                        </NavLink>
                     </NavItem>
-                    <NavItem>
-                        <NavLink onClick={this.toggleIfMobile}><Link to="/live">Live</Link></NavLink> 
-                    </NavItem>
+                    {defaults.dayof ? 
+                        <NavItem>
+                            <NavLink onClick={this.toggleIfMobile}>
+                                <Link 
+                                    className="primaryLink"
+                                    to="/live">
+                                    Live
+                                </Link>
+                            </NavLink> 
+                        </NavItem> : null}
                 </Nav>
                 <Nav navbar
                     className="ml-auto">

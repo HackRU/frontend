@@ -59,7 +59,7 @@ body {
     color: var(--input-placeholder) !important;
 }
 a:link {
-    color: var(--primary-color);
+    color: var(--accent-color);
     transition: color 0.5s ease;
 }
 a:link:hover {
@@ -67,11 +67,19 @@ a:link:hover {
     text-decoration: none;
 }
 a:visited {
-    color: var(--primary-color);
+    color: var(--accent-color);
 }
 a:visited:hover {
     color: var(--hover-color);
     text-decoration: none;
+}
+.primary-link {
+    color: var(--primary-color) !important;
+    transition: color 0.5s ease;
+}
+.primary-link:hover {
+    color: var(--hover-color) !important;
+    transition: color 0.5s ease;
 }
 .btn:hover {
     transition: background-color 0.5s;
