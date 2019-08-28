@@ -259,18 +259,19 @@ class UserProfileForm extends Component {
                         </Col>
                     </FormGroup>
                     <h4>HackRU</h4>
-                    <FormGroup>
-                        <CustomAVInput name="dr"
-                            label="Dietary Restrictions"
-                            value={user.dietary_restrictions}
-                        >
-                            <div className="forcestyle">
-                                <Creatable id="dr"
-                                    value={{ value: user.dietary_restrictions, label: user.dietary_restrictions }}
-                                    onChange={(e) => { user.dietary_restrictions = e.value; this.updateUser(user); }}
-                                    options={selectorOptions.dietaryRestrictions} />
-                            </div>
-                        </CustomAVInput>
+                    <FormGroup row>
+                        <Col>
+                            <CustomAVInput name="dr"
+                                label="Dietary Restrictions"
+                                value={user.dietary_restrictions}>
+                                <div className="forcestyle">
+                                    <Creatable id="dr"
+                                        value={{ value: user.dietary_restrictions, label: user.dietary_restrictions }}
+                                        onChange={(e) => { user.dietary_restrictions = e.value; this.updateUser(user); }}
+                                        options={selectorOptions.dietaryRestrictions} />
+                                </div>
+                            </CustomAVInput>
+                        </Col>
                     </FormGroup>
                     <FormGroup>
                         <Label for="sn">Special Needs</Label>
