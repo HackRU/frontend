@@ -15,7 +15,7 @@ const ResumeUploader = React.memo(({ edit, profile }) => {
                     "Choose a file to upload" :
                     "Nothing yet")
             );
-        })
+        });
     });
 
     const onUpload = async (event) => {
