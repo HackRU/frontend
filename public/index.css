@@ -212,10 +212,16 @@ input, textarea, .custom-file-label {
     z-index: 0 !important;
 }
 .forcestyle div[class^="css-"] {
-    background: var(--select-input-background);
+    background: var(--input-background);
     border-radius: var(--input-border-radius);
     border: var(--input-border);
     color: var(--input-color);
+}
+.forcestyle div[class^="css-"] div[class^="css-"] {
+    background: none;
+    border: none;
+    box-shadow: none;
+    margin-top: 0px;
 }
 .forcestyle div[class^="css-"] div[class^="css-"] div[class^="css-"] div[class^="css-"] {
     background: transparent;
