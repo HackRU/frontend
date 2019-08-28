@@ -1,4 +1,4 @@
-import "./index.css"
+import "./index.css"; // Import the internal theme css file
 import React from "react"; // Required react dependencies
 import ReactDOM from "react-dom"; // Required react dependencies
 import { register, unregister } from "./serviceWorker"; // Service worker dependencies
