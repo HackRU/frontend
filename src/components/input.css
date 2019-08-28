@@ -1,0 +1,6 @@
+Input::selection {
+    background-color: #4FAB5F !important;
+}
+Input::-moz-selection {
+    background-color: #4FAB5F !important;
+}

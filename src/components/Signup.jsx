@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { Redirect } from "react-router-dom";
 import AuthForm from "../library/AuthForm";
 import PropTypes from "prop-types";
+import "./input.css";
 
 /**
  * Signup application for "/signup"
