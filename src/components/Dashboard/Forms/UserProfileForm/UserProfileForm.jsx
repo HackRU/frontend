@@ -205,7 +205,7 @@ class UserProfileForm extends Component {
                                         cacheOptions
                                         defaultOptions={this.state.schoolList}
                                         options={["test"]}
-                                        styles={{ noOptionsMessage: (base) => ({ visibility: "hidden" }) }}
+                                        styles={{ noOptionsMessage: (base) => ({ ...base, visibility: "hidden" }) }}
                                         loadOptions={(inputValue, callback) => {
                                             if (inputValue) {
                                                 callback(this.state.schoolList.filter((i) => {
