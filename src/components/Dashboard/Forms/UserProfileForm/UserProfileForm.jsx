@@ -203,7 +203,9 @@ class UserProfileForm extends Component {
                                         value={{ value: user.school, label: user.school }}
                                         onChange={(e) => { user.school = e.value; this.updateUser(user); }}
                                         cacheOptions
-                                        defaultOptions
+                                        defaultOptions={this.state.schoolList}
+                                        options={["test"]}
+                                        styles={{ noOptionsMessage: (base) => ({ visibility: "hidden" }) }}
                                         loadOptions={(inputValue, callback) => {
                                             if (inputValue) {
                                                 callback(this.state.schoolList.filter((i) => {
