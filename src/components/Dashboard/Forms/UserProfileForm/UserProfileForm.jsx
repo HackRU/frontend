@@ -333,7 +333,7 @@ class UserProfileForm extends Component {
             );
         } else {
             let pStyle = {
-                color: theme.disabled[0] + "70", padding: 5, height: 35
+                color: theme.disabled[0] + "70", padding: 5, minHeight: 35
             };
             let field = (text) => {
                 return <p style={pStyle}>{(text) ? text : <i>unanswered</i> }</p>;
