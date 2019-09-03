@@ -99,7 +99,6 @@ class Home extends Component {
                             </Parallax>
                         </Col>
                         { defaults.volunteers.display &&
-
                                     <div className="skew-right"
                                         style={{ position: "absolute", bottom: -25, textAlign: "right", width: "100%", paddingRight: 5, fontSize: 12 }} >
                                         Want to help? Sign up to <a href={defaults.volunteers.vol_url}>volunteer</a> or <a href={defaults.volunteers.mentor_url}>mentor</a>!
@@ -130,7 +129,7 @@ class Home extends Component {
                             <h2 className="lead theme-font"><Icon style={{ marginRight: 5 }}
                                 name="calendar" /> {defaults.dateText}</h2>
                             {navContainer}
-                            { defaults.volunteers && <div>
+                            { defaults.volunteers.display && <div>
                                     Want to help? Sign up to <a href={defaults.volunteers.vol_url}>volunteer</a> or <a href={defaults.volunteers.mentor_url}>mentor</a>!
                             </div>}
                         </Col>
