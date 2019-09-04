@@ -7,7 +7,7 @@ import "./NavBar.css";
 
 const LinkSwitcher = (props) => {
     return (props.root) ? <a {...props}>{props.children}</a> : <Link {...props} />;
-}
+};
 
 class NavBar extends Component {
     constructor(props) {
