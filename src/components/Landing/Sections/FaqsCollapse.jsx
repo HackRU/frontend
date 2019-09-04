@@ -31,10 +31,7 @@ class FaqsCollapse extends React.Component {
 }
 
 FaqsCollapse.propTypes = {
-    cat: {
-        title: PropTypes.string,
-        text: PropTypes.string,
-    }
+    cat: PropTypes.object
 };
 
 export default FaqsCollapse;

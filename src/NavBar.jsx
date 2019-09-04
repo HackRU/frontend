@@ -5,6 +5,10 @@ import { navlinks, theme, defaults } from "./Defaults";
 import { ProfileType } from "./components/Profile";
 import "./NavBar.css";
 
+const LinkSwitcher = (props) => {
+    return (props.root) ? <a {...props}>{props.children}</a> : <Link {...props} />;
+}
+
 class NavBar extends Component {
     constructor(props) {
         super(props);
@@ -94,7 +98,7 @@ class NavBar extends Component {
         let navLinks = [];
         for (let i = 0; i < keys.length - 1; i++) {
             navLinks.push(
-                <NavItem>
+                <NavItem key={i}>
                     <NavLink
                         className="primary-link"
                         href={"/" + navlinks[keys[i]].url}
@@ -137,7 +141,7 @@ class NavBar extends Component {
                         <NavLink onClick={this.toggleIfMobile}>
                             <Link
                                 className="primary-link"
-                                to="/#"> 
+                                to="/#home"> 
                                 Home
                             </Link>
                         </NavLink>
@@ -179,9 +183,11 @@ class NavBar extends Component {
                     <NavbarBrand>
                         <NavbarToggler onClick={this.toggle}
                             style={{ marginRight: 10 }} />
-                        <Link style={{ color: theme.accent[0] }}
+                        <LinkSwitcher style={{ color: theme.accent[0] }}
                             onClick={this.toggleIfMobile}
-                            to="/#">HackRU</Link>
+                            href="/#home"
+                            to="/#home"
+                            root={onLanding.toString()}>HackRU</LinkSwitcher>
                     </NavbarBrand>
                     { onDashboard ?
                         this.getDashboardNav() :
