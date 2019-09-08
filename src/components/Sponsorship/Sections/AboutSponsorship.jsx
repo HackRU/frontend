@@ -33,5 +33,5 @@ class AboutSponsorship extends Component {
 
 AboutSponsorship.propTypes = {
     isMobile: PropTypes.bool,
-}
+};
 export default AboutSponsorship;
