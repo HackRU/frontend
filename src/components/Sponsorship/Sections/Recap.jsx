@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import {Doughnut, HorizontalBar} from 'react-chartjs-2';
 
-
-
 class Recap extends Component {
     render() {
         const data1 = {
@@ -17,16 +15,16 @@ class Recap extends Component {
         const data2 = {
             labels: ['Asian/Pacific Islander','White/Caucasian','Hispanic', 'Black/African American', 'Others'],
             datasets: [{
-                data: [53, 27, 6, 4, 10],
+                data: [60, 20, 6, 4, 10],
                 backgroundColor: ['#ff7349','#ffd562','#ff6d94','#e397ff','#97e07c'],
                 hoverBackgroundColor: ['#ff5f2f','#ffce49','#ff5885','#dd82ff','#74d650'],
                 borderWidth: 0.3,
             }]
         };
         const data3 = {
-            labels: ['Computer Science','Computer Engineering','Others'],
+            labels: ['Computer Science','Electrical and Computer Engineering','Informaiton Technology', 'Electrical Engineering'],
             datasets: [{
-                data: [70, 14, 16],
+                data: [50, 13, 4.5, 4.5],
                 backgroundColor: ['#db6685','#e07cc9','#8166db'],
                 hoverBackgroundColor: ['#d65074','#db66c0','#6f50d6'],
                 borderWidth: 0,
@@ -35,7 +33,7 @@ class Recap extends Component {
         const data4 = {
             labels: ['2019','2020','2021','2022'],
             datasets: [{
-                data: [25, 26, 21, 21],
+                data: [24, 27, 26, 22],
                 backgroundColor: ['#db6685','#e07cc9','#8166db', '#ef8368'],
                 hoverBackgroundColor: ['#d65074','#db66c0','#6f50d6','#ed7455'],
                 borderWidth: 0,
@@ -56,17 +54,17 @@ class Recap extends Component {
         <div class="row">
             <div class="col-lg-3">
                 <div class="hpanel testimo-panel text-center pd">
-                        <h4 class="zoom">83%</h4><div><h3>Hackers From Rutgers University</h3></div>
+                        <h4 class="zoom">80%</h4><div><h3>Hackers From Rutgers University</h3></div>
                 </div>
             </div>
             <div class="col-lg-3">
                 <div class="hpanel testimo-panel text-center pd">
-                    <h4 class="zoom">88%</h4><div><h3>Undergraduates Hackers</h3></div>
+                    <h4 class="zoom">87%</h4><div><h3>Undergraduates Hackers</h3></div>
                 </div>
             </div>
             <div class="col-lg-3">
                 <div class="hpanel testimo-panel text-center pd">
-                    <h4 class="zoom">575 <i class="fa fa-caret-up gold fa-sm"></i></h4><div><h3>Total Hackers</h3></div>
+                    <h4 class="zoom">607 <i class="fa fa-caret-up gold fa-sm"></i></h4><div><h3>Total Hackers</h3></div>
                 </div>
             </div>
             <div class="col-lg-3 pd">
