@@ -4,6 +4,7 @@ import { defaults, theme } from "../../../Defaults";
 import { sponsorshipLinks } from "../SponsorshipConfig";
 import { Parallax } from "react-scroll-parallax";
 import { Icon } from "react-fa";
+import PropTypes from "prop-types";
 
 class Main extends Component {
     render() {
@@ -85,5 +86,11 @@ class Main extends Component {
         }
     }
 }
+
+
+
+Main.propTypes = {
+    isMobile: PropTypes.bool,
+};
 
 export default Main;

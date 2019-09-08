@@ -5,6 +5,7 @@ import { ParallaxProvider } from "react-scroll-parallax";
 import { theme } from "../../Defaults";
 import { sponsorshipLinks } from "./SponsorshipConfig";
 import ScrollableAnchor from "react-scrollable-anchor";
+import PropTypes from "prop-types";
 
 class SponsorshipPage extends Component {
     render() {
@@ -65,5 +66,9 @@ class SponsorshipPage extends Component {
         );
     }
 }
+
+SponsorshipPage.propTypes = {
+    isMobile: PropTypes.bool,
+};
 
 export default SponsorshipPage;

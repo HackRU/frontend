@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 
 class AboutSponsorship extends Component {
     render() {
@@ -30,4 +31,7 @@ class AboutSponsorship extends Component {
     }
 }
 
+AboutSponsorship.propTypes = {
+    isMobile: PropTypes.bool,
+}
 export default AboutSponsorship;
