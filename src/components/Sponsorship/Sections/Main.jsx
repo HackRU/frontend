@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Container, Row, Col, Button } from "reactstrap";
-import { defaults } from "../../../Defaults";
+import { defaults, theme } from "../../../Defaults";
 import { sponsorshipLinks } from "../SponsorshipConfig";
 import { Parallax } from "react-scroll-parallax";
 import { Icon } from "react-fa";
@@ -29,14 +29,7 @@ class Main extends Component {
                     <Row style={{ minWidth: "100%", minHeight: "100vh" }} className="d-flex align-items-center">
                         <Col xs={2}></Col>
                         <Col xs={8} style={{ display: "block" }}>
-                        <div className="row" style={{display:"flex"}}>
-                            <div style={{flex: 33.33}}><LogoAnim className="disappear" src="./assets/icons/assetsSVG/whitegriffinasset.svg" /></div>
-                            <div style={{flex: 33.33}}><img width="250" src="./assets/icons/hru-logo-small-green.png" alt="logo"></img></div>
-                            <div style={{flex: 33.33}}><LogoAnim className="disappear" src="./assets/icons/assetsSVG/whitegriffinassetleft.svg" /></div>
-                        </div>
-                            <h2 style={{ marginTop: 20 }} className="display-4 theme-font">Sponsor HackRU Spring 2019</h2>
-                            <h2 className="lead theme-font"><Icon style={{ marginRight: 5 }} name="map-marker" /> {defaults.locationText}</h2>
-                            <h2 className="lead theme-font"><Icon style={{ marginRight: 5 }} name="calendar" /> {defaults.dateText}</h2>
+                            <h2 style={{ marginTop: 20, color: theme.primary[0] }} className="display-1">Sponsor HackRU</h2>
                         </Col>
                         <Col xs={2} style={{ overflow: "hidden", paddingTop: 10, paddingBottom: 10 }}>
                             <Parallax offsetXMin={-100} offsetXMax={100}>
