@@ -44,8 +44,8 @@ const sponsorshipLinks = {
         "component": (props) => <Footer {...props} />
     },
 
-}
+};
 
 export {
     sponsorshipLinks
-}
+};

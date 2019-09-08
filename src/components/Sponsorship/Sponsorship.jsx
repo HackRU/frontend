@@ -16,7 +16,7 @@ class SponsorshipPage extends Component {
                 let url = sponsorshipLinks[keys[i]].url.substring(1);
                 let component = sponsorshipLinks[keys[i]].component({ isMobile: this.props.isMobile });
                 // Toggle the green skewed sections
-                let className = ""
+                let className = "";
                 if (i !== keys.length - 1) {
                     className = "bg-no-gradient skew-right";
                     if (i % 2 === 0) {
@@ -30,9 +30,11 @@ class SponsorshipPage extends Component {
                     style["minHeight"] = "100vh";
                 }
                 rows.push((
-                    <ScrollableAnchor key={url} id={url}>
+                    <ScrollableAnchor key={url}
+                        id={url}>
                         <div>
-                            <Row className="section" style={style}>
+                            <Row className="section"
+                                style={style}>
                                 <div className={className} >
                                     <div className={sectionClasses}>
                                         {component}
@@ -45,7 +47,10 @@ class SponsorshipPage extends Component {
             }
         }
         return (
-            <Container id="SponsorshipPage" className="section" fluid style={{ backgroundColor: theme.secondary[1] }}>
+            <Container id="SponsorshipPage"
+                className="section"
+                fluid
+                style={{ backgroundColor: theme.secondary[1] }}>
                 <ParallaxProvider>
                     <ScrollableAnchor id="main">
                         <div>

@@ -13,7 +13,7 @@ class AboutSponsorship extends Component {
                     <p>Sponsoring HackRU is the most powerful recruiting effort you can make for engaging with upcoming tech talent at both Rutgers University and the tech scene at large. The hackathon audience is made up of the industry's most passionate developers, entrepreneurs, and designers. Your representatives will interact directly with these talented potential hires.</p>
                     <hr  />
                 </div>
-            )
+            );
         } else{
             return (
                 <div>
@@ -25,7 +25,7 @@ class AboutSponsorship extends Component {
                     <p>Sponsoring HackRU is the most powerful recruiting effort you can make for engaging with upcoming tech talent at both Rutgers University and the tech scene at large. The hackathon audience is made up of the industry's most passionate developers, entrepreneurs, and designers. Your representatives will interact directly with these talented potential hires.</p>
                     <hr  />
                 </div>
-            ) 
+            ); 
         }
     }
 }

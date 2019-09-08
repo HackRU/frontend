@@ -166,7 +166,7 @@ class App extends Component {
                                 path="/team"
                                 render={(props) => <TeamPage {...props}
                                     {...componentProps} />} />
-			    <Route exact
+                            <Route exact
                                 path="/sponsorship"
                                 render={(props) => <SponsorshipPage {...props}
                                     {...componentProps} />} />
