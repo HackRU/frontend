@@ -4,7 +4,6 @@ import { defaults, theme } from "../../../Defaults";
 import { sponsorshipLinks } from "../SponsorshipConfig";
 import { Parallax } from "react-scroll-parallax";
 import { Icon } from "react-fa";
-import LogoAnim from "./LogoAnim";
 
 class Main extends Component {
     render() {

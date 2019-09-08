@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import { Icon } from "react-fa";
-import { Button } from "reactstrap";
 
 class SponsorshipPackages extends Component {
     render() {
@@ -270,9 +268,6 @@ class SponsorshipPackages extends Component {
                                 </div>
                             </div>
                         </div>
-
-
-
                     </div>
                 </div>
             </div>
