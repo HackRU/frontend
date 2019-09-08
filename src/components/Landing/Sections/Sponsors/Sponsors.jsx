@@ -49,7 +49,7 @@ class Sponsors extends Component {
         
         if (this.state.sponsorslogos) {
             let SponsorDeclaration = this.state.sponsorslogos.sections;
-            console.log(this.state.sponsorslogos);
+            //console.log(this.state.sponsorslogos);
             for (let i = 0; i < SponsorDeclaration.length; i++) {
                 if (SponsorDeclaration[i]["enabled"]) {
                     renderList.push(
@@ -67,9 +67,9 @@ class Sponsors extends Component {
         if (this.state.partnerLogos) {
 
             let PartnerDeclaration = this.state.partnerLogos.sections;
-            console.log(PartnerDeclaration);
+            //console.log(PartnerDeclaration);
             for (let i = 0; i < PartnerDeclaration.length; i++) {
-                console.log(i);
+                //console.log(i);
                 if (PartnerDeclaration[i]["enabled"]) {
                     partnerList.push(
                         <SponsorContainer key={i}

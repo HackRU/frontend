@@ -27,7 +27,7 @@ const Stat = ({ number, text }) => (
 );
 
 Stat.propTypes = {
-    number: PropTypes.number,
+    number: PropTypes.string,
     text: PropTypes.string
 };
 

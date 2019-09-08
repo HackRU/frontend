@@ -15,10 +15,7 @@ class SponsorItem extends Component {
 }
 
 SponsorItem.propTypes = {
-    size: {
-        width: PropTypes.number,
-        height: PropTypes.number,
-    },
+    size: PropTypes.object,
     href: PropTypes.string,
     name: PropTypes.string,
     baseURL: PropTypes.string,

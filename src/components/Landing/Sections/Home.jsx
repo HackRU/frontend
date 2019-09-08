@@ -143,7 +143,7 @@ class Home extends Component {
 Home.propTypes = {
     profile: ProfileType,
     loggedout: PropTypes.bool,
-    dismissAlert: PropTypes.bool,
+    dismissAlert: PropTypes.func,
     isMobile: PropTypes.bool,
 };
 
