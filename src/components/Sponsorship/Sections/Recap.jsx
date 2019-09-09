@@ -48,7 +48,7 @@ class Recap extends Component {
      
             <div className="content">
                 <div>
-                    <h1 className="display-4 theme-font">Recap Fall 2018</h1><hr />
+                    <h1 className="display-4 theme-font">Recap Spring 2019</h1><hr />
                 </div>
 
                 <div className="row">
