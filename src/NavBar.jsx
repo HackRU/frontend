@@ -14,7 +14,7 @@ class NavBar extends Component {
         super(props);
 
         this.toggle = this.toggle.bind(this);
-        this.toggleIfMobile = this.toggleIfMobile.bind(this);
+        this.toggleFalse = this.toggleFalse.bind(this);
         this.handleScroll = this.handleScroll.bind(this);
         this.handleResize = this.handleResize.bind(this);
 
@@ -35,6 +35,7 @@ class NavBar extends Component {
 
     componentWillUnmount() {
         window.removeEventListener("scroll", this.handleScroll);
+        window.removeEventListener("resize", this.handleResize);
     }
 
     handleResize() {
@@ -50,7 +51,6 @@ class NavBar extends Component {
     handleScroll() {
         let badgeHeight = this.state.badgeHeight;
         let offset = window.pageYOffset;
-
         if (offset < badgeHeight) {
             //At top
             this.setState({
@@ -64,7 +64,7 @@ class NavBar extends Component {
     }
 
 
-    toggleIfMobile() {
+    toggleFalse() {
         if (window.innerWidth < 768) {
             this.setState({
                 isOpen: false
@@ -102,7 +102,7 @@ class NavBar extends Component {
                     <NavLink
                         className="primary-link"
                         href={"/" + navlinks[keys[i]].url}
-                        onClick={this.toggleIfMobile}>
+                        onClick={this.toggleFalse}>
                         {keys[i].toString()}
                     </NavLink>
                 </NavItem>
@@ -138,7 +138,7 @@ class NavBar extends Component {
                 <Nav navbar
                     className="mr-auto">
                     <NavItem>
-                        <NavLink onClick={this.toggleIfMobile}>
+                        <NavLink onClick={this.toggleFalse}>
                             <Link
                                 className="primary-link"
                                 to="/#home"> 
@@ -148,7 +148,7 @@ class NavBar extends Component {
                     </NavItem>
                     {defaults.dayof ? 
                         <NavItem>
-                            <NavLink onClick={this.toggleIfMobile}>
+                            <NavLink onClick={this.toggleFalse}>
                                 <Link 
                                     className="primaryLink"
                                     to="/live">
@@ -178,13 +178,14 @@ class NavBar extends Component {
                 style={{ width: "100%", zIndex: "20", backgroundColor: theme.secondary[1], opacity: this.state.shouldRender | !onLanding, pointerEvents: this.state.shouldRender | !onLanding ? "auto":"none", transition: !onLanding ? "" : "opacity 0.5s" }}
                 fixed="top"
                 dark
-                expand="md">
+                expand="md"
+                onBlur={this.toggleFalse}>
                 <Container>
                     <NavbarBrand>
                         <NavbarToggler onClick={this.toggle}
                             style={{ marginRight: 10 }} />
                         <LinkSwitcher style={{ color: theme.accent[0] }}
-                            onClick={this.toggleIfMobile}
+                            onClick={this.toggleFalse}
                             href="/#home"
                             to="/#home"
                             root={onLanding.toString()}>HackRU</LinkSwitcher>
