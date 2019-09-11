@@ -8,6 +8,7 @@ import {
     SignUpPage,
     MagicPage,
     LivePage,
+    SponsorshipPage,
     TeamPage,
     ProjectorPage,
     E404 } from "./components/Pages"; // Router Pages
@@ -164,6 +165,10 @@ class App extends Component {
                             <Route exact
                                 path="/team"
                                 render={(props) => <TeamPage {...props}
+                                    {...componentProps} />} />
+                            <Route exact
+                                path="/sponsorship"
+                                render={(props) => <SponsorshipPage {...props}
                                     {...componentProps} />} />
                             { !defaults.freeze &&
                                 renderRoutes

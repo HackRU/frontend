@@ -20,7 +20,10 @@
         "react-select": "^2.1.2",
         "react-spinners": "^0.4.8",
         "reactstrap": "^6.5.0",
-        "request": "^2.88.0"
+        "request": "^2.88.0",
+        "axios": "^0.18.0",
+        "chart.js": "^2.7.3",
+        "react-chartjs-2": "^2.7.4"
     },
     "scripts": {
         "start": "env-cmd development react-scripts start",

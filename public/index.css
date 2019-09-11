@@ -350,3 +350,60 @@ form .btn, form btn-secondary {
     padding-top: 5px;
     color: var(--secondary-color);
 }
+
+/* Sponsorship Page */ 
+
+/* Sponsorship Landing Sepcifics */
+.bronze {
+    color: #FFA038 !important; 
+}
+  
+.silver {
+    color: #B7B7B7 !important;
+}
+  
+.gold {
+    color: #FFDF00 !important;
+}
+  
+.plat {
+    color: #D8D8D8 !important; 
+}
+  
+.titlepack {
+    color: var(--primary-color) !important;
+}
+
+.hpanel .panel-body{
+    border:1px solid var(--accent-color);
+    border-radius:5px;
+    padding:2px;
+    position:relative;
+}
+
+.table td {
+    border-top: none !important; 
+}
+
+.pd {padding-top: 25px;}
+.fa-check-square-o {padding-right: 5px !important;}
+.zoom {font-size: 5vw;}
+
+.testimo-panel img {
+    width: 100px;
+    height: 100px;
+    border-color: var(--primary-color-alt);
+    border-style: double;
+}
+.testimo-panel p {
+    font-size: 14px;
+    line-height: 25px;
+    margin-bottom: 20px;
+}
+.img-circle {border-radius: 50%;}
+
+@media screen and (max-width:550px) {  
+    .disappear img {
+      display: none;
+    }
+  }
