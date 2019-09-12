@@ -1,280 +1,114 @@
-import React, { Component } from "react";
+import React from 'react';
+import { withStyles, makeStyles} from '@material-ui/core/styles';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import Paper from '@material-ui/core/Paper';
+import { maxWidth } from '@material-ui/system';
 
-class SponsorshipPackages extends Component {
-    render() {
-        return(
-            <div className="content">
-                <div className="col-12">
-                    <h1 className="display-4 theme-font"
-                        id="#packages">Sponsorship Packages</h1><hr />
-                </div><br></br>
+const StyledTableCell = withStyles(theme => ({
+  head: {
+    backgroundColor: "#FFF5e8",
+    color: "#ad4444",
+    fontSize: 20,
+    fontWeight: 900,
+    height: 80
+  },
+  body: {
+    fontSize: 18,
+    color: "#FFF5e8",
+    border: "none"
+  },
+}))(TableCell);
 
-                <div className="row">
-                    <div className="col-lg-12">
-                        <div className="row">
-                            <div className="col-sm-2">
-                                <div className="hpanel pd">
-                                    <div className="panel-body">
-                                        <h4 className="font-bold text-center bronze pd">BRONZE</h4>
-                                        <h5 className="font-bold text-center pd">$1,500</h5><hr />
-                                        <table className="table table-hover">
-                                            <tbody>
-                                                <tr>
-                                                    <td><i className="fa"></i>API/Demo--[2 min]</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><i className="fa fa-check-square-o bronze"></i>Affiliated Mentors On-Site</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><i className="fa fa-check-square-o bronze"></i>Distribute Recruiting Material</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><i className="fa fa-check-square-o bronze"></i>Logo on Website</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><i className="fa fa-check-square-o bronze"></i>Sponsor Branded Prize</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><i className="fa fa-check-square-o bronze"></i>Distribute Swag</td>
-                                                </tr>
-                                            </tbody>   
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
+const StyledTableRow = withStyles(theme => ({
+  root: {
+    '&:nth-of-type(odd)': {
+      backgroundColor: "#bf4d4d",
+    },
+    '&:nth-of-type(even)': {
+        backgroundColor: "#ad4444",
+    },
+  },
+}))(TableRow);
 
-                            <div className="col-sm-2">
-                                <div className="hpanel pd">
-                                    <div className="panel-body">
-                                        <h4 className="font-bold text-center silver pd">SILVER</h4>
-                                        <h5 className="font-bold text-center pd">$4,000</h5><hr />
-                                        <table className="table table-hover">
-                                            <tbody>
-                                                <tr>
-                                                    <td><i className="fa"></i>API/Demo--[3 min]</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><i className="fa fa-check-square-o silver"></i>Affiliated Mentors On-Site</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><i className="fa fa-check-square-o silver"></i>Reserved Table Space</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><i className="fa fa-check-square-o silver"></i>Tech Talk</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><i className="fa fa-check-square-o silver"></i>Distribute Recruiting Material</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><i className="fa fa-check-square-o silver"></i>Recruiters On-Site</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><i className="fa fa-check-square-o silver"></i>Logo on Website</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><i className="fa fa-check-square-o silver"></i>Sponsor Branded Prize</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><i className="fa fa-check-square-o silver"></i>Distribute Swag</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><i className="fa fa-check-square-o silver"></i>Logo on T-Shirt</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><i className="fa fa-check-square-o silver"></i>Distribute Materials in Swag Bags</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-sm-2">
-                                <div className="hpanel pd">
-                                    <div className="panel-body">
-                                        <h4 className="font-bold text-center gold pd">GOLD</h4>
-                                        <h5 className="font-bold text-center pd">$7,000</h5><hr />
-                                        <table className="table table-hover">
-                                            <tbody>
-                                                <tr>
-                                                    <td><i className="fa"></i>API/Demo--[5 min]</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><i className="fa fa-check-square-o gold"></i>Affiliated Mentors On-Site</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><i className="fa fa-check-square-o gold"></i>Reserved Table Space</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><i className="fa fa-check-square-o gold"></i>Tech Talk</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><i className="fa fa-check-square-o gold"></i>Distribute Recruiting Material</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><i className="fa fa-check-square-o gold"></i>Recruiters On-Site</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><i className="fa fa-check-square-o gold"></i>Hacker Resumes and GitHubs</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><i className="fa fa-check-square-o gold"></i>Logo on Website</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><i className="fa fa-check-square-o gold"></i>Sponsor Branded Prize</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><i className="fa fa-check-square-o gold"></i>Distribute Swag</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><i className="fa fa-check-square-o gold"></i>Logo on T-Shirt</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><i className="fa fa-check-square-o gold"></i>Distribute Materials in Swag Bags</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><i className="fa fa-check-square-o gold"></i>Host a Mini-Event</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><i className="fa fa-check-square-o gold"></i>Mention in All Pre-Event Emails</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-sm-3">
-                                <div className="hpanel pd">
-                                    <div className="panel-body">
-                                        <h4 className="font-bold text-center plat pd">PLATINUM</h4>
-                                        <h5 className="font-bold text-center pd">$15,000</h5><hr />
-                                        <table className="table table-hover">
-                                            <tbody>
-                                                <tr>
-                                                    <td><i className="fa"></i>API/Demo--[5 min]</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><i className="fa fa-check-square-o plat"></i>Affiliated Mentors On-Site</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><i className="fa fa-check-square-o plat"></i>Reserved Table Space</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><i className="fa fa-check-square-o plat"></i>Tech Talk</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><i className="fa fa-check-square-o plat"></i>Distribute Recruiting Material</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><i className="fa fa-check-square-o plat"></i>Recruiters On-Site</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><i className="fa fa-check-square-o plat"></i>Hacker Resumes and GitHubs</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><i className="fa fa-check-square-o plat"></i>Logo on Website</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><i className="fa fa-check-square-o plat"></i>Sponsor Branded Prize</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><i className="fa fa-check-square-o plat"></i>Distribute Swag</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><i className="fa fa-check-square-o plat"></i>Logo on T-Shirt</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><i className="fa fa-check-square-o plat"></i>Distribute Materials in Swag Bags</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><i className="fa fa-check-square-o plat"></i>Host a Mini-Event</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><i className="fa fa-check-square-o plat"></i>Mention in All Pre-Event Emails</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><i className="fa fa-check-square-o plat"></i>Distribute Material at Registration</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><i className="fa fa-check-square-o plat"></i>Sponsor Lounge</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className="col-sm-3">
-                                <div className="hpanel pd">
-                                    <div className="panel-body">
-                                        <h4 className="font-bold text-center titlepack pd">TITLE</h4>
-                                        <h5 className="font-bold text-center pd">$25,000 <small>minimum</small></h5><hr />
-                                        <table className="table table-hover">
-                                            <tbody>
-                                                <tr>
-                                                    <td><i className="fa"></i>API/Demo--[7 min]</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><i className="fa fa-check-square-o titlepack"></i>Affiliated Mentors On-Site</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><i className="fa fa-check-square-o titlepack"></i>Reserved Table Space</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><i className="fa fa-check-square-o titlepack"></i>Tech Talk</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><i className="fa fa-check-square-o titlepack"></i>Distribute Recruiting Material</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><i className="fa fa-check-square-o titlepack"></i>Recruiters On-Site</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><i className="fa fa-check-square-o titlepack"></i>Hacker Resumes and GitHubs</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><i className="fa fa-check-square-o titlepack"></i>Logo on Website</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><i className="fa fa-check-square-o titlepack"></i>Sponsor Branded Prize</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><i className="fa fa-check-square-o titlepack"></i>Distribute Swag</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><i className="fa fa-check-square-o titlepack"></i>Logo on T-Shirt</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><i className="fa fa-check-square-o titlepack"></i>Distribute Materials in Swag Bags</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><i className="fa fa-check-square-o titlepack"></i>Host a Mini-Event</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><i className="fa fa-check-square-o titlepack"></i>Mention in All Pre-Event Emails</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><i className="fa fa-check-square-o titlepack"></i>Distribute Material at Registration</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><i className="fa fa-check-square-o titlepack"></i>Sponsor Lounge</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><i className="fa fa-check-square-o titlepack"></i>HackRU Co-presented by You</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><i className="fa fa-check-square-o titlepack"></i>Reserved Keynote</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        );
-    }
+function createData(offer, bronze, silver, gold, platinum, title) {
+  return { offer, bronze, silver, gold, platinum, title };
 }
 
-export default SponsorshipPackages;
+function check(){ return <i className="fa fa-check-square-o fa-2x" style={{color: "#ffd562"}}></i>;}
+function empty(){ return <i className="fa"></i>;}
+
+const rows = [
+    createData('Package Price', '$1,500', '$4,000', '$7,000', '$15,000', '$25,000 min'),
+    createData('API/Demo', '2 min', '3 min', '5 min', '5 min', '7 min'),
+    createData('Affiliated Mentors On-Site', check(), check(), check(), check(), check()),
+    createData('Logo on Website', check(), check(), check(), check(), check()),
+    createData('Sponsor Branded Prize', check(), check(), check(), check(), check()),
+    createData('Distribute Swag', check(), check(), check(), check(), check()),
+    createData('Distribute Recruiting Material', check(), check(), check(), check(), check()),
+    createData('Reserved Table Space', empty(), check(), check(), check(), check()),
+    createData('Tech Talk', empty(), check(), check(), check(), check()),
+    createData('Recruiters On-Site', empty(), check(), check(), check(), check()),
+    createData('Logo on T-Shirt', empty(), check(), check(), check(), check()),
+    createData('Distribute Materials in Swag Bags', empty(), check(), check(), check(), check()),
+    createData('Hacker Resumes and GitHubs', empty(), empty(), check(), check(), check()),
+    createData('Host a Mini-Event', empty(), empty(), check(), check(), check()),
+    createData('Mention in All Pre-Event Emails', empty(), empty(), check(), check(), check()),
+    createData('Distribute Material at Registration', empty(), empty(), empty(), check(), check()),
+    createData('Sponsor Lounge', empty(), empty(), empty(), check(), check()),
+    createData('HackRU Co-presented by You', empty(), empty(), empty(), empty(), check()),
+    createData('Reserved Keynote', empty(), empty(), empty(), empty(), check()),
+];
+
+const useStyles = makeStyles(theme => ({
+  root: {
+    width: "100%",
+    marginTop: theme.spacing(3),
+    overflowX: 'auto',
+    boxShadow: "2px 10px 30px 0.2px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 2px 1px -1px rgba(0,0,0,0.12)",
+  },
+  table: {
+    minWidth: maxWidth,
+  },
+}));
+
+export default function SponsorshipPackages() {
+  const classes = useStyles();
+
+  return (
+    <div className="content"> 
+        <div className="col-12">
+            <h1 className="display-4 theme-font" id="#packages">Sponsorship Packages</h1><hr />
+        </div>
+        <Paper className={classes.root}>
+        <Table className={classes.table}>
+            <TableHead>
+            <TableRow>
+                <StyledTableCell>WHAT YOU GET</StyledTableCell>
+                <StyledTableCell width="150dp" align="center">BRONZE</StyledTableCell>
+                <StyledTableCell width="150dp" align="center">SILVER</StyledTableCell>
+                <StyledTableCell width="150dp" align="center">GOLD</StyledTableCell>
+                <StyledTableCell width="150dp" align="center">PLATINUM</StyledTableCell>
+                <StyledTableCell width="150dp" align="center">TITLE</StyledTableCell>
+            </TableRow>
+            </TableHead>
+            <TableBody>
+            {rows.map(row => (
+                <StyledTableRow key={row.offer}>
+                <StyledTableCell component="th" scope="row">{row.offer}</StyledTableCell>
+                <StyledTableCell align="center">{row.bronze}</StyledTableCell>
+                <StyledTableCell align="center">{row.silver}</StyledTableCell>
+                <StyledTableCell align="center">{row.gold}</StyledTableCell>
+                <StyledTableCell align="center">{row.platinum}</StyledTableCell>
+                <StyledTableCell align="center">{row.title}</StyledTableCell>
+                </StyledTableRow>
+            ))}
+            </TableBody>
+        </Table>
+        </Paper>
+    </div>
+  );
+}

@@ -7,8 +7,8 @@ class Recap extends Component {
             labels: ["Men","Women","Others"],
             datasets: [{
                 data: [70, 23, 7],
-                backgroundColor: ["#95e7ff","#91afff","#91ffe1"],
-                hoverBackgroundColor: ["#62dbff","#628dff","#62ffd5"],
+                backgroundColor: ["#62dbff","#91afff","#91ffe1"],
+                hoverBackgroundColor: ["#58c5e5","#628dff","#74ccb4"],
                 borderWidth: 0.5,
             }],
         };
@@ -16,8 +16,8 @@ class Recap extends Component {
             labels: ["Asian/Pacific Islander","White/Caucasian","Hispanic", "Black/African American", "Others"],
             datasets: [{
                 data: [60, 20, 6, 4, 10],
-                backgroundColor: ["#ff7349","#ffd562","#ff6d94","#e397ff","#97e07c"],
-                hoverBackgroundColor: ["#ff5f2f","#ffce49","#ff5885","#dd82ff","#74d650"],
+                backgroundColor: ["#ff8f6d","#ffd562","#ff6d94","#e397ff","#97e07c"],
+                hoverBackgroundColor: ["#ff6f43","#ffce49","#ff5885","#dd82ff","#74d650"],
                 borderWidth: 0.3,
             }]
         };
@@ -25,8 +25,8 @@ class Recap extends Component {
             labels: ["Computer Science","Electrical and Computer Engineering","Informaiton Technology", "Electrical Engineering"],
             datasets: [{
                 data: [50, 13, 4.5, 4.5],
-                backgroundColor: ["#db6685","#e07cc9","#8166db"],
-                hoverBackgroundColor: ["#d65074","#db66c0","#6f50d6"],
+                backgroundColor: ["#FFF5e8","#ccc4b9","#7f7a74","#4c4945"],
+                hoverBackgroundColor: ["#e5dcd0","#b2aba2","#66625c","#33312e"],
                 borderWidth: 0,
             }]
         };
@@ -34,8 +34,8 @@ class Recap extends Component {
             labels: ["2019","2020","2021","2022"],
             datasets: [{
                 data: [24, 27, 26, 22],
-                backgroundColor: ["#db6685","#e07cc9","#8166db", "#ef8368"],
-                hoverBackgroundColor: ["#d65074","#db66c0","#6f50d6","#ed7455"],
+                backgroundColor: ["#FFDF00","#39d688","#8166db", "#ef8368"],
+                hoverBackgroundColor: ["#e5c800","#26b66e","#6f50d6","#ed7051"],
                 borderWidth: 0,
             }]
         };
