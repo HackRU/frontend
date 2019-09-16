@@ -27,9 +27,9 @@ const defaults =  {
     "teamInfo": "https://s3-us-west-2.amazonaws.com/hackru-internal/hackru-team/",
     "freeze": false,
     "volunteers": {
-        "display": false,
-        "vol_url": "httplinkhere",
-        "mentor_url": "mentorurlhere"
+        "display": true,
+        "vol_url": "https://docs.google.com/forms/d/e/1FAIpQLSe_qBzqsJIKWd_BohZ7Xuju3XQhI2f6xtrwX7WO-otR0Q7ofg/viewform?usp=sf_link",
+        "mentor_url": "https://docs.google.com/forms/d/e/1FAIpQLSdy0jShXJJS5a6rbpXDKBN-nMeYXqZME0Fr14B_ZcxOAXuSGw/viewform?usp=sf_link"
     },
     "dayOf": false
 };
