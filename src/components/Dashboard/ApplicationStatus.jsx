@@ -83,7 +83,7 @@ const AcceptButton = ({ onAccept, disabled }) => (
     <Button
         disabled={disabled}
         onClick={(e) => !disabled && onAccept(e)}
-        style={{ backgroundColor: disabled ? theme.disabled[0] : theme.primary[0] }}
+        style={{ backgroundColor: disabled ? theme.disabled[0] : theme.primary[0], color: disabled ? theme.disabled[1] : theme.primary[1] }}
     >
         Coming
     </Button>
