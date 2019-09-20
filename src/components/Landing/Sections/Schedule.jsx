@@ -1,137 +1,107 @@
 import React, { Component } from "react";
 import GlowButton from "../../GlowButton";
 import { defaults } from "../../../Defaults";
+import { Table, TabContent, TabPane, Nav, NavItem, NavLink, Card, Container, Col, Row } from 'reactstrap';
 
 /**
  * Schedule component for the landing page
  */
+
+const saturday_date = "10/19/2019"
+const sunday_date = "10/20/2019"
+
+const sat_schedule = [
+    ["10:00 AM","Check-In","Main Lobby"],
+    ["11:00 AM", "Lunch", "Food Table"],
+    ["11:30 AM", "Opening Ceremonies", "Main Stage"],
+    ["1:00 PM", "Hacking Begins", "Hacking Stations"],
+    ["6:00 PM", "Dinner", "Food Table"]
+]
+
+const sun_schedule = [
+    ["12:00 AM", "Midnight Surprise", "(it's a surprise)"],
+    ["2:00 AM", "Midnight Snack", "Food Table"],
+    ["7:30 AM", "Breakfast", "Food Table"],
+    ["11:30 AM", "Hacking Ends", "Hacking Stations"],
+    ["11:30 AM", "Lunch", "Food Table"],
+    ["12:00 PM", "Demos Begin", "Hacking Area"],
+    ["2:00 PM", "Closing Ceremonies", "Main Stage"]
+]
+
+const heading = {
+    color: "#FFF5e8"
+}
+
+
+const light_red = {
+    backgroundColor: "#bf4d4d",
+    border: "none !important"
+}
+
+const dark_red = {
+    backgroundColor: "#ad4444",
+    border: "none !important"
+}
+
 class Schedule extends Component {
+
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            activeTab: 'sat'
+        }
+    }
+
+    fill_table = (schedule) => {
+        let rows = [];
+        schedule.forEach((row, index) => {
+            rows.push(
+                <tr style={index % 2 === 0 ? light_red : dark_red}>
+                    <th scope="row">{row[0]}</th>
+                    <td>{row[1]}</td>
+                    <td>{row[2]}</td>
+                </tr>
+            );
+        });
+        console.log(rows);
+        return (
+            <Table borderless style={{borderCollapse: "collapse !important"}}>
+                <thead>
+                    <tr>
+                        <th>Time</th>
+                        <th>Event</th>
+                        <th>Location</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {rows}
+                </tbody>
+            </Table>
+        );
+    }
+
     render() {
         return (
-            <div>
-                <div className="row">
-                    <div className="col-12">
-                        <h1 className="display-4 theme-font">Schedule</h1>
-                    </div>
-                </div>
-                <hr />
-                <div className="row row-content-box">
-                    <div className="col-12 col-lg-6">
-                        <h3 className="text-center mb-2">Saturday <small>10/19/19</small></h3>
-                        <table className="table table-hover">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Time</th>
-                                    <th scope="col" >Event</th>
-                                    <th scope="col">Location</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th scope="row">10:00 AM</th>
-                                    <td>Check-in</td>
-                                    <td>Main Lobby</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">11:00 AM</th>
-                                    <td>Lunch</td>
-                                    <td>Food Table</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">11:30 AM</th>
-                                    <td>Opening Ceremonies</td>
-                                    <td>Main Stage</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">1:00 PM</th>
-                                    <td>Hacking Begins</td>
-                                    <td>Hacking Stations</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">6:00 PM</th>
-                                    <td>Dinner</td>
-                                    <td>Food Table</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div className="col-12 mt-5 mt-lg-0 col-lg-6">
-                        <h3 className="text-center mb-2">Sunday <small>10/20/19</small></h3>
-                        <table className="table table-hover">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Time</th>
-                                    <th scope="col">Event</th>
-                                    <th scope="col">Location</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th scope="row">12:00 AM</th>
-                                    <td>Midnight Surprise</td>
-                                    <td>(it's a surprise)</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">2:00 AM</th>
-                                    <td>Midnight Snack</td>
-                                    <td>Food Table</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">7:30 AM</th>
-                                    <td>Breakfast</td>
-                                    <td>Food Table</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">11:30 AM</th>
-                                    <td>Hacking Ends</td>
-                                    <td>Hacking Stations</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">11:30 AM</th>
-                                    <td>Lunch</td>
-                                    <td>Food Table</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">12:00 PM</th>
-                                    <td>Demos Begin</td>
-                                    <td>Hacking Area</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">2:00 PM</th>
-                                    <td>Closing Ceremonies</td>
-                                    <td>Main Stage</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-                <hr />
-                {defaults.dayof && 
-                        <div align="center"
-                            style={{ marginBottom: 10 }}>
-                            <h2> Download the App </h2>
-                            <p>
-                                Check out HackRU's official app for announcements, schedules, and your personal QR code!
-                            </p>
-                            <div>
-                                <GlowButton
-                                    href='/live'
-                                    icon='tv'
-                                    text='Live Page'
-                                />
-                                <GlowButton
-                                    href='https://play.google.com/store/apps/details?id=org.hackru.oneapp.hackru'
-                                    icon='android'
-                                    text='Android App'
-                                />
-                                {/*<GlowButton
-                            href='https://ios-app.hackru.org/manifest.plist'
-                            icon='apple'
-                            text='iOS App'
-                        />*/}
-                            </div>
-                        </div>}
-            </div>
+            [
+            <div className="col-12">
+                <h1 className="display-4 theme-font"
+                    >Schedule</h1><hr />
+            </div>,
+            <Card className="shadow" style={{backgroundColor:"#ad4444", margin: "0", padding: "0"}}>
+                <Container fluid>
+                    <Row>
+                        <Col xs="6">
+                            <h3 className="mt-2">SATURDAY {saturday_date}</h3>
+                            {this.fill_table(sat_schedule)}
+                        </Col>
+                        <Col xs="6">
+                            <h3 className="mt-2">SUNDAY {sunday_date}</h3>
+                            {this.fill_table(sun_schedule)}
+                        </Col>
+                    </Row>
+                </Container>
+            </Card>]
         );
     }
 }
