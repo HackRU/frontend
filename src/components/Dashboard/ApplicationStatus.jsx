@@ -67,8 +67,8 @@ const applicationBody = (status, onComing, onNotComing, reimbursement) => {
         </div>);
     case "waitlist":
         return (<div>
-            <h1> Waitlisted </h1>
-            <p> Your application has been waitlisted. If there is space on the day of the event, you may check in. </p>
+            <h1> Delayed Entry </h1>
+            <p> Your application has been placed on the delayed entry list. If there is space on the day of the event, you may check in. </p>
         </div>);
     // TODO: Before day-of, add checked_in
     default:
