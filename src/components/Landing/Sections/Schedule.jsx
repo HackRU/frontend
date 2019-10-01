@@ -61,7 +61,7 @@ class Schedule extends Component {
         });
         console.log(rows);
         return (
-            <Table borderless style={{margin: "0", padding: "0"}}>
+            <Table borderless>
                 <thead>
                     <tr>
                         <th>Time</th>
@@ -86,11 +86,11 @@ class Schedule extends Component {
             <Card className="shadow-lg rounded-0" style={{backgroundColor:"#ad4444", margin: "0", padding: "0"}}>
                 <Container fluid>
                     <Row>
-                        <Col xs="12" style={{margin: "0", padding: "0"}}>
+                        <Col xs="12" md="6">
                             <h3 className="mt-2 text-center">SATURDAY {saturday_date}</h3>
                             {this.fill_table(sat_schedule)}
                         </Col>
-                        <Col xs="12" style={{margin: "0", padding: "0"}}>
+                        <Col xs="12" md="6">
                             <h3 className="mt-2 text-center">SUNDAY {sunday_date}</h3>
                             {this.fill_table(sun_schedule)}
                         </Col>
