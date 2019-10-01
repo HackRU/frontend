@@ -51,17 +51,17 @@ class Schedule extends Component {
         let rows = [];
         schedule.forEach((row, index) => {
             rows.push(
-                <tr style={index % 2 === 0 ? light_red : dark_red}>
+                <tr style={index % 2 === 0 ? light_red : dark_red}
+                    key={index}>
                     <th scope="row">{row[0]}</th>
                     <td>{row[1]}</td>
                     <td>{row[2]}</td>
                 </tr>
             );
         });
-        console.log(rows);
         return (
             <Table borderless>
-                <thead>
+                <thead key="table-head">
                     <tr>
                         <th>Time</th>
                         <th>Event</th>
