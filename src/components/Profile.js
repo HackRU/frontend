@@ -245,6 +245,34 @@ class Profile {
         this._valid_until = null;
         this.isLoggedIn = false;
     }
+    GetUser(callback, email) {        
+        if (this.isLoggedIn) {
+            request({
+                method: "POST",
+                uri: ENDPOINTS.userData,
+                body: {
+                    email: this._email,
+                    token: this._token,
+                    query: {
+                        email: email
+                    }
+                },
+                json: true
+            }, (error, response, body) => {
+                if (error) {
+                    callback("An error occured retrieving data", null);
+                } else {
+                    if (body.statusCode === 200) {
+                        callback(null, body.body[0]);
+                    } else {
+                        callback((body.body) ? (body.body) : ("Unexpected Error"), null);
+                    }
+                }
+            });
+        } else {
+            callback("Please log in", null);
+        }
+    }
     Get(callback) {
         if (this.isLoggedIn) {
             request({
