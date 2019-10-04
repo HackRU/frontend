@@ -37,7 +37,8 @@ class AdminControl extends Component {
                     let value = document.getElementById("ADMINuserEmail").value;
                     this.setState({
                         loading: true,
-                        msg: null
+                        msg: null,
+                        email: value
                     });
                     this.props.profile.GetUser((msg, data) => {
                         if (msg) {
@@ -79,7 +80,7 @@ class AdminControl extends Component {
                     Object.keys(this.state.updateUser).forEach((key) => {
                         obj["role." + key] = this.state.updateUser[key];
                     })
-                    this.props.profile.Set(obj, (err) => {
+                    this.props.profile.SetUser(obj, this.state.email, (err) => {
                         this.setState({
                             loading: false
                         });

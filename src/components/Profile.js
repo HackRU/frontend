@@ -290,6 +290,7 @@ class Profile {
                 if (error) {
                     callback("An error occured retrieving data", null);
                 } else {
+                    console.log(body);
                     if (body.statusCode === 200) {
                         callback(null, body.body[0]);
                     } else {
@@ -299,6 +300,36 @@ class Profile {
             });
         } else {
             callback("Please log in", null);
+        }
+    }    
+    SetUser(data, user, callback) {
+        if (this.isLoggedIn) {
+            request({
+                "method": "POST",
+                uri: ENDPOINTS.update,
+                body: {
+                    updates: {
+                        "$set": data
+                    },
+                    user_email: user,
+                    auth_email: this._email,
+                    auth: this._token
+                },
+                json: true
+            }, (error, response, body) => {
+                console.log(body);
+                if (error) {
+                    callback("An error occured when attempting to update data");
+                } else {
+                    if (body.statusCode === 200) {
+                        callback();
+                    } else {
+                        callback((body.body) ? (body.body) : ("Unexpected Error"));
+                    }
+                }
+            });
+        } else {
+            callback("Please log in");
         }
     }
     Set(data, callback) {
