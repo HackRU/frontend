@@ -96,8 +96,9 @@ class Dashboard extends Component {
         let admin = null;
         if (user.role && user.role.director) {
             admin = (
-                <AdminControl profile={this.props.profile} user={user} />
-            )
+                <AdminControl profile={this.props.profile}
+                    user={user} />
+            );
         }
         return (
             <Container fluid
