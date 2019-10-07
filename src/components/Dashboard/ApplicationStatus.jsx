@@ -7,12 +7,12 @@ import PropTypes from "prop-types";
  * Turn the 'registration_status' from LCS into something user-friendly
  * @param {String} status Render the status of the users application
  */
-const ApplicationStatus = ({ status, onComing, onNotComing, reimbursement }) => (
+const ApplicationStatus = ({ status, onComing, onNotComing, travelling_from }) => (
     <div style={{ marginBottom: 10 }}>
         <div style={{ width: "100%", textAlign: "left" }}>
             <p className="lead">Application Status</p>
         </div>
-        { applicationBody(status, onComing, onNotComing, reimbursement) }
+        { applicationBody(status, onComing, onNotComing, travelling_from) }
     </div>
 );
 
@@ -20,10 +20,10 @@ ApplicationStatus.propTypes = {
     status: PropTypes.string,
     onComing: PropTypes.func,
     onNotComing: PropTypes.func,
-    reimbursement: PropTypes.number,
+    travelling_from: PropTypes.object,
 };
 
-const applicationBody = (status, onComing, onNotComing, reimbursement) => {
+const applicationBody = (status, onComing, onNotComing, travelling_from) => {
     switch(status) {
     case "registered":
         return (<div>
@@ -38,7 +38,7 @@ const applicationBody = (status, onComing, onNotComing, reimbursement) => {
         return (<div>
             <h1> Accepted </h1>
             <p> { "You've been accepted to HackRU!" } </p>
-            <Reimbursement reimbursement={reimbursement} />
+            <Reimbursement travelling_from={travelling_from} />
             <AcceptButton onAccept={onComing} />
             <DeclineButton onDecline={onNotComing} />
         </div>);
@@ -46,7 +46,7 @@ const applicationBody = (status, onComing, onNotComing, reimbursement) => {
         return (<div>
             <h1> Coming </h1>
             <p> { "You're coming! We're excited to see you there." } </p>
-            <Reimbursement reimbursement={reimbursement} />
+            <Reimbursement travelling_from={travelling_from} />
             <AcceptButton disabled />
             <DeclineButton onDecline={onNotComing} />
         </div>);
@@ -63,7 +63,7 @@ const applicationBody = (status, onComing, onNotComing, reimbursement) => {
             <p>
                 { "You're all set! Feel free to email " }
                 <a href="mailto:info@hackru.org">info@hackru.org</a> with any questions. </p>
-            <Reimbursement reimbursement={reimbursement} />
+            <Reimbursement travelling_from={travelling_from} />
         </div>);
     case "waitlist":
         return (<div>
@@ -109,16 +109,22 @@ DeclineButton.propTypes = {
     disabled: PropTypes.bool,
 };
 
-const Reimbursement = ({ reimbursement }) => (
-    reimbursement ? <p>
-        You are eligable for up to <strong>${reimbursement.toFixed(2)}.</strong> Final reimbursement will be based on your reciepts(trains/busses) or milage(car).
-        <br /><br />
-        Please note that reimbursement will be given in the form of Amazon giftcards, and you will only be granted reimbursement <strong>if you submit a hack to DevPost and demonstrate your hack.</strong>
-    </p> : <p> You are not eligible to receive any travel reimbursement </p>
+const Reimbursement = ({ travelling_from }) => (
+    (travelling_from && travelling_from.reimbursement) ? 
+        (<p> You are eligible for up to <strong>${ (travelling_from && travelling_from.reimbursement) ? (travelling_from.reimbursement.toFixed(2)) : (0)}</strong> in travel reimbursements.
+            { travelling_from.mode === "car" ?
+                " You must be travelling with at least 3 people in your car to be reimbursed!" :
+                " Remember, you'll need to show receipts for reimbursement!" }
+            <br /><br />
+            Please note that reimbursement will be given in the form of Amazon giftcards, and you will only be granted reimbursement as a hacker <strong>if you submit a hack to DevPost and demonstrate your hack.</strong>
+            <br />
+            If you are a mentor, you will only be reimbursed if you fulfill all the hours you registered for.
+        </p>):
+        (<p> You are not eligible to receive any travel reimbursement</p>)
 );
 
 Reimbursement.propTypes = {
-    reimbursement: PropTypes.number,
+    travelling_from: PropTypes.object,
 };
 
 export default ApplicationStatus;

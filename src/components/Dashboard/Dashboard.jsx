@@ -132,7 +132,7 @@ class Dashboard extends Component {
                                 user.registration_status = "not-coming";
                                 this.submitUser(user);
                             }}
-                            reimbursement={user.travelling_from && user.travelling_from.reimbursement}
+                            travelling_from={user.travelling_from}
                             status={user.registration_status}
                         />
                         <QR
