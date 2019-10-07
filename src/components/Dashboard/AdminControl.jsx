@@ -10,15 +10,20 @@ class AdminControl extends Component {
     state = {
         updateUser: null,
         loading: false,
+        loading2: false,
         msg: null,
         msg2: ["success", null],
         users: [""]
     }
     render() {
         let loading = null;
+        let loading2 = null;
         let alert = null;
         if (this.state.loading) {
             loading = <div style={{ width: "100%", textAlign: "center" }}><PulseLoader /></div>;
+        }
+        if (this.state.loading2) {
+            loading2 = <div style={{ width: "100%", textAlign: "center" }}><PulseLoader /></div>;
         }
         if (this.state.msg) {
             alert = <Alert color="danger">{this.state.msg}</Alert>;
@@ -84,8 +89,8 @@ class AdminControl extends Component {
                     <p className="lead">Admin Tools</p>
                 </div>
                 <Section className="mb-5"
-                    title="Magic"
-                    subtitle="Send out magic links for directors, organizers, and volunteers">
+                    title="Bulk Role Editor"
+                    subtitle="Send out magic links or promote a bunch of users">
                     <Form onSubmit={(e) => {
                         e.preventDefault();
                         let checks = {
@@ -96,6 +101,14 @@ class AdminControl extends Component {
                             organizer: document.getElementById("checkbox-organizer").checked,
                             director: document.getElementById("checkbox-director").checked
                         };
+                        let rolesChecks = {
+                            "role.volunteer": document.getElementById("checkbox-volunteer").checked,
+                            "role.judge": document.getElementById("checkbox-judge").checked,
+                            "role.sponsor": document.getElementById("checkbox-sponsor").checked,
+                            "role.mentor": document.getElementById("checkbox-mentor").checked,
+                            "role.organizer": document.getElementById("checkbox-organizer").checked,
+                            "role.director": document.getElementById("checkbox-director").checked
+                        };
                         let strChecks = [];
                         let keys = Object.keys(checks);
                         for (let i = 0; i < keys.length; i++) {
@@ -104,23 +117,44 @@ class AdminControl extends Component {
                             }
                         }
                         this.setState({
-                            msg2: ["", null]
+                            msg2: ["", null],
+                            loading2: true
                         });
-                        this.props.profile.SendMagic(this.state.users, strChecks, (error) => {
-                            if (error) {
-                                console.error(error);
-                                this.setState({
-                                    msg2: ["danger", "Failed to send out links: " + error]
-                                });
-                            } else {
-                                this.setState({
-                                    msg2: ["success", "Links sent out"]
-                                });
-                            }
-                        });
+                        if (document.getElementById("checkbox-magical").checked) {
+                            // Send out a magic link
+                            this.props.profile.SendMagic(this.state.users, strChecks, (error) => {
+                                if (error) {
+                                    console.error(error);
+                                    this.setState({
+                                        msg2: ["danger", "Failed to send out links: " + error],
+                                        loading2: false
+                                    });
+                                } else {
+                                    this.setState({
+                                        msg2: ["success", "Links sent out"],
+                                        loading2: false
+                                    });
+                                }
+                            });
+                        } else {
+                            // Bulk promote
+                            let looper = (i) => {
+                                if (i < this.state.users.length) {
+                                    this.props.profile.SetUser(rolesChecks, this.state.users[i], () => {
+                                        looper(i + 1);
+                                    });
+                                } else {
+                                    this.setState({
+                                        loading2: false,
+                                        msg2: ["success", "Bulk role change success"]
+                                    });
+                                }
+                            };
+                            looper(0);
+                        }
                     }}>
                         {error2}
-                        <h4>Who do you want to send this magic link to?</h4>
+                        <h4>Who</h4>
                         <div id="user-container">{users}</div>
                         <div style={{ width: "100%", textAlign: "right" }}>
                             <Button color="success"
@@ -165,11 +199,25 @@ class AdminControl extends Component {
                                 </Table>
                             </Col>
                         </FormGroup>
+                        <h4>Type</h4>
+                        <FormGroup row>
+                            <Col>
+                                <Table>
+                                    <tbody>
+                                        <tr>
+                                            <th>Send a magic link?</th>
+                                            <th><Toggle id="checkbox-magical" /></th>
+                                        </tr>
+                                    </tbody>
+                                </Table>
+                            </Col>
+                        </FormGroup>
                         <div style={{ width: "100%" }}
                             align="right">
                             <Button style={{ backgroundColor: theme.accent[0] }}
-                                type="submit">Send Magic Links</Button>
+                                type="submit">Send</Button>
                         </div>
+                        {loading2}
                     </Form>
                 </Section>
                 <Section className="mb-5"
