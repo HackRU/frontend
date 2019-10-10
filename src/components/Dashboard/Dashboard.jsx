@@ -93,13 +93,6 @@ class Dashboard extends Component {
         user.ethnicity = user.ethnicity || "";
         user.how_you_heard_about_hackru = user.how_you_heard_about_hackru || "";
         let mobile = this.props.isMobile;
-        let admin = null;
-        if (user.role && user.role.director) {
-            admin = (
-                <AdminControl profile={this.props.profile}
-                    user={user} />
-            );
-        }
         return (
             <Container fluid
                 style={{ width: "100%", minHeight: "100vh", textAlign: "center", backgroundColor: theme.secondary[1] }}
@@ -169,7 +162,9 @@ class Dashboard extends Component {
                                     this.submitUser(user);
                                 }} />
                         </Section>
-                        {(user.role && user.role.director) && admin}
+                        {(user.role && user.role.director) &&
+                            <AdminControl profile={this.props.profile}
+                                user={user} />}
                     </Container>
                 </div>
             </Container>
