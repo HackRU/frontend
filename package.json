@@ -23,6 +23,7 @@
         "react-scrollable-anchor": "^0.6.1",
         "react-select": "^2.1.2",
         "react-spinners": "^0.4.8",
+        "react-toggle": "^4.1.1",
         "reactstrap": "^6.5.0",
         "request": "^2.88.0"
     },

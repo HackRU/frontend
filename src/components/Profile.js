@@ -81,6 +81,7 @@ const ENDPOINTS = {
      */
     "qr": BASE + "/qr",
     "resume": BASE + "/resume",
+    "sendmagic": BASE + "/createmagiclink"
 };
 /**
  * Standard profile handler for the entire application
@@ -91,6 +92,11 @@ class Profile {
         this.Logout = this.Logout.bind(this);
         this.SignUp = this.SignUp.bind(this);
         this._login = this._login.bind(this);
+        this.Get = this.Get.bind(this);
+        this.Set = this.Set.bind(this);
+        this.GetUser = this.GetUser.bind(this);
+        this.SetUser = this.SetUser.bind(this);
+        this.SendMagic = this.SendMagic.bind(this);
         this._token = cookie.load("token", { path: "/" });
         this._email = cookie.load("email", { path: "/" });
         this._valid_until = Date.parse(cookie.load("valid_until", { path: "/" }));
@@ -245,7 +251,7 @@ class Profile {
         this._valid_until = null;
         this.isLoggedIn = false;
     }
-    Get(callback) {
+    GetUser(callback, email) {        
         if (this.isLoggedIn) {
             request({
                 method: "POST",
@@ -254,7 +260,7 @@ class Profile {
                     email: this._email,
                     token: this._token,
                     query: {
-                        email: this._email
+                        email: email
                     }
                 },
                 json: true
@@ -273,7 +279,10 @@ class Profile {
             callback("Please log in", null);
         }
     }
-    Set(data, callback) {
+    Get(callback) {
+        this.GetUser(callback, this._email);
+    }    
+    SetUser(data, user, callback) {
         if (this.isLoggedIn) {
             request({
                 "method": "POST",
@@ -282,7 +291,7 @@ class Profile {
                     updates: {
                         "$set": data
                     },
-                    user_email: this._email,
+                    user_email: user,
                     auth_email: this._email,
                     auth: this._token
                 },
@@ -302,6 +311,9 @@ class Profile {
         } else {
             callback("Please log in");
         }
+    }
+    Set(data, callback) {
+        this.SetUser(data, this._email, callback);
     }
     Forgot(email, callback) {
         if (this.isLoggedIn) {
@@ -386,6 +398,38 @@ class Profile {
             }, (error, response, body) => {
                 if (error) {
                     callback("An error occured while digesting the magic link");
+                } else {
+                    if (body.errorMessage) {
+                        callback(body.errorMessage);
+                    } else if (body.statusCode === 200) {
+                        callback();
+                    } else {
+                        callback((body.body) ? (body.body) : ("Unexpected Error"));
+                    }
+                }
+            });
+        }
+    }
+    SendMagic(emails, permissions, callback) {
+        if (!emails) {
+            callback("Input a valid email list");
+        } else if (!this.isLoggedIn) {
+            callback("User needs to be logged in");
+        } else {
+            request({
+                method: "POST",
+                uri: ENDPOINTS.sendmagic,
+                body: {
+                    email: this._email,
+                    token: this._token,
+                    emailsTo: emails,
+                    permissions: permissions,
+                    numLinks: emails.length
+                },
+                json: true
+            }, (error, response, body) => {
+                if (error) {
+                    callback("An error occured while sending the magic links");
                 } else {
                     if (body.errorMessage) {
                         callback(body.errorMessage);
