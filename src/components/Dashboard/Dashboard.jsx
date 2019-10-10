@@ -169,7 +169,7 @@ class Dashboard extends Component {
                                     this.submitUser(user);
                                 }} />
                         </Section>
-                        {admin}
+                        {(user.role && user.role.director) && admin}
                     </Container>
                 </div>
             </Container>

@@ -94,14 +94,6 @@ class AdminControl extends Component {
                     <Form onSubmit={(e) => {
                         e.preventDefault();
                         let checks = {
-                            volunteer: document.getElementById("checkbox-volunteer").checked,
-                            judge: document.getElementById("checkbox-judge").checked,
-                            sponsor: document.getElementById("checkbox-sponsor").checked,
-                            mentor: document.getElementById("checkbox-mentor").checked,
-                            organizer: document.getElementById("checkbox-organizer").checked,
-                            director: document.getElementById("checkbox-director").checked
-                        };
-                        let rolesChecks = {
                             "role.volunteer": document.getElementById("checkbox-volunteer").checked,
                             "role.judge": document.getElementById("checkbox-judge").checked,
                             "role.sponsor": document.getElementById("checkbox-sponsor").checked,
@@ -113,7 +105,7 @@ class AdminControl extends Component {
                         let keys = Object.keys(checks);
                         for (let i = 0; i < keys.length; i++) {
                             if (checks[keys[i]]) {
-                                strChecks.push(keys[i]);
+                                strChecks.push(keys[i].replace("role.", ""));
                             }
                         }
                         this.setState({
@@ -140,7 +132,7 @@ class AdminControl extends Component {
                             // Bulk promote
                             let looper = (i) => {
                                 if (i < this.state.users.length) {
-                                    this.props.profile.SetUser(rolesChecks, this.state.users[i], () => {
+                                    this.props.profile.SetUser(checks, this.state.users[i], () => {
                                         looper(i + 1);
                                     });
                                 } else {
