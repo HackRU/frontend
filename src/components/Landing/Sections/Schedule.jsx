@@ -19,10 +19,10 @@ const sat_schedule = [
 
 const sun_schedule = [
     ["12:00 AM", "Midnight Snack", "(it's a surprise)"],
-    ["2:00 AM", "Late Night Meal", "Food Table"],
+    ["1:00 AM", "Late Night Meal", "Food Table"],
     ["7:30 AM", "Breakfast", "Food Table"],
-    ["11:30 AM", "Hacking Ends", "Hacking Stations"],
     ["10:30 AM", "Lunch", "Food Table"],
+    ["11:30 AM", "Hacking Ends", "Hacking Stations"],
     ["12:00 PM", "Demos Begin", "Hacking Area"],
     ["3:00 PM", "Closing Ceremonies", "Main Stage"]
 ];
