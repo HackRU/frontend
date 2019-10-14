@@ -13,7 +13,7 @@ class Live extends Component {
         return (
             <Container fluid
                 style={{ width: "100%", minHeight: "100vh", textAlign: "center", backgroundColor: theme.secondary[1] }}
-                className="d-flex align-items-center">
+                className="d-flex align-items-center pt-5">
                 <div style={{ zIndex: 3, color: "white", width: "100%" }}
                     align="center">
                     <Container>
@@ -22,7 +22,7 @@ class Live extends Component {
                                 <Col md={9}
                                     xs={12}>
                                     <h1 className="display-4 theme-font">HackRU Live</h1>
-                                    <div style={{ display: "inline-block", marginRight: 20 }}>
+                                    {/* <div style={{ display: "inline-block", marginRight: 20 }}>
                                         <p className="lead">
                                             <Link to="/"
                                                 className="theme-home-link"
@@ -61,7 +61,7 @@ class Live extends Component {
                                                     Login
                                                 </Link>
                                             </p>
-                                        </div>] }
+                                        </div>] } */}
                                 </Col>
                                 <Col style={{ textAlign: "center" }}
                                     md={3}
@@ -69,7 +69,7 @@ class Live extends Component {
                                     <img width="250"
                                         style={{ marginTop: 0 }}
                                         alt="logo"
-                                        src="./assets/icons/hru-logo-green.svg" />
+                                        src="./assets/icons/hru-logo-white.svg" />
                                 </Col>
                             </Row>
                         </div>
