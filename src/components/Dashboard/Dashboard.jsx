@@ -133,19 +133,21 @@ class Dashboard extends Component {
                             status={user.registration_status}
                         />
                         {(user.registration_status === "confirmed" || user.registration_status === "waitlist" || user.registration_status === "coming" || user.registration_status === "registered") &&
-                            [<div style={{ width: "100%", textAlign: "left" }}>
-                                <p className="lead">Day Of</p>
-                            </div>,
-                            <Section className="mb-5"
-                                title="QR Code"
-                                subtitle="Your identity">
+                            <div>
+                                <div style={{ width: "100%", textAlign: "left" }}>
+                                    <p className="lead">Day Of</p>
+                                </div>,
+                                <Section className="mb-5"
+                                    title="QR Code"
+                                    subtitle="Your identity">
                                     <div>
                                         <QR email={user.email} />
                                     </div>
-                            </Section>]}
+                                </Section>
+                            </div>}
                         {(rolesString === "hacker") &&
                             <div>
-                               <div style={{ width: "100%", textAlign: "left" }}>
+                                <div style={{ width: "100%", textAlign: "left" }}>
                                     <p className="lead">User Profile</p>
                                 </div>
                                 <ProfileMessage message={this.state.profileMSG} />
