@@ -138,9 +138,9 @@ class Dashboard extends Component {
                                     <p className="lead">Day Of</p>
                                 </div>,
                                 <Section className="mb-5"
-                                    title="QR Code"
-                                    subtitle="Your identity">
-                                    <div>
+                                    title="Your QR Code"
+                                    subtitle="Please have this avaliable when you arrive for check-in.">
+                                    <div style={{ width: "100", textAlign: "center" }}>
                                         <QR email={user.email} />
                                     </div>
                                 </Section>
