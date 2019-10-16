@@ -139,7 +139,8 @@ class Dashboard extends Component {
                                 </div>,
                                 <Section className="mb-5"
                                     title="Your QR Code"
-                                    subtitle="Please have this avaliable when you arrive for check-in.">
+                                    subtitle="Please have this avaliable when you arrive for check-in." 
+                                    isOpen={!this.state.openDetails}>
                                     <div style={{ width: "100", textAlign: "center" }}>
                                         <QR email={user.email} />
                                     </div>
