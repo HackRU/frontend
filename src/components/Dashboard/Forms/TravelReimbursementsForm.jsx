@@ -153,7 +153,7 @@ const TravelReimbursementsForm = ({ travelling_from, onSubmit }) => {
                     </Col>
                 </FormGroup>
             </Collapse>
-            {valid && <div style={{ width: "100%" }}
+            {valid && <div style={{ width: "100%", marginBottom: 0 }}
                 align="right">
                 <Button
                     onClick={() => {

@@ -1,11 +1,15 @@
 import React from "react";
+import QRCode from "qrcode.react";
+import PropTypes from "prop-types";
 
-const QR = ({ data, status }) => (
-    (status === "confirmed" || status === "waitlist" || status ==="coming" || status ==="registered") && data && data.body && <div>
-        <img src={data.body}
-            className="qr"
-            alt="User QR Code" />
-    </div>
+const QR = ({ email }) => (
+    <QRCode className="qr" 
+        size="250" 
+        value={email} />
 );
+
+QR.propTypes = {
+    email: PropTypes.string
+};
 
 export default QR;
