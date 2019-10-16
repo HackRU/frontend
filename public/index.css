@@ -283,7 +283,7 @@ form .btn, form btn-secondary {
 /* Dashboard QR */
 
 .qr {
-    max-width: 80%;
+    max-width: 90%;
     border-radius: 10px;
     margin: 10px;
     transition: transform .8s ease-in-out;
