@@ -132,7 +132,7 @@ class Dashboard extends Component {
                             travelling_from={user.travelling_from}
                             status={user.registration_status}
                         />
-                        {(user.registration_status === "confirmed" || user.registration_status === "waitlist" || user.registration_status === "coming" || user.registration_status === "registered" || (user.role && user.role.direcotr) || (user.role && user.role.organizer) || (user.role && user.role.volunteer)) &&
+                        {(user.registration_status === "confirmed" || user.registration_status === "waitlist" || user.registration_status === "coming" || user.registration_status === "registered" || (user.role && user.role.director) || (user.role && user.role.organizer) || (user.role && user.role.volunteer)) &&
                             <div>
                                 <div style={{ width: "100%", textAlign: "left" }}>
                                     <p className="lead">Day Of</p>
