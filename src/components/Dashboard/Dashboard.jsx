@@ -145,38 +145,37 @@ class Dashboard extends Component {
                                     </div>
                                 </Section>
                             </div>}
-                        {(rolesString === "hacker") &&
-                            <div>
-                                <div style={{ width: "100%", textAlign: "left" }}>
-                                    <p className="lead">User Profile</p>
-                                </div>
-                                <ProfileMessage message={this.state.profileMSG} />
-                                <Section title="Basics"
-                                    subtitle="Introduce yourself, don't be shy!"
-                                    isOpen={this.state.openDetails} >
-                                    <UserProfileForm mobile={mobile}
-                                        user={user}
-                                        onChange={(user) => {
-                                            this.setState({ user: user });
-                                        }}
-                                        onSubmit={(user) => {
-                                            user.registration_status = "registered";
-                                            this.submitUser(user);
-                                        }}
-                                        profile={this.props.profile}
-                                    />
-                                </Section>
-                                <Section className="mb-5"
-                                    title="Travel Reimbursements"
-                                    subtitle="Let us know where you're coming from!">
-                                    <TravelReimbursementsForm mobile={mobile}
-                                        travelling_from={user.travelling_from}
-                                        onSubmit={(travel) => {
-                                            user.travelling_from = travel;
-                                            this.submitUser(user);
-                                        }} />
-                                </Section>
-                            </div>}
+                        <div>
+                            <div style={{ width: "100%", textAlign: "left" }}>
+                                <p className="lead">User Profile</p>
+                            </div>
+                            <ProfileMessage message={this.state.profileMSG} />
+                            <Section title="Basics"
+                                subtitle="Introduce yourself, don't be shy!"
+                                isOpen={this.state.openDetails} >
+                                <UserProfileForm mobile={mobile}
+                                    user={user}
+                                    onChange={(user) => {
+                                        this.setState({ user: user });
+                                    }}
+                                    onSubmit={(user) => {
+                                        user.registration_status = "registered";
+                                        this.submitUser(user);
+                                    }}
+                                    profile={this.props.profile}
+                                />
+                            </Section>
+                            <Section className="mb-5"
+                                title="Travel Reimbursements"
+                                subtitle="Let us know where you're coming from!">
+                                <TravelReimbursementsForm mobile={mobile}
+                                    travelling_from={user.travelling_from}
+                                    onSubmit={(travel) => {
+                                        user.travelling_from = travel;
+                                        this.submitUser(user);
+                                    }} />
+                            </Section>
+                        </div>
                         {(user.role && user.role.director) &&
                             <AdminControl profile={this.props.profile}
                                 user={user} />}
