@@ -34,7 +34,7 @@ const Projector = () => (
                         </Col>
                     </Row>
                     <Row>
-                        <Col>
+                        <Col xs={8}>
                             <h1 className="display-4 mb-4">Helpful Links</h1>
                             <ProjectorLink
                                 label="Devpost"
@@ -45,6 +45,10 @@ const Projector = () => (
                             <ProjectorLink
                                 label="Slack Signup"
                                 target="https://tinyurl.com/hackru-f19" />
+                        </Col>
+                        <Col xs={4}>
+                            <h1> #HackAllKnight </h1>
+                            <h1> #HackRUF19 </h1>
                         </Col>
                     </Row>
                 </div>
