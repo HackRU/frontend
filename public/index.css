@@ -320,12 +320,12 @@ form .btn, form btn-secondary {
     border: none !important;
 }
 .live-messages {
-    color: var(--secondary-color) !important;
+    color: white !important;
     background-color: transparent !important;
     border: none !important; 
 }
 .live-messages-text {
-    color: var(--primary-color-alt) !important;
+    color: white !important;
 }
 .live-page-btn {
     background-color: var(--input-background) !important;
@@ -348,7 +348,7 @@ form .btn, form btn-secondary {
 }
 .live-page-text {
     padding-top: 5px;
-    color: var(--secondary-color);
+    color: white;
 }
 
 /* Sponsorship Page */ 

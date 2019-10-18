@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Container, Row, Col } from "reactstrap";
 import { theme } from "../../Defaults.js";
-import { Link } from "react-router-dom";
 import Map from "./Map.jsx";
 import Links from "./Links.jsx";
 import Schedule from "./Schedule.jsx";
@@ -22,46 +21,6 @@ class Live extends Component {
                                 <Col md={9}
                                     xs={12}>
                                     <h1 className="display-4 theme-font">HackRU Live</h1>
-                                    {/* <div style={{ display: "inline-block", marginRight: 20 }}>
-                                        <p className="lead">
-                                            <Link to="/"
-                                                className="theme-home-link"
-                                                style={{ color: theme.primary[0] + "ff", textDecoration: "none" }}>
-                                                Home
-                                            </Link>
-                                        </p>
-                                    </div>
-                                    { this.props.profile.isLoggedIn ?
-                                        [<div key={0}
-                                            style={{ display: "inline-block", marginRight: 20 }}>
-                                            <p className="lead">
-                                                <Link to="/dashboard"
-                                                    className="theme-home-link"
-                                                    style={{ color: theme.primary[0] + "ff", textDecoration: "none" }}>
-                                                    Dashboard
-                                                </Link>
-                                            </p>
-                                        </div>,
-                                        <div key={1}
-                                            style={{ display: "inline-block", marginRight: 20 }}>
-                                            <p className="lead">
-                                                <Link to="/logout"
-                                                    className="theme-home-link"
-                                                    style={{ color: theme.accent[0] + "ff", textDecoration: "none" }}>
-                                                    Logout
-                                                </Link>
-                                            </p>
-                                        </div>] :
-                                        [<div key={0}
-                                            style={{ display: "inline-block", marginRight: 20 }}>
-                                            <p className="lead">
-                                                <Link to="/login"
-                                                    className="theme-home-link"
-                                                    style={{ color: theme.accent[0] + "ff", textDecoration: "none" }}>
-                                                    Login
-                                                </Link>
-                                            </p>
-                                        </div>] } */}
                                 </Col>
                                 <Col style={{ textAlign: "center" }}
                                     md={3}
