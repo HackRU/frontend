@@ -110,8 +110,8 @@ DeclineButton.propTypes = {
 };
 
 const Reimbursement = ({ travelling_from }) => (
-    travelling_from ? 
-        (<p> You are eligable for up to <strong>${travelling_from.reimbursement.toFixed(2)}</strong> in travel reimbursements.
+    (travelling_from && travelling_from.reimbursement) ? 
+        (<p> You are eligible for up to <strong>${ (travelling_from && travelling_from.reimbursement) ? (travelling_from.reimbursement.toFixed(2)) : (0)}</strong> in travel reimbursements.
             { travelling_from.mode === "car" ?
                 " You must be travelling with at least 3 people in your car to be reimbursed!" :
                 " Remember, you'll need to show receipts for reimbursement!" }

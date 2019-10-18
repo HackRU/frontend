@@ -6,6 +6,7 @@ import ApplicationStatus from "./ApplicationStatus";
 import Section from "./Section";
 import Loading from "./Loading";
 import ProfileMessage from "./ProfileMessage";
+import AdminControl from "./AdminControl";
 import QR from "./QR";
 import TravelReimbursementsForm from "./Forms/TravelReimbursementsForm";
 import UserProfileForm from "./Forms/UserProfileForm/UserProfileForm";
@@ -42,8 +43,6 @@ class Dashboard extends Component {
             } else {
                 if (data) {
                     delete data.auth;
-                    delete data.role;
-                    delete data.day_of;
                     this.setState({
                         user: data,
                         loading: false,
@@ -94,6 +93,9 @@ class Dashboard extends Component {
         user.ethnicity = user.ethnicity || "";
         user.how_you_heard_about_hackru = user.how_you_heard_about_hackru || "";
         let mobile = this.props.isMobile;
+        let rolesString = "";
+        Object.keys(user.role).forEach((key) => { if (user.role[key]) { rolesString += `${key}, `; }});
+        rolesString = rolesString.substring(0, rolesString.length - 2);
         return (
             <Container fluid
                 style={{ width: "100%", minHeight: "100vh", textAlign: "center", backgroundColor: theme.secondary[1] }}
@@ -106,27 +108,7 @@ class Dashboard extends Component {
                                 <Col md={8}
                                     xs={12}>
                                     <h1 className="display-4 theme-font">Welcome, {user.first_name}</h1>
-                                    {/* <div style={{ display: "inline-block", marginRight: 20 }}>
-                                        <p className="lead">
-                                            <Link to="/"
-                                                className="theme-home-link"
-                                                style={{ color: theme.primary[0] + "ff", textDecoration: "none" }}>
-                                                Home
-                                            </Link>
-                                        </p>
-                                    </div>
-                                    <div style={{ display: "inline-block", marginRight: 20 }}>
-                                        <p className="lead">
-                                            <Link to="/live"
-                                                className="theme-home-link"
-                                                style={{ color: theme.primary[0] + "ff", textDecoration: "none" }}>
-                                                Live
-                                            </Link>
-                                        </p>
-                                    </div>
-                                    <div style={{ display: "inline-block", marginRight: 20 }}><p className="lead"><Link to="/logout"
-                                        className="theme-home-link"
-                                        style={{ color: theme.accent[0] + "ff", textDecoration: "none" }}>Logout</Link></p></div> */}
+                                    <i>{rolesString}</i>
                                 </Col>
                                 <Col style={{ textAlign: "center" }}
                                     md={4}
@@ -138,7 +120,6 @@ class Dashboard extends Component {
                                 </Col>
                             </Row>
                         </div>
-
                         <ApplicationStatus
                             onComing={() => {
                                 user.registration_status = "coming";
@@ -151,40 +132,54 @@ class Dashboard extends Component {
                             travelling_from={user.travelling_from}
                             status={user.registration_status}
                         />
-                        <QR
-                            data={this.state.qr}
-                            status={user.registration_status}
-                        />
-                        <div style={{ width: "100%", textAlign: "left" }}>
-                            <p className="lead">User Profile</p>
+                        {(user.registration_status === "confirmed" || user.registration_status === "waitlist" || user.registration_status === "coming" || user.registration_status === "registered" || (user.role && user.role.director) || (user.role && user.role.organizer) || (user.role && user.role.volunteer)) &&
+                            <div>
+                                <div style={{ width: "100%", textAlign: "left" }}>
+                                    <p className="lead">Day Of</p>
+                                </div>
+                                <Section className="mb-5"
+                                    title="Your QR Code"
+                                    subtitle="Please have this avaliable when you arrive for check-in." 
+                                    isOpen={true}>
+                                    <div style={{ width: "100", textAlign: "center" }}>
+                                        <QR email={user.email} />
+                                    </div>
+                                </Section>
+                            </div>}
+                        <div>
+                            <div style={{ width: "100%", textAlign: "left" }}>
+                                <p className="lead">User Profile</p>
+                            </div>
+                            <ProfileMessage message={this.state.profileMSG} />
+                            <Section title="Basics"
+                                subtitle="Introduce yourself, don't be shy!"
+                                isOpen={this.state.openDetails} >
+                                <UserProfileForm mobile={mobile}
+                                    user={user}
+                                    onChange={(user) => {
+                                        this.setState({ user: user });
+                                    }}
+                                    onSubmit={(user) => {
+                                        user.registration_status = "registered";
+                                        this.submitUser(user);
+                                    }}
+                                    profile={this.props.profile}
+                                />
+                            </Section>
+                            <Section className="mb-5"
+                                title="Travel Reimbursements"
+                                subtitle="Let us know where you're coming from!">
+                                <TravelReimbursementsForm mobile={mobile}
+                                    travelling_from={user.travelling_from}
+                                    onSubmit={(travel) => {
+                                        user.travelling_from = travel;
+                                        this.submitUser(user);
+                                    }} />
+                            </Section>
                         </div>
-                        <ProfileMessage message={this.state.profileMSG} />
-                        <Section title="Basics"
-                            subtitle="Introduce yourself, don't be shy!"
-                            isOpen={this.state.openDetails} >
-                            <UserProfileForm mobile={mobile}
-                                user={user}
-                                onChange={(user) => {
-                                    this.setState({ user: user });
-                                }}
-                                onSubmit={(user) => {
-                                    user.registration_status = "registered";
-                                    this.submitUser(user);
-                                }}
-                                profile={this.props.profile}
-                            />
-                        </Section>
-
-                        <Section className="mb-5"
-                            title="Travel Reimbursements"
-                            subtitle="Let us know where you're coming from!">
-                            <TravelReimbursementsForm mobile={mobile}
-                                travelling_from={user.travelling_from}
-                                onSubmit={(travel) => {
-                                    user.travelling_from = travel;
-                                    this.submitUser(user);
-                                }} />
-                        </Section>
+                        {(user.role && user.role.director) &&
+                            <AdminControl profile={this.props.profile}
+                                user={user} />}
                     </Container>
                 </div>
             </Container>
