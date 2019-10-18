@@ -7,6 +7,7 @@ const GlowButton = ({ href, icon, text }) => (
     <Button
         onClick={() => { window.location = href; }}
         className="live-links"
+        style={{ color: "white" }}
         size="lg"
         outline>
         <Icon size="2x"
