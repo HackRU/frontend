@@ -22,7 +22,8 @@ const Projector = () => (
                                 <Countdown />
                             </Col>
                         </Col>
-                        <Col xs={6} style={{textAlign: "right"}}>
+                        <Col xs={6}
+                            style={{textAlign: "right"}}>
                             <h1> #HackAllKnight </h1>
                             <h1> #HackRUF19 </h1>
                         </Col>

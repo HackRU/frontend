@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 
 const GlowButton = ({ href, icon, text }) => (
     <Button
-        onClick={(e) => { window.location = href; }}
+        onClick={() => { window.location = href; }}
         className="live-links"
         size="lg"
         outline>
