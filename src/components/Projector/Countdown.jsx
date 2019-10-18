@@ -7,7 +7,8 @@ class Countdown extends Component {
         this.generateTemplate = this.generateTemplate.bind(this);
     }
     componentWillMount() {
-        let end = new Date(2019, 3, 10, 12, 30, 0, 0);
+        // Ends 20th October 2019, at 11:30
+        let end = new Date(2019, 20, 10, 11, 30, 0, 0);
         this.oldMin = -1;
         this.setState({
             end: end,

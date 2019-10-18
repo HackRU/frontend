@@ -65,7 +65,7 @@ class Announcements extends Component {
                     <SyncLoader color="rgba(255, 255, 255, 0.25)" />
                 </div>);
         }
-        
+
         return (
             <div style={{ marginBottom: 10 }}>
                 <div style={{ width: "100%", textAlign: "left" }}>
