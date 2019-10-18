@@ -173,6 +173,10 @@ class NavBar extends Component {
         let path = window.location.pathname;
         let onDashboard = (path === "/dashboard");
         let onLanding = (path === "/");
+        // Show no navbar on the projector page
+        if(path === "/projector") {
+            return null;
+        }
         return(
             <Navbar id="navbar"
                 style={{ width: "100%", zIndex: "20", backgroundColor: theme.secondary[1], opacity: this.state.shouldRender | !onLanding, pointerEvents: this.state.shouldRender | !onLanding ? "auto":"none", transition: !onLanding ? "" : "opacity 0.5s" }}
