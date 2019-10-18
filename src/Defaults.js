@@ -132,17 +132,17 @@ const liveImportantLinks = [
     },
     {
         "title": "Devpost",
-        "href": "http://hackru-s19.devpost.com",
+        "href": "http://hackru-f19.devpost.com",
         "icon": "code"
     },
     {
         "title": "Slack",
-        "href": "http://bit.ly/hackru-s19",
+        "href": "http://tinyurl.com/hackru-f19",
         "icon": "slack"
     },
     {
         "title": "HelpQ",
-        "href": "https://hackru-helpq.herokuapp.com",
+        "href": "https://helpq.hackru.org",
         "icon": "stack-overflow"
     },
     {

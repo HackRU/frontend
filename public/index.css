@@ -11,7 +11,7 @@
     --accent-color: #F1BA43; /* Logout, Live button color */
     --accent-color-alt: #F1BA43; /* Dashboard button color NOTE:  Dashboard colors are different across navbar on different pages */
     --disabled-color: #EEEEe8; /* Unsure.... */
-    --hover-color: rgba(0, 0, 0, 0.9);
+    --hover-color: #F1BA43;
     --hover-background-color: #df897f;
     --active-color: rgba(255, 255, 255, 0.5);
     --active-background-color: #5A7A96A0;
@@ -313,6 +313,7 @@ form .btn, form btn-secondary {
 
 /* Live */
 .live-links {
+    color: white !important;
     width: 200px;
     font-variant: small-caps;
     border-radius: 10px !important;
