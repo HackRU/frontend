@@ -313,7 +313,6 @@ form .btn, form btn-secondary {
 
 /* Live */
 .live-links {
-    color: white !important;
     width: 200px;
     font-variant: small-caps;
     border-radius: 10px !important;
@@ -321,12 +320,12 @@ form .btn, form btn-secondary {
     border: none !important;
 }
 .live-messages {
-    color: white !important;
+    color: var(--primary-color) !important;
     background-color: transparent !important;
     border: none !important; 
 }
 .live-messages-text {
-    color: white !important;
+    color: var(--primary-color) !important;
 }
 .live-page-btn {
     background-color: var(--input-background) !important;
@@ -551,4 +550,4 @@ form .btn, form btn-secondary {
 	-moz-box-shadow: 0px 0px 5px 5px #0099E0;
 	box-shadow: 0px 0px 5px 5px #0099E0;
 }
->>>>>>> origin/master
+
