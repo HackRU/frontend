@@ -8,7 +8,8 @@ class Countdown extends Component {
     }
     componentWillMount() {
         // Ends 20th October 2019, at 11:30
-        let end = new Date(2019, 20, 10, 11, 30, 0, 0);
+        // JAN = 0
+        let end = new Date(2019, 9, 20, 11, 30, 0, 0);
         this.oldMin = -1;
         this.setState({
             end: end,
@@ -21,10 +22,10 @@ class Countdown extends Component {
         }, 1000);
     }
     getTimeString(end) {
-        let now = new Date().getTime();
+        let now = new Date();
         let distance = end - now;
-        //let days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        let days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)) + (24 * days);
         let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
         let seconds = Math.floor((distance % (1000 * 60)) / 1000);
         if (hours < 0) {
