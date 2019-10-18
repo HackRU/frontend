@@ -5,6 +5,16 @@ import { ENDPOINTS } from "../Profile";
 import { SyncLoader } from "react-spinners";
 import PropTypes from "prop-types";
 
+const light_red = {
+    backgroundColor: "#bf4d4d",
+    border: "none !important"
+};
+
+const dark_red = {
+    backgroundColor: "#ad4444",
+    border: "none !important"
+};
+
 class Announcements extends Component {
     refresh = () => (
         this.setState({
@@ -46,10 +56,10 @@ class Announcements extends Component {
                 style = { fontSize: 30 };
             }
             msgs.push(
-                <ListGroupItem action
-                    className="live-messages"
+                <ListGroupItem
+                    className="rounded shadow-lg"
                     key={i}
-                    style={{ opacity: opacity }}>
+                    style={i % 2 === 0 ? {...dark_red, opacity: opacity} : {...light_red, opacity: opacity}}>
                     <ListGroupItemText className="pull-right">{date}, {time}</ListGroupItemText>
                     <ListGroupItemText className="live-messages-text"
                         style={style}>{text}</ListGroupItemText>
@@ -65,7 +75,7 @@ class Announcements extends Component {
                     <SyncLoader color="rgba(255, 255, 255, 0.25)" />
                 </div>);
         }
-        
+
         return (
             <div style={{ marginBottom: 10 }}>
                 <div style={{ width: "100%", textAlign: "left" }}>

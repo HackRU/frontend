@@ -5,6 +5,16 @@ import { ListGroup, ListGroupItem, ListGroupItemText, Pagination, PaginationItem
 import { SyncLoader } from "react-spinners";
 import PropTypes from "prop-types";
 
+const light_red = {
+    backgroundColor: "#bf4d4d",
+    border: "none !important"
+};
+
+const dark_red = {
+    backgroundColor: "#ad4444",
+    border: "none !important"
+};
+
 class Schedule extends Component {
     componentWillMount() {
         this.setState({ events: [] });
@@ -66,10 +76,11 @@ class Schedule extends Component {
                     style = { fontSize: 30 };
                 }
                 events.push(
-                    <ListGroupItem action
-                        className="live-messages"
-                        key={i}>
-                        <ListGroupItemText className="pull-right">
+                    <ListGroupItem
+                        className="rounded shadow-lg"
+                        key={i}
+                        style={ i % 2 === 0 ? dark_red : light_red}>
+                        <ListGroupItemText className="pull-right live-messages-text">
                             {startTime} - {endTime}
                         </ListGroupItemText>
                         <ListGroupItemText className="live-messages-text"

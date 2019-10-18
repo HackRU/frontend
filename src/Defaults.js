@@ -31,7 +31,7 @@ const defaults =  {
         "vol_url": "https://docs.google.com/forms/d/e/1FAIpQLSe_qBzqsJIKWd_BohZ7Xuju3XQhI2f6xtrwX7WO-otR0Q7ofg/viewform?usp=sf_link",
         "mentor_url": "https://docs.google.com/forms/d/e/1FAIpQLSdy0jShXJJS5a6rbpXDKBN-nMeYXqZME0Fr14B_ZcxOAXuSGw/viewform?usp=sf_link"
     },
-    "dayOf": false
+    "dayof": true
 };
 
 const navlinks = {
@@ -132,17 +132,17 @@ const liveImportantLinks = [
     },
     {
         "title": "Devpost",
-        "href": "http://hackru-s19.devpost.com",
+        "href": "http://hackru-f19.devpost.com",
         "icon": "code"
     },
     {
         "title": "Slack",
-        "href": "http://bit.ly/hackru-s19",
+        "href": "http://tinyurl.com/hackru-f19",
         "icon": "slack"
     },
     {
         "title": "HelpQ",
-        "href": "https://hackru-helpq.herokuapp.com",
+        "href": "https://helpq.hackru.org",
         "icon": "stack-overflow"
     },
     {

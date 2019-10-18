@@ -4,10 +4,10 @@ import { Icon } from "react-fa";
 import PropTypes from "prop-types";
 
 const GlowButton = ({ href, icon, text }) => (
-    <Button href={href}
+    <Button
+        onClick={() => { window.location = href; }}
         className="live-links"
         size="lg"
-        color="info"
         outline>
         <Icon size="2x"
             name={icon} />
