@@ -15,12 +15,16 @@ const Projector = () => (
             <Container fluid>
                 <div style={{ width: "100%", textAlign: "left", marginBottom: 0, paddingTop: 35 }}>
                     <Row style={{ marginBottom: 125 }}>
-                        <Col xs={4}>
+                        <Col xs={6}>
                             <h1 className="display-4">HackRU Ends in</h1>
                             <Col md={9}
                                 xs={12}>
                                 <Countdown />
                             </Col>
+                        </Col>
+                        <Col xs={6} style={{textAlign: "right"}}>
+                            <h1> #HackAllKnight </h1>
+                            <h1> #HackRUF19 </h1>
                         </Col>
                     </Row>
                     <Row>
@@ -33,7 +37,7 @@ const Projector = () => (
                             <Schedule hide />
                         </Col>
                     </Row>
-                    <Row>
+                    <Row className="mt-3">
                         <Col xs={8}>
                             <h1 className="display-4 mb-4">Helpful Links</h1>
                             <ProjectorLink
@@ -45,10 +49,6 @@ const Projector = () => (
                             <ProjectorLink
                                 label="Slack Signup"
                                 target="https://tinyurl.com/hackru-f19" />
-                        </Col>
-                        <Col xs={4}>
-                            <h1> #HackAllKnight </h1>
-                            <h1> #HackRUF19 </h1>
                         </Col>
                     </Row>
                 </div>

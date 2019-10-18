@@ -3,10 +3,6 @@ import GlowButton from "../GlowButton";
 import { liveImportantLinks } from "../../Defaults";
 import { ProfileType } from "../Profile";
 
-let make_white = {
-    color: "white !important"
-}
-
 class Links extends Component {
     render() {
         let items = [];
