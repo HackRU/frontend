@@ -9,7 +9,7 @@ class Countdown extends Component {
     componentWillMount() {
         // Ends 20th October 2019, at 11:30
         // JAN = 0
-        let end = new Date(2019, 9, 20, 11, 30, 0, 0);
+        let end = new Date(2019, 9, 20, 12, 0, 0, 0);
         this.oldMin = -1;
         this.setState({
             end: end,
