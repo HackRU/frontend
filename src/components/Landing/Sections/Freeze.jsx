@@ -34,12 +34,18 @@ class Freeze extends Component {
                 id="landing-section"
                 style={{ zIndex: 3,  width: "100%", minHeight: "100vh", userSelect: "none" }}>
                 <Row style={{ minWidth: "100%", minHeight: "100vh", textAlign: "right" }} >
-                    <div style={{ display: "block", position: "absolute", width: window.innerWidth - (2 * leftPos), top: window.innerHeight / 2, left: leftPos}}>
+                    <div style={{ display: "block", position: "absolute", width: window.innerWidth - (2 * leftPos), top: window.innerHeight / 2 - 200, left: leftPos}}>
                         <TextGrid ref="anime"
                             text={"HACKRU WILL RETURN"} />
                         <br/>
                         <br/>
                         <i><h4>for Spring 2020</h4></i>
+                        <div style={{ width: "100%", textAlign: "center" }}>
+                            <img width="75%"
+                                style={{ marginTop: 0 }}
+                                alt="logo"
+                                src="./assets/icons/hru-logo-white.svg" />
+                        </div>
                         <br/>
                         <Row style={{ marginLeft: 8, width: "100%", backgroundColor: "rgba(0, 0, 0, 0.01)", padding: 10, textAlign: "center" }}>
                             <Col xs={6}>
@@ -48,7 +54,7 @@ class Freeze extends Component {
                             </Col>
                             <Col xs={6}>
                                 <i><p style={{ marginBottom: 3, color: "rgba(255, 255, 255, 0.5)" }}>Past Submissions</p></i>
-                                <a href="https://hackru-s19.devpost.com"><Button color="light" style={{ border: "none" }} outline>Spring 2019</Button></a>
+                                <a href="https://hackru-s19.devpost.com"><Button color="light" style={{ border: "none", marginRight: 10 }} outline>Spring 2019</Button></a>
                                 <a href="https://hackru-f19.devpost.com"><Button color="light" style={{ border: "none" }} outline>Fall 2019</Button></a>
                             </Col>
                         </Row>
