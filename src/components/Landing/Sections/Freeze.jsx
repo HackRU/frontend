@@ -28,8 +28,7 @@ class Freeze extends Component {
         this._event_onResize();
     }
     render() {
-        let leftPos = (window.innerWidth / 2) - this.state.subWidth + 10;
-        leftPos = window.innerWidth / 12;
+        let leftPos = (window.innerWidth > 500) ? (window.innerWidth / 2) - this.state.subWidth + 10 : window.innerWidth / 12;
         return (
             <Container fluid
                 id="landing-section"
