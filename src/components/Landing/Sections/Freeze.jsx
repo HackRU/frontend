@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Container, Row, Col, Button, ButtonGroup } from "reactstrap";
+import { Container, Row, Col, Button } from "reactstrap";
 import { TextGrid } from "../../AnimatedGrid";
 
 class Freeze extends Component {
@@ -15,6 +15,9 @@ class Freeze extends Component {
                 subWidth: (this.refs.anime.refs.grid.width / 2) + 75
             });
         }
+        this.setState({
+            IGNOREME: "YAS"
+        });
     }
     componentWillMount() {
         this.setState({
@@ -26,6 +29,7 @@ class Freeze extends Component {
     }
     render() {
         let leftPos = (window.innerWidth / 2) - this.state.subWidth + 10;
+        leftPos = window.innerWidth / 12;
         return (
             <Container fluid
                 id="landing-section"
