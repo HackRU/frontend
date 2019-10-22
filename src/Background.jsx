@@ -142,7 +142,7 @@ class Background extends Component {
      */
     _event_onResize() {
         this.setState({
-            isMobile: (window.innerWidth < 500) || (window.innerHeight < defaults.mobileHeightThresholdRelaxed)
+            isMobile: (window.innerWidth < 500) || (window.innerHeight < 500)
         });
     }
     /**
