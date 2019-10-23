@@ -41,7 +41,7 @@ class Freeze extends Component {
                         <br/>
                         <i><h4>for Spring 2020</h4></i>
                         <div style={{ width: "100%", textAlign: "center" }}>
-                            <img width="75%"
+                            <img width="70%"
                                 style={{ marginTop: 0 }}
                                 alt="logo"
                                 src="./assets/icons/hru-logo-white.svg" />
