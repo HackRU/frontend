@@ -1,5 +1,4 @@
 import React, { Component } from "react"; // Default react imports for the component
-import { defaults } from "./Defaults"; // Get a handle to the default application settings
 const imageDefs = [{
     source: "./assets/background/circle-largedotted_white.svg",
     top: null,
