@@ -177,28 +177,32 @@ class NavBar extends Component {
         if(path === "/projector") {
             return null;
         }
-        return(
-            <Navbar id="navbar"
-                style={{ width: "100%", zIndex: "20", backgroundColor: theme.secondary[1], opacity: this.state.shouldRender | !onLanding, pointerEvents: this.state.shouldRender | !onLanding ? "auto":"none", transition: !onLanding ? "" : "opacity 0.5s" }}
-                fixed="top"
-                dark
-                expand="md"
-                onBlur={this.toggleFalse}>
-                <Container>
-                    <NavbarBrand>
-                        <NavbarToggler onClick={this.toggle}
-                            style={{ marginRight: 10 }} />
-                        <LinkSwitcher style={{ color: theme.accent[0] }}
-                            onClick={this.toggleFalse}
-                            href="/#home"
-                            to="/#home"
-                            root={onLanding.toString()}>HackRU</LinkSwitcher>
-                    </NavbarBrand>
-                    { onDashboard ?
-                        this.getDashboardNav() :
-                        this.getLandingNav() }
-                </Container>
-            </Navbar> );
+        if (!defaults.freeze) {
+            return(
+                <Navbar id="navbar"
+                    style={{ width: "100%", zIndex: "20", backgroundColor: theme.secondary[1], opacity: this.state.shouldRender | !onLanding, pointerEvents: this.state.shouldRender | !onLanding ? "auto":"none", transition: !onLanding ? "" : "opacity 0.5s" }}
+                    fixed="top"
+                    dark
+                    expand="md"
+                    onBlur={this.toggleFalse}>
+                    <Container>
+                        <NavbarBrand>
+                            <NavbarToggler onClick={this.toggle}
+                                style={{ marginRight: 10 }} />
+                            <LinkSwitcher style={{ color: theme.accent[0] }}
+                                onClick={this.toggleFalse}
+                                href="/#home"
+                                to="/#home"
+                                root={onLanding.toString()}>HackRU</LinkSwitcher>
+                        </NavbarBrand>
+                        { onDashboard ?
+                            this.getDashboardNav() :
+                            this.getLandingNav() }
+                    </Container>
+                </Navbar> );
+        } else {
+            return null;
+        }
     }
 }
 

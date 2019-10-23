@@ -1,5 +1,4 @@
 import React, { Component } from "react"; // Default react imports for the component
-import { defaults } from "./Defaults"; // Get a handle to the default application settings
 const imageDefs = [{
     source: "./assets/background/circle-largedotted_white.svg",
     top: null,
@@ -142,7 +141,7 @@ class Background extends Component {
      */
     _event_onResize() {
         this.setState({
-            isMobile: (window.innerWidth < defaults.mobileWidthThresholdRelaxed) || (window.innerHeight < defaults.mobileHeightThresholdRelaxed)
+            isMobile: (window.innerWidth < 500) || (window.innerHeight < 500)
         });
     }
     /**
