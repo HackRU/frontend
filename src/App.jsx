@@ -170,6 +170,16 @@ class App extends Component {
                                 path="/sponsorship"
                                 render={(props) => <SponsorshipPage {...props}
                                     {...componentProps} />} />
+                            <Route exact
+                                path="/login"
+                                key="login"
+                                render={(props) => <LoginPage {...props}
+                                    {...componentProps} />} />,
+                            <Route exact
+                                path="/signup"
+                                key="signup"
+                                render={(props) => <SignUpPage {...props}
+                                    {...componentProps} />} />,
                             { !defaults.freeze &&
                                 renderRoutes
                             }
