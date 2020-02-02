@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Container, Row, Col, Button, Alert } from "reactstrap";
 import { defaults, theme, navlinks } from "../../../Defaults";
-import { Parallax } from "react-scroll-parallax";
 import { Link } from "react-router-dom";
 import { Icon } from "react-fa";
 import Logo from "./Logo";
@@ -90,13 +89,6 @@ class Home extends Component {
                                 name="map-marker" /> {defaults.locationText}</h2>
                             <h2 className="lead theme-font"><Icon style={{ marginRight: 5 }}
                                 name="calendar" /> {defaults.dateText}</h2>
-                        </Col>
-                        <Col xs={2}
-                            style={{ overflow: "hidden", paddingTop: 10, paddingBottom: 10 }}>
-                            <Parallax offsetXMin={-100}
-                                offsetXMax={100}>
-                                {navContainer}
-                            </Parallax>
                         </Col>
                         { defaults.volunteers.display &&
                                     <div className="skew-right"

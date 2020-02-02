@@ -2,7 +2,6 @@ import React, { Component, Fragment } from "react";
 import { Container, Row } from "reactstrap";
 import Home from "./Sections/Home";
 import Freeze from "./Sections/Freeze";
-import { ParallaxProvider } from "react-scroll-parallax";
 import { defaults, navlinks, theme } from "../../Defaults";
 import ScrollableAnchor from "react-scrollable-anchor";
 import { ProfileType } from "../Profile";
@@ -62,21 +61,19 @@ class LandingPage extends Component {
                     className="section"
                     fluid
                     style={{ backgroundColor: theme.secondary[1] }}>
-                    <ParallaxProvider>
-                        <ScrollableAnchor id="home">
-                            <div>
-                                <Row className="section">
-                                    { !defaults.freeze ?
-                                        <Home isMobile={this.props.isMobile}
-                                            profile={this.props.profile}
-                                            loggedout={this.props.loggedout}
-                                            dismissAlert={this.props.dismissAlert} /> :
-                                        <Freeze isMobile={this.props.isMobile} />}
-                                </Row>
-                            </div>
-                        </ScrollableAnchor>
-                        {rows}
-                    </ParallaxProvider>
+                    <ScrollableAnchor id="home">
+                        <div>
+                            <Row className="section">
+                                { !defaults.freeze ?
+                                    <Home isMobile={this.props.isMobile}
+                                        profile={this.props.profile}
+                                        loggedout={this.props.loggedout}
+                                        dismissAlert={this.props.dismissAlert} /> :
+                                    <Freeze isMobile={this.props.isMobile} />}
+                            </Row>
+                        </div>
+                    </ScrollableAnchor>
+                    {rows}
                 </Container>
             </Fragment>
         );

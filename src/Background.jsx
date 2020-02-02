@@ -1,4 +1,6 @@
 import React, { Component } from "react"; // Default react imports for the component
+import Parallax from "parallax-js";
+
 const imageDefs = [{
     source: "./assets/background/circle-largedotted_white.svg",
     top: null,
@@ -135,6 +137,7 @@ class Background extends Component {
         this._event_onScroll = this._event_onScroll.bind(this);
         window.addEventListener("resize", this._event_onResize);
         window.addEventListener("scroll", this._event_onScroll);
+        this.scene_ref = React.createRef();
     }
     /**
      * Handle whenever the window resizes due to a user window resize or a zoom
@@ -161,6 +164,15 @@ class Background extends Component {
             scrollFeature: 0
         });
     }
+
+    componentDidMount() {
+        this.parallax = new Parallax(this.scene_ref.current);
+    }
+
+    componentWillUnmout() {
+        this.parallax.disable()
+    }
+
     renderImage(icon, top, left, bottom, right, height, transform, multiplier, opacity) {
         let style = { position: "fixed"};
         let scrollFeature = `${this.state.scrollFeature * 100 * multiplier}%`;
@@ -179,21 +191,29 @@ class Background extends Component {
         );
     }
     render() {
-        if (!this.state.isMobile) {
-            let images = [];
-            for (let i = 0; i < imageDefs.length; i++) {
-                let image = imageDefs[i];
-                images.push(this.renderImage(image.source, image.top, image.left, image.bottom, image.right, image.height, image.transform, image.multiplier ? 1 - image.multiplier : 1, image.opacity));
-            }
-            return (
-                <div className="theme-background"
-                    style={{ position: "fixed", top: 100 }}>
+        let images = [];
+        for (let i = 0; i < 6; i++) {
+            let image = imageDefs[i];
+            images.push(this.renderImage(image.source, image.top, image.left, image.bottom, image.right, image.height, image.transform, image.multiplier ? 1 - image.multiplier : 1, image.opacity));
+        }
+
+        let images_2 = [];
+        for (let i = 6; i < imageDefs.length; i++) {
+            let image = imageDefs[i];
+            images_2.push(this.renderImage(image.source, image.top, image.left, image.bottom, image.right, image.height, image.transform, image.multiplier ? 1 - image.multiplier : 1, image.opacity));
+        }
+
+        return (
+            <div ref={this.scene_ref}
+                style={{ position: "relative", top: 500 }}>
+                <div className="layer" data-depth="0.50">
                     {images}
                 </div>
-            );
-        } else {
-            return null;
-        }
+                <div className="layer" data-depth="1.00">
+                    {images_2}
+                </div>
+            </div>
+        );
     }
 }
 export default Background;

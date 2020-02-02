@@ -134,8 +134,6 @@ hr {
     top: 0px;
     opacity: 0.5;
 }
-.root-wrapper {
-}
 /* Background Control */
 .bg-gradient-right {
     background: var(--primary-color);
