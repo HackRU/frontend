@@ -14,7 +14,7 @@ class Team extends Component {
         organizer_app: null
     }
 
-    componentWillMount() {
+    UNSAFE_componentWillMount() {
         fetch(defaults.teamInfo + "directors.json", {
             method: "GET",
             mode: "cors"

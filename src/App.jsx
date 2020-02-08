@@ -16,7 +16,6 @@ import NavBar from "./NavBar";
 import { defaults } from "./Defaults"; // Get a handle to the default application settings
 import { Profile } from "./components/Profile"; // User profile storage
 import Background from "./Background"; // Standard background object
-import { ParallaxProvider } from "react-scroll-parallax";
 
 /**
  * Root application class. This is the object rendered in <div id="root" />
@@ -146,49 +145,47 @@ class App extends Component {
             );
         }
         return (
-            <ParallaxProvider>
-                <BrowserRouter style={{ width: "100%" }}>
-                    {/* BrowserRouter wil allow us to switch between the different pages in our SPA based on the URL routing */}
-                    <div className="root-wrapper">
-                        {/* We need to show this on our webpage at all times, so we're just going to dump it in the root */}
-                        <NavBar profile={this.state.profile}/>
-                        {/* We put the background here so that even after the page reroutes to different urls, the flying
-                            logos will stay constant, allowing for a seemless user experience. First, we render the logos
-                            then we render the background ontop of them, allowing the logos to fly behind the clouds */}
-                        <Background />
-                        <Switch>
-                            {/* This is where the URL routing magic actually happens */}
-                            <Route exact
-                                path="/"
-                                render={(props) => <LandingPage {...props}
-                                    {...componentProps} />} />
-                            <Route exact
-                                path="/team"
-                                render={(props) => <TeamPage {...props}
-                                    {...componentProps} />} />
-                            <Route exact
-                                path="/sponsorship"
-                                render={(props) => <SponsorshipPage {...props}
-                                    {...componentProps} />} />
-                            <Route exact
-                                path="/login"
-                                key="login"
-                                render={(props) => <LoginPage {...props}
-                                    {...componentProps} />} />,
-                            <Route exact
-                                path="/signup"
-                                key="signup"
-                                render={(props) => <SignUpPage {...props}
-                                    {...componentProps} />} />,
-                            { !defaults.freeze &&
-                                renderRoutes
-                            }
-                            {/* If none of the other urls were matched, we will show a 404 page to the user */}
-                            <Route component={E404} />
-                        </Switch>
-                    </div>
-                </BrowserRouter>
-            </ParallaxProvider>
+            <BrowserRouter style={{ width: "100%" }}>
+                {/* BrowserRouter wil allow us to switch between the different pages in our SPA based on the URL routing */}
+                <div>
+                    {/* We need to show this on our webpage at all times, so we're just going to dump it in the root */}
+                    <Background />
+                    <NavBar profile={this.state.profile}/>
+                    {/* We put the background here so that even after the page reroutes to different urls, the flying
+                        logos will stay constant, allowing for a seemless user experience. First, we render the logos
+                        then we render the background ontop of them, allowing the logos to fly behind the clouds */}
+                    <Switch>
+                        {/* This is where the URL routing magic actually happens */}
+                        <Route exact
+                            path="/"
+                            render={(props) => <LandingPage {...props}
+                                {...componentProps} />} />
+                        <Route exact
+                            path="/team"
+                            render={(props) => <TeamPage {...props}
+                                {...componentProps} />} />
+                        <Route exact
+                            path="/sponsorship"
+                            render={(props) => <SponsorshipPage {...props}
+                                {...componentProps} />} />
+                        <Route exact
+                            path="/login"
+                            key="login"
+                            render={(props) => <LoginPage {...props}
+                                {...componentProps} />} />,
+                        <Route exact
+                            path="/signup"
+                            key="signup"
+                            render={(props) => <SignUpPage {...props}
+                                {...componentProps} />} />,
+                        { !defaults.freeze &&
+                            renderRoutes
+                        }
+                        {/* If none of the other urls were matched, we will show a 404 page to the user */}
+                        <Route component={E404} />
+                    </Switch>
+                </div>
+            </BrowserRouter>
         );
     }
 }

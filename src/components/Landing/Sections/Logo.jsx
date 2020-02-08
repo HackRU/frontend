@@ -29,7 +29,7 @@ class Logo extends Component {
             });
         });
     }
-    componentWillMount() {
+    UNSAFE_componentWillMount() {
         this.setState({
             file: ""
         });

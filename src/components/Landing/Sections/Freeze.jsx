@@ -19,7 +19,7 @@ class Freeze extends Component {
             IGNOREME: "YAS"
         });
     }
-    componentWillMount() {
+    UNSAFE_componentWillMount() {
         this.setState({
             subWidth: 325
         });

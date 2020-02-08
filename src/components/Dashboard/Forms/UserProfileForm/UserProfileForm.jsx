@@ -17,7 +17,7 @@ class UserProfileForm extends Component {
         super(props);
         this.updateUser = this.updateUser.bind(this);
     }
-    componentWillMount() {
+    UNSAFE_componentWillMount() {
         this.setState({
             user: this.props.user,
             edit: (this.props.user.registration_status === "unregistered"),

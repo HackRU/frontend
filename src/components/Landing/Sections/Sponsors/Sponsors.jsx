@@ -17,7 +17,7 @@ class Sponsors extends Component {
         partnerLogos: null
     }
 
-    componentWillMount() {
+    UNSAFE_componentWillMount() {
         fetch(defaults.sponsorshipLogos + "sponsors.json",
             {
                 method: "GET", 

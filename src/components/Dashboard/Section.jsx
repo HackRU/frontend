@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Collapse, ListGroup, ListGroupItem, ListGroupItemHeading, ListGroupItemText } from "reactstrap";
 import { Icon } from "react-fa";
 import { theme } from "../../Defaults";
+import PropTypes from "prop-types";
 /**
  * A collapsable section on the dashboard
  * It takes four props, 'children', 'isOpen' (if it is initially expanded), 'title', and 'subtitle'
@@ -52,4 +53,10 @@ class Section extends Component {
         );
     }
 }
+Section.propTypes = {
+    isOpen: PropTypes.bool,
+    children: PropTypes.any,
+    title: PropTypes.string,
+    subtitle: PropTypes.string
+};
 export default Section;

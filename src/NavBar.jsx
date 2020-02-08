@@ -3,10 +3,15 @@ import { Navbar, NavbarBrand, Nav, NavLink, NavItem, Collapse, NavbarToggler, Bu
 import { Link } from "react-router-dom";
 import { navlinks, theme, defaults } from "./Defaults";
 import { ProfileType } from "./components/Profile";
+import PropTypes from "prop-types";
 import "./NavBar.css";
 
 const LinkSwitcher = (props) => {
     return (props.root) ? <a {...props}>{props.children}</a> : <Link {...props} />;
+};
+LinkSwitcher.propTypes = {
+    root: PropTypes.bool,
+    children: PropTypes.any
 };
 
 class NavBar extends Component {

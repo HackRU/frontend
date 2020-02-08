@@ -34,7 +34,7 @@ class Announcements extends Component {
         })
     )
 
-    componentWillMount() {
+    UNSAFE_componentWillMount() {
         this.setState({ messages: [] });
         this.refresh();
         setInterval(this.refresh, 30000);
