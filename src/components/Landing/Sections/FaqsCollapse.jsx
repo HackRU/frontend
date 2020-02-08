@@ -8,7 +8,7 @@ class FaqsCollapse extends React.Component {
         super(props);
         this.toggle = this.toggle.bind(this);
     }
-    componentWillMount() {
+    UNSAFE_componentWillMount() {
         this.setState({
             collapse: false
         });

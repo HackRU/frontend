@@ -130,7 +130,7 @@ class Background extends Component {
     /**
      * Initial Pre Render Method
      */
-    componentWillMount() {
+    UNSAFE_componentWillMount() {
         this._event_onResize();
         this.setState({
             scrollFeature: 0
@@ -144,7 +144,7 @@ class Background extends Component {
     }
 
     componentWillUnmout() {
-        this.parallax.disable()
+        this.parallax.disable();
     }
 
     renderImage(icon, top, left, bottom, right, height, transform, multiplier, opacity) {
@@ -167,7 +167,7 @@ class Background extends Component {
         let bucket_size = imageDefs.length / bucketcount;
         let depth_modifier = 1.00 / bucketcount;
         let rendered_images = imageDefs.map((image) => {
-            return this.renderImage(image.source, image.top, image.left, image.bottom, image.right, image.height, image.transform, image.multiplier ? 1 - image.multiplier : 1, image.opacity)
+            return this.renderImage(image.source, image.top, image.left, image.bottom, image.right, image.height, image.transform, image.multiplier ? 1 - image.multiplier : 1, image.opacity);
         });
 
         for (let i = 0; i < bucketcount; i++) {
@@ -175,14 +175,17 @@ class Background extends Component {
             let image_bucket = rendered_images.slice(i * bucket_size, end_index);
             console.log(depth_modifier * (i + 1));
             images.push(
-                <div className="layer" data-depth={depth_modifier * (i + 1)}>
+                <div className="layer"
+                    data-depth={depth_modifier * (i + 1)}>
                     {image_bucket}
                 </div>
             );
         }
 
         return (
-            <div className="scene" ref={this.scene_ref} style={{ top: 100 }}>
+            <div className="scene"
+                ref={this.scene_ref}
+                style={{ top: 100 }}>
                 {images}
             </div>
         );

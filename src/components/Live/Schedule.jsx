@@ -16,7 +16,7 @@ const dark_red = {
 };
 
 class Schedule extends Component {
-    componentWillMount() {
+    UNSAFE_componentWillMount() {
         this.setState({ events: [] });
         this.refresh();
         setInterval(this.refresh, 30000);

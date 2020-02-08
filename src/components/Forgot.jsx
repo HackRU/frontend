@@ -10,7 +10,7 @@ import PropTypes from "prop-types";
  * Forgot my password application for "/forgot"
  */
 class ForgotPage extends Component {
-    componentWillMount() {
+    UNSAFE_componentWillMount() {
         this.setState({
             loading: false,
             done: false,

@@ -16,7 +16,7 @@ class MagicPage extends Component {
         this.renderForgot = this.renderForgot.bind(this);
         this.renderLogin = this.renderLogin.bind(this);
     }
-    componentWillMount() {
+    UNSAFE_componentWillMount() {
         let mlurl = this.props.match.params.mlurl;
         this.props.setMagic(mlurl);
         this.setState({

@@ -21,7 +21,7 @@ class Dashboard extends Component {
         profileMSG: null,
         qr: null
     }
-    componentWillMount() {
+    UNSAFE_componentWillMount() {
         if (this.props.magic) {
             this.props.profile.Eat(this.props.magic, (msg) => {
                 if (msg) {

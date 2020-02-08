@@ -12,7 +12,7 @@ import PropTypes from "prop-types";
  * }
  */
 class CustomAVInput extends Component {s
-    componentWillMount() {
+    UNSAFE_componentWillMount() {
         this.setState({
             width: "100%"
         });

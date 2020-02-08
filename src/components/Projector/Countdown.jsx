@@ -6,7 +6,7 @@ class Countdown extends Component {
         this.getTimeString = this.getTimeString.bind(this);
         this.generateTemplate = this.generateTemplate.bind(this);
     }
-    componentWillMount() {
+    UNSAFE_componentWillMount() {
         // Ends 20th October 2019, at 11:30
         // JAN = 0
         let end = new Date(2019, 9, 20, 12, 0, 0, 0);

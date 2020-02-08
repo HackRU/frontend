@@ -12,7 +12,7 @@ import "./input.css";
  * Login application for "/login"
  */
 class LoginPage extends Component {
-    componentWillMount() {
+    UNSAFE_componentWillMount() {
         this.setState({
             loading: false,
             done: false,

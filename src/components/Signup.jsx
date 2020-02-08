@@ -11,7 +11,7 @@ import "./input.css";
  * Signup application for "/signup"
  */
 class SignUpPage extends Component {
-    componentWillMount() {
+    UNSAFE_componentWillMount() {
         this.setState({
             loading: false,
             done: false,

@@ -239,7 +239,7 @@ class TextGrid extends Component {
         super();
         this.generateTemplate = this.generateTemplate.bind(this);
     }
-    componentWillMount() {
+    UNSAFE_componentWillMount() {
         this.setState({
             template: this.generateTemplate(this.props.text)
         });
