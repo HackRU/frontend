@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Container, Row, Col } from "reactstrap";
-import { theme } from "../../Defaults";
 import { Redirect } from "react-router-dom";
 import ApplicationStatus from "./ApplicationStatus";
 import Section from "./Section";
@@ -98,7 +97,7 @@ class Dashboard extends Component {
         rolesString = rolesString.substring(0, rolesString.length - 2);
         return (
             <Container fluid
-                style={{ width: "100%", minHeight: "100vh", textAlign: "center", backgroundColor: theme.secondary[1] }}
+                style={{ width: "100%", minHeight: "100vh", textAlign: "center", /*backgroundColor: theme.secondary[1]*/ }}
                 className="d-flex align-items-center">
                 <div style={{ zIndex: 3, color: "white", width: "100%", paddingTop: "4rem" }}
                     align="center">

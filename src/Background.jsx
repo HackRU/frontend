@@ -185,7 +185,7 @@ class Background extends Component {
         return (
             <div className="scene"
                 ref={this.scene_ref}
-                style={{ top: 100 }}>
+                style={{ top: 100 + window.scrollY }}>
                 {images}
             </div>
         );

@@ -23,7 +23,7 @@ const FAQTextOne = {
         text: "HackRU will run registration on a first-come-first-serve basis for those with qualifying applications. That means registration can fill up quickly, so make sure to register early and answer questions thoroughly!"
     },
     four: {
-        title: "Travel Reimbursements?",
+        title: "Are there Travel Reimbursements?",
         text: "HackRU is considering offering reimbursements on a first come first serve basis to students who do not attend Rutgers University - New Brunswick. Please note that putting down where you are traveling from does not guarantee you any travel reimbursement for Fall HackRU 2019. If you are accepted, you will be notified if you qualify for reimbursement based on region and availability. We would only be able to reimburse up to $59 per person and we do not support international travel needs such as visa sponsorship."
     },
     five: {
@@ -40,7 +40,7 @@ const FAQTextOne = {
 const FAQTextTwo = {
     one: {
         title: "Who can come?",
-        text: "HackRU welcomes undergraduate and graduate students of all majors, backgrounds, and skill levels to come create. Unfortunately, if you are not a Rutgers student and you are under 18, you will not be able to attend. High school students who will be 18 by HackRU are allowed to register."
+        text: [<p>HackRU welcomes undergraduate and graduate students of all majors, backgrounds, and skill levels to come create. Additionally, high school students who will be 18 by HackRU are allowed to register. <i>Unfortunately, if you are under 18, you will not be able to attend, unless you are also a Rutgers student.</i></p>]
     },
     two: {
         title: "I'm new. What should I do?",

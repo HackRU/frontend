@@ -136,7 +136,7 @@ hr {
 }
 /* Background Control */
 .bg-gradient-right {
-    background: var(--primary-color);
+    background: var(--secondary-color-alt);
     width: 100vw; 
     z-index: 10;
     color: var(--secondary-color);
@@ -150,11 +150,14 @@ hr {
 .bg-no-gradient {
     width: 100vw;
     z-index: 10;
-    color: var(--primary-color);
 }
 .skew-right, .skew-left {
     padding-top: 3em;
     padding-bottom: 2em;
+}
+.skew-none {
+    padding-top: 100px;
+    padding-bottom: 100px;
 }
 .skew-right { 
     transform: skew(0deg, -4deg);

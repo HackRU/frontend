@@ -19,13 +19,13 @@ Props:
 const AuthForm = ({ children, errors, label, loading, isMobile, onSubmit, title }) => (
     <Container
         fluid
-        style={{ width: "100%", minHeight: "100vh", textAlign: "center", backgroundColor: theme.secondary[1] }}
+        style={{ width: "100%", minHeight: "100vh", textAlign: "center" }}
         className="d-flex align-items-center"
     >
         { isMobile ? null : <Col /> }
         <Col
             xs={isMobile ? 12 : 3}
-            style={{ display: "block", zIndex: 3, color: "white", background: "rgba(255, 255, 255, 0.05)" }}
+            style={{ display: "block", zIndex: 3, backgroundColor: theme.secondary[1], color: "white" }}
         >
             <div style={{ padding: 30 }}>
                 <h1 className="display-1 theme-font">{ title }</h1>

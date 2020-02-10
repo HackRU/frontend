@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Container, Row, Col, Button, Alert } from "reactstrap";
-import { defaults } from "../../../Defaults";
+import { defaults, theme } from "../../../Defaults";
 import { Icon } from "react-fa";
 import Logo from "./Logo";
 import { ProfileType } from "../../Profile";
@@ -22,7 +22,7 @@ class Home extends Component {
             return (
                 <Container fluid
                     id="landing-section"
-                    style={{ zIndex: 3, width: "100%", minHeight: "100vh", textAlign: "center", userSelect: "none" }}>
+                    style={{ zIndex: 3, width: "100%", minHeight: "100vh", textAlign: "center", userSelect: "none", backgroundColor: theme.secondary[1] }}>
                     <Row style={{ minWidth: "100%", minHeight: "100vh" }}
                         className="d-flex align-items-center">
                         <Col xs={2}></Col>
@@ -41,7 +41,7 @@ class Home extends Component {
                         { defaults.volunteers.display &&
                                     <div className="skew-right"
                                         style={{ position: "absolute", bottom: -25, textAlign: "right", width: "100%", paddingRight: 5, fontSize: 12 }} >
-                                        Want to help? Sign up to <a href={defaults.volunteers.vol_url}>volunteer</a> or <a href={defaults.volunteers.mentor_url}>mentor</a>!
+                                            
                                     </div> }
                         <div style={{ position: "absolute", bottom: 10, left: 10, right: 10, margin: "0 auto"}}>
                             <Button href="#about"

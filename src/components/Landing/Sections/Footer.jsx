@@ -10,7 +10,7 @@ class Footer extends Component {
         return (
             <div>
                 <Row>
-                    <div className="footer bg-no-gradient"
+                    <div className="footer bg-gradient-right"
                         style={{zIndex: 15}}>
                         <Row style={{ marginRight: 0, textAlign: "center" }}>
                             <div className="text-center col-lg-4"
