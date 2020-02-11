@@ -84,18 +84,21 @@ class NavBar extends Component {
     getAuthButtons() {
         return (
             <div>
-                <Link to="/login" ><Button color="link"
-                    className="customButton">Login</Button></Link>{" "}
-                <Link to="/signup" ><Button color="link"
-                    className="customButton">Sign Up</Button></Link>
+                <Link to="/login"><Button color="link"
+                    className="pill-btn">Login</Button></Link>{" "}
+                <Link to="/signup"><Button color="link"
+                    className="pill-btn">Register</Button></Link>
             </div>
         );
     }
     getDashboardButton() {
         return (
-            <Link to="/dashboard"
-                style={{ textDecoration: "none" }}><Button className="customButton"
-                    color="link">Dashboard</Button></Link>
+            <div>
+                <Link to="/dashboard"><Button className="pill-btn"
+                        color="link">Dashboard</Button></Link>
+                <Link to="/logout"><Button className="pill-btn"
+                        color="link">Logout</Button></Link>
+            </div>
         );
     }
     getNavLinks() {
@@ -165,8 +168,7 @@ class NavBar extends Component {
                 <Nav navbar
                     className="ml-auto">
                     <NavItem>
-                        <Link to="/logout"
-                            style={{ textDecoration: "none" }}><Button className="customButton"
+                        <Link to="/logout"><Button className="pill-btn"
                                 color="link">Logout</Button></Link>
                     </NavItem>
                 </Nav>

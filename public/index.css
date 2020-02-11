@@ -26,8 +26,8 @@
     --input-border: none;
     --input-color: rgba(255, 255, 255, 1);
     --input-border-radius: 0px;
-    --select-background: rgba(100, 0, 0, 1);
-    --select-color: rgba(255, 255, 255, 1);
+    --select-background: rgba(0, 0, 0, 1);
+    --select-color: rgba(0, 0, 0, 1);
     /* Hero Image */
     --hero-width: 1000px;
     --hero-height: 400px;
@@ -52,7 +52,7 @@ body {
     font-family: var(--text-font) !important;
 }
 ::selection {
-    background-color: var(--input-placeholder);
+    background-color: var(--secondary-color-alt);
 }
 ::placeholder {
     color: var(--input-placeholder) !important;
@@ -79,6 +79,13 @@ a:visited:hover {
 .primary-link:hover {
     color: var(--hover-color) !important;
     transition: color 0.5s ease;
+}
+.pill-btn {
+    text-transform: uppercase;
+    color: var(--primary-color) !important;
+    border: none !important;
+    border-radius: 100px !important;
+    font-weight: bold;
 }
 .btn:hover {
     transition: background-color 0.5s;

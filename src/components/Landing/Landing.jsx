@@ -25,7 +25,7 @@ class LandingPage extends Component {
                 // Toggle the green skewed sections
                 let className = "";
                 if (i !== keys.length - 1) {
-                    className = "bg-gradient-right skew-none";
+                    className = "bg-no-gradient skew-none";
                     if (i % 2 === 0) {
                         className = "bg-no-gradient skew-none";
                     }

@@ -4,103 +4,83 @@ import Parallax from "parallax-js";
 const bucket_count = 3;
 
 const imageDefs = [{
-    source: "./assets/background/circle-largedotted_white.svg",
-    left: "-400px",
-    right: null,
-    height: 1000,
-    opacity: 0.1,
-    multiplier: 0.99
-}, {
-    source: "./assets/background/square-dotted_white.svg",
-    left: null,
-    right: -250,
-    height: 500
-}, {
-    source: "./assets/background/square-largedotted_yellow.svg",
-    left: null,
-    right: 600,
-    height: 300,
-    opacity: 0.1,
-    multiplier: 0.8
-}, {
-    source: "./assets/background/target_yellow.svg",
-    left: 400,
-    right: null,
-    height: 200,
-    opacity: 0.25
-}, {
     source: "./assets/background/target_green.svg",
     left: null,
-    right: 300,
-    height: 400,
-    opacity: 0.25
-}, {
-    source: "./assets/background/circle_white.svg",
-    left: null,
-    right: 300,
-    height: 50
-}, {
-    source: "./assets/background/shape_yellow.svg",
-    left: null,
-    right: 50,
-    height: 300,
-    opacity: 0.75
-}, {
-    source: "./assets/background/cross_green.svg",
-    left: null,
-    right: 300,
-    height: 50,
+    right: 150,
+    top: "calc(100vh - 400px)",
+    height: 500,
     opacity: 0.5,
-    multiplier: 1
+    transform: null
 }, {
-    source: "./assets/background/cross_yellow.svg",
-    left: null,
-    right: 325,
-    height: 50,
-    opacity: 1
-}, {
-    source: "./assets/background/circle_green.svg",
-    left: 400,
-    right: 300,
-    height: 50,
-    opacity: 0.25
-}, {
-    source: "./assets/background/cross_green.svg",
-    left: 100,
+    source: "./assets/background/target_yellow.svg",
+    left: 150,
     right: null,
-    height: 50,
-    opacity: 1,
-    multiplier: 0.99
+    top: "calc(100vh - 600px)",
+    height: 750,
+    opacity: 0.5,
+    transform: null
+}, {
+    source: "./assets/background/cross_red.svg",
+    left: 300,
+    right: null,
+    top: 100,
+    height: 750,
+    opacity: 0.5,
+    transform: null
 }, {
     source: "./assets/background/line_green.svg",
     left: -300,
     right: null,
+    top: 500,
     height: 750,
-    opacity: 1,
-    transform: "rotate(-60deg)"
-}, {
-    source: "./assets/background/line_green.svg",
-    left: -325,
-    right: null,
-    height: 750,
-    transform: "rotate(-60deg)",
-    opacity: 1
+    opacity: 0.5,
+    transform: "rotate(-30deg)"
 }, {
     source: "./assets/background/line_yellow.svg",
-    left: -275,
+    left: -250,
     right: null,
+    top: 400,
     height: 750,
-    opacity: 1,
-    transform: "rotate(-60deg)"
+    opacity: 0.5,
+    transform: "rotate(-30deg)"
 }, {
     source: "./assets/background/line_yellow.svg",
-    left: -425,
+    left: -200,
     right: null,
+    top: 300,
     height: 750,
-    opacity: 1,
-    transform: "rotate(-60deg)"
-}, 
-];
+    opacity: 0.5,
+    transform: "rotate(-30deg)"
+}, {
+    source: "./assets/background/line_red.svg",
+    left: -250,
+    right: null,
+    top: 250,
+    height: 750,
+    opacity: 0.5,
+    transform: "rotate(-30deg)"
+}, {
+    source: "./assets/background/square-dotted_yellow.svg",
+    left: "calc(100vw - 100px)",
+    right: 0,
+    top: 250,
+    height: 750,
+    opacity: 0.5,
+    transform: "rotate(30deg)"
+}, {
+    source: "./assets/background/circle_green.svg",
+    left: "calc(100vw - 230px)",
+    top: 150,
+    height: 250,
+    opacity: 0.5,
+    transform: "rotate(30deg)"
+}, {
+    source: "./assets/background/shape_yellow.svg",
+    left: "calc(100vw - 530px)",
+    top: 700,
+    height: 400,
+    opacity: 0.5,
+}];
 class Background extends Component {
     constructor(props) {
         super(props);
@@ -151,6 +131,8 @@ class Background extends Component {
         let style = { position: "fixed"};
         style["left"] = left ? left : null;
         style["right"] = right ? right : null;
+        style["top"] = top ? top : null;
+        style["bottom"] = bottom ? bottom : null;
         style["transform"] = transform ? transform : null;
         style["opacity"] = opacity ? opacity : 0.25;
         return (
@@ -184,7 +166,7 @@ class Background extends Component {
         return (
             <div className="scene"
                 ref={this.scene_ref}
-                style={{ top: 100 + window.scrollY }}>
+                style={{ top:  window.scrollY }}>
                 {images}
             </div>
         );

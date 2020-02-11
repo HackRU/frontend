@@ -6,6 +6,7 @@ import Logo from "./Logo";
 import { ProfileType } from "../../Profile";
 import PropTypes from "prop-types";
 import { Motion, spring } from "react-motion";
+import { Link } from "react-router-dom";
 
 /**
  * Home component for the landing page
@@ -125,8 +126,16 @@ class Home extends Component {
                                                 name="calendar" /> {defaults.dateText}</h2>
                                             <hr style={{ opacity }} />
                                             <ButtonGroup>
-                                                <Button outline color="primary" size="lg" style={{ opacity, textTransform: "uppercase", color: theme.primary[0], border: "none", borderRadius: 100, fontWeight: "bold" }}>Login</Button>
-                                                <Button outline color="primary" size="lg" style={{ opacity, textTransform: "uppercase", color: theme.primary[0], border: "none", borderRadius: 100, fontWeight: "bold" }}>Register</Button>
+                                                {!this.props.profile.isLoggedIn ?
+                                                    <div>
+                                                        <Link to="/login"><Button outline className="pill-btn" color="warning" size="lg" style={{ opacity }}>Login</Button></Link>
+                                                        <Link to="/signup"><Button outline className="pill-btn" color="warning" size="lg" style={{ opacity }}>Register</Button></Link>
+                                                    </div> :
+                                                    <div>
+                                                        <Link to="/dashboard"><Button outline className="pill-btn" color="warning" size="lg" style={{ opacity }}>Dashboard</Button></Link>
+                                                        <Link to="/logout"><Button outline className="pill-btn" color="warning" size="lg" style={{ opacity }}>Logout</Button></Link>
+                                                    </div>
+                                                }
                                             </ButtonGroup>
                                         </div>
                                 }
