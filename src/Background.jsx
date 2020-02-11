@@ -173,7 +173,6 @@ class Background extends Component {
         for (let i = 0; i < bucketcount; i++) {
             let end_index = (i + 1) * bucket_size + 1 > imageDefs.length ? imageDefs.length : (i + 1) * bucket_size; 
             let image_bucket = rendered_images.slice(i * bucket_size, end_index);
-            console.log(depth_modifier * (i + 1));
             images.push(
                 <div className="layer"
                     data-depth={depth_modifier * (i + 1)}>

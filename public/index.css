@@ -5,7 +5,7 @@
 :root {
     /* Theme Colors */
     --primary-color: #FFF5e8; /* Logo, link colors, text */
-    --primary-color-alt: #000000;  /* Form body bg, form headers text */
+    --primary-color-alt: #4fab5f;  /* Form body bg, form headers text */
     --secondary-color: #000000; /* Barely used accent color...combine this and primary-color-alt...? */
     --secondary-color-alt: #C85151; /* Background color */
     --accent-color: #F1BA43; /* Logout, Live button color */

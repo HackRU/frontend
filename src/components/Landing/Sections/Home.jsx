@@ -5,6 +5,7 @@ import { Icon } from "react-fa";
 import Logo from "./Logo";
 import { ProfileType } from "../../Profile";
 import PropTypes from "prop-types";
+import { Motion, spring } from "react-motion";
 
 /**
  * Home component for the landing page
@@ -29,14 +30,35 @@ class Home extends Component {
                         <Col xs={8}
                             style={{ display: "block" }}>
                             {loggoutMsg}
-                            <Logo noCircle
-                                src="./assets/icons/hru-text.svg" />
-                            <h2 style={{ marginTop: 15 }}
-                                className="display-4 theme-font">Hackathon at Rutgers University</h2>
-                            <h2 className="lead theme-font"><Icon style={{ marginRight: 5 }}
-                                name="map-marker" /> {defaults.locationText}</h2>
-                            <h2 className="lead theme-font"><Icon style={{ marginRight: 5 }}
-                                name="calendar" /> {defaults.dateText}</h2>
+                            <Motion defaultStyle={{ opacity: 0 }} style={{ opacity: spring(1, { stiffness: 1, damping: 1 }) }}>
+                                {
+                                    ({ opacity }) =>
+                                        <Logo style={{ opacity }} noCircle
+                                            src="./assets/icons/hru-text.svg" />
+                                }
+                            </Motion>
+                            {/* <h1 style={{ color: theme.accent[0], marginTop: -100, marginBottom: 100 }}>hack all knight</h1> */}
+                            <Motion defaultStyle={{ opacity: 0, top: 1000 }} style={{
+                                opacity: spring(1, { stiffness: 1, damping: 1 }),
+                                top: spring(0, { stiffness: 20, damping: 4 })
+                                }}>
+                                {
+                                    ({ opacity, top }) =>
+                                        <h2 style={{ marginTop: -100 + top, color: theme.accent[0], opacity: opacity }}
+                                            className="display-4 theme-font">{defaults.slogan}</h2>
+                                }
+                            </Motion>
+                            <Motion defaultStyle={{ opacity: 0 }} style={{ opacity: spring(1, { stiffness: 1, damping: 1 }) }}>
+                                {
+                                    ({ opacity }) =>
+                                        <div>
+                                            <h2 style={{ opacity: opacity }} className="lead theme-font"><Icon style={{ marginRight: 5 }}
+                                                name="map-marker" /> {defaults.locationText}</h2>
+                                            <h2 style={{ opacity: opacity }} className="lead theme-font"><Icon style={{ marginRight: 5 }}
+                                                name="calendar" /> {defaults.dateText}</h2>
+                                        </div>
+                                }
+                            </Motion>
                         </Col>
                         { defaults.volunteers.display &&
                                     <div className="skew-right"
@@ -61,8 +83,8 @@ class Home extends Component {
                             {loggoutMsg}
                             <Logo noCircle
                                 src="./assets/icons/hru-text.svg" />
-                            <h2 style={{ marginTop: -75 }}
-                                className="display-4 theme-font">Hackathon at Rutgers University</h2>
+                            <h2 style={{ marginTop: -100, color: theme.accent[0] }}
+                                className="display-4">{defaults.slogan}</h2>
                             <h2 className="lead theme-font"><Icon style={{ marginRight: 5 }}
                                 name="map-marker" /> {defaults.locationText}</h2>
                             <h2 className="lead theme-font"><Icon style={{ marginRight: 5 }}
