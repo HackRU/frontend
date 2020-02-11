@@ -30,7 +30,7 @@ class Home extends Component {
                             style={{ display: "block" }}>
                             {loggoutMsg}
                             <Logo noCircle
-                                src="./assets/icons/hru-logo.svg" />
+                                src="./assets/icons/hru-text.svg" />
                             <h2 style={{ marginTop: 15 }}
                                 className="display-4 theme-font">Hackathon at Rutgers University</h2>
                             <h2 className="lead theme-font"><Icon style={{ marginRight: 5 }}
@@ -41,7 +41,6 @@ class Home extends Component {
                         { defaults.volunteers.display &&
                                     <div className="skew-right"
                                         style={{ position: "absolute", bottom: -25, textAlign: "right", width: "100%", paddingRight: 5, fontSize: 12 }} >
-                                            
                                     </div> }
                         <div style={{ position: "absolute", bottom: 10, left: 10, right: 10, margin: "0 auto"}}>
                             <Button href="#about"
@@ -58,10 +57,10 @@ class Home extends Component {
                     style={{ zIndex: 3, width: "100%", minHeight: "100vh", textAlign: "center", userSelect: "none" }}>
                     <Row style={{ minWidth: "100%", minHeight: "100vh" }}
                         className="d-flex align-items-center">
-                        <Col style={{ display: "block", marginBottom: 20 }}>
+                        <Col className="bg-gradient-right skew-none" style={{ display: "block", marginBottom: 20 }}>
                             {loggoutMsg}
                             <Logo noCircle
-                                src="./assets/icons/hru-logo.svg" />
+                                src="./assets/icons/hru-text.svg" />
                             <h2 style={{ marginTop: -75 }}
                                 className="display-4 theme-font">Hackathon at Rutgers University</h2>
                             <h2 className="lead theme-font"><Icon style={{ marginRight: 5 }}

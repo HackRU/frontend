@@ -18,11 +18,28 @@ class Logo extends Component {
                 }, () => {
                     anime({
                         targets: "path",
-                        strokeDashoffset: [anime.setDashoffset, 0],
+                        strokeDashoffset: (el) => {
+                            let pathLength = 0;
+                            if (el.getTotalLength) {
+                                pathLength = el.getTotalLength();
+                                el.setAttribute('stroke-dasharray', pathLength);
+                            }
+                            return [pathLength, 0];
+                        },
                         easing: "easeInOutExpo",
-                        duration: 7500,
+                        duration: (el, index) => {
+                            let defaultVal = 1000;
+                            let cns = el.className.baseVal.split(" ");
+                            for (let i = 0; i < cns.length; i++) {
+                                if (cns[i].includes("idx-")) {
+                                    let idx = parseInt(cns[i].replace("idx-", ""));
+                                    return idx * defaultVal;
+                                }
+                            }
+                            return defaultVal;
+                        },
                         direction: "alternate",
-                        delay: () => { return 1000; },
+                        delay: () => { return 10; },
                         loop: true
                     });
                 });
