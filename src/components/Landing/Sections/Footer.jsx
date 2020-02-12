@@ -8,10 +8,10 @@ import { Icon } from "react-fa";
 class Footer extends Component {
     render() {
         return (
-            <div>
+            <div style={{marginLeft: -15, marginRight: -15 }}>
                 <Row>
                     <div className="footer bg-gradient-right"
-                        style={{zIndex: 15}}>
+                        style={{ zIndex: 15, boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.5)" }}>
                         <Row style={{ marginRight: 0, textAlign: "center" }}>
                             <div className="text-center col-lg-4"
                                 style={{ padding: 0 }}>
@@ -58,13 +58,6 @@ class Footer extends Component {
                                     <img className="footer-logo"
                                         src="https://static.mlh.io/brand-assets/logo/official/mlh-logo-white.png"
                                         alt="MLH logo" />
-                                </a>
-                                <a href="http://usacs.rutgers.edu/"
-                                    target="_blank"
-                                    rel="noopener noreferrer">
-                                    <img className="footer-logo"
-                                        src="./assets/icons/usacs-logo.svg"
-                                        alt="USACS logo" />
                                 </a>
                             </div>
                         </Row>

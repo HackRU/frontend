@@ -129,7 +129,7 @@ class Home extends Component {
                                                 {!this.props.profile.isLoggedIn ?
                                                     <div>
                                                         <Link to="/login"><Button outline className="pill-btn" color="warning" size="lg" style={{ opacity }}>Login</Button></Link>
-                                                        <Link to="/signup"><Button outline className="pill-btn" color="warning" size="lg" style={{ opacity }}>Register</Button></Link>
+                                                        <Link to="/signup"><Button className="pill-btn" color="success" size="lg" style={{ opacity }}>Register</Button></Link>
                                                     </div> :
                                                     <div>
                                                         <Link to="/dashboard"><Button outline className="pill-btn" color="warning" size="lg" style={{ opacity }}>Dashboard</Button></Link>

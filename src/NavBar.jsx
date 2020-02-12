@@ -84,9 +84,9 @@ class NavBar extends Component {
     getAuthButtons() {
         return (
             <div>
-                <Link to="/login"><Button color="link"
+                <Link to="/login"><Button outline color="warning"
                     className="pill-btn">Login</Button></Link>{" "}
-                <Link to="/signup"><Button color="link"
+                <Link to="/signup"><Button color="success"
                     className="pill-btn">Register</Button></Link>
             </div>
         );
@@ -95,9 +95,9 @@ class NavBar extends Component {
         return (
             <div>
                 <Link to="/dashboard"><Button className="pill-btn"
-                        color="link">Dashboard</Button></Link>
+                        outline color="warning">Dashboard</Button></Link>
                 <Link to="/logout"><Button className="pill-btn"
-                        color="link">Logout</Button></Link>
+                        outline color="danger">Logout</Button></Link>
             </div>
         );
     }
@@ -169,7 +169,7 @@ class NavBar extends Component {
                     className="ml-auto">
                     <NavItem>
                         <Link to="/logout"><Button className="pill-btn"
-                                color="link">Logout</Button></Link>
+                                outline color="warning">Logout</Button></Link>
                     </NavItem>
                 </Nav>
             </Collapse>
@@ -187,7 +187,7 @@ class NavBar extends Component {
         if (!defaults.freeze) {
             return(
                 <Navbar id="navbar"
-                    style={{ width: "100%", zIndex: "20", backgroundColor: theme.secondary[1], opacity: this.state.shouldRender | !onLanding, pointerEvents: this.state.shouldRender | !onLanding ? "auto":"none", transition: !onLanding ? "" : "opacity 0.5s" }}
+                    style={{ width: "100%", zIndex: "20", backgroundColor: theme.secondary[1], opacity: this.state.shouldRender | !onLanding, pointerEvents: this.state.shouldRender | !onLanding ? "auto":"none", transition: !onLanding ? "" : "opacity 0.5s", boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.5)" }}
                     fixed="top"
                     dark
                     expand="md"
