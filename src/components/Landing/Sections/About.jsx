@@ -11,6 +11,12 @@ class About extends Component {
         return (
             <div style={{ backgroundColor: theme.secondary[1], color: "white", boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.5)", padding: 50 }}>
                 <div style={{ position: "absolute", left: "calc(15px)", top: 0, height: "100%", backgroundColor: theme.accent[0], width: 10 }}></div>
+                <div style={{ position: "absolute", top: 30, right: 20, userSelect: "none", pointerEvents: "none", zIndex: 10, transform: "rotate(-175deg)" }}>
+                    <img
+                        alt="background"
+                        src={"./assets/background/shape_green.svg"}
+                        height={100} /> 
+                </div>
                 <h1 className="display-4 theme-font">About HackRU</h1>
                 <div className="row mb-3" style={{ marginLeft: -50, marginRight: -50 }}>
                     <div style={{ color: "white", padding: 50, paddingBottom: 0 }} className="col-xs-12 col-sm-12">

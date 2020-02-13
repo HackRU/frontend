@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 // import { defaults } from "../../../Defaults";
-import { Table, Card, Container, Col, Row } from "reactstrap";
+import { Table, Container, Row, Col } from "reactstrap";
+import { theme } from "../../../Defaults";
+import { Icon } from "react-fa";
 
 /**
  * Schedule component for the landing page
@@ -77,6 +79,32 @@ class Schedule extends Component {
 
     render() {
         return (
+            <Container fluid style={{ backgroundColor: theme.secondary[1], color: "white", boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.5)", padding: 50 }}>
+                <div style={{ position: "absolute", left: "calc(15px)", top: 0, height: "100%", backgroundColor: theme.primary[1], width: 10 }}></div>
+                <h1 className="display-4 theme-font">Schedule</h1>  
+                <Row>
+                    <Col xs="6" style={{ marginLeft: -50, marginRight: -50 }}>
+                        <div style={{ color: "white", padding: 50, paddingBottom: 0 }} className="col-xs-12 col-sm-12">
+                            <div style={{ position: "absolute", left: 190, height: 10, backgroundColor: theme.primary[1], width: "calc(100% - 190px)", marginTop: 25 }}></div>
+                            <h2 className="display-6" style={{ display: "inline-block", marginBottom: 25, backgroundColor: theme.primary[1], padding: 10, marginLeft: -50, paddingLeft: 50, borderTopRightRadius: 25, borderBottomRightRadius: 25, paddingRight: 25 }}><Icon name="question-circle" /> What?</h2>
+                            <p style={{ display: "inline-block" }} className="lead">
+                                HackRU is a 24-hour hackathon at Rutgers University. We welcome hundreds of students to join us in building awesome tech projects. Industry experts and mentors help foster an atmosphere of learning through tech-talks and one-on-one guidance. We encourage all students, no matter their experience level or educational background, to challenge themselves and expand their creative, technical, and collaboration skills at HackRU.
+                            </p>
+                        </div>
+                    </Col>
+                    <Col xs="6" style={{ marginLeft: -50, marginRight: -50 }}>
+                        <div style={{ color: "white", padding: 50, paddingBottom: 0 }} className="col-xs-12 col-sm-12">
+                            <div style={{ position: "absolute", left: 190, height: 10, backgroundColor: theme.primary[1], width: "calc(100% - 190px)", marginTop: 25 }}></div>
+                            <h2 className="display-6" style={{ display: "inline-block", marginBottom: 25, backgroundColor: theme.primary[1], padding: 10, marginLeft: -50, paddingLeft: 50, borderTopRightRadius: 25, borderBottomRightRadius: 25, paddingRight: 25 }}><Icon name="question-circle" /> What?</h2>
+                            <p style={{ display: "inline-block" }} className="lead">
+                                HackRU is a 24-hour hackathon at Rutgers University. We welcome hundreds of students to join us in building awesome tech projects. Industry experts and mentors help foster an atmosphere of learning through tech-talks and one-on-one guidance. We encourage all students, no matter their experience level or educational background, to challenge themselves and expand their creative, technical, and collaboration skills at HackRU.
+                            </p>
+                        </div>
+                    </Col>
+                </Row>
+            </Container>
+        )
+        /*return (
             [
                 <div className="col-12"
                     key="schedule-header">
@@ -101,7 +129,7 @@ class Schedule extends Component {
                         </Row>
                     </Container>
                 </Card>]
-        );
+        );*/
     }
 }
 

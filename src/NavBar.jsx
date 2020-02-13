@@ -169,7 +169,7 @@ class NavBar extends Component {
                     className="ml-auto">
                     <NavItem>
                         <Link to="/logout"><Button className="pill-btn"
-                                outline color="warning">Logout</Button></Link>
+                            outline color="warning">Logout</Button></Link>
                     </NavItem>
                 </Nav>
             </Collapse>

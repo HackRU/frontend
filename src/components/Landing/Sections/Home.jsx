@@ -29,63 +29,75 @@ class Home extends Component {
                         {
                             ({ movement, opacity }) =>
                                 <div>
-                                    <div style={{ opacity, position: "absolute", bottom: -(window.innerHeight / 4) + movement, right: -100, userSelect: "none" }}>
+                                    <div style={{ opacity, position: "absolute", bottom: -(window.innerHeight / 4) + movement, right: -100, userSelect: "none", pointerEvents: "none", zIndex: 10 }}>
                                         <img
+                                            alt="background"
                                             src={"./assets/background/target_green.svg"}
                                             height={window.innerHeight / 2} /> 
                                     </div>
-                                    <div style={{ opacity, position: "absolute", bottom: -(window.innerHeight / 3) - movement, left: -100, userSelect: "none" }}>
+                                    <div style={{ opacity, position: "absolute", bottom: -(window.innerHeight / 3) - movement, left: -100, userSelect: "none", pointerEvents: "none", zIndex: 10 }}>
                                         <img
+                                            alt="background"
                                             src={"./assets/background/target_yellow.svg"}
                                             height={window.innerHeight / 2} /> 
                                     </div>
-                                    <div style={{ opacity, position: "absolute", top: (window.innerHeight / 2) - (window.innerHeight / 8), right: movement, userSelect: "none" }}>
+                                    <div style={{ opacity, position: "absolute", top: (window.innerHeight / 2) - (window.innerHeight / 8), right: movement, userSelect: "none", pointerEvents: "none", zIndex: 10 }}>
                                         <img
+                                            alt="background"
                                             src={"./assets/background/shape_white.svg"}
                                             height={window.innerHeight / 4} /> 
                                     </div>
-                                    <div style={{ opacity, position: "absolute", top: (window.innerHeight / 8) + (movement / 2), right: -100 - movement, userSelect: "none" }}>
+                                    <div style={{ opacity, position: "absolute", top: (window.innerHeight / 8) + (movement / 2), right: -100 - movement, userSelect: "none", pointerEvents: "none", zIndex: 10 }}>
                                         <img
+                                            alt="background"
                                             src={"./assets/background/cross_yellow.svg"}
                                             height={window.innerHeight / 3} /> 
                                     </div>
-                                    <div style={{ opacity, position: "absolute", bottom: (window.innerHeight / 8) + movement, left: window.innerWidth / 4, userSelect: "none", transform: "rotate(30deg)" }}>
+                                    <div style={{ opacity, position: "absolute", bottom: (window.innerHeight / 8) + movement, left: window.innerWidth / 4, userSelect: "none", pointerEvents: "none", zIndex: 10, transform: "rotate(30deg)" }}>
                                         <img
+                                            alt="background"
                                             src={"./assets/background/cross_white.svg"}
                                             height={window.innerHeight / 10} /> 
                                     </div>
-                                    <div style={{ opacity, position: "absolute", bottom: -(window.innerHeight / 5), right: window.innerWidth / 7 - movement, userSelect: "none", transform: "rotate(" + movement + "deg)" }}>
+                                    <div style={{ opacity, position: "absolute", bottom: -(window.innerHeight / 5), right: window.innerWidth / 7 - movement, userSelect: "none", pointerEvents: "none", zIndex: 10, transform: "rotate(" + movement + "deg)" }}>
                                         <img
+                                            alt="background"
                                             src={"./assets/background/circle-dotted_yellow.svg"}
                                             height={window.innerHeight / 3} /> 
                                     </div>
-                                    <div style={{ opacity, position: "absolute", top: -(window.innerHeight / 5) - movement, right: window.innerWidth / 7, userSelect: "none", transform: "rotate(30deg)" }}>
+                                    <div style={{ opacity, position: "absolute", top: -(window.innerHeight / 5) - movement, right: window.innerWidth / 7, userSelect: "none", pointerEvents: "none", zIndex: 10, transform: "rotate(30deg)" }}>
                                         <img
+                                            alt="background"
                                             src={"./assets/background/circle_green.svg"}
                                             height={window.innerHeight / 3} /> 
                                     </div>
-                                    <div style={{ opacity, position: "absolute", top: -(window.innerHeight / 4), right: window.innerWidth / 3 + movement, userSelect: "none", transform: "rotate(30deg)" }}>
+                                    <div style={{ opacity, position: "absolute", top: -(window.innerHeight / 4), right: window.innerWidth / 3 + movement, userSelect: "none", pointerEvents: "none", zIndex: 10, transform: "rotate(30deg)" }}>
                                         <img
+                                            alt="background"
                                             src={"./assets/background/circle-dotted_white.svg"}
                                             height={window.innerHeight / 2} /> 
                                     </div>
-                                    <div style={{ opacity, position: "absolute", top: (window.innerHeight / 20) + movement, left: window.innerWidth / 10 + movement, userSelect: "none", transform: "rotate(30deg)" }}>
+                                    <div style={{ opacity, position: "absolute", top: (window.innerHeight / 20) + movement, left: window.innerWidth / 10 + movement, userSelect: "none", pointerEvents: "none", zIndex: 10, transform: "rotate(30deg)" }}>
                                         <img
+                                            alt="background"
                                             src={"./assets/background/target_yellow.svg"}
                                             height={window.innerHeight / 3} /> 
                                     </div>
-                                    <div style={{ opacity, position: "absolute", top: (window.innerHeight / 2) - (window.innerHeight / 6), left: -(window.innerHeight / 6), userSelect: "none", transform: "rotate(30deg)" }}>
+                                    <div style={{ opacity, position: "absolute", top: (window.innerHeight / 2) - (window.innerHeight / 6), left: -(window.innerHeight / 6), userSelect: "none", pointerEvents: "none", zIndex: 10, transform: "rotate(30deg)" }}>
                                         <img
+                                            alt="background"
                                             src={"./assets/background/target_white.svg"}
                                             height={window.innerHeight / 3} /> 
                                     </div>
-                                    <div style={{ opacity, position: "absolute", bottom: (window.innerHeight / 4), left: window.innerWidth / 7 - (movement / 10), userSelect: "none" }}>
+                                    <div style={{ opacity, position: "absolute", bottom: (window.innerHeight / 4), left: window.innerWidth / 7 - (movement / 10), userSelect: "none", pointerEvents: "none", zIndex: 10 }}>
                                         <img
+                                            alt="background"
                                             src={"./assets/background/cross_green.svg"}
                                             height={window.innerHeight / 10} /> 
                                     </div>
-                                    <div style={{ opacity, position: "absolute", bottom: (window.innerHeight / 5) - movement, left: -(window.innerHeight / 6), userSelect: "none" }}>
+                                    <div style={{ opacity, position: "absolute", bottom: (window.innerHeight / 5) - movement, left: -(window.innerHeight / 6), userSelect: "none", pointerEvents: "none", zIndex: 10 }}>
                                         <img
+                                            alt="background"
                                             src={"./assets/background/square-dotted_white.svg"}
                                             height={window.innerHeight / 3} /> 
                                     </div>
