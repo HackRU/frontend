@@ -30,9 +30,7 @@ const Loading = ({ text }) => (
         </div>
     </Container>
 );
-
 Loading.propTypes = {
     text: PropTypes.string,
 };
-
 export default Loading;

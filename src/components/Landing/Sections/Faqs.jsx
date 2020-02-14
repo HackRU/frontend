@@ -1,6 +1,7 @@
 
 import React, { Component } from "react";
 import { Container, Row, Col} from "reactstrap";
+import { theme } from "../../../Defaults";
 import FaqsCollapse from "./FaqsCollapse";
 import PropTypes from "prop-types";
 
@@ -24,7 +25,7 @@ const FAQTextOne = {
     },
     four: {
         title: "Are there Travel Reimbursements?",
-        text: "HackRU is considering offering reimbursements on a first come first serve basis to students who do not attend Rutgers University - New Brunswick. Please note that putting down where you are traveling from does not guarantee you any travel reimbursement for Fall HackRU 2019. If you are accepted, you will be notified if you qualify for reimbursement based on region and availability. We would only be able to reimburse up to $59 per person and we do not support international travel needs such as visa sponsorship."
+        text: [<p key={1}>HackRU is considering offering travel reimbursements to qualified students who do not attend Rutgers University—New Brunswick. Information about travel reimbursements is available on the application and your dashboard. Reach out to <a href="mailto:travel@hackru.org">travel@hackru.org</a> if you have any additional questions.</p>]
     },
     five: {
         title: "Can I win anything?",
@@ -34,7 +35,6 @@ const FAQTextOne = {
         title: "I have more questions!",
         text: [<span key={1}>Reach out to us at <a href="mailto:info@hackru.org"> info@hackru.org!</a> We'll be happy to answer.</span>]
     }
-
 };
 
 const FAQTextTwo = {
@@ -80,9 +80,10 @@ class FAQs extends Component {
     render() {
         let cols = (this.props.isMobile) ? (12) : (6);
         return (
-            <div>
-                <h1 className="display-4 theme-font">FAQs</h1>
-                <hr />
+            <div style={{ backgroundColor: theme.secondary[1], color: "white", boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.5)", padding: 50, marginTop: 25 }}>
+                <div style={{ position: "absolute", left: "calc(15px)", top: 0, height: "calc(100%)", backgroundColor: theme.accent[1], width: 10 }}></div>    
+                <h1 style={{ marginBottom: 100 }} className="display-4 theme-font">FAQs</h1>
+                <div style={{ position: "absolute", left: "calc(15px)", top: 150, width: "calc(100% - 30px)", backgroundColor: theme.accent[1], height: 10 }}></div>    
                 <Container fluid>
                     <Row>
                         <Col xs={cols}>
@@ -99,7 +100,6 @@ class FAQs extends Component {
                         </Col>
                     </Row>
                 </Container>
-                
             </div>
         );
     }
