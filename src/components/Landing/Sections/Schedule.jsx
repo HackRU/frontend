@@ -80,14 +80,14 @@ class Schedule extends Component {
         return (
             <div style={{ backgroundColor: theme.secondary[1], color: "white", boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.5)", padding: 50 }}>
                 <div style={{ position: "absolute", left: "calc(15px)", top: 0, height: "100%", backgroundColor: theme.primary[1], width: 10 }}></div>
-                    <h1 className="display-4 theme-font">Schedule</h1>
-                    <div className="row mb-3" style={{ marginLeft: -50, marginRight: -50 }}>
+                <h1 className="display-4 theme-font">Schedule</h1>
+                <div className="row mb-3" style={{ marginLeft: -50, marginRight: -50 }}>
                     <div style={{ color: "white", padding: 50, paddingBottom: 0 }} className="col-xs-12 col-sm-12">
                         <Row>
                             <Col style={{ writingMode: "vertical-lr", transform: 'rotate(180deg)' }} className="text-center" xs="1"> 
                                 <h3 className="lead">{saturday_date}</h3>
                             </Col>
-                            <Col>
+                            <Col style={{ borderLeft: "1px solid white" }}>
                                 {this.fill_table(sat_schedule)}
                             </Col>
                         </Row>
@@ -95,7 +95,7 @@ class Schedule extends Component {
                             <Col style={{ writingMode: "vertical-lr", transform: 'rotate(180deg)' }} className="text-center" xs="1"> 
                                 <h3 className="lead">{sunday_date}</h3>
                             </Col>
-                            <Col>
+                            <Col style={{ borderLeft: "1px solid white" }}>
                                 {this.fill_table(sun_schedule)}
                             </Col>
                         </Row>
