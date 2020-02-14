@@ -9,10 +9,9 @@ import PropTypes from "prop-types";
  */
 const ApplicationStatus = ({ status, onComing, onNotComing, travelling_from }) => (
     <div style={{ marginBottom: 10 }}>
-        <div style={{ width: "100%", textAlign: "left" }}>
-            <p className="lead">Application Status</p>
+        <div style={{ textAlign: "center" }}>
+            { applicationBody(status, onComing, onNotComing, travelling_from) }
         </div>
-        { applicationBody(status, onComing, onNotComing, travelling_from) }
     </div>
 );
 

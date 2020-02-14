@@ -11,6 +11,7 @@ import TravelReimbursementsForm from "./Forms/TravelReimbursementsForm";
 import UserProfileForm from "./Forms/UserProfileForm/UserProfileForm";
 import { ProfileType } from "../Profile";
 import PropTypes from "prop-types";
+import Logo from "../Landing/Sections/Logo.jsx";
 import { theme } from "../../Defaults";
 
 class Dashboard extends Component {
@@ -97,25 +98,66 @@ class Dashboard extends Component {
         Object.keys(user.role).forEach((key) => { if (user.role[key]) { rolesString += `${key}, `; }});
         rolesString = rolesString.substring(0, rolesString.length - 2);
         return (
-            <Container fluid style={{ width: "100%", minHeight: "100vh", paddingTop: 90 }}>
+            <Container  style={{ width: "100%", minHeight: "100vh", paddingTop: 90 }}>
                 <Row>
-                    <Col xs={9}>
+                    <Col className="dashboard-row" lg={12} >
                         <div className="dashboard-card">
-                            <div style={{ position: "absolute", left: "calc(15px)", top: 0, height: "100%", backgroundColor: theme.accent[0], width: 10 }}></div>
-                            <h1 className="display-4">Shivan</h1>
-                        </div>
-                    </Col>
-                    <Col xs={3}>
-                        <div className="dashboard-card">
-                            <div style={{ position: "absolute", left: "calc(15px)", top: 0, height: "100%", backgroundColor: theme.accent[0], width: 10 }}></div>
+                            <div className="dashboard-left-strip dashboard-strip-red"></div>
+                            <div style={{ position: "relative", top: -75, height: 200 }}>
+                                <Logo noCircle src="./assets/icons/hru-text-red.svg" />
+                            </div>
                         </div>
                     </Col>
                 </Row>
                 <Row>
+                    <Col className="dashboard-row" xl={8} lg={8} md={6} sm={12} xs={12}>
+                        <div className="dashboard-card">
+                            <div className="dashboard-left-strip dashboard-strip-yellow"></div>
+                            <h1 className="display-4 dashboard-header dashboard-strip-yellow">Welcome, {user.first_name}</h1>
+                            <i style={{ position: "absolute", bottom: 10, left: 40 }}>{rolesString}</i>
+                            <div className="d-flex align-items-center" style={{ height: "60%", textAlign: "center" }}>
+                                <div style={{ marginTop: 50, textAlign: "center", width: "100%" }}>
+                                    <ApplicationStatus onComing={() => {
+                                            user.registration_status = "coming";
+                                            this.submitUser(user);
+                                        }} onNotComing={() => {
+                                            user.registration_status = "not-coming";
+                                            this.submitUser(user);
+                                        }} travelling_from={user.travelling_from} status={user.registration_status} />
+                                </div>
+                            </div>
+                        </div>
+                    </Col>
+                    <Col className="dashboard-row" xl={4} lg={4} md={6} sm={12} xs={12}>
+                        <div className="dashboard-card" style={{ textAlign: "center" }}>
+                            <div className="dashboard-left-strip dashboard-strip-green"></div>
+                            <h1 className="display-4 dashboard-header dashboard-strip-green">QR</h1>
+                            <div className="d-flex align-items-center" style={{ height: "60%", textAlign: "center" }}>
+                                <div style={{ marginTop: 50, textAlign: "center", width: "100%" }}>
+                                    <QR email={user.email} />
+                                </div>
+                            </div>
+                        </div>
+                    </Col>
                 </Row>
                 <Row>
-                    <Col>
-                        Shivan
+                    <Col className="dashboard-row">
+                        <div className="dashboard-card">
+                            <ProfileMessage message={this.state.profileMSG} />
+                            <div className="dashboard-left-strip dashboard-strip-red"></div>
+                            <h1 className="display-4 dashboard-header dashboard-strip-red">Profile</h1>
+                            <UserProfileForm mobile={mobile}
+                                user={user}
+                                onChange={(user) => {
+                                    this.setState({ user: user });
+                                }}
+                                onSubmit={(user) => {
+                                    user.registration_status = "registered";
+                                    this.submitUser(user);
+                                }}
+                                profile={this.props.profile}
+                            />
+                        </div>
                     </Col>
                 </Row>
                 <Row>

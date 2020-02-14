@@ -21,12 +21,12 @@
 
 /*'Open Sans', sans-serif;  */
     /* Form Inputs */
-    --input-background: rgba(255, 255, 255, 0.2);
-    --input-placeholder: rgba(255, 255, 255, 0.3);
+    --input-background: #C8515111;
+    --input-placeholder: rgba(0, 0, 0, 0.3);
     --input-border: none;
-    --input-color: rgba(255, 255, 255, 1);
+    --input-color: rgba(0, 0, 0, 1);
     --input-border-radius: 0px;
-    --select-background: rgba(0, 0, 0, 1);
+    --select-background: #C85151;
     --select-color: rgba(0, 0, 0, 1);
     /* Hero Image */
     --hero-width: 1000px;
@@ -298,6 +298,7 @@ form .btn, form btn-secondary {
 }
 .qr:hover {
     transform: rotate(360deg);
+    border-radius: 10px;
 }
 
 
@@ -560,8 +561,48 @@ form .btn, form btn-secondary {
 
 .dashboard-card {
     background-color: white;
-    color: rgba(0, 0, 0, 0.25);
+    color: #C85151f0;
     box-shadow: 0px 0px 100px rgba(0, 0, 0, 0.1);
     padding: 50px;
     height: 100%;
+}
+
+.dashboard-card > *::selection {
+    color: white !important;
+}
+
+.dashboard-left-strip {
+    position: absolute;
+    left: calc(15px);
+    top: 0px;
+    height: 100%;
+    width: 10px;
+}
+
+.dashboard-strip-yellow {
+    background-color: var(--accent-color);
+}
+
+.dashboard-strip-red {
+    background-color: var(--secondary-color-alt);
+}
+
+.dashboard-strip-green {
+    background-color: var(--primary-color-alt);
+}
+
+.dashboard-row {
+    margin-bottom: 25px;
+}
+
+.dashboard-header {
+    display: block;
+    text-align: left;
+    margin-bottom: 25px;
+    padding: 10px;
+    margin-left: -50px;
+    padding-left: 50px;
+    padding-right: 25px;
+    margin-right: -50px;
+    color: white;
 }
