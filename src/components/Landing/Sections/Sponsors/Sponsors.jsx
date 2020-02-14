@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { defaults } from "../../../../Defaults.js";
-import SponsorContainer from "./SponsorContainer.jsx";
+import { defaults, theme } from "../../../../Defaults.js";
+import CarouselContainer from "./CarouselContainer.jsx";
 import PropTypes from "prop-types";
 import { BarLoader } from "react-spinners";
 
@@ -49,15 +49,15 @@ class Sponsors extends Component {
         
         if (this.state.sponsorslogos) {
             let SponsorDeclaration = this.state.sponsorslogos.sections;
-            //console.log(this.state.sponsorslogos);
+            console.log(this.state.sponsorslogos.sections);
             for (let i = 0; i < SponsorDeclaration.length; i++) {
                 if (SponsorDeclaration[i]["enabled"]) {
                     renderList.push(
-                        <SponsorContainer key={i}
+                        <CarouselContainer key={i}
                             showName={false}
                             isMobile={this.props.isMobile}
                             baseURL={defaults.sponsorshipLogos}
-                            declaration={SponsorDeclaration[i]} />
+                            declaration={SponsorDeclaration[i]}/>
                     );
                 }
             }
@@ -72,7 +72,7 @@ class Sponsors extends Component {
                 //console.log(i);
                 if (PartnerDeclaration[i]["enabled"]) {
                     partnerList.push(
-                        <SponsorContainer key={i}
+                        <CarouselContainer key={i}
                             showName={false}
                             baseURL={defaults.partnerLogos}
                             isMobile={this.props.isMobile}
@@ -86,15 +86,14 @@ class Sponsors extends Component {
         
         if (renderList.length > 0 && partnerList.length > 0) {
             return (
-                <div >
-                    <h1 className="display-4 theme-font mb-3">Sponsors</h1>
-                    <hr />
-                    {renderList}                     
-                    <h1 className="display-4 theme-font mt-3 mb-3">Partners</h1>
-                    <hr />
-                    {partnerList}
-                    <h4 className="my-5"
-                        style={{textAlign: "center"}}> Interested in sponsoring?  Contact us at <a href="mailto:sponsorship@hackru.org"> sponsorship@hackru.org</a>.</h4>
+                <div style={{ backgroundColor: theme.secondary[1], color: "white", boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.5)", padding: 50 }}>
+                    <div style={{ position: "absolute", right: "calc(15px)", top: 0, height: "100%", backgroundColor: theme.accent[0], width: 10 }}></div>
+                    <h1 className="display-4 theme-font">Sponsors</h1>
+                    <div className="row mb-3" style={{ marginLeft: -50, marginRight: -50 }}>
+                        <div style={{ color: "white", padding: 50, paddingBottom: 0 }} className="col-xs-12 col-sm-12">
+                            {renderList}
+                        </div>
+                    </div>
                 </div>
             );
         } else {
