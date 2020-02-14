@@ -12,6 +12,7 @@ import {
     TeamPage,
     ProjectorPage,
     E404 } from "./components/Pages"; // Router Pages
+import Background from "./Background"
 import NavBar from "./NavBar";
 import { defaults } from "./Defaults"; // Get a handle to the default application settings
 import { Profile } from "./components/Profile"; // User profile storage
@@ -149,7 +150,7 @@ class App extends Component {
                 {/* BrowserRouter wil allow us to switch between the different pages in our SPA based on the URL routing */}
                 <div>
                     {/* We need to show this on our webpage at all times, so we're just going to dump it in the root */}
-                    {/* <Background /> */}
+                    <Background />
                     <NavBar profile={this.state.profile}/>
                     {/* We put the background here so that even after the page reroutes to different urls, the flying
                         logos will stay constant, allowing for a seemless user experience. First, we render the logos

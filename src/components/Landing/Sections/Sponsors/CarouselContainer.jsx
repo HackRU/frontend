@@ -54,7 +54,6 @@ class CarouselContainer extends Component {
                     </div>
             </CarouselItem>);
         }
-        console.log(declaration.size.width + " " + declaration.size.height);
         return (
             <Container fluid
                 style={{ textAlign: "center" }}>

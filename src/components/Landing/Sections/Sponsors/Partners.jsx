@@ -6,9 +6,9 @@ import { BarLoader } from "react-spinners";
 
 // import SponsorDeclaration from defaults.sponsorshipLogos;
 /**
- * Sponsors component for the landing page
+ * Partners component for the landing page
  */
-class Sponsors extends Component {
+class Partners extends Component {
 
 
     state = {
@@ -18,7 +18,7 @@ class Sponsors extends Component {
     }
 
     UNSAFE_componentWillMount() {
-        fetch(defaults.sponsorshipLogos + "sponsors.json",
+        fetch(defaults.partnerLogos + "partners.json",
             {
                 method: "GET", 
                 mode: "cors"
@@ -26,44 +26,48 @@ class Sponsors extends Component {
         ).then(response => response.json())
             .then(data =>
                 this.setState({
-                    sponsorslogos: data
+                    partnerLogos: data
                 })   
             );
+        
     }
 
     render() {
-        let renderList = [];
         let partnerList = [];
-        
-        if (this.state.sponsorslogos) {
-            let SponsorDeclaration = this.state.sponsorslogos.sections;
-            for (let i = 0; i < SponsorDeclaration.length; i++) {
-                if (SponsorDeclaration[i]["enabled"]) {
-                    renderList.push(
+        if (this.state.partnerLogos) {
+
+            let PartnerDeclaration = this.state.partnerLogos.sections;
+            //console.log(PartnerDeclaration);
+            for (let i = 0; i < PartnerDeclaration.length; i++) {
+                //console.log(i);
+                if (PartnerDeclaration[i]["enabled"]) {
+                    partnerList.push(
                         <SponsorContainer key={i}
                             showName={false}
+                            baseURL={defaults.partnerLogos}
                             isMobile={this.props.isMobile}
-                            baseURL={defaults.sponsorshipLogos}
-                            declaration={SponsorDeclaration[i]}/>
+                            declaration={PartnerDeclaration[i]} />
                     );
                 }
             }
         }
+
+
         
-        if (renderList.length > 0) {
+        if (partnerList.length > 0) {
             return (
                 <div>
-                    <div style={{ backgroundColor: theme.secondary[1], color: "white", boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.5)" }}>
+                    <div style={{ backgroundColor: theme.secondary[1], color: "white", boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.5)", padding: 50 }}>
                         <div style={{ position: "absolute", right: "calc(15px)", top: 0, height: "100%", backgroundColor: theme.accent[1], width: 10 }}></div>
-                        <h1 className="display-4 theme-font" style={{ padding: 50 }}>Sponsors</h1>
-                        {renderList}
+                        <h1 className="display-4 theme-font">Partners</h1>
                     </div>
+                    {partnerList}
                 </div>
             );
         } else {
             return (
                 <div>
-                    <h1 className="display-4 theme-font mb-3">Sponsors</h1>
+                    <h1 className="display-4 theme-font mb-3">Partners</h1>
                     <h4> {this.state.loading} </h4>
                     <BarLoader color="rgba(0, 0, 0, 0.25)" />               
                 </div>
@@ -72,8 +76,8 @@ class Sponsors extends Component {
     }
 }
 
-Sponsors.propTypes = {
+Partners.propTypes = {
     isMobile: PropTypes.bool,
 };
 
-export default Sponsors;
+export default Partners;
