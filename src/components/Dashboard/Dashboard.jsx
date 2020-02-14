@@ -11,6 +11,7 @@ import TravelReimbursementsForm from "./Forms/TravelReimbursementsForm";
 import UserProfileForm from "./Forms/UserProfileForm/UserProfileForm";
 import { ProfileType } from "../Profile";
 import PropTypes from "prop-types";
+import { theme } from "../../Defaults";
 
 class Dashboard extends Component {
     state = {
@@ -97,16 +98,15 @@ class Dashboard extends Component {
         rolesString = rolesString.substring(0, rolesString.length - 2);
         return (
             <Container fluid
-                style={{ width: "100%", minHeight: "100vh", textAlign: "center", /*backgroundColor: theme.secondary[1]*/ }}
+                style={{ width: "100%", minHeight: "100vh", textAlign: "center", backgroundColor: theme.secondary[1] }}
                 className="d-flex align-items-center">
                 <div style={{ zIndex: 3, color: "white", width: "100%", paddingTop: "4rem" }}
                     align="center">
-                    <Container>
                         <div style={{ width: "100%", textAlign: "left", marginBottom: 0, paddingTop: 35 }}>
                             <Row>
                                 <Col md={8}
                                     xs={12}>
-                                    <h1 className="display-4 theme-font">Welcome, {user.first_name}</h1>
+                                    <h1 className="display-4">Welcome, {user.first_name}</h1>
                                     <i>{rolesString}</i>
                                 </Col>
                                 <Col style={{ textAlign: "center" }}
@@ -179,7 +179,6 @@ class Dashboard extends Component {
                         {(user.role && user.role.director) &&
                             <AdminControl profile={this.props.profile}
                                 user={user} />}
-                    </Container>
                 </div>
             </Container>
         );

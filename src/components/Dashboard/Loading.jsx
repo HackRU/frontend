@@ -10,29 +10,27 @@ import PropTypes from "prop-types";
  */
 const Loading = ({ text }) => (
     <Container fluid
-        style={{ width: "100%", minHeight: "100vh", textAlign: "center", backgroundColor: theme.secondary[1] }}
+        style={{ width: "100%", minHeight: "100vh", textAlign: "center" }}
         className="d-flex align-items-center">
-        <div style={{ width: "100%", color: "rgba(255, 255, 255, 0.1)" }}
+        <div style={{ width: "100%", color: theme.accent[0] }}
             align="center">
             <div style={{ display: "inline-block" }}>
                 <h1 className="display-1">L</h1>
             </div>
             <div style={{ display: "inline-block" }}>
-                <BounceLoader color="rgba(255, 255, 255, 0.1)" />
+                <BounceLoader color={theme.accent[0]} />
             </div>
             <div style={{ display: "inline-block" }}>
                 <h1 className="display-1">ading</h1>
             </div>
             <div style={{ display: "inline-block" }}>
-                <PulseLoader color="rgba(255, 255, 255, 0.1)" />
+                <PulseLoader color={theme.accent[0]} />
             </div>
             <p className="lead"> { text } </p>
         </div>
     </Container>
 );
-
 Loading.propTypes = {
     text: PropTypes.string,
 };
-
 export default Loading;
