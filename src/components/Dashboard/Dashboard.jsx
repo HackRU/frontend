@@ -97,10 +97,33 @@ class Dashboard extends Component {
         Object.keys(user.role).forEach((key) => { if (user.role[key]) { rolesString += `${key}, `; }});
         rolesString = rolesString.substring(0, rolesString.length - 2);
         return (
-            <Container fluid
-                style={{ width: "100%", minHeight: "100vh", textAlign: "center", backgroundColor: theme.secondary[1] }}
-                className="d-flex align-items-center">
-                <div style={{ zIndex: 3, color: "white", width: "100%", paddingTop: "4rem" }}
+            <Container fluid style={{ width: "100%", minHeight: "100vh", paddingTop: 90 }}>
+                <Row>
+                    <Col xs={9}>
+                        <div className="dashboard-card">
+                            <div style={{ position: "absolute", left: "calc(15px)", top: 0, height: "100%", backgroundColor: theme.accent[0], width: 10 }}></div>
+                            <h1 className="display-4">Shivan</h1>
+                        </div>
+                    </Col>
+                    <Col xs={3}>
+                        <div className="dashboard-card">
+                            <div style={{ position: "absolute", left: "calc(15px)", top: 0, height: "100%", backgroundColor: theme.accent[0], width: 10 }}></div>
+                        </div>
+                    </Col>
+                </Row>
+                <Row>
+                </Row>
+                <Row>
+                    <Col>
+                        Shivan
+                    </Col>
+                </Row>
+                <Row>
+                    <Col>
+                        Shivan
+                    </Col>
+                </Row>
+                {/* <div style={{ zIndex: 3, color: "white", width: "100%", paddingTop: "4rem" }}
                     align="center">
                         <div style={{ width: "100%", textAlign: "left", marginBottom: 0, paddingTop: 35 }}>
                             <Row>
@@ -179,7 +202,7 @@ class Dashboard extends Component {
                         {(user.role && user.role.director) &&
                             <AdminControl profile={this.props.profile}
                                 user={user} />}
-                </div>
+                </div> */}
             </Container>
         );
     }
