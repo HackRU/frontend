@@ -84,7 +84,7 @@ class Schedule extends Component {
                     <div className="row mb-3" style={{ marginLeft: -50, marginRight: -50 }}>
                     <div style={{ color: "white", padding: 50, paddingBottom: 0 }} className="col-xs-12 col-sm-12">
                         <Row>
-                            <Col style={{ writingMode: "vertical-lr", transform: 'rotate(180deg)' }} className="text-center" xs="1"> 
+                            <Col style={{ writingMode: "vertical-lr", transform: 'rotate(180deg)', marginRight: -25, marginLeft: 25 }} className="text-center" xs="1"> 
                                 <h3 className="lead">{saturday_date}</h3>
                             </Col>
                             <Col>
@@ -92,7 +92,7 @@ class Schedule extends Component {
                             </Col>
                         </Row>
                         <Row>
-                            <Col style={{ writingMode: "vertical-lr", transform: 'rotate(180deg)' }} className="text-center" xs="1"> 
+                            <Col style={{ writingMode: "vertical-lr", transform: 'rotate(180deg)', marginRight: -25, marginLeft: 25 }} className="text-center" xs="1"> 
                                 <h3 className="lead">{sunday_date}</h3>
                             </Col>
                             <Col>
