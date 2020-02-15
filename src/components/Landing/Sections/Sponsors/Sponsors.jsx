@@ -33,8 +33,6 @@ class Sponsors extends Component {
 
     render() {
         let renderList = [];
-        let partnerList = [];
-        
         if (this.state.sponsorslogos) {
             let SponsorDeclaration = this.state.sponsorslogos.sections;
             for (let i = 0; i < SponsorDeclaration.length; i++) {

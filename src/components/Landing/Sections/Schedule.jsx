@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { theme } from "../../../Defaults";
-import { Icon } from "react-fa";
-import { Table, Card, Container, Col, Row } from "reactstrap";
+import { Table, Col, Row } from "reactstrap";
 
 /**
  * Schedule component for the landing page

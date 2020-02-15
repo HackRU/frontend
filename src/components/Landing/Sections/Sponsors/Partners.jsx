@@ -37,7 +37,7 @@ class Partners extends Component {
         if (this.state.partnerLogos) {
 
             let PartnerDeclaration = this.state.partnerLogos.sections;
-            //console.log(PartnerDeclaration);
+            console.log(PartnerDeclaration);
             for (let i = 0; i < PartnerDeclaration.length; i++) {
                 //console.log(i);
                 if (PartnerDeclaration[i]["enabled"]) {
@@ -58,10 +58,10 @@ class Partners extends Component {
             return (
                 <div>
                     <div style={{ backgroundColor: theme.secondary[1], color: "white", boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.5)", padding: 50 }}>
-                        <div style={{ position: "absolute", right: "calc(15px)", top: 0, height: "100%", backgroundColor: theme.accent[1], width: 10 }}></div>
+                        <div style={{ position: "absolute", right: "calc(15px)", top: 0, height: "100%", backgroundColor: theme.primary[1], width: 10 }}></div>
                         <h1 className="display-4 theme-font">Partners</h1>
+                        {partnerList}
                     </div>
-                    {partnerList}
                 </div>
             );
         } else {
