@@ -1,6 +1,6 @@
 import React, { Component } from "react"; // Default react imports for the component
-import { theme } from "./Defaults"
-import { Container, Row, Col } from "reactstrap"
+import { theme } from "./Defaults";
+import { Container, Row, Col } from "reactstrap";
 
 const imageDefs = [
     {
@@ -79,7 +79,7 @@ class Background extends Component {
     /**
      * Initial Pre Render Method
      */
-    componentWillMount() {
+    UNSAFE_componentWillMount() {
         this._event_onResize();
     }
 
@@ -108,11 +108,25 @@ class Background extends Component {
                 images.push(this.renderImage(image.source, image.top, image.left, image.bottom, image.right, image.height, image.transform, image.multiplier ? 1 - image.multiplier : 1, image.opacity));
             }
             return (
-                <Container fluid style={{ position: "fixed" }} className="theme-background">
+                <Container fluid
+                    style={{ position: "fixed" }}
+                    className="theme-background">
                     <Row className="justify-content-center">
-                        <Col xs="2" sm="2" md="2" lg="1" style={{ transform: "rotate(45deg)", height: "100vh", backgroundColor: theme.primary[1] }}/>
-                        <Col xs="2" sm="2" md="2" lg="1" style={{ transform: "rotate(45deg)", height: "100vh", backgroundColor: theme.accent[1] }}/>
-                        <Col xs="2" sm="2" md="2" lg="1" style={{ transform: "rotate(45deg)", height: "100vh", backgroundColor: theme.secondary[1] }}/>
+                        <Col xs="2"
+                            sm="2"
+                            md="2"
+                            lg="1"
+                            style={{ transform: "rotate(45deg)", height: "100vh", backgroundColor: theme.primary[1] }}/>
+                        <Col xs="2"
+                            sm="2"
+                            md="2"
+                            lg="1"
+                            style={{ transform: "rotate(45deg)", height: "100vh", backgroundColor: theme.accent[1] }}/>
+                        <Col xs="2"
+                            sm="2"
+                            md="2"
+                            lg="1"
+                            style={{ transform: "rotate(45deg)", height: "100vh", backgroundColor: theme.secondary[1] }}/>
                     </Row>
                     {images}
                 </Container>

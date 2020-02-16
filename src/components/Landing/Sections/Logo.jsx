@@ -22,12 +22,12 @@ class Logo extends Component {
                             let pathLength = 0;
                             if (el.getTotalLength) {
                                 pathLength = el.getTotalLength();
-                                el.setAttribute('stroke-dasharray', pathLength);
+                                el.setAttribute("stroke-dasharray", pathLength);
                             }
                             return [pathLength, 0];
                         },
                         easing: "easeInOutExpo",
-                        duration: (el, index) => {
+                        duration: (el) => {
                             let defaultVal = 1000;
                             let cns = el.className.baseVal.split(" ");
                             for (let i = 0; i < cns.length; i++) {
@@ -66,6 +66,9 @@ class Logo extends Component {
 Logo.propTypes = {
     src: PropTypes.string,
     noCircle: PropTypes.bool,
+    repeat: PropTypes.bool,
+    style: PropTypes.object,
+    color: PropTypes.string
 };
 
 export default Logo;

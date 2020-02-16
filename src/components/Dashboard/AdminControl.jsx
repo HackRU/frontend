@@ -84,7 +84,8 @@ class AdminControl extends Component {
             error2 = <Alert color={this.state.msg2[0]}>{this.state.msg2[1]}</Alert>;
         }
         return [
-            <Section sm={6}
+            <Section key={0}
+                sm={6}
                 title="Bulk Role Editor"
                 subtitle="Send out magic links or promote a bunch of users">
                 <Form onSubmit={(e) => {
@@ -208,7 +209,8 @@ class AdminControl extends Component {
                     {loading2}
                 </Form>
             </Section>,
-            <Section sm={6}
+            <Section key={1}
+                sm={6}
                 title="Privileging"
                 subtitle="Promote and demote users based on their role">
                 <Form onSubmit={(e) => {

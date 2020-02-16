@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Button, Col, Form, FormGroup, Label, Input, Collapse } from "reactstrap";
-import { theme } from "../../../Defaults";
 import { Creatable } from "react-select";
 import Autocomplete from "react-google-autocomplete";
 import ReactDependentScript from "react-dependent-script";

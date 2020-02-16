@@ -43,7 +43,8 @@ class LandingPage extends Component {
                         <div>
                             <Row className="section"
                                 style={style}>
-                                <Container fluid className={className} >
+                                <Container fluid
+                                    className={className} >
                                     <div className={sectionClasses}>
                                         {component}
                                     </div>

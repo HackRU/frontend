@@ -91,39 +91,59 @@ class Dashboard extends Component {
             <Container style={{ width: "100%", minHeight: "100vh", paddingTop: 90 }}>
                 <ProfileMessage message={this.state.profileMSG} />
                 <Row>
-                    <Col className="dashboard-row" lg={12} >
+                    <Col className="dashboard-row"
+                        lg={12} >
                         <div className="dashboard-card">
                             <div className="dashboard-left-strip dashboard-strip-red"></div>
                             <div style={{ position: "relative", top: -75, height: 200 }}>
-                                <Logo repeat={false} color={theme.secondary[1]} noCircle src="./assets/icons/hru-text-dyn.svg" />
+                                <Logo repeat={false}
+                                    color={theme.secondary[1]}
+                                    noCircle
+                                    src="./assets/icons/hru-text-dyn.svg" />
                             </div>
                         </div>
                     </Col>
                 </Row>
                 <Row>
-                    <Col className="dashboard-row" xl={8} lg={8} md={6} sm={12} xs={12}>
+                    <Col className="dashboard-row"
+                        xl={8}
+                        lg={8}
+                        md={6}
+                        sm={12}
+                        xs={12}>
                         <div className="dashboard-card">
                             <div className="dashboard-left-strip dashboard-strip-yellow"></div>
                             <h1 className="display-4 dashboard-header dashboard-strip-yellow">Welcome, {user.first_name}</h1>
                             <i style={{ position: "absolute", bottom: 10, left: 40 }}>{rolesString}</i>
-                            <div className="d-flex align-items-center" style={{ height: "60%", textAlign: "center" }}>
+                            <div className="d-flex align-items-center"
+                                style={{ height: "60%", textAlign: "center" }}>
                                 <div style={{ marginTop: 50, textAlign: "center", width: "100%" }}>
                                     <ApplicationStatus onComing={() => {
-                                            user.registration_status = "coming";
-                                            this.submitUser(user);
-                                        }} onNotComing={() => {
-                                            user.registration_status = "not-coming";
-                                            this.submitUser(user);
-                                        }} travelling_from={user.travelling_from} status={user.registration_status} />
+                                        user.registration_status = "coming";
+                                        this.submitUser(user);
+                                    }}
+                                    onNotComing={() => {
+                                        user.registration_status = "not-coming";
+                                        this.submitUser(user);
+                                    }}
+                                    travelling_from={user.travelling_from}
+                                    status={user.registration_status} />
                                 </div>
                             </div>
                         </div>
                     </Col>
-                    <Col className="dashboard-row" xl={4} lg={4} md={6} sm={12} xs={12}>
-                        <div className="dashboard-card" style={{ textAlign: "center" }}>
+                    <Col className="dashboard-row"
+                        xl={4}
+                        lg={4}
+                        md={6}
+                        sm={12}
+                        xs={12}>
+                        <div className="dashboard-card"
+                            style={{ textAlign: "center" }}>
                             <div className="dashboard-left-strip dashboard-strip-green"></div>
                             <h1 className="display-4 dashboard-header dashboard-strip-green">QR</h1>
-                            <div className="d-flex align-items-center" style={{ height: "60%", textAlign: "center" }}>
+                            <div className="d-flex align-items-center"
+                                style={{ height: "60%", textAlign: "center" }}>
                                 <div style={{ marginTop: 50, textAlign: "center", width: "100%" }}>
                                     <QR email={user.email} />
                                 </div>
@@ -162,7 +182,8 @@ class Dashboard extends Component {
                 </Row>
                 <Row>
                     {(user.role && user.role.director) &&
-                        <AdminControl profile={this.props.profile} user={user} />}
+                        <AdminControl profile={this.props.profile}
+                            user={user} />}
                 </Row>
                 {/* <div style={{ zIndex: 3, color: "white", width: "100%", paddingTop: "4rem" }}
                     align="center">

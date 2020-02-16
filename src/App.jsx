@@ -12,7 +12,7 @@ import {
     TeamPage,
     ProjectorPage,
     E404 } from "./components/Pages"; // Router Pages
-import Background from "./Background"
+import Background from "./Background";
 import NavBar from "./NavBar";
 import { defaults } from "./Defaults"; // Get a handle to the default application settings
 import { Profile } from "./components/Profile"; // User profile storage

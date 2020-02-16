@@ -40,7 +40,7 @@ const FAQTextOne = {
 const FAQTextTwo = {
     one: {
         title: "Who can come?",
-        text: [<p>HackRU welcomes undergraduate and graduate students of all majors, backgrounds, and skill levels to come create. Additionally, high school students who will be 18 by HackRU are allowed to register. <i>Unfortunately, if you are under 18, you will not be able to attend, unless you are also a Rutgers student.</i></p>]
+        text: [<p key={1}>HackRU welcomes undergraduate and graduate students of all majors, backgrounds, and skill levels to come create. Additionally, high school students who will be 18 by HackRU are allowed to register. <i>Unfortunately, if you are under 18, you will not be able to attend, unless you are also a Rutgers student.</i></p>]
     },
     two: {
         title: "I'm new. What should I do?",
@@ -82,7 +82,8 @@ class FAQs extends Component {
         return (
             <div style={{ backgroundColor: theme.secondary[1], color: "white", boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.5)", padding: 50, marginTop: 25 }}>
                 <div style={{ position: "absolute", left: "calc(15px)", top: 0, height: "calc(100%)", backgroundColor: theme.accent[1], width: 10 }}></div>    
-                <h1 style={{ marginBottom: 25 }} className="display-4 theme-font">FAQs</h1>  
+                <h1 style={{ marginBottom: 25 }}
+                    className="display-4 theme-font">FAQs</h1>  
                 <Container fluid>
                     <Row>
                         <Col xs={cols}>

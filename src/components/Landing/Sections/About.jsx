@@ -18,22 +18,30 @@ class About extends Component {
                         height={100} /> 
                 </div>
                 <h1 className="display-4 theme-font">About HackRU</h1>
-                <div className="row mb-3" style={{ marginLeft: -50, marginRight: -50 }}>
-                    <div style={{ color: "white", padding: 50, paddingBottom: 0 }} className="col-xs-12 col-sm-12">
+                <div className="row mb-3"
+                    style={{ marginLeft: -50, marginRight: -50 }}>
+                    <div style={{ color: "white", padding: 50, paddingBottom: 0 }}
+                        className="col-xs-12 col-sm-12">
                         <div style={{ position: "absolute", left: 190, height: 10, backgroundColor: theme.accent[0], width: "calc(100% - 190px)", marginTop: 25 }}></div>
-                        <h2 className="display-6" style={{ display: "inline-block", marginBottom: 25, backgroundColor: theme.accent[1], padding: 10, marginLeft: -50, paddingLeft: 50, borderTopRightRadius: 25, borderBottomRightRadius: 25, paddingRight: 25 }}><Icon name="question-circle" /> What?</h2>
-                        <p style={{ display: "inline-block" }} className="lead">
+                        <h2 className="display-6"
+                            style={{ display: "inline-block", marginBottom: 25, backgroundColor: theme.accent[1], padding: 10, marginLeft: -50, paddingLeft: 50, borderTopRightRadius: 25, borderBottomRightRadius: 25, paddingRight: 25 }}><Icon name="question-circle" /> What?</h2>
+                        <p style={{ display: "inline-block" }}
+                            className="lead">
                             HackRU is a 24-hour hackathon at Rutgers University. We welcome hundreds of students to join us in building awesome tech projects. Industry experts and mentors help foster an atmosphere of learning through tech-talks and one-on-one guidance. We encourage all students, no matter their experience level or educational background, to challenge themselves and expand their creative, technical, and collaboration skills at HackRU.
                         </p>
                     </div>
-                    <div style={{ color: "white", padding: 50, paddingBottom: 0 }} className="col-xs-12 col-sm-12"> 
+                    <div style={{ color: "white", padding: 50, paddingBottom: 0 }}
+                        className="col-xs-12 col-sm-12"> 
                         <div style={{ position: "absolute", left: 190, height: 10, backgroundColor: theme.accent[0], width: "calc(100% - 190px)" }}></div>
-                        <h2 className="display-6" style={{ display: "inline-block", marginTop: -25,  marginBottom: 25, backgroundColor: theme.accent[1], padding: 10, marginLeft: -50, paddingLeft: 50, borderTopRightRadius: 25, borderBottomRightRadius: 25, paddingRight: 25 }}><Icon name="calendar"/> When?</h2>
+                        <h2 className="display-6"
+                            style={{ display: "inline-block", marginTop: -25,  marginBottom: 25, backgroundColor: theme.accent[1], padding: 10, marginLeft: -50, paddingLeft: 50, borderTopRightRadius: 25, borderBottomRightRadius: 25, paddingRight: 25 }}><Icon name="calendar"/> When?</h2>
                         <p className="lead">HackRU is from April 18th-19th, 2020.</p>
                     </div>
-                    <div style={{ color: "white", padding: 50 }} className="col-xs-12 col-sm-12"> 
+                    <div style={{ color: "white", padding: 50 }}
+                        className="col-xs-12 col-sm-12"> 
                         <div style={{ position: "absolute", left: 190, height: 10, backgroundColor: theme.accent[0], width: "calc(100% - 190px)" }}></div>
-                        <h2 className="display-6" style={{ display: "inline-block", marginTop: -25, marginBottom: 25, backgroundColor: theme.accent[1], padding: 10, marginLeft: -50, paddingLeft: 50, borderTopRightRadius: 25, borderBottomRightRadius: 25, paddingRight: 25 }}><Icon name="location-arrow"/> Where?</h2>
+                        <h2 className="display-6"
+                            style={{ display: "inline-block", marginTop: -25, marginBottom: 25, backgroundColor: theme.accent[1], padding: 10, marginLeft: -50, paddingLeft: 50, borderTopRightRadius: 25, borderBottomRightRadius: 25, paddingRight: 25 }}><Icon name="location-arrow"/> Where?</h2>
                         <p className="lead">126 College Ave, New Brunswick, NJ 08901</p>
                         <iframe title="about-map"
                             frameBorder={0}

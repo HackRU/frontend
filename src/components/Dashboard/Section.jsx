@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-import { Collapse, Col, ListGroupItem, Button } from "reactstrap";
+import { Collapse, Col, Button } from "reactstrap";
 import { Icon } from "react-fa";
-import { theme } from "../../Defaults";
 import PropTypes from "prop-types";
 /**
  * A collapsable section on the dashboard
@@ -22,7 +21,7 @@ class Section extends Component {
      * The default render method
      */
     render() {
-        let { children, title, subtitle, isOpen, ...rest } = this.props;
+        let { children, title, ...rest } = this.props;
         return (
             <Col className="dashboard-row"
                 {...rest} >
@@ -30,7 +29,10 @@ class Section extends Component {
                     <div className="dashboard-left-strip dashboard-strip-red"></div>
                     <h1 className="display-4 dashboard-header dashboard-strip-red">
                         {title}
-                        <Button color="white" className="pill-btn" style={{ position: "absolute", right: 25, top: 70, fontSize: 25 }} onClick={() => this.setState({ isOpen: !this.state.isOpen })}>
+                        <Button color="white"
+                            className="pill-btn"
+                            style={{ position: "absolute", right: 25, top: 70, fontSize: 25 }}
+                            onClick={() => this.setState({ isOpen: !this.state.isOpen })}>
                             <Icon name={(this.state.isOpen) ? ("chevron-up") : ("chevron-down")} />
                         </Button>
                     </h1>
@@ -47,7 +49,6 @@ class Section extends Component {
 Section.propTypes = {
     isOpen: PropTypes.bool,
     children: PropTypes.any,
-    title: PropTypes.string,
-    subtitle: PropTypes.string
+    title: PropTypes.string
 };
 export default Section;

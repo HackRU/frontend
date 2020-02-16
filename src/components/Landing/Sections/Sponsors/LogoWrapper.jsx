@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { theme } from "../../../../Defaults.js";
 import SponsorContainer from "./SponsorContainer.jsx";
 import PropTypes from "prop-types";
 import { BarLoader } from "react-spinners";
@@ -29,7 +28,11 @@ class LogoWrapper extends Component {
             for (let i = 0; i < SponsorDeclaration.length; i++) {
                 if (SponsorDeclaration[i]["enabled"]) {
                     renderList.push(
-                        <SponsorContainer key={i} showName={false} isMobile={this.props.isMobile} baseURL={this.props.baseURL} declaration={SponsorDeclaration[i]}/>
+                        <SponsorContainer key={i}
+                            showName={false}
+                            isMobile={this.props.isMobile}
+                            baseURL={this.props.baseURL}
+                            declaration={SponsorDeclaration[i]}/>
                     );
                 }
             }
@@ -38,7 +41,8 @@ class LogoWrapper extends Component {
             return (
                 <div>
                     <div style={{ backgroundColor: "white", color: "black", boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.5)" }}>
-                        <h1 className="display-4 theme-font" style={{ padding: 50 }}>{this.props.title}</h1>
+                        <h1 className="display-4 theme-font"
+                            style={{ padding: 50 }}>{this.props.title}</h1>
                         {renderList}
                     </div>
                 </div>
@@ -57,6 +61,9 @@ class LogoWrapper extends Component {
 
 LogoWrapper.propTypes = {
     isMobile: PropTypes.bool,
+    endpoint: PropTypes.string,
+    baseURL: PropTypes.string,
+    title: PropTypes.string
 };
 
 export default LogoWrapper;

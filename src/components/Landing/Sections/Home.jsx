@@ -25,7 +25,8 @@ class Home extends Component {
                 <Container fluid
                     id="landing-section"
                     style={{ zIndex: 3, width: "100%", minHeight: "100vh", textAlign: "center", userSelect: "none", backgroundColor: theme.secondary[1] }}>
-                    <Motion defaultStyle={{ movement: 5, opacity: 0 }} style={{ movement: spring(-5, { stiffness: 2, damping: 0 }), opacity: spring(1, { stiffness: 0.5, damping: 4 }) }}>
+                    <Motion defaultStyle={{ movement: 5, opacity: 0 }}
+                        style={{ movement: spring(-5, { stiffness: 2, damping: 0 }), opacity: spring(1, { stiffness: 0.5, damping: 4 }) }}>
                         {
                             ({ movement, opacity }) =>
                                 <div style={{ position: "absolute", overflow: "hidden", padding: 0, margin: 0, left: 0, top: 0 }}><div style={{ padding: 0, margin: 0, position: "relative", height: "100vh", width: "100vw", overflow: "hidden" }}>
@@ -102,7 +103,7 @@ class Home extends Component {
                                             height={window.innerHeight / 3} /> 
                                     </div>
                                 </div></div>
-                            }
+                        }
                     </Motion>
                     <Row style={{ minWidth: "100%", minHeight: "100vh" }}
                         className="d-flex align-items-center">
@@ -110,17 +111,21 @@ class Home extends Component {
                         <Col xs={8}
                             style={{ display: "block" }}>
                             {loggoutMsg}
-                            <Motion defaultStyle={{ opacity: 0 }} style={{ opacity: spring(1, { stiffness: 1, damping: 1 }) }}>
+                            <Motion defaultStyle={{ opacity: 0 }}
+                                style={{ opacity: spring(1, { stiffness: 1, damping: 1 }) }}>
                                 {
                                     ({ opacity }) =>
-                                        <Logo repeat={true} style={{ opacity }} noCircle
+                                        <Logo repeat={true}
+                                            style={{ opacity }}
+                                            noCircle
                                             src="./assets/icons/hru-text.svg" />
                                 }
                             </Motion>
                             {/* <h1 style={{ color: theme.accent[0], marginTop: -100, marginBottom: 100 }}>hack all knight</h1> */}
-                            <Motion defaultStyle={{ opacity: 0, top: 1000 }} style={{
-                                opacity: spring(1, { stiffness: 1, damping: 1 }),
-                                top: spring(0, { stiffness: 20, damping: 4 })
+                            <Motion defaultStyle={{ opacity: 0, top: 1000 }}
+                                style={{
+                                    opacity: spring(1, { stiffness: 1, damping: 1 }),
+                                    top: spring(0, { stiffness: 20, damping: 4 })
                                 }}>
                                 {
                                     ({ opacity, top }) =>
@@ -128,24 +133,42 @@ class Home extends Component {
                                             className="display-4 theme-font">{defaults.slogan}</h2>
                                 }
                             </Motion>
-                            <Motion defaultStyle={{ opacity: 0 }} style={{ opacity: spring(1, { stiffness: 1, damping: 1 }) }}>
+                            <Motion defaultStyle={{ opacity: 0 }}
+                                style={{ opacity: spring(1, { stiffness: 1, damping: 1 }) }}>
                                 {
                                     ({ opacity }) =>
                                         <div>
-                                            <h2 style={{ opacity: opacity }} className="lead theme-font"><Icon style={{ marginRight: 5 }}
-                                                name="map-marker" /> {defaults.locationText}</h2>
-                                            <h2 style={{ opacity: opacity }} className="lead theme-font"><Icon style={{ marginRight: 5 }}
-                                                name="calendar" /> {defaults.dateText}</h2>
+                                            <h2 style={{ opacity: opacity }}
+                                                className="lead theme-font"><Icon style={{ marginRight: 5 }}
+                                                    name="map-marker" /> {defaults.locationText}</h2>
+                                            <h2 style={{ opacity: opacity }}
+                                                className="lead theme-font"><Icon style={{ marginRight: 5 }}
+                                                    name="calendar" /> {defaults.dateText}</h2>
                                             <hr style={{ opacity }} />
                                             <ButtonGroup>
                                                 {!this.props.profile.isLoggedIn ?
                                                     <div>
-                                                        <Link to="/login"><Button outline className="pill-btn" color="warning" size="lg" style={{ opacity }}>Login</Button></Link>
-                                                        <Link to="/signup"><Button className="pill-btn" color="success" size="lg" style={{ opacity }}>Register</Button></Link>
+                                                        <Link to="/login"><Button outline
+                                                            className="pill-btn"
+                                                            color="warning"
+                                                            size="lg"
+                                                            style={{ opacity }}>Login</Button></Link>
+                                                        <Link to="/signup"><Button className="pill-btn"
+                                                            color="success"
+                                                            size="lg"
+                                                            style={{ opacity }}>Register</Button></Link>
                                                     </div> :
                                                     <div>
-                                                        <Link to="/dashboard"><Button outline className="pill-btn" color="warning" size="lg" style={{ opacity }}>Dashboard</Button></Link>
-                                                        <Link to="/logout"><Button outline className="pill-btn" color="warning" size="lg" style={{ opacity }}>Logout</Button></Link>
+                                                        <Link to="/dashboard"><Button outline
+                                                            className="pill-btn"
+                                                            color="warning"
+                                                            size="lg"
+                                                            style={{ opacity }}>Dashboard</Button></Link>
+                                                        <Link to="/logout"><Button outline
+                                                            className="pill-btn"
+                                                            color="warning"
+                                                            size="lg"
+                                                            style={{ opacity }}>Logout</Button></Link>
                                                     </div>
                                                 }
                                             </ButtonGroup>
@@ -175,16 +198,20 @@ class Home extends Component {
                         className="d-flex align-items-center">
                         <Col style={{ display: "block" }}>
                             {loggoutMsg}
-                            <Motion defaultStyle={{ opacity: 0 }} style={{ opacity: spring(1, { stiffness: 1, damping: 1 }) }}>
+                            <Motion defaultStyle={{ opacity: 0 }}
+                                style={{ opacity: spring(1, { stiffness: 1, damping: 1 }) }}>
                                 {
                                     ({ opacity }) =>
-                                        <Logo repeat={true} style={{ opacity }} noCircle
+                                        <Logo repeat={true}
+                                            style={{ opacity }}
+                                            noCircle
                                             src="./assets/icons/hru-text.svg" />
                                 }
                             </Motion>
-                            <Motion defaultStyle={{ opacity: 0, top: 1000 }} style={{
-                                opacity: spring(1, { stiffness: 1, damping: 1 }),
-                                top: spring(0, { stiffness: 20, damping: 4 })
+                            <Motion defaultStyle={{ opacity: 0, top: 1000 }}
+                                style={{
+                                    opacity: spring(1, { stiffness: 1, damping: 1 }),
+                                    top: spring(0, { stiffness: 20, damping: 4 })
                                 }}>
                                 {
                                     ({ opacity, top }) =>
@@ -192,30 +219,48 @@ class Home extends Component {
                                             className="display-5 theme-font">{defaults.slogan}</h2>
                                 }
                             </Motion>
-                            <Motion defaultStyle={{ opacity: 0 }} style={{ opacity: spring(1, { stiffness: 1, damping: 1 }) }}>
+                            <Motion defaultStyle={{ opacity: 0 }}
+                                style={{ opacity: spring(1, { stiffness: 1, damping: 1 }) }}>
                                 {
                                     ({ opacity }) =>
                                         <div>
-                                            <h2 style={{ opacity: opacity }} className="lead theme-font"><Icon style={{ marginRight: 5 }}
-                                                name="map-marker" /> {defaults.locationText}</h2>
-                                            <h2 style={{ opacity: opacity }} className="lead theme-font"><Icon style={{ marginRight: 5 }}
-                                                name="calendar" /> {defaults.dateText}</h2>
+                                            <h2 style={{ opacity: opacity }}
+                                                className="lead theme-font"><Icon style={{ marginRight: 5 }}
+                                                    name="map-marker" /> {defaults.locationText}</h2>
+                                            <h2 style={{ opacity: opacity }}
+                                                className="lead theme-font"><Icon style={{ marginRight: 5 }}
+                                                    name="calendar" /> {defaults.dateText}</h2>
                                             <ButtonGroup>
                                                 {!this.props.profile.isLoggedIn ?
                                                     <div>
                                                         <div>
-                                                            <Link to="/login"><Button outline className="pill-btn" color="warning" size="lg" style={{ opacity }}>Login</Button></Link>
+                                                            <Link to="/login"><Button outline
+                                                                className="pill-btn"
+                                                                color="warning"
+                                                                size="lg"
+                                                                style={{ opacity }}>Login</Button></Link>
                                                         </div>
                                                         <div>
-                                                        <Link to="/signup"><Button className="pill-btn" color="success" size="lg" style={{ opacity }}>Register</Button></Link>
+                                                            <Link to="/signup"><Button className="pill-btn"
+                                                                color="success"
+                                                                size="lg"
+                                                                style={{ opacity }}>Register</Button></Link>
                                                         </div>
                                                     </div> :
                                                     <div>
                                                         <div>
-                                                            <Link to="/dashboard"><Button outline className="pill-btn" color="warning" size="lg" style={{ opacity }}>Dashboard</Button></Link>
+                                                            <Link to="/dashboard"><Button outline
+                                                                className="pill-btn"
+                                                                color="warning"
+                                                                size="lg"
+                                                                style={{ opacity }}>Dashboard</Button></Link>
                                                         </div>
                                                         <div>
-                                                            <Link to="/logout"><Button outline className="pill-btn" color="warning" size="lg" style={{ opacity }}>Logout</Button></Link>
+                                                            <Link to="/logout"><Button outline
+                                                                className="pill-btn"
+                                                                color="warning"
+                                                                size="lg"
+                                                                style={{ opacity }}>Logout</Button></Link>
                                                         </div>
                                                     </div>
                                                 }

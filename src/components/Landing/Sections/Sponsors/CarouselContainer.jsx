@@ -1,17 +1,16 @@
 import React, { Component } from "react";
 import { theme } from "../../../../Defaults.js";
-import SponsorItem from "./SponsorItem.jsx";
-import { Container, Row, Col, Carousel, CarouselItem, CarouselControl, CarouselIndicators, CarouselCaption } from "reactstrap";
+import { Container, Row, Col, Carousel, CarouselItem, CarouselIndicators } from "reactstrap";
 import PropTypes from "prop-types";
 
 class CarouselContainer extends Component {
     constructor(props) {
-        super(props)
-        console.log(this.props.declaration)
+        super(props);
+        console.log(this.props.declaration);
         this.state = {
             activeIndex: 0,
             animating: false
-        }
+        };
     }
 
     next = () => {
@@ -19,7 +18,7 @@ class CarouselContainer extends Component {
         const nextIndex = this.state.activeIndex === this.props.declaration.children.length - 1 ? 0 : this.state.activeIndex + 1;
         this.setState({
             activeIndex: nextIndex
-        })
+        });
     }
     
     previous = () => {
@@ -27,14 +26,14 @@ class CarouselContainer extends Component {
         const nextIndex = this.state.activeIndex === 0 ? this.props.declaration.children.length - 1 : this.state.activeIndex - 1;
         this.setState({
             activeIndex: nextIndex
-        })
+        });
     }
 
     goToIndex = (index) => {
         if (this.animating) return;
         this.setState({
             activeIndex: index
-        })
+        });
     }
 
     render() {
@@ -43,16 +42,17 @@ class CarouselContainer extends Component {
         for (let i = 0; i < declaration.children.length; i++) {
             //console.log(declaration.baseURL);
             sponsors.push(
-            <CarouselItem
-                onExiting={() => this.setState({ animating:true })}
-                onExited={() => this.setState({ animating:false })}
-                key={i}>
+                <CarouselItem
+                    onExiting={() => this.setState({ animating:true })}
+                    onExited={() => this.setState({ animating:false })}
+                    key={i}>
                     <div style={{ float: "none",  maxWidth: this.props.declaration.size.width, maxHeight: this.props.declaration.size.height }}>
-                        <a href={declaration.children[i].url} className="text-center"><img alt={this.props.name}
-                            className="sponsor-item-image"
-                            src={this.props.baseURL + "logos/" + `${declaration.root}${declaration.children[i].image}`}/></a>
+                        <a href={declaration.children[i].url}
+                            className="text-center"><img alt={this.props.name}
+                                className="sponsor-item-image"
+                                src={this.props.baseURL + "logos/" + `${declaration.root}${declaration.children[i].image}`}/></a>
                     </div>
-            </CarouselItem>);
+                </CarouselItem>);
         }
         return (
             <Container fluid
@@ -72,7 +72,9 @@ class CarouselContainer extends Component {
                     activeIndex={this.state.activeIndex}
                     next={this.next}
                     previous={this.previous}>
-                    <CarouselIndicators items={sponsors} activeIndex={this.state.activeIndex} onClickHandler={this.goToIndex}/>
+                    <CarouselIndicators items={sponsors}
+                        activeIndex={this.state.activeIndex}
+                        onClickHandler={this.goToIndex}/>
                     {sponsors}
                 </Carousel>
             </Container>
@@ -83,7 +85,8 @@ class CarouselContainer extends Component {
 CarouselContainer.propTypes = {
     declaration: PropTypes.object,
     baseURL: PropTypes.string,
-    showName: PropTypes.bool
+    showName: PropTypes.bool,
+    name: PropTypes.string
 };
 
 export default CarouselContainer;

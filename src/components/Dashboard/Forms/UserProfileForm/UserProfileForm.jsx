@@ -324,9 +324,12 @@ class UserProfileForm extends Component {
                     {message}
                     <div style={{ width: "100%" }}
                         align="right">
-                        <Button className="pill-btn" color="warning" style={{ marginRight: 10 }}
+                        <Button className="pill-btn"
+                            color="warning"
+                            style={{ marginRight: 10 }}
                             type="reset">Clear</Button>
-                        <Button color="success" className="pill-btn"
+                        <Button color="success"
+                            className="pill-btn"
                             type="submit">Update</Button>
                     </div>
                 </AvForm>
@@ -342,7 +345,9 @@ class UserProfileForm extends Component {
                 <div>
                     <h4>
                         About you
-                        <Button color="primary" className="pill-btn" style={{ position: "absolute", right: 40 }}
+                        <Button color="primary"
+                            className="pill-btn"
+                            style={{ position: "absolute", right: 40 }}
                             onClick={() => { this.setState({ edit: true }); }} ><Icon name="edit" /></Button>
                     </h4>
                     <FormGroup row>

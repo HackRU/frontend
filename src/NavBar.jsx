@@ -83,7 +83,8 @@ class NavBar extends Component {
     getAuthButtons() {
         return (
             <div>
-                <Link to="/login"><Button outline color="warning"
+                <Link to="/login"><Button outline
+                    color="warning"
                     className="pill-btn">Login</Button></Link>{" "}
                 <Link to="/signup"><Button color="success"
                     className="pill-btn">Register</Button></Link>
@@ -94,9 +95,11 @@ class NavBar extends Component {
         return (
             <div>
                 <Link to="/dashboard"><Button className="pill-btn"
-                        outline color="warning">Dashboard</Button></Link>
+                    outline
+                    color="warning">Dashboard</Button></Link>
                 <Link to="/logout"><Button className="pill-btn"
-                        outline color="danger">Logout</Button></Link>
+                    outline
+                    color="danger">Logout</Button></Link>
             </div>
         );
     }
@@ -168,7 +171,8 @@ class NavBar extends Component {
                     className="ml-auto">
                     <NavItem>
                         <Link to="/logout"><Button className="pill-btn"
-                            outline color="warning">Logout</Button></Link>
+                            outline
+                            color="warning">Logout</Button></Link>
                     </NavItem>
                 </Nav>
             </Collapse>
@@ -191,14 +195,18 @@ class NavBar extends Component {
                     dark
                     expand="md"
                     onBlur={this.toggleFalse}>
-                    <Container fluid style={{ paddingBottom: 10, paddingTop: 10, paddingLeft: 10 }}>
+                    <Container fluid
+                        style={{ paddingBottom: 10, paddingTop: 10, paddingLeft: 10 }}>
                         <NavbarBrand>
                             <div style={{ position: "relative", width: "100%" }}>
                                 <NavbarToggler onClick={this.toggle}
                                     style={{ position: "fixed", right: 0, top: 2, marginRight: 10 }} />
                             </div>
                             <div style={{ display: "block", marginTop: -200, marginBottom: -200, width: 200, marginRight: -40, marginLeft: -40 }}>
-                                <Logo color="white" repeat={false} noCircle src="./assets/icons/hru-text-dyn.svg" />
+                                <Logo color="white"
+                                    repeat={false}
+                                    noCircle
+                                    src="./assets/icons/hru-text-dyn.svg" />
                             </div>
                         </NavbarBrand>
                         { onDashboard ?
