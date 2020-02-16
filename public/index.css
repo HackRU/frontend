@@ -618,3 +618,18 @@ form .btn, form btn-secondary {
     padding: 50px;
     height: 100%;
 }
+
+.stat-number {
+    font-size: 5vw;
+}
+@media screen and (min-width:1600px) {
+	.stat-number{
+        font-size: 100px;
+    }
+}
+
+@media screen and (max-width:575px) {
+	.stat-number{
+        font-size: 50px;
+    }
+}
