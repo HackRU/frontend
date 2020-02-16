@@ -4,6 +4,10 @@ import SponsorItem from "./SponsorItem.jsx";
 import { Container, Row, Col } from "reactstrap";
 import PropTypes from "prop-types";
 
+
+const sponsor_colors = {
+};
+
 class SponsorContainer extends Component {
     render() {
         let { declaration } = this.props;
@@ -32,9 +36,10 @@ class SponsorContainer extends Component {
                             </h2>
                         </Col>
                     </Row>}
-                <div className="d-flex justify-content-center flex-wrap">
+                <Row className="d-flex justify-content-center flex-wrap"
+                    style={{ backgroundColor: sponsor_colors[declaration.name] ? sponsor_colors[declaration.name] : "white" }}>
                     {sponsors}
-                </div>
+                </Row>
             </Container>
         );
     }

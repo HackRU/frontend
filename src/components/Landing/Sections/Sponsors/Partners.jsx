@@ -2,15 +2,16 @@ import React from "react";
 import LogoWrapper from "./LogoWrapper";
 import { defaults } from "../../../../Defaults.js";
 import PropTypes from "prop-types";
-const Sponsors = ({ isMobile }) => (
-    <LogoWrapper isMobile={isMobile}
-        title="Sponsors"
-        endpoint={defaults.sponsorshipLogos + "sponsors.json"}
-        baseURL={defaults.sponsorshipLogos} />
-);
 
-Sponsors.propTypes = {
+const Partners = ({ isMobile }) => (
+    <LogoWrapper isMobile={isMobile}
+        title="Partners"
+        endpoint={defaults.partnerLogos + "partners.json"}
+        baseURL={defaults.partnerLogos} />
+);
+Partners.propTypes = {
     isMobile: PropTypes.bool,
 };
 
-export default Sponsors;
+
+export default Partners;

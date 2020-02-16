@@ -3,7 +3,7 @@
     "name": "HackRU Spring 2019",
     "icons": [
         {
-            "src": "./assets/icons/hru-logo-circle-green.png",
+            "src": "./assets/icons/red_hackru.png",
             "sizes": "64x64 32x32 24x24 16x16",
             "type": "image/png"
         }

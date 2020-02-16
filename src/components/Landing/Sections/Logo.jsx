@@ -18,12 +18,29 @@ class Logo extends Component {
                 }, () => {
                     anime({
                         targets: "path",
-                        strokeDashoffset: [anime.setDashoffset, 0],
+                        strokeDashoffset: (el) => {
+                            let pathLength = 0;
+                            if (el.getTotalLength) {
+                                pathLength = el.getTotalLength();
+                                el.setAttribute("stroke-dasharray", pathLength);
+                            }
+                            return [pathLength, 0];
+                        },
                         easing: "easeInOutExpo",
-                        duration: 7500,
+                        duration: (el) => {
+                            let defaultVal = 1000;
+                            let cns = el.className.baseVal.split(" ");
+                            for (let i = 0; i < cns.length; i++) {
+                                if (cns[i].includes("idx-")) {
+                                    let idx = parseInt(cns[i].replace("idx-", ""));
+                                    return idx * defaultVal;
+                                }
+                            }
+                            return defaultVal;
+                        },
                         direction: "alternate",
-                        delay: () => { return 1000; },
-                        loop: true
+                        delay: () => { return 500; },
+                        loop: props.repeat === null ? true : props.repeat
                     });
                 });
             });
@@ -31,15 +48,16 @@ class Logo extends Component {
     }
     UNSAFE_componentWillMount() {
         this.setState({
-            file: ""
+            file: "",
         });
     }
     render() {
         return (
-            <Container style={{ minHeight: theme["hero-height"], maxWidth: theme["hero-width"], background: (this.props.noCircle) ? ("") : (theme["hero-background"]), borderRadius: theme["hero-border-radius"], color: theme.primary[0] + "FF" }}
+            <Container style={{ ...this.props.style, minHeight: theme["hero-height"], maxWidth: theme["hero-width"], background: (this.props.noCircle) ? ("") : (theme["hero-background"]), borderRadius: theme["hero-border-radius"], color: this.props.color }}
                 className="d-flex align-items-center">
                 <Col xs={12}
                     dangerouslySetInnerHTML={{ __html: this.state.file }} />
+                <br/>
             </Container>
         );
     }
@@ -48,6 +66,9 @@ class Logo extends Component {
 Logo.propTypes = {
     src: PropTypes.string,
     noCircle: PropTypes.bool,
+    repeat: PropTypes.bool,
+    style: PropTypes.object,
+    color: PropTypes.string
 };
 
 export default Logo;

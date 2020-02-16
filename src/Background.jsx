@@ -1,115 +1,72 @@
 import React, { Component } from "react"; // Default react imports for the component
-import Parallax from "parallax-js";
+import { theme } from "./Defaults";
+import { Container, Row, Col } from "reactstrap";
 
-const bucket_count = 3;
-
-const imageDefs = [{
-    source: "./assets/background/circle-largedotted_white.svg",
-    left: "-400px",
-    right: null,
-    height: 1000,
-    opacity: 0.1,
-    multiplier: 0.99
-}, {
-    source: "./assets/background/square-dotted_white.svg",
-    left: null,
-    right: -250,
-    height: 500
-}, {
-    source: "./assets/background/square-largedotted_yellow.svg",
-    left: null,
-    right: 600,
-    height: 300,
-    opacity: 0.1,
-    multiplier: 0.8
-}, {
-    source: "./assets/background/target_yellow.svg",
-    left: 400,
-    right: null,
-    height: 200,
-    opacity: 0.25
-}, {
-    source: "./assets/background/target_green.svg",
-    left: null,
-    right: 300,
-    height: 400,
-    opacity: 0.25
-}, {
-    source: "./assets/background/circle_white.svg",
-    left: null,
-    right: 300,
-    height: 50
-}, {
-    source: "./assets/background/shape_yellow.svg",
-    left: null,
-    right: 50,
-    height: 300,
-    opacity: 0.75
-}, {
-    source: "./assets/background/cross_green.svg",
-    left: null,
-    right: 300,
-    height: 50,
-    opacity: 0.5,
-    multiplier: 1
-}, {
-    source: "./assets/background/cross_yellow.svg",
-    left: null,
-    right: 325,
-    height: 50,
-    opacity: 1
-}, {
-    source: "./assets/background/circle_green.svg",
-    left: 400,
-    right: 300,
-    height: 50,
-    opacity: 0.25
-}, {
-    source: "./assets/background/cross_green.svg",
-    left: 100,
-    right: null,
-    height: 50,
-    opacity: 1,
-    multiplier: 0.99
-}, {
-    source: "./assets/background/line_green.svg",
-    left: -300,
-    right: null,
-    height: 750,
-    opacity: 1,
-    transform: "rotate(-60deg)"
-}, {
-    source: "./assets/background/line_green.svg",
-    left: -325,
-    right: null,
-    height: 750,
-    transform: "rotate(-60deg)",
-    opacity: 1
-}, {
-    source: "./assets/background/line_yellow.svg",
-    left: -275,
-    right: null,
-    height: 750,
-    opacity: 1,
-    transform: "rotate(-60deg)"
-}, {
-    source: "./assets/background/line_yellow.svg",
-    left: -425,
-    right: null,
-    height: 750,
-    opacity: 1,
-    transform: "rotate(-60deg)"
-}, 
+const imageDefs = [
+    {
+        source: "./assets/background/line_green.svg",
+        bottom: -300,
+        right: -300,
+        height: 750,
+        opacity: 1,
+    },
+    {
+        source: "./assets/background/line_yellow.svg",
+        bottom: -250,
+        right: -350,
+        height: 750,
+        opacity: 1,
+    },
+    {
+        source: "./assets/background/line_red.svg",
+        bottom: -200,
+        right: -400,
+        height: 750,
+        opacity: 1,
+    },
+    {
+        source: "./assets/background/circle_red.svg",
+        bottom: -100,
+        right: -200,
+        height: 400,
+        opacity: 1,
+    }, //END BOTTOM RIGHT SECTION
+    {
+        source: "./assets/background/line_green.svg",
+        top: -250,
+        left: -400,
+        height: 750,
+        opacity: 1,
+    },
+    {
+        source: "./assets/background/line_yellow.svg",
+        top: -200,
+        left: -500,
+        height: 750,
+        opacity: 1,
+    },
+    {
+        source: "./assets/background/target-thick_green.svg",
+        top: 175,
+        left: -200,
+        height: 400,
+        opacity: 1,
+    },
+    {
+        source: "./assets/background/line_red.svg",
+        top: -150,
+        left: -300,
+        height: 750,
+        opacity: 1,
+    }, //END TOP LEFT SECTION
 ];
+
 class Background extends Component {
     constructor(props) {
         super(props);
         this.renderImage = this.renderImage.bind(this);
         this._event_onResize = this._event_onResize.bind(this);
-        this._event_onScroll = this._event_onScroll.bind(this);
         window.addEventListener("resize", this._event_onResize);
-        window.addEventListener("scroll", this._event_onScroll);
-        this.scene_ref = React.createRef();
     }
     /**
      * Handle whenever the window resizes due to a user window resize or a zoom
@@ -120,36 +77,17 @@ class Background extends Component {
         });
     }
     /**
-     * Handle the scroll event from the mouse
-     */
-    _event_onScroll() {
-        this.setState({
-            scrollFeature: window.scrollY / (document.body.scrollHeight - window.innerHeight)
-        });
-    }
-    /**
      * Initial Pre Render Method
      */
     UNSAFE_componentWillMount() {
         this._event_onResize();
-        this.setState({
-            scrollFeature: 0
-        });
-    }
-
-    componentDidMount() {
-        this.parallax = new Parallax(this.scene_ref.current, {
-            relativeInput: true
-        });
-    }
-
-    componentWillUnmout() {
-        this.parallax.disable();
     }
 
     renderImage(icon, top, left, bottom, right, height, transform, multiplier, opacity) {
         let style = { position: "fixed"};
+        style["top"] = top ? top : null;
         style["left"] = left ? left : null;
+        style["bottom"] = bottom ? bottom : null;
         style["right"] = right ? right : null;
         style["transform"] = transform ? transform : null;
         style["opacity"] = opacity ? opacity : 0.25;
@@ -161,34 +99,41 @@ class Background extends Component {
             </div>
         );
     }
+
     render() {
-        let images = [];
-        let bucketcount = imageDefs.length % bucket_count === 0 ? bucket_count: bucket_count + 1;
-        let bucket_size = imageDefs.length / bucketcount;
-        let depth_modifier = 1.00 / bucketcount;
-        let rendered_images = imageDefs.map((image) => {
-            return this.renderImage(image.source, image.top, image.left, image.bottom, image.right, image.height, image.transform, image.multiplier ? 1 - image.multiplier : 1, image.opacity);
-        });
-
-        for (let i = 0; i < bucketcount; i++) {
-            let end_index = (i + 1) * bucket_size + 1 > imageDefs.length ? imageDefs.length : (i + 1) * bucket_size; 
-            let image_bucket = rendered_images.slice(i * bucket_size, end_index);
-            console.log(depth_modifier * (i + 1));
-            images.push(
-                <div className="layer"
-                    data-depth={depth_modifier * (i + 1)}>
-                    {image_bucket}
-                </div>
+        if (!this.state.isMobile) {
+            let images = [];
+            for (let i = 0; i < imageDefs.length; i++) {
+                let image = imageDefs[i];
+                images.push(this.renderImage(image.source, image.top, image.left, image.bottom, image.right, image.height, image.transform, image.multiplier ? 1 - image.multiplier : 1, image.opacity));
+            }
+            return (
+                <Container fluid
+                    style={{ position: "fixed" }}
+                    className="theme-background">
+                    <Row className="justify-content-center">
+                        <Col xs="2"
+                            sm="2"
+                            md="2"
+                            lg="1"
+                            style={{ transform: "rotate(45deg)", height: "100vh", backgroundColor: theme.primary[1] }}/>
+                        <Col xs="2"
+                            sm="2"
+                            md="2"
+                            lg="1"
+                            style={{ transform: "rotate(45deg)", height: "100vh", backgroundColor: theme.accent[1] }}/>
+                        <Col xs="2"
+                            sm="2"
+                            md="2"
+                            lg="1"
+                            style={{ transform: "rotate(45deg)", height: "100vh", backgroundColor: theme.secondary[1] }}/>
+                    </Row>
+                    {images}
+                </Container>
             );
+        } else {
+            return null;
         }
-
-        return (
-            <div className="scene"
-                ref={this.scene_ref}
-                style={{ top: 100 }}>
-                {images}
-            </div>
-        );
     }
 }
 export default Background;

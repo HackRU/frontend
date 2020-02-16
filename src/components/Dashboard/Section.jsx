@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-import { Collapse, ListGroup, ListGroupItem, ListGroupItemHeading, ListGroupItemText } from "reactstrap";
+import { Collapse, Col, Button } from "reactstrap";
 import { Icon } from "react-fa";
-import { theme } from "../../Defaults";
 import PropTypes from "prop-types";
 /**
  * A collapsable section on the dashboard
@@ -22,41 +21,34 @@ class Section extends Component {
      * The default render method
      */
     render() {
-        let { children, title, subtitle, ...rest } = this.props;
+        let { children, title, ...rest } = this.props;
         return (
-            <div style={{ width: "100%", textAlign: "left", marginBottom: 25 }}
+            <Col className="dashboard-row"
                 {...rest} >
-                <ListGroup>
-                    <ListGroupItem action
-                        tag="button"
-                        href="#"
-                        style={{ background: theme.primary[0] + "2F", color: theme.primary[0] + "FF", borderRadius: 0 }}
-                        onClick={() => 
-                            this.setState({ isOpen: !this.state.isOpen })
-                        }>
-                        <ListGroupItemHeading>
-                            {title}
-                        </ListGroupItemHeading>
-                        <ListGroupItemText>
-                            {subtitle}
-                        </ListGroupItemText>
-                        <Icon style={{ position: "absolute", right: 25, top: 25 }}
-                            name={(this.state.isOpen) ? ("chevron-up") : ("chevron-down")} />
-                    </ListGroupItem>
+                <div className="dashboard-card">
+                    <div className="dashboard-left-strip dashboard-strip-red"></div>
+                    <h1 className="display-4 dashboard-header dashboard-strip-red">
+                        {title}
+                        <Button color="white"
+                            className="pill-btn"
+                            style={{ position: "absolute", right: 25, top: 70, fontSize: 25 }}
+                            onClick={() => this.setState({ isOpen: !this.state.isOpen })}>
+                            <Icon name={(this.state.isOpen) ? ("chevron-up") : ("chevron-down")} />
+                        </Button>
+                    </h1>
                     <Collapse isOpen={this.state.isOpen}>
-                        <ListGroupItem style={{ background: theme.primary[1] + "1F", borderRadius: 0 }}>
+                        <div>
                             {children}
-                        </ListGroupItem>
+                        </div>
                     </Collapse>
-                </ListGroup>
-            </div>
+                </div>
+            </Col>
         );
     }
 }
 Section.propTypes = {
     isOpen: PropTypes.bool,
     children: PropTypes.any,
-    title: PropTypes.string,
-    subtitle: PropTypes.string
+    title: PropTypes.string
 };
 export default Section;

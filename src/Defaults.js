@@ -2,15 +2,17 @@ import React from "react";
 import About from "./components/Landing/Sections/About";
 import Schedule from "./components/Landing/Sections/Schedule";
 import Sponsors from "./components/Landing/Sections/Sponsors/Sponsors.jsx";
+import Partners from "./components/Landing/Sections/Sponsors/Partners.jsx";
 import Stats from "./components/Landing/Sections/Stats.jsx";
 import FAQs from "./components/Landing/Sections/Faqs";
 import Footer from "./components/Landing/Sections/Footer";
 
 const defaults =  {
-    "title": "HackRU Fall 2019",
-    "dateText": "October 19th-20th",
+    "title": "HackRU Spring 2020",
+    "dateText": "April 18th-19th",
     "locationText": "College Avenue Student Center",
     "universityText": "Rutgers University",
+    "slogan": "hack all knight",
     "mobileWidthThresholdSensitive": 1500,
     "mobileWidthThresholdRelaxed": 1200,
     "mobileHeightThresholdRelaxed": 650,
@@ -29,41 +31,48 @@ const defaults =  {
     "volunteers": {
         "display": true,
         "vol_url": "https://docs.google.com/forms/d/e/1FAIpQLSe_qBzqsJIKWd_BohZ7Xuju3XQhI2f6xtrwX7WO-otR0Q7ofg/viewform?usp=sf_link",
-        "mentor_url": "https://docs.google.com/forms/d/e/1FAIpQLSdy0jShXJJS5a6rbpXDKBN-nMeYXqZME0Fr14B_ZcxOAXuSGw/viewform?usp=sf_link"
+        "mentor_url": "https://docs.google.com/forms/d/1hR-R6bpZoLAlPZFyoNYUquc7x8JX4ydWvZoCXckCmCU"
     },
-    "dayof": true
+    "dayof": false
 };
 
 const navlinks = {
-    "About Us": {
+    "ABOUT": {
         "url": "#about",
         "enabled": !defaults.freeze,
         "hideLink": false,
         "fullHeight": false,
         "component": (props) => <About {...props} />
     },
-    "Schedule": {
+    "SCHEDULE": {
         "url": "#schedule",
         "enabled": !defaults.freeze,
         "hideLink": false,
         "fullHeight": false,
         "component": (props) => <Schedule {...props} />
     },
-    "Sponsors": {
+    "SPONSORS": {
         "url": "#sponsors",
         "enabled": !defaults.freeze,
         "hideLink": false,
         "fullHeight": false,
         "component": (props) => <Sponsors {...props} />
     },
-    "Numbers": {
+    "PARTNERS": {
+        "url": "#partners",
+        "enabled": !defaults.freeze,
+        "hideLink": false,
+        "fullHeight": false,
+        "component": (props) => <Partners {...props} />
+    },
+    "NUMBERS": {
         "url": "#numbers",
         "enabled": !defaults.freeze,
         "hideLink": true,
         "fullHeight": false,
         "component": (props) => <Stats {...props} />
     },
-    "FAQs": {
+    "FAQS": {
         "url": "#faqs",
         "enabled": !defaults.freeze,
         "hideLink": false,

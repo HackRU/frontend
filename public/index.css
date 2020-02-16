@@ -5,12 +5,12 @@
 :root {
     /* Theme Colors */
     --primary-color: #FFF5e8; /* Logo, link colors, text */
-    --primary-color-alt: #000000;  /* Form body bg, form headers text */
+    --primary-color-alt: #4fab5f;  /* Form body bg, form headers text */
     --secondary-color: #000000; /* Barely used accent color...combine this and primary-color-alt...? */
     --secondary-color-alt: #C85151; /* Background color */
     --accent-color: #F1BA43; /* Logout, Live button color */
     --accent-color-alt: #F1BA43; /* Dashboard button color NOTE:  Dashboard colors are different across navbar on different pages */
-    --disabled-color: #EEEEe8; /* Unsure.... */
+    --disabled-color: #00000055; /* Unsure.... */
     --hover-color: #F1BA43;
     --hover-background-color: #df897f;
     --active-color: rgba(255, 255, 255, 0.5);
@@ -21,15 +21,15 @@
 
 /*'Open Sans', sans-serif;  */
     /* Form Inputs */
-    --input-background: rgba(255, 255, 255, 0.2);
-    --input-placeholder: rgba(255, 255, 255, 0.3);
+    --input-background: #C8515111;
+    --input-placeholder: rgba(0, 0, 0, 0.3);
     --input-border: none;
-    --input-color: rgba(255, 255, 255, 1);
+    --input-color: rgba(0, 0, 0, 1);
     --input-border-radius: 0px;
-    --select-background: rgba(100, 0, 0, 1);
-    --select-color: rgba(255, 255, 255, 1);
+    --select-background: #C85151;
+    --select-color: rgba(0, 0, 0, 1);
     /* Hero Image */
-    --hero-width: 400px;
+    --hero-width: 1000px;
     --hero-height: 400px;
     --hero-border-radius: 35%;
     --hero-background: radial-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0));
@@ -52,7 +52,7 @@ body {
     font-family: var(--text-font) !important;
 }
 ::selection {
-    background-color: var(--input-placeholder);
+    background-color: var(--secondary-color-alt);
 }
 ::placeholder {
     color: var(--input-placeholder) !important;
@@ -79,6 +79,13 @@ a:visited:hover {
 .primary-link:hover {
     color: var(--hover-color) !important;
     transition: color 0.5s ease;
+}
+.pill-btn {
+    text-transform: uppercase;
+    color: var(--primary-color) !important;
+    border: none !important;
+    border-radius: 100px !important;
+    font-weight: bold;
 }
 .btn:hover {
     transition: background-color 0.5s;
@@ -127,16 +134,16 @@ hr {
 }
 .theme-background {
     position: absolute;
-    z-index: 0;
     width: 100%;
     height: 100%;
+    z-index: 0;
     left: 0px;
     top: 0px;
     opacity: 0.5;
 }
 /* Background Control */
 .bg-gradient-right {
-    background: var(--primary-color);
+    background: var(--secondary-color-alt);
     width: 100vw; 
     z-index: 10;
     color: var(--secondary-color);
@@ -150,11 +157,14 @@ hr {
 .bg-no-gradient {
     width: 100vw;
     z-index: 10;
-    color: var(--primary-color);
 }
 .skew-right, .skew-left {
     padding-top: 3em;
     padding-bottom: 2em;
+}
+.skew-none {
+    padding-top: 100px;
+    padding-bottom: 100px;
 }
 .skew-right { 
     transform: skew(0deg, -4deg);
@@ -255,7 +265,7 @@ input, textarea, .custom-file-label {
     color: var(--input-color);
 }
 form .btn, form btn-secondary {
-    color: var(--secondary-color) !important;
+    color: var(--primary-color) !important;
 }
 
 /* Form validator */
@@ -288,6 +298,7 @@ form .btn, form btn-secondary {
 }
 .qr:hover {
     transform: rotate(360deg);
+    border-radius: 10px;
 }
 
 
@@ -297,16 +308,16 @@ form .btn, form btn-secondary {
     color: white !important;
 }
 .profile-alert.profile-alert-success {
-    background: rgba(0, 255, 0, 0.25) !important;
+    background: var(--primary-color-alt) !important;
 }
 .profile-alert.profile-alert-danger {
-    background: rgba(255, 0, 0, 0.25) !important;
+    background: var(--secondary-color-alt) !important;
 }
 .profile-alert.profile-alert-info {
-    background: rgba(0, 255, 255, 0.25) !important;
+    background: rgba(0, 255, 255, 1) !important;
 }
 .profile-alert.profile-alert-warning {
-    background: rgba(255, 255, 0, 0.25) !important;
+    background: var(--accent-color) !important;
 }
 
 /* Live */
@@ -548,3 +559,77 @@ form .btn, form btn-secondary {
 	box-shadow: 0px 0px 5px 5px #0099E0;
 }
 
+.dashboard-card {
+    background-color: white;
+    color: #C85151f0;
+    box-shadow: 0px 0px 100px rgba(0, 0, 0, 0.1);
+    padding: 50px;
+    height: 100%;
+}
+
+.dashboard-card > *::selection {
+    color: white !important;
+}
+
+.dashboard-left-strip {
+    position: absolute;
+    left: calc(15px);
+    top: 0px;
+    height: 100%;
+    width: 10px;
+}
+
+.dashboard-strip-yellow {
+    background-color: var(--accent-color);
+}
+
+.dashboard-strip-red {
+    background-color: var(--secondary-color-alt);
+}
+
+.dashboard-strip-green {
+    background-color: var(--primary-color-alt);
+}
+
+.dashboard-row {
+    margin-bottom: 25px;
+}
+
+.dashboard-header {
+    display: block;
+    text-align: left;
+    margin-bottom: 25px;
+    padding: 10px;
+    margin-left: -50px;
+    padding-left: 50px;
+    padding-right: 25px;
+    margin-right: -50px;
+    color: white;
+}
+
+.auth {
+    background-color: rgba(255, 255, 255, 0.5) !important;
+}
+
+.sponsor-card {
+    background-color: var(--secondary-color-alt);
+    color: #C85151f0;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    padding: 50px;
+    height: 100%;
+}
+
+.stat-number {
+    font-size: 5vw;
+}
+@media screen and (min-width:1600px) {
+	.stat-number{
+        font-size: 100px;
+    }
+}
+
+@media screen and (max-width:575px) {
+	.stat-number{
+        font-size: 50px;
+    }
+}

@@ -2,7 +2,7 @@ import React, { Component, Fragment } from "react";
 import { Container, Row } from "reactstrap";
 import Home from "./Sections/Home";
 import Freeze from "./Sections/Freeze";
-import { defaults, navlinks, theme } from "../../Defaults";
+import { defaults, navlinks } from "../../Defaults";
 import ScrollableAnchor from "react-scrollable-anchor";
 import { ProfileType } from "../Profile";
 import PropTypes from "prop-types";
@@ -15,7 +15,7 @@ import MLHBadge from "../../MLHBadge";
 class LandingPage extends Component {
 
     render() {
-        let sectionClasses = "col-lg-10 offset-lg-1 col-xs-12 offset-xs-0 skew-left color-priority";
+        let sectionClasses = "col-lg-10 offset-lg-1 col-xs-12 offset-xs-0 color-priority";
         let rows = [];
         let keys = Object.keys(navlinks);
         for (let i = 0; i < keys.length; i++) {
@@ -25,9 +25,9 @@ class LandingPage extends Component {
                 // Toggle the green skewed sections
                 let className = "";
                 if (i !== keys.length - 1) {
-                    className = "bg-no-gradient skew-right";
+                    className = "bg-no-gradient skew-none";
                     if (i % 2 === 0) {
-                        className = "bg-gradient-right skew-right";
+                        className = "bg-no-gradient skew-none";
                     }
                 } else {
                     // The footer is a special type of human being...
@@ -43,11 +43,12 @@ class LandingPage extends Component {
                         <div>
                             <Row className="section"
                                 style={style}>
-                                <div className={className} >
+                                <Container fluid
+                                    className={className} >
                                     <div className={sectionClasses}>
                                         {component}
                                     </div>
-                                </div>
+                                </Container>
                             </Row>
                         </div>
                     </ScrollableAnchor>
@@ -60,7 +61,7 @@ class LandingPage extends Component {
                 <Container id="LandingPage"
                     className="section"
                     fluid
-                    style={{ backgroundColor: theme.secondary[1] }}>
+                    style={{ }}>
                     <ScrollableAnchor id="home">
                         <div>
                             <Row className="section">

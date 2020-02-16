@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Button, Col, Form, FormGroup, Label, Input, Collapse } from "reactstrap";
-import { theme } from "../../../Defaults";
 import { Creatable } from "react-select";
 import Autocomplete from "react-google-autocomplete";
 import ReactDependentScript from "react-dependent-script";
@@ -16,8 +15,7 @@ import PropTypes from "prop-types";
 const MODE_LABELS = {
     "bus": "Bus",
     "train": "Train",
-    "car": "Car",
-    "plane": "Plane",
+    "car": "Car"
 };
 
 const label_obj = (mode) => ({
@@ -55,12 +53,6 @@ const TravelReimbursementsForm = ({ travelling_from, onSubmit }) => {
             valid = addr_ready && formatted_addr;
             message = <p>
                 You <strong>MUST</strong> submit receipts for both directions of travel.
-            </p>;
-            break;
-        case "plane":
-            valid = false;
-            message = <p>
-                Sorry, but we are unable to reimburse flights. If you have another way of getting here, please try that!
             </p>;
             break;
         case "":
@@ -103,7 +95,6 @@ const TravelReimbursementsForm = ({ travelling_from, onSubmit }) => {
                                 options={[
                                     label_obj("bus"),
                                     label_obj("car"),
-                                    label_obj("plane"),
                                     label_obj("train")
                                 ]}
                                 required
@@ -156,6 +147,7 @@ const TravelReimbursementsForm = ({ travelling_from, onSubmit }) => {
             {valid && <div style={{ width: "100%", marginBottom: 0 }}
                 align="right">
                 <Button
+                    className="pill-btn"
                     onClick={() => {
                         onSubmit({
                             is_real,
@@ -164,8 +156,8 @@ const TravelReimbursementsForm = ({ travelling_from, onSubmit }) => {
                             formatted_addr,
                         });
                     }}
-                    style={{ backgroundColor: theme.primary[0] }}
-                    type="submit" >Update</Button>
+                    color="success"
+                    type="submit">Update</Button>
             </div>}
         </Form>
     );

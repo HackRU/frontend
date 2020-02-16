@@ -1,13 +1,13 @@
 import React, { Component } from "react";
-// import { defaults } from "../../../Defaults";
-import { Table, Card, Container, Col, Row } from "reactstrap";
+import { theme } from "../../../Defaults";
+import { Table, Col, Row } from "reactstrap";
 
 /**
  * Schedule component for the landing page
  */
 
-const saturday_date = "10/19/2019";
-const sunday_date = "10/20/2019";
+const saturday_date = "APRIL 18";
+const sunday_date = "APRIL 19";
 
 const sat_schedule = [
     ["10:00 AM","Check-In","Main Lobby"],
@@ -26,17 +26,6 @@ const sun_schedule = [
     ["12:00 PM", "Demos Begin", "Hacking Area"],
     ["3:00 PM", "Closing Ceremonies", "Main Stage"]
 ];
-
-const light_red = {
-    backgroundColor: "#bf4d4d",
-    border: "none !important"
-};
-
-const dark_red = {
-    backgroundColor: "#ad4444",
-    border: "none !important"
-};
-
 class Schedule extends Component {
 
     constructor(props) {
@@ -48,11 +37,21 @@ class Schedule extends Component {
     }
 
     fill_table = (schedule) => {
+
+        const light_red = {
+            backgroundColor: "rgba(0, 0, 0, 0.1)",
+            border: "none !important",
+        };
+        
+        const dark_red = {
+            border: "none !important"
+        };
         let rows = [];
         schedule.forEach((row, index) => {
             rows.push(
                 <tr style={index % 2 === 0 ? light_red : dark_red}
-                    key={index}>
+                    key={index}
+                    className="lead">
                     <th scope="row">{row[0]}</th>
                     <td>{row[1]}</td>
                     <td>{row[2]}</td>
@@ -60,49 +59,61 @@ class Schedule extends Component {
             );
         });
         return (
-            <Table borderless>
-                <thead key="table-head">
-                    <tr>
-                        <th>Time</th>
-                        <th>Event</th>
-                        <th>Location</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {rows}
-                </tbody>
-            </Table>
+            <div style={{ overflowX: "auto" }}>
+                <Table style={{ minWidth: 300 }}
+                    hover
+                    borderless>
+                    <thead key="table-head">
+                        <tr className="lead">
+                            <th>Time</th>
+                            <th>Event</th>
+                            <th>Location</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {rows}
+                    </tbody>
+                </Table>
+            </div>
         );
     }
-
     render() {
         return (
-            [
-                <div className="col-12"
-                    key="schedule-header">
-                    <h1 className="display-4 theme-font">Schedule</h1>
-                    <hr/>
-                </div>,
-                <Card className="mb-lg-4 shadow-lg rounded-0"
-                    key="schedule-card"
-                    style={{backgroundColor:"#ad4444", margin: "0", padding: "0"}}>
-                    <Container fluid>
+            <div style={{ backgroundColor: theme.secondary[1], color: "white", boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.5)", padding: 50 }}>
+                <div style={{ position: "absolute", left: "calc(15px)", top: 0, height: "100%", backgroundColor: theme.primary[1], width: 10 }}></div>
+                <h1 className="display-4 theme-font">Schedule</h1>
+                <div className="row mb-3"
+                    style={{ marginLeft: -50, marginRight: -50 }}>
+                    <div style={{ color: "white", padding: 50, paddingBottom: 0 }}
+                        className="col-xs-12 col-sm-12">
                         <Row>
-                            <Col xs="12"
-                                md="6">
-                                <h3 className="mt-2 text-center">SATURDAY {saturday_date}</h3>
+                            <Col style={{ padding: 0, margin: 0, writingMode: "vertical-lr", transform: "rotate(180deg)", marginRight: -25, marginLeft: 25 }}
+                                className="text-center"
+                                xs="1"> 
+                                <h3 style={{ paddingLeft: 10 }}
+                                    className="lead">{saturday_date}</h3>
+                            </Col>
+                            <Col style={{ borderLeft: "1px solid white" }}
+                                xs={11}>
                                 {this.fill_table(sat_schedule)}
                             </Col>
-                            <Col xs="12"
-                                md="6">
-                                <h3 className="mt-2 text-center">SUNDAY {sunday_date}</h3>
+                        </Row>
+                        <Row>
+                            <Col style={{ padding: 0, margin: 0, writingMode: "vertical-lr", transform: "rotate(180deg)", marginRight: -25, marginLeft: 25 }}
+                                className="text-center"
+                                xs="1"> 
+                                <h3 style={{ paddingLeft: 10 }}
+                                    className="lead">{sunday_date}</h3>
+                            </Col>
+                            <Col style={{ borderLeft: "1px solid white" }}
+                                xs={11}>
                                 {this.fill_table(sun_schedule)}
                             </Col>
                         </Row>
-                    </Container>
-                </Card>]
+                    </div>
+                </div>
+            </div>
         );
     }
 }
-
 export default Schedule;

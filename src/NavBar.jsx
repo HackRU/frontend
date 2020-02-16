@@ -5,6 +5,7 @@ import { navlinks, theme, defaults } from "./Defaults";
 import { ProfileType } from "./components/Profile";
 import PropTypes from "prop-types";
 import "./NavBar.css";
+import Logo from "./components/Landing/Sections/Logo.jsx";
 
 const LinkSwitcher = (props) => {
     return (props.root) ? <a {...props}>{props.children}</a> : <Link {...props} />;
@@ -67,8 +68,6 @@ class NavBar extends Component {
             });
         }
     }
-
-
     toggleFalse() {
         if (window.innerWidth < 768) {
             this.setState({
@@ -84,18 +83,24 @@ class NavBar extends Component {
     getAuthButtons() {
         return (
             <div>
-                <Link to="/login" ><Button color="link"
-                    className="customButton">Login</Button></Link>{" "}
-                <Link to="/signup" ><Button color="link"
-                    className="customButton">Sign Up</Button></Link>
+                <Link to="/login"><Button outline
+                    color="warning"
+                    className="pill-btn">Login</Button></Link>{" "}
+                <Link to="/signup"><Button color="success"
+                    className="pill-btn">Register</Button></Link>
             </div>
         );
     }
     getDashboardButton() {
         return (
-            <Link to="/dashboard"
-                style={{ textDecoration: "none" }}><Button className="customButton"
-                    color="link">Dashboard</Button></Link>
+            <div>
+                <Link to="/dashboard"><Button className="pill-btn"
+                    outline
+                    color="warning">Dashboard</Button></Link>
+                <Link to="/logout"><Button className="pill-btn"
+                    outline
+                    color="danger">Logout</Button></Link>
+            </div>
         );
     }
     getNavLinks() {
@@ -147,7 +152,7 @@ class NavBar extends Component {
                             <Link
                                 className="primary-link"
                                 to="/#home"> 
-                                Home
+                                HOME
                             </Link>
                         </NavLink>
                     </NavItem>
@@ -157,7 +162,7 @@ class NavBar extends Component {
                                 <Link 
                                     className="primaryLink"
                                     to="/live">
-                                    Live
+                                    LIVE
                                 </Link>
                             </NavLink> 
                         </NavItem> : null}
@@ -165,9 +170,9 @@ class NavBar extends Component {
                 <Nav navbar
                     className="ml-auto">
                     <NavItem>
-                        <Link to="/logout"
-                            style={{ textDecoration: "none" }}><Button className="customButton"
-                                color="link">Logout</Button></Link>
+                        <Link to="/logout"><Button className="pill-btn"
+                            outline
+                            color="warning">Logout</Button></Link>
                     </NavItem>
                 </Nav>
             </Collapse>
@@ -185,20 +190,24 @@ class NavBar extends Component {
         if (!defaults.freeze) {
             return(
                 <Navbar id="navbar"
-                    style={{ width: "100%", zIndex: "20", backgroundColor: theme.secondary[1], opacity: this.state.shouldRender | !onLanding, pointerEvents: this.state.shouldRender | !onLanding ? "auto":"none", transition: !onLanding ? "" : "opacity 0.5s" }}
+                    style={{ width: "100%", zIndex: "20", backgroundColor: theme.secondary[1], opacity: this.state.shouldRender | !onLanding, pointerEvents: this.state.shouldRender | !onLanding ? "auto":"none", transition: !onLanding ? "" : "opacity 0.5s", boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.5)" }}
                     fixed="top"
                     dark
                     expand="md"
                     onBlur={this.toggleFalse}>
-                    <Container>
+                    <Container fluid
+                        style={{ paddingBottom: 10, paddingTop: 10, paddingLeft: 10 }}>
                         <NavbarBrand>
-                            <NavbarToggler onClick={this.toggle}
-                                style={{ marginRight: 10 }} />
-                            <LinkSwitcher style={{ color: theme.accent[0] }}
-                                onClick={this.toggleFalse}
-                                href="/#home"
-                                to="/#home"
-                                root={onLanding.toString()}>HackRU</LinkSwitcher>
+                            <div style={{ position: "relative", width: "100%" }}>
+                                <NavbarToggler onClick={this.toggle}
+                                    style={{ position: "fixed", right: 0, top: 2, marginRight: 10 }} />
+                            </div>
+                            <div style={{ display: "block", marginTop: -200, marginBottom: -200, width: 200, marginRight: -40, marginLeft: -40 }}>
+                                <Logo color="white"
+                                    repeat={false}
+                                    noCircle
+                                    src="./assets/icons/hru-text-dyn.svg" />
+                            </div>
                         </NavbarBrand>
                         { onDashboard ?
                             this.getDashboardNav() :
