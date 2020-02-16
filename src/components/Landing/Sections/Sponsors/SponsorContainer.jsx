@@ -6,9 +6,6 @@ import PropTypes from "prop-types";
 
 
 const sponsor_colors = {
-    GOLD: "#D4AF37",
-    SILVER: "#C0C0C0",
-    BRONZE: "#CD7F32",
 }
 
 class SponsorContainer extends Component {
@@ -39,7 +36,7 @@ class SponsorContainer extends Component {
                             </h2>
                         </Col>
                     </Row>}
-                <Row style={{ backgroundColor: sponsor_colors[declaration.name] ? sponsor_colors[declaration.name] : theme.secondary[1] }}>
+                <Row className="d-flex justify-content-center flex-wrap" style={{ backgroundColor: sponsor_colors[declaration.name] ? sponsor_colors[declaration.name] : "white" }}>
                     {sponsors}
                 </Row>
             </Container>

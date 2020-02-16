@@ -39,13 +39,11 @@ class Schedule extends Component {
     fill_table = (schedule) => {
 
         const light_red = {
-            backgroundColor: theme.accent[0],
+            backgroundColor: "rgba(0, 0, 0, 0.1)",
             border: "none !important",
-            color: "black"
         };
         
         const dark_red = {
-            backgroundColor: theme.primary[1],
             border: "none !important"
         };
         let rows = [];
@@ -61,18 +59,20 @@ class Schedule extends Component {
             );
         });
         return (
-            <Table borderless>
-                <thead key="table-head">
-                    <tr className="lead">
-                        <th>Time</th>
-                        <th>Event</th>
-                        <th>Location</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {rows}
-                </tbody>
-            </Table>
+            <div style={{ overflowX: "auto" }}>
+                <Table style={{ minWidth: 300 }} hover borderless>
+                    <thead key="table-head">
+                        <tr className="lead">
+                            <th>Time</th>
+                            <th>Event</th>
+                            <th>Location</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {rows}
+                    </tbody>
+                </Table>
+            </div>
         );
     }
     render() {
@@ -83,18 +83,18 @@ class Schedule extends Component {
                 <div className="row mb-3" style={{ marginLeft: -50, marginRight: -50 }}>
                     <div style={{ color: "white", padding: 50, paddingBottom: 0 }} className="col-xs-12 col-sm-12">
                         <Row>
-                            <Col style={{ writingMode: "vertical-lr", transform: 'rotate(180deg)', marginRight: -25, marginLeft: 25 }} className="text-center" xs="1"> 
-                                <h3 className="lead">{saturday_date}</h3>
+                            <Col style={{ padding: 0, margin: 0, writingMode: "vertical-lr", transform: 'rotate(180deg)', marginRight: -25, marginLeft: 25 }} className="text-center" xs="1"> 
+                                <h3 style={{ paddingLeft: 10 }}className="lead">{saturday_date}</h3>
                             </Col>
-                            <Col style={{ borderLeft: "1px solid white" }}>
+                            <Col style={{ borderLeft: "1px solid white" }} xs={11}>
                                 {this.fill_table(sat_schedule)}
                             </Col>
                         </Row>
                         <Row>
-                            <Col style={{ writingMode: "vertical-lr", transform: 'rotate(180deg)', marginRight: -25, marginLeft: 25 }} className="text-center" xs="1"> 
-                                <h3 className="lead">{sunday_date}</h3>
+                            <Col style={{ padding: 0, margin: 0, writingMode: "vertical-lr", transform: 'rotate(180deg)', marginRight: -25, marginLeft: 25 }} className="text-center" xs="1"> 
+                                <h3 style={{ paddingLeft: 10 }}className="lead">{sunday_date}</h3>
                             </Col>
-                            <Col style={{ borderLeft: "1px solid white" }}>
+                            <Col style={{ borderLeft: "1px solid white" }} xs={11}>
                                 {this.fill_table(sun_schedule)}
                             </Col>
                         </Row>

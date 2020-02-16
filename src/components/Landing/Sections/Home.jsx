@@ -28,7 +28,7 @@ class Home extends Component {
                     <Motion defaultStyle={{ movement: 5, opacity: 0 }} style={{ movement: spring(-5, { stiffness: 2, damping: 0 }), opacity: spring(1, { stiffness: 0.5, damping: 4 }) }}>
                         {
                             ({ movement, opacity }) =>
-                                <div>
+                                <div style={{ position: "absolute", overflow: "hidden", padding: 0, margin: 0, left: 0, top: 0 }}><div style={{ padding: 0, margin: 0, position: "relative", height: "100vh", width: "100vw", overflow: "hidden" }}>
                                     <div style={{ opacity, position: "absolute", bottom: -(window.innerHeight / 4) + movement, right: -100, userSelect: "none", pointerEvents: "none", zIndex: 10 }}>
                                         <img
                                             alt="background"
@@ -101,7 +101,7 @@ class Home extends Component {
                                             src={"./assets/background/square-dotted_white.svg"}
                                             height={window.innerHeight / 3} /> 
                                     </div>
-                                </div>
+                                </div></div>
                             }
                     </Motion>
                     <Row style={{ minWidth: "100%", minHeight: "100vh" }}

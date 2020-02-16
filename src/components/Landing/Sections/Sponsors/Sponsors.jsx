@@ -52,7 +52,7 @@ class Sponsors extends Component {
             return (
                 <div>
                     <div style={{ backgroundColor: theme.secondary[1], color: "white", boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.5)" }}>
-                        <div style={{ position: "absolute", right: "calc(15px)", top: 0, height: "100%", backgroundColor: theme.accent[1], width: 10 }}></div>
+                        <div style={{ position: "absolute", right: "calc(15px)", top: 0, height: "100%", backgroundColor: theme.secondary[1], width: 10 }}></div>
                         <h1 className="display-4 theme-font" style={{ padding: 50 }}>Sponsors</h1>
                         {renderList}
                     </div>
