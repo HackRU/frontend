@@ -176,11 +176,11 @@ class Home extends Component {
                                 }
                             </Motion>
                         </Col>
-                        { defaults.volunteers.display &&
-                                    <div className="skew-right"
-                                        style={{ position: "absolute", bottom: -25, textAlign: "right", width: "100%", paddingRight: 5, fontSize: 12 }} >
-                                    </div> }
-                        <div style={{ position: "absolute", bottom: 10, left: 10, right: 10, margin: "0 auto"}}>
+                        <div style={{ position: "absolute", bottom: 10, left: 10, right: 10, margin: "0 auto"}}> 
+                            { defaults.volunteers.display && <div>
+                                Want to help? Sign up to <a href={defaults.volunteers.vol_url}>volunteer</a> or <a href={defaults.volunteers.mentor_url}>mentor</a>!
+                                </div>
+                            }
                             <Button href="#about"
                                 outline
                                 size="lg"
