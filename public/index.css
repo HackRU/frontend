@@ -10,7 +10,7 @@
     --secondary-color-alt: #C85151; /* Background color */
     --accent-color: #F1BA43; /* Logout, Live button color */
     --accent-color-alt: #F1BA43; /* Dashboard button color NOTE:  Dashboard colors are different across navbar on different pages */
-    --disabled-color: #EEEEe8; /* Unsure.... */
+    --disabled-color: #00000055; /* Unsure.... */
     --hover-color: #F1BA43;
     --hover-background-color: #df897f;
     --active-color: rgba(255, 255, 255, 0.5);
@@ -265,7 +265,7 @@ input, textarea, .custom-file-label {
     color: var(--input-color);
 }
 form .btn, form btn-secondary {
-    color: var(--secondary-color) !important;
+    color: var(--primary-color) !important;
 }
 
 /* Form validator */
@@ -308,16 +308,16 @@ form .btn, form btn-secondary {
     color: white !important;
 }
 .profile-alert.profile-alert-success {
-    background: rgba(0, 255, 0, 0.25) !important;
+    background: var(--primary-color-alt) !important;
 }
 .profile-alert.profile-alert-danger {
-    background: rgba(255, 0, 0, 0.25) !important;
+    background: var(--secondary-color-alt) !important;
 }
 .profile-alert.profile-alert-info {
-    background: rgba(0, 255, 255, 0.25) !important;
+    background: rgba(0, 255, 255, 1) !important;
 }
 .profile-alert.profile-alert-warning {
-    background: rgba(255, 255, 0, 0.25) !important;
+    background: var(--accent-color) !important;
 }
 
 /* Live */

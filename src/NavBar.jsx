@@ -149,7 +149,7 @@ class NavBar extends Component {
                             <Link
                                 className="primary-link"
                                 to="/#home"> 
-                                Home
+                                HOME
                             </Link>
                         </NavLink>
                     </NavItem>
@@ -159,7 +159,7 @@ class NavBar extends Component {
                                 <Link 
                                     className="primaryLink"
                                     to="/live">
-                                    Live
+                                    LIVE
                                 </Link>
                             </NavLink> 
                         </NavItem> : null}

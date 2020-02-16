@@ -125,7 +125,7 @@ class UserProfileForm extends Component {
                                             value: "01/01/1920"
                                         },
                                         end: {
-                                            value: "01/01/2018"
+                                            value: "04/01/2002"
                                         }
                                     } }} />
                         </Col>
@@ -227,8 +227,8 @@ class UserProfileForm extends Component {
                                 onChange={(e) => { user.grad_year = e.target.value; this.updateUser(user); }}
                                 validate={{
                                     required: { value: true, errorMessage: "Invalid graduation year" },
-                                    max: { value: 2030, errorMessage: "Graduation year must be between 2019 and 2030" },
-                                    min: { value: 2019, errorMessage: "Graduation year must be between 2019 and 2030" } }} />
+                                    max: { value: 2030, errorMessage: "Graduation year must be between 2020 and 2030" },
+                                    min: { value: 2020, errorMessage: "Graduation year must be between 2020 and 2030" } }} />
                         </Col>
                     </FormGroup>
                     <FormGroup row>
@@ -324,16 +324,16 @@ class UserProfileForm extends Component {
                     {message}
                     <div style={{ width: "100%" }}
                         align="right">
-                        <Button style={{ backgroundColor: theme.primary[0], marginRight: 10 }}
-                            type="reset" >Clear</Button>
-                        <Button style={{ backgroundColor: theme.accent[0] }}
-                            type="submit" >Update</Button>
+                        <Button className="pill-btn" color="warning" style={{ marginRight: 10 }}
+                            type="reset">Clear</Button>
+                        <Button color="success" className="pill-btn"
+                            type="submit">Update</Button>
                     </div>
                 </AvForm>
             );
         } else {
             let pStyle = {
-                color: theme.disabled[0] + "70", padding: 5, minHeight: 35
+                color: theme.disabled[0], padding: 5, minHeight: 35
             };
             let field = (text) => {
                 return <p style={pStyle}>{(text) ? text : <i>unanswered</i> }</p>;
@@ -342,7 +342,7 @@ class UserProfileForm extends Component {
                 <div>
                     <h4>
                         About you
-                        <Button style={{ position: "absolute", right: 20 }}
+                        <Button color="primary" className="pill-btn" style={{ position: "absolute", right: 40 }}
                             onClick={() => { this.setState({ edit: true }); }} ><Icon name="edit" /></Button>
                     </h4>
                     <FormGroup row>

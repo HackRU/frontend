@@ -49,16 +49,6 @@ class Dashboard extends Component {
                         loading: false,
                         openDetails: (data.registration_status === "unregistered")
                     });
-                    this.props.profile.GetQR((msg, qr) => {
-                        if(msg) {
-                            console.error(msg);
-                        } else if (qr) {
-                            console.log(qr);
-                            this.setState({
-                                qr
-                            });
-                        }
-                    });
                 }
             }
         });
@@ -99,6 +89,7 @@ class Dashboard extends Component {
         rolesString = rolesString.substring(0, rolesString.length - 2);
         return (
             <Container style={{ width: "100%", minHeight: "100vh", paddingTop: 90 }}>
+                <ProfileMessage message={this.state.profileMSG} />
                 <Row>
                     <Col className="dashboard-row" lg={12} >
                         <div className="dashboard-card">
