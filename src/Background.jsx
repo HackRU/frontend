@@ -1,24 +1,64 @@
 import React, { Component } from "react"; // Default react imports for the component
+import { theme } from "./Defaults"
+import { Container, Row, Col } from "reactstrap"
 
 const imageDefs = [
     {
         source: "./assets/background/line_green.svg",
-        top: null,
-        left: -300,
-        bottom: "150px",
-        right: null,
+        bottom: -300,
+        right: -300,
         height: 750,
         opacity: 1,
     },
     {
-        source: "./assets/background/line_green.svg",
-        top: null,
-        left: -300,
-        bottom: "150px",
-        right: null,
+        source: "./assets/background/line_yellow.svg",
+        bottom: -250,
+        right: -350,
         height: 750,
         opacity: 1,
-    }
+    },
+    {
+        source: "./assets/background/line_red.svg",
+        bottom: -200,
+        right: -400,
+        height: 750,
+        opacity: 1,
+    },
+    {
+        source: "./assets/background/circle_red.svg",
+        bottom: -100,
+        right: -200,
+        height: 400,
+        opacity: 1,
+    }, //END BOTTOM RIGHT SECTION
+    {
+        source: "./assets/background/line_green.svg",
+        top: -250,
+        left: -400,
+        height: 750,
+        opacity: 1,
+    },
+    {
+        source: "./assets/background/line_yellow.svg",
+        top: -200,
+        left: -500,
+        height: 750,
+        opacity: 1,
+    },
+    {
+        source: "./assets/background/target-thick_green.svg",
+        top: 175,
+        left: -200,
+        height: 400,
+        opacity: 1,
+    },
+    {
+        source: "./assets/background/line_red.svg",
+        top: -150,
+        left: -300,
+        height: 750,
+        opacity: 1,
+    }, //END TOP LEFT SECTION
 ];
 
 class Background extends Component {
@@ -42,6 +82,7 @@ class Background extends Component {
     componentWillMount() {
         this._event_onResize();
     }
+
     renderImage(icon, top, left, bottom, right, height, transform, multiplier, opacity) {
         let style = { position: "fixed"};
         style["top"] = top ? top : null;
@@ -58,6 +99,7 @@ class Background extends Component {
             </div>
         );
     }
+
     render() {
         if (!this.state.isMobile) {
             let images = [];
@@ -66,10 +108,14 @@ class Background extends Component {
                 images.push(this.renderImage(image.source, image.top, image.left, image.bottom, image.right, image.height, image.transform, image.multiplier ? 1 - image.multiplier : 1, image.opacity));
             }
             return (
-                <div className="theme-background"
-                    style={{ position: "fixed", top: 100 }}>
+                <Container fluid style={{ position: "fixed" }} className="theme-background">
+                    <Row className="justify-content-center">
+                        <Col xs="2" sm="2" md="2" lg="1" style={{ transform: "rotate(45deg)", height: "100vh", backgroundColor: theme.primary[1] }}/>
+                        <Col xs="2" sm="2" md="2" lg="1" style={{ transform: "rotate(45deg)", height: "100vh", backgroundColor: theme.accent[1] }}/>
+                        <Col xs="2" sm="2" md="2" lg="1" style={{ transform: "rotate(45deg)", height: "100vh", backgroundColor: theme.secondary[1] }}/>
+                    </Row>
                     {images}
-                </div>
+                </Container>
             );
         } else {
             return null;
