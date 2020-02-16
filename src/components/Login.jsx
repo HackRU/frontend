@@ -36,6 +36,7 @@ class LoginPage extends Component {
             <FormGroup row>
                 <InputGroup>
                     <Input required
+                        className="auth"
                         id="email"
                         type="email"
                         placeholder="email" />
@@ -44,6 +45,7 @@ class LoginPage extends Component {
             <FormGroup row>
                 <InputGroup>
                     <Input required
+                        className="auth"
                         type="password"
                         id="password"
                         placeholder="password" />

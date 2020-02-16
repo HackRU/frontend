@@ -606,3 +606,15 @@ form .btn, form btn-secondary {
     margin-right: -50px;
     color: white;
 }
+
+.auth {
+    background-color: rgba(255, 255, 255, 0.5) !important;
+}
+
+.sponsor-card {
+    background-color: var(--secondary-color-alt);
+    color: #C85151f0;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    padding: 50px;
+    height: 100%;
+}
