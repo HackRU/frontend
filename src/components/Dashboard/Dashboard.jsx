@@ -98,13 +98,13 @@ class Dashboard extends Component {
         Object.keys(user.role).forEach((key) => { if (user.role[key]) { rolesString += `${key}, `; }});
         rolesString = rolesString.substring(0, rolesString.length - 2);
         return (
-            <Container  style={{ width: "100%", minHeight: "100vh", paddingTop: 90 }}>
+            <Container style={{ width: "100%", minHeight: "100vh", paddingTop: 90 }}>
                 <Row>
                     <Col className="dashboard-row" lg={12} >
                         <div className="dashboard-card">
                             <div className="dashboard-left-strip dashboard-strip-red"></div>
                             <div style={{ position: "relative", top: -75, height: 200 }}>
-                                <Logo color={theme.secondary[1]} noCircle src="./assets/icons/hru-text-dyn.svg" />
+                                <Logo repeat={true} color={theme.secondary[1]} noCircle src="./assets/icons/hru-text-dyn.svg" />
                             </div>
                         </div>
                     </Col>
@@ -141,29 +141,37 @@ class Dashboard extends Component {
                     </Col>
                 </Row>
                 <Row>
-                    <Col className="dashboard-row">
-                        <div className="dashboard-card">
-                            <ProfileMessage message={this.state.profileMSG} />
-                            <div className="dashboard-left-strip dashboard-strip-red"></div>
-                            <h1 className="display-4 dashboard-header dashboard-strip-red">Profile</h1>
-                            <UserProfileForm mobile={mobile}
-                                user={user}
-                                onChange={(user) => {
-                                    this.setState({ user: user });
-                                }}
-                                onSubmit={(user) => {
-                                    user.registration_status = "registered";
-                                    this.submitUser(user);
-                                }}
-                                profile={this.props.profile}
-                            />
-                        </div>
-                    </Col>
+                    <Section title="Profile: Basics"
+                        subtitle="Introduce yourself, don't be shy!"
+                        isOpen={this.state.openDetails}>
+                        <UserProfileForm mobile={mobile}
+                            user={user}
+                            onChange={(user) => {
+                                this.setState({ user: user });
+                            }}
+                            onSubmit={(user) => {
+                                user.registration_status = "registered";
+                                this.submitUser(user);
+                            }}
+                            profile={this.props.profile}
+                        />
+                    </Section>
                 </Row>
                 <Row>
-                    <Col>
-                        Shivan
-                    </Col>
+                    <Section
+                        title="Travel Reimbursements"
+                        subtitle="Let us know where you're coming from!">
+                        <TravelReimbursementsForm mobile={mobile}
+                            travelling_from={user.travelling_from}
+                            onSubmit={(travel) => {
+                                user.travelling_from = travel;
+                                this.submitUser(user);
+                            }} />
+                    </Section>
+                </Row>
+                <Row>
+                    {(user.role && user.role.director) &&
+                        <AdminControl profile={this.props.profile} user={user} />}
                 </Row>
                 {/* <div style={{ zIndex: 3, color: "white", width: "100%", paddingTop: "4rem" }}
                     align="center">
@@ -241,9 +249,6 @@ class Dashboard extends Component {
                                     }} />
                             </Section>
                         </div>
-                        {(user.role && user.role.director) &&
-                            <AdminControl profile={this.props.profile}
-                                user={user} />}
                 </div> */}
             </Container>
         );

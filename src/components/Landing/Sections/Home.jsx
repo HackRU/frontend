@@ -113,7 +113,7 @@ class Home extends Component {
                             <Motion defaultStyle={{ opacity: 0 }} style={{ opacity: spring(1, { stiffness: 1, damping: 1 }) }}>
                                 {
                                     ({ opacity }) =>
-                                        <Logo style={{ opacity }} noCircle
+                                        <Logo repeat={true} style={{ opacity }} noCircle
                                             src="./assets/icons/hru-text.svg" />
                                 }
                             </Motion>
@@ -178,7 +178,7 @@ class Home extends Component {
                             <Motion defaultStyle={{ opacity: 0 }} style={{ opacity: spring(1, { stiffness: 1, damping: 1 }) }}>
                                 {
                                     ({ opacity }) =>
-                                        <Logo style={{ opacity }} noCircle
+                                        <Logo repeat={true} style={{ opacity }} noCircle
                                             src="./assets/icons/hru-text.svg" />
                                 }
                             </Motion>
