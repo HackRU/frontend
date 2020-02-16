@@ -104,7 +104,7 @@ class Dashboard extends Component {
                         <div className="dashboard-card">
                             <div className="dashboard-left-strip dashboard-strip-red"></div>
                             <div style={{ position: "relative", top: -75, height: 200 }}>
-                                <Logo repeat={true} color={theme.secondary[1]} noCircle src="./assets/icons/hru-text-dyn.svg" />
+                                <Logo repeat={false} color={theme.secondary[1]} noCircle src="./assets/icons/hru-text-dyn.svg" />
                             </div>
                         </div>
                     </Col>
