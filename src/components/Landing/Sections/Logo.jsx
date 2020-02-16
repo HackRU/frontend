@@ -40,7 +40,7 @@ class Logo extends Component {
                         },
                         direction: "alternate",
                         delay: () => { return 500; },
-                        loop: true
+                        loop: props.repeat === null ? true : props.repeat
                     });
                 });
             });
@@ -53,7 +53,7 @@ class Logo extends Component {
     }
     render() {
         return (
-            <Container style={{ ...this.props.style, minHeight: theme["hero-height"], maxWidth: theme["hero-width"], background: (this.props.noCircle) ? ("") : (theme["hero-background"]), borderRadius: theme["hero-border-radius"], color: theme.primary[0] + "FF" }}
+            <Container style={{ ...this.props.style, minHeight: theme["hero-height"], maxWidth: theme["hero-width"], background: (this.props.noCircle) ? ("") : (theme["hero-background"]), borderRadius: theme["hero-border-radius"], color: this.props.color }}
                 className="d-flex align-items-center">
                 <Col xs={12}
                     dangerouslySetInnerHTML={{ __html: this.state.file }} />

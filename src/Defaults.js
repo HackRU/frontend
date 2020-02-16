@@ -10,7 +10,7 @@ import Footer from "./components/Landing/Sections/Footer";
 const defaults =  {
     "title": "HackRU Spring 2020",
     "dateText": "April 18th-19th",
-    "locationText": "Rutgers Athletic Center",
+    "locationText": "College Avenue Student Center",
     "universityText": "Rutgers University",
     "slogan": "hack all knight",
     "mobileWidthThresholdSensitive": 1500,
@@ -37,42 +37,42 @@ const defaults =  {
 };
 
 const navlinks = {
-    "About Us": {
+    "ABOUT": {
         "url": "#about",
         "enabled": !defaults.freeze,
         "hideLink": false,
         "fullHeight": false,
         "component": (props) => <About {...props} />
     },
-    "Schedule": {
+    "SCHEDULE": {
         "url": "#schedule",
         "enabled": !defaults.freeze,
         "hideLink": false,
         "fullHeight": false,
         "component": (props) => <Schedule {...props} />
     },
-    "Sponsors": {
+    "SPONSORS": {
         "url": "#sponsors",
         "enabled": !defaults.freeze,
         "hideLink": false,
         "fullHeight": false,
         "component": (props) => <Sponsors {...props} />
     },
-    "Partners": {
+    "PARTNERS": {
         "url": "#partners",
         "enabled": !defaults.freeze,
         "hideLink": false,
         "fullHeight": false,
         "component": (props) => <Partners {...props} />
     },
-    "Numbers": {
+    "NUMBERS": {
         "url": "#numbers",
         "enabled": !defaults.freeze,
         "hideLink": true,
         "fullHeight": false,
         "component": (props) => <Stats {...props} />
     },
-    "FAQs": {
+    "FAQS": {
         "url": "#faqs",
         "enabled": !defaults.freeze,
         "hideLink": false,

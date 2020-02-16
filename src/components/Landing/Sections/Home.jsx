@@ -182,15 +182,14 @@ class Home extends Component {
                                             src="./assets/icons/hru-text.svg" />
                                 }
                             </Motion>
-                            {/* <h1 style={{ color: theme.accent[0], marginTop: -100, marginBottom: 100 }}>hack all knight</h1> */}
                             <Motion defaultStyle={{ opacity: 0, top: 1000 }} style={{
                                 opacity: spring(1, { stiffness: 1, damping: 1 }),
                                 top: spring(0, { stiffness: 20, damping: 4 })
                                 }}>
                                 {
                                     ({ opacity, top }) =>
-                                        <h2 style={{ marginTop: -100 + top, color: theme.accent[0], opacity: opacity }}
-                                            className="display-4 theme-font">{defaults.slogan}</h2>
+                                        <h2 style={{ marginTop: "calc(" + (-250 + top) + "px + 20vw)", color: theme.accent[0], opacity: opacity }}
+                                            className="display-5 theme-font">{defaults.slogan}</h2>
                                 }
                             </Motion>
                             <Motion defaultStyle={{ opacity: 0 }} style={{ opacity: spring(1, { stiffness: 1, damping: 1 }) }}>
@@ -201,6 +200,26 @@ class Home extends Component {
                                                 name="map-marker" /> {defaults.locationText}</h2>
                                             <h2 style={{ opacity: opacity }} className="lead theme-font"><Icon style={{ marginRight: 5 }}
                                                 name="calendar" /> {defaults.dateText}</h2>
+                                            <ButtonGroup>
+                                                {!this.props.profile.isLoggedIn ?
+                                                    <div>
+                                                        <div>
+                                                            <Link to="/login"><Button outline className="pill-btn" color="warning" size="lg" style={{ opacity }}>Login</Button></Link>
+                                                        </div>
+                                                        <div>
+                                                        <Link to="/signup"><Button className="pill-btn" color="success" size="lg" style={{ opacity }}>Register</Button></Link>
+                                                        </div>
+                                                    </div> :
+                                                    <div>
+                                                        <div>
+                                                            <Link to="/dashboard"><Button outline className="pill-btn" color="warning" size="lg" style={{ opacity }}>Dashboard</Button></Link>
+                                                        </div>
+                                                        <div>
+                                                            <Link to="/logout"><Button outline className="pill-btn" color="warning" size="lg" style={{ opacity }}>Logout</Button></Link>
+                                                        </div>
+                                                    </div>
+                                                }
+                                            </ButtonGroup>
                                         </div>
                                 }
                             </Motion>

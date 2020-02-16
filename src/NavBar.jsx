@@ -5,6 +5,7 @@ import { navlinks, theme, defaults } from "./Defaults";
 import { ProfileType } from "./components/Profile";
 import PropTypes from "prop-types";
 import "./NavBar.css";
+import Logo from "./components/Landing/Sections/Logo.jsx";
 
 const LinkSwitcher = (props) => {
     return (props.root) ? <a {...props}>{props.children}</a> : <Link {...props} />;
@@ -67,8 +68,6 @@ class NavBar extends Component {
             });
         }
     }
-
-
     toggleFalse() {
         if (window.innerWidth < 768) {
             this.setState({
@@ -192,15 +191,21 @@ class NavBar extends Component {
                     dark
                     expand="md"
                     onBlur={this.toggleFalse}>
-                    <Container>
+                    <Container fluid style={{ paddingBottom: 10, paddingTop: 10, paddingLeft: 10 }}>
                         <NavbarBrand>
-                            <NavbarToggler onClick={this.toggle}
-                                style={{ marginRight: 10 }} />
-                            <LinkSwitcher style={{ color: theme.accent[0] }}
+                            <div style={{ position: "relative", width: "100%" }}>
+                                <NavbarToggler onClick={this.toggle}
+                                    style={{ position: "fixed", right: 0, top: 2, marginRight: 10 }} />
+                            </div>
+                            <LinkSwitcher style={{ }}
                                 onClick={this.toggleFalse}
                                 href="/#home"
                                 to="/#home"
-                                root={onLanding.toString()}>HackRU</LinkSwitcher>
+                                root={onLanding.toString()}>
+                                    <div style={{ display: "block", marginTop: -200, marginBottom: -200, width: 200, marginRight: -40, marginLeft: -40 }}>
+                                        <Logo color="white" repeat={false} noCircle src="./assets/icons/hru-text-dyn.svg" />
+                                    </div>
+                                </LinkSwitcher>
                         </NavbarBrand>
                         { onDashboard ?
                             this.getDashboardNav() :
