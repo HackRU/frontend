@@ -36,7 +36,8 @@ class ForgotPage extends Component {
                     <Input required
                         type="email"
                         id="email"
-                        placeholder="email" />
+                        placeholder="email"
+                        className="auth" />
                     <InputGroupAddon addonType="append">
                         <Button color="success"
                             style={{ borderRadius: 0 }}><Icon name="chevron-right" /></Button>

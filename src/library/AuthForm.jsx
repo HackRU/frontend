@@ -29,7 +29,7 @@ const AuthForm = ({ children, errors, label, loading, isMobile, onSubmit, title 
             <div style={{ position: "absolute", left: 0, top: "50%", height: "30%", backgroundColor: theme.primary[1], width: 10 }}></div>
             <div style={{ position: "absolute", left: 0, top: "80%", height: "20%", backgroundColor: theme.primary[0], width: 10 }}></div>
             <div style={{ padding: 30 }}>
-                <h1 className="display-1 theme-font">{ title }</h1>
+                <h1 className="display-4 theme-font">{ title }</h1>
                 <p className="lead">{loading ? label: ""}</p>
                 <Form onSubmit={onSubmit}>
                     {renderErrors(errors)}

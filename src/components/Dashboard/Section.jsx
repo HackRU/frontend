@@ -27,15 +27,15 @@ class Section extends Component {
                 {...rest} >
                 <div className="dashboard-card">
                     <div className="dashboard-left-strip dashboard-strip-red"></div>
-                    <h1 className="display-4 dashboard-header dashboard-strip-red">
+                    <h2 className="dashboard-header dashboard-strip-red">
                         {title}
                         <Button color="white"
                             className="pill-btn"
-                            style={{ position: "absolute", right: 25, top: 70, fontSize: 25 }}
+                            style={{ position: "absolute", right: 25, top: 55, fontSize: 25 }}
                             onClick={() => this.setState({ isOpen: !this.state.isOpen })}>
                             <Icon name={(this.state.isOpen) ? ("chevron-up") : ("chevron-down")} />
                         </Button>
-                    </h1>
+                    </h2>
                     <Collapse isOpen={this.state.isOpen}>
                         <div>
                             {children}
