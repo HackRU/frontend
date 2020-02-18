@@ -6,8 +6,6 @@ import { Redirect } from "react-router-dom";
 import AuthForm from "../library/AuthForm";
 import { ProfileType } from "./Profile";
 import PropTypes from "prop-types";
-import "./input.css";
-
 /**
  * Login application for "/login"
  */

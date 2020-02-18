@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 import { Redirect } from "react-router-dom";
 import AuthForm from "../library/AuthForm";
 import PropTypes from "prop-types";
-import "./input.css";
 
 /**
  * Signup application for "/signup"
@@ -38,35 +37,40 @@ class SignUpPage extends Component {
                     <Input required
                         id="first"
                         type="text"
-                        placeholder="first name" />
+                        placeholder="first name"
+                        className="auth" />
                 </Col>
                 <Col xs={6}
                     style={{ margin: 0, paddingRight: 0, paddingLeft: 7 }}>
                     <Input required
                         id="last"
                         type="text"
-                        placeholder="last name" />
+                        placeholder="last name"
+                        className="auth" />
                 </Col>
             </FormGroup>
             <FormGroup row>
                 <Input required
                     type="email"
                     id="email"
-                    placeholder="email" />
+                    placeholder="email"
+                    className="auth" />
             </FormGroup>
             <hr style={{ background: "rgba(255, 255, 255, 0.25)" }} />
             <FormGroup row>
                 <Input required
                     type="password"
                     id="password"
-                    placeholder="password" />
+                    placeholder="password"
+                    className="auth" />
             </FormGroup>
             <FormGroup row>
                 <InputGroup>
                     <Input required
                         type="password"
                         id="conpassword"
-                        placeholder="confirm password" />
+                        placeholder="confirm password"
+                        className="auth" />
                     <InputGroupAddon addonType="append">
                         <Button color="success"
                             style={{ borderRadius: 0 }}>
