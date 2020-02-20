@@ -38,10 +38,18 @@
         { "value": "Vegetarian", "label": "Vegetarian" },
         { "value": "Vegan", "label": "Vegan" },
         { "value": "Kosher", "label": "Kosher" },
-        { "value": "Hallal", "label": "Hallal" },
+        { "value": "Halal", "label": "Halal" },
         { "value": "Lactose Intolerant", "label": "Lactose Intolerant" },
         { "value": "Gluten Free", "label": "Gluten Free" },
         { "value": "Nut Allergy", "label": "Nut Allergy" },
         { "value": "None", "label": "None" }
+    ],
+    "Reasons": [
+        { "value": "Meet new people", "label": "Meet new people" },
+        { "value": "Prizes", "label": "Prizes" },
+        { "value": "Learn new skills", "label": "Learn new skills" },
+        { "value": "Networking for jobs", "label": "Networking for jobs" },
+        { "value": "Challenging yourself", "label": "Challenging yourself" },
+        { "value": "Visitng friends", "label": "Visiting friends" }
     ]
 }

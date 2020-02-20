@@ -83,6 +83,7 @@ class Dashboard extends Component {
         user.phone_number = user.phone_number || "";
         user.ethnicity = user.ethnicity || "";
         user.how_you_heard_about_hackru = user.how_you_heard_about_hackru || "";
+        user.reasons = user.reasons || "";
         let mobile = this.props.isMobile;
         let rolesString = "";
         Object.keys(user.role).forEach((key) => { if (user.role[key]) { rolesString += `${key}, `; }});

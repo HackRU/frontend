@@ -294,6 +294,16 @@ class UserProfileForm extends Component {
                         </div>
                     </FormGroup>
                     <FormGroup>
+                        <Label for="reasons">What are your reasons for coming? (Rank them from highest to lowest) </Label>
+                        <div className="forcestyle">
+                            <Creatable isMulti
+                                id="reasons"
+                                value={(user.reasons.length > 0) ? (user.reasons.split(";").map(((val) => { return { value: val, label: val }; }))) : ([])}
+                                onChange={(e) => { let majors = ""; for (let i = 0; i < e.length; i++) { majors += ";" + e[i].value; } majors = majors.substring(1); user.reasons = majors; this.updateUser(user); }}
+                                options={selectorOptions["Reasons"]} />
+                        </div>
+                    </FormGroup>
+                    <FormGroup>
                         <Label for="sa">What are you hoping to experience at HackRU?</Label>
                         <Input id="sa"
                             type="textarea"
@@ -425,6 +435,10 @@ class UserProfileForm extends Component {
                     <FormGroup>
                         <Label>How did you hear about HackRU?</Label>
                         {field(user.how_you_heard_about_hackru)}
+                    </FormGroup>
+                    <FormGroup>
+                        <Label>What are your reasons for coming? (Rank them from highest to lowest)</Label>
+                        {field(user.reasons)}
                     </FormGroup>
                     <FormGroup>
                         <Label>What are you hoping to experience at HackRU?</Label>
