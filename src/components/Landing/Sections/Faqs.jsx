@@ -24,7 +24,7 @@ const FAQTextOne = {
         text: "HackRU will run registration on a first-come-first-serve basis for those with qualifying applications. That means registration can fill up quickly, so make sure to register early and answer questions thoroughly!"
     },
     four: {
-        title: "Are there Travel Reimbursements?",
+        title: "Are there travel reimbursements?",
         text: [<p key={1}>HackRU is considering offering travel reimbursements to qualified students who do not attend Rutgers University—New Brunswick. Information about travel reimbursements is available on the application and your dashboard. Reach out to <a href="mailto:travel@hackru.org">travel@hackru.org</a> if you have any additional questions.</p>]
     },
     five: {
