@@ -469,7 +469,9 @@ class Profile {
     async GetResumeInfo() {
         const json = await fetch(ENDPOINTS.resume, {
             method: "POST",
-            mode: "cors",
+            headers: {
+                "content-type": "application/json",
+            }, 
             body: JSON.stringify({
                 email: this._email,
                 token: this._token,
