@@ -11,7 +11,6 @@ import TravelReimbursementsForm from "./Forms/TravelReimbursementsForm";
 import UserProfileForm from "./Forms/UserProfileForm/UserProfileForm";
 import { ProfileType } from "../Profile";
 import PropTypes from "prop-types";
-import Logo from "../Landing/Sections/Logo.jsx";
 import { theme } from "../../Defaults";
 
 class Dashboard extends Component {
@@ -44,7 +43,6 @@ class Dashboard extends Component {
             } else {
                 if (data) {
                     delete data.auth;
-                    console.log(data);
                     this.setState({
                         user: data,
                         loading: false,
@@ -97,15 +95,16 @@ class Dashboard extends Component {
                         lg={12} >
                         <div className="dashboard-card">
                             <div className="dashboard-left-strip dashboard-strip-red"></div>
-                            <div style={{ position: "relative", top: 20 }}>
+                            <h1 className="display-3"
+                                style={{ textAlign: "center", color: theme.secondary[0], textTransform: "capitalize" }}>Welcome, {user.first_name}</h1>
+                            <p style={{ textAlign: "center", color: theme.secondary[0], textTransform: "capitalize" }}>{rolesString}</p>
+                            {/* <div style={{ position: "relative", top: 20 }}>
                                 <Logo repeat={false}
                                     color={theme.secondary[1]}
                                     noCircle
                                     src="./assets/icons/hru-text-dyn.svg" />
-                            </div>
+                            </div> */}
                         </div>
-                        <h1 style={{ position: "absolute", top: 10, width: "100%", textAlign: "center", color: theme.secondary[0], textTransform: "capitalize" }}>Welcome, {user.first_name}</h1>
-                        <div style={{ position: "absolute", bottom: 10, width: "100%", textAlign: "center", color: theme.secondary[0], textTransform: "capitalize" }}>{rolesString}</div>
                     </Col>
                 </Row>
                 <Row>
@@ -113,7 +112,7 @@ class Dashboard extends Component {
                         <Col className="dashboard-row"
                             xl={4}
                             lg={4}
-                            md={6}
+                            md={12}
                             sm={12}
                             xs={12}>
                             <div className="dashboard-card"
