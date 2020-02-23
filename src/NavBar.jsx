@@ -108,7 +108,8 @@ class NavBar extends Component {
         let navLinks = [];
         for (let i = 0; i < keys.length - 1; i++) {
             navLinks.push(
-                <NavItem key={i}>
+                <NavItem key={i}
+                    className={keys[i] === "ABOUT" && window.innerWidth < 768 ? "pt-3" : ""}>
                     <NavLink
                         className="primary-link"
                         href={"/" + navlinks[keys[i]].url}
