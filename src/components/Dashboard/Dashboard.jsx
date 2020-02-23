@@ -97,29 +97,45 @@ class Dashboard extends Component {
                         lg={12} >
                         <div className="dashboard-card">
                             <div className="dashboard-left-strip dashboard-strip-red"></div>
-                            <div style={{ position: "relative", top: -40, height: 200 }}>
+                            <div style={{ position: "relative", top: 20 }}>
                                 <Logo repeat={false}
                                     color={theme.secondary[1]}
                                     noCircle
                                     src="./assets/icons/hru-text-dyn.svg" />
                             </div>
                         </div>
+                        <h1 style={{ position: "absolute", top: 10, width: "100%", textAlign: "center", color: theme.secondary[0], textTransform: "capitalize" }}>Welcome, {user.first_name}</h1>
+                        <div style={{ position: "absolute", bottom: 10, width: "100%", textAlign: "center", color: theme.secondary[0], textTransform: "capitalize" }}>{rolesString}</div>
                     </Col>
                 </Row>
                 <Row>
-                    <Col className="dashboard-row"
-                        xl={8}
-                        lg={8}
-                        md={6}
-                        sm={12}
-                        xs={12}>
+                    {(user.registration_status === "confirmed" || user.registration_status === "waitlist" || user.registration_status === "coming" || user.registration_status === "registered" || (user.role && user.role.director) || (user.role && user.role.organizer) || (user.role && user.role.volunteer)) &&
+                        <Col className="dashboard-row"
+                            xl={4}
+                            lg={4}
+                            md={6}
+                            sm={12}
+                            xs={12}>
+                            <div className="dashboard-card"
+                                style={{ textAlign: "center", paddingBottom: 0 }}>
+                                <div className="dashboard-left-strip dashboard-strip-green"></div>
+                                <h1 className="display-4 dashboard-header dashboard-strip-green">QR</h1>
+                                <div className="d-flex align-items-center"
+                                    style={{ height: "60%", textAlign: "center" }}>
+                                    <div style={{ marginTop: 50, textAlign: "center", width: "100%", color: theme.secondary[0] }}>
+                                        <p>Please have this QR avaliable when you check in at HackRU.</p>
+                                        <QR email={user.email} />
+                                    </div>
+                                </div>
+                            </div>
+                        </Col>}
+                    <Col className="dashboard-row">
                         <div className="dashboard-card">
                             <div className="dashboard-left-strip dashboard-strip-yellow"></div>
-                            <h1 className="display-4 dashboard-header dashboard-strip-yellow">Welcome, {user.first_name}</h1>
-                            <i style={{ position: "absolute", bottom: 10, left: 40 }}>{rolesString}</i>
+                            <h1 className="display-4 dashboard-header dashboard-strip-yellow">Application Status</h1>
                             <div className="d-flex align-items-center"
                                 style={{ height: "60%", textAlign: "center" }}>
-                                <div style={{ marginTop: 50, textAlign: "center", width: "100%" }}>
+                                <div style={{ marginTop: 0, textAlign: "center", width: "100%" }}>
                                     <ApplicationStatus onComing={() => {
                                         user.registration_status = "coming";
                                         this.submitUser(user);
@@ -134,26 +150,6 @@ class Dashboard extends Component {
                             </div>
                         </div>
                     </Col>
-		    {(user.registration_status === "confirmed" || user.registration_status === "waitlist" || user.registration_status === "coming" || user.registration_status === "registered" || (user.role && user.role.director) || (user.role && user.role.organizer) || (user.role && user.role.volunteer)) &&
-                    <Col className="dashboard-row"
-                        xl={4}
-                        lg={4}
-                        md={6}
-                        sm={12}
-                        xs={12}>
-                        <div className="dashboard-card"
-                            style={{ textAlign: "center" }}>
-                            <div className="dashboard-left-strip dashboard-strip-green"></div>
-                            <h1 className="display-4 dashboard-header dashboard-strip-green">QR</h1>
-			    <p> Please have this QR avaliable when you check in at HackRU. </p>
-                            <div className="d-flex align-items-center"
-                                style={{ height: "60%", textAlign: "center" }}>
-                                <div style={{ marginTop: 50, textAlign: "center", width: "100%" }}>
-                                    <QR email={user.email} />
-                                </div>
-                            </div>
-                        </div>
-                    </Col>}
                 </Row>
                 <Row>
                     <Section title="Profile: Basics"
