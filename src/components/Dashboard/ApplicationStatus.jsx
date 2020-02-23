@@ -27,6 +27,7 @@ const applicationBody = (status, onComing, onNotComing, travelling_from) => {
     case "registered":
         return (<div>
             <h1>Pending</h1>
+            <p>Your application is complete and under consideration.</p>
         </div>);
     case "rejected":
         return (<div>
