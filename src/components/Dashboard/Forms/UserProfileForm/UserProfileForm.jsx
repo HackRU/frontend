@@ -28,6 +28,7 @@ class UserProfileForm extends Component {
             })),
             checkedState1: (this.props.user.registration_status !== "unregistered"),
             checkedState2: (this.props.user.registration_status !== "unregistered"),
+            checkedState3: (this.props.user.want_bus),
             message: null
         });
         request.get("https://raw.githubusercontent.com/MLH/mlh-policies/master/schools.csv", {}, (_err, _resp, body) => {
@@ -40,6 +41,7 @@ class UserProfileForm extends Component {
         });
     }
     updateUser(user) {
+        console.log(user);
         this.setState({
             user
         });
@@ -55,7 +57,11 @@ class UserProfileForm extends Component {
         if (this.state.checkedState2) {
             mlhnotices.push("mlh2");
         }
-        let model = { mlhnotices };
+        let polls = [];
+        if (this.state.checkedState3) {
+            polls.push("poll-bus");
+        }
+        let model = { mlhnotices, polls };
         let message = null;
         if (this.state.message) {
             message = (<UncontrolledAlert color="danger">{this.state.message}</UncontrolledAlert>);
@@ -315,6 +321,16 @@ class UserProfileForm extends Component {
                         edit={this.state.edit}
                         profile={this.props.profile}
                     />
+                    <AvCheckboxGroup name="polls"
+                        className="custom-av-checkbox"
+                        label={<h4>Preliminary Polls</h4>}
+                        validate={{ required: { value: false, errorMessag: "" } }}>
+                        <AvCheckbox name="poll-bus"
+                            customInput
+                            onChange={() => { this.setState({ checkedState3: !this.state.checkedState3 }); }}
+                            label={<p>Would you be interested in a bus from your school to HackRU? (Note: this is not a guarantee that a bus will pick you up from your particular school!)</p>}
+                            value={"poll-bus"} />
+                    </AvCheckboxGroup>
                     <AvCheckboxGroup name="mlhnotices"
                         className="custom-av-checkbox"
                         label={<h4>MLH Notices</h4>}
