@@ -97,7 +97,7 @@ class Dashboard extends Component {
                         lg={12} >
                         <div className="dashboard-card">
                             <div className="dashboard-left-strip dashboard-strip-red"></div>
-                            <div style={{ position: "relative", top: -75, height: 200 }}>
+                            <div style={{ position: "relative", top: -40, height: 200 }}>
                                 <Logo repeat={false}
                                     color={theme.secondary[1]}
                                     noCircle
