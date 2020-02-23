@@ -98,12 +98,6 @@ class Dashboard extends Component {
                             <h1 className="display-3"
                                 style={{ textAlign: "center", color: theme.secondary[0], textTransform: "capitalize" }}>Welcome, {user.first_name}</h1>
                             <p style={{ textAlign: "center", color: theme.secondary[0], textTransform: "capitalize" }}>{rolesString}</p>
-                            {/* <div style={{ position: "relative", top: 20 }}>
-                                <Logo repeat={false}
-                                    color={theme.secondary[1]}
-                                    noCircle
-                                    src="./assets/icons/hru-text-dyn.svg" />
-                            </div> */}
                         </div>
                     </Col>
                 </Row>
