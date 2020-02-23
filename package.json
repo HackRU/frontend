@@ -17,6 +17,7 @@
         "react-anime": "^3.0.3",
         "react-chartjs-2": "^2.7.4",
         "react-cookies": "^0.1.0",
+        "react-countup": "^4.3.3",
         "react-dependent-script": "^1.1.0",
         "react-dom": "^16.6.3",
         "react-fa": "^5.0.0",

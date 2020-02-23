@@ -44,6 +44,7 @@ class Dashboard extends Component {
             } else {
                 if (data) {
                     delete data.auth;
+                    console.log(data);
                     this.setState({
                         user: data,
                         loading: false,
@@ -96,7 +97,7 @@ class Dashboard extends Component {
                         lg={12} >
                         <div className="dashboard-card">
                             <div className="dashboard-left-strip dashboard-strip-red"></div>
-                            <div style={{ position: "relative", top: -75, height: 200 }}>
+                            <div style={{ position: "relative", top: -40, height: 200 }}>
                                 <Logo repeat={false}
                                     color={theme.secondary[1]}
                                     noCircle
@@ -163,6 +164,7 @@ class Dashboard extends Component {
                             }}
                             onSubmit={(user) => {
                                 user.registration_status = "registered";
+                                console.log(user.want_bus);
                                 this.submitUser(user);
                             }}
                             profile={this.props.profile}
@@ -186,83 +188,6 @@ class Dashboard extends Component {
                         <AdminControl profile={this.props.profile}
                             user={user} />}
                 </Row>
-                {/* <div style={{ zIndex: 3, color: "white", width: "100%", paddingTop: "4rem" }}
-                    align="center">
-                        <div style={{ width: "100%", textAlign: "left", marginBottom: 0, paddingTop: 35 }}>
-                            <Row>
-                                <Col md={8}
-                                    xs={12}>
-                                    <h1 className="display-4">Welcome, {user.first_name}</h1>
-                                    <i>{rolesString}</i>
-                                </Col>
-                                <Col style={{ textAlign: "center" }}
-                                    md={4}
-                                    xs={12}>
-                                    <img width="150"
-                                        style={{ marginTop: 0 }}
-                                        alt="logo"
-                                        src="./assets/icons/hru-logo-white.svg" />
-                                </Col>
-                            </Row>
-                        </div>
-                        <ApplicationStatus
-                            onComing={() => {
-                                user.registration_status = "coming";
-                                this.submitUser(user);
-                            }}
-                            onNotComing={() => {
-                                user.registration_status = "not-coming";
-                                this.submitUser(user);
-                            }}
-                            travelling_from={user.travelling_from}
-                            status={user.registration_status}
-                        />
-                        {(user.registration_status === "confirmed" || user.registration_status === "waitlist" || user.registration_status === "coming" || user.registration_status === "registered" || (user.role && user.role.director) || (user.role && user.role.organizer) || (user.role && user.role.volunteer)) &&
-                            <div>
-                                <div style={{ width: "100%", textAlign: "left" }}>
-                                    <p className="lead">Day Of</p>
-                                </div>
-                                <Section className="mb-5"
-                                    title="Your QR Code"
-                                    subtitle="Please have this avaliable when you arrive for check-in." 
-                                    isOpen={true}>
-                                    <div style={{ width: "100", textAlign: "center" }}>
-                                        <QR email={user.email} />
-                                    </div>
-                                </Section>
-                            </div>}
-                        <div>
-                            <div style={{ width: "100%", textAlign: "left" }}>
-                                <p className="lead">User Profile</p>
-                            </div>
-                            <ProfileMessage message={this.state.profileMSG} />
-                            <Section title="Basics"
-                                subtitle="Introduce yourself, don't be shy!"
-                                isOpen={this.state.openDetails} >
-                                <UserProfileForm mobile={mobile}
-                                    user={user}
-                                    onChange={(user) => {
-                                        this.setState({ user: user });
-                                    }}
-                                    onSubmit={(user) => {
-                                        user.registration_status = "registered";
-                                        this.submitUser(user);
-                                    }}
-                                    profile={this.props.profile}
-                                />
-                            </Section>
-                            <Section className="mb-5"
-                                title="Travel Reimbursements"
-                                subtitle="Let us know where you're coming from!">
-                                <TravelReimbursementsForm mobile={mobile}
-                                    travelling_from={user.travelling_from}
-                                    onSubmit={(travel) => {
-                                        user.travelling_from = travel;
-                                        this.submitUser(user);
-                                    }} />
-                            </Section>
-                        </div>
-                </div> */}
             </Container>
         );
     }

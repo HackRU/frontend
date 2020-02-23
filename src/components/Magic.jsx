@@ -46,6 +46,7 @@ class MagicPage extends Component {
                 <FormGroup row>
                     <InputGroup>
                         <Input required
+                            className="auth"
                             id="email"
                             type="email"
                             placeholder="email" />
@@ -54,6 +55,7 @@ class MagicPage extends Component {
                 <FormGroup row>
                     <InputGroup>
                         <Input required
+                            className="auth"
                             id="password"
                             type="password"
                             placeholder="new password" />
@@ -62,6 +64,7 @@ class MagicPage extends Component {
                 <FormGroup row>
                     <InputGroup>
                         <Input required
+                            className="auth"
                             type="password"
                             id="conpassword"
                             placeholder="confirm password" />
@@ -89,8 +92,11 @@ class MagicPage extends Component {
                 color="danger">{this.state.errors}</Alert>);
         }
         let contents = (
-            <div style={{ padding: 30 }}>
-                <h1 className="display-1 theme-font">Reset</h1>
+            <div style={{ padding: 30, backgroundColor: theme.secondary[1], color: "white", boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.5)" }}>
+                <div style={{ position: "absolute", left: 5, top: 0, height: "50%", backgroundColor: theme.accent[0], width: 10 }}></div>
+                <div style={{ position: "absolute", left: 5, top: "50%", height: "30%", backgroundColor: theme.primary[1], width: 10 }}></div>
+                <div style={{ position: "absolute", left: 5, top: "80%", height: "20%", backgroundColor: theme.primary[0], width: 10 }}></div>
+                <h1 className="display-4 theme-font">Reset</h1>
                 <p className="lead">{innerText}</p>
                 <Form onSubmit={(e) => {
                     e.preventDefault();
@@ -129,7 +135,7 @@ class MagicPage extends Component {
         if (!this.props.isMobile) {
             return (
                 <Container fluid
-                    style={{ width: "100%", minHeight: "100vh", textAlign: "center", backgroundColor: theme.secondary[1] }}
+                    style={{ width: "100%", minHeight: "100vh", textAlign: "center" }}
                     className="d-flex align-items-center">
                     <Col />
                     <Col xs={3}
@@ -142,7 +148,7 @@ class MagicPage extends Component {
         } else {
             return (
                 <Container fluid
-                    style={{ width: "100%", minHeight: "100vh", textAlign: "center", backgroundColor: theme.secondary[1] }}
+                    style={{ width: "100%", minHeight: "100vh", textAlign: "center" }}
                     className="d-flex align-items-center">
                     <Col xs={12}
                         style={{ display: "block", zIndex: 3, color: "white", background: "rgba(255, 255, 255, 0.05)" }}>

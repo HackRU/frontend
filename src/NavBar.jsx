@@ -202,11 +202,18 @@ class NavBar extends Component {
                                 <NavbarToggler onClick={this.toggle}
                                     style={{ position: "fixed", right: 0, top: 2, marginRight: 10 }} />
                             </div>
-                            <div style={{ display: "block", marginTop: -200, marginBottom: -200, width: 200, marginRight: -40, marginLeft: -40 }}>
-                                <Logo color="white"
-                                    repeat={false}
-                                    noCircle
-                                    src="./assets/icons/hru-text-dyn.svg" />
+                            <div style={{ display: "block", paddingRight: 0, marginTop: -50, marginBottom: -200, width: 200, marginRight: -20, marginLeft: -40, height: 225 }}>
+                                <LinkSwitcher 
+                                    style={{ height: "10px !important" }}
+                                    onClick={this.toggleFalse}
+                                    root={onLanding.toString()}
+                                    href="/#home"
+                                    to="/#home">
+                                    <Logo color="white"
+                                        repeat={false}
+                                        noCircle
+                                        src="/assets/icons/hru-text-dyn.svg" />
+                                </LinkSwitcher >
                             </div>
                         </NavbarBrand>
                         { onDashboard ?
