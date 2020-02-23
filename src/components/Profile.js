@@ -233,6 +233,7 @@ class Profile {
         }
     }
     _login(email, token, valid_until) {
+        email = email.toLowerCase();
         cookie.save("token", token);
         cookie.save("email", email);
         cookie.save("valid_until", valid_until);
