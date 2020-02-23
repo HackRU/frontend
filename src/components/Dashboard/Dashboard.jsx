@@ -164,6 +164,7 @@ class Dashboard extends Component {
                             }}
                             onSubmit={(user) => {
                                 user.registration_status = "registered";
+                                console.log(user.want_bus);
                                 this.submitUser(user);
                             }}
                             profile={this.props.profile}

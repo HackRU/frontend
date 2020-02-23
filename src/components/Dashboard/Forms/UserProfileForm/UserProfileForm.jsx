@@ -28,7 +28,6 @@ class UserProfileForm extends Component {
             })),
             checkedState1: (this.props.user.registration_status !== "unregistered"),
             checkedState2: (this.props.user.registration_status !== "unregistered"),
-            checkedState3: (this.props.user.want_bus),
             message: null
         });
         request.get("https://raw.githubusercontent.com/MLH/mlh-policies/master/schools.csv", {}, (_err, _resp, body) => {
@@ -58,7 +57,7 @@ class UserProfileForm extends Component {
             mlhnotices.push("mlh2");
         }
         let polls = [];
-        if (this.state.checkedState3) {
+        if (user.want_bus) {
             polls.push("poll-bus");
         }
         let model = { mlhnotices, polls };
@@ -323,11 +322,11 @@ class UserProfileForm extends Component {
                     />
                     <AvCheckboxGroup name="polls"
                         className="custom-av-checkbox"
-                        label={<h4>Preliminary Polls</h4>}
+                        label={<h4>Polls</h4>}
                         validate={{ required: { value: false, errorMessag: "" } }}>
                         <AvCheckbox name="poll-bus"
                             customInput
-                            onChange={() => { this.setState({ checkedState3: !this.state.checkedState3 }); }}
+                            onChange={() => { user.want_bus = (user.want_bus) ? !user.want_bus : (true); }}
                             label={<p>Would you be interested in a bus from your school to HackRU? (Note: this is not a guarantee that a bus will pick you up from your particular school!)</p>}
                             value={"poll-bus"} />
                     </AvCheckboxGroup>
@@ -464,6 +463,11 @@ class UserProfileForm extends Component {
                         edit={this.state.edit}
                         profile={this.props.profile}
                     />
+                    <h4>Polls</h4>
+                    <FormGroup>
+                    <Label>Would you be interested in a bus from your school to HackRU? </Label>
+                        {field(user.want_bus ? ("Yes") : ("No"))}
+                    </FormGroup>
                     <h4>MLH Notices</h4>
                     <FormGroup>
                         {user.registration_status === "registered" ? <p style={{ ...pStyle, height: "100%" }}>I have read and agree to the <a href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf">MLH Code of Conduct</a> and I authorize you to share my application/registration information for event administration, ranking, MLH administration, pre- and post-event informational e-mails, and occasional messages about hackathons in-line with the <a href="https://mlh.io/privacy">MLH Privacy Policy</a>. Further, I agree to the terms of both the <a href="https://github.com/MLH/mlh-policies/blob/master/prize-terms-and-conditions/contest-terms.md">MLH Contest Terms and Conditions</a> and the <a href="https://mlh.io/privacy">MLH Privacy Policy</a>.</p>
