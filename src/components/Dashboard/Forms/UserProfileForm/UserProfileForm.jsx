@@ -60,6 +60,9 @@ class UserProfileForm extends Component {
         if (user.want_bus) {
             polls.push("poll-bus");
         }
+        if (user.want_team) {
+            polls.push("poll-team");
+        }
         let model = { mlhnotices, polls };
         let message = null;
         if (this.state.message) {
@@ -329,6 +332,11 @@ class UserProfileForm extends Component {
                             onChange={() => { user.want_bus = (user.want_bus) ? !user.want_bus : (true); }}
                             label={<p>Would you be interested in a bus from your school to HackRU? (Note: this is not a guarantee that a bus will pick you up from your particular school!)</p>}
                             value={"poll-bus"} />
+                        <AvCheckbox name="poll-team"
+                            customInput
+                            onChange={() => { user.want_team = (user.want_team) ? !user.want_team : (true); }}
+                            label={<p>Are you looking for team members?</p>}
+                            value={"poll-team"} />
                     </AvCheckboxGroup>
                     <AvCheckboxGroup name="mlhnotices"
                         className="custom-av-checkbox"
@@ -467,6 +475,10 @@ class UserProfileForm extends Component {
                     <FormGroup>
                         <Label>Would you be interested in a bus from your school to HackRU? </Label>
                         {field(user.want_bus ? ("Yes") : ("No"))}
+                    </FormGroup>
+                    <FormGroup>
+                        <Label>Are you looking for team members? </Label>
+                        {field(user.want_team ? ("Yes, I am looking for team members") : ("No, I already have a team"))}
                     </FormGroup>
                     <h4>MLH Notices</h4>
                     <FormGroup>
