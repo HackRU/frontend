@@ -148,7 +148,7 @@ class NavBar extends Component {
                 navbar>
                 <Nav navbar
                     className="mr-auto">
-                    <NavItem>
+                    <NavItem className={window.innerWidth < 768 ? "pt-3" : ""}>
                         <NavLink onClick={this.toggleFalse}>
                             <Link
                                 className="primary-link"
