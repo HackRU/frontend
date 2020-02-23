@@ -15,7 +15,14 @@ class Home extends Component {
     render() {
         let loggoutMsg = null;
         if (this.props.loggedout) {
-            loggoutMsg = (<Alert style={{ border: "none", background: "rgba(0, 255, 0, 0.25)", color: "white" }}
+            let addin = {};
+            if (!this.props.isMobile) {
+                addin = {
+                    right: 0,
+                    position: "absolute"
+                }
+            }
+            loggoutMsg = (<Alert style={{ ...addin, border: "none", background: "rgba(0, 255, 0, 0.25)", color: "white" }}
                 color="success"
                 isOpen={this.props.loggedout}
                 toggle={this.props.dismissAlert}>You are logged out</Alert>);
@@ -132,6 +139,7 @@ class Home extends Component {
                                             className="display-4 theme-font">{defaults.slogan}</h2>
                                 }
                             </Motion>
+                            {loggoutMsg}
                             <Motion defaultStyle={{ opacity: 0 }}
                                 style={{ opacity: spring(1, { stiffness: 1, damping: 1 }) }}>
                                 {
@@ -144,7 +152,6 @@ class Home extends Component {
                                                 className="lead theme-font"><Icon style={{ marginRight: 5 }}
                                                     name="calendar" /> {defaults.dateText}</h2>
                                             <hr style={{ opacity }} />
-                                            {loggoutMsg}
                                             <ButtonGroup>
                                                 {!this.props.profile.isLoggedIn ?
                                                     <div>
@@ -252,7 +259,7 @@ class Home extends Component {
                                             noCircle
                                             src="./assets/icons/hru-text.svg" />
                                 }
-                            </Motion>
+                            </Motion>                            
                             <Motion defaultStyle={{ opacity: 0, top: 1000 }}
                                 style={{
                                     opacity: spring(1, { stiffness: 1, damping: 1 }),
