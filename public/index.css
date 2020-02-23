@@ -19,7 +19,7 @@
     --header-font: 'Titillium Web', sans-serif;
     --text-font: 'Titillium Web', sans-serif;
 
-/*'Open Sans', sans-serif;  */
+    /*'Open Sans', sans-serif;  */
     /* Form Inputs */
     --input-background: #C8515111;
     --input-placeholder: rgba(0, 0, 0, 0.3);
@@ -30,7 +30,7 @@
     --select-color: rgba(0, 0, 0, 1);
     /* Hero Image */
     --hero-width: 1000px;
-    --hero-height: 400px;
+    --hero-height: 100px;
     --hero-border-radius: 35%;
     --hero-background: radial-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0));
     /* Sponsor Colors */
