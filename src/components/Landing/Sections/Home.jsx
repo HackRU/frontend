@@ -20,7 +20,7 @@ class Home extends Component {
                 addin = {
                     right: 0,
                     position: "absolute"
-                }
+                };
             }
             loggoutMsg = (<Alert style={{ ...addin, border: "none", background: "rgba(0, 255, 0, 0.25)", color: "white" }}
                 color="success"

@@ -465,7 +465,7 @@ class UserProfileForm extends Component {
                     />
                     <h4>Polls</h4>
                     <FormGroup>
-                    <Label>Would you be interested in a bus from your school to HackRU? </Label>
+                        <Label>Would you be interested in a bus from your school to HackRU? </Label>
                         {field(user.want_bus ? ("Yes") : ("No"))}
                     </FormGroup>
                     <h4>MLH Notices</h4>
