@@ -60,7 +60,7 @@ class UserProfileForm extends Component {
         if (user.want_bus) {
             polls.push("poll-bus");
         }
-	if (user.want_team) {
+        if (user.want_team) {
             polls.push("poll-team");
         }
         let model = { mlhnotices, polls };
@@ -332,7 +332,7 @@ class UserProfileForm extends Component {
                             onChange={() => { user.want_bus = (user.want_bus) ? !user.want_bus : (true); }}
                             label={<p>Would you be interested in a bus from your school to HackRU? (Note: this is not a guarantee that a bus will pick you up from your particular school!)</p>}
                             value={"poll-bus"} />
-		    <AvCheckbox name="poll-team"
+                        <AvCheckbox name="poll-team"
                             customInput
                             onChange={() => { user.want_team = (user.want_team) ? !user.want_team : (true); }}
                             label={<p>Are you looking for team members?</p>}
