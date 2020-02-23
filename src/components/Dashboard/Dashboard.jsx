@@ -134,6 +134,7 @@ class Dashboard extends Component {
                             </div>
                         </div>
                     </Col>
+		    {(user.registration_status === "confirmed" || user.registration_status === "waitlist" || user.registration_status === "coming" || user.registration_status === "registered" || (user.role && user.role.director) || (user.role && user.role.organizer) || (user.role && user.role.volunteer)) &&
                     <Col className="dashboard-row"
                         xl={4}
                         lg={4}
@@ -144,6 +145,7 @@ class Dashboard extends Component {
                             style={{ textAlign: "center" }}>
                             <div className="dashboard-left-strip dashboard-strip-green"></div>
                             <h1 className="display-4 dashboard-header dashboard-strip-green">QR</h1>
+			    <p> Please have this QR avaliable when you check in at HackRU. </p>
                             <div className="d-flex align-items-center"
                                 style={{ height: "60%", textAlign: "center" }}>
                                 <div style={{ marginTop: 50, textAlign: "center", width: "100%" }}>
@@ -151,7 +153,7 @@ class Dashboard extends Component {
                                 </div>
                             </div>
                         </div>
-                    </Col>
+                    </Col>}
                 </Row>
                 <Row>
                     <Section title="Profile: Basics"
