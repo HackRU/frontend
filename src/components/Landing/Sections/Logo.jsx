@@ -40,7 +40,10 @@ class Logo extends Component {
                         },
                         direction: "alternate",
                         delay: () => { return 500; },
-                        loop: props.repeat === null ? true : props.repeat
+                        loop: props.repeat === null ? true : props.repeat,
+                        begin: function(anim) {
+                            anime.remove(anim.targets);
+                        }
                     });
                 });
             });
