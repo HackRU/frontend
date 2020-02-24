@@ -11,6 +11,7 @@ import {
     SponsorshipPage,
     TeamPage,
     ProjectorPage,
+    TeamBuilder,
     E404 } from "./components/Pages"; // Router Pages
 import Background from "./Background";
 import NavBar from "./NavBar";
@@ -119,6 +120,11 @@ class App extends Component {
                 path="/forgot"
                 key="forgot"
                 render={(props) => <ForgotPage {...props}
+                    {...componentProps} />} />,
+            <Route exact
+                path="/teambuilder"
+                key="teambuilder"
+                render={(props) => <TeamBuilder {...props}
                     {...componentProps} />} />,
             <Route exact
                 path="/magic/:mlurl"
