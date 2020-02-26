@@ -17,7 +17,8 @@
         { "value": "Asian/Pacific Islander", "label": "Asian/Pacific Islander" },
         { "value": "Hispanic or Latino", "label": "Hispanic or Latino" },
         { "value": "Black or African American", "label": "Black or African American" },
-        { "value": "White/Caucasian", "label": "White/Caucasian" }
+        { "value": "White/Caucasian", "label": "White/Caucasian" },
+        { "value": "Prefer not to say", "label": "Prefer not to say" }
     ],
     "Level of Study": [
         { "value": "University (Undergraduate)", "label": "University (Undergraduate)" },
