@@ -1,22 +1,23 @@
 
 .page-view {
+    
     background-color: white;
     margin: auto;
-    width: 80%;
+    width: 70%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: 1px solid #efefef;
+    border: 3px solid #efefef;
     box-shadow:
     /* The top layer shadow */
-        0 1px 1px rgba(0,0,0,0.15),
+        0 1px 10px rgba(0,0,0,0.15),
             /* The second layer */
-        0 10px 0 -5px #eee,
+        0 10px 0 -15px #eee,
             /* The second layer shadow */
-        0 10px 1px -4px rgba(0,0,0,0.15),
+        0 10px 1px -20px rgba(0,0,0,0.15),
             /* The third layer */
-        0 20px 0 -10px #eee,
+        0 20px 0 -25px #eee,
             /* The third layer shadow */
-        0 20px 1px -9px rgba(0,0,0,0.15);
-    padding: 300px;
+        0 20px 1px -40px rgba(0,0,0,0.15);
+    padding: 10%;
 }
