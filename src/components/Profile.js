@@ -233,6 +233,7 @@ class Profile {
         }
     }
     _login(email, token, valid_until) {
+        email = email.toLowerCase();
         cookie.save("token", token);
         cookie.save("email", email);
         cookie.save("valid_until", valid_until);
@@ -469,7 +470,9 @@ class Profile {
     async GetResumeInfo() {
         const json = await fetch(ENDPOINTS.resume, {
             method: "POST",
-            mode: "cors",
+            headers: {
+                "content-type": "application/json",
+            }, 
             body: JSON.stringify({
                 email: this._email,
                 token: this._token,

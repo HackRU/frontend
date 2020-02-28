@@ -15,7 +15,14 @@ class Home extends Component {
     render() {
         let loggoutMsg = null;
         if (this.props.loggedout) {
-            loggoutMsg = (<Alert style={{ border: "none", background: "rgba(0, 255, 0, 0.25)", color: "white" }}
+            let addin = {};
+            if (!this.props.isMobile) {
+                addin = {
+                    right: 0,
+                    position: "absolute"
+                };
+            }
+            loggoutMsg = (<Alert style={{ ...addin, border: "none", background: "rgba(0, 255, 0, 0.25)", color: "white" }}
                 color="success"
                 isOpen={this.props.loggedout}
                 toggle={this.props.dismissAlert}>You are logged out</Alert>);
@@ -110,7 +117,6 @@ class Home extends Component {
                         <Col xs={2}></Col>
                         <Col xs={8}
                             style={{ display: "block" }}>
-                            {loggoutMsg}
                             <Motion defaultStyle={{ opacity: 0 }}
                                 style={{ opacity: spring(1, { stiffness: 1, damping: 1 }) }}>
                                 {
@@ -129,10 +135,11 @@ class Home extends Component {
                                 }}>
                                 {
                                     ({ opacity, top }) =>
-                                        <h2 style={{ marginTop: -100 + top, color: theme.accent[0], opacity: opacity }}
+                                        <h2 style={{ marginTop: -50 + top, color: theme.accent[0], opacity: opacity }}
                                             className="display-4 theme-font">{defaults.slogan}</h2>
                                 }
                             </Motion>
+                            {loggoutMsg}
                             <Motion defaultStyle={{ opacity: 0 }}
                                 style={{ opacity: spring(1, { stiffness: 1, damping: 1 }) }}>
                                 {
@@ -195,6 +202,50 @@ class Home extends Component {
                 <Container fluid
                     id="landing-section"
                     style={{ zIndex: 3, width: "100%", minHeight: "100vh", textAlign: "center", userSelect: "none", backgroundColor: theme.secondary[1] }}>
+                    <Motion defaultStyle={{ movement: 5, opacity: 0 }}
+                        style={{ movement: spring(-5, { stiffness: 2, damping: 0 }), opacity: spring(1, { stiffness: 0.5, damping: 4 }) }}>
+                        {
+                            ({ movement, opacity }) =>
+                                <div style={{ position: "absolute", overflow: "hidden", padding: 0, margin: 0, left: 0, top: 0 }}><div style={{ padding: 0, margin: 0, position: "relative", height: "100vh", width: "100vw", overflow: "hidden" }}>
+                                    <div style={{ opacity, position: "absolute", bottom: -(window.innerHeight / 4) + movement, right: -100, userSelect: "none", pointerEvents: "none", zIndex: 10 }}>
+                                        <img
+                                            alt="background"
+                                            src={"./assets/background/target_green.svg"}
+                                            height={window.innerHeight / 2} />
+                                    </div>
+                                    <div style={{ opacity, position: "absolute", bottom: -(window.innerHeight / 3) - movement, left: -100, userSelect: "none", pointerEvents: "none", zIndex: 10 }}>
+                                        <img
+                                            alt="background"
+                                            src={"./assets/background/target_yellow.svg"}
+                                            height={window.innerHeight / 2} />
+                                    </div>
+                                    <div style={{ opacity, position: "absolute", bottom: (window.innerHeight / 8) + movement, left: window.innerWidth / 4, userSelect: "none", pointerEvents: "none", zIndex: 10, transform: "rotate(30deg)" }}>
+                                        <img
+                                            alt="background"
+                                            src={"./assets/background/cross_white.svg"}
+                                            height={window.innerHeight / 10} />
+                                    </div>
+                                    <div style={{ opacity, position: "absolute", top: -(window.innerHeight / 5) - movement, right: window.innerWidth / 7, userSelect: "none", pointerEvents: "none", zIndex: 10, transform: "rotate(30deg)" }}>
+                                        <img
+                                            alt="background"
+                                            src={"./assets/background/circle_green.svg"}
+                                            height={window.innerHeight / 3} />
+                                    </div>
+                                    <div style={{ opacity, position: "absolute", top: (window.innerHeight / 2) - (window.innerHeight / 2), left: -(window.innerHeight / 6), userSelect: "none", pointerEvents: "none", zIndex: 10, transform: "rotate(30deg)" }}>
+                                        <img
+                                            alt="background"
+                                            src={"./assets/background/target_white.svg"}
+                                            height={window.innerHeight / 3} />
+                                    </div>
+                                    <div style={{ opacity, position: "absolute", bottom: (window.innerHeight / 5), left: window.innerWidth / 7 - (movement / 10), userSelect: "none", pointerEvents: "none", zIndex: 10 }}>
+                                        <img
+                                            alt="background"
+                                            src={"./assets/background/cross_green.svg"}
+                                            height={window.innerHeight / 10} />
+                                    </div>
+                                </div></div>
+                        }
+                    </Motion>
                     <Row style={{ minWidth: "100%", minHeight: "100vh" }}
                         className="d-flex align-items-center">
                         <Col style={{ display: "block" }}>
@@ -208,7 +259,7 @@ class Home extends Component {
                                             noCircle
                                             src="./assets/icons/hru-text.svg" />
                                 }
-                            </Motion>
+                            </Motion>                            
                             <Motion defaultStyle={{ opacity: 0, top: 1000 }}
                                 style={{
                                     opacity: spring(1, { stiffness: 1, damping: 1 }),
@@ -216,7 +267,7 @@ class Home extends Component {
                                 }}>
                                 {
                                     ({ opacity, top }) =>
-                                        <h2 style={{ marginTop: "calc(" + (-250 + top) + "px + 20vw)", color: theme.accent[0], opacity: opacity }}
+                                        <h2 style={{ marginTop: "calc(" + (-100 + top) + "px + 20vw)", color: theme.accent[0], opacity: opacity }}
                                             className="display-5 theme-font">{defaults.slogan}</h2>
                                 }
                             </Motion>

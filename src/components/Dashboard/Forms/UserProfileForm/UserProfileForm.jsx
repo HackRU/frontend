@@ -40,6 +40,7 @@ class UserProfileForm extends Component {
         });
     }
     updateUser(user) {
+        console.log(user);
         this.setState({
             user
         });
@@ -55,7 +56,14 @@ class UserProfileForm extends Component {
         if (this.state.checkedState2) {
             mlhnotices.push("mlh2");
         }
-        let model = { mlhnotices };
+        let polls = [];
+        if (user.want_bus) {
+            polls.push("poll-bus");
+        }
+        if (user.want_team) {
+            polls.push("poll-team");
+        }
+        let model = { mlhnotices, polls };
         let message = null;
         if (this.state.message) {
             message = (<UncontrolledAlert color="danger">{this.state.message}</UncontrolledAlert>);
@@ -125,7 +133,7 @@ class UserProfileForm extends Component {
                                             value: "01/01/1920"
                                         },
                                         end: {
-                                            value: "04/01/2002"
+                                            value: "04/18/2002"
                                         }
                                     } }} />
                         </Col>
@@ -315,6 +323,21 @@ class UserProfileForm extends Component {
                         edit={this.state.edit}
                         profile={this.props.profile}
                     />
+                    <AvCheckboxGroup name="polls"
+                        className="custom-av-checkbox"
+                        label={<h4>Polls</h4>}
+                        validate={{ required: { value: false, errorMessag: "" } }}>
+                        <AvCheckbox name="poll-bus"
+                            customInput
+                            onChange={() => { user.want_bus = (user.want_bus) ? !user.want_bus : (true); }}
+                            label={<p>Would you be interested in a bus from your school to HackRU? (Note: this is not a guarantee that a bus will pick you up from your particular school!)</p>}
+                            value={"poll-bus"} />
+                        <AvCheckbox name="poll-team"
+                            customInput
+                            onChange={() => { user.want_team = (user.want_team) ? !user.want_team : (true); }}
+                            label={<p>Are you looking for team members?</p>}
+                            value={"poll-team"} />
+                    </AvCheckboxGroup>
                     <AvCheckboxGroup name="mlhnotices"
                         className="custom-av-checkbox"
                         label={<h4>MLH Notices</h4>}
@@ -448,6 +471,15 @@ class UserProfileForm extends Component {
                         edit={this.state.edit}
                         profile={this.props.profile}
                     />
+                    <h4>Polls</h4>
+                    <FormGroup>
+                        <Label>Would you be interested in a bus from your school to HackRU? </Label>
+                        {field(user.want_bus ? ("Yes") : ("No"))}
+                    </FormGroup>
+                    <FormGroup>
+                        <Label>Are you looking for team members? </Label>
+                        {field(user.want_team ? ("Yes, I am looking for team members") : ("No, I already have a team"))}
+                    </FormGroup>
                     <h4>MLH Notices</h4>
                     <FormGroup>
                         {user.registration_status === "registered" ? <p style={{ ...pStyle, height: "100%" }}>I have read and agree to the <a href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf">MLH Code of Conduct</a> and I authorize you to share my application/registration information for event administration, ranking, MLH administration, pre- and post-event informational e-mails, and occasional messages about hackathons in-line with the <a href="https://mlh.io/privacy">MLH Privacy Policy</a>. Further, I agree to the terms of both the <a href="https://github.com/MLH/mlh-policies/blob/master/prize-terms-and-conditions/contest-terms.md">MLH Contest Terms and Conditions</a> and the <a href="https://mlh.io/privacy">MLH Privacy Policy</a>.</p>
