@@ -7,8 +7,10 @@ import MyProfile from "./TeamBuilder/Links/MyProfile";
 import LeaveMyTeam from "./TeamBuilder/Links/TeamMenu/LeaveMyTeam";
 import StartNewTeam from "./TeamBuilder/Links/TeamMenu/StartNewTeam";
 import ViewMyTeam from "./TeamBuilder/Links/TeamMenu/ViewMyTeam";
+import './TeamBuilder/styling.css'
 
-function TeamBuilder() {
+function TeamBuilder(props) {
+
   return (
       <Router>
           <Switch>
@@ -31,7 +33,7 @@ function TeamBuilder() {
               <ViewAllTeams />
             </Route>
             <Route path="/TeamBuilder">
-              <LandingPage />
+              <LandingPage props={props} />
             </Route>
           </Switch>
       </Router>

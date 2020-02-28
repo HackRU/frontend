@@ -1,9 +1,15 @@
 import React from "react";
-const LandingPage = () => {
+import './styling.css'
+import { Container } from "reactstrap";
+
+const LandingPage = (props) => {
+  console.log(props)
   return (
-    <div style={{marginTop: 300}}>
+    <Container className="page-view">
+      <div>
       <h1> LandingPage Component</h1>
-    </div>
+      </div>
+    </Container>
   );
 };
 
