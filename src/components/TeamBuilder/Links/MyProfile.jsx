@@ -3,14 +3,14 @@ import React from "react";
 
 const MyProfile = () => {
 
-  return (
-    <div style={{marginTop: 300}}>
-      <h1>
+    return (
+        <div style={{marginTop: 300}}>
+            <h1>
         MyProfile Component
-      </h1>
-    </div>
-  );
-  // }
+            </h1>
+        </div>
+    );
+    // }
 };
 
 export default MyProfile;
