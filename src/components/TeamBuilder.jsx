@@ -1,5 +1,4 @@
 import React from "react";
-import MyNav from "./TeamBuilder/MyNav";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import LandingPage from "./TeamBuilder/LandingPage"
 import TeamRecommendations from "./TeamBuilder/Links/TeamRecommendations";
@@ -11,10 +10,7 @@ import ViewMyTeam from "./TeamBuilder/Links/TeamMenu/ViewMyTeam";
 
 function TeamBuilder() {
   return (
-    <div>
-      <MyNav />
       <Router>
-        <div>
           <Switch>
             <Route path="/Teambuilder/MyProfile">
               <MyProfile />
@@ -34,13 +30,11 @@ function TeamBuilder() {
             <Route path="/Teambuilder/ViewAllTeams">
               <ViewAllTeams />
             </Route>
-            <Route path="/TeamBuilder/">
+            <Route path="/TeamBuilder">
               <LandingPage />
             </Route>
           </Switch>
-        </div>
       </Router>
-    </div>
   );
 }
 

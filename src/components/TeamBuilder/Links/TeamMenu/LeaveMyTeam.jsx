@@ -3,8 +3,8 @@ import React from "react";
 
 const LeaveMyTeam = () => {
   return (
-    <div className="App">
-      <h1 className="App-header"> LeaveMyTeam Component</h1>
+    <div style={{marginTop: 300}}>
+      <h1> LeaveMyTeam Component</h1>
     </div>
   );
 };

@@ -3,8 +3,8 @@ import React from "react";
 
 const StartNewTeam = () => {
   return (
-    <div className="App">
-      <h1 className="App-header"> StartNewTeam Component</h1>
+    <div style={{marginTop: 300}}>
+      <h1> StartNewTeam Component</h1>
     </div>
   );
 };

@@ -121,8 +121,8 @@ class App extends Component {
                 key="forgot"
                 render={(props) => <ForgotPage {...props}
                     {...componentProps} />} />,
-            <Route exact
-                path="/teambuilder"
+            <Route
+                path="/teambuilder/"
                 key="teambuilder"
                 render={(props) => <TeamBuilder {...props}
                     {...componentProps} />} />,

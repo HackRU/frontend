@@ -1,10 +1,8 @@
 import React from "react";
-//import "../App.css";
-
 const LandingPage = () => {
   return (
-    <div className="App">
-      <h1 className="App-header"> LandingPage Component</h1>
+    <div style={{marginTop: 300}}>
+      <h1> LandingPage Component</h1>
     </div>
   );
 };
