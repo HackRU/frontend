@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import { Container, Row, Col, Button } from "reactstrap";
 import { TextGrid } from "../../AnimatedGrid";
+import Logo from "./Logo";
+import { Motion, spring } from "react-motion";
+import { theme } from "../../../Defaults";
 
 class Freeze extends Component {
     constructor() {
@@ -33,21 +36,28 @@ class Freeze extends Component {
             <Container fluid
                 id="landing-section"
                 style={{ zIndex: 3,  width: "100%", minHeight: "100vh", userSelect: "none" }}>
-                <Row style={{ minWidth: "100%", minHeight: "100vh", textAlign: "right" }} >
+                <Row style={{ minWidth: "50%", minHeight: "100vh", textAlign: "right" }} >
                     <div style={{ display: "block", position: "absolute", width: window.innerWidth - (2 * leftPos), top: window.innerHeight / 2 - 200, left: leftPos}}>
-                        <TextGrid ref="anime"
-                            text={"HACKRU WILL RETURN"} />
+                        <Row
+                            className="justify-content-center"
+                            style={{ marginLeft: 8, width: "100%", backgroundColor: theme.secondary[1], padding: 10, textAlign: "center", boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.8)" }}>
+                            <Motion defaultStyle={{ opacity: 0 }}
+                                style={{ opacity: spring(1, { stiffness: 1, damping: 1 }) }}>
+                                {
+                                    ({ opacity }) =>
+                                        <Logo repeat={true}
+                                            style={{ opacity }}
+                                            noCircle
+                                            src="./assets/icons/hru-text.svg" />
+                                }
+                            </Motion>
+                        </Row>
                         <br/>
-                        <br/>
-                        <i><h4>for Spring 2020</h4></i>
-                        <div style={{ width: "100%", textAlign: "center" }}>
-                            <img width="70%"
-                                style={{ marginTop: 0 }}
-                                alt="logo"
-                                src="./assets/icons/hru-logo-white.svg" />
-                        </div>
-                        <br/>
-                        <Row style={{ marginLeft: 8, width: "100%", backgroundColor: "rgba(0, 0, 0, 0.01)", padding: 10, textAlign: "center" }}>
+                        <Row
+                            className="justify-content-center"
+                            style={{ marginLeft: 8, width: "100%", backgroundColor: theme.secondary[1], padding: 10, textAlign: "center", boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.8)" }}>
+                            <h1 className="display-4 theme-font">Announcement</h1>
+                            <p className="text-center">Due to Rutgers University's recent restrictions in concern of COVID-19, the HackRU team has made the decision to cancel HackRU Spring 2020 for the safety of everyone involved. We wish it didn’t have to be this way, but the health and well-being of all our hackers, volunteers, organizers, and sponsors is our first priority. We hope that you stay in touch by connecting with us on social media, and we promise to come back stronger at our next HackRU in the fall! Stay safe and healthy!</p>    
                             <Col xs={6}>
                                 <i><p style={{ marginBottom: 3, color: "rgba(255, 255, 255, 0.5)" }}>Stay in the know!</p></i>
                                 <a href="https://hackru1.typeform.com/to/OEtQEO"><Button color="light"
