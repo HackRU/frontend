@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Container, Row, Col, Button } from "reactstrap";
-import { TextGrid } from "../../AnimatedGrid";
 import Logo from "./Logo";
 import { Motion, spring } from "react-motion";
 import { theme } from "../../../Defaults";
