@@ -1,0 +1,28 @@
+{
+    "Skills": [
+        { "value": "Python", "label": "Python" },
+        { "value": "Java", "label": "Java" },
+        { "value": "JavaScript", "label": "JavaScript" },
+        { "value": "Frontend", "label": "Frontend" },
+        { "value": "Backend", "label": "Backend" }
+    ],
+
+    "Prizes": [
+        { "value": "Best Rutgers Hack", "label": "Best Rutgers Hack" },
+        { "value": "Best Hardware Hack", "label": "Best Hardware Hack" },
+        { "value": "Best use of Google Cloud Platform", "label": "Best use of Google Cloud Platform" },
+        { "value": "Best Use of Wolfram Language", "label": "Best Use of Wolfram Language" },
+        { "value": "Best use of the Twilio API", "label": "Best use of the Twilio API" },
+        { "value": "Best Newbie Hack", "label": "Best Newbie Hack" },
+        { "value": "Best UiPath Automation Hack", "label": "Best UiPath Automation Hack" },
+        { "value": "Best Domain Registered with Domain.com", "label": "Best Domain Registered with Domain.com" },
+        { "value": "Best use of MongoDB Atlas", "label": "Best use of MongoDB Atlas" },
+        { "value": "Colgate Presents: Most Explanatory model", "label": "Colgate Presents: Most Explanatory model" },
+        { "value": "Capital One Presents: Best Financial Hack", "label": "Capital One Presents: Best Financial Hack" },
+        { "value": "Prudential Presents: Best Voice-Enabled Hack", "label": "Prudential Presents: Best Voice-Enabled Hack" },
+        { "value": "Best use of Blockstack", "label": "Best use of Blockstack" },
+        { "value": "Best use of Transposit", "label": "Best use of Transposit" },
+        { "value": "Gartner Presents: Challenging Chatbot Challenge", "label": "Gartner Presents: Challenging Chatbot Challenge" },
+        { "value": "BNY Mellon Presents: Best Thinking Outside the box", "label": "BNY Mellon Presents: Best Thinking Outside the box" }
+    ]
+}
