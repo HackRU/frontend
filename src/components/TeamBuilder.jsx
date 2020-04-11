@@ -7,11 +7,14 @@ import MyProfile from "./TeamBuilder/Links/MyProfile";
 import LeaveMyTeam from "./TeamBuilder/Links/TeamMenu/LeaveMyTeam";
 import StartNewTeam from "./TeamBuilder/Links/TeamMenu/StartNewTeam";
 import ViewMyTeam from "./TeamBuilder/Links/TeamMenu/ViewMyTeam";
+import MyNav from "./TeamBuilder/MyNav"
 import "./TeamBuilder/styling.css";
 
 function TeamBuilder(props) {
 
     return (
+        <div>
+        <MyNav/>
         <Router>
             <Switch>
                 <Route path="/Teambuilder/MyProfile">
@@ -37,6 +40,7 @@ function TeamBuilder(props) {
                 </Route>
             </Switch>
         </Router>
+        </div>
     );
 }
 

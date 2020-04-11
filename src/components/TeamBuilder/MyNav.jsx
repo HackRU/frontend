@@ -21,6 +21,10 @@ const MyNav = () => {
 
     return (
         <div>
+            <br />
+            <br />
+            <br />
+
             <Navbar color="light"
                 light
                 expand="md">
@@ -31,39 +35,44 @@ const MyNav = () => {
           alt={"HackRULogo"}
         ></img> */}
 
-                <NavbarBrand href="/">HackRU TeamBuilder</NavbarBrand>
+                <NavbarBrand href="/teambuilder">HackRU TeamBuilder</NavbarBrand>
                 <NavbarToggler onClick={toggle} />
                 <Collapse isOpen={isOpen}
                     navbar>
                     <Nav className="mr-auto"
                         navbar>
                         <NavItem>
-                            <NavLink href="/TeamRecommendations">
-                Team Recommendations
+                            <NavLink href="/teambuilder">
+                            Teambuilder home
                             </NavLink>
                         </NavItem>
                         <NavItem>
-                            <NavLink href="/ViewAllTeams">View All Teams</NavLink>
+                            <NavLink href="/teambuilder/TeamRecommendations">
+                            Team Recommendations
+                            </NavLink>
+                        </NavItem>
+                        <NavItem>
+                            <NavLink href="/teambuilder/ViewAllTeams">View All Teams</NavLink>
                         </NavItem>
                         <UncontrolledDropdown nav
                             inNavbar>
                             <DropdownToggle nav
                                 caret>
-                My Team Menu
+                                    My Team Menu
                             </DropdownToggle>
                             <DropdownMenu right>
-                                <DropdownItem href="/StartNewTeam">
-                  Start a New Team
+                                <DropdownItem href="/teambuilder/StartNewTeam">
+                                    Start a New Team
                                 </DropdownItem>
-                                <DropdownItem href="/ViewMyTeam">View My Team</DropdownItem>
+                                <DropdownItem href="/teambuilder/ViewMyTeam">View My Team</DropdownItem>
                                 <DropdownItem divider />
-                                <DropdownItem href="LeaveMyTeam">Leave team</DropdownItem>
+                                <DropdownItem href="/teambuilder/LeaveMyTeam">Leave team</DropdownItem>
                             </DropdownMenu>
                         </UncontrolledDropdown>
                     </Nav>
                     <Nav className="ml-auto"
                         navbar>
-                        <NavLink href="/MyProfile">My Profile</NavLink>
+                        <NavLink href="/teambuilder/MyProfile">My Profile</NavLink>
                     </Nav>
                 </Collapse>
             </Navbar>

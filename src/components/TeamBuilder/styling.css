@@ -3,6 +3,7 @@
     
     background-color: white;
     margin: auto;
+    margin-top: 2.5%;
     width: 70%;
     display: flex;
     flex-direction: column;
@@ -14,9 +15,9 @@
             /* The second layer */
         0 10px 0 -15px #eee,
             /* The second layer shadow */
-        0 10px 1px -20px rgba(0,0,0,0.15),
+        0 13px 1px -20px rgba(0,0,0,0.15),
             /* The third layer */
-        0 20px 0 -25px #eee,
+        0 15px 0 -25px #eee,
             /* The third layer shadow */
         0 20px 1px -40px rgba(0,0,0,0.15);
     padding: 10%;
