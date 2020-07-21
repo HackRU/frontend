@@ -1,5 +1,5 @@
 import React from "react";
-import { Row, Col } from "reactstrap";
+import { Grid } from "@material-ui/core";
 import { theme } from "../../../Defaults";
 import { Icon } from "react-fa";
 import CountUp from "react-countup";
@@ -7,39 +7,39 @@ import PropTypes from "prop-types";
 
 const Stats = () => (
     <div>
-        <Row className="d-flex align-items-center"
+        <Grid container spacing={3} className="d-flex align-items-center"
             style={{ textAlign: "center"}}>
-            <Col>
+            <Grid item xs>
                 <Stat back={theme.primary[1]}
                     accent={theme.accent[0]}
                     text="Hackers"
                     decoration=""
                     number={600}
                     icon="users" />
-            </Col>
-            <Col>
+            </Grid>
+            <Grid item xs>
                 <Stat back={theme.primary[1]}
                     accent={theme.accent[0]}
                     text="In Prizes"
                     decoration="$"
                     number={14000}
                     icon="trophy" />
-            </Col>
-            <Col>
+            </Grid>
+            <Grid item xs>
                 <Stat back={theme.primary[1]}
                     accent={theme.accent[0]}
                     text="Projects"
                     decoration=""
                     number={50}
                     icon="terminal" />
-            </Col>
-        </Row>
+            </Grid>
+        </Grid>
     </div>
 );
 
 const Stat = ({ number, text, back, accent, icon, decoration }) => (
     <div style={{ backgroundColor: back, color: "white", boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.5)", padding: 50, marginTop: 25 }}>
-        <div style={{ position: "absolute", left: "calc(15px)", top: 25, height: "calc(100% - 25px)", backgroundColor: accent, width: 10 }}></div>
+        {/* <div style={{ position: "absolute", left: "calc(15px)", top: 25, height: "calc(100% - 25px)", backgroundColor: accent, width: 10 }}></div> */}
         <div>
             <h1 className="stat-number">
                 {decoration}

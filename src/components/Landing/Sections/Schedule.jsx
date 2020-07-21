@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { theme } from "../../../Defaults";
-import { Table, Col, Row } from "reactstrap";
+// import { Col, Row } from "reactstrap";
+import { Table, TableContainer, TableRow, TableCell, TableHead, Grid } from "@material-ui/core";
 
 /**
  * Schedule component for the landing page
@@ -49,31 +50,33 @@ class Schedule extends Component {
         let rows = [];
         schedule.forEach((row, index) => {
             rows.push(
-                <tr style={index % 2 === 0 ? light_red : dark_red}
+                <TableRow style={index % 2 === 0 ? light_red : dark_red}
                     key={index}
                     className="lead">
-                    <th scope="row">{row[0]}</th>
-                    <td>{row[1]}</td>
-                    <td>{row[2]}</td>
-                </tr>
+                    <TableCell scope="row">{row[0]}</TableCell>
+                    <TableCell>{row[1]}</TableCell>
+                    <TableCell>{row[2]}</TableCell>
+                </TableRow>
             );
         });
         return (
             <div style={{ overflowX: "auto" }}>
-                <Table style={{ minWidth: 300 }}
-                    hover
-                    borderless>
-                    <thead key="table-head">
-                        <tr className="lead">
-                            <th>Time</th>
-                            <th>Event</th>
-                            <th>Location</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {rows}
-                    </tbody>
-                </Table>
+                <TableContainer>
+                    <Table size="large" style={{ minWidth: 300 }}
+                        hover
+                        borderless>
+                        <TableHead key="table-head">
+                            <TableRow className="lead">
+                                <TableCell style={{color: "rgba(255, 255, 255, 1)"}}>Time</TableCell>
+                                <TableCell style={{color: "rgba(255, 255, 255, 1)"}}>Event</TableCell>
+                                <TableCell style={{color: "rgba(255, 255, 255, 1)"}}>Location</TableCell>
+                            </TableRow>
+                        </TableHead>
+                        <tbody>
+                            {rows}
+                        </tbody>
+                    </Table>
+                </TableContainer>
             </div>
         );
     }
@@ -86,30 +89,24 @@ class Schedule extends Component {
                     style={{ marginLeft: -50, marginRight: -50 }}>
                     <div style={{ color: "white", padding: 50, paddingBottom: 0 }}
                         className="col-xs-12 col-sm-12">
-                        <Row>
-                            <Col style={{ padding: 0, margin: 0, writingMode: "vertical-lr", transform: "rotate(180deg)", marginRight: -25, marginLeft: 25 }}
-                                className="text-center"
-                                xs="1"> 
+                        <Grid container>
+                            <Grid item xs={1} style={{ padding: 0, margin: 0, writingMode: "vertical-lr", transform: "rotate(180deg)", marginRight: -10, marginLeft: 10 }}
+                                className="text-center"> 
                                 <h3 style={{ paddingLeft: 10 }}
                                     className="lead">{saturday_date}</h3>
-                            </Col>
-                            <Col style={{ borderLeft: "1px solid white" }}
-                                xs={11}>
+                            </Grid>
+                            <Grid item xs={11} style={{ borderLeft: "1px solid white" }}>
                                 {this.fill_table(sat_schedule)}
-                            </Col>
-                        </Row>
-                        <Row>
-                            <Col style={{ padding: 0, margin: 0, writingMode: "vertical-lr", transform: "rotate(180deg)", marginRight: -25, marginLeft: 25 }}
-                                className="text-center"
-                                xs="1"> 
+                            </Grid>
+                            <Grid item xs={1} style={{ padding: 0, margin: 0, writingMode: "vertical-lr", transform: "rotate(180deg)", marginRight: -10, marginLeft: 10 }}
+                                className="text-center"> 
                                 <h3 style={{ paddingLeft: 10 }}
                                     className="lead">{sunday_date}</h3>
-                            </Col>
-                            <Col style={{ borderLeft: "1px solid white" }}
-                                xs={11}>
+                            </Grid>
+                            <Grid item xs={11} style={{ borderLeft: "1px solid white" }}>
                                 {this.fill_table(sun_schedule)}
-                            </Col>
-                        </Row>
+                            </Grid>
+                        </Grid>
                     </div>
                 </div>
             </div>

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Row } from "reactstrap";
+import { Grid } from "@material-ui/core";
 import { Icon } from "react-fa";
 
 /**
@@ -9,10 +9,10 @@ class Footer extends Component {
     render() {
         return (
             <div style={{marginLeft: -15, marginRight: -15 }}>
-                <Row>
+                <Grid>
                     <div className="footer bg-gradient-right"
                         style={{ zIndex: 15, boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.5)" }}>
-                        <Row style={{ marginRight: 0, textAlign: "center" }}>
+                        <Grid container style={{ marginRight: 0, textAlign: "center" }}>
                             <div className="text-center col-lg-4"
                                 style={{ padding: 0 }}>
                                 <h6 className="align-middle mb-4">
@@ -60,9 +60,9 @@ class Footer extends Component {
                                         alt="MLH logo" />
                                 </a>
                             </div>
-                        </Row>
+                        </Grid>
                     </div>
-                </Row>
+                </Grid>
             </div>
         );
     }

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { theme } from "../../../../Defaults.js";
 import SponsorItem from "./SponsorItem.jsx";
-import { Container, Row, Col } from "reactstrap";
+import { Container, Grid } from "@material-ui/core";
 import PropTypes from "prop-types";
 
 
@@ -25,21 +25,22 @@ class SponsorContainer extends Component {
         }
         return (
             <Container fluid
+                maxWidth={false}
                 style={{ textAlign: "center" }}>
                 { this.props.showName &&
-                    <Row style={{ width: "100%" }}
+                    <Grid style={{ width: "100%" }}
                         className="d-flex align-items-center">
-                        <Col xs={12}>
+                        <Grid xs={12}>
                             <h2 className="display-4"
                                 style={{ color: theme[declaration.color] }}>
                                 {declaration.name}
                             </h2>
-                        </Col>
-                    </Row>}
-                <Row className="d-flex justify-content-center flex-wrap"
+                        </Grid>
+                    </Grid>}
+                <Grid className="d-flex justify-content-center flex-wrap"
                     style={{ backgroundColor: sponsor_colors[declaration.name] ? sponsor_colors[declaration.name] : "white" }}>
                     {sponsors}
-                </Row>
+                </Grid>
             </Container>
         );
     }
