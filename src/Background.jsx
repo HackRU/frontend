@@ -1,6 +1,6 @@
-import React, { Component } from "react"; // Default react imports for the component
-import { theme } from "./Defaults";
-import { Container, Row, Col } from "reactstrap";
+import React from "react"; // Default react imports for the component
+import Grid from "@material-ui/core/Grid"
+import { makeStyles } from '@material-ui/core/styles'
 
 const imageDefs = [
     {
@@ -60,31 +60,46 @@ const imageDefs = [
         opacity: 1,
     }, //END TOP LEFT SECTION
 ];
+const useStyles = makeStyles(theme => ({
+    centerContentItem: {
+        marginTop: "-60em",
+        transform: "rotate(45deg)",
+        height: "80em",
+        width: "15em",
+        [theme.breakpoints.down("md")]: {
 
-class Background extends Component {
-    constructor(props) {
-        super(props);
-        this.renderImage = this.renderImage.bind(this);
-        this._event_onResize = this._event_onResize.bind(this);
-        window.addEventListener("resize", this._event_onResize);
-    }
-    /**
-     * Handle whenever the window resizes due to a user window resize or a zoom
-     */
-    _event_onResize() {
-        this.setState({
-            isMobile: (window.innerWidth < 500) || (window.innerHeight < 500)
-        });
-    }
-    /**
-     * Initial Pre Render Method
-     */
-    UNSAFE_componentWillMount() {
-        this._event_onResize();
-    }
+        }
+    },
 
-    renderImage(icon, top, left, bottom, right, height, transform, multiplier, opacity) {
-        let style = { position: "fixed"};
+    centerContent: {
+        marginLeft: "10em",
+        marginTop: "50em",
+        [theme.breakpoints.down("md")]: {
+
+        }
+    },
+    leftContent: {
+        marginTop: "-15em",
+        marginLeft: "-10em",
+        marginRight: "10em",
+        [theme.breakpoints.down("md")]: {
+
+        }
+    },
+    leftLines: {
+        marginBottom: "-45em",
+        width: "50em",
+        opacity: "0.5",
+        [theme.breakpoints.down("md")]: {
+
+        }
+    }
+}))
+export default function Background(props) {
+    // <img src={imageDefs[0].source} style={{ height: imageDefs[0].height }} />
+    const classes = useStyles();
+    const renderImage = (icon, top, left, bottom, right, height, transform, multiplier, opacity) => {
+        let style = { position: "fixed" };
         style["top"] = top ? top : null;
         style["left"] = left ? left : null;
         style["bottom"] = bottom ? bottom : null;
@@ -95,45 +110,53 @@ class Background extends Component {
             <div style={style}>
                 <img alt={icon.split("/").pop()}
                     src={icon}
-                    height={height} /> 
+                    height={height} />
             </div>
         );
     }
-
-    render() {
-        if (!this.state.isMobile) {
-            let images = [];
-            for (let i = 0; i < imageDefs.length; i++) {
-                let image = imageDefs[i];
-                images.push(this.renderImage(image.source, image.top, image.left, image.bottom, image.right, image.height, image.transform, image.multiplier ? 1 - image.multiplier : 1, image.opacity));
-            }
-            return (
-                <Container fluid
-                    style={{ position: "fixed" }}
-                    className="theme-background">
-                    <Row className="justify-content-center">
-                        <Col xs="2"
-                            sm="2"
-                            md="2"
-                            lg="1"
-                            style={{ transform: "rotate(45deg)", height: "100vh", backgroundColor: theme.primary[1] }}/>
-                        <Col xs="2"
-                            sm="2"
-                            md="2"
-                            lg="1"
-                            style={{ transform: "rotate(45deg)", height: "100vh", backgroundColor: theme.accent[1] }}/>
-                        <Col xs="2"
-                            sm="2"
-                            md="2"
-                            lg="1"
-                            style={{ transform: "rotate(45deg)", height: "100vh", backgroundColor: theme.secondary[1] }}/>
-                    </Row>
-                    {images}
-                </Container>
-            );
-        } else {
-            return null;
+    const leftImages = []
+    for (let i = 4; i < imageDefs.length; i++) {
+        {
+            let image = imageDefs[i];
+            leftImages.push(renderImage(
+                image.source,
+                image.top,
+                image.left,
+                image.bottom,
+                image.right,
+                image.height,
+                image.transform,
+                image.multiplier ? 1 - image.multiplier : 1,
+                0.5
+            ))
         }
     }
+    const rightImages = []
+    for (let i = 0; i < 4; i++) {
+        {
+            let image = imageDefs[i];
+            leftImages.push(renderImage(
+                image.source,
+                image.top,
+                image.left,
+                image.bottom,
+                image.right,
+                image.height,
+                image.transform,
+                image.multiplier ? 1 - image.multiplier : 1,
+                0.5
+            ))
+        }
+    }
+    return (
+        <Grid container justify="space-between">
+            <Grid md item className={classes.leftContent}>
+                {leftImages}
+            </Grid>
+            <Grid md item>
+                {rightImages}
+            </Grid>
+        </Grid>
+    )
+
 }
-export default Background;
