@@ -61,39 +61,6 @@ const imageDefs = [
     }, //END TOP LEFT SECTION
 ];
 const useStyles = makeStyles(theme => ({
-    centerContentItem: {
-        marginTop: "-60em",
-        transform: "rotate(45deg)",
-        height: "80em",
-        width: "15em",
-        [theme.breakpoints.down("md")]: {
-
-        }
-    },
-
-    centerContent: {
-        marginLeft: "10em",
-        marginTop: "50em",
-        [theme.breakpoints.down("md")]: {
-
-        }
-    },
-    leftContent: {
-        marginTop: "-15em",
-        marginLeft: "-10em",
-        marginRight: "10em",
-        [theme.breakpoints.down("md")]: {
-
-        }
-    },
-    leftLines: {
-        marginBottom: "-45em",
-        width: "50em",
-        opacity: "0.5",
-        [theme.breakpoints.down("md")]: {
-
-        }
-    }
 }))
 export default function Background(props) {
     // <img src={imageDefs[0].source} style={{ height: imageDefs[0].height }} />
