@@ -61,6 +61,39 @@ const imageDefs = [
     }, //END TOP LEFT SECTION
 ];
 const useStyles = makeStyles(theme => ({
+    centerContentItem: {
+        marginTop: "-60em",
+        transform: "rotate(45deg)",
+        height: "80em",
+        width: "15em",
+        [theme.breakpoints.down("md")]: {
+
+        }
+    },
+
+    centerContent: {
+        marginLeft: "10em",
+        marginTop: "50em",
+        [theme.breakpoints.down("md")]: {
+
+        }
+    },
+    leftContent: {
+        marginTop: "-15em",
+        marginLeft: "-10em",
+        marginRight: "10em",
+        [theme.breakpoints.down("md")]: {
+
+        }
+    },
+    leftLines: {
+        marginBottom: "-45em",
+        width: "50em",
+        opacity: "0.5",
+        [theme.breakpoints.down("md")]: {
+
+        }
+    }
 }))
 export default function Background(props) {
     // <img src={imageDefs[0].source} style={{ height: imageDefs[0].height }} />
@@ -81,11 +114,11 @@ export default function Background(props) {
             </div>
         );
     }
-    const leftImages = []
-    for (let i = 4; i < imageDefs.length; i++) {
+    const images = []
+    for (let i = 0; i < imageDefs.length; i++) {
         {
             let image = imageDefs[i];
-            leftImages.push(renderImage(
+            images.push(renderImage(
                 image.source,
                 image.top,
                 image.left,
@@ -94,35 +127,24 @@ export default function Background(props) {
                 image.height,
                 image.transform,
                 image.multiplier ? 1 - image.multiplier : 1,
-                0.5
-            ))
-        }
-    }
-    const rightImages = []
-    for (let i = 0; i < 4; i++) {
-        {
-            let image = imageDefs[i];
-            leftImages.push(renderImage(
-                image.source,
-                image.top,
-                image.left,
-                image.bottom,
-                image.right,
-                image.height,
-                image.transform,
-                image.multiplier ? 1 - image.multiplier : 1,
-                0.5
+                image.opacity
             ))
         }
     }
     return (
         <Grid container justify="space-between">
-            <Grid md item className={classes.leftContent}>
-                {leftImages}
+            <Grid md item container justify="center" style={{ position: "fixed" }}>
+                <Grid item sm={2} md={2} lg={1} style={{ transform: "rotate(45deg)", height: "100vh", backgroundColor: "rgb(79, 171, 95)" }}>
+
+                </Grid>
+                <Grid item sm={2} md={2} lg={1} style={{ transform: "rotate(45deg)", height: "100vh", backgroundColor: "rgb(241, 186, 67)" }}>
+
+                </Grid>
+                <Grid item sm={2} md={2} lg={1} style={{ transform: "rotate(45deg)", height: "100vh", backgroundColor: "rgb(200, 81, 81)" }}>
+
+                </Grid>
             </Grid>
-            <Grid md item>
-                {rightImages}
-            </Grid>
+            {images}
         </Grid>
     )
 
