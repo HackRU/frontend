@@ -1,6 +1,5 @@
 import React from "react"; // Default react imports for the component
 import Grid from "@material-ui/core/Grid";
-import { makeStyles } from "@material-ui/core/styles";
 
 const imageDefs = [
     {
@@ -94,22 +93,31 @@ export default function Background(props) {
                 image.opacity
             ));
         }
-    };
+    }
     return (
         <Grid container
             justify="space-between">
             <Grid md 
                 item container justify="center" style={{ position: "fixed" }}>
                 <Grid item 
-                    sm={2} md={2} lg={1} style={{ transform: "rotate(45deg)", height: "100vh", backgroundColor: "rgb(79, 171, 95)" }}>
+                    sm={2} 
+                    md={2} 
+                    lg={1} 
+                    style={{ transform: "rotate(45deg)", height: "100vh", backgroundColor: "rgb(79, 171, 95)" }}>
 
                 </Grid>
                 <Grid item 
-                    sm={2} md={2} lg={1} style={{ transform: "rotate(45deg)", height: "100vh", backgroundColor: "rgb(241, 186, 67)" }}>
+                    sm={2}
+                    md={2} 
+                    lg={1} 
+                    style={{ transform: "rotate(45deg)", height: "100vh", backgroundColor: "rgb(241, 186, 67)" }}>
 
                 </Grid>
                 <Grid item 
-                    sm={2} md={2} lg={1} style={{ transform: "rotate(45deg)", height: "100vh", backgroundColor: "rgb(200, 81, 81)" }}>
+                    sm={2} 
+                    md={2} 
+                    lg={1} 
+                    style={{ transform: "rotate(45deg)", height: "100vh", backgroundColor: "rgb(200, 81, 81)" }}>
 
                 </Grid>
             </Grid>
@@ -117,4 +125,4 @@ export default function Background(props) {
         </Grid>
     );
 
-};
+}
