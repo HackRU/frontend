@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from "react";
-import { Container, Row } from "reactstrap";
+import { Container, Grid} from "@material-ui/core";
 import Home from "./Sections/Home";
 import Freeze from "./Sections/Freeze";
 import { defaults, navlinks } from "../../Defaults";
@@ -41,15 +41,17 @@ class LandingPage extends Component {
                     <ScrollableAnchor key={url}
                         id={url}>
                         <div>
-                            <Row className="section"
+                            <Grid className="section"
                                 style={style}>
                                 <Container fluid
-                                    className={className} >
+                                    className={className}
+                                    maxWidth={false}
+                                    disableGutters={true} >
                                     <div className={sectionClasses}>
                                         {component}
                                     </div>
                                 </Container>
-                            </Row>
+                            </Grid>
                         </div>
                     </ScrollableAnchor>
                 ));
@@ -61,17 +63,19 @@ class LandingPage extends Component {
                 <Container id="LandingPage"
                     className="section"
                     fluid
+                    maxWidth={false}
+                    disableGutters={true}
                     style={{ }}>
                     <ScrollableAnchor id="home">
                         <div>
-                            <Row className="section">
+                            <Grid container className="section">
                                 { !defaults.freeze ?
                                     <Home isMobile={this.props.isMobile}
                                         profile={this.props.profile}
                                         loggedout={this.props.loggedout}
                                         dismissAlert={this.props.dismissAlert} /> :
                                     <Freeze isMobile={this.props.isMobile} />}
-                            </Row>
+                            </Grid>
                         </div>
                     </ScrollableAnchor>
                     {rows}

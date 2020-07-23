@@ -1,5 +1,5 @@
 import React from "react";
-import { Collapse } from "reactstrap";
+import { Collapse } from "@material-ui/core";
 import { Icon } from "react-fa";
 import PropTypes from "prop-types";
 
@@ -24,7 +24,7 @@ class FaqsCollapse extends React.Component {
                 <h5 onClick={this.toggle}>{cat.title} <Icon className="faq-hover pull-right"
                     name={(this.state.collapse) ? ("chevron-up") : ("chevron-down")} /></h5>
                 <hr className="faq-hover"/>
-                <Collapse isOpen={this.state.collapse}>{cat.text}<div style={{ minHeight: 25 }} /></Collapse>
+                <Collapse in={this.state.collapse}>{cat.text}<div style={{ minHeight: 25 }} /></Collapse>
             </div>
         );
     }

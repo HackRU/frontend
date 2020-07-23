@@ -1,6 +1,6 @@
 
 import React, { Component } from "react";
-import { Container, Row, Col} from "reactstrap";
+import { Container, Grid } from "@material-ui/core";
 import { theme } from "../../../Defaults";
 import FaqsCollapse from "./FaqsCollapse";
 import PropTypes from "prop-types";
@@ -78,27 +78,27 @@ class FAQs extends Component {
 
 
     render() {
-        let cols = (this.props.isMobile) ? (12) : (6);
+        // let cols = (this.props.isMobile) ? (12) : (6);
         return (
             <div style={{ backgroundColor: theme.secondary[1], color: "white", boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.5)", padding: 50, marginTop: 25 }}>
                 <div style={{ position: "absolute", left: "calc(15px)", top: 0, height: "calc(100%)", backgroundColor: theme.accent[1], width: 10 }}></div>    
                 <h1 style={{ marginBottom: 25 }}
                     className="display-4 theme-font">FAQs</h1>  
-                <Container fluid>
-                    <Row>
-                        <Col xs={cols}>
+                <Container fluid maxWidth={false}>
+                    <Grid container spacing={3}>
+                        <Grid item xs>
                             {Object.keys(FAQTextOne).map((key, index) =>
                                 <FaqsCollapse key={index + "1"}
                                     cat={FAQTextOne[key]} />
                             )}
-                        </Col>
-                        <Col xs={cols}>
+                        </Grid>
+                        <Grid item xs>
                             {Object.keys(FAQTextTwo).map((key, index) =>
                                 <FaqsCollapse key={index + "2"}
                                     cat={FAQTextTwo[key]} />
                             )}                 
-                        </Col>
-                    </Row>
+                        </Grid>
+                    </Grid>
                 </Container>
             </div>
         );

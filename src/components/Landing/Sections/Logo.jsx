@@ -1,6 +1,6 @@
 
 import React, { Component } from "react";
-import { Container, Col } from "reactstrap";
+import { Container, Grid} from "@material-ui/core";
 import { theme } from "../../../Defaults";
 import anime from "animejs";
 import PropTypes from "prop-types";
@@ -57,8 +57,10 @@ class Logo extends Component {
     render() {
         return (
             <Container style={{ ...this.props.style, minHeight: theme["hero-height"], maxWidth: theme["hero-width"], background: (this.props.noCircle) ? ("") : (theme["hero-background"]), borderRadius: theme["hero-border-radius"], color: this.props.color }}
-                className="d-flex align-items-center">
-                <Col xs={12}
+                className="d-flex align-items-center"
+                maxWidth={false}>
+                    
+                <Grid xs={12}
                     dangerouslySetInnerHTML={{ __html: this.state.file }} />
                 <br/>
             </Container>

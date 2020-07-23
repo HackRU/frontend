@@ -1,5 +1,7 @@
 import React, { Component } from "react";
-import { Container, Row, Col, Button, Alert, ButtonGroup } from "reactstrap";
+import {} from "reactstrap";
+import {Container, Grid, Button, ButtonGroup} from "@material-ui/core";
+import Alert from "@material-ui/lab/Alert";
 import { defaults, theme } from "../../../Defaults";
 import { Icon } from "react-fa";
 import Logo from "./Logo";
@@ -31,6 +33,8 @@ class Home extends Component {
             return (
                 <Container fluid
                     id="landing-section"
+                    maxWidth={false}
+                    disableGutters={true}
                     style={{ zIndex: 3, width: "100%", minHeight: "100vh", textAlign: "center", userSelect: "none", backgroundColor: theme.secondary[1] }}>
                     <Motion defaultStyle={{ movement: 5, opacity: 0 }}
                         style={{ movement: spring(-5, { stiffness: 2, damping: 0 }), opacity: spring(1, { stiffness: 0.5, damping: 4 }) }}>
@@ -112,10 +116,10 @@ class Home extends Component {
                                 </div></div>
                         }
                     </Motion>
-                    <Row style={{ minWidth: "100%", minHeight: "100vh" }}
+                    <Grid style={{ minWidth: "100%", minHeight: "100vh" }}
                         className="d-flex align-items-center">
-                        <Col xs={2}></Col>
-                        <Col xs={8}
+                        <Grid xs={2}></Grid>
+                        <Grid xs={8}
                             style={{ display: "block" }}>
                             <Motion defaultStyle={{ opacity: 0 }}
                                 style={{ opacity: spring(1, { stiffness: 1, damping: 1 }) }}>
@@ -182,7 +186,7 @@ class Home extends Component {
                                         </div>
                                 }
                             </Motion>
-                        </Col>
+                        </Grid>
                         <div style={{ position: "absolute", bottom: 10, left: 10, right: 10, margin: "0 auto" }}>
                             {defaults.volunteers.display &&
                                 <div>
@@ -194,13 +198,15 @@ class Home extends Component {
                                 size="lg"
                                 style={{ border: "none", zIndex: 1, fontWeight: "bold", borderRadius: 100 }} ><Icon name="chevron-down" /></Button>
                         </div>
-                    </Row>
+                    </Grid>
                 </Container>
             );
         } else {
             return (
                 <Container fluid
                     id="landing-section"
+                    disableGutters={true}
+                    maxWidth={false}
                     style={{ zIndex: 3, width: "100%", minHeight: "100vh", textAlign: "center", userSelect: "none", backgroundColor: theme.secondary[1] }}>
                     <Motion defaultStyle={{ movement: 5, opacity: 0 }}
                         style={{ movement: spring(-5, { stiffness: 2, damping: 0 }), opacity: spring(1, { stiffness: 0.5, damping: 4 }) }}>
@@ -246,9 +252,9 @@ class Home extends Component {
                                 </div></div>
                         }
                     </Motion>
-                    <Row style={{ minWidth: "100%", minHeight: "100vh" }}
+                    <Grid style={{ minWidth: "100%", minHeight: "100vh" }}
                         className="d-flex align-items-center">
-                        <Col style={{ display: "block" }}>
+                        <Grid style={{ display: "block" }}>
                             {loggoutMsg}
                             <Motion defaultStyle={{ opacity: 0 }}
                                 style={{ opacity: spring(1, { stiffness: 1, damping: 1 }) }}>
@@ -324,8 +330,8 @@ class Home extends Component {
                             {defaults.volunteers.display && <div>
                                 Want to help? Sign up to <a href={defaults.volunteers.vol_url}>volunteer</a> or <a href={defaults.volunteers.mentor_url}>mentor</a>!
                             </div>}
-                        </Col>
-                    </Row>
+                        </Grid>
+                    </Grid>
                 </Container>
             );
         }
