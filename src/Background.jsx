@@ -1,6 +1,6 @@
 import React from "react"; // Default react imports for the component
-import Grid from "@material-ui/core/Grid"
-import { makeStyles } from '@material-ui/core/styles'
+import Grid from "@material-ui/core/Grid";
+import { makeStyles } from "@material-ui/core/styles";
 
 const imageDefs = [
     {
@@ -60,44 +60,8 @@ const imageDefs = [
         opacity: 1,
     }, //END TOP LEFT SECTION
 ];
-const useStyles = makeStyles(theme => ({
-    centerContentItem: {
-        marginTop: "-60em",
-        transform: "rotate(45deg)",
-        height: "80em",
-        width: "15em",
-        [theme.breakpoints.down("md")]: {
 
-        }
-    },
-
-    centerContent: {
-        marginLeft: "10em",
-        marginTop: "50em",
-        [theme.breakpoints.down("md")]: {
-
-        }
-    },
-    leftContent: {
-        marginTop: "-15em",
-        marginLeft: "-10em",
-        marginRight: "10em",
-        [theme.breakpoints.down("md")]: {
-
-        }
-    },
-    leftLines: {
-        marginBottom: "-45em",
-        width: "50em",
-        opacity: "0.5",
-        [theme.breakpoints.down("md")]: {
-
-        }
-    }
-}))
 export default function Background(props) {
-    // <img src={imageDefs[0].source} style={{ height: imageDefs[0].height }} />
-    const classes = useStyles();
     const renderImage = (icon, top, left, bottom, right, height, transform, multiplier, opacity) => {
         let style = { position: "fixed" };
         style["top"] = top ? top : null;
@@ -114,7 +78,7 @@ export default function Background(props) {
             </div>
         );
     }
-    const images = []
+    const images = [];
     for (let i = 0; i < imageDefs.length; i++) {
         {
             let image = imageDefs[i];
@@ -128,24 +92,29 @@ export default function Background(props) {
                 image.transform,
                 image.multiplier ? 1 - image.multiplier : 1,
                 image.opacity
-            ))
+            ));
         }
-    }
+    };
     return (
-        <Grid container justify="space-between">
-            <Grid md item container justify="center" style={{ position: "fixed" }}>
-                <Grid item sm={2} md={2} lg={1} style={{ transform: "rotate(45deg)", height: "100vh", backgroundColor: "rgb(79, 171, 95)" }}>
+        <Grid container
+            justify="space-between">
+            <Grid md 
+                item container justify="center" style={{ position: "fixed" }}>
+                <Grid item 
+                    sm={2} md={2} lg={1} style={{ transform: "rotate(45deg)", height: "100vh", backgroundColor: "rgb(79, 171, 95)" }}>
 
                 </Grid>
-                <Grid item sm={2} md={2} lg={1} style={{ transform: "rotate(45deg)", height: "100vh", backgroundColor: "rgb(241, 186, 67)" }}>
+                <Grid item 
+                    sm={2} md={2} lg={1} style={{ transform: "rotate(45deg)", height: "100vh", backgroundColor: "rgb(241, 186, 67)" }}>
 
                 </Grid>
-                <Grid item sm={2} md={2} lg={1} style={{ transform: "rotate(45deg)", height: "100vh", backgroundColor: "rgb(200, 81, 81)" }}>
+                <Grid item 
+                    sm={2} md={2} lg={1} style={{ transform: "rotate(45deg)", height: "100vh", backgroundColor: "rgb(200, 81, 81)" }}>
 
                 </Grid>
             </Grid>
             {images}
         </Grid>
-    )
+    );
 
-}
+};
