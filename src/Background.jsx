@@ -60,7 +60,7 @@ const imageDefs = [
     }, //END TOP LEFT SECTION
 ];
 
-export default function Background(props) {
+export default function Background() {
     const renderImage = (icon, top, left, bottom, right, height, transform, multiplier, opacity) => {
         let style = { position: "fixed" };
         style["top"] = top ? top : null;
@@ -76,7 +76,7 @@ export default function Background(props) {
                     height={height} />
             </div>
         );
-    }
+    };
     const images = [];
     for (let i = 0; i < imageDefs.length; i++) {
         {
@@ -98,7 +98,10 @@ export default function Background(props) {
         <Grid container
             justify="space-between">
             <Grid md 
-                item container justify="center" style={{ position: "fixed" }}>
+                item 
+                container 
+                justify="center" 
+                style={{ position: "fixed" }}>
                 <Grid item 
                     sm={2} 
                     md={2} 
