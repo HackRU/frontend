@@ -1,6 +1,7 @@
 import React from "react"; // Default react imports for the component
 import Grid from "@material-ui/core/Grid";
 
+
 const imageDefs = [
     {
         source: "/assets/background/line_green.svg",
