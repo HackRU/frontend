@@ -1,15 +1,16 @@
 import React, { Component } from "react";
+import { NavLink } from "reactstrap";
 import {
-	Navbar,
-	NavbarBrand,
-	Nav,
-	NavLink,
-	NavItem,
-	Collapse,
-	NavbarToggler,
-	Button,
 	Container,
-} from "reactstrap";
+	Collapse,
+	Button,
+	MenuItem,
+	MenuList,
+	AppBar,
+	Toolbar,
+	Box,
+} from "@material-ui/core";
+import { ToggleButton } from "@material-ui/lab";
 import { Link } from "react-router-dom";
 import { navlinks, theme, defaults } from "./Defaults";
 import { ProfileType } from "./components/Profile";
@@ -96,30 +97,30 @@ class NavBar extends Component {
 	}
 	getAuthButtons() {
 		return (
-			<div>
+			<MenuList style={{ display: "inline-block", marginLeft: "330px" }}>
 				<Link to="/login">
-					<Button outline color="warning" className="pill-btn">
+					<Button variant="contained" outline>
 						Login
 					</Button>
 				</Link>{" "}
 				<Link to="/signup">
-					<Button color="success" className="pill-btn">
+					<Button variant="contained" color="primary">
 						Register
 					</Button>
 				</Link>
-			</div>
+			</MenuList>
 		);
 	}
 	getDashboardButton() {
 		return (
 			<div>
 				<Link to="/dashboard">
-					<Button className="pill-btn" outline color="warning">
+					<Button variant="contained" color="primary">
 						Dashboard
 					</Button>
 				</Link>
 				<Link to="/logout">
-					<Button className="pill-btn" outline color="danger">
+					<Button variant="contained" outline color="secondary">
 						Logout
 					</Button>
 				</Link>
@@ -131,7 +132,8 @@ class NavBar extends Component {
 		let navLinks = [];
 		for (let i = 0; i < keys.length - 1; i++) {
 			navLinks.push(
-				<NavItem
+				<MenuItem
+					style={{ display: "inline-block", margin: "-10px" }}
 					key={i}
 					className={i === 0 && window.innerWidth < 768 ? "pt-3" : ""}
 				>
@@ -142,7 +144,7 @@ class NavBar extends Component {
 					>
 						{keys[i].toString()}
 					</NavLink>
-				</NavItem>
+				</MenuItem>
 			);
 		}
 		return navLinks;
@@ -150,49 +152,49 @@ class NavBar extends Component {
 
 	getLandingNav() {
 		return (
-			<Collapse isOpen={this.state.isOpen} navbar>
-				<Nav navbar className="mr-auto">
-					{this.getNavLinks()}
-				</Nav>
-				<Nav navbar className="ml-auto">
-					{this.props.profile.isLoggedIn
-						? this.getDashboardButton()
-						: this.getAuthButtons()}
-				</Nav>
-			</Collapse>
+			<MenuList className="mr-auto" style={{ display: "inline-block" }}>
+				{/* <MenuList nav className="mr-auto"> */}
+				{this.getNavLinks()}
+				{/* </MenuList> */}
+				{/* <MenuList nav className="ml-auto"> */}
+				{this.props.profile.isLoggedIn
+					? this.getDashboardButton()
+					: this.getAuthButtons()}
+				{/* </MenuList> */}
+			</MenuList>
 		);
 	}
 
 	getDashboardNav() {
 		return (
 			<Collapse isOpen={this.state.isOpen} navbar>
-				<Nav navbar className="mr-auto">
-					<NavItem className={window.innerWidth < 768 ? "pt-3" : ""}>
+				<MenuList navbar className="mr-auto">
+					<MenuItem className={window.innerWidth < 768 ? "pt-3" : ""}>
 						<NavLink onClick={this.toggleFalse}>
 							<Link className="primary-link" to="/#home">
 								HOME
 							</Link>
 						</NavLink>
-					</NavItem>
+					</MenuItem>
 					{defaults.dayof ? (
-						<NavItem>
+						<MenuItem>
 							<NavLink onClick={this.toggleFalse}>
 								<Link className="primaryLink" to="/live">
 									LIVE
 								</Link>
 							</NavLink>
-						</NavItem>
+						</MenuItem>
 					) : null}
-				</Nav>
-				<Nav navbar className="ml-auto">
-					<NavItem>
+				</MenuList>
+				<MenuList navbar className="ml-auto">
+					<MenuItem>
 						<Link to="/logout">
 							<Button className="pill-btn" outline color="warning">
 								Logout
 							</Button>
 						</Link>
-					</NavItem>
-				</Nav>
+					</MenuItem>
+				</MenuList>
 			</Collapse>
 		);
 	}
@@ -207,7 +209,7 @@ class NavBar extends Component {
 		}
 		if (!defaults.freeze) {
 			return (
-				<Navbar
+				<AppBar
 					id="navbar"
 					style={{
 						width: "100%",
@@ -224,53 +226,55 @@ class NavBar extends Component {
 					expand="md"
 					onBlur={this.toggleFalse}
 				>
-					<Container
-						fluid
-						style={{ paddingBottom: 10, paddingTop: 10, paddingLeft: 10 }}
-					>
-						<NavbarBrand>
-							<div style={{ position: "relative", width: "100%" }}>
-								<NavbarToggler
-									onClick={this.toggle}
-									style={{
-										position: "fixed",
-										right: 0,
-										top: 2,
-										marginRight: 10,
-									}}
-								/>
-							</div>
-							<div
-								style={{
-									display: "block",
-									paddingRight: 0,
-									marginTop: -50,
-									marginBottom: -200,
-									width: 200,
-									marginRight: -20,
-									marginLeft: -40,
-									height: 225,
-								}}
-							>
-								<LinkSwitcher
-									style={{ height: "10px !important" }}
-									onClick={this.toggleFalse}
-									root={onLanding.toString()}
-									href="/#home"
-									to="/#home"
-								>
-									<Logo
-										color="white"
-										repeat={false}
-										noCircle
-										src="/assets/icons/hru-text-dyn.svg"
+					<Container maxWidth={false} disableGutters={true}>
+						<Toolbar
+							fluid
+							style={{ paddingBottom: 10, paddingTop: 10, paddingLeft: 10 }}
+						>
+							<Box>
+								<div style={{ position: "relative", width: "100%" }}>
+									<ToggleButton
+										onClick={this.toggle}
+										style={{
+											position: "fixed",
+											right: 0,
+											top: 2,
+											marginRight: 10,
+										}}
 									/>
-								</LinkSwitcher>
-							</div>
-						</NavbarBrand>
-						{onDashboard ? this.getDashboardNav() : this.getLandingNav()}
+								</div>
+								<div
+									style={{
+										display: "block",
+										paddingRight: 0,
+										marginTop: -50,
+										marginBottom: -200,
+										width: 200,
+										marginRight: -20,
+										marginLeft: -40,
+										height: 225,
+									}}
+								>
+									<LinkSwitcher
+										style={{ height: "10px !important" }}
+										onClick={this.toggleFalse}
+										root={onLanding.toString()}
+										href="/#home"
+										to="/#home"
+									>
+										<Logo
+											color="white"
+											repeat={false}
+											noCircle
+											src="/assets/icons/hru-text-dyn.svg"
+										/>
+									</LinkSwitcher>
+								</div>
+							</Box>
+							{onDashboard ? this.getDashboardNav() : this.getLandingNav()}
+						</Toolbar>
 					</Container>
-				</Navbar>
+				</AppBar>
 			);
 		} else {
 			return null;
