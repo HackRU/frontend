@@ -1,14 +1,6 @@
 import React, { Component } from "react";
 import { NavLink, Collapse } from "reactstrap";
-import {
-	Container,
-	Button,
-	MenuItem,
-	MenuList,
-	AppBar,
-	Toolbar,
-	Box,
-} from "@material-ui/core";
+import { Container, Button, AppBar, Toolbar, Grid } from "@material-ui/core";
 import { ToggleButton } from "@material-ui/lab";
 import { Link } from "react-router-dom";
 import { navlinks, theme, defaults } from "./Defaults";
@@ -96,30 +88,38 @@ class NavBar extends Component {
 	}
 	getAuthButtons() {
 		return (
-			<MenuList style={{ display: "inline-block", marginLeft: "330px" }}>
-				<Link to="/login">
-					<Button variant="contained" outline>
-						Login
-					</Button>
-				</Link>{" "}
-				<Link to="/signup">
-					<Button variant="contained" color="primary">
-						Register
-					</Button>
-				</Link>
-			</MenuList>
+			<Grid container>
+				<Grid item xs></Grid>
+				<Grid item xs>
+					<Link to="/login">
+						<Button variant="contained" outline className="pill-btn">
+							Login
+						</Button>
+					</Link>{" "}
+					<Link to="/signup">
+						<Button variant="contained" color="primary" className="pill-btn">
+							Register
+						</Button>
+					</Link>
+				</Grid>
+			</Grid>
 		);
 	}
 	getDashboardButton() {
 		return (
 			<div>
 				<Link to="/dashboard">
-					<Button variant="contained" color="primary">
+					<Button variant="contained" color="primary" className="pill-btn">
 						Dashboard
 					</Button>
 				</Link>
 				<Link to="/logout">
-					<Button variant="contained" outline color="secondary">
+					<Button
+						variant="contained"
+						outline
+						color="secondary"
+						className="pill-btn"
+					>
 						Logout
 					</Button>
 				</Link>
@@ -131,8 +131,11 @@ class NavBar extends Component {
 		let navLinks = [];
 		for (let i = 0; i < keys.length - 1; i++) {
 			navLinks.push(
-				<MenuItem
-					style={{ display: "inline-block", margin: "-10px" }}
+				<Grid
+					item
+					xs
+					variant="contained"
+					style={{ display: "inline-block" }}
 					key={i}
 					className={i === 0 && window.innerWidth < 768 ? "pt-3" : ""}
 				>
@@ -143,7 +146,7 @@ class NavBar extends Component {
 					>
 						{keys[i].toString()}
 					</NavLink>
-				</MenuItem>
+				</Grid>
 			);
 		}
 		return navLinks;
@@ -152,16 +155,16 @@ class NavBar extends Component {
 	getLandingNav() {
 		return (
 			<Collapse isOpen={this.state.isOpen} navbar>
-				<MenuList className="mr-auto" style={{ display: "inline-block" }}>
-					{/* <MenuList nav className="mr-auto"> */}
-					{this.getNavLinks()}
-					{/* </MenuList> */}
-					{/* <MenuList nav className="ml-auto"> */}
-					{this.props.profile.isLoggedIn
-						? this.getDashboardButton()
-						: this.getAuthButtons()}
-					{/* </MenuList> */}
-				</MenuList>
+				<Grid navbar container spacing={2}>
+					<Grid item xs={6}>
+						{this.getNavLinks()}
+					</Grid>
+					<Grid item xs>
+						{this.props.profile.isLoggedIn
+							? this.getDashboardButton()
+							: this.getAuthButtons()}
+					</Grid>
+				</Grid>
 			</Collapse>
 		);
 	}
@@ -169,33 +172,33 @@ class NavBar extends Component {
 	getDashboardNav() {
 		return (
 			<Collapse isOpen={this.state.isOpen} navbar>
-				<MenuList navbar className="mr-auto">
-					<MenuItem className={window.innerWidth < 768 ? "pt-3" : ""}>
+				<Grid container navbar className="mr-auto">
+					<Grid item className={window.innerWidth < 768 ? "pt-3" : ""}>
 						<NavLink onClick={this.toggleFalse}>
 							<Link className="primary-link" to="/#home">
 								HOME
 							</Link>
 						</NavLink>
-					</MenuItem>
+					</Grid>
 					{defaults.dayof ? (
-						<MenuItem>
+						<Grid item>
 							<NavLink onClick={this.toggleFalse}>
 								<Link className="primaryLink" to="/live">
 									LIVE
 								</Link>
 							</NavLink>
-						</MenuItem>
+						</Grid>
 					) : null}
-				</MenuList>
-				<MenuList navbar className="ml-auto">
-					<MenuItem>
+				</Grid>
+				<Grid container className="ml-auto">
+					<Grid item>
 						<Link to="/logout">
 							<Button className="pill-btn" outline color="warning">
 								Logout
 							</Button>
 						</Link>
-					</MenuItem>
-				</MenuList>
+					</Grid>
+				</Grid>
 			</Collapse>
 		);
 	}
@@ -232,7 +235,7 @@ class NavBar extends Component {
 							fluid
 							style={{ paddingBottom: 10, paddingTop: 10, paddingLeft: 10 }}
 						>
-							<Box>
+							<Grid item xs spacing={2}>
 								<div style={{ position: "relative", width: "100%" }}>
 									<ToggleButton
 										onClick={this.toggle}
@@ -271,7 +274,7 @@ class NavBar extends Component {
 										/>
 									</LinkSwitcher>
 								</div>
-							</Box>
+							</Grid>
 							{onDashboard ? this.getDashboardNav() : this.getLandingNav()}
 						</Toolbar>
 					</Container>
