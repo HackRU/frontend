@@ -1,8 +1,7 @@
 import React, { Component } from "react";
-import { NavLink } from "reactstrap";
+import { NavLink, Collapse } from "reactstrap";
 import {
 	Container,
-	Collapse,
 	Button,
 	MenuItem,
 	MenuList,
@@ -152,16 +151,18 @@ class NavBar extends Component {
 
 	getLandingNav() {
 		return (
-			<MenuList className="mr-auto" style={{ display: "inline-block" }}>
-				{/* <MenuList nav className="mr-auto"> */}
-				{this.getNavLinks()}
-				{/* </MenuList> */}
-				{/* <MenuList nav className="ml-auto"> */}
-				{this.props.profile.isLoggedIn
-					? this.getDashboardButton()
-					: this.getAuthButtons()}
-				{/* </MenuList> */}
-			</MenuList>
+			<Collapse isOpen={this.state.isOpen} navbar>
+				<MenuList className="mr-auto" style={{ display: "inline-block" }}>
+					{/* <MenuList nav className="mr-auto"> */}
+					{this.getNavLinks()}
+					{/* </MenuList> */}
+					{/* <MenuList nav className="ml-auto"> */}
+					{this.props.profile.isLoggedIn
+						? this.getDashboardButton()
+						: this.getAuthButtons()}
+					{/* </MenuList> */}
+				</MenuList>
+			</Collapse>
 		);
 	}
 
