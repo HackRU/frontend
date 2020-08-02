@@ -1,16 +1,16 @@
-import React, { Component } from "react";
+import React from "react";
 import { Grid } from "@material-ui/core";
 import { Icon } from "react-fa";
-import { useTheme } from '@material-ui/core/styles';
+import { useTheme } from "@material-ui/core/styles";
 
-import useMediaQuery from '@material-ui/core/useMediaQuery';
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 
 /**
  * About component for the landing page
  */
 function Footer() {
     const theme = useTheme();
-    const matchesSM = useMediaQuery(theme.breakpoints.up('sm'));
+    const matchesSM = useMediaQuery(theme.breakpoints.up("sm"));
     const codeOfConduct = (
         <h6 className="mb-4">
             <a
@@ -18,7 +18,7 @@ function Footer() {
                 target="_blank"
                 rel="noopener noreferrer">MLH's Code of Conduct</a>
         </h6>
-    )
+    );
 
     return (
         <div style={{marginLeft: -15, marginRight: -15 }}>
