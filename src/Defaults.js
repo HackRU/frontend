@@ -27,7 +27,7 @@ const defaults =  {
     "sponsorshipLogos": "https://s3-us-west-2.amazonaws.com/hackru-internal/sponsorship-logos/",
     "partnerLogos": "https://s3-us-west-2.amazonaws.com/hackru-internal/partners-logos/",
     "teamInfo": "https://s3-us-west-2.amazonaws.com/hackru-internal/hackru-team/",
-    "freeze": true,
+    "freeze": false,
     "volunteers": {
         "display": true,
         "vol_url": "https://docs.google.com/forms/d/e/1FAIpQLSe_qBzqsJIKWd_BohZ7Xuju3XQhI2f6xtrwX7WO-otR0Q7ofg/viewform?usp=sf_link",
