@@ -8,6 +8,8 @@ import {
 	Toolbar,
 	Grid,
 	Box,
+	MenuList,
+	MenuItem,
 } from "@material-ui/core";
 import { ToggleButton } from "@material-ui/lab";
 
@@ -97,7 +99,12 @@ class NavBar extends Component {
 	}
 	getAuthButtons() {
 		return (
-			<div style={{ display: "inline-block", marginLeft: "450px" }}>
+			<MenuList
+				style={{
+					display: "inline-block",
+					marginLeft: "150px",
+				}}
+			>
 				<Link to="/login">
 					<Button outline className="pill-btn">
 						Login
@@ -108,7 +115,7 @@ class NavBar extends Component {
 						Register
 					</Button>
 				</Link>
-			</div>
+			</MenuList>
 		);
 	}
 	getDashboardButton() {
@@ -132,10 +139,7 @@ class NavBar extends Component {
 		let navLinks = [];
 		for (let i = 0; i < keys.length - 1; i++) {
 			navLinks.push(
-				<Grid
-					item
-					xs
-					variant="contained"
+				<MenuItem
 					style={{ display: "inline-block" }}
 					key={i}
 					className={i === 0 && window.innerWidth < 768 ? "pt-3" : ""}
@@ -147,7 +151,7 @@ class NavBar extends Component {
 					>
 						{keys[i].toString()}
 					</NavLink>
-				</Grid>
+				</MenuItem>
 			);
 		}
 		return navLinks;
@@ -155,18 +159,14 @@ class NavBar extends Component {
 
 	getLandingNav() {
 		return (
-			<div>
-				<Collapse in={this.state.isOpen}>
-					<Grid container spacing={0}>
-						<Grid item>{this.getNavLinks()}</Grid>
-						<Grid item>
-							{this.props.profile.isLoggedIn
-								? this.getDashboardButton()
-								: this.getAuthButtons()}
-						</Grid>
-					</Grid>
-				</Collapse>
-			</div>
+			<Collapse in={this.state.isOpen}>
+				<MenuList className="mr-auto" style={{ display: "inline-block" }}>
+					{this.getNavLinks()}
+					{this.props.profile.isLoggedIn
+						? this.getDashboardButton()
+						: this.getAuthButtons()}
+				</MenuList>
+			</Collapse>
 		);
 	}
 
