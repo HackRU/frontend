@@ -1,19 +1,18 @@
 import React, { Component } from "react";
-import { Nav, NavLink, NavItem } from "reactstrap";
 import {
 	Collapse,
 	Container,
 	Button,
 	AppBar,
 	Toolbar,
-	Grid,
+	Link,
 	Box,
 	MenuList,
 	MenuItem,
 } from "@material-ui/core";
 import { ToggleButton } from "@material-ui/lab";
-
-import { Link } from "react-router-dom";
+import { MoreVertOutlined } from "@material-ui/icons";
+import {} from "react-router-dom";
 import { navlinks, theme, defaults } from "./Defaults";
 import { ProfileType } from "./components/Profile";
 import PropTypes from "prop-types";
@@ -99,34 +98,33 @@ class NavBar extends Component {
 	}
 	getAuthButtons() {
 		return (
-			<MenuList
+			<div
 				style={{
 					display: "inline-block",
-					marginLeft: "150px",
 				}}
 			>
-				<Link to="/login">
+				<Link to="/login" href={"/login"}>
 					<Button outline className="pill-btn">
 						Login
 					</Button>
 				</Link>{" "}
-				<Link to="/signup">
+				<Link to="/signup" href={"/signup"}>
 					<Button variant="contained" color="primary" className="pill-btn">
 						Register
 					</Button>
 				</Link>
-			</MenuList>
+			</div>
 		);
 	}
 	getDashboardButton() {
 		return (
 			<div>
-				<Link to="/dashboard">
+				<Link to="/dashboard" href={"/dashboard"}>
 					<Button className="pill-btn" outline color="warning">
 						Dashboard
 					</Button>
 				</Link>
-				<Link to="/logout">
+				<Link to="/logout" href={"/logout"}>
 					<Button className="pill-btn" outline color="danger">
 						Logout
 					</Button>
@@ -143,14 +141,15 @@ class NavBar extends Component {
 					style={{ display: "inline-block" }}
 					key={i}
 					className={i === 0 && window.innerWidth < 768 ? "pt-3" : ""}
+					component={Link}
 				>
-					<NavLink
+					<Link
 						className="primary-link"
 						href={"/" + navlinks[keys[i]].url}
 						onClick={this.toggleFalse}
 					>
 						{keys[i].toString()}
-					</NavLink>
+					</Link>
 				</MenuItem>
 			);
 		}
@@ -159,7 +158,7 @@ class NavBar extends Component {
 
 	getLandingNav() {
 		return (
-			<Collapse in={this.state.isOpen}>
+			<Collapse in={this.state.isOpen} TransitionProps={{ in: true }}>
 				<MenuList className="mr-auto" style={{ display: "inline-block" }}>
 					{this.getNavLinks()}
 					{this.props.profile.isLoggedIn
@@ -173,33 +172,33 @@ class NavBar extends Component {
 	getDashboardNav() {
 		return (
 			<Collapse in={this.state.isOpen}>
-				<Nav navbar className="mr-auto">
-					<NavItem className={window.innerWidth < 768 ? "pt-3" : ""}>
-						<NavLink onClick={this.toggleFalse}>
+				<MenuList navbar className="mr-auto">
+					<MenuItem className={window.innerWidth < 768 ? "pt-3" : ""}>
+						<Link onClick={this.toggleFalse}>
 							<Link className="primary-link" to="/#home">
 								HOME
 							</Link>
-						</NavLink>
-					</NavItem>
+						</Link>
+					</MenuItem>
 					{defaults.dayof ? (
-						<NavItem>
-							<NavLink onClick={this.toggleFalse}>
+						<MenuItem>
+							<Link onClick={this.toggleFalse}>
 								<Link className="primaryLink" to="/live">
 									LIVE
 								</Link>
-							</NavLink>
-						</NavItem>
+							</Link>
+						</MenuItem>
 					) : null}
-				</Nav>
-				<Nav navbar className="ml-auto">
-					<NavItem>
+				</MenuList>
+				<MenuList navbar className="ml-auto">
+					<MenuItem>
 						<Link to="/logout">
 							<Button className="pill-btn" outline color="warning">
 								Logout
 							</Button>
 						</Link>
-					</NavItem>
-				</Nav>
+					</MenuItem>
+				</MenuList>
 			</Collapse>
 		);
 	}
@@ -246,10 +245,11 @@ class NavBar extends Component {
 											position: "fixed",
 											right: 0,
 											top: 2,
+											marginTop: 10,
 											marginRight: 10,
 										}}
 									>
-										.
+										<MoreVertOutlined />
 									</ToggleButton>
 								</div>
 								<div
