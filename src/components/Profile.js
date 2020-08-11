@@ -1,4 +1,3 @@
-import cookie from "react-cookies";
 import request from "request";
 import { defaults } from "../Defaults";
 import PropTypes from "prop-types";
@@ -97,15 +96,26 @@ class Profile {
         this.GetUser = this.GetUser.bind(this);
         this.SetUser = this.SetUser.bind(this);
         this.SendMagic = this.SendMagic.bind(this);
-        this._token = cookie.load("token", { path: "/" });
-        this._email = cookie.load("email", { path: "/" });
-        this._valid_until = Date.parse(cookie.load("valid_until", { path: "/" }));
+        this._token = localStorage.getItem("token");
+        this._email = localStorage.getItem("email");
+        this._valid_until = localStorage.getItem("valid_until");
         if (this._token && this._email && this._valid_until && this._valid_until > Date.now()) {
             this.isLoggedIn = true;
         } else {
             this.isLoggedIn = false;
         }
     }
+    /* Parses the JWT token to get the data */
+    parseJwt(token) {
+        var base64Url = token.split('.')[1];
+        var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+        var jsonPayload = decodeURIComponent(atob(base64).split('').map(function (c) {
+            return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+        }).join(''));
+
+        return JSON.parse(jsonPayload);
+    };
+
     Login(email, password, callback) {
         if (this.isLoggedIn) {
             callback("User is already logged in");
@@ -131,8 +141,9 @@ class Profile {
                             callback("Invalid email or password");
                         } else if (body.statusCode === 200) {
                             let data = body.body;
-                            let token = data.auth.token;
-                            let valid_until = data.auth.valid_until;
+                            let token = data.token;
+                            // Convert seconds to milliseconds
+                            let valid_until = this.parseJwt(token).exp * 1000;
                             this._login(email, token, valid_until);
                             callback();
                         } else {
@@ -189,14 +200,13 @@ class Profile {
                     if (error) {
                         callback("An error occured when attempting signup. Failed at 1/2");
                     } else {
-                        console.log(body);
                         if (body.statusCode === 400) {
                             callback("User with email " + email + " already exists");
                         } else if (body.statusCode === 200) {
                             // Set the first and last name
                             let data = body.body;
-                            let token = data.auth.token;
-                            let valid_until = data.auth.valid_until;
+                            let token = data.token;
+                            let valid_until = this.parseJwt(token).exp *1000;
                             request({
                                 "method": "POST",
                                 uri: ENDPOINTS.update,
@@ -234,19 +244,19 @@ class Profile {
     }
     _login(email, token, valid_until) {
         email = email.toLowerCase();
-        cookie.save("token", token);
-        cookie.save("email", email);
-        cookie.save("valid_until", valid_until);
+        localStorage.setItem("valid_until", valid_until);
+        localStorage.setItem("token", token);
+        localStorage.setItem("email", email);
         this.isLoggedIn = true;
         this._token = token;
         this._email = email;
         this._valid_until = Date.parse(valid_until);
     }
     Logout() {
-        cookie.remove("token");
-        cookie.remove("email");
-        cookie.remove("valid_until");
-        cookie.remove("magic");
+        localStorage.removeItem("magic");
+        localStorage.removeItem("valid_until");
+        localStorage.removeItem("token");
+        localStorage.removeItem("email");
         this._token = null;
         this._email = null;
         this._valid_until = null;
@@ -298,7 +308,6 @@ class Profile {
                 },
                 json: true
             }, (error, response, body) => {
-                console.log(body);
                 if (error) {
                     callback("An error occured when attempting to update data");
                 } else {
@@ -444,13 +453,14 @@ class Profile {
         }
     }
     ClearMagic() {
-        cookie.remove("magic", { path: "/" });
+        localStorage.removeItem("magic");
     }
     SetMagic(magic) {
-        cookie.save("magic", magic, { path: "/" });
+        localStorage.setItem("magic", magic);
+
     }
     GetMagic() {
-        return cookie.load("magic", { path: "/" });
+        return localStorage.getItem("magic");
     }
     GetQR(callback) {
         request({
@@ -478,6 +488,7 @@ class Profile {
                 token: this._token,
             }),
         }).then(res => res.json());
+        console.log(json);
         return json.body;
     }
     async DoesResumeExist() {
