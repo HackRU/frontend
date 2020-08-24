@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 // import { Input, InputGroup, InputGroupAddon, FormGroup, Button, FormText } from "reactstrap";
 import { Container, Grid, TextField, Button, withStyles, createMuiTheme, ThemeProvider} from "@material-ui/core";
-import { Icon } from "react-fa";
 import { Link } from "react-router-dom";
 import { Redirect } from "react-router-dom";
 import AuthForm from "../library/AuthForm";
@@ -31,7 +30,7 @@ const theme = createMuiTheme({
     }
 });
 
-const ColorButton = withStyles((theme) => ({
+const ColorButton = withStyles(() => ({
     root: {
         color: "white",
         backgroundColor: "#4fab5f",
@@ -96,8 +95,10 @@ class ForgotPage extends Component {
                 conponent="main" 
                 maxWidth={false}
                 disableGutters={true}>
-                <Grid container spacing={2}>
-                    <Grid item xs={12}>
+                <Grid container 
+                    spacing={2}>
+                    <Grid item 
+                        xs={12}>
                         <ThemeProvider theme={theme}>
                             <CssTextField
                                 variant="outlined"
@@ -112,7 +113,8 @@ class ForgotPage extends Component {
                             />
                         </ThemeProvider>
                     </Grid>
-                    <Grid item xs={12}>
+                    <Grid item 
+                        xs={12}>
                         <ThemeProvider>
                             <ColorButton
                                 size = "small"
@@ -125,7 +127,8 @@ class ForgotPage extends Component {
 
                         </ThemeProvider>
                     </Grid>
-                    <Grid item xs={12}>
+                    <Grid item 
+                        xs={12}>
                         <div>
                             <Link to="/"
                                 style={{ color: "rgba(255, 255, 255, 0.5)" }}>

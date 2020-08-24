@@ -60,7 +60,7 @@ const CssTextField = withStyles({
     },
 })(TextField);
 
-const ColorButton = withStyles((theme) => ({
+const ColorButton = withStyles(() => ({
     root: {
         color: "white",
         backgroundColor: "#4fab5f",
@@ -98,8 +98,10 @@ class LoginPage extends Component {
                 maxWidth={false}
                 disableGutters={true}>
                 <form noValidate>
-                    <Grid container spacing={2}>
-                        <Grid item xs={12}>
+                    <Grid container 
+                        spacing={2}>
+                        <Grid item 
+                            xs={12}>
                             <ThemeProvider theme={theme}>
                                 <CssTextField
                                     variant="outlined"
@@ -114,7 +116,8 @@ class LoginPage extends Component {
                                 />
                             </ThemeProvider>
                         </Grid>
-                        <Grid item xs={12}>
+                        <Grid item 
+                            xs={12}>
                             <CssTextField
                                 variant="outlined"
                                 required
@@ -127,7 +130,8 @@ class LoginPage extends Component {
                                 size="small"
                             />
                         </Grid>
-                        <Grid item xs={12}>
+                        <Grid item 
+                            xs={12}>
                             <ThemeProvider>
                                 <ColorButton
                                     size = "small"
@@ -139,7 +143,8 @@ class LoginPage extends Component {
                                 </ColorButton>
                             </ThemeProvider>
                         </Grid>
-                        <Grid item xs={12}>
+                        <Grid item 
+                            xs={12}>
                             <div>
                                 <Link to="/signup"
                                     style={{ color: "rgba(255, 255, 255, 0.5)" }}>

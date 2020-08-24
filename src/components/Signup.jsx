@@ -76,7 +76,7 @@ const CssTextField = withStyles({
     },
 })(TextField);
 
-const ColorButton = withStyles((theme) => ({
+const ColorButton = withStyles(() => ({
     root: {
         color: "white",
         backgroundColor: "#4fab5f",
@@ -116,8 +116,10 @@ class SignUpPage extends Component {
                 maxWidth={false}
                 disableGutters={true}>
                 <form noValidate>
-                    <Grid container spacing={2}>
-                        <Grid item xs={6}>
+                    <Grid container 
+                        spacing={2}>
+                        <Grid item 
+                            xs={6}>
                             <ThemeProvider theme={theme}>
                                 <CssTextField
                                     name="firstName"
@@ -132,7 +134,8 @@ class SignUpPage extends Component {
                             </ThemeProvider>
                             
                         </Grid>
-                        <Grid item xs={6}>
+                        <Grid item 
+                            xs={6}>
                             <CssTextField
                                 name="lastName"
                                 variant="outlined"
@@ -143,7 +146,8 @@ class SignUpPage extends Component {
                                 size="small"
                             />
                         </Grid>
-                        <Grid item xs={12}>
+                        <Grid item 
+                            xs={12}>
                             <CssTextField
                                 variant="outlined"
                                 required
@@ -155,7 +159,8 @@ class SignUpPage extends Component {
                                 size="small"
                             />
                         </Grid>
-                        <Grid item xs={12}>
+                        <Grid item 
+                            xs={12}>
                             <CssTextField
                                 variant="outlined"
                                 required
@@ -168,7 +173,8 @@ class SignUpPage extends Component {
                                 size="small"
                             />
                         </Grid>
-                        <Grid item xs={12}>
+                        <Grid item 
+                            xs={12}>
                             <CssTextField
                                 variant="outlined"
                                 required
@@ -181,7 +187,8 @@ class SignUpPage extends Component {
                                 size="small"
                             />
                         </Grid>
-                        <Grid item xs={12}>
+                        <Grid item 
+                            xs={12}>
                             <ThemeProvider>
                                 <ColorButton
                                     size = "small"
@@ -197,7 +204,8 @@ class SignUpPage extends Component {
 
                             
                         </Grid>
-                        <Grid item xs={12}>
+                        <Grid item 
+                            xs={12}>
                             <div>
                                 <Link to="/login"
                                     style={{ color: "rgba(255, 255, 255, 0.5)" }}>
