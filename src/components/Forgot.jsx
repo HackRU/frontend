@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { Input, InputGroup, InputGroupAddon, FormGroup, Button, FormText } from "reactstrap";
+// import { Input, InputGroup, InputGroupAddon, FormGroup, Button, FormText } from "reactstrap";
+import { Container, Grid, TextField, Button, withStyles, createMuiTheme, ThemeProvider} from "@material-ui/core";
 import { Icon } from "react-fa";
 import { Link } from "react-router-dom";
 import { Redirect } from "react-router-dom";
@@ -9,6 +10,66 @@ import PropTypes from "prop-types";
 /**
  * Forgot my password application for "/forgot"
  */
+const theme = createMuiTheme({
+    
+    overrides: {
+        pallate: {
+            primary: "white",
+            secondary: "green"
+        },
+        MuiInputLabel: { 
+            root: { 
+                color: "white",
+                "&$focused": { 
+                    color: "white"
+                }
+            },
+            input: {
+                color: "white"
+            }
+        }
+    }
+});
+
+const ColorButton = withStyles((theme) => ({
+    root: {
+        color: "white",
+        backgroundColor: "#4fab5f",
+        "&:hover": {
+            backgroundColor: "#4fab5f",
+        },
+    },
+}))(Button);
+
+const CssTextField = withStyles({
+    root: {
+        "& labl.Mui-focused": {
+            color: "white",
+        },
+        "& .MuiInput-underline:after": {
+            borderBottomColor: "white",
+        },
+        "& .MuiOutlinedInput-root": {
+            "& fieldset": {
+                borderColor: "white",
+                color: "white",
+            },
+            "&:hover fieldset": {
+                borderColor: "white",
+            },
+            "&.Mui-focused fieldset": {
+                borderColor: "white",
+            },
+        },
+        "& .MuiInputBase-root.Mui-disabled": {
+            color: "white"
+        },
+        "& .MuiFormLabel-root.Mui-disabled": {
+            color: "white"
+        },
+    },
+})(TextField);
+
 class ForgotPage extends Component {
     UNSAFE_componentWillMount() {
         this.setState({
@@ -31,25 +92,51 @@ class ForgotPage extends Component {
             onSubmit={this.onSubmit}
             title="Forgot Password"
         >
-            <FormGroup row>
-                <InputGroup>
-                    <Input required
-                        type="email"
-                        id="email"
-                        placeholder="email"
-                        className="auth" />
-                    <InputGroupAddon addonType="append">
-                        <Button color="success"
-                            style={{ borderRadius: 0 }}><Icon name="chevron-right" /></Button>
-                    </InputGroupAddon>
-                </InputGroup>
-            </FormGroup>
-            <FormText>
-                <Link to="/"
-                    style={{ color: "rgba(255, 255, 255, 0.5)" }}>
-                    Return Home
-                </Link>
-            </FormText>
+            <Container
+                conponent="main" 
+                maxWidth={false}
+                disableGutters={true}>
+                <Grid container spacing={2}>
+                    <Grid item xs={12}>
+                        <ThemeProvider theme={theme}>
+                            <CssTextField
+                                variant="outlined"
+                                autofocus
+                                required
+                                fullWidth
+                                id="email"
+                                label="email"
+                                name="email"
+                                autoComplete="email"
+                                size="small"
+                            />
+                        </ThemeProvider>
+                    </Grid>
+                    <Grid item xs={12}>
+                        <ThemeProvider>
+                            <ColorButton
+                                size = "small"
+                                type="submit"
+                                fullWidth
+                                variant="contained"
+                                color="primary">
+                                Submit
+                            </ColorButton>
+
+                        </ThemeProvider>
+                    </Grid>
+                    <Grid item xs={12}>
+                        <div>
+                            <Link to="/"
+                                style={{ color: "rgba(255, 255, 255, 0.5)" }}>
+                                Return Home
+                            </Link>
+                        </div>
+                    </Grid>
+                </Grid>
+               
+            </Container>
+
         </AuthForm>;
     }
 
