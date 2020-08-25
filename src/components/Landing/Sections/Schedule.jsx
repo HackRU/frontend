@@ -1,14 +1,13 @@
-import React, { Component } from "react";
+import React from "react";
 import { theme } from "../../../Defaults";
-// import { Col, Row } from "reactstrap";
 import { Table, TableContainer, TableRow, TableCell, TableHead, Grid } from "@material-ui/core";
 
 /**
  * Schedule component for the landing page
  */
 
-const saturday_date = "APRIL 18";
-const sunday_date = "APRIL 19";
+const saturday_date = "NOVEMBER 7";
+const sunday_date = "NOVEMBER 8";
 
 const sat_schedule = [
     ["10:00 AM","Check-In","Main Lobby"],
@@ -27,25 +26,29 @@ const sun_schedule = [
     ["12:00 PM", "Demos Begin", "Hacking Area"],
     ["3:00 PM", "Closing Ceremonies", "Main Stage"]
 ];
-class Schedule extends Component {
 
-    constructor(props) {
-        super(props);
+function Schedule(){
 
-        this.state = {
-            activeTab: "sat"
-        };
-    }
+    // Must be changed to functional state/props if 
+    // this is going to be used for a dynamic sched
 
-    fill_table = (schedule) => {
+    // constructor(props) {
+    //     super(props);
+
+    //     this.state = {
+    //         activeTab: "sat"
+    //     };
+    // }
+        
+    function fill_table(schedule){
 
         const light_red = {
             backgroundColor: "rgba(0, 0, 0, 0.1)",
-            border: "none !important",
+            
         };
         
         const dark_red = {
-            border: "none !important"
+            
         };
         let rows = [];
         schedule.forEach((row, index) => {
@@ -53,9 +56,9 @@ class Schedule extends Component {
                 <TableRow style={index % 2 === 0 ? light_red : dark_red}
                     key={index}
                     className="lead">
-                    <TableCell scope="row">{row[0]}</TableCell>
-                    <TableCell>{row[1]}</TableCell>
-                    <TableCell>{row[2]}</TableCell>
+                    <TableCell style={{borderBottom: "none"}} scope="row">{row[0]}</TableCell>
+                    <TableCell style={{borderBottom: "none"}}>{row[1]}</TableCell>
+                    <TableCell style={{borderBottom: "none"}}>{row[2]}</TableCell>
                 </TableRow>
             );
         });
@@ -80,37 +83,38 @@ class Schedule extends Component {
             </div>
         );
     }
-    render() {
-        return (
-            <div style={{ backgroundColor: theme.secondary[1], color: "white", boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.5)", padding: 50 }}>
-                <div style={{ position: "absolute", left: "calc(15px)", top: 0, height: "100%", backgroundColor: theme.primary[1], width: 10 }}></div>
-                <h1 className="display-4 theme-font">Schedule</h1>
-                <div className="row mb-3"
-                    style={{ marginLeft: -50, marginRight: -50 }}>
-                    <div style={{ color: "white", padding: 50, paddingBottom: 0 }}
-                        className="col-xs-12 col-sm-12">
-                        <Grid container>
-                            <Grid item xs={1} style={{ padding: 0, margin: 0, writingMode: "vertical-lr", transform: "rotate(180deg)", marginRight: -10, marginLeft: 10 }}
-                                className="text-center"> 
-                                <h3 style={{ paddingLeft: 10 }}
-                                    className="lead">{saturday_date}</h3>
-                            </Grid>
-                            <Grid item xs={11} style={{ borderLeft: "1px solid white" }}>
-                                {this.fill_table(sat_schedule)}
-                            </Grid>
-                            <Grid item xs={1} style={{ padding: 0, margin: 0, writingMode: "vertical-lr", transform: "rotate(180deg)", marginRight: -10, marginLeft: 10 }}
-                                className="text-center"> 
-                                <h3 style={{ paddingLeft: 10 }}
-                                    className="lead">{sunday_date}</h3>
-                            </Grid>
-                            <Grid item xs={11} style={{ borderLeft: "1px solid white" }}>
-                                {this.fill_table(sun_schedule)}
-                            </Grid>
+    
+    return (
+        <div style={{ backgroundColor: theme.secondary[1], color: "white", boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.5)", padding: 50 }}>
+            <div style={{ position: "absolute", left: "calc(15px)", top: 0, height: "100%", backgroundColor: theme.primary[1], width: 10 }}></div>
+            <h1 className="display-4 theme-font">Schedule</h1>
+            <div className="row mb-3"
+                style={{ marginLeft: -50, marginRight: -50 }}>
+                <div style={{ color: "white", padding: 50, paddingBottom: 0 }}
+                    className="col-xs-12 col-sm-12">
+                    <Grid container>
+                        <Grid item xs={1} style={{ padding: 0, margin: 0, writingMode: "vertical-lr", transform: "rotate(180deg)", marginRight: -10, marginLeft: 10 }}
+                            className="text-center"> 
+                            <h3 style={{ paddingLeft: 10 }}
+                                className="lead">{saturday_date}</h3>
                         </Grid>
-                    </div>
+                        <Grid item xs={11} style={{ borderLeft: "1px solid white" }}>
+                            {fill_table(sat_schedule)}
+                        </Grid>
+                        <Grid item xs={1} style={{ padding: 0, margin: 0, writingMode: "vertical-lr", transform: "rotate(180deg)", marginRight: -10, marginLeft: 10 }}
+                            className="text-center"> 
+                            <h3 style={{ paddingLeft: 10 }}
+                                className="lead">{sunday_date}</h3>
+                        </Grid>
+                        <Grid item xs={11} style={{ borderLeft: "1px solid white" }}>
+                            {fill_table(sun_schedule)}
+                        </Grid>
+                    </Grid>
                 </div>
             </div>
-        );
-    }
+        </div>
+    );
+
 }
+
 export default Schedule;
