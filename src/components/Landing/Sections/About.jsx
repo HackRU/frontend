@@ -2,20 +2,19 @@
 import React, { Component } from "react";
 import { theme } from "../../../Defaults";
 import { Icon } from "react-fa";
-
+import Card from "../../Card";
 /**
  * About component for the landing page
  */
 class About extends Component {
     render() {
         return (
-            <div style={{ backgroundColor: theme.secondary[1], color: "white", boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.5)", padding: 50, paddingBottom: 0 }}>
-                <div style={{ position: "absolute", left: "calc(15px)", top: 0, height: "100%", backgroundColor: theme.accent[0], width: 10 }}></div>
+            <Card backgroundColor={theme.secondary[1]} sideBar={theme.accent[0]}>
                 <div style={{ position: "absolute", top: 30, right: 20, userSelect: "none", pointerEvents: "none", zIndex: 10, transform: "rotate(-175deg)" }}>
                     <img
                         alt="background"
                         src={"./assets/background/shape_green.svg"}
-                        height={100} /> 
+                        height={100} />
                 </div>
                 <h1 className="display-4 theme-font">About HackRU</h1>
                 <div className="row mb-3"
@@ -31,17 +30,17 @@ class About extends Component {
                         </p>
                     </div>
                     <div style={{ color: "white", padding: 50, paddingBottom: 0 }}
-                        className="col-xs-12 col-sm-12"> 
+                        className="col-xs-12 col-sm-12">
                         <div style={{ position: "absolute", left: 190, height: 10, backgroundColor: theme.accent[0], width: "calc(100% - 190px)" }}></div>
                         <h2 className="display-6"
-                            style={{ display: "inline-block", marginTop: -25,  marginBottom: 25, backgroundColor: theme.accent[1], padding: 10, marginLeft: -50, paddingLeft: 50, borderTopRightRadius: 25, borderBottomRightRadius: 25, paddingRight: 25 }}><Icon name="calendar"/> When?</h2>
+                            style={{ display: "inline-block", marginTop: -25, marginBottom: 25, backgroundColor: theme.accent[1], padding: 10, marginLeft: -50, paddingLeft: 50, borderTopRightRadius: 25, borderBottomRightRadius: 25, paddingRight: 25 }}><Icon name="calendar" /> When?</h2>
                         <p className="lead">HackRU is from April 18th-19th, 2020.</p>
                     </div>
                     <div style={{ color: "white", padding: 50 }}
-                        className="col-xs-12 col-sm-12"> 
+                        className="col-xs-12 col-sm-12">
                         <div style={{ position: "absolute", left: 190, height: 10, backgroundColor: theme.accent[0], width: "calc(100% - 190px)" }}></div>
                         <h2 className="display-6"
-                            style={{ display: "inline-block", marginTop: -25, marginBottom: 25, backgroundColor: theme.accent[1], padding: 10, marginLeft: -50, paddingLeft: 50, borderTopRightRadius: 25, borderBottomRightRadius: 25, paddingRight: 25 }}><Icon name="location-arrow"/> Where?</h2>
+                            style={{ display: "inline-block", marginTop: -25, marginBottom: 25, backgroundColor: theme.accent[1], padding: 10, marginLeft: -50, paddingLeft: 50, borderTopRightRadius: 25, borderBottomRightRadius: 25, paddingRight: 25 }}><Icon name="location-arrow" /> Where?</h2>
                         <p className="lead">College Avenue Student Center: 126 College Ave, New Brunswick, NJ 08901</p>
                         <iframe title="about-map"
                             frameBorder={0}
@@ -50,7 +49,7 @@ class About extends Component {
                             style={{ minHeight: "300px" }}></iframe>
                     </div>
                 </div>
-            </div>
+            </Card>
         );
     }
 }

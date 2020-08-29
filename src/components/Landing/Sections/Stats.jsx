@@ -4,6 +4,7 @@ import { theme } from "../../../Defaults";
 import { Icon } from "react-fa";
 import CountUp from "react-countup";
 import PropTypes from "prop-types";
+import Card from "../../Card";
 
 function Stats(){
     return(
@@ -41,8 +42,9 @@ function Stats(){
 }
 
 const Stat = ({ number, text, back, accent, icon, decoration }) => (
-    <div style={{ backgroundColor: back, color: "white", boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.5)", padding: 50, marginTop: 25 }}>
+    <Card backgroundColor={back}>
         {/* <div style={{ position: "absolute", left: "calc(15px)", top: 25, height: "calc(100% - 25px)", backgroundColor: accent, width: 10 }}></div> */}
+
         <div>
             <h1 className="stat-number">
                 {decoration}
@@ -55,7 +57,8 @@ const Stat = ({ number, text, back, accent, icon, decoration }) => (
         </div>
         <Icon name={icon}
             style={{ fontSize: "10vh", marginRight: 10, color: accent }} />
-    </div>
+
+    </Card>
 );
 
 Stat.propTypes = {
