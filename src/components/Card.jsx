@@ -1,4 +1,6 @@
-import React, { Component } from "react";
+import React from "react";
+import PropTypes from 'prop-types';
+
 // import { theme } from "../../../Defaults";
 
 function Card(props){
@@ -11,5 +13,9 @@ function Card(props){
         </div>
     );
 }
-
+Card.propTypes = {
+    backgroundColor: PropTypes.any,
+    sideBar: PropTypes.any,
+    children: PropTypes.element
+};
 export default Card;
