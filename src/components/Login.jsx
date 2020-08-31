@@ -1,17 +1,18 @@
-import React, { Component } from "react";
-// import { Input, InputGroup, InputGroupAddon, FormGroup, Button, FormText } from "reactstrap";
-import { Container, Grid, TextField, Button, withStyles, createMuiTheme, ThemeProvider} from "@material-ui/core";
+import React, { useState } from "react";
+import { Container, Grid, createMuiTheme, ThemeProvider} from "@material-ui/core";
 import { Link } from "react-router-dom";
 import { Redirect } from "react-router-dom";
 import AuthForm from "../library/AuthForm";
+import ColorButton from "../library/ColorButton";
+import WhiteTextField from "../library/WhiteTextField";
 import { ProfileType } from "./Profile";
 import PropTypes from "prop-types";
 /**
  * Login application for "/login"
  */
 
+
 const theme = createMuiTheme({
-    
     overrides: {
         pallate: {
             primary: "white",
@@ -24,72 +25,51 @@ const theme = createMuiTheme({
                     color: "white"
                 }
             },
-            input: {
-                color: "white"
-            }
-        }
-    }
+        },
+    },
 });
 
-const CssTextField = withStyles({
-    root: {
-        "& labl.Mui-focused": {
-            color: "white",
-        },
-        "& .MuiInput-underline:after": {
-            borderBottomColor: "white",
-        },
-        "& .MuiOutlinedInput-root": {
-            "& fieldset": {
-                borderColor: "white",
-                color: "white",
-            },
-            "&:hover fieldset": {
-                borderColor: "white",
-            },
-            "&.Mui-focused fieldset": {
-                borderColor: "white",
-            },
-        },
-        "& .MuiInputBase-root.Mui-disabled": {
-            color: "white"
-        },
-        "& .MuiFormLabel-root.Mui-disabled": {
-            color: "white"
-        },
-    },
-})(TextField);
 
-const ColorButton = withStyles(() => ({
-    root: {
-        color: "white",
-        backgroundColor: "#4fab5f",
-        "&:hover": {
-            backgroundColor: "#4fab5f",
-        },
-    },
-}))(Button);
+const LoginPage = (props) => {
 
-class LoginPage extends Component {
-    UNSAFE_componentWillMount() {
-        this.setState({
-            loading: false,
-            done: false,
-            errors: ""
-        });
+    const [loading, setLoading] = useState(false);
+    const [done, setDone] = useState(false);
+    const [errors, setErrors] = useState("");
+
+    const onSubmit = (e) => {
+        e.preventDefault();
+        if (!loading) {
+            setLoading(true);
+            setErrors("");
+            let email = document.getElementById("email").value;
+            let password = document.getElementById("password").value;
+            props.profile.Login(email, password, (msg) => {
+                if (msg) {
+                    setLoading(false);
+                    setErrors(msg);
+                } else {
+                    setLoading(false);
+                    setDone(true);
+                    setErrors("");
+                }
+            });
+        }
+    };
+    
+    // Check if the user is already logged in
+    if (props.profile.isLoggedIn || done) {
+        return (<Redirect to="/dashboard" />);
     }
 
-    render() {
-        // Check if the user is already logged in
-        if (this.props.profile.isLoggedIn || this.state.done) {
-            return (<Redirect to="/dashboard" />);
-        }
-        return <AuthForm
-            errors={this.state.errors}
+    return (
+        
+        
+        <AuthForm
+            errors={errors}
             label="Welcome to HackRU!"
-            loading={this.state.loading}
-            isMobile={this.props.isMobile}
-            onSubmit={this.onSubmit}
+            loading={loading}
+            isMobile={props.isMobile}
+            onSubmit={onSubmit}
             title="Log In"
         >
 
@@ -103,7 +83,7 @@ class LoginPage extends Component {
                         <Grid item 
                             xs={12}>
                             <ThemeProvider theme={theme}>
-                                <CssTextField
+                                <WhiteTextField
                                     variant="outlined"
                                     required
                                     fullWidth
@@ -118,7 +98,7 @@ class LoginPage extends Component {
                         </Grid>
                         <Grid item 
                             xs={12}>
-                            <CssTextField
+                            <WhiteTextField
                                 variant="outlined"
                                 required
                                 fullWidth
@@ -168,35 +148,11 @@ class LoginPage extends Component {
                     </Grid>
                 </form>
             </Container>
-        </AuthForm>;
-    }
+        </AuthForm>
+    );
 
-    onSubmit = (e) => {
-        e.preventDefault();
-        if (!this.state.loading) {
-            this.setState({
-                loading: true,
-                errors: ""
-            });
-            let email = document.getElementById("email").value;
-            let password = document.getElementById("password").value;
-            this.props.profile.Login(email, password, (msg) => {
-                if (msg) {
-                    this.setState({
-                        loading: false,
-                        errors: msg
-                    });
-                } else {
-                    this.setState({
-                        loading: false,
-                        done: true,
-                        errors: ""
-                    });
-                }
-            });
-        }
-    }
-}
+    
+};
 
 LoginPage.propTypes = {
     profile: ProfileType,
