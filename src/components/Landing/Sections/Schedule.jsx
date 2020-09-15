@@ -1,7 +1,7 @@
 import React from "react";
 import { theme } from "../../../Defaults";
 import { Table, TableContainer, TableRow, TableCell, TableHead, Grid } from "@material-ui/core";
-
+import Card from "../../Card";
 /**
  * Schedule component for the landing page
  */
@@ -83,10 +83,8 @@ function Schedule(){
             </div>
         );
     }
-    
     return (
-        <div style={{ backgroundColor: theme.secondary[1], color: "white", boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.5)", padding: 50 }}>
-            <div style={{ position: "absolute", left: "calc(15px)", top: 0, height: "100%", backgroundColor: theme.primary[1], width: 10 }}></div>
+        <Card backgroundColor={theme.secondary[1]} sideBar={theme.primary[1]}>
             <h1 className="display-4 theme-font">Schedule</h1>
             <div className="row mb-3"
                 style={{ marginLeft: -50, marginRight: -50 }}>
@@ -94,27 +92,36 @@ function Schedule(){
                     className="col-xs-12 col-sm-12">
                     <Grid container>
                         <Grid item xs={1} style={{ padding: 0, margin: 0, writingMode: "vertical-lr", transform: "rotate(180deg)", marginRight: -10, marginLeft: 10 }}
-                            className="text-center"> 
+                            className="text-center">
                             <h3 style={{ paddingLeft: 10 }}
                                 className="lead">{saturday_date}</h3>
                         </Grid>
                         <Grid item xs={11} style={{ borderLeft: "1px solid white" }}>
-                            {fill_table(sat_schedule)}
+                            {this.fill_table(sat_schedule)}
                         </Grid>
                         <Grid item xs={1} style={{ padding: 0, margin: 0, writingMode: "vertical-lr", transform: "rotate(180deg)", marginRight: -10, marginLeft: 10 }}
-                            className="text-center"> 
+                            className="text-center">
                             <h3 style={{ paddingLeft: 10 }}
                                 className="lead">{sunday_date}</h3>
                         </Grid>
                         <Grid item xs={11} style={{ borderLeft: "1px solid white" }}>
-                            {fill_table(sun_schedule)}
+                            {this.fill_table(sun_schedule)}
                         </Grid>
+                    </Grid>
+                    <Grid item xs={1} style={{ padding: 0, margin: 0, writingMode: "vertical-lr", transform: "rotate(180deg)", marginRight: -10, marginLeft: 10 }}
+                        className="text-center"> 
+                        <h3 style={{ paddingLeft: 10 }}
+                            className="lead">{sunday_date}</h3>
+                    </Grid>
+                    <Grid item xs={11} style={{ borderLeft: "1px solid white" }}>
+                        {fill_table(sun_schedule)}
                     </Grid>
                 </div>
             </div>
-        </div>
-    );
 
+        </Card>
+    );
+    
 }
 
 export default Schedule;
