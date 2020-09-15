@@ -97,7 +97,7 @@ function Schedule(){
                                 className="lead">{saturday_date}</h3>
                         </Grid>
                         <Grid item xs={11} style={{ borderLeft: "1px solid white" }}>
-                            {this.fill_table(sat_schedule)}
+                            {fill_table(sat_schedule)}
                         </Grid>
                         <Grid item xs={1} style={{ padding: 0, margin: 0, writingMode: "vertical-lr", transform: "rotate(180deg)", marginRight: -10, marginLeft: 10 }}
                             className="text-center">
@@ -105,16 +105,8 @@ function Schedule(){
                                 className="lead">{sunday_date}</h3>
                         </Grid>
                         <Grid item xs={11} style={{ borderLeft: "1px solid white" }}>
-                            {this.fill_table(sun_schedule)}
+                            {fill_table(sun_schedule)}
                         </Grid>
-                    </Grid>
-                    <Grid item xs={1} style={{ padding: 0, margin: 0, writingMode: "vertical-lr", transform: "rotate(180deg)", marginRight: -10, marginLeft: 10 }}
-                        className="text-center"> 
-                        <h3 style={{ paddingLeft: 10 }}
-                            className="lead">{sunday_date}</h3>
-                    </Grid>
-                    <Grid item xs={11} style={{ borderLeft: "1px solid white" }}>
-                        {fill_table(sun_schedule)}
                     </Grid>
                 </div>
             </div>
