@@ -1,29 +1,5 @@
 import React, { Component } from "react";
-// import {
-//     Navbar,
-//     NavbarBrand,
-//     Nav,
-//     NavLink,
-//     NavItem,
-//     Collapse,
-//     NavbarToggler,
-//     Button,
-//     Container,
-// } from "reactstrap";
-import {
-    AppBar,
-    Toolbar,
-    IconButton,
-    Button,
-    MenuList,
-    Typography,
-    MenuItem,
-    Menu,
-    Tabs,
-    Tab,
-    Container,
-    Collapse,
-} from "@material-ui/core";
+import { AppBar, Toolbar, IconButton, Button, MenuItem, Menu, Tabs, Tab } from "@material-ui/core";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import { Link } from "react-router-dom";
 import { navlinks, theme, defaults } from "./Defaults";
@@ -117,7 +93,7 @@ class NavBar extends Component {
     }
     getAuthButtons() {
         return (
-            <div>
+            <div style={{ marginLeft: "auto" }}>
                 <Link to="/login">
                     <Button outline color="warning" className="pill-btn">
                         Login
@@ -214,7 +190,7 @@ class NavBar extends Component {
     getLandingNav() {
         return (
             <React.Fragment>
-                <Tabs indicatorColor="white" style={{ marginLeft: "auto" }} value={0} style={{}}>
+                <Tabs indicatorColor="white" style={{ marginLeft: "auto" }} value={0}>
                     {this.getNavLinks()}
                 </Tabs>
                 {this.props.profile.isLoggedIn ? this.getDashboardButton() : this.getAuthButtons()}

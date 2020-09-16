@@ -5,7 +5,10 @@ import PropTypes from "prop-types";
 /**
  * Configure the all of the urls that we will need to access the rest api
  */
-const BASE = (process.env.REACT_APP_MODE && process.env.REACT_APP_MODE === "development") ? (defaults.rest.dev) : (defaults.rest.prod);
+const BASE =
+    process.env.REACT_APP_MODE && process.env.REACT_APP_MODE === "development"
+        ? defaults.rest.dev
+        : defaults.rest.prod;
 const ENDPOINTS = {
     /**
      * Default login url
@@ -38,49 +41,49 @@ const ENDPOINTS = {
      *     "body": "{\"auth\": {\"token\": \"a6390c07-3bef-4062-ae69-3a0e983af124\", \"valid_until\": \"2018-12-29T18:41:17.225329\", \"email\": \"TESTING123\"}}"
      * }
      */
-    "login": BASE + "/authorize",
+    login: BASE + "/authorize",
     /**
      * Default signup url, expects
      */
-    "signup": BASE + "/create",
+    signup: BASE + "/create",
     /**
      * Default logout url, expects
      */
-    "logout": "< IMPLEMENT ME >",
+    logout: "< IMPLEMENT ME >",
     /**
      * Default user url, expects
      */
-    "userData": BASE + "/read",
+    userData: BASE + "/read",
     /**
      * Default user update information, expects
      */
-    "update": BASE + "/update",
+    update: BASE + "/update",
     /**
      * Create forgot magic link to reset password
      */
-    "forgot": BASE + "/createmagiclink",
+    forgot: BASE + "/createmagiclink",
     /**
      * Reset password from magic link to reset password
      */
-    "resetpassword": BASE + "/consume",
+    resetpassword: BASE + "/consume",
     /**
      * Digest magic links
      */
-    "magic": BASE + "/consume",
+    magic: BASE + "/consume",
     /**
      * Day of event schedule
      */
-    "schedule": BASE + "/dayof-events",
+    schedule: BASE + "/dayof-events",
     /**
      * Day of slack
      */
-    "slack": BASE + "/dayof-slack",
+    slack: BASE + "/dayof-slack",
     /*
      * Get QR codes
      */
-    "qr": BASE + "/qr",
-    "resume": BASE + "/resume",
-    "sendmagic": BASE + "/createmagiclink"
+    qr: BASE + "/qr",
+    resume: BASE + "/resume",
+    sendmagic: BASE + "/createmagiclink"
 };
 /**
  * Standard profile handler for the entire application
@@ -99,7 +102,12 @@ class Profile {
         this._token = localStorage.getItem("token");
         this._email = localStorage.getItem("email");
         this._valid_until = localStorage.getItem("valid_until");
-        if (this._token && this._email && this._valid_until && this._valid_until > Date.now()) {
+        if (
+            this._token &&
+            this._email &&
+            this._valid_until &&
+            this._valid_until > Date.now()
+        ) {
             this.isLoggedIn = true;
         } else {
             this.isLoggedIn = false;
@@ -109,9 +117,16 @@ class Profile {
     parseJwt(token) {
         var base64Url = token.split(".")[1];
         var base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
-        var jsonPayload = decodeURIComponent(atob(base64).split("").map(function (c) {
-            return "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2);
-        }).join(""));
+        var jsonPayload = decodeURIComponent(
+            atob(base64)
+                .split("")
+                .map(function(c) {
+                    return (
+                        "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2)
+                    );
+                })
+                .join("")
+        );
 
         return JSON.parse(jsonPayload);
     }
@@ -125,32 +140,38 @@ class Profile {
             } else if (!password) {
                 callback("Invalid password");
             } else {
-                request({
-                    method: "POST",
-                    uri: ENDPOINTS.login,
-                    body: {
-                        email: email,
-                        password: password
+                request(
+                    {
+                        method: "POST",
+                        uri: ENDPOINTS.login,
+                        body: {
+                            email: email,
+                            password: password
+                        },
+                        json: true
                     },
-                    json: true
-                }, (error, response, body) => {
-                    if (error) {
-                        callback("An error occured when attempting login");
-                    } else {
-                        if (body.statusCode === 403) {
-                            callback("Invalid email or password");
-                        } else if (body.statusCode === 200) {
-                            let data = body.body;
-                            let token = data.token;
-                            // Convert seconds to milliseconds
-                            let valid_until = this.parseJwt(token).exp * 1000;
-                            this._login(email, token, valid_until);
-                            callback();
+                    (error, response, body) => {
+                        if (error) {
+                            callback("An error occured when attempting login");
                         } else {
-                            callback((body.body) ? (body.body) : ("Unexpected Error"));
+                            if (body.statusCode === 403) {
+                                callback("Invalid email or password");
+                            } else if (body.statusCode === 200) {
+                                let data = body.body;
+                                let token = data.token;
+                                // Convert seconds to milliseconds
+                                let valid_until =
+                                    this.parseJwt(token).exp * 1000;
+                                this._login(email, token, valid_until);
+                                callback();
+                            } else {
+                                callback(
+                                    body.body ? body.body : "Unexpected Error"
+                                );
+                            }
                         }
                     }
-                });
+                );
             }
         }
     }
@@ -187,58 +208,83 @@ class Profile {
                 };
                 ```
                 */
-                request({
-                    method: "POST",
-                    uri: ENDPOINTS.signup,
-                    body: {
-                        email: email,
-                        password: password,
-                        registration_status: "unregistered" //"waitlist" is one of them
+                request(
+                    {
+                        method: "POST",
+                        uri: ENDPOINTS.signup,
+                        body: {
+                            email: email,
+                            password: password,
+                            registration_status: "unregistered" //"waitlist" is one of them
+                        },
+                        json: true
                     },
-                    json: true
-                }, (error, response, body) => {
-                    if (error) {
-                        callback("An error occured when attempting signup. Failed at 1/2");
-                    } else {
-                        if (body.statusCode === 400) {
-                            callback("User with email " + email + " already exists");
-                        } else if (body.statusCode === 200) {
-                            // Set the first and last name
-                            let data = body.body;
-                            let token = data.token;
-                            let valid_until = this.parseJwt(token).exp *1000;
-                            request({
-                                "method": "POST",
-                                uri: ENDPOINTS.update,
-                                body: {
-                                    updates: {
-                                        "$set": {
-                                            "first_name": firstname,
-                                            "last_name": lastname
-                                        }
-                                    },
-                                    user_email: email,
-                                    auth_email: email,
-                                    auth: token
-                                },
-                                json: true
-                            }, (error, response, body) => {
-                                if (error) {
-                                    callback("An error occured when attempting signup. Failed at 2/2");
-                                } else {
-                                    if (body.statusCode === 200) {
-                                        this._login(email, token, valid_until);
-                                        callback();
-                                    } else {
-                                        callback((body.body) ? (body.body) : ("Unexpected Error"));
-                                    }
-                                }
-                            });
+                    (error, response, body) => {
+                        if (error) {
+                            callback(
+                                "An error occured when attempting signup. Failed at 1/2"
+                            );
                         } else {
-                            callback((body.body) ? (body.body) : ("Unexpected Error"));
+                            if (body.statusCode === 400) {
+                                callback(
+                                    "User with email " +
+                                        email +
+                                        " already exists"
+                                );
+                            } else if (body.statusCode === 200) {
+                                // Set the first and last name
+                                let data = body.body;
+                                let token = data.token;
+                                let valid_until =
+                                    this.parseJwt(token).exp * 1000;
+                                request(
+                                    {
+                                        method: "POST",
+                                        uri: ENDPOINTS.update,
+                                        body: {
+                                            updates: {
+                                                $set: {
+                                                    first_name: firstname,
+                                                    last_name: lastname
+                                                }
+                                            },
+                                            user_email: email,
+                                            auth_email: email,
+                                            token: token
+                                        },
+                                        json: true
+                                    },
+                                    (error, response, body) => {
+                                        if (error) {
+                                            callback(
+                                                "An error occured when attempting signup. Failed at 2/2"
+                                            );
+                                        } else {
+                                            if (body.statusCode === 200) {
+                                                this._login(
+                                                    email,
+                                                    token,
+                                                    valid_until
+                                                );
+                                                callback();
+                                            } else {
+                                                callback(
+                                                    body.body
+                                                        ? body.body
+                                                        : "Unexpected Error"
+                                                );
+                                            }
+                                        }
+                                    }
+                                );
+                            } else {
+                                callback(
+                                    body.body ? body.body : "Unexpected Error"
+                                );
+                            }
                         }
                     }
-                });
+                );
             }
         }
     }
@@ -262,62 +308,75 @@ class Profile {
         this._valid_until = null;
         this.isLoggedIn = false;
     }
-    GetUser(callback, email) {        
+    GetUser(callback, email) {
         if (this.isLoggedIn) {
-            request({
-                method: "POST",
-                uri: ENDPOINTS.userData,
-                body: {
-                    email: this._email,
-                    token: this._token,
-                    query: {
-                        email: email
-                    }
+            request(
+                {
+                    method: "POST",
+                    uri: ENDPOINTS.userData,
+                    body: {
+                        email: this._email,
+                        token: this._token,
+                        query: {
+                            email: email
+                        }
+                    },
+                    json: true
                 },
-                json: true
-            }, (error, response, body) => {
-                if (error) {
-                    callback("An error occured retrieving data", null);
-                } else {
-                    if (body.statusCode === 200) {
-                        callback(null, body.body[0]);
+                (error, response, body) => {
+                    if (error) {
+                        callback("An error occured retrieving data", null);
                     } else {
-                        callback((body.body) ? (body.body) : ("Unexpected Error"), null);
+                        if (body.statusCode === 200) {
+                            callback(null, body.body[0]);
+                        } else {
+                            callback(
+                                body.body ? body.body : "Unexpected Error",
+                                null
+                            );
+                        }
                     }
                 }
-            });
+            );
         } else {
             callback("Please log in", null);
         }
     }
     Get(callback) {
         this.GetUser(callback, this._email);
-    }    
+    }
     SetUser(data, user, callback) {
         if (this.isLoggedIn) {
-            request({
-                "method": "POST",
-                uri: ENDPOINTS.update,
-                body: {
-                    updates: {
-                        "$set": data
+            request(
+                {
+                    method: "POST",
+                    uri: ENDPOINTS.update,
+                    body: {
+                        updates: {
+                            $set: data
+                        },
+                        user_email: user,
+                        auth_email: this._email,
+                        token: this._token
                     },
-                    user_email: user,
-                    auth_email: this._email,
-                    auth: this._token
+                    json: true
                 },
-                json: true
-            }, (error, response, body) => {
-                if (error) {
-                    callback("An error occured when attempting to update data");
-                } else {
-                    if (body.statusCode === 200) {
-                        callback();
+                (error, response, body) => {
+                    if (error) {
+                        callback(
+                            "An error occured when attempting to update data"
+                        );
                     } else {
-                        callback((body.body) ? (body.body) : ("Unexpected Error"));
+                        if (body.statusCode === 200) {
+                            callback();
+                        } else {
+                            callback(
+                                body.body ? body.body : "Unexpected Error"
+                            );
+                        }
                     }
                 }
-            });
+            );
         } else {
             callback("Please log in");
         }
@@ -332,28 +391,35 @@ class Profile {
             if (!email) {
                 callback("Invalid email");
             } else {
-                request({
-                    method: "POST",
-                    uri: ENDPOINTS.forgot,
-                    body: {
-                        email: email,
-                        forgot: true
+                request(
+                    {
+                        method: "POST",
+                        uri: ENDPOINTS.forgot,
+                        body: {
+                            email: email,
+                            forgot: true
+                        },
+                        json: true
                     },
-                    json: true
-                }, (error, response, body) => {
-                    if (error) {
-                        callback("An error occured when attempting to general url");
-                    } else {
-                        if (body.statusCode === 200) {
-                            callback();
+                    (error, response, body) => {
+                        if (error) {
+                            callback(
+                                "An error occured when attempting to general url"
+                            );
                         } else {
-                            callback((body.body) ? (body.body) : ("Unexpected Error"));
-                            if (body.errorMessage) {
-                                console.error(body.errorMessage);
+                            if (body.statusCode === 200) {
+                                callback();
+                            } else {
+                                callback(
+                                    body.body ? body.body : "Unexpected Error"
+                                );
+                                if (body.errorMessage) {
+                                    console.error(body.errorMessage);
+                                }
                             }
                         }
                     }
-                });
+                );
             }
         }
     }
@@ -365,29 +431,36 @@ class Profile {
         } else if (password !== conpassword) {
             callback("Passwords don't match!");
         } else {
-            request({
-                method: "POST",
-                uri: ENDPOINTS.resetpassword,
-                body: {
-                    email: email,
-                    forgot: true,
-                    password: password,
-                    link: magic
+            request(
+                {
+                    method: "POST",
+                    uri: ENDPOINTS.resetpassword,
+                    body: {
+                        email: email,
+                        forgot: true,
+                        password: password,
+                        link: magic
+                    },
+                    json: true
                 },
-                json: true
-            }, (error, response, body) => {
-                if (error) {
-                    callback("An error occured when attempting to reset password");
-                } else {
-                    if (body.errorMessage) {
-                        callback(body.errorMessage);
-                    } else if (body.statusCode === 200) {
-                        callback();
+                (error, response, body) => {
+                    if (error) {
+                        callback(
+                            "An error occured when attempting to reset password"
+                        );
                     } else {
-                        callback((body.body) ? (body.body) : ("Unexpected Error"));
+                        if (body.errorMessage) {
+                            callback(body.errorMessage);
+                        } else if (body.statusCode === 200) {
+                            callback();
+                        } else {
+                            callback(
+                                body.body ? body.body : "Unexpected Error"
+                            );
+                        }
                     }
                 }
-            });
+            );
         }
     }
     Eat(magic, callback) {
@@ -396,28 +469,35 @@ class Profile {
         } else if (!this.isLoggedIn) {
             callback("User needs to be logged in");
         } else {
-            request({
-                method: "POST",
-                uri: ENDPOINTS.magic,
-                body: {
-                    email: this._email,
-                    link: magic,
-                    token: this._token
+            request(
+                {
+                    method: "POST",
+                    uri: ENDPOINTS.magic,
+                    body: {
+                        email: this._email,
+                        link: magic,
+                        token: this._token
+                    },
+                    json: true
                 },
-                json: true
-            }, (error, response, body) => {
-                if (error) {
-                    callback("An error occured while digesting the magic link");
-                } else {
-                    if (body.errorMessage) {
-                        callback(body.errorMessage);
-                    } else if (body.statusCode === 200) {
-                        callback();
+                (error, response, body) => {
+                    if (error) {
+                        callback(
+                            "An error occured while digesting the magic link"
+                        );
                     } else {
-                        callback((body.body) ? (body.body) : ("Unexpected Error"));
+                        if (body.errorMessage) {
+                            callback(body.errorMessage);
+                        } else if (body.statusCode === 200) {
+                            callback();
+                        } else {
+                            callback(
+                                body.body ? body.body : "Unexpected Error"
+                            );
+                        }
                     }
                 }
-            });
+            );
         }
     }
     SendMagic(emails, permissions, callback) {
@@ -426,30 +506,37 @@ class Profile {
         } else if (!this.isLoggedIn) {
             callback("User needs to be logged in");
         } else {
-            request({
-                method: "POST",
-                uri: ENDPOINTS.sendmagic,
-                body: {
-                    email: this._email,
-                    token: this._token,
-                    emailsTo: emails,
-                    permissions: permissions,
-                    numLinks: emails.length
+            request(
+                {
+                    method: "POST",
+                    uri: ENDPOINTS.sendmagic,
+                    body: {
+                        email: this._email,
+                        token: this._token,
+                        emailsTo: emails,
+                        permissions: permissions,
+                        numLinks: emails.length
+                    },
+                    json: true
                 },
-                json: true
-            }, (error, response, body) => {
-                if (error) {
-                    callback("An error occured while sending the magic links");
-                } else {
-                    if (body.errorMessage) {
-                        callback(body.errorMessage);
-                    } else if (body.statusCode === 200) {
-                        callback();
+                (error, response, body) => {
+                    if (error) {
+                        callback(
+                            "An error occured while sending the magic links"
+                        );
                     } else {
-                        callback((body.body) ? (body.body) : ("Unexpected Error"));
+                        if (body.errorMessage) {
+                            callback(body.errorMessage);
+                        } else if (body.statusCode === 200) {
+                            callback();
+                        } else {
+                            callback(
+                                body.body ? body.body : "Unexpected Error"
+                            );
+                        }
                     }
                 }
-            });
+            );
         }
     }
     ClearMagic() {
@@ -457,36 +544,38 @@ class Profile {
     }
     SetMagic(magic) {
         localStorage.setItem("magic", magic);
-
     }
     GetMagic() {
         return localStorage.getItem("magic");
     }
     GetQR(callback) {
-        request({
-            method: "POST",
-            uri: ENDPOINTS.qr,
-            body: {
-                email: this._email,
-                background: [0xff, 0xff, 0xff],
-                color: [0x00, 0x00, 0x00],
-                transparentBackground: true,
+        request(
+            {
+                method: "POST",
+                uri: ENDPOINTS.qr,
+                body: {
+                    email: this._email,
+                    background: [0xff, 0xff, 0xff],
+                    color: [0x00, 0x00, 0x00],
+                    transparentBackground: true
+                },
+                json: true
             },
-            json: true
-        }, (error, response, body) => {
-            callback(error, body);
-        });
+            (error, response, body) => {
+                callback(error, body);
+            }
+        );
     }
     async GetResumeInfo() {
         const json = await fetch(ENDPOINTS.resume, {
             method: "POST",
             headers: {
-                "content-type": "application/json",
-            }, 
+                "content-type": "application/json"
+            },
             body: JSON.stringify({
                 email: this._email,
-                token: this._token,
-            }),
+                token: this._token
+            })
         }).then(res => res.json());
         console.log(json);
         return json.body;
@@ -501,9 +590,9 @@ class Profile {
         return await fetch(info.upload, {
             method: "PUT",
             headers: {
-                "content-type": "application/pdf",
+                "content-type": "application/pdf"
             },
-            body: file,
+            body: file
         });
     }
 }
@@ -518,7 +607,7 @@ const ProfileType = PropTypes.shape({
     _valid_until: PropTypes.number,
     isLoggedIn: PropTypes.bool,
     DoesResumeExist: PropTypes.func,
-    UploadResume: PropTypes.func,
+    UploadResume: PropTypes.func
 });
 
 export { Profile, ProfileType, ENDPOINTS };
