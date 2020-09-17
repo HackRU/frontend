@@ -12,7 +12,7 @@ import {
     TeamPage,
     ProjectorPage,
     E404, 
-    ApplicationPage} from "./components/Pages"; // Router Pages
+    ProfilePage} from "./components/Pages"; // Router Pages
 import Background from "./Background";
 import NavBar from "./NavBar";
 import { defaults } from "./Defaults"; // Get a handle to the default application settings
@@ -132,9 +132,9 @@ class App extends Component {
                 render={(props) => <DashboardPage {...props}
                     {...componentProps} />} />,
             <Route exact
-                path="/apply"
-                key="apply"
-                render={(props) => <ApplicationPage {...props}
+                path="/profile"
+                key="profile"
+                render={(props) => <ProfilePage {...props}
                     {...componentProps} />} />,
             <Route exact
                 path="/projector"

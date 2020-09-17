@@ -95,12 +95,16 @@ class NavBar extends Component {
         return (
             <div style={{ marginLeft: "auto" }}>
                 <Link to="/login">
-                    <Button outline color="warning" className="pill-btn">
+                    <Button outline 
+                        color="warning" 
+                        className="pill-btn">
                         Login
                     </Button>
                 </Link>{" "}
                 <Link to="/signup">
-                    <Button color="success" className="pill-btn">
+                    <Button 
+                        color="success" 
+                        className="pill-btn">
                         Register
                     </Button>
                 </Link>
@@ -121,7 +125,7 @@ class NavBar extends Component {
     }
 
     getDashboardButton() {
-        return (
+        return (    
             <div style={{ marginLeft: "auto" }}>
                 <IconButton
                     aria-label="account of current user"
@@ -161,12 +165,23 @@ class NavBar extends Component {
                         onClick={this.handleClose}
                         style={{ color: "black" }}
                         component={Link}
+                        to="/profile"
+                    >
+                        Profile
+                    </MenuItem>
+                    <MenuItem
+                        onClick={this.handleClose}
+                        style={{ color: "black" }}
+                        component={Link}
                         to="/logout"
                     >
                         Logout
                     </MenuItem>
                 </Menu>
             </div>
+                    
+    
+
         );
     }
     getNavLinks() {
@@ -190,7 +205,9 @@ class NavBar extends Component {
     getLandingNav() {
         return (
             <React.Fragment>
-                <Tabs indicatorColor="white" style={{ marginLeft: "auto" }} value={0}>
+                <Tabs indicatorColor="white" 
+                    style={{ marginLeft: "auto" }} 
+                    value={0}>
                     {this.getNavLinks()}
                 </Tabs>
                 {this.props.profile.isLoggedIn ? this.getDashboardButton() : this.getAuthButtons()}
@@ -199,12 +216,33 @@ class NavBar extends Component {
     }
 
     getDashboardNav() {
-        return <React.Fragment>{this.getDashboardButton()}</React.Fragment>;
+        return ( 
+            <React.Fragment>
+                <Tabs indicatorColor="white" 
+                    style={{ marginLeft: "auto" }} 
+                    value={0}>
+                    <Tab
+                        style={{ color: "white", minWidth: 10, marginLeft: "25px" }}
+                        className={window.innerWidth < 768 ? "pt-3" : ""}
+                        component={Link}
+                        to={"/profile"}
+                        label="PROFILE"
+                    />
+                    <Tab
+                        style={{ color: "white", minWidth: 10, marginLeft: "25px" }}
+                        className={window.innerWidth < 768 ? "pt-3" : ""}
+                        component={Link}
+                        to={"/dashboard"}
+                        label="DASHBOARD"  
+                    />
+                </Tabs>
+                {this.getDashboardButton()}
+            </React.Fragment> );
     }
 
     render() {
         let path = window.location.pathname;
-        let onDashboard = path === "/dashboard";
+        let onDashboard = path === "/dashboard" || path === "/profile";
         let onLanding = path === "/";
         // Show no navbar on the projector page
         if (path === "/projector") {

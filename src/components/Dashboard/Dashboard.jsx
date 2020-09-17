@@ -2,13 +2,13 @@ import React, { Component } from "react";
 import { Container, Row, Col } from "reactstrap";
 import { Redirect } from "react-router-dom";
 import ApplicationStatus from "./ApplicationStatus";
-import Section from "./Section";
+// import Section from "./Section";
 import Loading from "./Loading";
 import ProfileMessage from "./ProfileMessage";
 import AdminControl from "./AdminControl";
-import QR from "./QR";
-import TravelReimbursementsForm from "./Forms/TravelReimbursementsForm";
-import UserProfileForm from "./Forms/UserProfileForm/UserProfileForm";
+// import QR from "./QR";
+// import TravelReimbursementsForm from "./Forms/TravelReimbursementsForm";
+// import UserProfileForm from "./Forms/UserProfileForm/UserProfileForm";
 import { ProfileType } from "../Profile";
 import PropTypes from "prop-types";
 import { theme } from "../../Defaults";
@@ -75,15 +75,19 @@ class Dashboard extends Component {
         if (!this.props.profile.isLoggedIn) {
             return (<Redirect to="/login"/>);
         }
+        
         if (this.state.loading) {
             return (<Loading text={this.state.loading} />);
+        }
+        if (this.state.user.registration_status === "unregistered") {
+            return (<Redirect to="/profile"/>);
         }
         let user = this.state.user;
         user.phone_number = user.phone_number || "";
         user.ethnicity = user.ethnicity || "";
         user.how_you_heard_about_hackru = user.how_you_heard_about_hackru || "";
         user.reasons = user.reasons || "";
-        let mobile = this.props.isMobile;
+        // let mobile = this.props.isMobile;
         let rolesString = "";
         Object.keys(user.role).forEach((key) => { if (user.role[key]) { rolesString += `${key}, `; }});
         rolesString = rolesString.substring(0, rolesString.length - 2);
@@ -102,7 +106,7 @@ class Dashboard extends Component {
                     </Col>
                 </Row>
                 <Row>
-                    {(user.registration_status === "confirmed" || user.registration_status === "waitlist" || user.registration_status === "coming" || user.registration_status === "registered" || (user.role && user.role.director) || (user.role && user.role.organizer) || (user.role && user.role.volunteer)) &&
+                    {/* {(user.registration_status === "confirmed" || user.registration_status === "waitlist" || user.registration_status === "coming" || user.registration_status === "registered" || (user.role && user.role.director) || (user.role && user.role.organizer) || (user.role && user.role.volunteer)) &&
                         <Col className="dashboard-row"
                             xl={4}
                             lg={4}
@@ -121,7 +125,7 @@ class Dashboard extends Component {
                                     </div>
                                 </div>
                             </div>
-                        </Col>}
+                        </Col>} */}
                     <Col className="dashboard-row">
                         <div className="dashboard-card">
                             <div className="dashboard-left-strip dashboard-strip-yellow"></div>
@@ -144,7 +148,7 @@ class Dashboard extends Component {
                         </div>
                     </Col>
                 </Row>
-                <Row>
+                {/* <Row>
                     <Section title="Profile: Basics"
                         subtitle="Introduce yourself, don't be shy!"
                         isOpen={this.state.openDetails}>
@@ -173,7 +177,7 @@ class Dashboard extends Component {
                                 this.submitUser(user);
                             }} />
                     </Section>
-                </Row>
+                </Row> */}
                 <Row>
                     {(user.role && user.role.director) &&
                         <AdminControl profile={this.props.profile}
