@@ -7,6 +7,7 @@ import { ProfileType } from "./components/Profile";
 import PropTypes from "prop-types";
 import "./NavBar.css";
 import Logo from "./components/Landing/Sections/Logo.jsx";
+import { goToAnchor } from "react-scrollable-anchor";
 
 const LinkSwitcher = (props) => {
     return props.root ? <a {...props}>{props.children}</a> : <Link {...props} />;
@@ -179,7 +180,9 @@ class NavBar extends Component {
                     key={i}
                     className={i === 0 && window.innerWidth < 768 ? "pt-3" : ""}
                     component={Link}
-                    to={"/" + navlinks[keys[i]].url}
+                    onClick={() => goToAnchor(navlinks[keys[i]].url, true)}
+                    to={navlinks[keys[i]].url}
+                    scrollButtons="auto"
                     label={keys[i].toString()}
                 />
             );
