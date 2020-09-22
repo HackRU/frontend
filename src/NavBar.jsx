@@ -205,9 +205,11 @@ class NavBar extends Component {
     getLandingNav() {
         return (
             <React.Fragment>
+
                 <Tabs indicatorColor="white" 
                     style={{ marginLeft: "auto" }} 
                     value={0}>
+
                     {this.getNavLinks()}
                 </Tabs>
                 {this.props.profile.isLoggedIn ? this.getDashboardButton() : this.getAuthButtons()}
