@@ -17,7 +17,7 @@ import Background from "./Background";
 import NavBar from "./NavBar";
 import { defaults } from "./Defaults"; // Get a handle to the default application settings
 import { Profile } from "./components/Profile"; // User profile storage
-// import Background from "./Background"; // Standard background object
+// import Background from "./Background"; // Standard background objects
 
 /**
  * Root application class. This is the object rendered in <div id="root" />
