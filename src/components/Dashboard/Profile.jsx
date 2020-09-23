@@ -41,7 +41,7 @@ const Profile = (props) => {
                 }
             }
         });
-    });
+    }, []);
 
     const submitUser = (user) => {
         setLoading("Saving your information");
