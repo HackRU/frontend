@@ -313,7 +313,8 @@ class Home extends Component {
                         className="d-flex align-items-center"
                     >
                         <Grid xs={2}></Grid>
-                        <Grid xs={8} style={{ display: "block" }}>
+                        <Grid xs={8}
+                            style={{ display: "block" }}>
                             <Motion
                                 defaultStyle={{ opacity: 0 }}
                                 style={{ opacity: spring(1, { stiffness: 1, damping: 1 }) }}
@@ -359,14 +360,16 @@ class Home extends Component {
                                             style={{ opacity: opacity }}
                                             className="lead theme-font"
                                         >
-                                            <Icon style={{ marginRight: 5 }} name="map-marker" />{" "}
+                                            <Icon style={{ marginRight: 5 }}
+                                                name="map-marker" />{" "}
                                             {defaults.locationText}
                                         </h2>
                                         <h2
                                             style={{ opacity: opacity }}
                                             className="lead theme-font"
                                         >
-                                            <Icon style={{ marginRight: 5 }} name="calendar" />{" "}
+                                            <Icon style={{ marginRight: 5 }}
+                                                name="calendar" />{" "}
                                             {defaults.dateText}
                                         </h2>
                                         <hr style={{ opacity }} />
@@ -662,14 +665,16 @@ class Home extends Component {
                                             style={{ opacity: opacity }}
                                             className="lead theme-font"
                                         >
-                                            <Icon style={{ marginRight: 5 }} name="map-marker" />{" "}
+                                            <Icon style={{ marginRight: 5 }}
+                                                name="map-marker" />{" "}
                                             {defaults.locationText}
                                         </h2>
                                         <h2
                                             style={{ opacity: opacity }}
                                             className="lead theme-font"
                                         >
-                                            <Icon style={{ marginRight: 5 }} name="calendar" />{" "}
+                                            <Icon style={{ marginRight: 5 }}
+                                                name="calendar" />{" "}
                                             {defaults.dateText}
                                         </h2>
                                         <ButtonGroup>

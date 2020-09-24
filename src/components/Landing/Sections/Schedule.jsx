@@ -56,7 +56,8 @@ function Schedule(){
                 <TableRow style={index % 2 === 0 ? light_red : dark_red}
                     key={index}
                     className="lead">
-                    <TableCell style={{borderBottom: "none"}} scope="row">{row[0]}</TableCell>
+                    <TableCell style={{borderBottom: "none"}}
+                        scope="row">{row[0]}</TableCell>
                     <TableCell style={{borderBottom: "none"}}>{row[1]}</TableCell>
                     <TableCell style={{borderBottom: "none"}}>{row[2]}</TableCell>
                 </TableRow>
@@ -65,7 +66,8 @@ function Schedule(){
         return (
             <div style={{ overflowX: "auto" }}>
                 <TableContainer>
-                    <Table size="large" style={{ minWidth: 300 }}
+                    <Table size="large"
+                        style={{ minWidth: 300 }}
                         hover
                         borderless>
                         <TableHead key="table-head">
@@ -84,27 +86,36 @@ function Schedule(){
         );
     }
     return (
-        <Card backgroundColor={theme.secondary[1]} sideBar={theme.primary[1]}>
+        <Card backgroundColor={theme.secondary[1]}
+            sideBar={theme.primary[1]}>
             <h1 className="display-4 theme-font">Schedule</h1>
             <div className="row mb-3"
                 style={{ marginLeft: -50, marginRight: -50 }}>
                 <div style={{ color: "white", padding: 50, paddingBottom: 0 }}
                     className="col-xs-12 col-sm-12">
                     <Grid container>
-                        <Grid item xs={1} style={{ padding: 0, margin: 0, writingMode: "vertical-lr", transform: "rotate(180deg)", marginRight: -10, marginLeft: 10 }}
+                        <Grid item
+                            xs={1}
+                            style={{ padding: 0, margin: 0, writingMode: "vertical-lr", transform: "rotate(180deg)", marginRight: -10, marginLeft: 10 }}
                             className="text-center">
                             <h3 style={{ paddingLeft: 10 }}
                                 className="lead">{saturday_date}</h3>
                         </Grid>
-                        <Grid item xs={11} style={{ borderLeft: "1px solid white" }}>
+                        <Grid item
+                            xs={11}
+                            style={{ borderLeft: "1px solid white" }}>
                             {fill_table(sat_schedule)}
                         </Grid>
-                        <Grid item xs={1} style={{ padding: 0, margin: 0, writingMode: "vertical-lr", transform: "rotate(180deg)", marginRight: -10, marginLeft: 10 }}
+                        <Grid item
+                            xs={1}
+                            style={{ padding: 0, margin: 0, writingMode: "vertical-lr", transform: "rotate(180deg)", marginRight: -10, marginLeft: 10 }}
                             className="text-center">
                             <h3 style={{ paddingLeft: 10 }}
                                 className="lead">{sunday_date}</h3>
                         </Grid>
-                        <Grid item xs={11} style={{ borderLeft: "1px solid white" }}>
+                        <Grid item
+                            xs={11}
+                            style={{ borderLeft: "1px solid white" }}>
                             {fill_table(sun_schedule)}
                         </Grid>
                     </Grid>

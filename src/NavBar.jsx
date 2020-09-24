@@ -89,24 +89,24 @@ class NavBar extends Component {
         }
         let currentHash = window.location.href.substring(window.location.href.indexOf("#") + 1);
         switch (currentHash) {
-            case "home":
-                this.setState({ landingValue: 0 });
-                break;
-            case "about":
-                this.setState({ landingValue: 1 });
-                break;
-            case "schedule":
-                this.setState({ landingValue: 2 });
-                break;
-            case "sponsors":
-                this.setState({ landingValue: 3 });
-                break;
-            case "partners":
-                this.setState({ landingValue: 4 });
-                break;
-            case "numbers":
-                this.setState({ landingValue: 5 });
-                break;
+        case "home":
+            this.setState({ landingValue: 0 });
+            break;
+        case "about":
+            this.setState({ landingValue: 1 });
+            break;
+        case "schedule":
+            this.setState({ landingValue: 2 });
+            break;
+        case "sponsors":
+            this.setState({ landingValue: 3 });
+            break;
+        case "partners":
+            this.setState({ landingValue: 4 });
+            break;
+        case "numbers":
+            this.setState({ landingValue: 5 });
+            break;
         }
     }
     toggleFalse() {
@@ -125,12 +125,15 @@ class NavBar extends Component {
         return (
             <div style={{ marginLeft: "auto" }}>
                 <Link to="/login">
-                    <Button outline color="warning" className="pill-btn">
+                    <Button outline
+                        color="warning"
+                        className="pill-btn">
                         Login
                     </Button>
                 </Link>{" "}
                 <Link to="/signup">
-                    <Button color="success" className="pill-btn">
+                    <Button color="success"
+                        className="pill-btn">
                         Register
                     </Button>
                 </Link>
@@ -262,7 +265,9 @@ class NavBar extends Component {
     getDashboardNav() {
         return (
             <React.Fragment>
-                <Tabs indicatorColor="white" style={{ marginLeft: "auto" }} value={0}>
+                <Tabs indicatorColor="white"
+                    style={{ marginLeft: "auto" }}
+                    value={0}>
                     <Tab
                         style={{ color: "white", minWidth: 10, marginLeft: "25px" }}
                         className={window.innerWidth < 768 ? "pt-3" : ""}

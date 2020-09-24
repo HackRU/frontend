@@ -9,9 +9,12 @@ import Card from "../../Card";
 function Stats(){
     return(
         <div>
-            <Grid container spacing={3} className="d-flex align-items-center"
+            <Grid container
+                spacing={3}
+                className="d-flex align-items-center"
                 style={{ textAlign: "center" }}>
-                <Grid item xs>
+                <Grid item
+                    xs>
                     <Stat back={theme.primary[1]}
                         accent={theme.accent[0]}
                         text="Hackers"
@@ -19,7 +22,8 @@ function Stats(){
                         number={600}
                         icon="users" />
                 </Grid>
-                <Grid item xs>
+                <Grid item
+                    xs>
                     <Stat back={theme.primary[1]}
                         accent={theme.accent[0]}
                         text="In Prizes"
@@ -27,7 +31,8 @@ function Stats(){
                         number={14000}
                         icon="trophy" />
                 </Grid>
-                <Grid item xs>
+                <Grid item
+                    xs>
                     <Stat back={theme.primary[1]}
                         accent={theme.accent[0]}
                         text="Projects"

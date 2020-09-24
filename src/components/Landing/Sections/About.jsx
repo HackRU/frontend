@@ -6,7 +6,8 @@ import Card from "../../Card";
 
 function About() {
     return (
-        <Card backgroundColor={theme.secondary[1]} sideBar={theme.accent[0]}>
+        <Card backgroundColor={theme.secondary[1]}
+            sideBar={theme.accent[0]}>
             <div style={{ position: "absolute", top: 30, right: 20, userSelect: "none", pointerEvents: "none", zIndex: 10, transform: "rotate(-175deg)" }}>
                 <img
                     alt="background"
