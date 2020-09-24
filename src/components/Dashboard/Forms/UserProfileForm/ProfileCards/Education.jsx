@@ -18,7 +18,7 @@ class Education extends Component {
     }
     UNSAFE_componentWillMount() {
         this.setState({
-            user: this.props.user,
+            user: JSON.parse(JSON.stringify(this.props.user)),
             edit: (this.props.user.registration_status === "unregistered"),
             schoolList: [],
             majorList: majors.items.map(major => ({
@@ -36,13 +36,34 @@ class Education extends Component {
             this.setState({ schoolList });
         });
     }
+
     updateUser(user) {
         console.log(user);
         this.setState({
             user
         });
-        this.props.onChange(user);
+        // this.props.onChange(user);
     }
+
+    
+    
+    submitUser = (user) => {
+        this.setState({
+            profileMSG: null,
+            edit: false,
+            user,
+        }, () => {
+            this.props.profile.Set(this.state.user, (err) => {
+                this.setState({
+                    profileMSG: err ?
+                        { color: "danger", value: err } :
+                        { color: "success", value: "Profile Updated!" }
+                });
+            });
+        });
+    }
+
+
     render() {
         let mobile = this.props.mobile;
         let user = this.state.user;
@@ -54,7 +75,7 @@ class Education extends Component {
             return (
                 <AvForm
                     onValidSubmit={() => {
-                        this.props.onSubmit(this.state.user);
+                        this.submitUser(this.state.user);
                     }}
                     onInvalidSubmit={() => {
                         this.setState({ message: null }, () => { this.setState({ message: "Some fields are invalid." }); });

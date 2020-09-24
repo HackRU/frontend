@@ -46,17 +46,17 @@ const Profile = (props) => {
         });
     }, []);
 
-    const submitUser = (user) => {
-        setLoading("Saving your information");
-        setProfileMSG(null);
-        setUser(user);
-        props.profile.Set(user, (err) => {
-            setLoading(false);
-            setProfileMSG(err ?
-                { color: "danger", value: err } :
-                { color: "success", value: "Profile Updated!" });
-        });
-    };
+    // const submitUser = (user) => {
+    //     setLoading("Saving your information");
+    //     setProfileMSG(null);
+    //     setUser(user);
+    //     props.profile.Set(user, (err) => {
+    //         setLoading(false);
+    //         setProfileMSG(err ?
+    //             { color: "danger", value: err } :
+    //             { color: "success", value: "Profile Updated!" });
+    //     });
+    // };
 
 
     if (!props.profile.isLoggedIn) {
@@ -86,12 +86,6 @@ const Profile = (props) => {
                         isOpen={true} /* replaced this.state.openDetails to force true*/>
                         <About mobile={mobile}
                             user={set_user}
-                            onChange={(set_user) => {
-                                setUser(set_user);
-                            }}
-                            onSubmit={(set_user) => {
-                                submitUser(set_user);
-                            }}
                             profile={props.profile}
                         />
                     </Section>
@@ -100,12 +94,6 @@ const Profile = (props) => {
                         isOpen={true} /* replaced this.state.openDetails to force true*/>
                         <Education mobile={mobile}
                             user={set_user}
-                            onChange={(set_user) => {
-                                setUser(set_user);
-                            }}
-                            onSubmit={(set_user) => {
-                                submitUser(set_user);
-                            }}
                             profile={props.profile}
                         />
                     </Section>
@@ -118,12 +106,6 @@ const Profile = (props) => {
                         isOpen={true} /* replaced this.state.openDetails to force true*/>
                         <Questions mobile={mobile}
                             user={set_user}
-                            onChange={(set_user) => {
-                                setUser(set_user);
-                            }}
-                            onSubmit={(set_user) => {
-                                submitUser(set_user);
-                            }}
                             profile={props.profile}
                         />
                     </Section>
@@ -134,12 +116,6 @@ const Profile = (props) => {
                             isOpen={true} /* replaced this.state.openDetails to force true*/>
                             <Documents mobile={mobile}
                                 user={set_user}
-                                onChange={(set_user) => {
-                                    setUser(set_user);
-                                }}
-                                onSubmit={(set_user) => {
-                                    submitUser(set_user);
-                                }}
                                 profile={props.profile}
                             />
                         </Section>
@@ -151,12 +127,6 @@ const Profile = (props) => {
                             isOpen={true} /* replaced this.state.openDetails to force true*/>
                             <Communications mobile={mobile}
                                 user={set_user}
-                                onChange={(set_user) => {
-                                    setUser(set_user);
-                                }}
-                                onSubmit={(set_user) => {
-                                    submitUser(set_user);
-                                }}
                                 profile={props.profile}
                             />
                         </Section>
