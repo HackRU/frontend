@@ -14,15 +14,15 @@ class UserProfileForm extends Component {
     UNSAFE_componentWillMount() {
         this.setState({
             user: this.props.user,
-            edit: (this.props.user.registration_status === "unregistered"),
-            message: null
+            edit: this.props.user.registration_status === "unregistered",
+            message: null,
         });
     }
 
     updateUser(user) {
         console.log(user);
         this.setState({
-            user
+            user,
         });
         this.props.onChange(user);
     }
@@ -32,61 +32,84 @@ class UserProfileForm extends Component {
         let user = this.state.user;
         let message = null;
         if (this.state.message) {
-            message = (<UncontrolledAlert color="danger">{this.state.message}</UncontrolledAlert>);
+            message = <UncontrolledAlert color="danger">{this.state.message}</UncontrolledAlert>;
         }
         if (this.state.edit) {
             return (
-                <AvForm 
+                <AvForm
                     onValidSubmit={() => {
                         this.props.onSubmit(this.state.user);
                     }}
                     onInvalidSubmit={() => {
-                        this.setState({ message: null }, () => { this.setState({ message: "Some fields are invalid." }); });
-                    }}>
-
+                        this.setState({ message: null }, () => {
+                            this.setState({ message: "Some fields are invalid." });
+                        });
+                    }}
+                >
                     <FormGroup>
                         <Label for="github">GitHub Handle</Label>
-                        <Input id="github"
+                        <Input
+                            id="github"
                             type="text"
                             placeholder="hackru"
                             value={user.github}
-                            onChange={(e) => { user.github = e.target.value; this.updateUser(user); }} />
+                            onChange={(e) => {
+                                user.github = e.target.value;
+                                this.updateUser(user);
+                            }}
+                        />
                     </FormGroup>
                     <FormGroup>
-                        <Label for="github">GitHub Handle</Label>
-                        <Input id="github"
+                        <Label for="slack">Slack Handle</Label>
+                        <Input
+                            id="slack"
                             type="text"
                             placeholder="hackru"
-                            value={user.github}
-                            onChange={(e) => { user.github = e.target.value; this.updateUser(user); }} />
+                            value={user.slack}
+                            onChange={(e) => {
+                                user.slack_id = e.target.value;
+                                this.updateUser(user);
+                            }}
+                        />
                     </FormGroup>
                     {message}
-                    <div style={{ width: "100%" }}
-                        align="right">
-                        <Button className="pill-btn"
+                    <div style={{ width: "100%" }} align="right">
+                        <Button
+                            className="pill-btn"
                             color="warning"
                             style={{ marginRight: 10 }}
-                            type="reset">Clear</Button>
-                        <Button color="success"
-                            className="pill-btn"
-                            type="submit">Update</Button>
+                            type="reset"
+                        >
+                            Clear
+                        </Button>
+                        <Button color="success" className="pill-btn" type="submit">
+                            Update
+                        </Button>
                     </div>
                 </AvForm>
             );
         } else {
             let pStyle = {
-                color: theme.disabled[0], padding: 5, minHeight: 35
+                color: theme.disabled[0],
+                padding: 5,
+                minHeight: 35,
             };
             let field = (text) => {
-                return <p style={pStyle}>{(text) ? text : <i>unanswered</i> }</p>;
+                return <p style={pStyle}>{text ? text : <i>unanswered</i>}</p>;
             };
             return (
                 <div>
                     <h4>
-                        <Button color="primary"
+                        <Button
+                            color="primary"
                             className="pill-btn"
                             style={{ position: "absolute", right: 40 }}
-                            onClick={() => { this.setState({ edit: true }); }} ><Icon name="edit" /></Button>
+                            onClick={() => {
+                                this.setState({ edit: true });
+                            }}
+                        >
+                            <Icon name="edit" />
+                        </Button>
                     </h4>
                     <FormGroup>
                         <Label>GitHub Handle</Label>
@@ -94,14 +117,13 @@ class UserProfileForm extends Component {
                     </FormGroup>
                     <FormGroup>
                         <Label>Slack Handle</Label>
-                        {field(user.github)}
+                        {field(user.slack_id)}
                     </FormGroup>
                 </div>
             );
         }
     }
 }
-
 
 UserProfileForm.propTypes = {
     user: {
