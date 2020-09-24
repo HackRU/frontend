@@ -3,9 +3,12 @@ import { Container, Grid } from "@material-ui/core";
 import { Redirect } from "react-router-dom";
 import Section from "./Section";
 import Loading from "./Loading";
-import ShortProfileForm from "./Forms/UserProfileForm/ShortProfileForm";
-import DocumentForm from "./Forms/UserProfileForm/DocumentForm";
-import CommunicationsForm from "./Forms/UserProfileForm/CommunicationsForm";
+import About from "./Forms/UserProfileForm/ProfileCards/About";
+import Education from "./Forms/UserProfileForm/ProfileCards/Education";
+import Documents from "./Forms/UserProfileForm/ProfileCards/Documents";
+import Questions from "./Forms/UserProfileForm/ProfileCards/Questions";
+// import Short from "./Forms/UserProfileForm/ProfileCards/ShortProfileForm";
+import Communications from "./Forms/UserProfileForm/ProfileCards/Communications";
 import { ProfileType } from "../Profile";
 import PropTypes from "prop-types";
 // import { theme } from "../../Defaults";
@@ -73,42 +76,68 @@ const Profile = (props) => {
     }
 
     return(
-        <Container style={{ width: "100%", minHeight: "100vh", paddingTop: 90 }}>
+        <Container maxWidth={false} 
+            style={{paddingTop: 90 }}>
             <Grid container>
                 <Grid item 
                     xs>
-                    <Section title="Profile"
+                    <Section title="About"
                         subtitle="Introduce yourself, don't be shy!"
                         isOpen={true} /* replaced this.state.openDetails to force true*/>
-                        <ShortProfileForm mobile={mobile}
+                        <About mobile={mobile}
                             user={set_user}
                             onChange={(set_user) => {
                                 setUser(set_user);
                             }}
                             onSubmit={(set_user) => {
-                                set_user.registration_status = "registered";
-                                console.log(set_user.want_bus);
                                 submitUser(set_user);
                             }}
                             profile={props.profile}
                         />
                     </Section>
+                    <Section title="Education"
+                        subtitle="Introduce yourself, don't be shy!"
+                        isOpen={true} /* replaced this.state.openDetails to force true*/>
+                        <Education mobile={mobile}
+                            user={set_user}
+                            onChange={(set_user) => {
+                                setUser(set_user);
+                            }}
+                            onSubmit={(set_user) => {
+                                submitUser(set_user);
+                            }}
+                            profile={props.profile}
+                        />
+                    </Section>
+                    
                 </Grid>
                 <Grid item 
                     xs>
+                    <Section title="A Few Questions"
+                        subtitle="Introduce yourself, don't be shy!"
+                        isOpen={true} /* replaced this.state.openDetails to force true*/>
+                        <Questions mobile={mobile}
+                            user={set_user}
+                            onChange={(set_user) => {
+                                setUser(set_user);
+                            }}
+                            onSubmit={(set_user) => {
+                                submitUser(set_user);
+                            }}
+                            profile={props.profile}
+                        />
+                    </Section>
                     <Grid item 
                         xs>
                         <Section title="Documents"
                             subtitle="Introduce yourself, don't be shy!"
                             isOpen={true} /* replaced this.state.openDetails to force true*/>
-                            <DocumentForm mobile={mobile}
+                            <Documents mobile={mobile}
                                 user={set_user}
                                 onChange={(set_user) => {
                                     setUser(set_user);
                                 }}
                                 onSubmit={(set_user) => {
-                                    set_user.registration_status = "registered";
-                                    console.log(set_user.want_bus);
                                     submitUser(set_user);
                                 }}
                                 profile={props.profile}
@@ -120,14 +149,12 @@ const Profile = (props) => {
                         <Section title="Communications"
                             subtitle="Introduce yourself, don't be shy!"
                             isOpen={true} /* replaced this.state.openDetails to force true*/>
-                            <CommunicationsForm mobile={mobile}
+                            <Communications mobile={mobile}
                                 user={set_user}
                                 onChange={(set_user) => {
                                     setUser(set_user);
                                 }}
                                 onSubmit={(set_user) => {
-                                    set_user.registration_status = "registered";
-                                    console.log(set_user.want_bus);
                                     submitUser(set_user);
                                 }}
                                 profile={props.profile}
