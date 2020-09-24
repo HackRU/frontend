@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { FormGroup, Input, Label, Button, UncontrolledAlert } from "reactstrap";
-import { AvForm } from "availity-reactstrap-validation";
+import { FormGroup, Label, Button, UncontrolledAlert } from "reactstrap";
+import { AvForm, AvField } from "availity-reactstrap-validation";
 import { theme } from "../../../../../Defaults";
 import { Icon } from "react-fa";
 import { ProfileType } from "../../../../Profile";
@@ -24,7 +24,23 @@ class UserProfileForm extends Component {
         this.setState({
             user,
         });
-        this.props.onChange(user);
+        // this.props.onChange(user);
+    }
+
+    submitUser = (user) => {
+        this.setState({
+            profileMSG: null,
+            edit: false,
+            user,
+        }, () => {
+            this.props.profile.Set(this.state.user, (err) => {
+                this.setState({
+                    profileMSG: err ?
+                        { color: "danger", value: err } :
+                        { color: "success", value: "Profile Updated!" }
+                });
+            });
+        });
     }
 
     render() {
@@ -38,7 +54,7 @@ class UserProfileForm extends Component {
             return (
                 <AvForm
                     onValidSubmit={() => {
-                        this.props.onSubmit(this.state.user);
+                        this.submitUser(this.state.user);
                     }}
                     onInvalidSubmit={() => {
                         this.setState({ message: null }, () => {
@@ -47,42 +63,31 @@ class UserProfileForm extends Component {
                     }}
                 >
                     <FormGroup>
-                        <Label for="github">GitHub Handle</Label>
-                        <Input
-                            id="github"
+                        <AvField
+                            name="slack"
+                            label="Slack ID *"
+                            type="text"
+                            placeholder="hackru"
+                            value={user.slack_id}
+                            onChange={(e) => { user.slack_id = e.target.value; this.updateUser(user); }}
+                            validate={{
+                                required: {value: true, errorMessage: "Slack ID Required"} }} />
+                    </FormGroup>
+                    <FormGroup>
+                        <AvField
+                            name="github"
+                            label="Github Handle"
                             type="text"
                             placeholder="hackru"
                             value={user.github}
-                            onChange={(e) => {
-                                user.github = e.target.value;
-                                this.updateUser(user);
-                            }}
-                        />
-                    </FormGroup>
-                    <FormGroup>
-                        <Label for="slack">Slack Handle</Label>
-                        <Input
-                            id="slack"
-                            type="text"
-                            placeholder="hackru"
-                            value={user.slack}
-                            onChange={(e) => {
-                                user.slack_id = e.target.value;
-                                this.updateUser(user);
-                            }}
-                        />
+                            onChange={(e) => { user.github = e.target.value; this.updateUser(user); }} />
                     </FormGroup>
                     {message}
-                    <div style={{ width: "100%" }} align="right">
-                        <Button
-                            className="pill-btn"
-                            color="warning"
-                            style={{ marginRight: 10 }}
-                            type="reset"
-                        >
-                            Clear
-                        </Button>
-                        <Button color="success" className="pill-btn" type="submit">
+                    <div style={{ width: "100%" }} 
+                        align="right">
+                        <Button color="success" 
+                            className="pill-btn" 
+                            type="submit">
                             Update
                         </Button>
                     </div>
@@ -112,12 +117,12 @@ class UserProfileForm extends Component {
                         </Button>
                     </h4>
                     <FormGroup>
-                        <Label>GitHub Handle</Label>
-                        {field(user.github)}
+                        <Label>Slack ID</Label>
+                        {field(user.slack_id)}
                     </FormGroup>
                     <FormGroup>
-                        <Label>Slack Handle</Label>
-                        {field(user.slack_id)}
+                        <Label>GitHub Handle</Label>
+                        {field(user.github)}
                     </FormGroup>
                 </div>
             );

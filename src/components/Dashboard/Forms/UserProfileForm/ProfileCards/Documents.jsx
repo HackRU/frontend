@@ -23,13 +23,31 @@ class UserProfileForm extends Component {
             message: null,
         });
     }
+
     updateUser(user) {
         console.log(user);
         this.setState({
             user,
         });
-        this.props.onChange(user);
+        // this.props.onChange(user);
     }
+
+    submitUser = (user) => {
+        this.setState({
+            profileMSG: null,
+            edit: false,
+            user,
+        }, () => {
+            this.props.profile.Set(this.state.user, (err) => {
+                this.setState({
+                    profileMSG: err ?
+                        { color: "danger", value: err } :
+                        { color: "success", value: "Profile Updated!" }
+                });
+            });
+        });
+    }
+
     render() {
         // let user = this.state.user;
         let message = null;
@@ -41,7 +59,7 @@ class UserProfileForm extends Component {
                 <AvForm
                     model={{}}
                     onValidSubmit={() => {
-                        this.props.onSubmit(this.state.user);
+                        this.submitUser(this.state.user);
                     }}
                     onInvalidSubmit={() => {
                         this.setState({ message: null }, () => {
@@ -49,11 +67,16 @@ class UserProfileForm extends Component {
                         });
                     }}
                 >
-                    <ResumeUploader edit={this.state.edit} profile={this.props.profile} />
-                    <WaiverUploader edit={this.state.edit} profile={this.props.profile} />
+                    <ResumeUploader edit={this.state.edit} 
+                        profile={this.props.profile} />
+                    <WaiverUploader edit={this.state.edit} 
+                        profile={this.props.profile} />
                     {message}
-                    <div style={{ width: "100%" }} align="right">
-                        <Button color="success" className="pill-btn" type="submit">
+                    <div style={{ width: "100%" }} 
+                        align="right">
+                        <Button color="success" 
+                            className="pill-btn" 
+                            type="submit">
                             Update
                         </Button>
                     </div>
@@ -80,7 +103,10 @@ class UserProfileForm extends Component {
                             <Icon name="edit" />
                         </Button>
                     </h4>
-                    <ResumeUploader edit={this.state.edit} profile={this.props.profile} />
+                    <ResumeUploader edit={this.state.edit} 
+                        profile={this.props.profile} />
+                    <WaiverUploader edit={this.state.edit} 
+                        profile={this.props.profile} />
                 </div>
             );
         }
