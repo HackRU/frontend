@@ -119,8 +119,8 @@ class Questions extends Component {
                         <Input id="sa"
                             type="textarea"
                             placeholder=""
-                            value={user.short_answer}
-                            onChange={(e) => { user.short_answer = e.target.value; this.updateUser(user); }} />
+                            value={user.virtual_short_answer}
+                            onChange={(e) => { user.virtual_short_answer = e.target.value; this.updateUser(user); }} />
                     </FormGroup>
                     <FormGroup>
                         <Label for="sn">Anything we should account for?</Label>
@@ -189,7 +189,7 @@ class Questions extends Component {
                     </FormGroup>
                     <FormGroup>
                         <Label>What are your initial thoughts on a virtual hackathon?</Label>
-                        {field(user.short_answer)}
+                        {field(user.virtual_short_answer)}
                     </FormGroup>
                     <FormGroup>
                         <Label>Anything we should account for?</Label>
