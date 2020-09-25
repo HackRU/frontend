@@ -7,6 +7,7 @@ import About from "./Forms/UserProfileForm/ProfileCards/About";
 import Education from "./Forms/UserProfileForm/ProfileCards/Education";
 import Documents from "./Forms/UserProfileForm/ProfileCards/Documents";
 import Questions from "./Forms/UserProfileForm/ProfileCards/Questions";
+import Register from "./Forms/UserProfileForm/ProfileCards/Register";
 // import Short from "./Forms/UserProfileForm/ProfileCards/ShortProfileForm";
 import Communications from "./Forms/UserProfileForm/ProfileCards/Communications";
 import { ProfileType } from "../Profile";
@@ -71,7 +72,7 @@ const Profile = (props) => {
     set_user.how_you_heard_about_hackru = set_user.how_you_heard_about_hackru || "";
     set_user.reasons = set_user.reasons || "";
     let mobile = props.isMobile;
-    if (profileMSG == openDetails) {
+    if (profileMSG === openDetails) {
         console.log("correct");
     }
 
@@ -131,6 +132,16 @@ const Profile = (props) => {
                             />
                         </Section>
                     </Grid>
+                </Grid>
+                <Grid xs={12}>
+                    <Section title="Register"
+                        subtitle="Introduce yourself, don't be shy!"
+                        isOpen={true} /* replaced this.state.openDetails to force true*/>
+                        <Register mobile={mobile}
+                            user={set_user}
+                            profile={props.profile}
+                        />
+                    </Section>
                 </Grid>
             </Grid>
         </Container>

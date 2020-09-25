@@ -1,8 +1,7 @@
 import React, { Component } from "react";
-import { FormGroup, Input, Label, Button, Col, UncontrolledAlert } from "reactstrap";
+import { FormGroup, Input, Label, Button, UncontrolledAlert } from "reactstrap";
 import { AvForm, AvCheckboxGroup, AvCheckbox } from "availity-reactstrap-validation";
 import { Creatable } from "react-select";
-import CustomAVInput from "../CustomAVInput";
 import { Icon } from "react-fa";
 import { theme } from "../../../../../Defaults";
 import selectorOptions from "../selectorOptions.json";
