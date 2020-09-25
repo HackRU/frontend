@@ -5,6 +5,7 @@ import { theme } from "../../../../../Defaults";
 import { Icon } from "react-fa";
 import { ProfileType } from "../../../../Profile";
 import PropTypes from "prop-types";
+import { PulseLoader } from "react-spinners";
 
 class UserProfileForm extends Component {
     constructor(props) {
@@ -15,7 +16,9 @@ class UserProfileForm extends Component {
         this.setState({
             user: this.props.user,
             edit: this.props.user.registration_status === "unregistered",
+            error: false,
             message: null,
+            loading: false,
         });
     }
 
@@ -30,15 +33,27 @@ class UserProfileForm extends Component {
     submitUser = (user) => {
         this.setState({
             profileMSG: null,
-            edit: false,
+            loading: true,
             user,
         }, () => {
             this.props.profile.Set(this.state.user, (err) => {
-                this.setState({
-                    profileMSG: err ?
-                        { color: "danger", value: err } :
-                        { color: "success", value: "Profile Updated!" }
-                });
+                console.log(err);
+                if( err) {
+                    this.setState({
+                        message: "Invalid Slack ID",
+                        error: true,
+                        loading: false,
+                        profileMSG: { color: "danger", value: err } 
+                    });
+                } else {
+                    this.setState({
+                        edit: false,
+                        loading: false,
+                        profileMSG: err ?
+                            { color: "danger", value: err } :
+                            { color: "success", value: "Profile Updated!" }
+                    });
+                }
             });
         });
     }
@@ -46,10 +61,10 @@ class UserProfileForm extends Component {
     render() {
         // let mobile = this.props.mobile;
         let user = this.state.user;
-        let message = null;
-        if (this.state.message) {
-            message = <UncontrolledAlert color="danger">{this.state.message}</UncontrolledAlert>;
-        }
+        // let message = null;
+        // if (this.state.message) {
+        //     message = <UncontrolledAlert color="danger">{this.state.message}</UncontrolledAlert>;
+        // }
         if (this.state.edit) {
             return (
                 <AvForm
@@ -82,14 +97,12 @@ class UserProfileForm extends Component {
                             value={user.github}
                             onChange={(e) => { user.github = e.target.value; this.updateUser(user); }} />
                     </FormGroup>
-                    {message}
+                    {this.state.error ? <UncontrolledAlert color="danger">{this.state.message}</UncontrolledAlert> : ""}
                     <div style={{ width: "100%" }} 
                         align="right">
                         <Button color="success" 
                             className="pill-btn" 
-                            type="submit">
-                            Update
-                        </Button>
+                            type="submit"> { this.state.loading ?  <PulseLoader color={theme.accent[0]} /> : "Update" } </Button>
                     </div>
                 </AvForm>
             );
