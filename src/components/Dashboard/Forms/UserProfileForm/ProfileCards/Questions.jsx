@@ -8,6 +8,7 @@ import { theme } from "../../../../../Defaults";
 import selectorOptions from "../selectorOptions.json";
 import { ProfileType } from "../../../../Profile";
 import PropTypes from "prop-types";
+import { PulseLoader } from "react-spinners";
 
 class Questions extends Component {
     // constructor(props) {
@@ -18,6 +19,7 @@ class Questions extends Component {
         this.setState({
             user: JSON.parse(JSON.stringify(this.props.user)),
             edit: (this.props.user.registration_status === "unregistered"),
+            loading: false,
             message: null
         });
     }
@@ -33,11 +35,13 @@ class Questions extends Component {
     submitUser = (user) => {
         this.setState({
             profileMSG: null,
-            edit: false,
+            loading: true,
             user,
         }, () => {
             this.props.profile.Set(this.state.user, (err) => {
                 this.setState({
+                    edit: false,
+                    loading: false,
                     profileMSG: err ?
                         { color: "danger", value: err } :
                         { color: "success", value: "Profile Updated!" }
@@ -69,7 +73,7 @@ class Questions extends Component {
                     onInvalidSubmit={() => {
                         this.setState({ message: null }, () => { this.setState({ message: "Some fields are invalid." }); });
                     }}>
-                    <FormGroup row>
+                    {/* <FormGroup row>
                         <Col>
                             <CustomAVInput name="dr"
                                 label="Dietary Restrictions"
@@ -82,15 +86,7 @@ class Questions extends Component {
                                 </div>
                             </CustomAVInput>
                         </Col>
-                    </FormGroup>
-                    <FormGroup>
-                        <Label for="sn">Special Needs</Label>
-                        <Input id="sn"
-                            type="text"
-                            placeholder="Anything we should account for?"
-                            value={user.special_needs}
-                            onChange={(e) => { user.special_needs = e.target.value; this.updateUser(user); }} />
-                    </FormGroup>
+                    </FormGroup> */}
                     <FormGroup>
                         <Label for="hear">How did you hear about HackRU?</Label>
                         <div className="forcestyle">
@@ -127,15 +123,23 @@ class Questions extends Component {
                             value={user.short_answer}
                             onChange={(e) => { user.short_answer = e.target.value; this.updateUser(user); }} />
                     </FormGroup>
+                    <FormGroup>
+                        <Label for="sn">Anything we should account for?</Label>
+                        <Input id="sn"
+                            type="text"
+                            placeholder=""
+                            value={user.special_needs}
+                            onChange={(e) => { user.special_needs = e.target.value; this.updateUser(user); }} />
+                    </FormGroup>
                     <AvCheckboxGroup name="polls"
                         className="custom-av-checkbox"
                         label={<h4>Polls</h4>}
                         validate={{ required: { value: false, errorMessag: "" } }}>
-                        <AvCheckbox name="poll-bus"
+                        {/* <AvCheckbox name="poll-bus"
                             customInput
                             onChange={() => { user.want_bus = (user.want_bus) ? !user.want_bus : (true); }}
                             label={<p>Would you be interested in a bus from your school to HackRU? (Note: this is not a guarantee that a bus will pick you up from your particular school!)</p>}
-                            value={"poll-bus"} />
+                            value={"poll-bus"} /> */}
                         <AvCheckbox name="poll-team"
                             customInput
                             onChange={() => { user.want_team = (user.want_team) ? !user.want_team : (true); }}
@@ -147,7 +151,7 @@ class Questions extends Component {
                         align="right">
                         <Button color="success"
                             className="pill-btn"
-                            type="submit">Update</Button>
+                            type="submit"> { this.state.loading ?  <PulseLoader color={theme.accent[0]} /> : "Update" } </Button>
                     </div>
                 </AvForm>
             );
@@ -185,16 +189,12 @@ class Questions extends Component {
                         {field(user.short_answer)}
                     </FormGroup>
                     <FormGroup>
-                        <Label>What are you hoping to experience at HackRU?</Label>
+                        <Label>What are your initial thoughts on a virtual hackathon?</Label>
                         {field(user.short_answer)}
                     </FormGroup>
                     <FormGroup>
                         <Label>Anything we should account for?</Label>
                         {field(user.special_needs)}
-                    </FormGroup>
-                    <FormGroup>
-                        <Label>What are your initial thoughts on a virtual hackathon?</Label>
-                        {field(user.want_bus ? ("Yes") : ("No"))}
                     </FormGroup>
                     <FormGroup>
                         <Label>Are you looking for team members? </Label>

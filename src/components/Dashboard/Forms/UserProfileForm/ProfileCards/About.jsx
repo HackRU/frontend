@@ -8,6 +8,7 @@ import { theme } from "../../../../../Defaults";
 import selectorOptions from "../selectorOptions.json";
 import { ProfileType } from "../../../../Profile";
 import PropTypes from "prop-types";
+import { PulseLoader } from "react-spinners";
 
 
 class About extends Component {
@@ -19,6 +20,7 @@ class About extends Component {
         this.setState({
             user: JSON.parse(JSON.stringify(this.props.user)),
             edit: (this.props.user.registration_status === "unregistered"),
+            loading: false,
             message: null
         });
     }
@@ -34,11 +36,13 @@ class About extends Component {
     submitUser = (user) => {
         this.setState({
             profileMSG: null,
-            edit: false,
+            loading: true,
             user,
         }, () => {
             this.props.profile.Set(this.state.user, (err) => {
                 this.setState({
+                    edit: false,
+                    loading: false,
                     profileMSG: err ?
                         { color: "danger", value: err } :
                         { color: "success", value: "Profile Updated!" }
@@ -182,7 +186,7 @@ class About extends Component {
                         align="right">
                         <Button color="success"
                             className="pill-btn"
-                            type="submit">Update</Button>
+                            type="submit"> { this.state.loading ?  <PulseLoader color={theme.accent[0]} /> : "Update" } </Button>
                     </div>
                 </AvForm>
             );
