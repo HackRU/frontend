@@ -3,6 +3,8 @@ import { Button, UncontrolledAlert } from "reactstrap";
 import { AvForm } from "availity-reactstrap-validation";
 import { Icon } from "react-fa";
 import ResumeUploader from "../ResumeUploader";
+import WaiverUploader from "../WaiverUploader";
+
 // import { theme } from "../../../../Defaults";
 import { ProfileType } from "../../../../Profile";
 import PropTypes from "prop-types";
@@ -15,48 +17,84 @@ class UserProfileForm extends Component {
     UNSAFE_componentWillMount() {
         this.setState({
             user: this.props.user,
-            edit: (this.props.user.registration_status === "unregistered"),
-            checkedState1: (this.props.user.registration_status !== "unregistered"),
-            checkedState2: (this.props.user.registration_status !== "unregistered"),
-            message: null
+            edit: this.props.user.registration_status === "unregistered",
+            message: null,
+            waiver_message: null
         });
     }
+
     updateUser(user) {
         console.log(user);
         this.setState({
-            user
+            user,
         });
-        this.props.onChange(user);
+        // this.props.onChange(user);
     }
+
+    validateUpload = (user) => {
+        this.setState({
+            profileMSG: null,
+            edit: false,
+            user,
+        });
+    }
+
+    checkWaiver = (message) => {
+        this.setState({
+            waiver_message: message
+        });
+    }
+
+
     render() {
         // let user = this.state.user;
         let message = null;
         if (this.state.message) {
-            message = (<UncontrolledAlert color="danger">{this.state.message}</UncontrolledAlert>);
+            message = <UncontrolledAlert color="danger">{this.state.message}</UncontrolledAlert>;
         }
         if (this.state.edit) {
             return (
-                <AvForm model={{}}
+                <AvForm
+                    model={{}}
                     onValidSubmit={() => {
-                        this.props.onSubmit(this.state.user);
+                        if (this.state.waiver_message === "Waiver uploaded successfully." || this.state.waiver_message === "Waiver found") {
+                            this.validateUpload(this.state.user);
+                        } else {
+                            this.setState({ message: null }, () => {
+                                this.setState({ message: "Please upload a waiver" });
+                            });
+                        }
+                        
                     }}
                     onInvalidSubmit={() => {
-                        this.setState({ message: null }, () => { this.setState({ message: "Some fields are invalid." }); });
-                    }}>
-                    <ResumeUploader
-                        edit={this.state.edit}
+                        this.setState({ message: null }, () => {
+                            this.setState({ message: "Some fields are invalid." });
+                        });
+                    }}
+                >
+                    <div>
+                        Upload filled and signed{" "}
+                        <a style={{ color: "black", textDecoration: "underline" }}
+                            href="/resources/waiver.pdf" >
+                            Waiver
+                        </a>
+                        {" "}*
+                    </div>
+                    <WaiverUploader edit={this.state.edit} 
                         profile={this.props.profile}
-                    />
+                        checkWaiver={this.checkWaiver} />
+                    <div> Upload Resume </div>
+                    <ResumeUploader edit={this.state.edit} 
+                        profile={this.props.profile} />
+                    
                     {message}
-                    <div style={{ width: "100%" }}
+                    <div style={{ width: "100%" }} 
                         align="right">
-                        <Button className="pill-btn"
-                            color="warning"
-                            style={{ marginRight: 10 }}
-                            type="reset">Clear</Button>
-                        <Button color="success"
-                            className="pill-btn"
-                            type="submit">Update</Button>
+                        <Button color="success" 
+                            className="pill-btn" 
+                            type="submit">
+                            Update
+                        </Button>
                     </div>
                 </AvForm>
             );
@@ -68,24 +106,36 @@ class UserProfileForm extends Component {
             //     return <p style={pStyle}>{(text) ? text : <i>unanswered</i> }</p>;
             // };
             return (
-                
                 <div>
                     <h4>
-                        <Button color="primary"
+                        <Button
+                            color="primary"
                             className="pill-btn"
                             style={{ position: "absolute", right: 40 }}
-                            onClick={() => { this.setState({ edit: true }); }} ><Icon name="edit" /></Button>
+                            onClick={() => {
+                                this.setState({ edit: true });
+                            }}
+                        >
+                            <Icon name="edit" />
+                        </Button>
                     </h4>
-                    <ResumeUploader
-                        edit={this.state.edit}
+                    <div>
+                        <a style={{ color: "black", textDecoration: "underline" }}
+                            href="/resources/waiver.pdf" >
+                            Waiver
+                        </a>
+                    </div>
+                    <WaiverUploader edit={this.state.edit} 
                         profile={this.props.profile}
-                    />
+                        checkWaiver={this.checkWaiver}  />
+                    <div> Resume </div>
+                    <ResumeUploader edit={this.state.edit} 
+                        profile={this.props.profile} />
                 </div>
             );
         }
     }
 }
-
 
 UserProfileForm.propTypes = {
     user: {
