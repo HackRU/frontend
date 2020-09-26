@@ -13,6 +13,7 @@ class Register extends Component {
     }
     UNSAFE_componentWillMount() {
         this.setState({
+            
             user: this.props.user,
             checkedState1: (this.props.user.registration_status !== "unregistered"),
             checkedState2: (this.props.user.registration_status !== "unregistered"),
@@ -28,12 +29,20 @@ class Register extends Component {
 
     checkStatus(user) {
         console.log(user);
-        if (user.hackathon_count !== "" && user.school !== "") {
-            return true;
-        } else { 
-            return false;
-        }
+        this.props.profile.DoesWaiverExist().then((success) => {
+            if (success) {
+                if (user.hackathon_count !== "" && user.school !== "") {
+                    return true;
+                } else {
+                    return false;
+                }
+            } else {
+                console.log("failed waiver");
+                return false;
+            }
+        });
     }
+        
 
     submitUser = (user) => {
         this.setState({
@@ -62,7 +71,7 @@ class Register extends Component {
                             });
 
                         } else {
-                            console.log("Not all fields valid");
+                            console.error("Not all fields valid!");
                             this.setState({
                                 loading: false,
                                 profileMSG: { color: "danger", value: "An error occured!" },
