@@ -90,7 +90,10 @@ const Profile = (props) => {
                         />
                     </Section>
                 </Grid>
-                <Grid item xs={12} sm={12} md={6}>
+                <Grid item
+                    xs={12}
+                    sm={12}
+                    md={6}>
                     <Section title="About"
                         subtitle="Introduce yourself, don't be shy!"
                         isOpen={true} /* replaced this.state.openDetails to force true*/>
@@ -116,7 +119,10 @@ const Profile = (props) => {
                         />
                     </Section>
                 </Grid>
-                <Grid item xs={12} sm={12} md={6}>
+                <Grid item
+                    xs={12}
+                    sm={12}
+                    md={6}>
                     <Section title="A Few Questions"
                         subtitle="Introduce yourself, don't be shy!"
                         isOpen={true} /* replaced this.state.openDetails to force true*/>
