@@ -7,7 +7,7 @@ import { BarLoader } from "react-spinners";
  */
 class LogoWrapper extends Component {
     state = {
-        loading: "Our lastest sponsorship information is loading",
+        loading: "Our latest sponsorship information is loading",
         logos: null,
     }
     constructor(props) {
@@ -15,11 +15,11 @@ class LogoWrapper extends Component {
         fetch(props.endpoint, {
             method: "GET", 
             mode: "cors"
-        }).then(response => response.json()).then(data =>
+        }).then(response => response.json()).then(data => {
             this.setState({
                 logos: data
-            })   
-        );
+            });
+        });
     }
     render() {
         let renderList = [];
@@ -47,7 +47,7 @@ class LogoWrapper extends Component {
                     </div>
                 </div>
             );
-        } else {
+        } else if (!this.state.logos) {
             return (
                 <div>
                     <h1 className="display-4 theme-font mb-3">{this.props.title}</h1>
@@ -55,7 +55,18 @@ class LogoWrapper extends Component {
                     <BarLoader color="rgba(0, 0, 0, 0.25)" />               
                 </div>
             );
-        }       
+        } else {
+            return (
+                <div>
+                    <div style={{ backgroundColor: "white", color: "black", boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.5)" }}>
+                        <h1 className="display-4 theme-font"
+                            style={{ padding: 50, paddingBottom: 0 }}>{this.props.title}</h1>
+                            <p className="lead theme-font"
+                                style={{ padding: 50 }}>Nothing yet, check again later!</p>
+                    </div>     
+                </div>
+            );
+        }  
     }
 }
 
