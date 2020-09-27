@@ -1,5 +1,6 @@
 import LandingPage from "./Landing/Landing";
 import DashboardPage from "./Dashboard/Dashboard";
+import ProfilePage from "./Dashboard/Profile";
 import LoginPage from "./Login";
 import SignUpPage from "./Signup";
 import ForgotPage from "./Forgot";
@@ -12,6 +13,7 @@ import TeamPage from "./Team/Team";
 export {
     LandingPage,
     DashboardPage,
+    ProfilePage,
     LoginPage,
     SignUpPage,
     MagicPage,

@@ -11,7 +11,8 @@ import {
     SponsorshipPage,
     TeamPage,
     ProjectorPage,
-    E404 } from "./components/Pages"; // Router Pages
+    E404, 
+    ProfilePage} from "./components/Pages"; // Router Pages
 import Background from "./Background";
 import NavBar from "./NavBar";
 import { defaults } from "./Defaults"; // Get a handle to the default application settings
@@ -129,6 +130,11 @@ class App extends Component {
                 path="/dashboard"
                 key="dashboard"
                 render={(props) => <DashboardPage {...props}
+                    {...componentProps} />} />,
+            <Route exact
+                path="/profile"
+                key="profile"
+                render={(props) => <ProfilePage {...props}
                     {...componentProps} />} />,
             <Route exact
                 path="/projector"

@@ -4,42 +4,52 @@ import { theme } from "../../../Defaults";
 import { Icon } from "react-fa";
 import CountUp from "react-countup";
 import PropTypes from "prop-types";
+import Card from "../../Card";
 
-const Stats = () => (
-    <div>
-        <Grid container spacing={3} className="d-flex align-items-center"
-            style={{ textAlign: "center"}}>
-            <Grid item xs>
-                <Stat back={theme.primary[1]}
-                    accent={theme.accent[0]}
-                    text="Hackers"
-                    decoration=""
-                    number={600}
-                    icon="users" />
+function Stats(){
+    return(
+        <div>
+            <Grid container
+                spacing={3}
+                className="d-flex align-items-center"
+                style={{ textAlign: "center" }}>
+                <Grid item
+                    xs>
+                    <Stat back={theme.primary[1]}
+                        accent={theme.accent[0]}
+                        text="Hackers"
+                        decoration=""
+                        number={600}
+                        icon="users" />
+                </Grid>
+                <Grid item
+                    xs>
+                    <Stat back={theme.primary[1]}
+                        accent={theme.accent[0]}
+                        text="In Prizes"
+                        decoration="$"
+                        number={14000}
+                        icon="trophy" />
+                </Grid>
+                <Grid item
+                    xs>
+                    <Stat back={theme.primary[1]}
+                        accent={theme.accent[0]}
+                        text="Projects"
+                        decoration=""
+                        number={50}
+                        icon="terminal" />
+                </Grid>
             </Grid>
-            <Grid item xs>
-                <Stat back={theme.primary[1]}
-                    accent={theme.accent[0]}
-                    text="In Prizes"
-                    decoration="$"
-                    number={14000}
-                    icon="trophy" />
-            </Grid>
-            <Grid item xs>
-                <Stat back={theme.primary[1]}
-                    accent={theme.accent[0]}
-                    text="Projects"
-                    decoration=""
-                    number={50}
-                    icon="terminal" />
-            </Grid>
-        </Grid>
-    </div>
-);
+        </div>
+    );
+
+}
 
 const Stat = ({ number, text, back, accent, icon, decoration }) => (
-    <div style={{ backgroundColor: back, color: "white", boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.5)", padding: 50, marginTop: 25 }}>
+    <Card backgroundColor={back}>
         {/* <div style={{ position: "absolute", left: "calc(15px)", top: 25, height: "calc(100% - 25px)", backgroundColor: accent, width: 10 }}></div> */}
+
         <div>
             <h1 className="stat-number">
                 {decoration}
@@ -52,7 +62,8 @@ const Stat = ({ number, text, back, accent, icon, decoration }) => (
         </div>
         <Icon name={icon}
             style={{ fontSize: "10vh", marginRight: 10, color: accent }} />
-    </div>
+
+    </Card>
 );
 
 Stat.propTypes = {

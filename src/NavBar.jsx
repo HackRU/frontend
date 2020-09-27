@@ -1,18 +1,27 @@
 import React, { Component } from "react";
-import { Navbar, NavbarBrand, Nav, NavLink, NavItem, Collapse, NavbarToggler, Button, Container } from "reactstrap";
+import { AppBar, Toolbar, IconButton, Button, MenuItem, Menu, Tabs, Tab } from "@material-ui/core";
+import AccountCircle from "@material-ui/icons/AccountCircle";
 import { Link } from "react-router-dom";
 import { navlinks, theme, defaults } from "./Defaults";
 import { ProfileType } from "./components/Profile";
 import PropTypes from "prop-types";
 import "./NavBar.css";
 import Logo from "./components/Landing/Sections/Logo.jsx";
+import { goToAnchor } from "react-scrollable-anchor";
+
+import EventIcon from "@material-ui/icons/EventOutlined";
+import GroupIcon from "@material-ui/icons/GroupOutlined";
+import ChartIcon from "@material-ui/icons/InsertChartOutlined";
+import InfoIcon from "@material-ui/icons/InfoOutlined";
+import ThumbIcon from "@material-ui/icons/ThumbUpOutlined";
+import ChatIcon from "@material-ui/icons/FeedbackOutlined";
 
 const LinkSwitcher = (props) => {
-    return (props.root) ? <a {...props}>{props.children}</a> : <Link {...props} />;
+    return props.root ? <a {...props}>{props.children}</a> : <Link {...props} />;
 };
 LinkSwitcher.propTypes = {
     root: PropTypes.bool,
-    children: PropTypes.any
+    children: PropTypes.any,
 };
 
 class NavBar extends Component {
@@ -24,12 +33,18 @@ class NavBar extends Component {
         this.handleScroll = this.handleScroll.bind(this);
         this.handleResize = this.handleResize.bind(this);
 
-
         this.state = {
             isOpen: false,
             shouldRender: 0,
             badgeHeight: 0,
+            anchorEl: null,
+            open: false,
+            landingValue: 0,
         };
+
+        this.setAnchorEl = this.setAnchorEl.bind(this);
+        this.handleClick = this.handleClick.bind(this);
+        this.handleClose = this.handleClose.bind(this);
     }
 
     componentDidMount() {
@@ -50,7 +65,12 @@ class NavBar extends Component {
             return;
         }
         this.setState({
-            badgeHeight: parseFloat(window.getComputedStyle(badge).getPropertyValue("height").replace("px", ""))
+            badgeHeight: parseFloat(
+                window
+                    .getComputedStyle(badge)
+                    .getPropertyValue("height")
+                    .replace("px", "")
+            ),
         });
     }
 
@@ -60,168 +80,281 @@ class NavBar extends Component {
         if (offset < badgeHeight) {
             //At top
             this.setState({
-                shouldRender: 0
+                shouldRender: 0,
             });
         } else if (this.state.shouldRender === 0 && offset > badgeHeight) {
             this.setState({
-                shouldRender: 1
+                shouldRender: 1,
             });
+        }
+        let currentHash = window.location.href.substring(window.location.href.indexOf("#") + 1);
+        switch (currentHash) {
+        case "home":
+            this.setState({ landingValue: 0 });
+            break;
+        case "about":
+            this.setState({ landingValue: 1 });
+            break;
+        case "schedule":
+            this.setState({ landingValue: 2 });
+            break;
+        case "sponsors":
+            this.setState({ landingValue: 3 });
+            break;
+        case "partners":
+            this.setState({ landingValue: 4 });
+            break;
+        case "numbers":
+            this.setState({ landingValue: 5 });
+            break;
         }
     }
     toggleFalse() {
         if (window.innerWidth < 768) {
             this.setState({
-                isOpen: false
+                isOpen: false,
             });
         }
     }
     toggle() {
         this.setState({
-            isOpen: !this.state.isOpen
+            isOpen: !this.state.isOpen,
         });
     }
     getAuthButtons() {
         return (
-            <div>
-                <Link to="/login"><Button outline
-                    color="warning"
-                    className="pill-btn">Login</Button></Link>{" "}
-                <Link to="/signup"><Button color="success"
-                    className="pill-btn">Register</Button></Link>
+            <div style={{ marginLeft: "auto" }}>
+                <Link to="/login">
+                    <Button outline
+                        color="warning"
+                        className="pill-btn">
+                        Login
+                    </Button>
+                </Link>{" "}
+                <Link to="/signup">
+                    <Button color="success"
+                        className="pill-btn">
+                        Register
+                    </Button>
+                </Link>
             </div>
         );
     }
+    handleClick(event) {
+        this.setAnchorEl(event.currentTarget);
+    }
+    setAnchorEl(value) {
+        this.setState({
+            anchorEl: value,
+            open: !this.state.open,
+        });
+    }
+    handleClose() {
+        this.setAnchorEl(null);
+    }
+
     getDashboardButton() {
         return (
-            <div>
-                <Link to="/dashboard"><Button className="pill-btn"
-                    outline
-                    color="warning">Dashboard</Button></Link>
-                <Link to="/logout"><Button className="pill-btn"
-                    outline
-                    color="danger">Logout</Button></Link>
+            <div style={{ marginLeft: "auto" }}>
+                <IconButton
+                    aria-label="account of current user"
+                    aria-controls="Profile"
+                    aria-haspopup="true"
+                    aria-owns={this.state.open ? "Profile" : undefined}
+                    onClick={this.handleClick}
+                    color="inherit"
+                    iconStyle={{ width: 80, height: 80 }}
+                >
+                    <AccountCircle style={{ fontSize: "40px" }} />
+                </IconButton>
+                <Menu
+                    id="Profile"
+                    anchorEl={this.state.anchorEl}
+                    anchorOrigin={{
+                        vertical: "top",
+                        horizontal: "right",
+                    }}
+                    keepMounted
+                    transformOrigin={{
+                        vertical: "top",
+                        horizontal: "right",
+                    }}
+                    open={this.state.open}
+                    onClose={this.handleClose}
+                >
+                    <MenuItem
+                        onClick={this.handleClose}
+                        style={{ color: "black" }}
+                        component={Link}
+                        to="/dashboard"
+                    >
+                        Dashboard
+                    </MenuItem>
+                    <MenuItem
+                        onClick={this.handleClose}
+                        style={{ color: "black" }}
+                        component={Link}
+                        to="/profile"
+                    >
+                        Profile
+                    </MenuItem>
+                    <MenuItem
+                        onClick={this.handleClose}
+                        style={{ color: "black" }}
+                        component={Link}
+                        to="/logout"
+                    >
+                        Logout
+                    </MenuItem>
+                </Menu>
             </div>
         );
     }
     getNavLinks() {
         let keys = Object.keys(navlinks);
         let navLinks = [];
+
+        const icons = {
+            ABOUT: <InfoIcon />,
+            SCHEDULE: <EventIcon />,
+            SPONSORS: <ThumbIcon />,
+            PARTNERS: <GroupIcon />,
+            NUMBERS: <ChartIcon />,
+            FAQS: <ChatIcon />,
+        };
         for (let i = 0; i < keys.length - 1; i++) {
             navLinks.push(
-                <NavItem key={i}
-                    className={i === 0 && window.innerWidth < 768 ? "pt-3" : ""}>
-                    <NavLink
-                        className="primary-link"
-                        href={"/" + navlinks[keys[i]].url}
-                        onClick={this.toggleFalse}>
-                        {keys[i].toString()}
-                    </NavLink>
-                </NavItem>
+                <Tab
+                    style={{ color: "white", minWidth: 10, marginLeft: "25px" }}
+                    key={i}
+                    value={i}
+                    index={i}
+                    className={i === 0 && window.innerWidth < 768 ? "pt-3" : ""}
+                    component={Link}
+                    onClick={() => goToAnchor(navlinks[keys[i]].url, true)}
+                    to={navlinks[keys[i]].url}
+                    scrollButtons="auto"
+                    icon={icons[keys[i]]}
+                    label={keys[i].toString()}
+                />
             );
         }
-        return (
-            navLinks
-        );
+        return navLinks;
     }
-
+    handleLandingChange = (event, newValue) => {
+        this.setState({ landingValue: newValue });
+    };
     getLandingNav() {
         return (
-            <Collapse isOpen={this.state.isOpen}
-                navbar>
-                <Nav navbar
-                    className="mr-auto">
+            <React.Fragment>
+                <Tabs
+                    indicatorColor="white"
+                    style={{ marginLeft: "auto" }}
+                    value={this.state.landingValue}
+                    scrollButtons="off"
+                    variant="scrollable"
+                    onChange={this.handleLandingChange}
+                >
                     {this.getNavLinks()}
-                </Nav>
-                <Nav navbar
-                    className="ml-auto">
-                    { this.props.profile.isLoggedIn ?
-                        this.getDashboardButton() :
-                        this.getAuthButtons()}
-                </Nav>
-            </Collapse>
+                </Tabs>
+                {this.props.profile.isLoggedIn ? this.getDashboardButton() : this.getAuthButtons()}
+            </React.Fragment>
         );
     }
 
     getDashboardNav() {
         return (
-            <Collapse isOpen={this.state.isOpen}
-                navbar>
-                <Nav navbar
-                    className="mr-auto">
-                    <NavItem className={window.innerWidth < 768 ? "pt-3" : ""}>
-                        <NavLink onClick={this.toggleFalse}>
-                            <Link
-                                className="primary-link"
-                                to="/#home"> 
-                                HOME
-                            </Link>
-                        </NavLink>
-                    </NavItem>
-                    {defaults.dayof ? 
-                        <NavItem>
-                            <NavLink onClick={this.toggleFalse}>
-                                <Link 
-                                    className="primaryLink"
-                                    to="/live">
-                                    LIVE
-                                </Link>
-                            </NavLink> 
-                        </NavItem> : null}
-                </Nav>
-                <Nav navbar
-                    className="ml-auto">
-                    <NavItem>
-                        <Link to="/logout"><Button className="pill-btn"
-                            outline
-                            color="warning">Logout</Button></Link>
-                    </NavItem>
-                </Nav>
-            </Collapse>
+            <React.Fragment>
+                <Tabs indicatorColor="white"
+                    style={{ marginLeft: "auto" }}
+                    value={0}>
+                    <Tab
+                        style={{ color: "white", minWidth: 10, marginLeft: "25px" }}
+                        className={window.innerWidth < 768 ? "pt-3" : ""}
+                        component={Link}
+                        to={"/profile"}
+                        label="PROFILE"
+                    />
+                    <Tab
+                        style={{ color: "white", minWidth: 10, marginLeft: "25px" }}
+                        className={window.innerWidth < 768 ? "pt-3" : ""}
+                        component={Link}
+                        to={"/dashboard"}
+                        label="DASHBOARD"
+                    />
+                </Tabs>
+                {this.getDashboardButton()}
+            </React.Fragment>
         );
     }
 
     render() {
         let path = window.location.pathname;
-        let onDashboard = (path === "/dashboard");
-        let onLanding = (path === "/");
+        let onDashboard = path === "/dashboard" || path === "/profile";
+        let onLanding = path === "/";
         // Show no navbar on the projector page
-        if(path === "/projector") {
+        if (path === "/projector") {
             return null;
         }
         if (!defaults.freeze) {
-            return(
-                <Navbar id="navbar"
-                    style={{ width: "100%", zIndex: "20", backgroundColor: theme.secondary[1], opacity: this.state.shouldRender | !onLanding, pointerEvents: this.state.shouldRender | !onLanding ? "auto":"none", transition: !onLanding ? "" : "opacity 0.5s", boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.5)" }}
+            return (
+                <AppBar
+                    id="navbar"
+                    style={{
+                        width: "100%",
+                        zIndex: "20",
+                        backgroundColor: theme.secondary[1],
+                        opacity: this.state.shouldRender | !onLanding,
+                        pointerEvents: this.state.shouldRender | !onLanding ? "auto" : "none",
+                        transition: !onLanding ? "" : "opacity 0.5s",
+                        boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.5)",
+                    }}
                     fixed="top"
                     dark
                     expand="md"
-                    onBlur={this.toggleFalse}>
-                    <Container fluid
-                        style={{ paddingBottom: 10, paddingTop: 10, paddingLeft: 10 }}>
-                        <NavbarBrand>
-                            <div style={{ position: "relative", width: "100%" }}>
-                                <NavbarToggler onClick={this.toggle}
-                                    style={{ position: "fixed", right: 0, top: 2, marginRight: 10 }} />
-                            </div>
-                            <div style={{ display: "block", paddingRight: 0, marginTop: -50, marginBottom: -200, width: 200, marginRight: -20, marginLeft: -40, height: 225 }}>
-                                <LinkSwitcher 
+                    onBlur={this.toggleFalse}
+                >
+                    <Toolbar style={{ marginLeft: "0em" }}>
+                        <div>
+                            {/* <div style={{ position: "relative", width: "100%" }}>
+                                <NavbarToggler
+                                    onClick={this.toggle}
+                                    style={{ position: "fixed", right: 0, top: 2, marginRight: 10 }}
+                                />
+                            </div> */}
+                            <div
+                                style={{
+                                    display: "block",
+                                    paddingRight: 0,
+                                    marginTop: -50,
+                                    marginBottom: -200,
+                                    width: 200,
+                                    marginRight: -20,
+                                    marginLeft: -40,
+                                    height: 225,
+                                }}
+                            >
+                                <Link
                                     style={{ height: "10px !important" }}
                                     onClick={this.toggleFalse}
                                     root={onLanding.toString()}
                                     href="/#home"
-                                    to="/#home">
-                                    <Logo color="white"
+                                    to="/#home"
+                                >
+                                    <Logo
+                                        color="white"
                                         repeat={false}
                                         noCircle
-                                        src="/assets/icons/hru-text-dyn.svg" />
-                                </LinkSwitcher >
+                                        style={{ marginLeft: "10px" }}
+                                        src="/assets/icons/hru-text-dyn.svg"
+                                    />
+                                </Link>
                             </div>
-                        </NavbarBrand>
-                        { onDashboard ?
-                            this.getDashboardNav() :
-                            this.getLandingNav() }
-                    </Container>
-                </Navbar> );
+                        </div>
+                        {onDashboard ? this.getDashboardNav() : this.getLandingNav()}
+                    </Toolbar>
+                </AppBar>
+            );
         } else {
             return null;
         }

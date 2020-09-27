@@ -1,5 +1,6 @@
 import React from "react";
-import { Alert, Container, Col, Form } from "reactstrap";
+import { Alert } from "reactstrap";
+import { Grid } from "@material-ui/core";
 import { RingLoader } from "react-spinners";
 import { theme } from "../Defaults.js";
 import PropTypes from "prop-types";
@@ -17,30 +18,30 @@ Props:
 - title: the form title
 */
 const AuthForm = ({ children, errors, label, loading, isMobile, onSubmit, title }) => (
-    <Container
-        fluid
+    <Grid
+        container
+        justify="center"
+        alignItems="center"
         style={{ width: "100%", minHeight: "100vh", textAlign: "center" }}
         className="d-flex align-items-center">
-        { isMobile ? null : <Col /> }
-        <Col
-            xs={isMobile ? 12 : 3}
+        { isMobile ? null : <Grid /> }
+        <Grid
+            item 
+            xs={isMobile ? 10 : 3}
             style={{ display: "block", zIndex: 3, backgroundColor: theme.secondary[1], color: "white", boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.5)" }}>
-            <div style={{ position: "absolute", left: 0, top: 0, height: "50%", backgroundColor: theme.accent[0], width: 10 }}></div>
-            <div style={{ position: "absolute", left: 0, top: "50%", height: "30%", backgroundColor: theme.primary[1], width: 10 }}></div>
-            <div style={{ position: "absolute", left: 0, top: "80%", height: "20%", backgroundColor: theme.primary[0], width: 10 }}></div>
             <div style={{ padding: 30 }}>
                 <h1 className="display-4 theme-font">{ title }</h1>
                 <p className="lead">{loading ? label: ""}</p>
-                <Form onSubmit={onSubmit}>
+                <form onSubmit={onSubmit}>
                     {renderErrors(errors)}
                     <div>
                         {loading ? renderSpinner(): children}
                     </div>
-                </Form>
+                </form>
             </div>
-        </Col>
-        { isMobile ? null : <Col /> }
-    </Container>
+        </Grid>
+        { isMobile ? null : <Grid /> }
+    </Grid>
 );
 
 AuthForm.propTypes = {
