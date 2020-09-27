@@ -13,8 +13,8 @@ import {
     ProjectorPage,
     E404, 
     ProfilePage} from "./components/Pages"; // Router Pages
-import { Snackbar } from "@material-ui/core" // Alert messages
-import { Alert } from "@material-ui/lab" // Alert messages
+import { Snackbar } from "@material-ui/core"; // Alert messages
+import { Alert } from "@material-ui/lab"; // Alert messages
 import Background from "./Background";
 import NavBar from "./NavBar";
 import { defaults } from "./Defaults"; // Get a handle to the default application settings
@@ -179,7 +179,8 @@ class App extends Component {
                 {/* BrowserRouter wil allow us to switch between the different pages in our SPA based on the URL routing */}
                 <div>     
                     {/* Application alert messages go here */}               
-                    <Snackbar open={this.state.alertProps.open} autoHideDuration={this.state.alertProps.duration}>
+                    <Snackbar open={this.state.alertProps.open}
+                        autoHideDuration={this.state.alertProps.duration}>
                         <Alert onClose={() => {
                             this.setState({
                                 alertProps: {
@@ -189,7 +190,9 @@ class App extends Component {
                                     open: false
                                 }
                             });
-                        }} severity={this.state.alertProps.severity} variant="filled">
+                        }}
+                        severity={this.state.alertProps.severity}
+                        variant="filled">
                             {this.state.alertProps.message}
                         </Alert>
                     </Snackbar>

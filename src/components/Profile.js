@@ -331,7 +331,7 @@ class Profile {
                         if (body.statusCode === 200) {
                             callback(null, body.body[0]);
                             if (email === this._email) {
-                                this._registration_status = body.body[0].registration_status
+                                this._registration_status = body.body[0].registration_status;
                             }
                         } else {
                             callback(

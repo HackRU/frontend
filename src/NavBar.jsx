@@ -9,13 +9,6 @@ import "./NavBar.css";
 import Logo from "./components/Landing/Sections/Logo.jsx";
 import { goToAnchor } from "react-scrollable-anchor";
 
-import EventIcon from "@material-ui/icons/EventOutlined";
-import GroupIcon from "@material-ui/icons/GroupOutlined";
-import ChartIcon from "@material-ui/icons/InsertChartOutlined";
-import InfoIcon from "@material-ui/icons/InfoOutlined";
-import ThumbIcon from "@material-ui/icons/ThumbUpOutlined";
-import ChatIcon from "@material-ui/icons/FeedbackOutlined";
-
 const LinkSwitcher = (props) => {
     return props.root ? <a {...props}>{props.children}</a> : <Link {...props} />;
 };
@@ -89,24 +82,24 @@ class NavBar extends Component {
         }
         let currentHash = window.location.href.substring(window.location.href.indexOf("#") + 1);
         switch (currentHash) {
-            case "home":
-                this.setState({ landingValue: 0 });
-                break;
-            case "about":
-                this.setState({ landingValue: 1 });
-                break;
-            case "schedule":
-                this.setState({ landingValue: 2 });
-                break;
-            case "sponsors":
-                this.setState({ landingValue: 3 });
-                break;
-            case "partners":
-                this.setState({ landingValue: 4 });
-                break;
-            case "numbers":
-                this.setState({ landingValue: 5 });
-                break;
+        case "home":
+            this.setState({ landingValue: 0 });
+            break;
+        case "about":
+            this.setState({ landingValue: 1 });
+            break;
+        case "schedule":
+            this.setState({ landingValue: 2 });
+            break;
+        case "sponsors":
+            this.setState({ landingValue: 3 });
+            break;
+        case "partners":
+            this.setState({ landingValue: 4 });
+            break;
+        case "numbers":
+            this.setState({ landingValue: 5 });
+            break;
         }
     }
     toggleFalse() {
@@ -206,14 +199,6 @@ class NavBar extends Component {
         let keys = Object.keys(navlinks);
         let navLinks = [];
 
-        const icons = {
-            ABOUT: <InfoIcon />,
-            SCHEDULE: <EventIcon />,
-            SPONSORS: <ThumbIcon />,
-            PARTNERS: <GroupIcon />,
-            NUMBERS: <ChartIcon />,
-            FAQS: <ChatIcon />
-        };
         for (let i = 0; i < keys.length - 1; i++) {
             navLinks.push(
                 <Tab
