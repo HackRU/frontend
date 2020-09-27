@@ -30,7 +30,7 @@ class Education extends Component {
             message: null
         });
         request.get("https://raw.githubusercontent.com/MLH/mlh-policies/master/schools.csv", {}, (_err, _resp, body) => {
-            let schoolList = body.split("\n").map(item => {
+            let schoolList = body.split("\r\n").map(item => {
                 item = item.startsWith("\"") ? item.substring(1, item.length - 2) : item;
                 return { value: item, label: item };
             });
