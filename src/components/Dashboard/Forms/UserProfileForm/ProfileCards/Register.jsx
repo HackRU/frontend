@@ -109,8 +109,8 @@ class Register extends Component {
             this.setState({
                 loading: false,
                 profileMSG: { color: "danger", value: "An error occured!" },
-                message: "Please make sure all required fields are filled out."
             });
+            this.setState({ message: null }, () => { this.setState({ message: "Please make sure all required fields are filled out." }); });
         }
 
         this.setState({

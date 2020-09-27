@@ -40,10 +40,12 @@ class UserProfileForm extends Component {
                 console.log(err);
                 if( err) {
                     this.setState({
-                        message: "Invalid Slack ID",
                         error: true,
                         loading: false,
                         profileMSG: { color: "danger", value: err } 
+                    });
+                    this.setState({ message: null }, () => {
+                        this.setState({ message: "Invalid Slack ID" });
                     });
                 } else {
                     this.setState({
