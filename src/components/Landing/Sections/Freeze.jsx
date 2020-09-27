@@ -60,13 +60,15 @@ class Freeze extends Component {
                             <p className="text-center">Due to Rutgers University's recent restrictions in concern of COVID-19, the HackRU team has made the decision to cancel HackRU Spring 2020 for the safety of everyone involved. We wish it didn’t have to be this way, but the health and well-being of all our hackers, volunteers, organizers, and sponsors is our first priority. We hope that you stay in touch by connecting with us on social media, and we promise to come back stronger at our next HackRU in the fall! Stay safe and healthy!</p>    
                             <br></br>
                             <Grid container>
-                                <Grid item xs={6}>
+                                <Grid item
+                                    xs={6}>
                                     <i><p style={{ marginBottom: 3, color: "rgba(255, 255, 255, 0.5)" }}>Stay in the know!</p></i>
                                     <a href="https://hackru1.typeform.com/to/OEtQEO"><Button color="light"
                                         style={{ border: "none", color: "rgba(255, 255, 255, 1)" }}
                                         outline>Join Mailing List</Button></a>
                                 </Grid>
-                                <Grid item xs={6}>
+                                <Grid item
+                                    xs={6}>
                                     <i><p style={{ marginBottom: 3, color: "rgba(255, 255, 255, 0.5)" }}>Past Submissions</p></i>
                                     <a href="https://hackru-s19.devpost.com"><Button color="light"
                                         style={{ border: "none", marginRight: 10, color: "rgba(255, 255, 255, 1)" }}

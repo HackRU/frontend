@@ -9,6 +9,13 @@ import "./NavBar.css";
 import Logo from "./components/Landing/Sections/Logo.jsx";
 import { goToAnchor } from "react-scrollable-anchor";
 
+import EventIcon from "@material-ui/icons/EventOutlined";
+import GroupIcon from "@material-ui/icons/GroupOutlined";
+import ChartIcon from "@material-ui/icons/InsertChartOutlined";
+import InfoIcon from "@material-ui/icons/InfoOutlined";
+import ThumbIcon from "@material-ui/icons/ThumbUpOutlined";
+import ChatIcon from "@material-ui/icons/FeedbackOutlined";
+
 const LinkSwitcher = (props) => {
     return props.root ? <a {...props}>{props.children}</a> : <Link {...props} />;
 };
@@ -32,6 +39,7 @@ class NavBar extends Component {
             badgeHeight: 0,
             anchorEl: null,
             open: false,
+            landingValue: 0,
         };
 
         this.setAnchorEl = this.setAnchorEl.bind(this);
@@ -79,6 +87,27 @@ class NavBar extends Component {
                 shouldRender: 1,
             });
         }
+        let currentHash = window.location.href.substring(window.location.href.indexOf("#") + 1);
+        switch (currentHash) {
+        case "home":
+            this.setState({ landingValue: 0 });
+            break;
+        case "about":
+            this.setState({ landingValue: 1 });
+            break;
+        case "schedule":
+            this.setState({ landingValue: 2 });
+            break;
+        case "sponsors":
+            this.setState({ landingValue: 3 });
+            break;
+        case "partners":
+            this.setState({ landingValue: 4 });
+            break;
+        case "numbers":
+            this.setState({ landingValue: 5 });
+            break;
+        }
     }
     toggleFalse() {
         if (window.innerWidth < 768) {
@@ -96,15 +125,14 @@ class NavBar extends Component {
         return (
             <div style={{ marginLeft: "auto" }}>
                 <Link to="/login">
-                    <Button outline 
-                        color="warning" 
+                    <Button outline
+                        color="warning"
                         className="pill-btn">
                         Login
                     </Button>
                 </Link>{" "}
                 <Link to="/signup">
-                    <Button 
-                        color="success" 
+                    <Button color="success"
                         className="pill-btn">
                         Register
                     </Button>
@@ -126,7 +154,7 @@ class NavBar extends Component {
     }
 
     getDashboardButton() {
-        return (    
+        return (
             <div style={{ marginLeft: "auto" }}>
                 <IconButton
                     aria-label="account of current user"
@@ -180,39 +208,53 @@ class NavBar extends Component {
                     </MenuItem>
                 </Menu>
             </div>
-                    
-    
-
         );
     }
     getNavLinks() {
         let keys = Object.keys(navlinks);
         let navLinks = [];
+
+        const icons = {
+            ABOUT: <InfoIcon />,
+            SCHEDULE: <EventIcon />,
+            SPONSORS: <ThumbIcon />,
+            PARTNERS: <GroupIcon />,
+            NUMBERS: <ChartIcon />,
+            FAQS: <ChatIcon />,
+        };
         for (let i = 0; i < keys.length - 1; i++) {
             navLinks.push(
                 <Tab
                     style={{ color: "white", minWidth: 10, marginLeft: "25px" }}
                     key={i}
+                    value={i}
+                    index={i}
                     className={i === 0 && window.innerWidth < 768 ? "pt-3" : ""}
                     component={Link}
                     onClick={() => goToAnchor(navlinks[keys[i]].url, true)}
                     to={navlinks[keys[i]].url}
                     scrollButtons="auto"
+                    icon={icons[keys[i]]}
                     label={keys[i].toString()}
                 />
             );
         }
         return navLinks;
     }
-
+    handleLandingChange = (event, newValue) => {
+        this.setState({ landingValue: newValue });
+    };
     getLandingNav() {
         return (
             <React.Fragment>
-
-                <Tabs indicatorColor="white" 
-                    style={{ marginLeft: "auto" }} 
-                    value={0}>
-
+                <Tabs
+                    indicatorColor="white"
+                    style={{ marginLeft: "auto" }}
+                    value={this.state.landingValue}
+                    scrollButtons="off"
+                    variant="scrollable"
+                    onChange={this.handleLandingChange}
+                >
                     {this.getNavLinks()}
                 </Tabs>
                 {this.props.profile.isLoggedIn ? this.getDashboardButton() : this.getAuthButtons()}
@@ -221,10 +263,10 @@ class NavBar extends Component {
     }
 
     getDashboardNav() {
-        return ( 
+        return (
             <React.Fragment>
-                <Tabs indicatorColor="white" 
-                    style={{ marginLeft: "auto" }} 
+                <Tabs indicatorColor="white"
+                    style={{ marginLeft: "auto" }}
                     value={0}>
                     <Tab
                         style={{ color: "white", minWidth: 10, marginLeft: "25px" }}
@@ -238,11 +280,12 @@ class NavBar extends Component {
                         className={window.innerWidth < 768 ? "pt-3" : ""}
                         component={Link}
                         to={"/dashboard"}
-                        label="DASHBOARD"  
+                        label="DASHBOARD"
                     />
                 </Tabs>
                 {this.getDashboardButton()}
-            </React.Fragment> );
+            </React.Fragment>
+        );
     }
 
     render() {

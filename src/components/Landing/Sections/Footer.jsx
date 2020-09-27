@@ -31,10 +31,12 @@ function Footer() {
                         justify="space-evenly"
                         direction="row" 
                         style={{ marginRight: 0, textAlign: "center" }}>
-                        <Grid item lg>
+                        <Grid item
+                            lg>
                             {matchesSM ? codeOfConduct : ""}
                         </Grid>
-                        <Grid item lg>
+                        <Grid item
+                            lg>
                             <a href="mailto:info@hackru.org"
                                 className="social-links"
                                 target="_blank"
@@ -62,7 +64,8 @@ function Footer() {
                                     name="twitter-square" /></a>
 
                         </Grid>
-                        <Grid item lg>
+                        <Grid item
+                            lg>
                             {matchesSM ? "" : codeOfConduct}
 
                             <a href="https://mlh.io/"
