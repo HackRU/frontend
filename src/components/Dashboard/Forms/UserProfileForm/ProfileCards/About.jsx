@@ -26,7 +26,7 @@ class About extends Component {
     }
 
     updateUser(user) {
-        console.log(user);
+        // console.log(user);
         this.setState({
             user
         });

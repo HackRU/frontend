@@ -13,80 +13,114 @@ class Register extends Component {
     }
     UNSAFE_componentWillMount() {
         this.setState({
-            
+            edit: (this.props.user.registration_status === "unregistered"),
             user: this.props.user,
             checkedState1: (this.props.user.registration_status !== "unregistered"),
             checkedState2: (this.props.user.registration_status !== "unregistered"),
             message: null
         });
     }
+
     updateUser(user) {
-        console.log(user);
+        // console.log(user);
         this.setState({
             user
         });
     }
 
-    checkStatus(user) {
+    checkStatus = async (user) => {
         console.log(user);
-        this.props.profile.DoesWaiverExist().then((success) => {
-            if (success) {
-                if (user.hackathon_count !== "" && user.school !== "") {
-                    return true;
-                } else {
-                    return false;
-                }
+
+        let waiver_promise = new Promise( (resolve) => {
+            resolve(this.props.profile.DoesWaiverExist());
+        });
+
+        // console.log("waiting for waiver_promise");
+        let check_waiver = await waiver_promise;
+       
+        if (check_waiver) {
+            if (user.hackathon_count !== "" && user.school !== "") {
+                // console.log("Succeeded all checks!");
+                return true;
             } else {
-                console.log("failed waiver");
+                // console.log("Failed about and education check");
                 return false;
             }
-        });
-    }
+        } else {
+            // console.log("failed waiver");
+            return false;
+        }
         
+    }
+    
 
-    submitUser = (user) => {
+    submitUser = async () => {
         this.setState({
             profileMSG: null,
             loading: true,
-            user,
-        }, () => {
+        });
 
+        let promise = new Promise((resolve, reject) => {
             this.props.profile.Get((msg, data) => {
                 if (msg) {
-                    console.error(msg);
-                } else {
-                    if (data) {
-                        delete data.auth;
-                        if (this.checkStatus(data)){
-                            console.log("All fields valid");
-                            data.registration_status = "registered";
-                            this.updateUser(data);
-                            this.props.profile.Set(this.state.user, (err) => {
-                                this.setState({
-                                    loading: false,
-                                    profileMSG: err ?
-                                        { color: "danger", value: err } :
-                                        { color: "success", value: "Profile Updated!" }
-                                });
-                            });
-
-                        } else {
-                            console.error("Not all fields valid!");
-                            this.setState({
-                                loading: false,
-                                profileMSG: { color: "danger", value: "An error occured!" },
-                                message: "Please make sure all required fields are filled out."
-                            });
-                        }
-                        
-                    }
+                    reject(msg);
+                    console.log(msg);
+                }
+                else {
+                    resolve(data);
                 }
             });
+        });
+
+        let got_user = await promise;
+        // console.log(got_user);
+
+        let status_promise = new Promise((resolve) => {
+            resolve(this.checkStatus(got_user));
+        });
+
+        
+        let validated = await status_promise;
+        // console.log(validated);
+
+        if (validated) {
+            console.log("All fields valid");
+            got_user.registration_status = "registered";
+            this.updateUser(got_user);
+            let update_promise = new Promise((resolve) => {
+                this.props.profile.Set(this.state.user, (err) => {resolve(err);} );
+            });
+            let error = await update_promise;
+            if (error) {
+                this.setState({
+                    message: "An error occured!"
+                });
+            } else {
+                // console.log("User successfully registered");
+                this.setState({
+                    edit: false,
+                    loading: false,
+                    profileMSG: { color: "success", value: "Profile Updated!" }
+                });
+            }
+
+        } else {
+            console.log("Not all fields valid!");
+            this.setState({
+                loading: false,
+                profileMSG: { color: "danger", value: "An error occured!" },
+                message: "Please make sure all required fields are filled out."
+            });
+        }
+
+        this.setState({
+            profileMSG: null,
+            loading: false,
         });
     }
 
     render() {
-        let user = this.state.user;
+        // let user = this.state.user;
         let mlhnotices = [];
         if (this.state.checkedState1) {
             mlhnotices.push("mlh1");
@@ -99,11 +133,11 @@ class Register extends Component {
         if (this.state.message) {
             message = (<UncontrolledAlert color="danger">{this.state.message}</UncontrolledAlert>);
         }
-        if (this.state.user.registration_status === "unregistered") {
+        if (this.state.edit) {
             return (
                 <AvForm model={model}
                     onValidSubmit={() => {
-                        this.submitUser(this.state.user);
+                        this.submitUser();
                     }}
                     onInvalidSubmit={() => {
                         this.setState({ message: null }, () => { this.setState({ message: "Some fields are invalid." }); });
@@ -124,6 +158,13 @@ class Register extends Component {
                             label={<p>I authorize you to share my application/registration information for event administration, ranking, MLH administration, pre- and post-event informational e-mails, and occasional messages about hackathons in-line with the <a href="https://mlh.io/privacy">MLH Privacy Policy</a>. Further, I agree to the terms of both the <a href="https://github.com/MLH/mlh-policies/blob/master/prize-terms-and-conditions/contest-terms.md">MLH Contest Terms and Conditions</a> and the <a href="https://mlh.io/privacy">MLH Privacy Policy</a>.</p>}
                             value={"mlh2"} />
                     </AvCheckboxGroup>
+                    <h4>Registration</h4>
+                    <p>After filling out all required parts in About and Education, please make sure you have uploaded a filled and signed{" "}
+                        <a style={{textDecoration: "underline"}}
+                            href="/resources/waiver.pdf" >
+                            Waiver
+                        </a>{" "}
+                    form.</p>
                     {message}
                     <div style={{ width: "100%" }}
                         align="right">
@@ -141,8 +182,14 @@ class Register extends Component {
                 <div>
                     <h4>MLH Notices</h4>
                     <FormGroup>
-                        {user.registration_status === "registered" ? <p style={{ ...pStyle, height: "100%" }}>I have read and agree to the <a href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf">MLH Code of Conduct</a> and I authorize you to share my application/registration information for event administration, ranking, MLH administration, pre- and post-event informational e-mails, and occasional messages about hackathons in-line with the <a href="https://mlh.io/privacy">MLH Privacy Policy</a>. Further, I agree to the terms of both the <a href="https://github.com/MLH/mlh-policies/blob/master/prize-terms-and-conditions/contest-terms.md">MLH Contest Terms and Conditions</a> and the <a href="https://mlh.io/privacy">MLH Privacy Policy</a>.</p>
-                            : <p style={{...pStyle, color: theme.accent[0] }}>You have not yet agreed to MLH policies. Please fill out your user profile.</p>}
+                        <p style={{ ...pStyle, height: "100%" }}>
+                            I have read and agree to the 
+                            <a href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf">MLH Code of Conduct</a> 
+                            and I authorize you to share my application/registration information for event administration, ranking, MLH administration, pre- and post-event informational e-mails, and occasional messages about hackathons in-line with the 
+                            <a href="https://mlh.io/privacy">MLH Privacy Policy</a>. Further, I agree to the terms of both the <a href="https://github.com/MLH/mlh-policies/blob/master/prize-terms-and-conditions/contest-terms.md">MLH Contest Terms and Conditions</a> 
+                            and the 
+                            <a href="https://mlh.io/privacy">MLH Privacy Policy</a>
+                            .</p>
                     </FormGroup>
                     <div style={{ width: "100%" }}
                         align="right">
