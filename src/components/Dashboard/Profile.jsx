@@ -80,8 +80,17 @@ const Profile = (props) => {
         <Container maxWidth={false} 
             style={{paddingTop: 90 }}>
             <Grid container>
-                <Grid item 
-                    xs>
+                <Grid xs={12}>
+                    <Section title="Register"
+                        subtitle="Introduce yourself, don't be shy!"
+                        isOpen={true} /* replaced this.state.openDetails to force true*/>
+                        <Register mobile={mobile}
+                            user={set_user}
+                            profile={props.profile}
+                        />
+                    </Section>
+                </Grid>
+                <Grid item xs={12} sm={12} md={6}>
                     <Section title="About"
                         subtitle="Introduce yourself, don't be shy!"
                         isOpen={true} /* replaced this.state.openDetails to force true*/>
@@ -98,10 +107,8 @@ const Profile = (props) => {
                             profile={props.profile}
                         />
                     </Section>
-                    
                 </Grid>
-                <Grid item 
-                    xs>
+                <Grid item xs={12} sm={12} md={6}>
                     <Section title="A Few Questions"
                         subtitle="Introduce yourself, don't be shy!"
                         isOpen={true} /* replaced this.state.openDetails to force true*/>
@@ -110,34 +117,18 @@ const Profile = (props) => {
                             profile={props.profile}
                         />
                     </Section>
-                    <Grid item 
-                        xs>
-                        <Section title="Documents"
-                            subtitle="Introduce yourself, don't be shy!"
-                            isOpen={true} /* replaced this.state.openDetails to force true*/>
-                            <Documents mobile={mobile}
-                                user={set_user}
-                                profile={props.profile}
-                            />
-                        </Section>
-                    </Grid>
-                    <Grid item 
-                        xs>
-                        <Section title="Communications"
-                            subtitle="Introduce yourself, don't be shy!"
-                            isOpen={true} /* replaced this.state.openDetails to force true*/>
-                            <Communications mobile={mobile}
-                                user={set_user}
-                                profile={props.profile}
-                            />
-                        </Section>
-                    </Grid>
-                </Grid>
-                <Grid xs={12}>
-                    <Section title="Register"
+                    <Section title="Documents"
                         subtitle="Introduce yourself, don't be shy!"
                         isOpen={true} /* replaced this.state.openDetails to force true*/>
-                        <Register mobile={mobile}
+                        <Documents mobile={mobile}
+                            user={set_user}
+                            profile={props.profile}
+                        />
+                    </Section>
+                    <Section title="Communications"
+                        subtitle="Introduce yourself, don't be shy!"
+                        isOpen={true} /* replaced this.state.openDetails to force true*/>
+                        <Communications mobile={mobile}
                             user={set_user}
                             profile={props.profile}
                         />
