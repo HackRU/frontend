@@ -8,6 +8,7 @@ import Education from "./Forms/UserProfileForm/ProfileCards/Education";
 import Documents from "./Forms/UserProfileForm/ProfileCards/Documents";
 import Questions from "./Forms/UserProfileForm/ProfileCards/Questions";
 import Register from "./Forms/UserProfileForm/ProfileCards/Register";
+import Swag from "./Forms/UserProfileForm/ProfileCards/Swag";
 // import Short from "./Forms/UserProfileForm/ProfileCards/ShortProfileForm";
 import Communications from "./Forms/UserProfileForm/ProfileCards/Communications";
 import { ProfileType } from "../Profile";
@@ -135,6 +136,14 @@ const Profile = (props) => {
                         subtitle="Introduce yourself, don't be shy!"
                         isOpen={true} /* replaced this.state.openDetails to force true*/>
                         <Communications mobile={mobile}
+                            user={set_user}
+                            profile={props.profile}
+                        />
+                    </Section>
+                    <Section title="Swag"
+                        subtitle="Introduce yourself, don't be shy!"
+                        isOpen={true} /* replaced this.state.openDetails to force true*/>
+                        <Swag
                             user={set_user}
                             profile={props.profile}
                         />
