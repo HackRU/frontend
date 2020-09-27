@@ -61,8 +61,8 @@ class LogoWrapper extends Component {
                     <div style={{ backgroundColor: "white", color: "black", boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.5)" }}>
                         <h1 className="display-4 theme-font"
                             style={{ padding: 50, paddingBottom: 0 }}>{this.props.title}</h1>
-                            <p className="lead theme-font"
-                                style={{ padding: 50 }}>Nothing yet, check again later!</p>
+                        <p className="lead theme-font"
+                            style={{ padding: 50 }}>Nothing yet, check again later!</p>
                     </div>     
                 </div>
             );
