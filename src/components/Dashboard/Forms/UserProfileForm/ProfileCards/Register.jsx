@@ -146,7 +146,7 @@ class Register extends Component {
                         className="custom-av-checkbox"
                         label={<h4>MLH Notices</h4>}
                         required
-                        validate={{ required: { value: true, errorMessag: "Plase review these MLH guidelienes" }, min: { value: 2, errorMessage: "You must select both of these checkboxes" } }}>
+                        validate={{ required: { value: true, errorMessage: "Please review these MLH guidelines" }, min: { value: 2, errorMessage: "You must select both of these checkboxes" } }}>
                         <AvCheckbox name="mlh1"
                             customInput
                             onChange={() => { this.setState({ checkedState1: !this.state.checkedState1 }); }}
@@ -155,7 +155,7 @@ class Register extends Component {
                         <AvCheckbox name="mlh2"
                             customInput
                             onChange={() => { this.setState({ checkedState2: !this.state.checkedState2 }); }}
-                            label={<p>I authorize you to share my application/registration information for event administration, ranking, MLH administration, pre- and post-event informational e-mails, and occasional messages about hackathons in-line with the <a href="https://mlh.io/privacy">MLH Privacy Policy</a>. Further, I agree to the terms of both the <a href="https://github.com/MLH/mlh-policies/blob/master/prize-terms-and-conditions/contest-terms.md">MLH Contest Terms and Conditions</a> and the <a href="https://mlh.io/privacy">MLH Privacy Policy</a>.</p>}
+                            label={<p>I authorize you to share my application/registration information for event administration, ranking, MLH administration, pre- and post-event informational e-mails, and occasional messages about hackathons in-line with the<a href="https://mlh.io/privacy">MLH Privacy Policy</a>. Further, I agree to the terms of both the <a href="https://github.com/MLH/mlh-policies/blob/master/prize-terms-and-conditions/contest-terms.md">MLH Contest Terms and Conditions</a> and the <a href="https://mlh.io/privacy">MLH Privacy Policy</a>.</p>}
                             value={"mlh2"} />
                     </AvCheckboxGroup>
                     <h4>Registration</h4>
@@ -183,13 +183,7 @@ class Register extends Component {
                     <h4>MLH Notices</h4>
                     <FormGroup>
                         <p style={{ ...pStyle, height: "100%" }}>
-                            I have read and agree to the 
-                            <a href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf">MLH Code of Conduct</a> 
-                            and I authorize you to share my application/registration information for event administration, ranking, MLH administration, pre- and post-event informational e-mails, and occasional messages about hackathons in-line with the 
-                            <a href="https://mlh.io/privacy">MLH Privacy Policy</a>. Further, I agree to the terms of both the <a href="https://github.com/MLH/mlh-policies/blob/master/prize-terms-and-conditions/contest-terms.md">MLH Contest Terms and Conditions</a> 
-                            and the 
-                            <a href="https://mlh.io/privacy">MLH Privacy Policy</a>
-                            .</p>
+                            I have read and agree to the <a href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf">MLH Code of Conduct</a> and I authorize you to share my application/registration information for event administration, ranking, MLH administration, pre- and post-event informational e-mails, and occasional messages about hackathons in-line with the <a href="https://mlh.io/privacy">MLH Privacy Policy</a>. Further, I agree to the terms of both the <a href="https://github.com/MLH/mlh-policies/blob/master/prize-terms-and-conditions/contest-terms.md">MLH Contest Terms and Conditions</a> and the <a href="https://mlh.io/privacy">MLH Privacy Policy</a>.</p>
                     </FormGroup>
                     <div style={{ width: "100%" }}
                         align="right">

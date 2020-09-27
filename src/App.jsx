@@ -13,6 +13,8 @@ import {
     ProjectorPage,
     E404, 
     ProfilePage} from "./components/Pages"; // Router Pages
+import { Snackbar } from "@material-ui/core" // Alert messages
+import { Alert } from "@material-ui/lab" // Alert messages
 import Background from "./Background";
 import NavBar from "./NavBar";
 import { defaults } from "./Defaults"; // Get a handle to the default application settings
@@ -37,6 +39,7 @@ class App extends Component {
         this.clearMagic = this.clearMagic.bind(this);
         this.getComponentProps = this.getComponentProps.bind(this);
         this.dismissLoggedOutAlert = this.dismissLoggedOutAlert.bind(this);
+        this.showAlert = this.showAlert.bind(this);
         window.addEventListener("resize", this._event_onResize);
     }
     /**
@@ -56,7 +59,13 @@ class App extends Component {
         this.setState({
             profile: prof,
             loggedout: false,
-            magic: prof.GetMagic() // In case there is already a magic link, we need to load it in.
+            magic: prof.GetMagic(), // In case there is already a magic link, we need to load it in.
+            alertProps: {
+                severity: "error",
+                duration: 6000,
+                message: "",
+                open: false
+            }
         });
     }
     /**
@@ -83,6 +92,19 @@ class App extends Component {
         });
     }
     /**
+     * MSG Alerts
+     */
+    showAlert(severity, message, duration) {
+        this.setState({
+            alertProps: {
+                severity,
+                message,
+                duration,
+                open: true
+            }
+        });
+    }
+    /**
      * Returns a JSON object of the standard properties that we will send to each component
      */
     getComponentProps() {
@@ -93,7 +115,8 @@ class App extends Component {
             isMobile: this.state.isMobile,
             profile: this.state.profile,
             loggedout: this.state.loggedout,
-            dismissAlert: this.dismissLoggedOutAlert
+            dismissAlert: this.dismissLoggedOutAlert,
+            showAlert: this.showAlert
         };
     }
     /**
@@ -154,7 +177,22 @@ class App extends Component {
         return (
             <BrowserRouter style={{ width: "100%" }}>
                 {/* BrowserRouter wil allow us to switch between the different pages in our SPA based on the URL routing */}
-                <div>
+                <div>     
+                    {/* Application alert messages go here */}               
+                    <Snackbar open={this.state.alertProps.open} autoHideDuration={this.state.alertProps.duration}>
+                        <Alert onClose={() => {
+                            this.setState({
+                                alertProps: {
+                                    duration: 6000,
+                                    severity: "error",
+                                    message: "",
+                                    open: false
+                                }
+                            });
+                        }} severity={this.state.alertProps.severity} variant="filled">
+                            {this.state.alertProps.message}
+                        </Alert>
+                    </Snackbar>
                     {/* We need to show this on our webpage at all times, so we're just going to dump it in the root */}
                     <Background />
                     <NavBar profile={this.state.profile}/>

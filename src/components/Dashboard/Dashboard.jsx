@@ -80,6 +80,7 @@ class Dashboard extends Component {
             return (<Loading text={this.state.loading} />);
         }
         if (this.state.user.registration_status === "unregistered") {
+            this.props.showAlert("warning", "Please fill out profile before accessing dashboard", 60)
             return (<Redirect to="/profile"/>);
         }
         let user = this.state.user;
