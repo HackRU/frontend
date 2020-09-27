@@ -62,7 +62,7 @@ class LogoWrapper extends Component {
                         <h1 className="display-4 theme-font"
                             style={{ padding: 50, paddingBottom: 0 }}>{this.props.title}</h1>
                         <p className="lead theme-font"
-                            style={{ padding: 50 }}>Nothing yet, check again later!</p>
+                            style={{ padding: 50 }}>To be announced, check again later!</p>
                     </div>     
                 </div>
             );
