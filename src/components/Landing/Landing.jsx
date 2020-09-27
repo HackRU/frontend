@@ -68,7 +68,8 @@ class LandingPage extends Component {
                     style={{ }}>
                     <ScrollableAnchor id="home">
                         <div>
-                            <Grid container className="section">
+                            <Grid container
+                                className="section">
                                 { !defaults.freeze ?
                                     <Home isMobile={this.props.isMobile}
                                         profile={this.props.profile}

@@ -81,19 +81,25 @@ class FAQs extends Component {
     render() {
         // let cols = (this.props.isMobile) ? (12) : (6);
         return (
-            <Card backgroundColor={theme.secondary[1]} sideBar={theme.primary[1]} style={{ marginTop: 25 }}>
+            <Card backgroundColor={theme.secondary[1]}
+                sideBar={theme.primary[1]}
+                style={{ marginTop: 25 }}>
                 <div style={{ position: "absolute", left: "calc(15px)", top: 0, height: "calc(100%)", backgroundColor: theme.accent[1], width: 10 }}></div>
                 <h1 style={{ marginBottom: 25 }}
                     className="display-4 theme-font">FAQs</h1>
-                <Container fluid maxWidth={false}>
-                    <Grid container spacing={3}>
-                        <Grid item xs>
+                <Container fluid
+                    maxWidth={false}>
+                    <Grid container
+                        spacing={3}>
+                        <Grid item
+                            xs>
                             {Object.keys(FAQTextOne).map((key, index) =>
                                 <FaqsCollapse key={index + "1"}
                                     cat={FAQTextOne[key]} />
                             )}
                         </Grid>
-                        <Grid item xs>
+                        <Grid item
+                            xs>
                             {Object.keys(FAQTextTwo).map((key, index) =>
                                 <FaqsCollapse key={index + "2"}
                                     cat={FAQTextTwo[key]} />
