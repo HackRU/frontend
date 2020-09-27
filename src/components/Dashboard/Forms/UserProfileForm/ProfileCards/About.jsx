@@ -99,13 +99,13 @@ class About extends Component {
                     <FormGroup row>
                         <Col xs={(mobile) ? 12 : 4}>
                             <AvField name="number"
-                                label="Number"
+                                label="Number *"
                                 type="text"
                                 placeholder="(***) ***-****"
                                 value={user.phone_number}
                                 onChange={(e) => { user.phone_number = e.target.value; this.updateUser(user); }}
                                 validate={{
-                                    required: { value: false },
+                                    required: { value: true,  errorMessage: "Invalid number"},
                                     tel: { value: true, errorMessage: "Invalid number" } }} />
                         </Col>
                         <Col xs={(mobile) ? 12 : 4}>
