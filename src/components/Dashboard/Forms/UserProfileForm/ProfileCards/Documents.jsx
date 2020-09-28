@@ -75,7 +75,9 @@ class UserProfileForm extends Component {
                     <div>
                         Upload filled and signed{" "}
                         <a style={{ textDecoration: "underline" }}
-                            href="/resources/waiver.pdf" >
+                            href="/resources/waiver.pdf"
+                            rel="noopener noreferrer"
+                            target="_blank" >
                             Waiver
                         </a>
                         {" "}*
@@ -121,7 +123,9 @@ class UserProfileForm extends Component {
                     </h4>
                     <div>
                         <a style={{textDecoration: "underline" }}
-                            href="/resources/waiver.pdf" >
+                            href="/resources/waiver.pdf"
+                            rel="noopener noreferrer"
+                            target="_blank" >
                             Waiver
                         </a>
                     </div>
