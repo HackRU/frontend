@@ -34,6 +34,7 @@
         { "value": "Medium", "label": "Medium" },
         { "value": "Reddit", "label": "Reddit" },
         { "value": "Twitch", "label": "Twitch" },
+        { "value": "Word of mouth", "label": "Word of mouth" },
         { "value": "Youtube", "label": "Youtube" }
     ],
     "dietaryRestrictions": [
