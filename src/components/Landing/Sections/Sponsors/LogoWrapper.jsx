@@ -13,7 +13,7 @@ class LogoWrapper extends Component {
     constructor(props) {
         super(props);
         fetch(props.endpoint, {
-            method: "GET", 
+            method: "GET",
             mode: "cors"
         }).then(response => response.json()).then(data => {
             this.setState({
@@ -52,7 +52,7 @@ class LogoWrapper extends Component {
                 <div>
                     <h1 className="display-4 theme-font mb-3">{this.props.title}</h1>
                     <h4> {this.state.loading} </h4>
-                    <BarLoader color="rgba(0, 0, 0, 0.25)" />               
+                    <BarLoader color="rgba(0, 0, 0, 0.25)" />
                 </div>
             );
         } else {
@@ -63,10 +63,10 @@ class LogoWrapper extends Component {
                             style={{ padding: 50, paddingBottom: 0 }}>{this.props.title}</h1>
                         <p className="lead theme-font"
                             style={{ padding: 50 }}>To be announced, check again later!</p>
-                    </div>     
+                    </div>
                 </div>
             );
-        }  
+        }
     }
 }
 

@@ -68,7 +68,7 @@ const Swag = (props) => {
                             onChange={() => setWant(!want)}
                         />
                         <label className="custom-control-label"
-                            htmlFor="request-swag">I would like to recieve swag though the mail.</label>
+                            htmlFor="request-swag">I would like to receive swag though the mail.</label>
                     </div>
                 </FormGroup>
                 <Collapse isOpen={want}>
@@ -94,6 +94,7 @@ const Swag = (props) => {
                         </Col>
                     </FormGroup>
                 </Collapse>
+                <p>Note: Swag will only be given to those who provide a valid address and explicitly check this box!</p>
                 <div style={{ width: "100%", marginTop: 20 }}
                     align="right">
                     <Button color="success"
@@ -103,8 +104,7 @@ const Swag = (props) => {
                         }}
                         className="pill-btn"
                         type="button"> { loading ?  <PulseLoader color={theme.accent[0]} /> : "Update" } </Button>
-                </div>
-                
+                </div>                
             </div>
         );
     } else {
@@ -115,7 +115,7 @@ const Swag = (props) => {
         return (
             <div>
                 <h4>
-                    Swag
+                    HackRU Swag
                     <Button color="primary"
                         className="pill-btn"
                         style={{ position: "absolute", right: 40 }}
@@ -124,7 +124,7 @@ const Swag = (props) => {
                 <FormGroup row>
                     
                     <p style={{ ...pStyle, height: "100%" }}>
-                        {want ? "I would like to recieve swag though the mail" : "I would not like to recieve swag though the mail"}</p>
+                        {want ? "I would like to receive swag through the mail." : "I would not like to receive swag."}</p>
                 </FormGroup>
             </div>
            
