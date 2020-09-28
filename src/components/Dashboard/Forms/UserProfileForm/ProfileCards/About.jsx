@@ -28,27 +28,69 @@ class About extends Component {
     updateUser(user) {
         // console.log(user);
         this.setState({
-            user
+            user: user
         });
         // this.props.onChange(user);
     }
 
-    submitUser = (user) => {
+    submitUser = async (user) => {
         this.setState({
             profileMSG: null,
             loading: true,
             user,
-        }, () => {
-            this.props.profile.Set(this.state.user, (err) => {
-                this.setState({
-                    edit: false,
-                    loading: false,
-                    profileMSG: err ?
-                        { color: "danger", value: err } :
-                        { color: "success", value: "Profile Updated!" }
-                });
+        });
+
+
+        let promise = new Promise((resolve, reject) => {
+            this.props.profile.Get((msg, data) => {
+                if (msg) {
+                    reject(msg);
+                    console.log(msg);
+                }
+                else {
+                    resolve(data);
+                }
             });
         });
+
+        let got_user = await promise;
+
+        got_user.first_name = this.state.user.first_name;
+        got_user.last_name = this.state.user.last_name;
+        got_user.phone_number = this.state.user.phone_number;
+        got_user.date_of_birth = this.state.user.date_of_birth;
+        got_user.shirt_size = this.state.user.shirt_size;
+        got_user.gender = this.state.user.gender;
+        got_user.ethnicity = this.state.user.ethnicity;
+        got_user.hackathon_count = this.state.user.hackathon_count;
+
+        // console.log(got_user);
+
+        let update_promise = new Promise((resolve) => {
+            this.props.profile.Set(got_user, (err) => {resolve(err);} );
+        });
+
+        await update_promise;
+        // console.log(test);
+
+        this.setState({
+            edit: false,
+            loading: false
+        });
+
+        // this.setState({
+            
+        // }, () => {
+        //     this.props.profile.Set(this.state.user, (err) => {
+        //         this.setState({
+        //             edit: false,
+        //             loading: false,
+        //             profileMSG: err ?
+        //                 { color: "danger", value: err } :
+        //                 { color: "success", value: "Profile Updated!" }
+        //         });
+        //     });
+        // });
     }
 
 

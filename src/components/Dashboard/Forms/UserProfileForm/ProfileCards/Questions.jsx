@@ -26,26 +26,52 @@ class Questions extends Component {
     updateUser(user) {
         // console.log(user);
         this.setState({
-            user
+            user: user
         });
         // this.props.onChange(user);
     }
 
-    submitUser = (user) => {
+    submitUser = async (user) => {
         this.setState({
             profileMSG: null,
             loading: true,
             user,
-        }, () => {
-            this.props.profile.Set(this.state.user, (err) => {
-                this.setState({
-                    edit: false,
-                    loading: false,
-                    profileMSG: err ?
-                        { color: "danger", value: err } :
-                        { color: "success", value: "Profile Updated!" }
-                });
+        });
+
+        let promise = new Promise((resolve, reject) => {
+            this.props.profile.Get((msg, data) => {
+                if (msg) {
+                    reject(msg);
+                    console.log(msg);
+                }
+                else {
+                    resolve(data);
+                }
             });
+        });
+
+        let got_user = await promise;
+
+        got_user.how_you_heard_about_hackru = this.state.user.how_you_heard_about_hackru;
+        got_user.reasons = this.state.user.reasons;
+        got_user.short_answer = this.state.user.short_answer;
+        got_user.virtual_short_answer = this.state.user.virtual_short_answer;
+        got_user.special_needs = this.state.user.special_needs;
+        got_user.want_team = this.state.user.want_team;
+
+        // console.log(got_user);
+
+
+        let update_promise = new Promise((resolve) => {
+            this.props.profile.Set(got_user, (err) => {resolve(err);} );
+        });
+
+        await update_promise;
+        // console.log(test);
+
+        this.setState({
+            edit: false,
+            loading: false
         });
     }
 

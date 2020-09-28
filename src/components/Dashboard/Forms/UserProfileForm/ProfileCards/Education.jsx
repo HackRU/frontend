@@ -42,28 +42,50 @@ class Education extends Component {
     updateUser(user) {
         // console.log(user);
         this.setState({
-            user
+            user: user
         });
         // this.props.onChange(user);
     }
 
     
     
-    submitUser = (user) => {
+    submitUser = async (user) => {
         this.setState({
             profileMSG: null,
             loading: true,
             user,
-        }, () => {
-            this.props.profile.Set(this.state.user, (err) => {
-                this.setState({
-                    edit: false,
-                    loading: false,
-                    profileMSG: err ?
-                        { color: "danger", value: err } :
-                        { color: "success", value: "Profile Updated!" }
-                });
+        });
+
+        let promise = new Promise((resolve, reject) => {
+            this.props.profile.Get((msg, data) => {
+                if (msg) {
+                    reject(msg);
+                    console.log(msg);
+                }
+                else {
+                    resolve(data);
+                }
             });
+        });
+
+        let got_user = await promise;
+
+        got_user.school = this.state.user.school;
+        got_user.grad_year = this.state.user.grad_year;
+        got_user.level_of_study = this.state.user.level_of_study;
+        got_user.major = this.state.user.major;
+
+        // console.log(got_user);
+
+        let update_promise = new Promise((resolve) => {
+            this.props.profile.Set(got_user, (err) => {resolve(err);} );
+        });
+
+        await update_promise;
+
+        this.setState({
+            edit: false,
+            loading: false
         });
     }
 

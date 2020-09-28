@@ -23,19 +23,36 @@ const Swag = (props) => {
     const [loading, setLoading] = useState(false);
     const [swag_addr, setSwag] = useState("");
 
-    const submitUser = (s_user) => {
-        s_user.swag = {accepting_swag: want, swag_address: swag_addr};
-        // console.log(s_user);
+    const submitUser = async () => {
         setLoading(true);
-     
-        props.profile.Set(s_user, (err) => {
-            if (err) {
-                setLoading(false);
-            } else {
-                setLoading(false);
-                setEdit(false);
-            }  
+
+        let promise = new Promise((resolve, reject) => {
+            props.profile.Get((msg, data) => {
+                if (msg) {
+                    reject(msg);
+                    console.log(msg);
+                }
+                else {
+                    resolve(data);
+                }
+            });
         });
+
+        let got_user = await promise;
+
+        got_user.swag = {accepting_swag: want, swag_address: swag_addr};
+
+        // console.log(got_user);
+
+        let update_promise = new Promise((resolve) => {
+            props.profile.Set(got_user, (err) => {resolve(err);} );
+        });
+
+        await update_promise;
+        // console.log(test);
+
+        setLoading(false);
+        setEdit(false);
     };
 
     useEffect(() => {
@@ -94,7 +111,7 @@ const Swag = (props) => {
                         </Col>
                     </FormGroup>
                 </Collapse>
-                <p>Note: Swag will only be given to those who provide a valid address and explicitly check this box!</p>
+                <p>Note: Swag will only be given to those who provide a valid address and explicitly check the box!</p>
                 <div style={{ width: "100%", marginTop: 20 }}
                     align="right">
                     <Button color="success"
