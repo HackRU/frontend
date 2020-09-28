@@ -2,14 +2,13 @@ import React, { Component } from "react";
 import { FormGroup, Input, Label, Button, Col, UncontrolledAlert } from "reactstrap";
 import { AvForm, AvField, AvCheckboxGroup, AvCheckbox } from "availity-reactstrap-validation";
 import Select, { Creatable, AsyncCreatable } from "react-select";
-import ResumeUploader from "./ResumeUploader";
-import CustomAVInput from "./CustomAVInput";
+import CustomAVInput from "../CustomAVInput";
 import { Icon } from "react-fa";
-import { theme } from "../../../../Defaults";
+import { theme } from "../../../../../Defaults";
 import request from "request";
-import majors from "./majors.json";
-import selectorOptions from "./selectorOptions.json";
-import { ProfileType } from "../../../Profile";
+import majors from "../majors.json";
+import selectorOptions from "../selectorOptions.json";
+import { ProfileType } from "../../../../Profile";
 import PropTypes from "prop-types";
 
 class UserProfileForm extends Component {
@@ -319,10 +318,6 @@ class UserProfileForm extends Component {
                             value={user.short_answer}
                             onChange={(e) => { user.short_answer = e.target.value; this.updateUser(user); }} />
                     </FormGroup>
-                    <ResumeUploader
-                        edit={this.state.edit}
-                        profile={this.props.profile}
-                    />
                     <AvCheckboxGroup name="polls"
                         className="custom-av-checkbox"
                         label={<h4>Polls</h4>}
@@ -467,10 +462,6 @@ class UserProfileForm extends Component {
                         <Label>What are you hoping to experience at HackRU?</Label>
                         {field(user.short_answer)}
                     </FormGroup>
-                    <ResumeUploader
-                        edit={this.state.edit}
-                        profile={this.props.profile}
-                    />
                     <h4>Polls</h4>
                     <FormGroup>
                         <Label>Would you be interested in a bus from your school to HackRU? </Label>

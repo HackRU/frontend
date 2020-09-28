@@ -83,6 +83,7 @@ const ENDPOINTS = {
      */
     qr: BASE + "/qr",
     resume: BASE + "/resume",
+    waiver: BASE + "/waiver",
     sendmagic: BASE + "/createmagiclink"
 };
 /**
@@ -329,6 +330,9 @@ class Profile {
                     } else {
                         if (body.statusCode === 200) {
                             callback(null, body.body[0]);
+                            if (email === this._email) {
+                                this._registration_status = body.body[0].registration_status;
+                            }
                         } else {
                             callback(
                                 body.body ? body.body : "Unexpected Error",
@@ -586,6 +590,35 @@ class Profile {
     }
     async UploadResume(file) {
         const info = await this.GetResumeInfo();
+        console.log(info);
+        return await fetch(info.upload, {
+            method: "PUT",
+            headers: {
+                "content-type": "application/pdf"
+            },
+            body: file
+        });
+    }
+    async GetWaiverInfo() {
+        const json = await fetch(ENDPOINTS.waiver, {
+            method: "POST",
+            headers: {
+                "content-type": "application/json"
+            },
+            body: JSON.stringify({
+                email: this._email,
+                token: this._token
+            })
+        }).then(res => res.json());
+        console.log(json);
+        return json.body;
+    }
+    async DoesWaiverExist() {
+        const info = await this.GetWaiverInfo();
+        return info.exists;
+    }
+    async UploadWaiver(file) {
+        const info = await this.GetWaiverInfo();
         console.log(info);
         return await fetch(info.upload, {
             method: "PUT",

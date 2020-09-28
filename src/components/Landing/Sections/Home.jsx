@@ -52,7 +52,8 @@ class Home extends Component {
         }
         if (!this.props.isMobile) {
             return (
-                <Container
+                <Grid
+                    container
                     fluid
                     id="landing-section"
                     maxWidth={false}
@@ -461,7 +462,7 @@ class Home extends Component {
                             </Button>
                         </div>
                     </Grid>
-                </Container>
+                </Grid>
             );
         } else {
             return (
@@ -616,9 +617,11 @@ class Home extends Component {
                             </div>
                         )}
                     </Motion>
-                    <Grid
+                    <Grid container
+                        justify="center"
+                        alignItems="center"
                         style={{ minWidth: "100%", minHeight: "100vh" }}
-                        className="d-flex align-items-center"
+                        // className="d-flex align-items-center"
                     >
                         <Grid style={{ display: "block" }}>
                             {loggoutMsg}

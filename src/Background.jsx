@@ -102,7 +102,7 @@ export default function Background() {
                 item 
                 container 
                 justify="center" 
-                style={{ position: "fixed" }}>
+                style={{ position: "fixed", zIndex: -1000 }}>
                 <Grid item 
                     sm={2} 
                     md={2} 

@@ -1,191 +1,166 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import { Container, Grid } from "@material-ui/core";
 import { Redirect } from "react-router-dom";
 import Section from "./Section";
 import Loading from "./Loading";
-import UserProfileForm from "./Forms/UserProfileForm/UserProfileForm";
+import About from "./Forms/UserProfileForm/ProfileCards/About";
+import Education from "./Forms/UserProfileForm/ProfileCards/Education";
+import Documents from "./Forms/UserProfileForm/ProfileCards/Documents";
+import Questions from "./Forms/UserProfileForm/ProfileCards/Questions";
+import Register from "./Forms/UserProfileForm/ProfileCards/Register";
+import Swag from "./Forms/UserProfileForm/ProfileCards/Swag";
+// import Short from "./Forms/UserProfileForm/ProfileCards/ShortProfileForm";
+import Communications from "./Forms/UserProfileForm/ProfileCards/Communications";
 import { ProfileType } from "../Profile";
 import PropTypes from "prop-types";
 // import { theme } from "../../Defaults";
 
-class Dashboard extends Component {
-    state = {
-        loading: "Loading your personal dashboard...",
-        user: null,
-        openDetails: false,
-        profileMSG: null,
-        qr: null
-    }
-    UNSAFE_componentWillMount() {
-        if (this.props.magic) {
-            this.props.profile.Eat(this.props.magic, (msg) => {
+
+const Profile = (props) => {
+    const [loading, setLoading] = useState("Loading your personal dashboard...");
+    const [user, setUser] = useState({});
+    const [openDetails, setOpenDetails] = useState(false);
+    const [profileMSG, setProfileMSG] = useState({});
+
+    useEffect(() => {
+        if (props.magic) {
+            props.profile.Eat(props.magic, (msg) => {
                 if (msg) {
                     console.error(msg);
-                    this.setState({
-                        profileMSG: { color: "warning", value: msg }
-                    });
+                    setProfileMSG({ color: "warning", value: msg });
                 } else {
-                    this.setState({
-                        profileMSG: { color: "info", value: "Magic link applied!" }
-                    });
+                    setProfileMSG({ color: "info", value: "Magic link applied!" });
                 }
-                this.props.clearMagic();
+                props.clearMagic();
             });
         }
-        this.props.profile.Get((msg, data) => {
+        props.profile.Get((msg, data) => {
             if (msg) {
                 console.error(msg);
             } else {
                 if (data) {
                     delete data.auth;
-                    this.setState({
-                        user: data,
-                        loading: false,
-                        openDetails: (data.registration_status === "unregistered")
-                    });
+                    setUser(data);
+                    setLoading(false);
+                    setOpenDetails((data.registration_status === "unregistered"));
                 }
             }
         });
+    }, []);
 
+    // const submitUser = (user) => {
+    //     setLoading("Saving your information");
+    //     setProfileMSG(null);
+    //     setUser(user);
+    //     props.profile.Set(user, (err) => {
+    //         setLoading(false);
+    //         setProfileMSG(err ?
+    //             { color: "danger", value: err } :
+    //             { color: "success", value: "Profile Updated!" });
+    //     });
+    // };
+
+
+    if (!props.profile.isLoggedIn) {
+        return (<Redirect to="/login"/>);
+    }
+    if (loading) {
+        return (<Loading text={loading} />);
+    }
+    let set_user = user;
+    set_user.phone_number = set_user.phone_number || "";
+    set_user.ethnicity = set_user.ethnicity || "";
+    set_user.how_you_heard_about_hackru = set_user.how_you_heard_about_hackru || "";
+    set_user.reasons = set_user.reasons || "";
+    let mobile = props.isMobile;
+    if (profileMSG === openDetails) {
+        console.log("correct");
     }
 
-    submitUser = (user) => {
-        this.setState({
-            loading: "Saving your information",
-            profileMSG: null,
-            user,
-        }, () => {
-            this.props.profile.Set(this.state.user, (err) => {
-                this.setState({
-                    loading: false,
-                    profileMSG: err ?
-                        { color: "danger", value: err } :
-                        { color: "success", value: "Profile Updated!" }
-                });
-            });
-        });
-    }
-    render() {
-        // Authorized personal only!
-        if (!this.props.profile.isLoggedIn) {
-            return (<Redirect to="/login"/>);
-        }
-        if (this.state.loading) {
-            return (<Loading text={this.state.loading} />);
-        }
-        let user = this.state.user;
-        user.phone_number = user.phone_number || "";
-        user.ethnicity = user.ethnicity || "";
-        user.how_you_heard_about_hackru = user.how_you_heard_about_hackru || "";
-        user.reasons = user.reasons || "";
-        let mobile = this.props.isMobile;
-        // let rolesString = "";
-        // Object.keys(user.role).forEach((key) => { if (user.role[key]) { rolesString += `${key}, `; }});
-        // rolesString = rolesString.substring(0, rolesString.length - 2);
-        return (
-            <Container style={{ width: "100%", minHeight: "100vh", paddingTop: 90 }}>
-                <Grid container>
-                    {/* <ProfileMessage message={this.state.profileMSG} />
-                    <Row>
-                        <Col className="dashboard-row"
-                            lg={12} >
-                            <div className="dashboard-card">
-                                <div className="dashboard-left-strip dashboard-strip-red"></div>
-                                <h1 className="display-3"
-                                    style={{ textAlign: "center", color: theme.secondary[0], textTransform: "capitalize" }}>Welcome, {user.first_name}</h1>
-                                <p style={{ textAlign: "center", color: theme.secondary[0], textTransform: "capitalize" }}>{rolesString}</p>
-                            </div>
-                        </Col>
-                    </Row>
-                    <Row>
-                        {(user.registration_status === "confirmed" || user.registration_status === "waitlist" || user.registration_status === "coming" || user.registration_status === "registered" || (user.role && user.role.director) || (user.role && user.role.organizer) || (user.role && user.role.volunteer)) &&
-                            <Col className="dashboard-row"
-                                xl={4}
-                                lg={4}
-                                md={12}
-                                sm={12}
-                                xs={12}>
-                                <div className="dashboard-card"
-                                    style={{ textAlign: "center", paddingBottom: 0 }}>
-                                    <div className="dashboard-left-strip dashboard-strip-green"></div>
-                                    <h1 className="display-4 dashboard-header dashboard-strip-green">QR</h1>
-                                    <div className="d-flex align-items-center"
-                                        style={{ height: "60%", textAlign: "center" }}>
-                                        <div style={{ marginTop: 50, textAlign: "center", width: "100%", color: theme.secondary[0] }}>
-                                            <p>Please have this QR avaliable when you check in at HackRU.</p>
-                                            <QR email={user.email} />
-                                        </div>
-                                    </div>
-                                </div>
-                            </Col>}
-                        <Col className="dashboard-row">
-                            <div className="dashboard-card">
-                                <div className="dashboard-left-strip dashboard-strip-yellow"></div>
-                                <h1 className="display-4 dashboard-header dashboard-strip-yellow">Application Status</h1>
-                                <div className="d-flex align-items-center"
-                                    style={{ height: "60%", textAlign: "center" }}>
-                                    <div style={{ marginTop: 0, textAlign: "center", width: "100%" }}>
-                                        <ApplicationStatus onComing={() => {
-                                            user.registration_status = "coming";
-                                            this.submitUser(user);
-                                        }}
-                                        onNotComing={() => {
-                                            user.registration_status = "not-coming";
-                                            this.submitUser(user);
-                                        }}
-                                        travelling_from={user.travelling_from}
-                                        status={user.registration_status} />
-                                    </div>
-                                </div>
-                            </div>
-                        </Col>
-                    </Row> */}
-                    <Grid xs={12}>
-                        <Section title="Profile"
-                            subtitle="Introduce yourself, don't be shy!"
-                            isOpen={true} /* replaced this.state.openDetails to force true*/>
-                            <UserProfileForm mobile={mobile}
-                                user={user}
-                                onChange={(user) => {
-                                    this.setState({ user: user });
-                                }}
-                                onSubmit={(user) => {
-                                    user.registration_status = "registered";
-                                    console.log(user.want_bus);
-                                    this.submitUser(user);
-                                }}
-                                profile={this.props.profile}
-                            />
-                        </Section>
-                    </Grid>
-                    {/* <Row>
-                        <Section
-                            title="Travel Reimbursements"
-                            subtitle="Let us know where you're coming from!">
-                            <TravelReimbursementsForm mobile={mobile}
-                                travelling_from={user.travelling_from}
-                                onSubmit={(travel) => {
-                                    user.travelling_from = travel;
-                                    this.submitUser(user);
-                                }} />
-                        </Section>
-                    </Row>
-                    <Row>
-                        {(user.role && user.role.director) &&
-                            <AdminControl profile={this.props.profile}
-                                user={user} />}
-                    </Row> */}
+    return(
+        <Container maxWidth={false} 
+            style={{paddingTop: 90 }}>
+            <Grid container>
+                <Grid xs={12}>
+                    <Section title="Register"
+                        subtitle="Introduce yourself, don't be shy!"
+                        isOpen={true} /* replaced this.state.openDetails to force true*/>
+                        <Register mobile={mobile}
+                            user={set_user}
+                            profile={props.profile}
+                        />
+                    </Section>
                 </Grid>
-            </Container>
-        );
-    }
-}
+                <Grid item
+                    xs={12}
+                    sm={12}
+                    md={6}>
+                    <Section title="About"
+                        subtitle="Introduce yourself, don't be shy!"
+                        isOpen={true} /* replaced this.state.openDetails to force true*/>
+                        <About mobile={mobile}
+                            user={set_user}
+                            profile={props.profile}
+                        />
+                    </Section>
+                    <Section title="Education"
+                        subtitle="Introduce yourself, don't be shy!"
+                        isOpen={true} /* replaced this.state.openDetails to force true*/>
+                        <Education mobile={mobile}
+                            user={set_user}
+                            profile={props.profile}
+                        />
+                    </Section>
+                    <Section title="Documents"
+                        subtitle="Introduce yourself, don't be shy!"
+                        isOpen={true} /* replaced this.state.openDetails to force true*/>
+                        <Documents mobile={mobile}
+                            user={set_user}
+                            profile={props.profile}
+                        />
+                    </Section>
+                </Grid>
+                <Grid item
+                    xs={12}
+                    sm={12}
+                    md={6}>
+                    <Section title="A Few Questions"
+                        subtitle="Introduce yourself, don't be shy!"
+                        isOpen={true} /* replaced this.state.openDetails to force true*/>
+                        <Questions mobile={mobile}
+                            user={set_user}
+                            profile={props.profile}
+                        />
+                    </Section>
+                    <Section title="Communications"
+                        subtitle="Introduce yourself, don't be shy!"
+                        isOpen={true} /* replaced this.state.openDetails to force true*/>
+                        <Communications mobile={mobile}
+                            user={set_user}
+                            profile={props.profile}
+                        />
+                    </Section>
+                    <Section title="Swag"
+                        subtitle="Introduce yourself, don't be shy!"
+                        isOpen={true} /* replaced this.state.openDetails to force true*/>
+                        <Swag
+                            user={set_user}
+                            profile={props.profile}
+                        />
+                    </Section>
+                </Grid>
+            </Grid>
+        </Container>
+    );
 
-Dashboard.propTypes = {
+};
+
+
+Profile.propTypes = {
     clearMagic: PropTypes.func,
     isMobile: PropTypes.bool,
     magic: PropTypes.string,
     profile: ProfileType,
 };
 
-export default Dashboard;
+export default Profile;

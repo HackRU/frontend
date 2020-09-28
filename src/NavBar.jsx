@@ -9,13 +9,6 @@ import "./NavBar.css";
 import Logo from "./components/Landing/Sections/Logo.jsx";
 import { goToAnchor } from "react-scrollable-anchor";
 
-import EventIcon from "@material-ui/icons/EventOutlined";
-import GroupIcon from "@material-ui/icons/GroupOutlined";
-import ChartIcon from "@material-ui/icons/InsertChartOutlined";
-import InfoIcon from "@material-ui/icons/InfoOutlined";
-import ThumbIcon from "@material-ui/icons/ThumbUpOutlined";
-import ChatIcon from "@material-ui/icons/FeedbackOutlined";
-
 const LinkSwitcher = (props) => {
     return props.root ? <a {...props}>{props.children}</a> : <Link {...props} />;
 };
@@ -186,14 +179,6 @@ class NavBar extends Component {
                         onClick={this.handleClose}
                         style={{ color: "black" }}
                         component={Link}
-                        to="/dashboard"
-                    >
-                        Dashboard
-                    </MenuItem>
-                    <MenuItem
-                        onClick={this.handleClose}
-                        style={{ color: "black" }}
-                        component={Link}
                         to="/profile"
                     >
                         Profile
@@ -214,27 +199,17 @@ class NavBar extends Component {
         let keys = Object.keys(navlinks);
         let navLinks = [];
 
-        const icons = {
-            ABOUT: <InfoIcon />,
-            SCHEDULE: <EventIcon />,
-            SPONSORS: <ThumbIcon />,
-            PARTNERS: <GroupIcon />,
-            NUMBERS: <ChartIcon />,
-            FAQS: <ChatIcon />,
-        };
         for (let i = 0; i < keys.length - 1; i++) {
             navLinks.push(
                 <Tab
                     style={{ color: "white", minWidth: 10, marginLeft: "25px" }}
                     key={i}
-                    value={i}
+                    value={i + 100}
                     index={i}
-                    className={i === 0 && window.innerWidth < 768 ? "pt-3" : ""}
                     component={Link}
                     onClick={() => goToAnchor(navlinks[keys[i]].url, true)}
                     to={navlinks[keys[i]].url}
                     scrollButtons="auto"
-                    icon={icons[keys[i]]}
                     label={keys[i].toString()}
                 />
             );
@@ -247,43 +222,20 @@ class NavBar extends Component {
     getLandingNav() {
         return (
             <React.Fragment>
-                <Tabs
-                    indicatorColor="white"
-                    style={{ marginLeft: "auto" }}
-                    value={this.state.landingValue}
-                    scrollButtons="off"
-                    variant="scrollable"
-                    onChange={this.handleLandingChange}
-                >
-                    {this.getNavLinks()}
-                </Tabs>
-                {this.props.profile.isLoggedIn ? this.getDashboardButton() : this.getAuthButtons()}
+                {this.getNavLinks()}
             </React.Fragment>
         );
     }
-
     getDashboardNav() {
         return (
             <React.Fragment>
-                <Tabs indicatorColor="white"
-                    style={{ marginLeft: "auto" }}
-                    value={0}>
-                    <Tab
-                        style={{ color: "white", minWidth: 10, marginLeft: "25px" }}
-                        className={window.innerWidth < 768 ? "pt-3" : ""}
-                        component={Link}
-                        to={"/profile"}
-                        label="PROFILE"
-                    />
-                    <Tab
-                        style={{ color: "white", minWidth: 10, marginLeft: "25px" }}
-                        className={window.innerWidth < 768 ? "pt-3" : ""}
-                        component={Link}
-                        to={"/dashboard"}
-                        label="DASHBOARD"
-                    />
-                </Tabs>
-                {this.getDashboardButton()}
+                <Tab
+                    style={{ color: "white", minWidth: 10, marginLeft: "25px" }}
+                    className={window.innerWidth < 768 ? "pt-3" : ""}
+                    component={Link}
+                    to={"/dashboard"}
+                    label="DASHBOARD"
+                />
             </React.Fragment>
         );
     }
@@ -315,43 +267,39 @@ class NavBar extends Component {
                     onBlur={this.toggleFalse}
                 >
                     <Toolbar style={{ marginLeft: "0em" }}>
-                        <div>
-                            {/* <div style={{ position: "relative", width: "100%" }}>
-                                <NavbarToggler
-                                    onClick={this.toggle}
-                                    style={{ position: "fixed", right: 0, top: 2, marginRight: 10 }}
-                                />
-                            </div> */}
-                            <div
-                                style={{
-                                    display: "block",
-                                    paddingRight: 0,
-                                    marginTop: -50,
-                                    marginBottom: -200,
-                                    width: 200,
-                                    marginRight: -20,
-                                    marginLeft: -40,
-                                    height: 225,
-                                }}
-                            >
-                                <Link
-                                    style={{ height: "10px !important" }}
-                                    onClick={this.toggleFalse}
-                                    root={onLanding.toString()}
-                                    href="/#home"
-                                    to="/#home"
-                                >
-                                    <Logo
-                                        color="white"
-                                        repeat={false}
-                                        noCircle
-                                        style={{ marginLeft: "10px" }}
-                                        src="/assets/icons/hru-text-dyn.svg"
-                                    />
-                                </Link>
+                        <Tabs
+                            indicatorColor="white"
+                            style={{ marginLeft: "auto", overflowY: "hidden" }}
+                            scrollButtons="on"
+                            variant="scrollable">
+                            <div>
+                                <div
+                                    style={{
+                                        display: "block",
+                                        paddingRight: 0,
+                                        marginTop: -25,
+                                        marginBottom: -250,
+                                        width: 200,
+                                        marginRight: -20,
+                                        marginLeft: -30,
+                                        overflowY: "hidden"
+                                    }}>
+                                    <a href="/#home"
+                                        style={{ height: "10px !important" }}
+                                        root={onLanding.toString()}>
+                                        <Logo
+                                            color="white"
+                                            repeat={false}
+                                            noCircle
+                                            style={{ marginLeft: "10px" }}
+                                            src="/assets/icons/hru-text-dyn.svg"
+                                        />
+                                    </a>
+                                </div>
                             </div>
-                        </div>
-                        {onDashboard ? this.getDashboardNav() : this.getLandingNav()}
+                            {onDashboard ? this.getDashboardNav() : this.getLandingNav()}
+                        </Tabs>
+                        {this.props.profile.isLoggedIn ? this.getDashboardButton() : this.getAuthButtons()}
                     </Toolbar>
                 </AppBar>
             );
