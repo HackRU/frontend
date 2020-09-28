@@ -208,7 +208,7 @@ class Register extends Component {
                             <a href="https://github.com/MLH/mlh-policies/blob/master/prize-terms-and-conditions/contest-terms.md"
                                 rel="noopener noreferrer"
                                 target="_blank">MLH Contest Terms and Conditions</a> 
-                                and the{" "} 
+                            {" "}and the{" "} 
                             <a href="https://mlh.io/privacy"
                                 rel="noopener noreferrer"
                                 target="_blank">MLH Privacy Policy</a>.</p>
