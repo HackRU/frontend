@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Col, FormGroup, Label, Input, Collapse } from "reactstrap";
 import Autocomplete from "react-google-autocomplete";
 import ReactDependentScript from "react-dependent-script";
@@ -19,11 +19,10 @@ import { PulseLoader } from "react-spinners";
 const Swag = (props) => {
     // If no travel object is provided, initialize all fields to falsey values
     const [edit, setEdit] = useState(props.user.registration_status === "unregistered");
-    const [want, setWant] = useState(props.user.swag.accepting_swag);
+    const [want, setWant] = useState(false);
     const [loading, setLoading] = useState(false);
-    const [swag_addr, setSwag] = useState(props.user.swag.swag_address);
+    const [swag_addr, setSwag] = useState("");
 
-    
     const submitUser = (s_user) => {
         s_user.swag = {accepting_swag: want, swag_address: swag_addr};
         // console.log(s_user);
@@ -35,15 +34,29 @@ const Swag = (props) => {
             } else {
                 setLoading(false);
                 setEdit(false);
-            }
-            
+            }  
         });
-
     };
+
+    useEffect(() => {
+        try {
+            setWant(props.user.swag.accepting_swag);
+        } catch (err) {
+            setWant(false);
+        }
+        
+        try {
+            setSwag(props.user.swag.swag_address);
+        } catch {
+            setSwag("");
+        }
+    }, []);
+    
 
     let set_user = JSON.parse(JSON.stringify(props.user));
     if (edit) {
         return (
+            
             <div>
                 <FormGroup>
                     <div className="custom-control custom-checkbox">
@@ -70,8 +83,8 @@ const Swag = (props) => {
                                     scripts={["https://maps.googleapis.com/maps/api/js?key=" + MAP_KEY + "&libraries=places"]}>
                                     <Autocomplete
                                         className="form-control"
-                                        onChange={(e) => {set_user.swag.swag_address = e.target.value; setSwag(e.target.value);}}
-                                        onPlaceSelected={(e) => {set_user.swag.swag_address = e.formatted_address; setSwag(e.formatted_address);}}
+                                        onChange={(e) => {setSwag(e.target.value);}}
+                                        onPlaceSelected={(e) => {setSwag(e.formatted_address);}}
                                         required
                                         types={["address"]}
                                         value={swag_addr || ""}
