@@ -216,7 +216,7 @@ class About extends Component {
                         <AvField name="hackathon_count"
                             label="How many hackathons have you attended? *"
                             type="number"
-                            placeholder="0"
+                            // placeholder=""
                             value={user.hackathon_count}
                             onChange={(e) => { user.hackathon_count = e.target.value; this.updateUser(user); }}
                             validate={{
