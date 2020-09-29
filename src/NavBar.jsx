@@ -243,6 +243,7 @@ class NavBar extends Component {
     render() {
         let path = window.location.pathname;
         let onDashboard = path === "/dashboard" || path === "/profile";
+        let onLogin = path === "/login" || path === "/signup";
         let onLanding = path === "/";
         // Show no navbar on the projector page
         if (path === "/projector") {
@@ -280,7 +281,7 @@ class NavBar extends Component {
                                         marginTop: -25,
                                         marginBottom: -250,
                                         width: 200,
-                                        marginRight: -20,
+                                        marginRight: -10,
                                         marginLeft: -30,
                                         overflowY: "hidden"
                                     }}>
@@ -297,7 +298,7 @@ class NavBar extends Component {
                                     </a>
                                 </div>
                             </div>
-                            {onDashboard ? this.getDashboardNav() : this.getLandingNav()}
+                            {onLogin ? <div/> : onDashboard ? this.getDashboardNav() : this.getLandingNav()}
                         </Tabs>
                         {this.props.profile.isLoggedIn ? this.getDashboardButton() : this.getAuthButtons()}
                     </Toolbar>
