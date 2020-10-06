@@ -63,27 +63,28 @@ function Schedule(){
                 </TableRow>
             );
         });
-        return (
-            <div style={{ overflowX: "auto" }}>
-                <TableContainer>
-                    <Table size="large"
-                        style={{ minWidth: 300 }}
-                        hover
-                        borderless>
-                        <TableHead key="table-head">
-                            <TableRow className="lead">
-                                <TableCell style={{color: "rgba(255, 255, 255, 1)"}}>Time</TableCell>
-                                <TableCell style={{color: "rgba(255, 255, 255, 1)"}}>Event</TableCell>
-                                <TableCell style={{color: "rgba(255, 255, 255, 1)"}}>Location</TableCell>
-                            </TableRow>
-                        </TableHead>
-                        <tbody>
-                            {rows}
-                        </tbody>
-                    </Table>
-                </TableContainer>
-            </div>
-        );
+        return <div style={{ margin: 10 }}> Just keep scrolling... </div>
+        // return (
+        //     <div style={{ overflowX: "auto" }}>
+        //         <TableContainer>
+        //             <Table size="large"
+        //                 style={{ minWidth: 300 }}
+        //                 hover
+        //                 borderless>
+        //                 <TableHead key="table-head">
+        //                     <TableRow className="lead">
+        //                         <TableCell style={{color: "rgba(255, 255, 255, 1)"}}>Time</TableCell>
+        //                         <TableCell style={{color: "rgba(255, 255, 255, 1)"}}>Event</TableCell>
+        //                         <TableCell style={{color: "rgba(255, 255, 255, 1)"}}>Location</TableCell>
+        //                     </TableRow>
+        //                 </TableHead>
+        //                 <tbody>
+        //                     {rows}
+        //                 </tbody>
+        //             </Table>
+        //         </TableContainer>
+        //     </div>
+        // );
     }
     return (
         <Card backgroundColor={theme.secondary[1]}
