@@ -23,7 +23,11 @@ class LogoWrapper extends Component {
     }
     render() {
         let renderList = [];
+        let childCount = 0;
         if (this.state.logos) {
+            for (let i = 0; i < this.state.logos.sections.length; i++) {
+                childCount += this.state.logos.sections[i].children.length;
+            }
             let SponsorDeclaration = this.state.logos.sections;
             for (let i = 0; i < SponsorDeclaration.length; i++) {
                 if (SponsorDeclaration[i]["enabled"]) {
@@ -37,7 +41,7 @@ class LogoWrapper extends Component {
                 }
             }
         }
-        if (renderList.length > 0) {
+        if (childCount > 0) {
             return (
                 <div>
                     <div style={{ backgroundColor: "white", color: "black", boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.5)" }}>
