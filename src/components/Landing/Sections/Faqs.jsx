@@ -24,10 +24,10 @@ const FAQTextOne = {
         title: "What is the application process like?",
         text: "HackRU will run registration on a first-come-first-serve basis for those with qualifying applications. That means registration can fill up quickly, so make sure to register early and answer questions thoroughly!"
     },
-    four: {
-        title: "Are there travel reimbursements?",
-        text: [<p key={1}>HackRU is considering offering travel reimbursements to qualified students who do not attend Rutgers University—New Brunswick. Information about travel reimbursements is available on the application and your dashboard. Reach out to <a href="mailto:travel@hackru.org">travel@hackru.org</a> if you have any additional questions.</p>]
-    },
+    // four: {
+    //     title: "Are there travel reimbursements?",
+    //     text: [<p key={1}>HackRU is considering offering travel reimbursements to qualified students who do not attend Rutgers University—New Brunswick. Information about travel reimbursements is available on the application and your dashboard. Reach out to <a href="mailto:travel@hackru.org">travel@hackru.org</a> if you have any additional questions.</p>]
+    // },
     five: {
         title: "Can I win anything?",
         text: "Yes! We'll release more information about prizes as the event draws near."
@@ -59,10 +59,10 @@ const FAQTextTwo = {
         title: "What shouldn't I bring?",
         text: "Weapons (or anything that can be construed as a weapon), alcohol, illegal drugs, and/or animals. Use your common sense - if you wouldn't bring it on a plane or to school, don't bring it here."
     },
-    six: {
-        title: "Do you have any hardware?",
-        text: "Hardware will be provided by the MLH Hardware labs and a full list of available hardware will be released during the week of the event."
-    }
+    // six: {
+    //     title: "Do you have any hardware?",
+    //     text: "Hardware will be provided by the MLH Hardware labs and a full list of available hardware will be released during the week of the event."
+    // }
 };
 
 class FAQs extends Component {
