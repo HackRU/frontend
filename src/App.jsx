@@ -12,7 +12,8 @@ import {
     TeamPage,
     ProjectorPage,
     E404, 
-    ProfilePage} from "./components/Pages"; // Router Pages
+    ProfilePage, 
+    TeamViewerPage} from "./components/Pages"; // Router Pages
 import { Snackbar } from "@material-ui/core"; // Alert messages
 import { Alert } from "@material-ui/lab"; // Alert messages
 import Background from "./Background";
@@ -163,6 +164,11 @@ class App extends Component {
                 path="/projector"
                 key="projector"
                 render={(props) => <ProjectorPage {...props}
+                    {...componentProps} />} />,
+            <Route exact
+                path="/teamviewer"
+                key="teamviewer"
+                render={(props) => <TeamViewerPage {...props}
                     {...componentProps} />} />,
         ];
         if (defaults.dayof) {

@@ -236,13 +236,20 @@ class NavBar extends Component {
                     to={"/dashboard"}
                     label="DASHBOARD"
                 />
+                <Tab
+                    style={{ color: "white", minWidth: 10, marginLeft: "25px" }}
+                    className={window.innerWidth < 768 ? "pt-3" : ""}
+                    component={Link}
+                    to={"/teamviewer"}
+                    label="TEAM"
+                />
             </React.Fragment>
         );
     }
 
     render() {
         let path = window.location.pathname;
-        let onDashboard = path === "/dashboard" || path === "/profile";
+        let onDashboard = path === "/dashboard" || path === "/profile" || path === "/teamviewer";
         let onLogin = path === "/login" || path === "/signup";
         let onLanding = path === "/";
         // Show no navbar on the projector page

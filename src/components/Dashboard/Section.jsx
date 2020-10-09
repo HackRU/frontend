@@ -22,12 +22,16 @@ class Section extends Component {
      */
     render() {
         let { children, title, ...rest } = this.props;
+        let color = this.props.color;
+        if(!color){
+            color = "red";
+        }
         return (
             <Col className="dashboard-row"
                 {...rest} >
                 <div className="dashboard-card">
-                    <div className="dashboard-left-strip dashboard-strip-red"></div>
-                    <h2 className="dashboard-header dashboard-strip-red">
+                    <div className={`dashboard-left-strip dashboard-strip-${color}`} ></div>
+                    <h2 className={`dashboard-header dashboard-strip-${color}`}>
                         {title}
                         <Button color="white"
                             className="pill-btn"
