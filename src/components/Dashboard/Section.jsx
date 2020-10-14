@@ -25,7 +25,8 @@ class Section extends Component {
         return (
             <Col className="dashboard-row"
                 {...rest} >
-                <div className="dashboard-card">
+                <div className="dashboard-card" 
+                    style={{boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.5)" }}>
                     <div className="dashboard-left-strip dashboard-strip-red"></div>
                     <h2 className="dashboard-header dashboard-strip-red">
                         {title}
