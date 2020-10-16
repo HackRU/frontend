@@ -2,7 +2,6 @@ import React, { Component } from "react";
 
 class MLHBadge extends Component {
     render() {
-        return (<></>);
         return (
             <a id="mlh-trust-badge"
                 style={{ display: "block", maxWidth: "100px", minWidth: "60px", position: "absolute", right: "50px", top: "0", width: "10%", zIndex: "10" }}
