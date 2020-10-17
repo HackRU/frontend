@@ -9,6 +9,7 @@ import Documents from "./Forms/UserProfileForm/ProfileCards/Documents";
 import Questions from "./Forms/UserProfileForm/ProfileCards/Questions";
 import Register from "./Forms/UserProfileForm/ProfileCards/Register";
 import Swag from "./Forms/UserProfileForm/ProfileCards/Swag";
+import Team from "./Forms/UserProfileForm/ProfileCards/TeamMaker";
 // import Short from "./Forms/UserProfileForm/ProfileCards/ShortProfileForm";
 import Communications from "./Forms/UserProfileForm/ProfileCards/Communications";
 import { ProfileType } from "../Profile";
@@ -21,8 +22,9 @@ const Profile = (props) => {
     const [user, setUser] = useState({});
     const [openDetails, setOpenDetails] = useState(false);
     const [profileMSG, setProfileMSG] = useState({});
+    const [team, setTeam] = useState({});
 
-    useEffect(() => {
+    useEffect(async () => {
         if (props.magic) {
             props.profile.Eat(props.magic, (msg) => {
                 if (msg) {
@@ -46,6 +48,13 @@ const Profile = (props) => {
                 }
             }
         });
+
+        // const set_team = await props.profile.getTeamUser();
+        // setTeam(set_team);
+        // console.log("Test");
+        // console.log(team);
+        
+
     }, []);
 
     // const submitUser = (user) => {
@@ -145,6 +154,17 @@ const Profile = (props) => {
                         isOpen={true} /* replaced this.state.openDetails to force true*/>
                         <Swag
                             user={set_user}
+                            profile={props.profile}
+                        />
+                    </Section>
+                </Grid>
+                <Grid xs={12}>
+                    <Section title="Make a Team!"
+                        subtitle="Introduce yourself, don't be shy!"
+                        isOpen={true} /* replaced this.state.openDetails to force true*/>
+                        <Team
+                            user={set_user}
+                            team={team}
                             profile={props.profile}
                         />
                     </Section>
