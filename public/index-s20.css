@@ -221,13 +221,22 @@ hr {
 .table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
     color: var(--primary-color);
 }
+
 /* Form Inputs (Dashboard/Login/Signup/Magic/Forgot) */
 input, textarea, .custom-file-label {
     border-radius: var(--input-border-radius) !important;
-    background: var(--input-background) !important;
+    background: var(--input-background) !important ;
     border: var(--input-border) !important;
     color: var(--input-color) !important;
     z-index: 0 !important;
+}
+.teamViewerInput textarea{
+    background: none !important;
+
+}
+.teamViewerInput input{
+    background: none !important;
+
 }
 .forcestyle div[class^="css-"] {
     background: var(--input-background);
@@ -634,4 +643,16 @@ form .btn, form btn-secondary {
 	.stat-number{
         font-size: 50px;
     }
+}
+
+.no-scrollbars{
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
+
+}
+.no-scrollbars::-webkit-scrollbar { 
+display: none;  /* Safari and Chrome */
+}
+.no-style-type {
+    list-style-type: none;
 }

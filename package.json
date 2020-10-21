@@ -33,6 +33,7 @@
         "react-select": "^2.1.2",
         "react-spinners": "^0.4.8",
         "react-toggle": "^4.1.1",
+        "react-window": "^1.8.5",
         "reactstrap": "^6.5.0",
         "request": "^2.88.0"
     },
