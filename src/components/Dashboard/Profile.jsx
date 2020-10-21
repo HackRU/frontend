@@ -48,26 +48,9 @@ const Profile = (props) => {
                 }
             }
         });
-
-        // const set_team = await props.profile.getTeamUser();
-        // setTeam(set_team);
-        // console.log("Test");
-        // console.log(team);
-        
+        setTeam({});
 
     }, []);
-
-    // const submitUser = (user) => {
-    //     setLoading("Saving your information");
-    //     setProfileMSG(null);
-    //     setUser(user);
-    //     props.profile.Set(user, (err) => {
-    //         setLoading(false);
-    //         setProfileMSG(err ?
-    //             { color: "danger", value: err } :
-    //             { color: "success", value: "Profile Updated!" });
-    //     });
-    // };
 
 
     if (!props.profile.isLoggedIn) {

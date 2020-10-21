@@ -80,10 +80,10 @@
         { "value": "Prizes6", "label": "Prizes6" }
     ],
     "Marks": [
-        { "value": 1, "label": "one" },
-        { "value": 2, "label": "two" },
-        { "value": 3, "label": "three" },
-        { "value": 4, "label": "four" },
-        { "value": 5, "label": "five" }
+        { "value": 1, "label": "Still learning" },
+        { "value": 2, "label": "Casual" },
+        { "value": 3, "label": "Submitting" },
+        { "value": 4, "label": "Serious" },
+        { "value": 5, "label": "LET'S GOOOO"}
     ]
 }
