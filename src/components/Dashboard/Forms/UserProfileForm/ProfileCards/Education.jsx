@@ -5,7 +5,6 @@ import { Creatable, AsyncCreatable } from "react-select";
 import CustomAVInput from "../CustomAVInput";
 import { Icon } from "react-fa";
 import { theme } from "../../../../../Defaults";
-import request from "request";
 import majors from "../majors.json";
 import selectorOptions from "../selectorOptions.json";
 import { ProfileType } from "../../../../Profile";
@@ -17,7 +16,7 @@ class Education extends Component {
         super(props);
         this.updateUser = this.updateUser.bind(this);
     }
-    UNSAFE_componentWillMount() {
+    async UNSAFE_componentWillMount() {
         this.setState({
             user: JSON.parse(JSON.stringify(this.props.user)),
             edit: (this.props.user.registration_status === "unregistered"),
@@ -29,14 +28,21 @@ class Education extends Component {
             })),
             message: null
         });
-        request.get("https://raw.githubusercontent.com/MLH/mlh-policies/master/schools.csv", {}, (_err, _resp, body) => {
-            let schoolList = body.split("\r\n").map(item => {
-                item = item.startsWith("\"") ? item.substring(1, item.length - 2) : item;
-                return { value: item, label: item };
+        let schools = "";
+        await fetch("https://raw.githubusercontent.com/MLH/mlh-policies/master/schools.csv")
+            .then( async res => {
+                schools = await res.text();
+                let schoolList = schools.split("\n").map(item => {
+                    item = item.startsWith("\"") ? item.substring(1, item.length - 1).trim().replace("\r", "") : item.trim().replace("\r", "");
+                    return { value: item, label: item };
+                });
+                schoolList.splice(0, 1);
+                this.setState({ schoolList });
+            })
+            .catch( error => {
+                console.log("Error in getting schools");
+                console.log(error);
             });
-            schoolList.splice(0, 1); // We remove the first element because we don't like it
-            this.setState({ schoolList });
-        });
     }
 
     updateUser(user) {
