@@ -87,6 +87,33 @@ const ENDPOINTS = {
     sendmagic: BASE + "/createmagiclink"
 };
 /**
+ * TeamRU Base URL
+ */
+const TEAMRU_BASE = defaults.rest.teamru;
+
+const TEAMRU_ENDPOINTS = {
+
+    users: TEAMRU_BASE + "/users",
+
+    profile: TEAMRU_BASE + "/users/profile",
+
+    teams: TEAMRU_BASE + "/teams",
+
+    matches: TEAMRU_BASE + "/matches",
+
+    invite: "/invite",
+
+    confirm: "/confirm",
+
+    rescind: "/rescind",
+
+    reject: "/reject",
+
+    complete: "/complete",
+
+    leave: "/leave",
+};
+/**
  * Standard profile handler for the entire application
  */
 class Profile {
@@ -310,6 +337,13 @@ class Profile {
         this.isLoggedIn = false;
     }
     GetUser(callback, email) {
+        console.log(JSON.stringify({
+            email: this._email,
+            token: this._token,
+            query: {
+                email: email
+            }
+        }));
         if (this.isLoggedIn) {
             request(
                 {
@@ -329,11 +363,13 @@ class Profile {
                         callback("An error occured retrieving data", null);
                     } else {
                         if (body.statusCode === 200) {
+                            console.log(body);
                             callback(null, body.body[0]);
                             if (email === this._email) {
                                 this._registration_status = body.body[0].registration_status;
                             }
                         } else {
+                            console.log(body);
                             callback(
                                 body.body ? body.body : "Unexpected Error",
                                 null
@@ -483,6 +519,7 @@ class Profile {
                         token: this._token
                     },
                     json: true
+                    
                 },
                 (error, response, body) => {
                     if (error) {
@@ -628,6 +665,377 @@ class Profile {
             body: file
         });
     }
+
+    /**
+     * TeamRU API Calls
+     */
+    async getTeamUser() {
+        let resp = {
+            error: "",
+            response: ""
+        };
+        await fetch(TEAMRU_ENDPOINTS.profile, {
+            method: "GET",
+            headers: {
+                "token": this._token,
+            },
+        })
+            .then(async res => { 
+                if (res.status === 200) {
+                    resp.response = await res.json();
+                } else {
+                    resp.error = await res.json();
+                }
+            })
+            .catch(error => {
+                resp.error = error;
+            });
+
+        return resp;
+       
+    }
+
+    async newUser(user) {
+        let resp = {
+            error: "",
+            response: ""
+        };
+        await fetch(TEAMRU_ENDPOINTS.users, {
+            method: "POST",
+            headers: {
+                "token": this._token,
+            },
+            body: JSON.stringify(user)
+        })
+            .then(async res => { 
+                if (res.status === 200) {
+                    resp.response = await res.json();
+                } else {
+                    resp.error = await res.json();
+                }
+            })
+            .catch(error => {
+                resp.error = error;
+            });
+
+        return resp;
+    }
+
+    async updateUser(user) {
+        let resp = {
+            error: "",
+            response: ""
+        };
+        await fetch(TEAMRU_ENDPOINTS.profile, {
+            method: "PUT",
+            headers: {
+                "token": this._token,
+            },
+            body: JSON.stringify(user)
+        })
+            .then(async res => { 
+                if (res.status === 200) {
+                    resp.response = await res.json();
+                } else {
+                    resp.error = await res.json();
+                }
+            })
+            .catch(error => {
+                resp.error = error;
+            });
+
+        return resp;
+    }
+
+    async newTeam(team) {
+        let resp = {
+            error: "",
+            response: ""
+        };
+        await fetch(TEAMRU_ENDPOINTS.teams, {
+            method: "POST",
+            headers: {
+                "token": this._token,
+            },
+            body: JSON.stringify(team)
+        })
+            .then(async res => { 
+                if (res.status === 200) {
+                    resp.response = await res.json();
+                } else {
+                    resp.error = await res.json();
+                }
+            })
+            .catch(error => {
+                resp.error = error;
+            });
+
+        return resp;
+    }
+
+    async getAllTeams() {
+        let resp = {
+            error: "",
+            response: ""
+        };
+        await fetch(TEAMRU_ENDPOINTS.teams, {
+            method: "GET",
+            headers: {
+                "token": this._token,
+            },
+        })
+            .then(async res => { 
+                if (res.status === 200) {
+                    resp.response = await res.json();
+                } else {
+                    resp.error = await res.json();
+                }
+            })
+            .catch(error => {
+                resp.error = error;
+            });
+
+        return resp;
+    }
+
+    async getTeam(team_id) {
+        let resp = {
+            error: "",
+            response: ""
+        };
+        await fetch(TEAMRU_ENDPOINTS.teams+"/"+team_id, {
+            method: "GET",
+            headers: {
+                "token": this._token,
+            },
+        })
+            .then(async res => { 
+                if (res.status === 200) {
+                    resp.response = await res.json();
+                } else {
+                    resp.error = await res.json();
+                }
+            })
+            .catch(error => {
+                resp.error = error;
+            });
+
+        return resp;
+    }
+
+    async updateTeam(team, team_id) {
+        let resp = {
+            error: "",
+            response: ""
+        };
+        await fetch(TEAMRU_ENDPOINTS.teams+"/"+team_id, {
+            method: "PUT",
+            headers: {
+                "token": this._token,
+            },
+            body: JSON.stringify(team)
+        })
+            .then(async res => { 
+                if (res.status === 200) {
+                    resp.response = await res.json();
+                } else {
+                    resp.error = await res.json();
+                }
+            })
+            .catch(error => {
+                resp.error = error;
+            });
+
+        return resp;
+    }
+
+    async completeTeam(team_id) {
+        let resp = {
+            error: "",
+            response: ""
+        };
+        await fetch(TEAMRU_ENDPOINTS.teams+"/"+team_id+TEAMRU_ENDPOINTS.complete, {
+            method: "PUT",
+            headers: {
+                "token": this._token,
+            },
+        })
+            .then(async res => { 
+                if (res.status === 200) {
+                    resp.response = await res.json();
+                } else {
+                    resp.error = await res.json();
+                }
+            })
+            .catch(error => {
+                resp.error = error;
+            });
+
+        return resp;
+    }
+
+    async leaveTeam(team_id) {
+        let resp = {
+            error: "",
+            response: ""
+        };
+        await fetch(TEAMRU_ENDPOINTS.teams+"/"+team_id+TEAMRU_ENDPOINTS.leave, {
+            method: "PUT",
+            headers: {
+                "token": this._token,
+            },
+        })
+            .then(async res => { 
+                if (res.status === 200) {
+                    resp.response = await res.json();
+                } else {
+                    resp.error = await res.json();
+                }
+            })
+            .catch(error => {
+                resp.error = error;
+            });
+
+        return resp;
+    }
+
+    async inviteTeam(team_id, invite_id) {
+        let resp = {
+            error: "",
+            response: ""
+        };
+        await fetch(TEAMRU_ENDPOINTS.teams+"/"+team_id+TEAMRU_ENDPOINTS.invite, {
+            method: "POST",
+            headers: {
+                "token": this._token,
+            },
+            body: JSON.stringify({
+                team2_id: invite_id,
+            })
+        })
+            .then(async res => { 
+                if (res.status === 200) {
+                    resp.response = await res.json();
+                } else {
+                    resp.error = await res.json();
+                }
+            })
+            .catch(error => {
+                resp.error = error;
+            });
+
+        return resp;
+    }
+
+    async confirmInvite(team_id, invite_id) {
+        let resp = {
+            error: "",
+            response: ""
+        };
+        await fetch(TEAMRU_ENDPOINTS.teams+"/"+team_id+TEAMRU_ENDPOINTS.confirm, {
+            method: "POST",
+            headers: {
+                "token": this._token,
+            },
+            body: JSON.stringify({
+                team2_id: invite_id,
+            })
+        })
+            .then(async res => { 
+                if (res.status === 200) {
+                    resp.response = await res.json();
+                } else {
+                    resp.error = await res.json();
+                }
+            })
+            .catch(error => {
+                resp.error = error;
+            });
+
+        return resp;
+    }
+
+    async rescindInvite(team_id, invite_id) {
+        let resp = {
+            error: "",
+            response: ""
+        };
+        await fetch(TEAMRU_ENDPOINTS.teams+"/"+team_id+TEAMRU_ENDPOINTS.rescind, {
+            method: "POST",
+            headers: {
+                "token": this._token,
+            },
+            body: JSON.stringify({
+                team2_id: invite_id,
+            })
+        })
+            .then(async res => { 
+                if (res.status === 200) {
+                    resp.response = await res.json();
+                } else {
+                    resp.error = await res.json();
+                }
+            })
+            .catch(error => {
+                resp.error = error;
+            });
+
+        return resp;
+    }
+
+    async rejectInvite(invite_id, team_id) {
+        let resp = {
+            error: "",
+            response: ""
+        };
+        await fetch(TEAMRU_ENDPOINTS.teams+"/"+team_id+TEAMRU_ENDPOINTS.reject, {
+            method: "POST",
+            headers: {
+                "token": this._token,
+            },
+            body: JSON.stringify({
+                team2_id: invite_id,
+            })
+        })
+            .then(async res => { 
+                if (res.status === 200) {
+                    resp.response = await res.json();
+                } else {
+                    resp.error = await res.json();
+                }
+            })
+            .catch(error => {
+                resp.error = error;
+            });
+
+        return resp;
+    }
+
+    async matches(team_id) {
+        let resp = {
+            error: "",
+            response: ""
+        };
+        await fetch(TEAMRU_ENDPOINTS.matches+"/"+team_id, {
+            method: "GET",
+            headers: {
+                "token": this._token,
+            },
+        })
+            .then(async res => { 
+                if (res.status === 200) {
+                    resp.response = await res.json();
+                } else {
+                    resp.error = await res.json();
+                }
+            })
+            .catch(error => {
+                resp.error = error;
+            });
+
+        return resp;
+    }
+
 }
 
 const ProfileType = PropTypes.shape({
