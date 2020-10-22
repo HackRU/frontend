@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { FormGroup, Input, Label, Button, UncontrolledAlert } from "reactstrap";
-import { AvForm, AvCheckboxGroup, AvCheckbox } from "availity-reactstrap-validation";
+import { AvForm } from "availity-reactstrap-validation";
 import { Creatable } from "react-select";
 import { Icon } from "react-fa";
 import { theme } from "../../../../../Defaults";
