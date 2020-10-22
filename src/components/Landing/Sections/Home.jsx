@@ -314,8 +314,7 @@ class Home extends Component {
                         className="d-flex align-items-center"
                     >
                         <Grid xs={2}></Grid>
-                        <Grid xs={8}
-                            style={{ display: "block" }}>
+                        <Grid xs={8} style={{ display: "block" }}>
                             <Motion
                                 defaultStyle={{ opacity: 0 }}
                                 style={{ opacity: spring(1, { stiffness: 1, damping: 1 }) }}
@@ -361,16 +360,14 @@ class Home extends Component {
                                             style={{ opacity: opacity }}
                                             className="lead theme-font"
                                         >
-                                            <Icon style={{ marginRight: 5 }}
-                                                name="map-marker" />{" "}
+                                            <Icon style={{ marginRight: 5 }} name="map-marker" />{" "}
                                             {defaults.locationText}
                                         </h2>
                                         <h2
                                             style={{ opacity: opacity }}
                                             className="lead theme-font"
                                         >
-                                            <Icon style={{ marginRight: 5 }}
-                                                name="calendar" />{" "}
+                                            <Icon style={{ marginRight: 5 }} name="calendar" />{" "}
                                             {defaults.dateText}
                                         </h2>
                                         <hr style={{ opacity }} />
@@ -442,9 +439,15 @@ class Home extends Component {
                             {loggoutMsg}
                             {defaults.volunteers.display && (
                                 <div>
-                                    Want to help? Sign up to{" "}
-                                    <a href={defaults.volunteers.vol_url}>volunteer</a> or{" "}
-                                    <a href={defaults.volunteers.mentor_url}>mentor</a>!
+                                    <div>
+                                        Want to help? Sign up to{" "}
+                                        <a href={defaults.volunteers.vol_url}>volunteer</a> or{" "}
+                                        <a href={defaults.volunteers.mentor_url}>mentor</a>!
+                                    </div>
+                                    <div>
+                                        Want to receive updates? Subscribe{" "}
+                                        <a href={defaults.mailing}>here</a>!
+                                    </div>
                                 </div>
                             )}
                             <Button
@@ -617,7 +620,8 @@ class Home extends Component {
                             </div>
                         )}
                     </Motion>
-                    <Grid container
+                    <Grid
+                        container
                         justify="center"
                         alignItems="center"
                         style={{ minWidth: "100%", minHeight: "100vh" }}
@@ -668,16 +672,14 @@ class Home extends Component {
                                             style={{ opacity: opacity }}
                                             className="lead theme-font"
                                         >
-                                            <Icon style={{ marginRight: 5 }}
-                                                name="map-marker" />{" "}
+                                            <Icon style={{ marginRight: 5 }} name="map-marker" />{" "}
                                             {defaults.locationText}
                                         </h2>
                                         <h2
                                             style={{ opacity: opacity }}
                                             className="lead theme-font"
                                         >
-                                            <Icon style={{ marginRight: 5 }}
-                                                name="calendar" />{" "}
+                                            <Icon style={{ marginRight: 5 }} name="calendar" />{" "}
                                             {defaults.dateText}
                                         </h2>
                                         <ButtonGroup>
@@ -746,9 +748,15 @@ class Home extends Component {
                             {/* {navContainer} */}
                             {defaults.volunteers.display && (
                                 <div>
-                                    Want to help? Sign up to{" "}
-                                    <a href={defaults.volunteers.vol_url}>volunteer</a> or{" "}
-                                    <a href={defaults.volunteers.mentor_url}>mentor</a>!
+                                    <div>
+                                        Want to help? Sign up to{" "}
+                                        <a href={defaults.volunteers.vol_url}>volunteer</a> or{" "}
+                                        <a href={defaults.volunteers.mentor_url}>mentor</a>!
+                                    </div>
+                                    <div>
+                                        Want to receive updates? Subscribe{" "}
+                                        <a href={defaults.mailing}>here</a>!
+                                    </div>
                                 </div>
                             )}
                         </Grid>
