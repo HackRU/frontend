@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import { FormGroup, Label, Button, Col, UncontrolledAlert, Input, Collapse } from "reactstrap";
+import { FormGroup, Label, Button, Col, UncontrolledAlert, Input, Collapse} from "reactstrap";
 import { AvForm, AvField } from "availity-reactstrap-validation";
-import { Slider, createMuiTheme, ThemeProvider } from "@material-ui/core";
+import { Slider, createMuiTheme, ThemeProvider, Grid } from "@material-ui/core";
 import { Creatable } from "react-select";
 import CustomAVInput from "../CustomAVInput";
 import { Icon } from "react-fa";
@@ -18,27 +18,29 @@ class Team extends Component {
     //     this.updateUser = this.updateUser.bind(this);
     // }
     UNSAFE_componentWillMount() {
-        let team = this.props.team;
-        if (!this.props.hasTeamProfile) {
-            team = {
-                skills: [],
-                prizes: [],
-                bio: "",
-                // github: "",
-                interests: [],
-                seriousness: 3,
-            };
+        // console.log(this.props.teamProfile);
+        // console.log(this.props.team);
+        if (this.props.hasTeam) {
+            this.setState({
+                teamName: this.props.teamProfile.name,
+                teamDescription: this.props.teamProfile.desc,
+            });
+        } else {
+            this.setState({
+                teamName: "",
+                teamDescription: "",
+            });
         }
-        
+
         this.setState({
-            teamName: "",
             want: this.props.user.want_team,
-            team: team,
+            team: this.props.team,
             user: JSON.parse(JSON.stringify(this.props.user)),
-            edit: (!this.props.hasTeam),
+            edit: !this.props.hasTeam,
             loading: false,
             message: null
         });
+        // console.log(this.props.team);
     }
 
     updateTeam(team) {
@@ -60,17 +62,30 @@ class Team extends Component {
         });
         await update_user;
 
+        await this.props.profile.updateUser(team);
 
-        let check = await this.props.profile.getTeamUser();
-        console.log(check);
+        if (this.props.hasTeam) {
+            let check = await this.props.profile.updateTeam({name: this.state.teamName, desc: this.state.teamDescription, complete: this.state.want}, team.team_id);
+            console.log(check);
+        } else {
+            let check = await this.props.profile.newTeam({
+                name: this.state.teamName,
+                desc: this.state.teamDescription,
+                skills: team.skills,
+                prizes: team.prizes,
+                complete: this.state.want
+            });
+            console.log(check);
 
-        await this.props.profile.updateTeam(team);
+        }
 
-        console.log(this.state.team);
+
+        // console.log(this.state.team);
 
         this.setState({
             profileMSG: null,
             loading: false,
+            edit: false,
             team,
         });
 
@@ -90,6 +105,7 @@ class Team extends Component {
         let message = null;
         let team = this.state.team;
         let name = this.state.teamName;
+        let desc = this.state.teamDescription;
         if (this.state.message) {
             message = (<UncontrolledAlert color="danger">{this.state.message}</UncontrolledAlert>);
         }
@@ -122,7 +138,7 @@ class Team extends Component {
                                     label="Team Name"
                                     type="text"
                                     placeholder="TeamRU"
-                                    value={this.state.teamName}
+                                    value={name}
                                     onChange={(e) => { name = e.target.value; this.setState({teamName: name}); }}
                                     validate={{
                                         required: { value: false, errorMessage: "Invalid team name" }}} />
@@ -187,26 +203,31 @@ class Team extends Component {
                             <Label for="bio">Team descripton</Label>
                             <Input id="bio"
                                 type="textarea"
-                                placeholder=""
-                                value={team.bio}
-                                onChange={(e) => { team.bio = e.target.value; this.updateTeam(team); }} />
+                                placeholder="A chill team looking to make a full stack project"
+                                value={desc}
+                                onChange={(e) => { desc = e.target.value; this.setState({teamDescription: desc}); }} />
                         </FormGroup>
                         <FormGroup>
                             <Label for="serious">What level of seriousness are you looking for?</Label>
-                            <ThemeProvider theme={new_theme}>
-                                <Slider
-                                    color="secondary"
-                                    id="serious"
-                                    default={3}
-                                    step={1}
-                                    min={1}
-                                    max={5}
-                                    marks={selectorOptions["Marks"]}
-                                    value={team.seriousness}
-                                    onChange={(e, value) => { team.seriousness = value; this.updateTeam(team); }}
-                                />
-                            </ThemeProvider>
-                        
+                            <Grid container
+                                justify="center"
+                                alignItems="center">
+                                <Grid xs={11}>
+                                    <ThemeProvider theme={new_theme}>
+                                        <Slider
+                                            color="secondary"
+                                            id="serious"
+                                            default={3}
+                                            step={1}
+                                            min={1}
+                                            max={5}
+                                            marks={selectorOptions["Marks"]}
+                                            value={team.seriousness}
+                                            onChange={(e, value) => { team.seriousness = value; this.updateTeam(team); }}
+                                        />
+                                    </ThemeProvider>
+                                </Grid>
+                            </Grid>
                         </FormGroup>
                         
                     </Collapse>
@@ -239,23 +260,35 @@ class Team extends Component {
                             {field("Yes, I am looking for team members") }
                         </FormGroup>
                         <FormGroup row>
-                            <Col xs={(mobile) ? 12 : 4}>
-                                <Label>Interests</Label>
-                                {field(team.interests)}
+                            <Col xs={(mobile) ? 12 : 6}>
+                                <Label>Team Name</Label>
+                                {field(this.state.teamName)}
                             </Col>
-                            <Col xs={(mobile) ? 12 : 4}>
+                            <Col xs={(mobile) ? 12 : 6}>
                                 <Label>Prizes</Label>
-                                {field(team.prizes)}
+                                {field(team.prizes.join(";"))}
                             </Col>
-                            <Col xs={(mobile) ? 12 : 4}>
+                        </FormGroup>
+                        <FormGroup row>
+                            <Col xs={(mobile) ? 12 : 6}>
+                                <Label>Prizes</Label>
+                                {field(team.prizes.join(";"))}
+                            </Col>
+                            <Col xs={(mobile) ? 12 : 6}>
                                 <Label>Skills</Label>
-                                {field(team.skills)}
+                                {field(team.skills.join(";"))}
                             </Col>
                         </FormGroup>
                         <FormGroup row>
                             <Col xs={12}>
-                                <Label>Bio</Label>
-                                {field(team.bio)}
+                                <Label>Team Description</Label>
+                                {field(this.state.teamDescription)}
+                            </Col>
+                        </FormGroup>
+                        <FormGroup row>
+                            <Col xs={12}>
+                                <Label>Seriousness</Label>
+                                {field(selectorOptions["Marks"][team.seriousness-1].label)}
                             </Col>
                         </FormGroup>
                     </div>
@@ -288,7 +321,7 @@ Team.propTypes = {
     },
     team: PropTypes.object,
     hasTeam: PropTypes.bool,
-    hasTeamProfile: PropTypes.bool,
+    teamProfile: PropTypes.object,
     onChange: PropTypes.func,
     onSubmit: PropTypes.func,
     mobile: PropTypes.bool,

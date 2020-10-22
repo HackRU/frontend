@@ -23,6 +23,7 @@ const Profile = (props) => {
     const [openDetails, setOpenDetails] = useState(false);
     const [profileMSG, setProfileMSG] = useState({});
     const [teamUser, setTeamUser] = useState({});
+    const [teamProfile, setTeamProfile] = useState({});
     
     useEffect(async () => {
         if (props.magic) {
@@ -36,26 +37,31 @@ const Profile = (props) => {
                 props.clearMagic();
             });
         }
-        props.profile.Get((msg, data) => {
+        props.profile.Get(async (msg, data) => {
             if (msg) {
                 console.error(msg);
             } else {
                 if (data) {
                     delete data.auth;
                     setUser(data);
+
+                    let teamRU_User =  await props.profile.getTeamUser();
+                    if (teamRU_User.response) setTeamUser(teamRU_User.response);
+
+                    if (teamRU_User.response.hasateam) {
+                        let teamRU_Profile = await props.profile.getTeam(teamRU_User.response.team_id);
+                        if (teamRU_Profile.response) setTeamProfile(teamRU_Profile.response);
+                    }
+
                     setLoading(false);
                     setOpenDetails((data.registration_status === "unregistered"));
+                    // console.log(teamRU_User.response);
+
                 }
             }
         });
 
-        let teamRU_User = await props.profile.getTeamUser();
-        if (teamRU_User.response) {
-            setTeamUser(teamRU_User.response);
-        }
-        // console.log(teamRU_User.response);
         
-
     }, []);
 
 
@@ -153,8 +159,8 @@ const Profile = (props) => {
                         isOpen={true} /* replaced this.state.openDetails to force true*/>
                         <Team
                             user={set_user}
-                            hasTeam={teamUser.hasTeam}
-                            hasTeamProfile={teamUser !== {}}
+                            hasTeam={teamUser.team_id !== ""}
+                            teamProfile={teamProfile}
                             team={teamUser}
                             profile={props.profile}
                         />

@@ -294,6 +294,7 @@ class Profile {
                                                     token,
                                                     valid_until
                                                 );
+                                                this.newUser({user_id: this._email});
                                                 callback();
                                             } else {
                                                 callback(
@@ -797,6 +798,7 @@ class Profile {
     }
 
     async getTeam(team_id) {
+        // console.log("Getting team");
         let resp = {
             error: "",
             response: ""
@@ -817,7 +819,7 @@ class Profile {
             .catch(error => {
                 resp.error = error;
             });
-
+        // console.log(resp);
         return resp;
     }
 
