@@ -377,6 +377,14 @@ class Profile {
         this.GetUser(callback, this._email);
     }
     SetUser(data, user, callback) {
+        // console.log(JSON.stringify({
+        //     updates: {
+        //         $set: data
+        //     },
+        //     user_email: user,
+        //     auth_email: this._email,
+        //     token: this._token
+        // }));
         if (this.isLoggedIn) {
             request(
                 {

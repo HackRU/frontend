@@ -18,21 +18,24 @@ class Team extends Component {
     //     this.updateUser = this.updateUser.bind(this);
     // }
     UNSAFE_componentWillMount() {
-        const team = {
-            user_email: localStorage.getItem("email"),
-            skills: [],
-            prizes: [],
-            bio: "",
-            // github: "",
-            interests: [],
-            seriousness: 3,
-        };
+        let team = this.props.team;
+        if (!this.props.hasTeamProfile) {
+            team = {
+                skills: [],
+                prizes: [],
+                bio: "",
+                // github: "",
+                interests: [],
+                seriousness: 3,
+            };
+        }
+        
         this.setState({
             teamName: "",
-            want: false,
+            want: this.props.user.want_team,
             team: team,
             user: JSON.parse(JSON.stringify(this.props.user)),
-            edit: (this.props.user.registration_status === "unregistered"),
+            edit: (!this.props.hasTeam),
             loading: false,
             message: null
         });
@@ -42,7 +45,7 @@ class Team extends Component {
         this.setState({
             team: team
         });
-        console.log(this.state.team);
+        // console.log(this.state.team);
     }
 
     submitTeam = async (team) => {
@@ -52,9 +55,16 @@ class Team extends Component {
             team,
         });
 
-        // let check = await this.props.profile.getTeamUser();
+        let update_user = new Promise((resolve) => {
+            this.props.profile.Set({want_team: this.state.want}, (err) => {resolve(err);} );
+        });
+        await update_user;
 
-        // console.log(check);
+
+        let check = await this.props.profile.getTeamUser();
+        console.log(check);
+
+        await this.props.profile.updateTeam(team);
 
         console.log(this.state.team);
 
@@ -109,13 +119,13 @@ class Team extends Component {
                         <FormGroup row>
                             <Col xs={(mobile) ? 12 : 6}>
                                 <AvField name="first"
-                                    label="Team Name *"
+                                    label="Team Name"
                                     type="text"
                                     placeholder="TeamRU"
                                     value={this.state.teamName}
                                     onChange={(e) => { name = e.target.value; this.setState({teamName: name}); }}
                                     validate={{
-                                        required: { value: true, errorMessage: "Invalid team name" }}} />
+                                        required: { value: false, errorMessage: "Invalid team name" }}} />
                             </Col>
                             <Col xs={(mobile) ? 12 : 6}>
                                 <CustomAVInput name="interests"
@@ -198,14 +208,15 @@ class Team extends Component {
                             </ThemeProvider>
                         
                         </FormGroup>
-                        {message}
-                        <div style={{ width: "100%" }}
-                            align="right">
-                            <Button color="success"
-                                className="pill-btn"
-                                type="submit"> { this.state.loading ?  <PulseLoader color={theme.accent[0]} /> : "Create!" } </Button>
-                        </div>
+                        
                     </Collapse>
+                    {message}
+                    <div style={{ width: "100%" }}
+                        align="right">
+                        <Button color="success"
+                            className="pill-btn"
+                            type="submit"> { this.state.loading ?  <PulseLoader color={theme.accent[0]} /> : "Update" } </Button>
+                    </div>
                 </AvForm>
             );
         } else {
@@ -275,6 +286,9 @@ Team.propTypes = {
     user: {
         registration_status: PropTypes.string,
     },
+    team: PropTypes.object,
+    hasTeam: PropTypes.bool,
+    hasTeamProfile: PropTypes.bool,
     onChange: PropTypes.func,
     onSubmit: PropTypes.func,
     mobile: PropTypes.bool,

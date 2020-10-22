@@ -22,8 +22,8 @@ const Profile = (props) => {
     const [user, setUser] = useState({});
     const [openDetails, setOpenDetails] = useState(false);
     const [profileMSG, setProfileMSG] = useState({});
-    const [team, setTeam] = useState({});
-
+    const [teamUser, setTeamUser] = useState({});
+    
     useEffect(async () => {
         if (props.magic) {
             props.profile.Eat(props.magic, (msg) => {
@@ -48,7 +48,13 @@ const Profile = (props) => {
                 }
             }
         });
-        setTeam({});
+
+        let teamRU_User = await props.profile.getTeamUser();
+        if (teamRU_User.response) {
+            setTeamUser(teamRU_User.response);
+        }
+        // console.log(teamRU_User.response);
+        
 
     }, []);
 
@@ -147,7 +153,9 @@ const Profile = (props) => {
                         isOpen={true} /* replaced this.state.openDetails to force true*/>
                         <Team
                             user={set_user}
-                            team={team}
+                            hasTeam={teamUser.hasTeam}
+                            hasTeamProfile={teamUser !== {}}
+                            team={teamUser}
                             profile={props.profile}
                         />
                     </Section>
