@@ -14,7 +14,7 @@ import Team from "./Forms/UserProfileForm/ProfileCards/TeamMaker";
 import Communications from "./Forms/UserProfileForm/ProfileCards/Communications";
 import { ProfileType } from "../Profile";
 import PropTypes from "prop-types";
-// import { theme } from "../../Defaults";
+import { defaults } from "../../Defaults";
 
 
 const Profile = (props) => {
@@ -153,19 +153,21 @@ const Profile = (props) => {
                         />
                     </Section>
                 </Grid>
-                <Grid xs={12}>
-                    <Section title="Make a Team!"
-                        subtitle="Introduce yourself, don't be shy!"
-                        isOpen={true} /* replaced this.state.openDetails to force true*/>
-                        <Team
-                            user={set_user}
-                            hasTeam={teamUser.team_id !== ""}
-                            teamProfile={teamProfile}
-                            team={teamUser}
-                            profile={props.profile}
-                        />
-                    </Section>
-                </Grid>
+                { defaults.teamru ?
+                    <Grid xs={12}>
+                        <Section title="Make a Team!"
+                            subtitle="Introduce yourself, don't be shy!"
+                            isOpen={true} /* replaced this.state.openDetails to force true*/>
+                            <Team
+                                user={set_user}
+                                hasTeam={teamUser.team_id !== ""}
+                                teamProfile={teamProfile}
+                                team={teamUser}
+                                profile={props.profile}
+                            />
+                        </Section>
+                    </Grid> : <b></b>}
+
             </Grid>
         </Container>
     );
