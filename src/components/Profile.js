@@ -294,6 +294,10 @@ class Profile {
                                                     token,
                                                     valid_until
                                                 );
+                                                /**
+                                                 * Create new TeamRU user on signup
+                                                 */
+                                                this.newUser({});
                                                 callback();
                                             } else {
                                                 callback(
@@ -337,13 +341,6 @@ class Profile {
         this.isLoggedIn = false;
     }
     GetUser(callback, email) {
-        console.log(JSON.stringify({
-            email: this._email,
-            token: this._token,
-            query: {
-                email: email
-            }
-        }));
         if (this.isLoggedIn) {
             request(
                 {
@@ -363,13 +360,11 @@ class Profile {
                         callback("An error occured retrieving data", null);
                     } else {
                         if (body.statusCode === 200) {
-                            console.log(body);
                             callback(null, body.body[0]);
                             if (email === this._email) {
                                 this._registration_status = body.body[0].registration_status;
                             }
                         } else {
-                            console.log(body);
                             callback(
                                 body.body ? body.body : "Unexpected Error",
                                 null
@@ -386,6 +381,14 @@ class Profile {
         this.GetUser(callback, this._email);
     }
     SetUser(data, user, callback) {
+        // console.log(JSON.stringify({
+        //     updates: {
+        //         $set: data
+        //     },
+        //     user_email: user,
+        //     auth_email: this._email,
+        //     token: this._token
+        // }));
         if (this.isLoggedIn) {
             request(
                 {
@@ -618,7 +621,6 @@ class Profile {
                 token: this._token
             })
         }).then(res => res.json());
-        console.log(json);
         return json.body;
     }
     async DoesResumeExist() {
@@ -627,7 +629,6 @@ class Profile {
     }
     async UploadResume(file) {
         const info = await this.GetResumeInfo();
-        console.log(info);
         return await fetch(info.upload, {
             method: "PUT",
             headers: {
@@ -647,7 +648,6 @@ class Profile {
                 token: this._token
             })
         }).then(res => res.json());
-        console.log(json);
         return json.body;
     }
     async DoesWaiverExist() {
@@ -656,7 +656,6 @@ class Profile {
     }
     async UploadWaiver(file) {
         const info = await this.GetWaiverInfo();
-        console.log(info);
         return await fetch(info.upload, {
             method: "PUT",
             headers: {
@@ -703,6 +702,7 @@ class Profile {
         await fetch(TEAMRU_ENDPOINTS.users, {
             method: "POST",
             headers: {
+                "Content-Type": "application/json",
                 "token": this._token,
             },
             body: JSON.stringify(user)
@@ -729,6 +729,7 @@ class Profile {
         await fetch(TEAMRU_ENDPOINTS.profile, {
             method: "PUT",
             headers: {
+                "Content-Type": "application/json",
                 "token": this._token,
             },
             body: JSON.stringify(user)
@@ -755,6 +756,7 @@ class Profile {
         await fetch(TEAMRU_ENDPOINTS.teams, {
             method: "POST",
             headers: {
+                "Content-Type": "application/json",
                 "token": this._token,
             },
             body: JSON.stringify(team)
@@ -819,7 +821,6 @@ class Profile {
             .catch(error => {
                 resp.error = error;
             });
-
         return resp;
     }
 
@@ -831,6 +832,7 @@ class Profile {
         await fetch(TEAMRU_ENDPOINTS.teams+"/"+team_id, {
             method: "PUT",
             headers: {
+                "Content-Type": "application/json",
                 "token": this._token,
             },
             body: JSON.stringify(team)

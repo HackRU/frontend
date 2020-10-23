@@ -9,6 +9,7 @@ import Documents from "./Forms/UserProfileForm/ProfileCards/Documents";
 import Questions from "./Forms/UserProfileForm/ProfileCards/Questions";
 import Register from "./Forms/UserProfileForm/ProfileCards/Register";
 import Swag from "./Forms/UserProfileForm/ProfileCards/Swag";
+import Team from "./Forms/UserProfileForm/ProfileCards/TeamMaker";
 // import Short from "./Forms/UserProfileForm/ProfileCards/ShortProfileForm";
 import Communications from "./Forms/UserProfileForm/ProfileCards/Communications";
 import { ProfileType } from "../Profile";
@@ -21,8 +22,10 @@ const Profile = (props) => {
     const [user, setUser] = useState({});
     const [openDetails, setOpenDetails] = useState(false);
     const [profileMSG, setProfileMSG] = useState({});
-
-    useEffect(() => {
+    const [teamUser, setTeamUser] = useState({});
+    const [teamProfile, setTeamProfile] = useState({});
+    
+    useEffect(async () => {
         if (props.magic) {
             props.profile.Eat(props.magic, (msg) => {
                 if (msg) {
@@ -34,31 +37,32 @@ const Profile = (props) => {
                 props.clearMagic();
             });
         }
-        props.profile.Get((msg, data) => {
+        props.profile.Get(async (msg, data) => {
             if (msg) {
                 console.error(msg);
             } else {
                 if (data) {
                     delete data.auth;
                     setUser(data);
+
+                    let teamRU_User =  await props.profile.getTeamUser();
+                    if (teamRU_User.response) setTeamUser(teamRU_User.response);
+
+                    if (teamRU_User.response.hasateam) {
+                        let teamRU_Profile = await props.profile.getTeam(teamRU_User.response.team_id);
+                        if (teamRU_Profile.response) setTeamProfile(teamRU_Profile.response);
+                    }
+
                     setLoading(false);
                     setOpenDetails((data.registration_status === "unregistered"));
+                    // console.log(teamRU_User.response);
+
                 }
             }
         });
-    }, []);
 
-    // const submitUser = (user) => {
-    //     setLoading("Saving your information");
-    //     setProfileMSG(null);
-    //     setUser(user);
-    //     props.profile.Set(user, (err) => {
-    //         setLoading(false);
-    //         setProfileMSG(err ?
-    //             { color: "danger", value: err } :
-    //             { color: "success", value: "Profile Updated!" });
-    //     });
-    // };
+        
+    }, []);
 
 
     if (!props.profile.isLoggedIn) {
@@ -145,6 +149,19 @@ const Profile = (props) => {
                         isOpen={true} /* replaced this.state.openDetails to force true*/>
                         <Swag
                             user={set_user}
+                            profile={props.profile}
+                        />
+                    </Section>
+                </Grid>
+                <Grid xs={12}>
+                    <Section title="Make a Team!"
+                        subtitle="Introduce yourself, don't be shy!"
+                        isOpen={true} /* replaced this.state.openDetails to force true*/>
+                        <Team
+                            user={set_user}
+                            hasTeam={teamUser.team_id !== ""}
+                            teamProfile={teamProfile}
+                            team={teamUser}
                             profile={props.profile}
                         />
                     </Section>
