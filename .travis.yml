@@ -5,7 +5,6 @@ before_install:
 - npm i -g npm@3
 script:
 - npm run lint
-- npm run build
 deploy:
   provider: s3
   access_key_id: AKIAIHU5YKTHTRX7E4PQ
