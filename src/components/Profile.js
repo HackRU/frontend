@@ -294,7 +294,7 @@ class Profile {
                                                     token,
                                                     valid_until
                                                 );
-                                                this.newUser({user_id: this._email});
+                                                this.newUser({});
                                                 callback();
                                             } else {
                                                 callback(
