@@ -1,6 +1,6 @@
 import React from "react";
 import { theme } from "../../../Defaults";
-import { Table, TableContainer, TableRow, TableCell, TableHead, Grid } from "@material-ui/core";
+import { TableRow, TableCell, Grid } from "@material-ui/core";
 import Card from "../../Card";
 /**
  * Schedule component for the landing page
@@ -63,7 +63,7 @@ function Schedule(){
                 </TableRow>
             );
         });
-        return <div style={{ margin: 10 }}> Just keep scrolling... </div>
+        return <div style={{ margin: 10 }}> Just keep scrolling... </div>;
         // return (
         //     <div style={{ overflowX: "auto" }}>
         //         <TableContainer>
