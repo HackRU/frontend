@@ -34,7 +34,7 @@ const defaults =  {
         "vol_url": "https://docs.google.com/forms/d/e/1FAIpQLSe_qBzqsJIKWd_BohZ7Xuju3XQhI2f6xtrwX7WO-otR0Q7ofg/viewform?usp=sf_link",
         "mentor_url": "https://docs.google.com/forms/d/e/1FAIpQLScG3eyzY67q58k52zh5nSscUBWRoYn8KayVNAXqYvJl8oqD8Q/viewform"
     },
-    "dayof": false
+    "dayof": true
 };
 
 const navlinks = {

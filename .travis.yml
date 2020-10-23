@@ -1,7 +1,21 @@
 language: node_js
 node_js:
-  - "8"
+- '8'
 before_install:
-  - npm i -g npm@3
+- npm i -g npm@3
 script:
-  - npm run lint
+- npm run lint
+- npm run build
+deploy:
+  provider: s3
+  access_key_id: AKIAIHU5YKTHTRX7E4PQ
+  secret_access_key:
+    secure: TVskTMOFpcBwHmsku1JufW8DFExgm1EeaJXn08uQl6V1U7GKuyS/G4/k83iIyVIpiojeF1hh+fGDe0CGiWi5nZ5jgo9XoDia+MksAC7UEU+Q0q/lixwd6R/9xP/N125AvUzVKVf1nmjFF5aMEMN21Ks0HY6SFUxuevR5vot4/lgdvAVZZO0ZYVXOQb58GfHJIAAaaITrwg4QE1l8YPlfaaCv7PC0vc9A5jIsQyqvcVgcGr3uy2WGur2pCIv9u1h9WivpW/qkASyqziPg2Rls9AVquW4jjJAiZhNbrNKBy4cZF5+M/nIb09TysjLOjjBna2hIm9co51UggKrhWTBX0pmpM4+G41DVxdbXtYk32oOzeRxT4lzjJz8jqvqn480iUEHI0b9U7oAcv0C+3kl9E0wf1fP7U9beE+N1yd5rmMGzC0c/ibNWkvvETpAcbzVyFd6YtJh7T3L+ALVz4UXeqdf0SFcIsfgNiHMNTxiJrtSWNW1kbZbx3/k35MrRe6opLFI1qFD4246W3dNQ5MN2D2FxXM/P6xg0jIs7v4J2zLNB1a/ViZcoy+vUbrd5B/tvqrDHxQ0Ecz+FIfgf+gQz2UqrHIoJxUtLfn937XPvHSwnaYYXAkA1bR3MxJbXl6cB3ZsOe2xeugQHrA3w3Tt+1D5DsS7i6kGf63laXCwYgVU=
+  bucket: hackru-frontend-dev
+  local-dir: build
+  acl: public_read
+  on:
+    A
+    repo: HackRU/frontend
+    branch: env/dev
+  skip_cleanup: 'true'
