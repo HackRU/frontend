@@ -341,13 +341,6 @@ class Profile {
         this.isLoggedIn = false;
     }
     GetUser(callback, email) {
-        // console.log(JSON.stringify({
-        //     email: this._email,
-        //     token: this._token,
-        //     query: {
-        //         email: email
-        //     }
-        // }));
         if (this.isLoggedIn) {
             request(
                 {
@@ -367,13 +360,11 @@ class Profile {
                         callback("An error occured retrieving data", null);
                     } else {
                         if (body.statusCode === 200) {
-                          
                             callback(null, body.body[0]);
                             if (email === this._email) {
                                 this._registration_status = body.body[0].registration_status;
                             }
                         } else {
-                            
                             callback(
                                 body.body ? body.body : "Unexpected Error",
                                 null
