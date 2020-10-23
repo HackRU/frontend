@@ -724,7 +724,7 @@ class Profile {
         })
             .then(async res => { 
                 if (res.status === 200) {
-                    resp.response = await res.text();
+                    resp.response = await res.json();
                 } else {
                     resp.error = await res.json();
                 }
