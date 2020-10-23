@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { FormGroup, Input, Label, Button, UncontrolledAlert } from "reactstrap";
-import { AvForm, AvCheckboxGroup, AvCheckbox } from "availity-reactstrap-validation";
+import { AvForm } from "availity-reactstrap-validation";
 import { Creatable } from "react-select";
 import { Icon } from "react-fa";
 import { theme } from "../../../../../Defaults";
@@ -156,21 +156,21 @@ class Questions extends Component {
                             value={user.special_needs}
                             onChange={(e) => { user.special_needs = e.target.value; this.updateUser(user); }} />
                     </FormGroup>
-                    <AvCheckboxGroup name="polls"
+                    {/* <AvCheckboxGroup name="polls"
                         className="custom-av-checkbox"
                         label={<h4>Polls</h4>}
                         validate={{ required: { value: false, errorMessag: "" } }}>
-                        {/* <AvCheckbox name="poll-bus"
+                        <AvCheckbox name="poll-bus"
                             customInput
                             onChange={() => { user.want_bus = (user.want_bus) ? !user.want_bus : (true); }}
                             label={<p>Would you be interested in a bus from your school to HackRU? (Note: this is not a guarantee that a bus will pick you up from your particular school!)</p>}
-                            value={"poll-bus"} /> */}
+                            value={"poll-bus"} />
                         <AvCheckbox name="poll-team"
                             customInput
                             onChange={() => { user.want_team = (user.want_team) ? !user.want_team : (true); }}
                             label={<p>Are you looking for team members?</p>}
                             value={"poll-team"} />
-                    </AvCheckboxGroup>
+                    </AvCheckboxGroup> */}
                     {message}
                     <div style={{ width: "100%" }}
                         align="right">
