@@ -15,7 +15,6 @@ deploy:
   local-dir: build
   acl: public_read
   on:
-    A
     repo: HackRU/frontend
     branch: env/dev
   skip_cleanup: 'true'
