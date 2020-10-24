@@ -68,15 +68,30 @@ class Team extends Component {
             let check = await this.props.profile.updateTeam({name: this.state.teamName, desc: this.state.teamDescription, complete: this.state.want}, team.team_id);
             console.log(check);
         } else {
-            let check = await this.props.profile.newTeam({
-                name: this.state.teamName,
-                desc: this.state.teamDescription,
-                skills: team.skills,
-                prizes: team.prizes,
-                complete: this.state.want
-            });
-            console.log(check);
-
+            if (this.state.want) {
+                if (this.state.teamName === "") {
+                    this.setState({ message: null }, () => { this.setState({ message: "Please fill out Team Name and Description." }); });
+                    this.setState({
+                        loading: false
+                    });
+                    return;
+                } else if (this.state.teamDescription === "") {
+                    this.setState({ message: null }, () => { this.setState({ message: "Please fill out Team Name and Description." }); });
+                    this.setState({
+                        loading: false
+                    });
+                    return;
+                } else {
+                    let check = await this.props.profile.newTeam({
+                        name: this.state.teamName,
+                        desc: this.state.teamDescription,
+                        skills: team.skills,
+                        prizes: team.prizes,
+                        complete: this.state.want
+                    });
+                    console.log(check);
+                }
+            }
         }
 
 
@@ -229,7 +244,6 @@ class Team extends Component {
                                 </Grid>
                             </Grid>
                         </FormGroup>
-                        
                     </Collapse>
                     {message}
                     <div style={{ width: "100%" }}
@@ -288,7 +302,8 @@ class Team extends Component {
                         <FormGroup row>
                             <Col xs={12}>
                                 <Label>Seriousness</Label>
-                                {field(selectorOptions["Marks"][team.seriousness-1].label)}
+                                {field("check")}
+                                {/* {field(selectorOptions["Marks"][team.seriousness-1].label)} */}
                             </Col>
                         </FormGroup>
                     </div>
