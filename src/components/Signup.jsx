@@ -45,7 +45,6 @@ const SignUpPage = (props) => {
             let email = document.getElementById("email").value;
             let password = document.getElementById("password").value;
             let confirmPassword = document.getElementById("conpassword").value;
-            console.log(firstName, lastName, email, password, confirmPassword);
             props.profile.SignUp(firstName, lastName, email, password, confirmPassword, (msg) => {
                 if (msg) {
                     setLoading(false);
@@ -117,6 +116,7 @@ const SignUpPage = (props) => {
                                 fullWidth
                                 id="email"
                                 label="email"
+                                type="email"
                                 name="email"
                                 autoComplete="email"
                                 size="small"

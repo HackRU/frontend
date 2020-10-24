@@ -297,7 +297,7 @@ class Profile {
                                                 /**
                                                  * Create new TeamRU user on signup
                                                  */
-                                                this.newUser({});
+                                                if (defaults.teamru) this.newUser({});
                                                 callback();
                                             } else {
                                                 callback(
