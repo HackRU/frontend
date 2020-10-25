@@ -1,0 +1,58 @@
+# This workflow will automatically deploy to dev.hackru.org
+
+name: Deploy to dev.hackru.org
+
+on:
+    push:
+        branches:
+            - env/dev
+
+jobs:
+    deploy:
+        runs-on: ubuntu-latest
+
+        strategy:
+            fail-fast: true
+            matrix:
+                node-version: [12.x]
+
+        steps:
+            - uses: actions/checkout@v2
+            - name: Test using Node ${{ matrix.node-version }}
+              uses: actions/setup-node@v1
+              with:
+                  node-version: ${{ matrix.node-version }}
+            - run: npm install
+            - run: npm run lint
+            - run: NODE_ENV=development npm run build-dev
+            - name: Empty Bucket
+              uses: ItsKarma/aws-cli@v1.70.0
+              with:
+                  args: s3 rm s3://hackru-frontend-dev --recursive
+              env:
+                  AWS_ACCESS_KEY_ID: ${{ secrets.S3_ACCESS_KEY_ID }}
+                  AWS_SECRET_ACCESS_KEY: ${{ secrets.S3_SECRET_ACCESS_KEY }}
+
+            - name: Upload build files
+              uses: ItsKarma/aws-cli@v1.70.0
+              with:
+                  args: s3 cp --recursive build s3://hackru-frontend-dev --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers
+              env:
+                  AWS_ACCESS_KEY_ID: ${{ secrets.S3_ACCESS_KEY_ID }}
+                  AWS_SECRET_ACCESS_KEY: ${{ secrets.S3_SECRET_ACCESS_KEY }}
+
+            - name: Update asset content types
+              uses: ItsKarma/aws-cli@v1.70.0
+              with:
+                  args: s3 cp --recursive --exclude '*' --include '*.svg' --content-type 'image/svg+xml' build s3://hackru-frontend-dev --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers
+              env:
+                  AWS_ACCESS_KEY_ID: ${{ secrets.S3_ACCESS_KEY_ID }}
+                  AWS_SECRET_ACCESS_KEY: ${{ secrets.S3_SECRET_ACCESS_KEY }}
+
+            - name: Invalidate Cloudfront Cache
+              uses: ItsKarma/aws-cli@v1.70.0
+              with:
+                  args: cloudfront create-invalidation --distribution-id "E1G9Y2VX0F41B6"  --paths "/*"
+              env:
+                  AWS_ACCESS_KEY_ID: ${{ secrets.S3_ACCESS_KEY_ID }}
+                  AWS_SECRET_ACCESS_KEY: ${{ secrets.S3_SECRET_ACCESS_KEY }}
