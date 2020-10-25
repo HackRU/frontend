@@ -6,6 +6,9 @@ import GroupAdd from "@material-ui/icons/GroupAdd";
 import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline';
 import LinkOffOutlinedIcon from '@material-ui/icons/LinkOffOutlined';
+import { ProfileType } from "../Profile.js";
+import PropTypes from "prop-types";
+
 function a11yProps(index) {
     return {
       id: `simple-tab-${index}`,
@@ -24,31 +27,45 @@ function UserItem(props){
         </ListItem>
     )
 }
-function MyTeam(){
-    return(
+function MyTeam(props){
+    const [team, setTeam] = useState({});
+    const [user, setUser] = useState({});
+
+    useEffect(() => {
+        props.profile.getTeamUser().then((success) => {
+            setUser(success.response);
+            const team_id = success.response.team_id;
+            props.profile.getTeam(team_id).then(teamResponse => {
+                setTeam(teamResponse)
+            });
+        });
+    }, []);
+    if(user.hasateam){
+    return (
         <Grid container direction="row" justify="space-between">
             <Grid container direction="column" xs={6}>
-                <div style={{width: "100%", maxWidth: 360}}>
+                <div style={{ width: "100%", maxWidth: 360 }}>
                     <div>
                         <Grid container alignItems="center">
                             <Grid item xs>
                                 <Typography gutterBottom variant="h5">
-                                    My Team
+                                    {team.name}
                                 </Typography>
                             </Grid>
                         </Grid>
                         <Typography color="textSecondary" variant="body2">
-                            hi, we are a team of five and plan on creating a web app. we are looking for someone who knows python and flask
+                            {team.desc}
                         </Typography>
                     </div>
                     <Divider variant="middle" />
-                    <div style={{marginTop: "0.5em", marginBottom: "0.5em"}}>
+                    <div style={{ marginTop: "0.5em", marginBottom: "0.5em" }}>
                         <Typography gutterBottom variant="body1">
                             Skills
                         </Typography>
                         <div>
-                            <Chip label="Python" />
-                            <Chip label="Flask" />
+                            {team.skills
+                                ? team.skills.map((skill) => <Chip label={skill} />)
+                                : "No Skills Listed"}
                         </div>
                     </div>
                     <Divider variant="middle" />
@@ -58,21 +75,30 @@ function MyTeam(){
                             Prizes
                         </Typography>
                         <div>
-                            <Chip label="prize9" />
-                            <Chip label="prize8" />
+                            {team.prizes
+                                ? team.prizes.map((prize) => <Chip label={prize} />)
+                                : "No Prizes Listed"}
                         </div>
                     </div>
                 </div>
             </Grid>
             <Grid container direction="column" xs={6}>
                 <List style={{ width: "100%", maxWidth: 360 }}>
-                    <UserItem name="Example example" skills="python"/>
-                    <UserItem name="User example" skills="python, flask" />
-                    <UserItem name="L example" skills="frontend" />
+                    {team.members
+                        ? team.members.map((member) => <UserItem name={member} />)
+                        : "No Members Listed"}
                 </List>
             </Grid>
         </Grid>
-    )
+    );
+    }else{
+        return(
+        <Grid container direction="column" alignItem="center" style={{paddingTop: "1.4em"}}>
+            <Typography variant="subtitle1" align="center">Check the explore tab to join a team</Typography>
+        </Grid>);
+        
+    }
+    
 
 }
 function RenderRow(props) {
@@ -99,16 +125,29 @@ function RenderRow(props) {
     );
 }
 
-function Explore() {
-    var s = Array.from({ length: 20 }, (_, i) => i + 1)
-    console.log(s);
+function Explore(props) {
+    const [matches, setMatches] = useState({});
+    useEffect(() => {
+        props.profile.getTeamUser().then((success) => {
+            const team_id = success.response.team_id;
+            
+            props.profile.matches(team_id).then((success)=>{
+                setMatches(success.response);
+            })
+            
+        });
+    }, []);
     return (
         <Grid item container direction="column" justify="center" alignItems="center">
-            <List style={{ maxHeight: "300px", width: "600px", overflow: "auto" }} className="no-scrollbars no-style-type" >
-                {s.map((x) => (<RenderRow index={x}/>))}
+            <List
+                style={{ maxHeight: "300px", width: "600px", overflow: "auto" }}
+                className="no-scrollbars no-style-type"
+            >
+                
+                {/* {matches ? matches.map((x) => (<RenderRow index={x}/>)) : ""} */}
             </List>
         </Grid>
-    )
+    );
 }
 function ManageTeam(){
 
@@ -205,7 +244,8 @@ function ManageTeam(){
                         <InviteItem isOutgoing={false} index={1} />
                         <InviteItem isOutgoing={false} index={2} />
                         <InviteItem isOutgoing={false} index={3} />
-                        <InviteItem isOutgoing={false} index={4} />                    </List>
+                        <InviteItem isOutgoing={false} index={4} />                    
+                        </List>
                 </Grid>
             </Grid>
             <Grid item direction="column">
@@ -284,69 +324,106 @@ function InviteItem(props){
     )
 }
 const TeamViewer = (props) => {
-    const [value, setValue] = React.useState(0);
+    const [value, setValue] = useState(0);
+    const [user, setUser] = useState({});
 
-    const handleChange = (event, newValue) => {
-      setValue(newValue);
+    const handleChange = async (event, newValue) => {
+        setValue(newValue);
     };
-  
-    return(
-        <Container maxWidth={false} 
-            style={{paddingTop: 90 }}>
+    useEffect(() => {
+        props.profile.getTeamUser().then((s) => {
+            setUser(s.response);
+        });
+    });
+
+
+    return (
+        <Container maxWidth={false} style={{ paddingTop: 90 }}>
             <Grid container>
                 <Grid xs={12}>
-                    <Section title="Team"
+                    <Section
+                        title="Team"
                         subtitle="Introduce yourself, don't be shy!"
                         color="yellow"
-                        isOpen={true}>
-                            <Grid container direction="column" alignItems="center">
-                                <Grid container direction="row" justify="center">
-                                    <Grid item style={{"margin-right": "2em"}}>
-                                        <Avatar style={{"width": "6em", "height": "6em"}}>E</Avatar>
+                        isOpen={true}
+                    >
+                        <Grid container direction="column" alignItems="center">
+                            <Grid container direction="row" justify="center">
+                                <Grid item style={{ "margin-right": "2em" }}>
+                                    <Avatar style={{ width: "6em", height: "6em" }}>
+                                        {user.user_id ? user.user_id.substring(0,1) : " "}
+                                    </Avatar>
+                                </Grid>
+                                <Grid item direction="column">
+                                    <Grid item>
+                                        <Typography variant="h5">{user.user_id}</Typography>
                                     </Grid>
-                                    <Grid item direction="column">
-                                        <Grid item>
-                                            <Typography variant="h5">Example Example</Typography>
-                                        </Grid>
-                                        <Grid item>
-                                            <Typography variant="h7">Bio</Typography>
-                                        </Grid>
-                                        <Grid item>
-                                            <Typography variant="h7">Skills:</Typography>
-                                        </Grid>
-                                        <Grid item>
-                                            <Typography variant="h7">Interests:</Typography>
-                                        </Grid>
-                                        <Grid item>
-                                            <Typography variant="h7">Prizes:</Typography>
-                                        </Grid>
+                                    <Grid item>
+                                        <Typography variant="h7">{user.bio}</Typography>
+                                    </Grid>
+                                    <Grid item>
+                                        <Typography variant="h7">
+                                            Skills:{" "}
+                                            {user.skills
+                                                ? user.skills.map((skill) => skill + " ")
+                                                : "No Skills Listed"}
+                                        </Typography>
+                                    </Grid>
+                                    <Grid item>
+                                        <Typography variant="h7">
+                                            Interests:{" "}
+                                            {user.interests
+                                                ? user.interests.map((interest) => interest + " ")
+                                                : "No Interests Listed"}
+                                        </Typography>
+                                    </Grid>
+                                    <Grid item>
+                                        <Typography variant="h7">
+                                            Prizes:{" "}
+                                            {user.prizes
+                                                ? user.prizes.map((prize) => prize + " ")
+                                                : "No Prizes Listed"}
+                                        </Typography>
                                     </Grid>
                                 </Grid>
-                                <Grid item style={{marginTop: "2em"}}>
-                                    <AppBar position="static" color="transparent" style={{ background: 'transparent', boxShadow: 'none'}}>
-                                        <Tabs value={value} variant="fullWidth" onChange={handleChange} aria-label="simple tabs example">
-                                            <Tab label="My Team" {...a11yProps(0)} />
-                                            <Tab label="Explore" {...a11yProps(1)} />
-                                            <Tab label="Manage Team" {...a11yProps(2)} />
-
-                                        </Tabs>
-                                    </AppBar>
-
-                                </Grid>
-                                
                             </Grid>
+                            <Grid item style={{ marginTop: "2em" }}>
+                                <AppBar
+                                    position="static"
+                                    color="transparent"
+                                    style={{ background: "transparent", boxShadow: "none" }}
+                                >
+                                    <Tabs
+                                        value={value}
+                                        variant="fullWidth"
+                                        onChange={handleChange}
+                                        aria-label="simple tabs example"
+                                    >
+                                        <Tab label="My Team" {...a11yProps(0)} />
+                                        <Tab label="Explore" {...a11yProps(1)} />
+                                        <Tab label="Manage Team" {...a11yProps(2)} />
+                                    </Tabs>
+                                </AppBar>
+                            </Grid>
+                        </Grid>
                         <Grid container>
-                            {
-                                
-                                value == 0 ? <MyTeam /> : value == 1 ? <Explore /> : <ManageTeam />
-                            }
+
+                            {value == 0 ? (
+                                <MyTeam {...props} />
+                            ) : value == 1 ? (
+                                <Explore {...props} />
+                            ) : (
+                                <ManageTeam {...props} />
+                            )}
                         </Grid>
                     </Section>
                 </Grid>
             </Grid>
         </Container>
-
-    )
+    );
 }
-
+TeamViewer.propTypes = {
+    profile: ProfileType,
+    isMobile: PropTypes.bool,
+};
 export default TeamViewer;
