@@ -48,8 +48,8 @@ jobs:
 
             - name: Upload to S3
               run:
-                  aws s3 cp --recursive build s3://hackru-frontend-dev --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers
-                  aws s3 cp --recursive --exclude '*' --include '*.svg' --content-type 'image/svg+xml' build s3://hackru-frontend-dev --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers
+                  aws s3 cp --recursive build s3://hackru-frontend-dev --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers;
+                  aws s3 cp --recursive --exclude '*' --include '*.svg' --content-type 'image/svg+xml' build s3://hackru-frontend-dev --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers;
                   aws cloudfront create-invalidation --distribution-id "E1G9Y2VX0F41B6"  --paths "/*"
               env:
                   AWS_ACCESS_KEY_ID: ${{ secrets.S3_ACCESS_KEY_ID }}
