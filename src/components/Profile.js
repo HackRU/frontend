@@ -337,6 +337,7 @@ class Profile {
         this.isLoggedIn = false;
     }
     GetUser(callback, email) {
+        console.log(this._token);
         if (this.isLoggedIn) {
             request(
                 {
