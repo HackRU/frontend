@@ -4,11 +4,9 @@ name: Code Quality Assurance
 
 on:
     push:
-        branches:
-            - "*"
+        branches: ["*"]
     pull_request:
-        branches:
-            - "*"
+        branches: [env/dev]
 
 jobs:
     build:
