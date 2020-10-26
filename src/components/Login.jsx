@@ -93,6 +93,7 @@ const LoginPage = (props) => {
                                     id="email"
                                     label="email"
                                     name="email"
+                                    type="email"
                                     autoComplete="email"
                                     size="small"
                                 />

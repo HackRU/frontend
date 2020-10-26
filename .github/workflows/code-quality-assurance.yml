@@ -1,0 +1,27 @@
+# This workflow will do a clean node installation of the project, and test the code
+
+name: Code Quality Assurance
+
+on:
+    push:
+        branches: ["*"]
+    pull_request:
+        branches: [env/dev]
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+
+        strategy:
+            fail-fast: true
+            matrix:
+                node-version: [12.x, 14.x]
+
+        steps:
+            - uses: actions/checkout@v2
+            - name: Test using Node ${{ matrix.node-version }}
+              uses: actions/setup-node@v1
+              with:
+                  node-version: ${{ matrix.node-version }}
+            - run: npm install
+            - run: npm run lint

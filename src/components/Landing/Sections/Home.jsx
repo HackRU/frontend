@@ -442,9 +442,15 @@ class Home extends Component {
                             {loggoutMsg}
                             {defaults.volunteers.display && (
                                 <div>
-                                    Want to help? Sign up to{" "}
-                                    <a href={defaults.volunteers.vol_url}>volunteer</a> or{" "}
-                                    <a href={defaults.volunteers.mentor_url}>mentor</a>!
+                                    <div>
+                                        Want to help? Sign up to{" "}
+                                        <a href={defaults.volunteers.vol_url}>volunteer</a> or{" "}
+                                        <a href={defaults.volunteers.mentor_url}>mentor</a>!
+                                    </div>
+                                    <div>
+                                        Want to receive updates? Subscribe{" "}
+                                        <a href={defaults.mailing}>here</a>!
+                                    </div>
                                 </div>
                             )}
                             <Button
@@ -617,7 +623,8 @@ class Home extends Component {
                             </div>
                         )}
                     </Motion>
-                    <Grid container
+                    <Grid
+                        container
                         justify="center"
                         alignItems="center"
                         style={{ minWidth: "100%", minHeight: "100vh" }}
@@ -746,9 +753,15 @@ class Home extends Component {
                             {/* {navContainer} */}
                             {defaults.volunteers.display && (
                                 <div>
-                                    Want to help? Sign up to{" "}
-                                    <a href={defaults.volunteers.vol_url}>volunteer</a> or{" "}
-                                    <a href={defaults.volunteers.mentor_url}>mentor</a>!
+                                    <div>
+                                        Want to help? Sign up to{" "}
+                                        <a href={defaults.volunteers.vol_url}>volunteer</a> or{" "}
+                                        <a href={defaults.volunteers.mentor_url}>mentor</a>!
+                                    </div>
+                                    <div>
+                                        Want to receive updates? Subscribe{" "}
+                                        <a href={defaults.mailing}>here</a>!
+                                    </div>
                                 </div>
                             )}
                         </Grid>

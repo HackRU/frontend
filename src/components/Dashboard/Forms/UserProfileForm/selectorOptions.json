@@ -54,5 +54,36 @@
         { "value": "Networking for jobs", "label": "Networking for jobs" },
         { "value": "Challenging yourself", "label": "Challenging yourself" },
         { "value": "Visiting friends", "label": "Visiting friends" }
+    ],
+    "Interests": [
+        { "value": "Interest1", "label": "Interest1" },
+        { "value": "Interest2", "label": "Interest2" },
+        { "value": "Interest3", "label": "Interest3" },
+        { "value": "Interest4", "label": "Interest4" },
+        { "value": "Interest5", "label": "Interest5" },
+        { "value": "Interest6", "label": "Interest6" }
+    ],
+    "Skills": [
+        { "value": "Skill1", "label": "Skill1" },
+        { "value": "Skill2", "label": "Skill2" },
+        { "value": "Skill3", "label": "Skill3" },
+        { "value": "Skill4", "label": "Skill4" },
+        { "value": "Skill5", "label": "Skill5" },
+        { "value": "Skill6", "label": "Skill6" }
+    ],
+    "Prizes": [
+        { "value": "Prizes1", "label": "Prizes1" },
+        { "value": "Prizes2", "label": "Prizes2" },
+        { "value": "Prizes3", "label": "Prizes3" },
+        { "value": "Prizes4", "label": "Prizes4" },
+        { "value": "Prizes5", "label": "Prizes5" },
+        { "value": "Prizes6", "label": "Prizes6" }
+    ],
+    "Marks": [
+        { "value": 1, "label": "Still learning" },
+        { "value": 2, "label": "Casual" },
+        { "value": 3, "label": "Submitting" },
+        { "value": 4, "label": "Serious" },
+        { "value": 5, "label": "LET'S GOOOO"}
     ]
 }
