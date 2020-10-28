@@ -55,6 +55,7 @@ class Section extends Component {
 Section.propTypes = {
     isOpen: PropTypes.bool,
     children: PropTypes.any,
-    title: PropTypes.string
+    title: PropTypes.string,
+    color: PropTypes.string
 };
 export default Section;

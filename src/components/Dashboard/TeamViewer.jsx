@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Button, TextField, ListItemSecondaryAction,IconButton, List, ListItemAvatar, ListItem, ListItemText, Chip, Divider, Container, Grid, Avatar, Typography, AppBar, Tabs, Tab, Box } from "@material-ui/core";
+import { Button, TextField, ListItemSecondaryAction,IconButton, List, ListItemAvatar, ListItem, ListItemText, Chip, Divider, Container, Grid, Avatar, Typography, AppBar, Tabs, Tab } from "@material-ui/core";
 import Section from "./Section";
 import GroupAdd from "@material-ui/icons/GroupAdd";
 import HighlightOffIcon from "@material-ui/icons/HighlightOff";
@@ -16,18 +16,23 @@ function a11yProps(index) {
     };
 }
 function UserItem(props){
+    const {name, skills} = props;
     return(
         <ListItem>
             <ListItemAvatar>
                 <Avatar style={{ "width": "2.5em", "height": "2.5em" }}>
-                    {props.name.substring(0,1).toUpperCase()}
+                    {name.substring(0,1).toUpperCase()}
                 </Avatar>
             </ListItemAvatar>
-            <ListItemText primary={props.name}
-                secondary={props.skills} />
+            <ListItemText primary={name}
+                secondary={skills} />
         </ListItem>
     );
 }
+UserItem.propTypes = {
+    name: PropTypes.string,
+    skills: PropTypes.array,
+};
 function MyTeam(props){
     const [team, setTeam] = useState({});
     const [user, setUser] = useState({});
@@ -115,28 +120,38 @@ function MyTeam(props){
             </Grid>);
         
     }
-    
-
 }
+MyTeam.propTypes = {
+    invitingTeamId: PropTypes.string,
+    originalTeamId: PropTypes.string,
+};
 function RenderRow(props) {
-    const { index } = props;
+    const { invitingTeamId, originalTeamId } = props;
+    const [teamObj, setTeamObj] = useState({})
+    useEffect(() => {
+        props.profile.getTeam(invitingTeamId).then((success) => {
+            setTeamObj(success.response);
 
+        });
+
+    }, []);
     return (
-        <ListItem key={index}
+        <ListItem
             style={{padding: "1em"}}>
             <ListItemAvatar>
                 <Avatar>
-                    {index+1}
+                    {teamObj.name ? teamObj.name.substring(0, 1) : ""}
                 </Avatar>
             </ListItemAvatar>
             <ListItemText
-                primary={`Team ${index + 1}`}
-                secondary={"0/4"}
-
+                primary={teamObj.name ? teamObj.name : ""}
+                secondary={`${teamObj.member ? teamObj.member.length : ""}/4`}
             />
             <ListItemSecondaryAction>
                 <IconButton edge="end"
-                    aria-label="add">
+                    aria-label="add"
+                    onClick={() => props.profile.inviteTeam(originalTeamId, invitingTeamId)}
+                    >
                     <GroupAdd />
                 </IconButton>
             </ListItemSecondaryAction>
@@ -146,14 +161,16 @@ function RenderRow(props) {
 
 function Explore(props) {
     const [matches, setMatches] = useState({});
+    const [originalTeamId, setOriginalTeam] = useState({});
     useEffect(() => {
         props.profile.getTeamUser().then((success) => {
             const team_id = success.response.team_id;
-            
+            setOriginalTeam(success.response.team_id);
             props.profile.matches(team_id).then((success)=>{
                 setMatches(success.response);
+
             });
-            
+
         });
     }, []);
     return (
@@ -166,8 +183,7 @@ function Explore(props) {
                 style={{ maxHeight: "300px", width: "600px", overflow: "auto" }}
                 className="no-scrollbars no-style-type"
             >
-                
-                {/* {matches ? matches.map((x) => (<RenderRow index={x}/>)) : ""} */}
+                {matches ? matches.map((invitingTeamId, i) => (<RenderRow key={i} invitingTeamId={invitingTeamId} originalTeamId={originalTeamId} {...props}/>)) : <Typography variant="subtitle1">No Matches Yet</Typography>}
             </List>
         </Grid>
     );
@@ -175,7 +191,9 @@ function Explore(props) {
 function ManageTeam(props){
     const [team, setTeam] = useState({});
     const [team_id, setTeamId] = useState("");
+    const [isSubmitted, setSubmit] = useState(true);
     const {profile} = props;
+
     useEffect(() => {
         profile.getTeamUser().then((success) => {
             setTeamId(success.response.team_id);
@@ -193,14 +211,17 @@ function ManageTeam(props){
             ...prevState,
             [name]: value
         }));
+        setSubmit(false);
     };
     const handleAddChip = (name, e) => {
         setTeam(prevState => ({
             ...prevState,
             [name]: [...prevState[name], e]
         }));
+        setSubmit(false);
     };
     const onSubmit = () => {
+        setSubmit(true);
         profile.updateTeam(team, team_id);
     }
     const handleDeleteChip = (name, i) => { 
@@ -208,6 +229,7 @@ function ManageTeam(props){
             ...prevState,
             [name]: prevState[name].filter(function(value) {return i !== value;})
         }));
+        setSubmit(false);
     };
     return (
         <Grid container
@@ -283,7 +305,8 @@ function ManageTeam(props){
                 <Grid item
                     style={{paddingBottom: "1em"}}>
                     <Button variant="outlined"
-                        style={{color: "blue", margin: 8}}
+                        style={{margin: 8}}
+                        disabled={isSubmitted ? true : false}
                         onClick={onSubmit}>
                         Submit
                     </Button>
@@ -301,9 +324,9 @@ function ManageTeam(props){
                 <Grid item>
                     <List style={{ maxHeight: "300px", width: "600px", overflow: "auto" }}
                         className="no-scrollbars no-style-type" >
-                        {team.outgoing_inv ? team.outgoing_inv.length != 0 ? team.outgoing_inv.map((team,i) => (
+                        {team.outgoing_inv ? team.outgoing_inv.length !== 0 ? team.outgoing_inv.map((t,i) => (
                             <InviteItem isOutgoing={true}
-                                teamId={team} key={i} profile={profile} />
+                                invitedTeamId={t} teamId={team} key={i} profile={profile} />
                         )) : <Typography variant="subtitle1">No Outgoing Invites</Typography> : ""  }
                     </List>
                 </Grid>
@@ -321,9 +344,9 @@ function ManageTeam(props){
                 <Grid item>
                     <List style={{ maxHeight: "300px", width: "600px", overflow: "auto" }}
                         className="no-scrollbars no-style-type" >
-                        {team.incoming_inv ? team.incoming_inv.length != 0 ? team.outgoing_inv.map((team,i) => (
+                        {team.incoming_inv ? team.incoming_inv.length !== 0 ? team.outgoing_inv.map((t,i) => (
                             <InviteItem isOutgoing={false}
-                                teamId={team} key={i} profile={profile} />
+                                invitedTeamId={t} teamId={team} key={i} profile={profile} />
                         )) : <Typography variant="subtitle1">No Incoming Invites</Typography> : "" }               
                     </List>
                 </Grid>
@@ -360,7 +383,8 @@ function ManageTeam(props){
                         </Grid>
                         <Grid item>
                             <Button variant="outlined"
-                                style={{color: "red"}}>
+                                style={{color: "red"}}
+                                onClick={() => profile.leaveTeam(team_id)}>
                                 Leave
                             </Button>
                         </Grid>
@@ -374,14 +398,18 @@ function ManageTeam(props){
     );
 }
 function InviteItem(props){
-    const {isOutgoing, teamId, profile} = props;
+    const {isOutgoing, invitedTeamId, teamId,  profile} = props;
     console.log(props);
-    const [team, setTeam] = useState({});
+    const [invitedTeam, setInvitedTeam] = useState({});
+    const [originalTeam, setOriginalTeam] = useState({});
 
     useEffect(() => {
-        profile.getTeam(teamId).then((success)=>{
-            setTeam(success.response);
+        profile.getTeam(invitedTeamId).then((success)=>{
+            setInvitedTeam(success.response);
         });        
+        profile.getTeam(teamId).then((success) => {
+            setOriginalTeam(success.response);
+        });
     }, []);
 
     return (
@@ -389,12 +417,12 @@ function InviteItem(props){
             style={{ padding: "1em" }}>
             <ListItemAvatar>
                 <Avatar>
-                    {team.name ? team.name.substring(0,1) : ""}
+                    {invitedTeam.name ? invitedTeam.name.substring(0,1) : ""}
                 </Avatar>
             </ListItemAvatar>
             <ListItemText
-                primary={team.name ? team.name : ""}
-                secondary={`${team.member ? team.member.length : ""}/4`}
+                primary={invitedTeam.name ? invitedTeam.name : ""}
+                secondary={`${invitedTeam.member ? invitedTeam.member.length : ""}/4`}
 
             />
             <ListItemSecondaryAction>
@@ -403,7 +431,9 @@ function InviteItem(props){
                         <React.Fragment>
                             <IconButton edge="end"
                                 aria-label="rescind"
-                                style={{ color: "blue" }}>
+                                style={{ color: "blue" }}
+                                onClick={() => profile.rescindInvite(originalTeam.id,invitedTeam.id)}
+                                >
                                 <LinkOffOutlinedIcon />
                             </IconButton>
                         </React.Fragment>
@@ -411,12 +441,16 @@ function InviteItem(props){
                         <React.Fragment>
                             <IconButton edge="end"
                                 aria-label="accept"
-                                style={{ color: "green" }}>
+                                style={{ color: "green" }}
+                                onClick={() => profile.confirmInvite(originalTeam.id, invitedTeam.id)}
+                            >
                                 <CheckCircleOutlineIcon />
                             </IconButton>
                             <IconButton edge="end"
                                 aria-label="reject"
-                                style={{color: "red"}}>
+                                style={{color: "red"}}
+                                onClick={() => profile.rejectInvite(originalTeam.id, invitedTeam.id)}
+                                >
                                 <HighlightOffIcon />
                             </IconButton>
                         </React.Fragment>
@@ -435,8 +469,8 @@ const TeamViewer = (props) => {
     useEffect(() => {
         props.profile.getTeamUser().then((s) => {
             setUser(s.response);
-        });
-    });
+        }, []);
+    }, []);
 
 
     return (
@@ -519,9 +553,9 @@ const TeamViewer = (props) => {
                             </Grid>
                         </Grid>
                         <Grid container>
-                            {value == 0 ? (
+                            {value === 0 ? (
                                 <MyTeam {...props} />
-                            ) : value == 1 ? (
+                            ) : value === 1 ? (
                                 <Explore {...props} />
                             ) : (
                                 <ManageTeam {...props} />
