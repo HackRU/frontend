@@ -65,8 +65,8 @@ class Team extends Component {
         await this.props.profile.updateUser(team);
 
         if (this.props.hasTeam) {
-            let check = await this.props.profile.updateTeam({name: this.state.teamName, desc: this.state.teamDescription, complete: this.state.want}, team.team_id);
-            console.log(check);
+            await this.props.profile.updateTeam({name: this.state.teamName, desc: this.state.teamDescription, complete: this.state.want}, team.team_id);
+           
         } else {
             if (this.state.want) {
                 if (this.state.teamName === "") {
@@ -82,14 +82,13 @@ class Team extends Component {
                     });
                     return;
                 } else {
-                    let check = await this.props.profile.newTeam({
+                    await this.props.profile.newTeam({
                         name: this.state.teamName,
                         desc: this.state.teamDescription,
                         skills: team.skills,
                         prizes: team.prizes,
                         complete: this.state.want
                     });
-                    console.log(check);
                 }
             }
         }
@@ -279,8 +278,8 @@ class Team extends Component {
                                 {field(this.state.teamName)}
                             </Col>
                             <Col xs={(mobile) ? 12 : 6}>
-                                <Label>Prizes</Label>
-                                {field(team.prizes.join(";"))}
+                                <Label>Interests</Label>
+                                {field(team.interests.join(";"))}
                             </Col>
                         </FormGroup>
                         <FormGroup row>
@@ -302,8 +301,7 @@ class Team extends Component {
                         <FormGroup row>
                             <Col xs={12}>
                                 <Label>Seriousness</Label>
-                                {field("check")}
-                                {/* {field(selectorOptions["Marks"][team.seriousness-1].label)} */}
+                                {field(selectorOptions["Marks"][team.seriousness-1].label)}
                             </Col>
                         </FormGroup>
                     </div>
