@@ -278,7 +278,7 @@ class Team extends Component {
                                 {field(this.state.teamName)}
                             </Col>
                             <Col xs={(mobile) ? 12 : 6}>
-                                <Label>Intersts</Label>
+                                <Label>Interests</Label>
                                 {field(team.interests.join(";"))}
                             </Col>
                         </FormGroup>
