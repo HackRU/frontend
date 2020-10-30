@@ -516,11 +516,11 @@ function InviteItem(props){
     );
 }
 InviteItem.propTypes = {
-    isOutgoing: PropTypes.boolean,
+    isOutgoing: PropTypes.bool,
     invitedTeamId: PropTypes.string,
     originalTeam: PropTypes.object,
     profile: PropTypes.object,
-    del: PropTypes.function,
+    del: PropTypes.func,
 };
 const TeamViewer = (props) => {
     const [value, setValue] = useState(0);
