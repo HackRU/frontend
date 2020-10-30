@@ -75,11 +75,14 @@ function MyTeam(props){
                         <div style={{ marginTop: "0.5em", marginBottom: "0.5em" }}>
                             <Typography gutterBottom
                                 variant="body1">
-                            Skills
+                                Skills
                             </Typography>
                             <div>
                                 {team.skills
-                                    ? team.skills.map((skill) => <Chip label={skill} />)
+                                    ? team.skills.map((skill, index) => (
+                                        <Chip label={skill}
+                                            key={index} />
+                                    ))
                                     : "No Skills Listed"}
                             </div>
                         </div>
@@ -88,11 +91,14 @@ function MyTeam(props){
                         <div style={{ marginTop: "0.5em", marginBottom: "0.5em" }}>
                             <Typography gutterBottom
                                 variant="body1">
-                            Prizes
+                                Prizes
                             </Typography>
                             <div>
                                 {team.prizes
-                                    ? team.prizes.map((prize) => <Chip label={prize} />)
+                                    ? team.prizes.map((prize, index) => (
+                                        <Chip label={prize}
+                                            key={index} />
+                                    ))
                                     : "No Prizes Listed"}
                             </div>
                         </div>
@@ -103,7 +109,10 @@ function MyTeam(props){
                     xs={6}>
                     <List style={{ width: "100%", maxWidth: 360 }}>
                         {team.members
-                            ? team.members.map((member) => <UserItem name={member} />)
+                            ? team.members.map((member, index) => (
+                                <UserItem name={member}
+                                    key={index} />
+                            ))
                             : "No Members Listed"}
                     </List>
                 </Grid>
@@ -144,14 +153,18 @@ function RenderRow(props) {
                 <IconButton edge="end"
                     aria-label="add"
                     onClick={() => props.profile.inviteTeam(originalTeamId, invitingTeam.team_id)}
-                    >
+                >
                     <GroupAdd />
                 </IconButton>
             </ListItemSecondaryAction>
         </ListItem>
     );
 }
-
+RenderRow.propTypes = {
+    invitingTeam: PropTypes.object,
+    originalTeamId: PropTypes.string,
+    profile: PropTypes.object
+};
 function Explore(props) {
     const [matches, setMatches] = useState({});
     const [originalTeamId, setOriginalTeam] = useState({});
@@ -177,11 +190,19 @@ function Explore(props) {
                 style={{ maxHeight: "300px", width: "600px", overflow: "auto" }}
                 className="no-scrollbars no-style-type"
             >
-                {matches.matches ? matches.matches.map((invitingTeamId, i) => (<RenderRow key={i} invitingTeam={invitingTeamId} originalTeamId={originalTeamId} {...props}/>)) : <Typography variant="subtitle1">No Matches Yet</Typography>}
+                {matches.matches ? matches.matches.map((invitingTeamId, i) => (<RenderRow key={i}
+                    invitingTeam={invitingTeamId}
+                    originalTeamId={originalTeamId}
+                    {...props}/>)) : <Typography variant="subtitle1">No Matches Yet</Typography>}
             </List>
         </Grid>
     );
 }
+Explore.propTypes = {
+    invitingTeam: PropTypes.object,
+    originalTeamId: PropTypes.string,
+    profile: PropTypes.object,
+};
 function ManageTeam(props){
     const [team, setTeam] = useState({});
     const [team_id, setTeamId] = useState("");
@@ -189,7 +210,7 @@ function ManageTeam(props){
     const {profile} = props;
 
     useEffect(() => {
-        getCurrentTeam()
+        getCurrentTeam();
     },[]);
 
     function getCurrentTeam(){
@@ -220,7 +241,7 @@ function ManageTeam(props){
     const onSubmit = () => {
         setSubmit(true);
         profile.updateTeam(team, team_id);
-    }
+    };
     const handleDeleteChip = (name, i) => { 
         setTeam(prevState => ({
             ...prevState,
@@ -242,13 +263,13 @@ function ManageTeam(props){
 
     }
     return (
-        <Grid container
+        <Grid container 
             direction="column">
-            <Grid item
-                container
+            <Grid item 
+                container 
                 direction="column">
-                <Grid item
-                    style={{paddingBottom: "2em", paddingTop: "0.5em"}}>
+                <Grid item 
+                    style={{ paddingBottom: "2em", paddingTop: "0.5em" }}>
                     <TextField
                         name="name"
                         id="outlined-full-width"
@@ -262,10 +283,9 @@ function ManageTeam(props){
                             shrink: true,
                         }}
                         className="teamViewerInput"
-
                     />
                 </Grid>
-                <Grid item
+                <Grid item 
                     style={{ paddingBottom: "2em", paddingTop: "1em" }}>
                     <TextField
                         name="desc"
@@ -273,7 +293,7 @@ function ManageTeam(props){
                         label="Description"
                         multiline
                         rows={4}
-                        style={{ margin: 8}}
+                        style={{ margin: 8 }}
                         fullWidth
                         InputLabelProps={{
                             shrink: true,
@@ -285,18 +305,20 @@ function ManageTeam(props){
                         variant="outlined"
                     />
                 </Grid>
-                <Grid item
+                <Grid
+                    item
                     container
                     direction="row"
-                    style={{ paddingBottom: "0.5em", paddingTop: "2em" }}>
+                    style={{ paddingBottom: "0.5em", paddingTop: "2em" }}
+                >
                     <Grid item>
                         <ChipInput
                             label="Prizes"
                             name="prizes"
-                            style={{ margin: 8}}
+                            style={{ margin: 8 }}
                             className="teamViewerInput"
                             value={team.prizes}
-                            onAdd={(e) => handleAddChip("prizes",e)}
+                            onAdd={(e) => handleAddChip("prizes", e)}
                             onDelete={(index) => handleDeleteChip("prizes", index)}
                         />
                     </Grid>
@@ -304,109 +326,138 @@ function ManageTeam(props){
                         <ChipInput
                             label="Skills"
                             name="skills"
-                            style={{ margin: 8,background: "none" }}
+                            style={{ margin: 8, background: "none" }}
                             className="teamViewerInput"
                             value={team.skills}
-                            onAdd={(e) => handleAddChip("skills",e)}
+                            onAdd={(e) => handleAddChip("skills", e)}
                             onDelete={(index) => handleDeleteChip("skills", index)}
                         />
                     </Grid>
                 </Grid>
-                <Grid item
-                    style={{paddingBottom: "1em"}}>
-                    <Button variant="outlined"
-                        style={{margin: 8}}
+                <Grid item 
+                    style={{ paddingBottom: "1em" }}>
+                    <Button
+                        variant="outlined"
+                        style={{ margin: 8 }}
                         disabled={isSubmitted ? true : false}
-                        onClick={onSubmit}>
+                        onClick={onSubmit}
+                    >
                         Submit
                     </Button>
                 </Grid>
             </Grid>
-            <Grid item
+            <Grid item 
                 direction="column">
                 <Grid item>
-                    <Typography variant="h5">
-                        Outgoing Invites
-                    </Typography>
+                    <Typography variant="h5">Outgoing Invites</Typography>
                 </Grid>
                 <Divider />
 
                 <Grid item>
-                    <List style={{ maxHeight: "300px", width: "600px", overflow: "auto" }}
-                        className="no-scrollbars no-style-type" >
-                        {team.outgoing_inv ? team.outgoing_inv.length !== 0 ? team.outgoing_inv.map((t, index) => 
-                            <InviteItem isOutgoing={true}
-                                invitedTeamId={t} originalTeam={team} profile={profile} del={() => deleteItem(index, true)}/>
-                        ) : <Typography variant="subtitle1">No Outgoing Invites</Typography> : ""  }
+                    <List
+                        style={{ maxHeight: "300px", width: "600px", overflow: "auto" }}
+                        className="no-scrollbars no-style-type"
+                    >
+                        {team.outgoing_inv ? (
+                            team.outgoing_inv.length !== 0 ? (
+                                team.outgoing_inv.map((t, index) => (
+                                    <InviteItem
+                                        isOutgoing={true}
+                                        key={index}
+                                        invitedTeamId={t}
+                                        originalTeam={team}
+                                        profile={profile}
+                                        del={() => deleteItem(index, true)}
+                                    />
+                                ))
+                            ) : (
+                                <Typography variant="subtitle1">No Outgoing Invites</Typography>
+                            )
+                        ) : (
+                            ""
+                        )}
                     </List>
                 </Grid>
             </Grid>
-            <Grid item
-                direction="column"
-                style={{paddingTop: "1em", paddingBottom: "2em"}}>
+            <Grid item 
+                direction="column" 
+                style={{ paddingTop: "1em", paddingBottom: "2em" }}>
                 <Grid item>
-                    <Typography variant="h5">
-                        Incoming Invites
-                    </Typography>
+                    <Typography variant="h5">Incoming Invites</Typography>
                 </Grid>
                 <Divider />
 
                 <Grid item>
-                    <List style={{ maxHeight: "300px", width: "600px", overflow: "auto" }}
-                        className="no-scrollbars no-style-type" >
-                        {team.incoming_inv ? team.incoming_inv.length !== 0 ? team.outgoing_inv.map((t, index) => (
-                            <InviteItem isOutgoing={false}
-                                invitedTeamId={t} originalTeam={team} profile={profile} del={() => deleteItem(index, false)}/>
-                        )) : <Typography variant="subtitle1">No Incoming Invites</Typography> : "" }               
+                    <List
+                        style={{ maxHeight: "300px", width: "600px", overflow: "auto" }}
+                        className="no-scrollbars no-style-type"
+                    >
+                        {team.incoming_inv ? (
+                            team.incoming_inv.length !== 0 ? (
+                                team.outgoing_inv.map((t, index) => (
+                                    <InviteItem
+                                        isOutgoing={false}
+                                        key={index}
+                                        invitedTeamId={t}
+                                        originalTeam={team}
+                                        profile={profile}
+                                        del={() => deleteItem(index, false)}
+                                    />
+                                ))
+                            ) : (
+                                <Typography variant="subtitle1">No Incoming Invites</Typography>
+                            )
+                        ) : (
+                            ""
+                        )}
                     </List>
                 </Grid>
             </Grid>
-            <Grid item
+            <Grid item 
                 direction="column">
-                <Grid item
-                    style={{paddingBottom: "1em"}}>
-                    <Typography variant="h5">
-                        Danger Zone
-                    </Typography>
+                <Grid item 
+                    style={{ paddingBottom: "1em" }}>
+                    <Typography variant="h5">Danger Zone</Typography>
                 </Grid>
                 <Divider />
-                <Grid 
-                    item 
-                    container 
+                <Grid
+                    item
+                    container
                     style={{
-                        outlineColor: "red", 
+                        outlineColor: "red",
                         outlineStyle: "solid",
                         outlineWidth: "1px",
-                        padding: "1.5em"
-                    }}>
-                    <Grid item
-                        container
-                        direction="row"
+                        padding: "1.5em",
+                    }}
+                >
+                    <Grid item 
+                        container 
+                        direction="row" 
                         justify="space-between">
                         <Grid item>
-                            <Typography variant="h6">
-                                Leave this team
-                            </Typography>
+                            <Typography variant="h6">Leave this team</Typography>
                             <Typography variant="subtitle">
                                 Removes you from your current team
                             </Typography>
                         </Grid>
                         <Grid item>
-                            <Button variant="outlined"
-                                style={{color: "red"}}
-                                onClick={() => profile.leaveTeam(team_id)}>
+                            <Button
+                                variant="outlined"
+                                style={{ color: "red" }}
+                                onClick={() => profile.leaveTeam(team_id)}
+                            >
                                 Leave
                             </Button>
                         </Grid>
-
-                        
                     </Grid>
                 </Grid>
             </Grid>
-
         </Grid>
     );
 }
+ManageTeam.propTypes = {
+    profile: PropTypes.object,
+};
 function InviteItem(props){
     const {isOutgoing, invitedTeamId, originalTeam,  profile, del} = props;
     const [invitedTeam, setInvitedTeam] = useState({});
@@ -438,7 +489,7 @@ function InviteItem(props){
                                 aria-label="rescind"
                                 style={{ color: "blue" }}
                                 onClick={() => {profile.rescindInvite(originalTeam.team_id, invitedTeam.team_id); del();}}
-                                >
+                            >
                                 <LinkOffOutlinedIcon />
                             </IconButton>
                         </React.Fragment>
@@ -455,7 +506,7 @@ function InviteItem(props){
                                 aria-label="reject"
                                 style={{color: "red"}}
                                 onClick={() => { profile.rejectInvite(originalTeam.team_id, invitedTeam.team_id); del();}}
-                                >
+                            >
                                 <HighlightOffIcon />
                             </IconButton>
                         </React.Fragment>
@@ -464,6 +515,13 @@ function InviteItem(props){
         </ListItem>
     );
 }
+InviteItem.propTypes = {
+    isOutgoing: PropTypes.boolean,
+    invitedTeamId: PropTypes.string,
+    originalTeam: PropTypes.object,
+    profile: PropTypes.object,
+    del: PropTypes.function,
+};
 const TeamViewer = (props) => {
     const [value, setValue] = useState(0);
     const [user, setUser] = useState({});
