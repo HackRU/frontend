@@ -22,13 +22,18 @@ class Section extends Component {
      */
     render() {
         let { children, title, ...rest } = this.props;
+        let color = this.props.color;
+        if(!color){
+            color = "red";
+        }
         return (
             <Col className="dashboard-row"
                 {...rest} >
-                <div className="dashboard-card" 
+                <div className="dashboard-card"
                     style={{boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.5)" }}>
-                    <div className="dashboard-left-strip dashboard-strip-red"></div>
-                    <h2 className="dashboard-header dashboard-strip-red">
+>
+                    <div className={`dashboard-left-strip dashboard-strip-${color}`} ></div>
+                    <h2 className={`dashboard-header dashboard-strip-${color}`}>
                         {title}
                         <Button color="white"
                             className="pill-btn"
@@ -50,6 +55,7 @@ class Section extends Component {
 Section.propTypes = {
     isOpen: PropTypes.bool,
     children: PropTypes.any,
-    title: PropTypes.string
+    title: PropTypes.string,
+    color: PropTypes.string
 };
 export default Section;
