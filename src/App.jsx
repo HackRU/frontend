@@ -165,11 +165,6 @@ class App extends Component {
                 key="projector"
                 render={(props) => <ProjectorPage {...props}
                     {...componentProps} />} />,
-            <Route exact
-                path="/teamviewer"
-                key="teamviewer"
-                render={(props) => <TeamViewerPage {...props}
-                    {...componentProps} />} />,
         ];
         if (defaults.dayof) {
             renderRoutes.push(
@@ -178,6 +173,16 @@ class App extends Component {
                     key="live"
                     render={(props) => <LivePage {...props}
                         {...componentProps} />} />
+            );
+        }
+        if(defaults.teamru){
+            renderRoutes.push(
+                <Route
+                    exact
+                    path="/teamviewer"
+                    key="teamviewer"
+                    render={(props) => <TeamViewerPage {...props} {...componentProps} />}
+                />
             );
         }
         return (
