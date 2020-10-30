@@ -126,31 +126,24 @@ MyTeam.propTypes = {
     originalTeamId: PropTypes.string,
 };
 function RenderRow(props) {
-    const { invitingTeamId, originalTeamId } = props;
-    const [teamObj, setTeamObj] = useState({})
-    useEffect(() => {
-        props.profile.getTeam(invitingTeamId).then((success) => {
-            setTeamObj(success.response);
+    const { invitingTeam, originalTeamId } = props;
 
-        });
-
-    }, []);
     return (
         <ListItem
             style={{padding: "1em"}}>
             <ListItemAvatar>
                 <Avatar>
-                    {teamObj.name ? teamObj.name.substring(0, 1) : ""}
+                    {invitingTeam.name ? invitingTeam.name.substring(0, 1) : ""}
                 </Avatar>
             </ListItemAvatar>
             <ListItemText
-                primary={teamObj.name ? teamObj.name : ""}
-                secondary={`${teamObj.member ? teamObj.member.length : ""}/4`}
+                primary={invitingTeam.name ? invitingTeam.name : ""}
+                secondary={`${invitingTeam.members ? invitingTeam.members.length : ""}/4`}
             />
             <ListItemSecondaryAction>
                 <IconButton edge="end"
                     aria-label="add"
-                    onClick={() => props.profile.inviteTeam(originalTeamId, invitingTeamId)}
+                    onClick={() => props.profile.inviteTeam(originalTeamId, invitingTeam.team_id)}
                     >
                     <GroupAdd />
                 </IconButton>
@@ -167,6 +160,7 @@ function Explore(props) {
             const team_id = success.response.team_id;
             setOriginalTeam(success.response.team_id);
             props.profile.matches(team_id).then((success)=>{
+                console.log(success.response);
                 setMatches(success.response);
 
             });
@@ -183,7 +177,7 @@ function Explore(props) {
                 style={{ maxHeight: "300px", width: "600px", overflow: "auto" }}
                 className="no-scrollbars no-style-type"
             >
-                {matches ? matches.map((invitingTeamId, i) => (<RenderRow key={i} invitingTeamId={invitingTeamId} originalTeamId={originalTeamId} {...props}/>)) : <Typography variant="subtitle1">No Matches Yet</Typography>}
+                {matches.matches ? matches.matches.map((invitingTeamId, i) => (<RenderRow key={i} invitingTeam={invitingTeamId} originalTeamId={originalTeamId} {...props}/>)) : <Typography variant="subtitle1">No Matches Yet</Typography>}
             </List>
         </Grid>
     );
@@ -195,16 +189,19 @@ function ManageTeam(props){
     const {profile} = props;
 
     useEffect(() => {
+        getCurrentTeam()
+    },[]);
+
+    function getCurrentTeam(){
         profile.getTeamUser().then((success) => {
             setTeamId(success.response.team_id);
             const id = success.response.team_id;
-            profile.getTeam(id).then((success)=>{
+            profile.getTeam(id).then((success) => {
                 setTeam(success.response);
+
             });
         });
-    }, []);
-
-
+    }
     const handleChange = e => {
         const { name, value } = e.target;
         setTeam(prevState => ({
@@ -231,6 +228,19 @@ function ManageTeam(props){
         }));
         setSubmit(false);
     };
+    function deleteItem(id, isOutgoing){
+
+        console.log("deleteed", id);
+        var name = "outgoing_inv";
+        if(!isOutgoing){
+            name = "incoming_inv";
+        }
+        setTeam(prevState => ({
+            ...prevState,
+            [name]: prevState[name].filter(el => el != prevState[name][id])
+        }));
+
+    }
     return (
         <Grid container
             direction="column">
@@ -324,10 +334,10 @@ function ManageTeam(props){
                 <Grid item>
                     <List style={{ maxHeight: "300px", width: "600px", overflow: "auto" }}
                         className="no-scrollbars no-style-type" >
-                        {team.outgoing_inv ? team.outgoing_inv.length !== 0 ? team.outgoing_inv.map((t,i) => (
+                        {team.outgoing_inv ? team.outgoing_inv.length !== 0 ? team.outgoing_inv.map((t, index) => 
                             <InviteItem isOutgoing={true}
-                                invitedTeamId={t} teamId={team} key={i} profile={profile} />
-                        )) : <Typography variant="subtitle1">No Outgoing Invites</Typography> : ""  }
+                                invitedTeamId={t} originalTeam={team} profile={profile} del={() => deleteItem(index, true)}/>
+                        ) : <Typography variant="subtitle1">No Outgoing Invites</Typography> : ""  }
                     </List>
                 </Grid>
             </Grid>
@@ -344,9 +354,9 @@ function ManageTeam(props){
                 <Grid item>
                     <List style={{ maxHeight: "300px", width: "600px", overflow: "auto" }}
                         className="no-scrollbars no-style-type" >
-                        {team.incoming_inv ? team.incoming_inv.length !== 0 ? team.outgoing_inv.map((t,i) => (
+                        {team.incoming_inv ? team.incoming_inv.length !== 0 ? team.outgoing_inv.map((t, index) => (
                             <InviteItem isOutgoing={false}
-                                invitedTeamId={t} teamId={team} key={i} profile={profile} />
+                                invitedTeamId={t} originalTeam={team} profile={profile} del={() => deleteItem(index, false)}/>
                         )) : <Typography variant="subtitle1">No Incoming Invites</Typography> : "" }               
                     </List>
                 </Grid>
@@ -398,20 +408,15 @@ function ManageTeam(props){
     );
 }
 function InviteItem(props){
-    const {isOutgoing, invitedTeamId, teamId,  profile} = props;
-    console.log(props);
+    const {isOutgoing, invitedTeamId, originalTeam,  profile, del} = props;
     const [invitedTeam, setInvitedTeam] = useState({});
-    const [originalTeam, setOriginalTeam] = useState({});
-
     useEffect(() => {
+
         profile.getTeam(invitedTeamId).then((success)=>{
             setInvitedTeam(success.response);
         });        
-        profile.getTeam(teamId).then((success) => {
-            setOriginalTeam(success.response);
-        });
-    }, []);
 
+    },[]);
     return (
         <ListItem
             style={{ padding: "1em" }}>
@@ -422,7 +427,7 @@ function InviteItem(props){
             </ListItemAvatar>
             <ListItemText
                 primary={invitedTeam.name ? invitedTeam.name : ""}
-                secondary={`${invitedTeam.member ? invitedTeam.member.length : ""}/4`}
+                secondary={`${invitedTeam.members ? invitedTeam.members.length : ""}/4`}
 
             />
             <ListItemSecondaryAction>
@@ -432,7 +437,7 @@ function InviteItem(props){
                             <IconButton edge="end"
                                 aria-label="rescind"
                                 style={{ color: "blue" }}
-                                onClick={() => profile.rescindInvite(originalTeam.id,invitedTeam.id)}
+                                onClick={() => {profile.rescindInvite(originalTeam.team_id, invitedTeam.team_id); del();}}
                                 >
                                 <LinkOffOutlinedIcon />
                             </IconButton>
@@ -442,14 +447,14 @@ function InviteItem(props){
                             <IconButton edge="end"
                                 aria-label="accept"
                                 style={{ color: "green" }}
-                                onClick={() => profile.confirmInvite(originalTeam.id, invitedTeam.id)}
+                                onClick={() => { profile.confirmInvite(originalTeam.team_id, invitedTeam.team_id); del();}}
                             >
                                 <CheckCircleOutlineIcon />
                             </IconButton>
                             <IconButton edge="end"
                                 aria-label="reject"
                                 style={{color: "red"}}
-                                onClick={() => profile.rejectInvite(originalTeam.id, invitedTeam.id)}
+                                onClick={() => { profile.rejectInvite(originalTeam.team_id, invitedTeam.team_id); del();}}
                                 >
                                 <HighlightOffIcon />
                             </IconButton>
