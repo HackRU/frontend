@@ -55,13 +55,13 @@ const navlinks = {
         "fullHeight": false,
         "component": (props) => <Schedule {...props} />
     },
-    "SPONSORS": {
-        "url": "#sponsors",
-        "enabled": !defaults.freeze,
-        "hideLink": false,
-        "fullHeight": false,
-        "component": (props) => <Sponsors {...props} />
-    },
+    // "SPONSORS": {
+    //     "url": "#sponsors",
+    //     "enabled": !defaults.freeze,
+    //     "hideLink": false,
+    //     "fullHeight": false,
+    //     "component": (props) => <Sponsors {...props} />
+    // },
     "PARTNERS": {
         "url": "#partners",
         "enabled": !defaults.freeze,
