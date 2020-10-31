@@ -8,6 +8,8 @@ import LinkOffOutlinedIcon from "@material-ui/icons/LinkOffOutlined";
 import { ProfileType } from "../Profile.js";
 import PropTypes from "prop-types";
 import ChipInput from "material-ui-chip-input";
+import TeamLoading from "./TeamLoading";
+import Loading from "./Loading";
 
 function a11yProps(index) {
     return {
@@ -36,6 +38,7 @@ UserItem.propTypes = {
 function MyTeam(props){
     const [team, setTeam] = useState({});
     const [user, setUser] = useState({});
+    const [loading, setLoading] = useState("Loading your team info...");
 
     useEffect(() => {
         props.profile.getTeamUser().then((success) => {
@@ -43,9 +46,15 @@ function MyTeam(props){
             const team_id = success.response.team_id;
             props.profile.getTeam(team_id).then(teamResponse => {
                 setTeam(teamResponse.response);
+                setLoading(false);
             });
         });
     }, []);
+
+    if (loading) {
+        return (<TeamLoading text={loading} />);
+    }
+    
     if(user.hasateam){
         return (
             <Grid container
@@ -168,6 +177,7 @@ RenderRow.propTypes = {
 function Explore(props) {
     const [matches, setMatches] = useState({});
     const [originalTeamId, setOriginalTeam] = useState({});
+    const [loading, setLoading] = useState("Loading your matches...");
     useEffect(() => {
         props.profile.getTeamUser().then((success) => {
             const team_id = success.response.team_id;
@@ -175,11 +185,15 @@ function Explore(props) {
             props.profile.matches(team_id).then((success)=>{
                 console.log(success.response);
                 setMatches(success.response);
-
+                setLoading(false);
             });
 
         });
     }, []);
+
+    if (loading) {
+        return (<TeamLoading text={loading} />);
+    }
     return (
         <Grid item
             container
@@ -207,6 +221,7 @@ function ManageTeam(props){
     const [team, setTeam] = useState({});
     const [team_id, setTeamId] = useState("");
     const [isSubmitted, setSubmit] = useState(true);
+    const [loading, setLoading] = useState("Loading your team info...");
     const {profile} = props;
 
     useEffect(() => {
@@ -219,7 +234,7 @@ function ManageTeam(props){
             const id = success.response.team_id;
             profile.getTeam(id).then((success) => {
                 setTeam(success.response);
-
+                setLoading(false);
             });
         });
     }
@@ -261,6 +276,9 @@ function ManageTeam(props){
             [name]: prevState[name].filter(el => el != prevState[name][id])
         }));
 
+    }
+    if (loading) {
+        return (<TeamLoading text={loading} />);
     }
     return (
         <Grid container 
@@ -342,7 +360,7 @@ function ManageTeam(props){
                         disabled={isSubmitted ? true : false}
                         onClick={onSubmit}
                     >
-                        Submit
+                    Submit
                     </Button>
                 </Grid>
             </Grid>
@@ -437,7 +455,7 @@ function ManageTeam(props){
                         <Grid item>
                             <Typography variant="h6">Leave this team</Typography>
                             <Typography variant="subtitle">
-                                Removes you from your current team
+                            Removes you from your current team
                             </Typography>
                         </Grid>
                         <Grid item>
@@ -446,7 +464,7 @@ function ManageTeam(props){
                                 style={{ color: "red" }}
                                 onClick={() => profile.leaveTeam(team_id)}
                             >
-                                Leave
+                            Leave
                             </Button>
                         </Grid>
                     </Grid>
@@ -454,6 +472,7 @@ function ManageTeam(props){
             </Grid>
         </Grid>
     );
+    
 }
 ManageTeam.propTypes = {
     profile: PropTypes.object,
@@ -468,6 +487,7 @@ function InviteItem(props){
         });        
 
     },[]);
+    
     return (
         <ListItem
             style={{ padding: "1em" }}>
@@ -525,6 +545,7 @@ InviteItem.propTypes = {
 const TeamViewer = (props) => {
     const [value, setValue] = useState(0);
     const [user, setUser] = useState({});
+    const [loading, setLoading] = useState("Loading your team");
 
     const handleChange = async (event, newValue) => {
         setValue(newValue);
@@ -532,10 +553,13 @@ const TeamViewer = (props) => {
     useEffect(() => {
         props.profile.getTeamUser().then((s) => {
             setUser(s.response);
+            setLoading(false);
         }, []);
     }, []);
 
-
+    if (loading) {
+        return (<Loading text={loading} />);
+    }
     return (
         <Container maxWidth={false}
             style={{ paddingTop: 90 }}>
@@ -607,7 +631,7 @@ const TeamViewer = (props) => {
                                     >
                                         <Tab label="My Team"
                                             {...a11yProps(0)} />
-                                        <Tab label="Explore"
+                                        <Tab label="Matches"
                                             {...a11yProps(1)} />
                                         <Tab label="Manage Team"
                                             {...a11yProps(2)} />
