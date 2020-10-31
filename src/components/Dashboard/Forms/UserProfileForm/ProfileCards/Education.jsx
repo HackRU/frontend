@@ -62,29 +62,16 @@ class Education extends Component {
             user,
         });
 
-        let promise = new Promise((resolve, reject) => {
-            this.props.profile.Get((msg, data) => {
-                if (msg) {
-                    reject(msg);
-                    console.log(msg);
-                }
-                else {
-                    resolve(data);
-                }
-            });
-        });
 
-        let got_user = await promise;
+        let update_user = {};
+        update_user.school = this.state.user.school;
+        update_user.grad_year = this.state.user.grad_year;
+        update_user.level_of_study = this.state.user.level_of_study;
+        update_user.major = this.state.user.major;
 
-        got_user.school = this.state.user.school;
-        got_user.grad_year = this.state.user.grad_year;
-        got_user.level_of_study = this.state.user.level_of_study;
-        got_user.major = this.state.user.major;
-
-        // console.log(got_user);
 
         let update_promise = new Promise((resolve) => {
-            this.props.profile.Set(got_user, (err) => {resolve(err);} );
+            this.props.profile.Set(update_user, (err) => {resolve(err);} );
         });
 
         await update_promise;

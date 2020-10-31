@@ -38,36 +38,21 @@ class Questions extends Component {
             user,
         });
 
-        let promise = new Promise((resolve, reject) => {
-            this.props.profile.Get((msg, data) => {
-                if (msg) {
-                    reject(msg);
-                    console.log(msg);
-                }
-                else {
-                    resolve(data);
-                }
-            });
-        });
 
-        let got_user = await promise;
+        let update_user = {};
 
-        got_user.how_you_heard_about_hackru = this.state.user.how_you_heard_about_hackru;
-        got_user.reasons = this.state.user.reasons;
-        got_user.short_answer = this.state.user.short_answer;
-        got_user.virtual_short_answer = this.state.user.virtual_short_answer;
-        got_user.special_needs = this.state.user.special_needs;
-        got_user.want_team = this.state.user.want_team;
-
-        // console.log(got_user);
-
+        update_user.how_you_heard_about_hackru = this.state.user.how_you_heard_about_hackru;
+        update_user.reasons = this.state.user.reasons;
+        update_user.short_answer = this.state.user.short_answer;
+        update_user.virtual_short_answer = this.state.user.virtual_short_answer;
+        update_user.special_needs = this.state.user.special_needs;
+        update_user.want_team = this.state.user.want_team;
 
         let update_promise = new Promise((resolve) => {
-            this.props.profile.Set(got_user, (err) => {resolve(err);} );
+            this.props.profile.Set(update_user, (err) => {resolve(err);} );
         });
 
         await update_promise;
-        // console.log(test);
 
         this.setState({
             edit: false,
