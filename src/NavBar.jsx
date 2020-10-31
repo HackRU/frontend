@@ -276,7 +276,6 @@ class NavBar extends Component {
                 >
                     <Toolbar style={{ marginLeft: "0em" }}>
                         <Tabs
-                            indicatorColor="white"
                             style={{ marginLeft: "auto", overflowY: "hidden" }}
                             scrollButtons="on"
                             variant="scrollable">

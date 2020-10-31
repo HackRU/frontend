@@ -80,7 +80,6 @@ const Profile = (props) => {
     if (profileMSG === openDetails) {
         console.log("correct");
     }
-
     return(
         <Container maxWidth={false} 
             style={{paddingTop: 90 }}>

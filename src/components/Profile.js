@@ -328,7 +328,7 @@ class Profile {
         this.isLoggedIn = true;
         this._token = token;
         this._email = email;
-        this._valid_until = Date.parse(valid_until);
+        this._valid_until = valid_until;
     }
     Logout() {
         localStorage.removeItem("magic");
