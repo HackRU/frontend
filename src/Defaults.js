@@ -1,7 +1,7 @@
 import React from "react";
 import About from "./components/Landing/Sections/About";
 import Schedule from "./components/Landing/Sections/Schedule";
-import Sponsors from "./components/Landing/Sections/Sponsors/Sponsors.jsx";
+// import Sponsors from "./components/Landing/Sections/Sponsors/Sponsors.jsx";
 import Partners from "./components/Landing/Sections/Sponsors/Partners.jsx";
 import Stats from "./components/Landing/Sections/Stats.jsx";
 import FAQs from "./components/Landing/Sections/Faqs";
@@ -55,13 +55,13 @@ const navlinks = {
         "fullHeight": false,
         "component": (props) => <Schedule {...props} />
     },
-    "SPONSORS": {
-        "url": "#sponsors",
-        "enabled": !defaults.freeze,
-        "hideLink": false,
-        "fullHeight": false,
-        "component": (props) => <Sponsors {...props} />
-    },
+    // "SPONSORS": {
+    //     "url": "#sponsors",
+    //     "enabled": !defaults.freeze,
+    //     "hideLink": false,
+    //     "fullHeight": false,
+    //     "component": (props) => <Sponsors {...props} />
+    // },
     "PARTNERS": {
         "url": "#partners",
         "enabled": !defaults.freeze,

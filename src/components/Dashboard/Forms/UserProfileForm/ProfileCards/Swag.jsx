@@ -26,30 +26,14 @@ const Swag = (props) => {
     const submitUser = async () => {
         setLoading(true);
 
-        let promise = new Promise((resolve, reject) => {
-            props.profile.Get((msg, data) => {
-                if (msg) {
-                    reject(msg);
-                    console.log(msg);
-                }
-                else {
-                    resolve(data);
-                }
-            });
-        });
-
-        let got_user = await promise;
-
-        got_user.swag = {accepting_swag: want, swag_address: swag_addr};
-
-        // console.log(got_user);
+        let update_user = {};
+        update_user.swag = {accepting_swag: want, swag_address: swag_addr};
 
         let update_promise = new Promise((resolve) => {
-            props.profile.Set(got_user, (err) => {resolve(err);} );
+            props.profile.Set(update_user, (err) => {resolve(err);} );
         });
 
         await update_promise;
-        // console.log(test);
 
         setLoading(false);
         setEdit(false);

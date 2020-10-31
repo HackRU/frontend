@@ -276,9 +276,9 @@ class NavBar extends Component {
                 >
                     <Toolbar style={{ marginLeft: "0em" }}>
                         <Tabs
-                            indicatorColor="white"
                             style={{ marginLeft: "auto", overflowY: "hidden" }}
                             scrollButtons="on"
+                            value={0}
                             variant="scrollable">
                             <div>
                                 <div
@@ -305,7 +305,9 @@ class NavBar extends Component {
                                     </a>
                                 </div>
                             </div>
-                            {onLogin ? <div/> : onDashboard ? this.getDashboardNav() : this.getLandingNav()}
+                            <div>
+                                {onLogin ? <div/> : onDashboard ? this.getDashboardNav() : this.getLandingNav()}
+                            </div>
                         </Tabs>
                         {this.props.profile.isLoggedIn ? this.getDashboardButton() : this.getAuthButtons()}
                     </Toolbar>
