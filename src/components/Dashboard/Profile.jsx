@@ -18,14 +18,25 @@ import { defaults } from "../../Defaults";
 
 
 const Profile = (props) => {
-    const [loading, setLoading] = useState("Loading your personal dashboard...");
+    const [loading, setLoading] = useState("Loading your personal profile...");
     const [user, setUser] = useState({});
     const [openDetails, setOpenDetails] = useState(false);
     const [profileMSG, setProfileMSG] = useState({});
     const [teamUser, setTeamUser] = useState({});
     const [teamProfile, setTeamProfile] = useState({});
     
-    useEffect(async () => {
+    useEffect(() => {
+        async function get_profile() {
+            let teamRU_User =  await props.profile.getTeamUser();
+            if (teamRU_User.response) setTeamUser(teamRU_User.response);
+    
+            if (teamRU_User.response.hasateam) {
+                let teamRU_Profile = await props.profile.getTeam(teamRU_User.response.team_id);
+                if (teamRU_Profile.response) setTeamProfile(teamRU_Profile.response);
+            }
+            setLoading(false);
+        }
+
         if (props.magic) {
             props.profile.Eat(props.magic, (msg) => {
                 if (msg) {
@@ -37,33 +48,23 @@ const Profile = (props) => {
                 props.clearMagic();
             });
         }
-        props.profile.Get(async (msg, data) => {
+        props.profile.Get((msg, data) => {
             if (msg) {
                 console.error(msg);
             } else {
                 if (data) {
                     delete data.auth;
                     setUser(data);
-
-                    let teamRU_User =  await props.profile.getTeamUser();
-                    if (teamRU_User.response) setTeamUser(teamRU_User.response);
-
-                    if (teamRU_User.response.hasateam) {
-                        let teamRU_Profile = await props.profile.getTeam(teamRU_User.response.team_id);
-                        if (teamRU_Profile.response) setTeamProfile(teamRU_Profile.response);
-                    }
-
-                    setLoading(false);
+                    get_profile();
                     setOpenDetails((data.registration_status === "unregistered"));
-                    // console.log(teamRU_User.response);
-
                 }
             }
         });
-
+        
         
     }, []);
 
+    
 
     if (!props.profile.isLoggedIn) {
         return (<Redirect to="/login"/>);
