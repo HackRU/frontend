@@ -1,6 +1,6 @@
 import React from "react";
 import { theme } from "../../../Defaults";
-import { TableRow, TableCell, Grid } from "@material-ui/core";
+import { TableRow, TableCell, Grid, TableContainer, Table, TableHead } from "@material-ui/core";
 import Card from "../../Card";
 /**
  * Schedule component for the landing page
@@ -40,7 +40,7 @@ function Schedule(){
     //     };
     // }
         
-    function fill_table(schedule){
+    function fill_table(schedule, hidetitle){
 
         const light_red = {
             backgroundColor: "rgba(0, 0, 0, 0.1)",
@@ -63,28 +63,29 @@ function Schedule(){
                 </TableRow>
             );
         });
-        return <div style={{ margin: 10 }}> Just keep scrolling... </div>;
-        // return (
-        //     <div style={{ overflowX: "auto" }}>
-        //         <TableContainer>
-        //             <Table size="large"
-        //                 style={{ minWidth: 300 }}
-        //                 hover
-        //                 borderless>
-        //                 <TableHead key="table-head">
-        //                     <TableRow className="lead">
-        //                         <TableCell style={{color: "rgba(255, 255, 255, 1)"}}>Time</TableCell>
-        //                         <TableCell style={{color: "rgba(255, 255, 255, 1)"}}>Event</TableCell>
-        //                         <TableCell style={{color: "rgba(255, 255, 255, 1)"}}>Location</TableCell>
-        //                     </TableRow>
-        //                 </TableHead>
-        //                 <tbody>
-        //                     {rows}
-        //                 </tbody>
-        //             </Table>
-        //         </TableContainer>
-        //     </div>
-        // );
+        return (
+            <div style={{ overflowX: "auto" }}>
+                <TableContainer>
+                    <Table size="large"
+                        style={{ minWidth: 300 }}
+                        hover
+                        borderless>
+                        <TableHead key="table-head">
+                            { !hidetitle && 
+                                <TableRow className="lead">
+                                    <TableCell style={{color: "rgba(255, 255, 255, 1)"}}>Time</TableCell>
+                                    <TableCell style={{color: "rgba(255, 255, 255, 1)"}}>Event</TableCell>
+                                    <TableCell style={{color: "rgba(255, 255, 255, 1)"}}>Location</TableCell>
+                                </TableRow>
+                            }
+                        </TableHead>
+                        <tbody>
+                            {rows}
+                        </tbody>
+                    </Table>
+                </TableContainer>
+            </div>
+        );
     }
     return (
         <Card backgroundColor={theme.secondary[1]}

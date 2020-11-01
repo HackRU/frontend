@@ -278,7 +278,7 @@ class NavBar extends Component {
                         <Tabs
                             style={{ marginLeft: "auto", overflowY: "hidden" }}
                             scrollButtons="on"
-                            value={0}
+                            value={-1}
                             variant="scrollable">
                             <div>
                                 <div
@@ -293,7 +293,8 @@ class NavBar extends Component {
                                         overflowY: "hidden"
                                     }}>
                                     <a href="/#home"
-                                        style={{ height: "10px !important" }}
+                                        className="logo-no-underline"
+                                        style={{ height: "10px !important", textDecoration: "none" }}
                                         root={onLanding.toString()}>
                                         <Logo
                                             color="white"
