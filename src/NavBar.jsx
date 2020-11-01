@@ -229,20 +229,24 @@ class NavBar extends Component {
     getDashboardNav() {
         return (
             <React.Fragment>
+                {/* { this.props.profile._registration_status !== "unregistered" && */}
                 <Tab
                     style={{ color: "white", minWidth: 10, marginLeft: "25px" }}
                     className={window.innerWidth < 768 ? "pt-3" : ""}
                     component={Link}
                     to={"/dashboard"}
-                    label="DASHBOARD"
+                    label="Dashboard"
                 />
+                {/* } */}
+                {/* { this.props.profile._registration_status !== "unregistered" && this.props.profile._want_team && */}
                 <Tab
                     style={{ color: "white", minWidth: 10, marginLeft: "25px" }}
                     className={window.innerWidth < 768 ? "pt-3" : ""}
                     component={Link}
                     to={"/teamviewer"}
-                    label="TEAM"
+                    label="TeamRU"
                 />
+                {/* } */}
             </React.Fragment>
         );
     }
@@ -278,7 +282,7 @@ class NavBar extends Component {
                         <Tabs
                             style={{ marginLeft: "auto", overflowY: "hidden" }}
                             scrollButtons="on"
-                            value={0}
+                            value={-1}
                             variant="scrollable">
                             <div>
                                 <div
@@ -293,7 +297,8 @@ class NavBar extends Component {
                                         overflowY: "hidden"
                                     }}>
                                     <a href="/#home"
-                                        style={{ height: "10px !important" }}
+                                        className="logo-no-underline"
+                                        style={{ height: "10px !important", textDecoration: "none" }}
                                         root={onLanding.toString()}>
                                         <Logo
                                             color="white"

@@ -18,44 +18,59 @@ function a11yProps(index) {
     };
 }
 function UserItem(props){
-    const {name, skills} = props;
+    const {member, skills} = props;
+    console.log(member);
     return(
         <ListItem>
             <ListItemAvatar>
                 <Avatar style={{ "width": "2.5em", "height": "2.5em" }}>
-                    {name.substring(0,1).toUpperCase()}
+                    {member.user_id ? member.user_id.substring(0,1).toUpperCase() : "-"}
                 </Avatar>
             </ListItemAvatar>
-            <ListItemText primary={name}
+            <ListItemText primary={member.user_id}
                 secondary={skills} />
         </ListItem>
     );
 }
 UserItem.propTypes = {
-    name: PropTypes.string,
+    member: PropTypes.object,
     skills: PropTypes.array,
 };
 function MyTeam(props){
     const [team, setTeam] = useState({});
-    const [user, setUser] = useState({});
+    const [user, setUser] = useState(null);
     const [loading, setLoading] = useState("Loading your team info...");
 
     useEffect(() => {
-        props.profile.getTeamUser().then((success) => {
-            setUser(success.response);
-            const team_id = success.response.team_id;
-            props.profile.getTeam(team_id).then(teamResponse => {
-                setTeam(teamResponse.response);
+        props.profile.getTeamUser().then((userResponse) => {            
+            if (userResponse.error && userResponse.error.message) {
+                // In this instance, we will assume the user just doesn't have a team enabled!
                 setLoading(false);
-            });
+            } else {
+                setUser(userResponse.response);
+                const team_id = userResponse.response.team_id;
+                props.profile.getTeam(team_id).then(teamResponse => {
+                    setTeam(teamResponse.response);
+                    setLoading(false);
+                });
+            }
         });
     }, []);
-
     if (loading) {
         return (<TeamLoading text={loading} />);
     }
-    
-    if(user.hasateam){
+    if (!user) {
+        return (
+            <Grid container
+                direction="column"
+                alignItem="center"
+                style={{paddingTop: "1.4em"}}>
+                <Typography variant="subtitle1"
+                    align="center">Enable TeamRU in your profile to start finding teams!</Typography>
+            </Grid>
+        );
+    }
+    else if (user.hasateam) {
         return (
             <Grid container
                 direction="row"
@@ -119,7 +134,7 @@ function MyTeam(props){
                     <List style={{ width: "100%", maxWidth: 360 }}>
                         {team.members
                             ? team.members.map((member, index) => (
-                                <UserItem name={member}
+                                <UserItem member={member}
                                     key={index} />
                             ))
                             : "No Members Listed"}
@@ -127,16 +142,16 @@ function MyTeam(props){
                 </Grid>
             </Grid>
         );
-    }else{
-        return(
+    } else {
+        return (
             <Grid container
                 direction="column"
                 alignItem="center"
                 style={{paddingTop: "1.4em"}}>
                 <Typography variant="subtitle1"
                     align="center">Check the explore tab to join a team</Typography>
-            </Grid>);
-        
+            </Grid>
+        );
     }
 }
 MyTeam.propTypes = {
@@ -226,7 +241,7 @@ function ManageTeam(props){
 
     useEffect(() => {
         getCurrentTeam();
-    },[]);
+    }, []);
 
     function getCurrentTeam(){
         profile.getTeamUser().then((success) => {
@@ -569,8 +584,9 @@ const TeamViewer = (props) => {
                         title="Team"
                         subtitle="Introduce yourself, don't be shy!"
                         color="yellow"
-                        isOpen={true}
-                    >
+                        hideButton={true}
+                        hideTopStrip={true}
+                        isOpen={true}>
                         <Grid container
                             direction="column"
                             alignItems="center">
@@ -622,13 +638,11 @@ const TeamViewer = (props) => {
                                 <AppBar
                                     position="static"
                                     color="transparent"
-                                    style={{ background: "transparent", boxShadow: "none" }}
-                                >
+                                    style={{ background: "transparent", boxShadow: "none" }}>
                                     <Tabs
                                         value={value}
                                         variant="fullWidth"
-                                        onChange={handleChange}
-                                    >
+                                        onChange={handleChange}>
                                         <Tab label="My Team"
                                             {...a11yProps(0)} />
                                         <Tab label="Matches"

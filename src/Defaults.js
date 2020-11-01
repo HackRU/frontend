@@ -37,7 +37,8 @@ const defaults =  {
         "mentor_url": "https://docs.google.com/forms/d/e/1FAIpQLScG3eyzY67q58k52zh5nSscUBWRoYn8KayVNAXqYvJl8oqD8Q/viewform"
     },
     "mailing": "https://hackru.us3.list-manage.com/subscribe?u=457c42db47ebf530a0fc733fb&id=fb01885829",
-    "dayof": false
+    "dayof": true,
+    "autocheckin": true //USE THIS FIELD TO AUTO CHECK-IN USERS!
 };
 
 const navlinks = {
@@ -139,29 +140,29 @@ varList.forEach((element) => {
 // Live "important links"
 const liveImportantLinks = [
     {
-        "title": "Waiver",
-        "href": "https://hackru.org/resources/waiver.pdf",
-        "icon": "file"
-    },
-    {
         "title": "Devpost",
-        "href": "http://hackru-f19.devpost.com",
+        "href": "http://hackru-f20.devpost.com",
         "icon": "code"
     },
     {
         "title": "Slack",
-        "href": "http://tinyurl.com/hackru-f19",
+        "href": "https://hackru-f20.slack.com/",
         "icon": "slack"
     },
     {
-        "title": "HelpQ",
-        "href": "https://helpq.hackru.org",
+        "title": "MentorQ",
+        "href": "https://mentorq.hackru.org",
         "icon": "stack-overflow"
     },
     {
-        "title": "Food Menu",
-        "href": "https://s3-us-west-2.amazonaws.com/hackru-misc/menu.pdf",
-        "icon": "cutlery"
+        "title": "Twitch",
+        "href": "https://mentorq.hackru.org",
+        "icon": "twitch"
+    },
+    {
+        "title": "Stream",
+        "href": "https://mentorq.hackru.org",
+        "icon": "youtube"
     }
 ];
 
