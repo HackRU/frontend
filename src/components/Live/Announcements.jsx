@@ -6,12 +6,12 @@ import { SyncLoader } from "react-spinners";
 import PropTypes from "prop-types";
 
 const light_red = {
-    backgroundColor: "#bf4d4d",
+    backgroundColor: "white",
     border: "none !important"
 };
 
 const dark_red = {
-    backgroundColor: "#ad4444",
+    backgroundColor: "white",
     border: "none !important"
 };
 
@@ -58,12 +58,10 @@ class Announcements extends Component {
                 }
                 msgs.push(
                     <ListGroupItem
-                        className="rounded shadow-lg"
                         key={i}
                         style={i % 2 === 0 ? {...dark_red, opacity: opacity} : {...light_red, opacity: opacity}}>
                         <ListGroupItemText className="pull-right">{date}, {time}</ListGroupItemText>
-                        <ListGroupItemText className="live-messages-text"
-                            style={style}>{text}</ListGroupItemText>
+                        <ListGroupItemText style={style}>{text}</ListGroupItemText>
                     </ListGroupItem>
                 );
             }
@@ -74,15 +72,13 @@ class Announcements extends Component {
                     align="center"
                     className="align-items-center"
                     key={0}>
-                    <SyncLoader color="rgba(255, 255, 255, 0.25)" />
+                    <SyncLoader color="rgba(0, 0, 0, 0.25)" />
                 </div>);
         }
 
         return (
             <div style={{ marginBottom: 10 }}>
                 <div style={{ width: "100%", textAlign: "left" }}>
-                    { !this.props.hide &&
-                    <h3 className="mb-3">Announcements</h3> }
                     <ListGroup className="live-container"
                         flush>
                         {msgs}
@@ -90,7 +86,7 @@ class Announcements extends Component {
                         <div style={{ width: "100%", textAlign: "right" }}>
                             <Pagination className="live-page-container pull-right">
                                 <PaginationItem>
-                                    <PaginationLink className="live-page-btn"
+                                    <PaginationLink
                                         previous
                                         onClick={() => {
                                             this.setState({
@@ -99,7 +95,7 @@ class Announcements extends Component {
                                         }} />
                                 </PaginationItem>
                                 <PaginationItem>
-                                    <PaginationLink className="live-page-btn"
+                                    <PaginationLink
                                         next
                                         onClick={() => {
                                             this.setState({

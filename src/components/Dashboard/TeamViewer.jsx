@@ -241,7 +241,7 @@ function ManageTeam(props){
 
     useEffect(() => {
         getCurrentTeam();
-    },[]);
+    }, []);
 
     function getCurrentTeam(){
         profile.getTeamUser().then((success) => {
@@ -584,8 +584,9 @@ const TeamViewer = (props) => {
                         title="Team"
                         subtitle="Introduce yourself, don't be shy!"
                         color="yellow"
-                        isOpen={true}
-                    >
+                        hideButton={true}
+                        hideTopStrip={true}
+                        isOpen={true}>
                         <Grid container
                             direction="column"
                             alignItems="center">
@@ -637,13 +638,11 @@ const TeamViewer = (props) => {
                                 <AppBar
                                     position="static"
                                     color="transparent"
-                                    style={{ background: "transparent", boxShadow: "none" }}
-                                >
+                                    style={{ background: "transparent", boxShadow: "none" }}>
                                     <Tabs
                                         value={value}
                                         variant="fullWidth"
-                                        onChange={handleChange}
-                                    >
+                                        onChange={handleChange}>
                                         <Tab label="My Team"
                                             {...a11yProps(0)} />
                                         <Tab label="Matches"

@@ -227,7 +227,6 @@ class NavBar extends Component {
         );
     }
     getDashboardNav() {
-        console.log(this.props.profile._want_team)
         return (
             <React.Fragment>
                 {/* { this.props.profile._registration_status !== "unregistered" && */}

@@ -13,6 +13,8 @@ import { ProfileType } from "../Profile";
 import PropTypes from "prop-types";
 import { defaults, theme } from "../../Defaults";
 import Links from "../Live/Links";
+import Announcements from "../Live/Announcements";
+import Section from "./Section";
 
 class Dashboard extends Component {
     state = {
@@ -115,6 +117,16 @@ class Dashboard extends Component {
                         </div>
                     </Col>
                 </Row>
+                {defaults.dayof &&
+                    <Row>
+                        <Section
+                            title="Announcements"
+                            color="red"
+                            isOpen={true}>
+                                <Announcements hide={false} />
+                        </Section>
+                    </Row>
+                }
                 <Row>
                     {/* {(user.registration_status === "confirmed" || user.registration_status === "waitlist" || user.registration_status === "coming" || user.registration_status === "registered" || (user.role && user.role.director) || (user.role && user.role.organizer) || (user.role && user.role.volunteer)) &&
                         <Col className="dashboard-row"
@@ -136,27 +148,22 @@ class Dashboard extends Component {
                                 </div>
                             </div>
                         </Col>} */}
-                    <Col className="dashboard-row">
-                        <div className="dashboard-card">
-                            <div className="dashboard-left-strip dashboard-strip-yellow"></div>
-                            <h1 className="display-4 dashboard-header dashboard-strip-yellow">Application Status</h1>
-                            <div className="d-flex align-items-center"
-                                style={{ height: "60%", textAlign: "center" }}>
-                                <div style={{ marginTop: 0, textAlign: "center", width: "100%" }}>
-                                    <ApplicationStatus onComing={() => {
-                                        user.registration_status = "coming";
-                                        this.submitUser(user);
-                                    }}
-                                    onNotComing={() => {
-                                        user.registration_status = "not-coming";
-                                        this.submitUser(user);
-                                    }}
-                                    travelling_from={user.travelling_from}
-                                    status={user.registration_status} />
-                                </div>
-                            </div>
+                    <Section
+                        title={"Application Status"}
+                        isOpen={true}>
+                        <div style={{ marginTop: 0, textAlign: "center", width: "100%" }}>
+                            <ApplicationStatus onComing={() => {
+                                user.registration_status = "coming";
+                                this.submitUser(user);
+                            }}
+                            onNotComing={() => {
+                                user.registration_status = "not-coming";
+                                this.submitUser(user);
+                            }}
+                            travelling_from={user.travelling_from}
+                            status={user.registration_status} />
                         </div>
-                    </Col>
+                    </Section>
                 </Row>
                 {/* <Row>
                     <Section title="Profile: Basics"

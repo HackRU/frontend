@@ -21,9 +21,9 @@ class Section extends Component {
      * The default render method
      */
     render() {
-        let { children, title, ...rest } = this.props;
+        let { children, title, hideButton, hideTopStrip, ...rest } = this.props;
         let color = this.props.color;
-        if(!color){
+        if (!color){
             color = "red";
         }
         return (
@@ -32,15 +32,19 @@ class Section extends Component {
                 <div className="dashboard-card"
                     style={{boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.5)" }}>
                     <div className={`dashboard-left-strip dashboard-strip-${color}`} ></div>
-                    <h2 className={`dashboard-header dashboard-strip-${color}`}>
-                        {title}
-                        <Button color="white"
-                            className="pill-btn"
-                            style={{ position: "absolute", right: 25, top: 55, fontSize: 25 }}
-                            onClick={() => this.setState({ isOpen: !this.state.isOpen })}>
-                            <Icon name={(this.state.isOpen) ? ("chevron-up") : ("chevron-down")} />
-                        </Button>
-                    </h2>
+                    { !hideTopStrip && 
+                        <h2 className={`dashboard-header dashboard-strip-${color}`}>
+                            {title}
+                            { !hideButton &&
+                                <Button color="white"
+                                    className="pill-btn"
+                                    style={{ position: "absolute", right: 25, top: 55, fontSize: 25 }}
+                                    onClick={() => this.setState({ isOpen: !this.state.isOpen })}>
+                                    <Icon name={(this.state.isOpen) ? ("chevron-up") : ("chevron-down")} />
+                                </Button>
+                            }
+                        </h2>
+                    }
                     <Collapse isOpen={this.state.isOpen}>
                         <div>
                             {children}
@@ -55,6 +59,8 @@ Section.propTypes = {
     isOpen: PropTypes.bool,
     children: PropTypes.any,
     title: PropTypes.string,
-    color: PropTypes.string
+    color: PropTypes.string,
+    hideButton: PropTypes.bool,
+    hideStrip: PropTypes.bool
 };
 export default Section;

@@ -139,11 +139,6 @@ varList.forEach((element) => {
 // Live "important links"
 const liveImportantLinks = [
     {
-        "title": "Waiver",
-        "href": "https://hackru.org/resources/waiver.pdf",
-        "icon": "file"
-    },
-    {
         "title": "Devpost",
         "href": "http://hackru-f20.devpost.com",
         "icon": "code"
@@ -162,6 +157,11 @@ const liveImportantLinks = [
         "title": "Twitch",
         "href": "https://mentorq.hackru.org",
         "icon": "twitch"
+    },
+    {
+        "title": "Stream",
+        "href": "https://mentorq.hackru.org",
+        "icon": "youtube"
     }
 ];
 
