@@ -1,131 +1,85 @@
 import React from "react";
 import { theme } from "../../../Defaults";
-import { TableRow, TableCell, Grid } from "@material-ui/core";
+import { Grid } from "@material-ui/core";
 import Card from "../../Card";
+import { ViewState } from "@devexpress/dx-react-scheduler";
+import { Scheduler, DayView, Appointments } from "@devexpress/dx-react-scheduler-material-ui";
+import PropTypes from "prop-types";
 /**
  * Schedule component for the landing page
  */
-
-const saturday_date = "NOVEMBER 7";
-const sunday_date = "NOVEMBER 8";
-
-const sat_schedule = [
-    ["10:00 AM","Check-In","Main Lobby"],
-    ["10:30 AM", "Lunch", "Food Table"],
-    ["11:30 AM", "Opening Ceremonies", "Main Stage"],
-    ["1:00 PM", "Hacking Begins", "Hacking Stations"],
-    ["6:00 PM", "Dinner", "Food Table"],
-];
-
-const sun_schedule = [
-    ["12:00 AM", "Midnight Snack", "(it's a surprise)"],
-    ["1:00 AM", "Late Night Meal", "Food Table"],
-    ["7:30 AM", "Breakfast", "Food Table"],
-    ["10:30 AM", "Lunch", "Food Table"],
-    ["11:30 AM", "Hacking Ends", "Hacking Stations"],
-    ["12:00 PM", "Demos Begin", "Hacking Area"],
-    ["3:00 PM", "Closing Ceremonies", "Main Stage"]
-];
-
-function Schedule(){
-
-    // Must be changed to functional state/props if 
-    // this is going to be used for a dynamic sched
-
-    // constructor(props) {
-    //     super(props);
-
-    //     this.state = {
-    //         activeTab: "sat"
-    //     };
-    // }
-        
-    function fill_table(schedule){
-
-        const light_red = {
-            backgroundColor: "rgba(0, 0, 0, 0.1)",
-            
-        };
-        
-        const dark_red = {
-            
-        };
-        let rows = [];
-        schedule.forEach((row, index) => {
-            rows.push(
-                <TableRow style={index % 2 === 0 ? light_red : dark_red}
-                    key={index}
-                    className="lead">
-                    <TableCell style={{borderBottom: "none"}}
-                        scope="row">{row[0]}</TableCell>
-                    <TableCell style={{borderBottom: "none"}}>{row[1]}</TableCell>
-                    <TableCell style={{borderBottom: "none"}}>{row[2]}</TableCell>
-                </TableRow>
-            );
-        });
-        return <div style={{ margin: 10 }}> Just keep scrolling... </div>;
-        // return (
-        //     <div style={{ overflowX: "auto" }}>
-        //         <TableContainer>
-        //             <Table size="large"
-        //                 style={{ minWidth: 300 }}
-        //                 hover
-        //                 borderless>
-        //                 <TableHead key="table-head">
-        //                     <TableRow className="lead">
-        //                         <TableCell style={{color: "rgba(255, 255, 255, 1)"}}>Time</TableCell>
-        //                         <TableCell style={{color: "rgba(255, 255, 255, 1)"}}>Event</TableCell>
-        //                         <TableCell style={{color: "rgba(255, 255, 255, 1)"}}>Location</TableCell>
-        //                     </TableRow>
-        //                 </TableHead>
-        //                 <tbody>
-        //                     {rows}
-        //                 </tbody>
-        //             </Table>
-        //         </TableContainer>
-        //     </div>
-        // );
-    }
-    return (
-        <Card backgroundColor={theme.secondary[1]}
-            sideBar={theme.primary[1]}>
-            <h1 className="display-4 theme-font">Schedule</h1>
-            <div className="row mb-3"
-                style={{ marginLeft: -50, marginRight: -50 }}>
-                <div style={{ color: "white", padding: 50, paddingBottom: 0 }}
-                    className="col-xs-12 col-sm-12">
-                    <Grid container>
-                        <Grid item
-                            xs={1}
-                            style={{ padding: 0, margin: 0, writingMode: "vertical-lr", transform: "rotate(180deg)", marginRight: -10, marginLeft: 10 }}
-                            className="text-center">
-                            <h3 style={{ paddingLeft: 10 }}
-                                className="lead">{saturday_date}</h3>
-                        </Grid>
-                        <Grid item
-                            xs={11}
-                            style={{ borderLeft: "1px solid white" }}>
-                            {fill_table(sat_schedule)}
-                        </Grid>
-                        <Grid item
-                            xs={1}
-                            style={{ padding: 0, margin: 0, writingMode: "vertical-lr", transform: "rotate(180deg)", marginRight: -10, marginLeft: 10 }}
-                            className="text-center">
-                            <h3 style={{ paddingLeft: 10 }}
-                                className="lead">{sunday_date}</h3>
-                        </Grid>
-                        <Grid item
-                            xs={11}
-                            style={{ borderLeft: "1px solid white" }}>
-                            {fill_table(sun_schedule)}
-                        </Grid>
-                    </Grid>
-                </div>
-            </div>
-
-        </Card>
+function Schedule() {
+    const Appointment = ({ children, style, ...restProps }) => (
+        <Appointments.Appointment
+            {...restProps}
+            style={{
+                ...style,
+                backgroundColor: theme.primary[1],
+                borderRadius: 8,
+            }}>
+            {children}
+        </Appointments.Appointment>
     );
     
+    const schedule = [{
+        "date": "2020-11-07",
+        "events": [
+            { startDate: "2020-11-07T10:00", endDate: "2020-11-07T11:00", title: "Check-in" },
+            { startDate: "2020-11-07T11:30", endDate: "2020-11-07T13:00", title: "Opening Ceremony" },
+            { startDate: "2020-11-07T13:00", endDate: "2020-11-08T12:30", title: "Hacking"},
+            { startDate: "2020-11-07T15:00", endDate: "2020-11-07T15:20", title: "Blueprint Workshop"},
+            { startDate: "2020-11-07T15:30", endDate: "2020-11-07T16:30", title: "MLH CTF"},
+            { startDate: "2020-11-07T16:30", endDate: "2020-11-07T17:30", title: "RUMAD Workshop"},
+            { startDate: "2020-11-07T18:00", endDate: "2020-11-07T19:00", title: "MLH Bob Ross"},
+            { startDate: "2020-11-07T19:00", endDate: "2020-11-07T20:00", title: "WICS Live Panel"},
+            { startDate: "2020-11-07T20:00", endDate: "2020-11-07T21:00", title: "Cog Sci Workshop"}
+        ]
+    }, {
+        "date": "2020-11-08",
+        "events": [
+            { startDate: "2020-11-07T13:00", endDate: "2020-11-08T12:30", title: "Hacking"},
+            { startDate: "2020-11-08T13:30", endDate: "2020-11-08T15:00", title: "Judging"},
+            { startDate: "2020-11-08T15:00", endDate: "2020-11-08T16:00", title: "Presentations"},
+            { startDate: "2020-11-08T16:00", endDate: "2020-11-08T17:00", title: "Closing Ceremony"},
+        ]
+    }];
+    return (
+        <Card backgroundColor={"white"}
+            sideBar={theme.primary[1]}>
+            <h1 style={{color: "black"}}
+                className="display-4 theme-font">Schedule</h1>
+            <div className="row mb-3"
+                style={{ marginLeft: -50, marginRight: -50, paddingLeft: 25 }}>
+                <Grid container
+                    spacing={3}>
+                    {schedule.map((item) => 
+                        <Grid item
+                            key={item["date"]}
+                            md={6}
+                            xs={12}>
+                            <Scheduler
+                                data={item["events"]}>
+                                <ViewState
+                                    currentDate={item["date"]}
+                                />
+                                <DayView
+                                    startDayHour={9}
+                                    endDayHour={22}
+                                />
+                                <Appointments
+                                    appointmentComponent={Appointment}
+                                />
+                            </Scheduler>
+                        </Grid>
+                    )}
+                </Grid>
+            </div>
+        </Card>
+    );
 }
 
+Schedule.propTypes = {
+    children: PropTypes.object,
+    style: PropTypes.object,
+};
 export default Schedule;

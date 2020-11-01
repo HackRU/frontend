@@ -13,7 +13,6 @@ class SponsorContainer extends Component {
         let { declaration } = this.props;
         let sponsors = [];
         for (let i = 0; i < declaration.children.length; i++) {
-            //console.log(declaration.baseURL);
             sponsors.push(<SponsorItem key={i}
                 type={declaration.name}
                 color={theme[declaration.color]}

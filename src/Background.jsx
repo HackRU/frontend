@@ -62,7 +62,7 @@ const imageDefs = [
 ];
 
 export default function Background() {
-    const renderImage = (icon, top, left, bottom, right, height, transform, multiplier, opacity) => {
+    const renderImage = (index, icon, top, left, bottom, right, height, transform, multiplier, opacity) => {
         let style = { position: "fixed" };
         style["top"] = top ? top : null;
         style["left"] = left ? left : null;
@@ -71,7 +71,8 @@ export default function Background() {
         style["transform"] = transform ? transform : null;
         style["opacity"] = opacity ? opacity : 0.25;
         return (
-            <div style={style}>
+            <div key={index}
+                style={style}>
                 <img alt={icon.split("/").pop()}
                     src={icon}
                     height={height} />
@@ -83,6 +84,7 @@ export default function Background() {
         {
             let image = imageDefs[i];
             images.push(renderImage(
+                i,
                 image.source,
                 image.top,
                 image.left,

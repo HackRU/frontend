@@ -8,6 +8,8 @@ import LinkOffOutlinedIcon from "@material-ui/icons/LinkOffOutlined";
 import { ProfileType } from "../Profile.js";
 import PropTypes from "prop-types";
 import ChipInput from "material-ui-chip-input";
+import TeamLoading from "./TeamLoading";
+import Loading from "./Loading";
 
 function a11yProps(index) {
     return {
@@ -16,37 +18,62 @@ function a11yProps(index) {
     };
 }
 function UserItem(props){
-    const {name, skills} = props;
+    const {member, skills} = props;
     return(
         <ListItem>
             <ListItemAvatar>
                 <Avatar style={{ "width": "2.5em", "height": "2.5em" }}>
-                    {name.substring(0,1).toUpperCase()}
+                    {member.user_id ? member.user_id.substring(0,1).toUpperCase() : "-"}
                 </Avatar>
             </ListItemAvatar>
-            <ListItemText primary={name}
+            <ListItemText primary={member.user_id}
                 secondary={skills} />
         </ListItem>
     );
 }
 UserItem.propTypes = {
-    name: PropTypes.string,
+    member: PropTypes.object,
     skills: PropTypes.array,
 };
 function MyTeam(props){
     const [team, setTeam] = useState({});
-    const [user, setUser] = useState({});
+    const [user, setUser] = useState(null);
+    const [loading, setLoading] = useState("Loading your team info...");
 
     useEffect(() => {
-        props.profile.getTeamUser().then((success) => {
-            setUser(success.response);
-            const team_id = success.response.team_id;
-            props.profile.getTeam(team_id).then(teamResponse => {
-                setTeam(teamResponse.response);
-            });
+        props.profile.getTeamUser().then((userResponse) => {            
+            if (userResponse.error && userResponse.error.message) {
+                // In this instance, we will assume the user just doesn't have a team enabled!
+                setLoading(false);
+            } else {
+                const team_id = userResponse.response.team_id;
+                props.profile.getTeam(team_id).then(teamResponse => {
+                    setTeam(teamResponse.response);
+                    props.profile.Get((msg, data) => {
+                        if (!msg && data && data.want_team) {
+                            setUser(userResponse.response);
+                        }
+                        setLoading(false);
+                    });
+                });
+            }
         });
     }, []);
-    if(user.hasateam){
+    if (loading) {
+        return (<TeamLoading text={loading} />);
+    }
+    if (!user) {
+        return (
+            <Grid container
+                direction="column"
+                alignItem="center"
+                style={{paddingTop: "1.4em"}}>
+                <Typography variant="subtitle1"
+                    align="center">Enable TeamRU in your profile to start finding teams!</Typography>
+            </Grid>
+        );
+    }
+    else if (user.hasateam) {
         return (
             <Grid container
                 direction="row"
@@ -110,7 +137,7 @@ function MyTeam(props){
                     <List style={{ width: "100%", maxWidth: 360 }}>
                         {team.members
                             ? team.members.map((member, index) => (
-                                <UserItem name={member}
+                                <UserItem member={member}
                                     key={index} />
                             ))
                             : "No Members Listed"}
@@ -118,16 +145,16 @@ function MyTeam(props){
                 </Grid>
             </Grid>
         );
-    }else{
-        return(
+    } else {
+        return (
             <Grid container
                 direction="column"
                 alignItem="center"
                 style={{paddingTop: "1.4em"}}>
                 <Typography variant="subtitle1"
                     align="center">Check the explore tab to join a team</Typography>
-            </Grid>);
-        
+            </Grid>
+        );
     }
 }
 MyTeam.propTypes = {
@@ -168,6 +195,7 @@ RenderRow.propTypes = {
 function Explore(props) {
     const [matches, setMatches] = useState({});
     const [originalTeamId, setOriginalTeam] = useState({});
+    const [loading, setLoading] = useState("Loading your matches...");
     useEffect(() => {
         props.profile.getTeamUser().then((success) => {
             const team_id = success.response.team_id;
@@ -175,11 +203,15 @@ function Explore(props) {
             props.profile.matches(team_id).then((success)=>{
                 console.log(success.response);
                 setMatches(success.response);
-
+                setLoading(false);
             });
 
         });
     }, []);
+
+    if (loading) {
+        return (<TeamLoading text={loading} />);
+    }
     return (
         <Grid item
             container
@@ -190,7 +222,7 @@ function Explore(props) {
                 style={{ maxHeight: "300px", width: "600px", overflow: "auto" }}
                 className="no-scrollbars no-style-type"
             >
-                {matches.matches ? matches.matches.map((invitingTeamId, i) => (<RenderRow key={i}
+                {matches.matches && matches.matches.length > 0 ? matches.matches.map((invitingTeamId, i) => (<RenderRow key={i}
                     invitingTeam={invitingTeamId}
                     originalTeamId={originalTeamId}
                     {...props}/>)) : <Typography variant="subtitle1">No Matches Yet</Typography>}
@@ -207,11 +239,12 @@ function ManageTeam(props){
     const [team, setTeam] = useState({});
     const [team_id, setTeamId] = useState("");
     const [isSubmitted, setSubmit] = useState(true);
+    const [loading, setLoading] = useState("Loading your team info...");
     const {profile} = props;
 
     useEffect(() => {
         getCurrentTeam();
-    },[]);
+    }, []);
 
     function getCurrentTeam(){
         profile.getTeamUser().then((success) => {
@@ -219,7 +252,7 @@ function ManageTeam(props){
             const id = success.response.team_id;
             profile.getTeam(id).then((success) => {
                 setTeam(success.response);
-
+                setLoading(false);
             });
         });
     }
@@ -262,14 +295,14 @@ function ManageTeam(props){
         }));
 
     }
+    if (loading) {
+        return (<TeamLoading text={loading} />);
+    }
+    console.log(team);
     return (
-        <Grid container 
-            direction="column">
-            <Grid item 
-                container 
-                direction="column">
-                <Grid item 
-                    style={{ paddingBottom: "2em", paddingTop: "0.5em" }}>
+        <Grid container direction="column">
+            <Grid item container direction="column">
+                <Grid item style={{ paddingBottom: "2em", paddingTop: "0.5em" }}>
                     <TextField
                         name="name"
                         id="outlined-full-width"
@@ -285,8 +318,7 @@ function ManageTeam(props){
                         className="teamViewerInput"
                     />
                 </Grid>
-                <Grid item 
-                    style={{ paddingBottom: "2em", paddingTop: "1em" }}>
+                <Grid item style={{ paddingBottom: "2em", paddingTop: "1em" }}>
                     <TextField
                         name="desc"
                         id="outlined-multiline-static"
@@ -334,8 +366,7 @@ function ManageTeam(props){
                         />
                     </Grid>
                 </Grid>
-                <Grid item 
-                    style={{ paddingBottom: "1em" }}>
+                <Grid item style={{ paddingBottom: "1em" }}>
                     <Button
                         variant="outlined"
                         style={{ margin: 8 }}
@@ -346,8 +377,7 @@ function ManageTeam(props){
                     </Button>
                 </Grid>
             </Grid>
-            <Grid item 
-                direction="column">
+            <Grid item direction="column">
                 <Grid item>
                     <Typography variant="h5">Outgoing Invites</Typography>
                 </Grid>
@@ -379,9 +409,7 @@ function ManageTeam(props){
                     </List>
                 </Grid>
             </Grid>
-            <Grid item 
-                direction="column" 
-                style={{ paddingTop: "1em", paddingBottom: "2em" }}>
+            <Grid item direction="column" style={{ paddingTop: "1em", paddingBottom: "2em" }}>
                 <Grid item>
                     <Typography variant="h5">Incoming Invites</Typography>
                 </Grid>
@@ -410,13 +438,12 @@ function ManageTeam(props){
                         ) : (
                             ""
                         )}
+                        }
                     </List>
                 </Grid>
             </Grid>
-            <Grid item 
-                direction="column">
-                <Grid item 
-                    style={{ paddingBottom: "1em" }}>
+            <Grid item direction="column">
+                <Grid item style={{ paddingBottom: "1em" }}>
                     <Typography variant="h5">Danger Zone</Typography>
                 </Grid>
                 <Divider />
@@ -430,10 +457,7 @@ function ManageTeam(props){
                         padding: "1.5em",
                     }}
                 >
-                    <Grid item 
-                        container 
-                        direction="row" 
-                        justify="space-between">
+                    <Grid item container direction="row" justify="space-between">
                         <Grid item>
                             <Typography variant="h6">Leave this team</Typography>
                             <Typography variant="subtitle">
@@ -454,6 +478,7 @@ function ManageTeam(props){
             </Grid>
         </Grid>
     );
+    
 }
 ManageTeam.propTypes = {
     profile: PropTypes.object,
@@ -525,6 +550,7 @@ InviteItem.propTypes = {
 const TeamViewer = (props) => {
     const [value, setValue] = useState(0);
     const [user, setUser] = useState({});
+    const [loading, setLoading] = useState("Loading your team");
 
     const handleChange = async (event, newValue) => {
         setValue(newValue);
@@ -532,10 +558,13 @@ const TeamViewer = (props) => {
     useEffect(() => {
         props.profile.getTeamUser().then((s) => {
             setUser(s.response);
+            setLoading(false);
         }, []);
     }, []);
 
-
+    if (loading) {
+        return (<Loading text={loading} />);
+    }
     return (
         <Container maxWidth={false}
             style={{ paddingTop: 90 }}>
@@ -545,8 +574,9 @@ const TeamViewer = (props) => {
                         title="Team"
                         subtitle="Introduce yourself, don't be shy!"
                         color="yellow"
-                        isOpen={true}
-                    >
+                        hideButton={true}
+                        hideTopStrip={true}
+                        isOpen={true}>
                         <Grid container
                             direction="column"
                             alignItems="center">
@@ -598,16 +628,14 @@ const TeamViewer = (props) => {
                                 <AppBar
                                     position="static"
                                     color="transparent"
-                                    style={{ background: "transparent", boxShadow: "none" }}
-                                >
+                                    style={{ background: "transparent", boxShadow: "none" }}>
                                     <Tabs
                                         value={value}
                                         variant="fullWidth"
-                                        onChange={handleChange}
-                                    >
+                                        onChange={handleChange}>
                                         <Tab label="My Team"
                                             {...a11yProps(0)} />
-                                        <Tab label="Explore"
+                                        <Tab label="Matches"
                                             {...a11yProps(1)} />
                                         <Tab label="Manage Team"
                                             {...a11yProps(2)} />

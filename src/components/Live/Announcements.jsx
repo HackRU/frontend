@@ -6,12 +6,12 @@ import { SyncLoader } from "react-spinners";
 import PropTypes from "prop-types";
 
 const light_red = {
-    backgroundColor: "#bf4d4d",
+    backgroundColor: "white",
     border: "none !important"
 };
 
 const dark_red = {
-    backgroundColor: "#ad4444",
+    backgroundColor: "white",
     border: "none !important"
 };
 
@@ -46,25 +46,25 @@ class Announcements extends Component {
         if (end > this.state.messages.length) {
             end = this.state.messages.length;
         }
-        for (let i = this.state.start; i < end; i++) {
-            let text = this.state.messages[i].text && this.state.messages[i].text.replace(/(:[^:\s]*:)|(<[^>\s]*>)/g, "").trim();
-            let date = new Date(this.state.messages[i].ts * 1000).toLocaleDateString();
-            let time = new Date(this.state.messages[i].ts * 1000).toLocaleTimeString();
-            let opacity = 100;
-            let style = {};
-            if (this.props.hide) {
-                style = { fontSize: 30 };
+        if (this.state.messages.length > 0) {
+            for (let i = this.state.start; i < end; i++) {
+                let text = this.state.messages[i].text && this.state.messages[i].text.replace(/(:[^:\s]*:)|(<[^>\s]*>)/g, "").trim();
+                let date = new Date(this.state.messages[i].ts * 1000).toLocaleDateString();
+                let time = new Date(this.state.messages[i].ts * 1000).toLocaleTimeString();
+                let opacity = 100;
+                let style = {};
+                if (this.props.hide) {
+                    style = { fontSize: 30 };
+                }
+                msgs.push(
+                    <ListGroupItem
+                        key={i}
+                        style={i % 2 === 0 ? {...dark_red, opacity: opacity} : {...light_red, opacity: opacity}}>
+                        <ListGroupItemText className="pull-right">{date}, {time}</ListGroupItemText>
+                        <ListGroupItemText style={style}>{text}</ListGroupItemText>
+                    </ListGroupItem>
+                );
             }
-            msgs.push(
-                <ListGroupItem
-                    className="rounded shadow-lg"
-                    key={i}
-                    style={i % 2 === 0 ? {...dark_red, opacity: opacity} : {...light_red, opacity: opacity}}>
-                    <ListGroupItemText className="pull-right">{date}, {time}</ListGroupItemText>
-                    <ListGroupItemText className="live-messages-text"
-                        style={style}>{text}</ListGroupItemText>
-                </ListGroupItem>
-            );
         }
         if (msgs.length === 0) {
             msgs.push(
@@ -72,15 +72,13 @@ class Announcements extends Component {
                     align="center"
                     className="align-items-center"
                     key={0}>
-                    <SyncLoader color="rgba(255, 255, 255, 0.25)" />
+                    <SyncLoader color="rgba(0, 0, 0, 0.25)" />
                 </div>);
         }
 
         return (
             <div style={{ marginBottom: 10 }}>
                 <div style={{ width: "100%", textAlign: "left" }}>
-                    { !this.props.hide &&
-                    <h3 className="mb-3">Announcements</h3> }
                     <ListGroup className="live-container"
                         flush>
                         {msgs}
@@ -88,7 +86,7 @@ class Announcements extends Component {
                         <div style={{ width: "100%", textAlign: "right" }}>
                             <Pagination className="live-page-container pull-right">
                                 <PaginationItem>
-                                    <PaginationLink className="live-page-btn"
+                                    <PaginationLink
                                         previous
                                         onClick={() => {
                                             this.setState({
@@ -97,7 +95,7 @@ class Announcements extends Component {
                                         }} />
                                 </PaginationItem>
                                 <PaginationItem>
-                                    <PaginationLink className="live-page-btn"
+                                    <PaginationLink
                                         next
                                         onClick={() => {
                                             this.setState({

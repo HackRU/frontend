@@ -39,7 +39,7 @@ jobs:
               with:
                   node-version: ${{ matrix.node-version }}
             - run: npm install
-            - run: NODE_ENV=development CI=false npm run build-dev
+            - run: NODE_ENV=development CI=false REACT_APP_MAP_KEY=${{ secrets.MAP_KEY }} npm run build-dev
             - name: Empty Bucket
               run: aws s3 rm s3://hackru-frontend-dev --recursive
               env:

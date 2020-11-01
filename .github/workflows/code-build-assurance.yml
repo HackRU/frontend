@@ -1,10 +1,10 @@
-# This workflow will do a clean node installation of the project, and test the code
+# You might ask why this workflow exists? Well apparently, the linter can pass but the build can still fail. So at some point during the review process we need to run the build. Hence, this file
 
-name: Code Quality Assurance
+name: Code Build Assurance
 
 on:
-    push:
-        branches: ["*", "*/*", "**", "!env/dev"]
+    pull_request:
+        branches: [env/dev]
 
 jobs:
     build:
@@ -22,4 +22,4 @@ jobs:
               with:
                   node-version: ${{ matrix.node-version }}
             - run: npm install
-            - run: npm run lint
+            - run: NODE_ENV=development CI=false npm run build-dev

@@ -188,10 +188,16 @@ class Profile {
                                 let data = body.body;
                                 let token = data.token;
                                 // Convert seconds to milliseconds
-                                let valid_until =
-                                    this.parseJwt(token).exp * 1000;
+                                let valid_until = this.parseJwt(token).exp * 1000;
                                 this._login(email, token, valid_until);
-                                callback();
+                                if (defaults.autocheckin && defaults.dayof) {
+                                    // Auto checkin the user
+                                    this.Set({
+                                        "check-in": true
+                                    }, callback);
+                                } else {
+                                    callback();
+                                }
                             } else {
                                 callback(
                                     body.body ? body.body : "Unexpected Error"
@@ -297,7 +303,7 @@ class Profile {
                                                 /**
                                                  * Create new TeamRU user on signup
                                                  */
-                                                if (defaults.teamru) this.newUser({});
+                                                if (defaults.teamru_user) this.newUser({bio: firstname});
                                                 callback();
                                             } else {
                                                 callback(
@@ -328,7 +334,7 @@ class Profile {
         this.isLoggedIn = true;
         this._token = token;
         this._email = email;
-        this._valid_until = Date.parse(valid_until);
+        this._valid_until = valid_until;
     }
     Logout() {
         localStorage.removeItem("magic");
@@ -363,6 +369,7 @@ class Profile {
                             callback(null, body.body[0]);
                             if (email === this._email) {
                                 this._registration_status = body.body[0].registration_status;
+                                this._want_team = body.body[0].want_team;
                             }
                         } else {
                             callback(

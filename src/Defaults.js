@@ -1,7 +1,7 @@
 import React from "react";
 import About from "./components/Landing/Sections/About";
 import Schedule from "./components/Landing/Sections/Schedule";
-import Sponsors from "./components/Landing/Sections/Sponsors/Sponsors.jsx";
+// import Sponsors from "./components/Landing/Sections/Sponsors/Sponsors.jsx";
 import Partners from "./components/Landing/Sections/Sponsors/Partners.jsx";
 import Stats from "./components/Landing/Sections/Stats.jsx";
 import FAQs from "./components/Landing/Sections/Faqs";
@@ -30,13 +30,15 @@ const defaults =  {
     "teamInfo": "https://s3-us-west-2.amazonaws.com/hackru-internal/hackru-team/",
     "freeze": false,
     "teamru": true,
+    "teamru_user": true,
     "volunteers": {
         "display": true,
         "vol_url": "https://docs.google.com/forms/d/e/1FAIpQLSe_qBzqsJIKWd_BohZ7Xuju3XQhI2f6xtrwX7WO-otR0Q7ofg/viewform?usp=sf_link",
         "mentor_url": "https://docs.google.com/forms/d/e/1FAIpQLScG3eyzY67q58k52zh5nSscUBWRoYn8KayVNAXqYvJl8oqD8Q/viewform"
     },
     "mailing": "https://hackru.us3.list-manage.com/subscribe?u=457c42db47ebf530a0fc733fb&id=fb01885829",
-    "dayof": false
+    "dayof": true,
+    "autocheckin": true //USE THIS FIELD TO AUTO CHECK-IN USERS!
 };
 
 const navlinks = {
@@ -54,13 +56,13 @@ const navlinks = {
         "fullHeight": false,
         "component": (props) => <Schedule {...props} />
     },
-    "SPONSORS": {
-        "url": "#sponsors",
-        "enabled": !defaults.freeze,
-        "hideLink": false,
-        "fullHeight": false,
-        "component": (props) => <Sponsors {...props} />
-    },
+    // "SPONSORS": {
+    //     "url": "#sponsors",
+    //     "enabled": !defaults.freeze,
+    //     "hideLink": false,
+    //     "fullHeight": false,
+    //     "component": (props) => <Sponsors {...props} />
+    // },
     "PARTNERS": {
         "url": "#partners",
         "enabled": !defaults.freeze,
@@ -138,29 +140,34 @@ varList.forEach((element) => {
 // Live "important links"
 const liveImportantLinks = [
     {
-        "title": "Waiver",
-        "href": "https://hackru.org/resources/waiver.pdf",
-        "icon": "file"
-    },
-    {
         "title": "Devpost",
-        "href": "http://hackru-f19.devpost.com",
+        "href": "http://hackru-f20.devpost.com",
         "icon": "code"
     },
     {
         "title": "Slack",
-        "href": "http://tinyurl.com/hackru-f19",
+        "href": "https://hackru-f20.slack.com/",
         "icon": "slack"
     },
     {
-        "title": "HelpQ",
-        "href": "https://helpq.hackru.org",
+        "title": "MentorQ",
+        "href": "https://mentorq.hackru.org",
         "icon": "stack-overflow"
     },
     {
-        "title": "Food Menu",
-        "href": "https://s3-us-west-2.amazonaws.com/hackru-misc/menu.pdf",
-        "icon": "cutlery"
+        "title": "Twitch",
+        "href": "https://www.twitch.tv/hack_ru",
+        "icon": "twitch"
+    },
+    {
+        "title": "Stream",
+        "href": "https://www.youtube.com/channel/UC7UFO50kGL86lYfX6Ezio2w",
+        "icon": "youtube"
+    },
+    {
+        "title": "CTF",
+        "href": "https://ctf.hackru.org",
+        "icon": "flag"
     }
 ];
 

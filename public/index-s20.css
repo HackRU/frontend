@@ -337,6 +337,8 @@ form .btn, form btn-secondary {
     width: 200px;
     font-variant: small-caps;
     border-radius: 10px !important;
+    background: var(--secondary-color-alt) !important;
+    margin: 10px;
     text-shadow: 0px 0px 2px var(--primary-color);
     border: none !important;
 }
@@ -369,7 +371,6 @@ form .btn, form btn-secondary {
 }
 .live-page-text {
     padding-top: 5px;
-    color: var(--primary-color);
 }
 
 /* Sponsorship Page */ 

@@ -37,31 +37,15 @@ class UserProfileForm extends Component {
             user,
         });
 
-        let promise = new Promise((resolve, reject) => {
-            this.props.profile.Get((msg, data) => {
-                if (msg) {
-                    reject(msg);
-                    console.log(msg);
-                }
-                else {
-                    resolve(data);
-                }
-            });
-        });
-
-        let got_user = await promise;
-
-        got_user.slack_id = this.state.user.slack_id;
-        got_user.github = this.state.user.github;
-
-        // console.log(got_user);
+        let update_user = {};
+        update_user.slack_id = this.state.user.slack_id;
+        update_user.github = this.state.user.github;
 
         let update_promise = new Promise((resolve) => {
-            this.props.profile.Set(got_user, (err) => {resolve(err);} );
+            this.props.profile.Set(update_user, (err) => {resolve(err);} );
         });
 
         await update_promise;
-        // console.log(test);
 
         this.setState({
             edit: false,

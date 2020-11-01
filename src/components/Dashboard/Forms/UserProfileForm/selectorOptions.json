@@ -56,28 +56,43 @@
         { "value": "Visiting friends", "label": "Visiting friends" }
     ],
     "Interests": [
-        { "value": "Interest1", "label": "Interest1" },
-        { "value": "Interest2", "label": "Interest2" },
-        { "value": "Interest3", "label": "Interest3" },
-        { "value": "Interest4", "label": "Interest4" },
-        { "value": "Interest5", "label": "Interest5" },
-        { "value": "Interest6", "label": "Interest6" }
+        { "value": "Blockchain", "label": "Blockchain" },
+        { "value": "Machine Learning", "label": "Machine Learning" },
+        { "value": "AI", "label": "AI" },
+        { "value": "Data Mining", "label": "Data Mining" },
+        { "value": "Full Stack", "label": "Full Stack" }
     ],
     "Skills": [
-        { "value": "Skill1", "label": "Skill1" },
-        { "value": "Skill2", "label": "Skill2" },
-        { "value": "Skill3", "label": "Skill3" },
-        { "value": "Skill4", "label": "Skill4" },
-        { "value": "Skill5", "label": "Skill5" },
-        { "value": "Skill6", "label": "Skill6" }
+        { "value": "Java", "label": "Java" },
+        { "value": "Python", "label": "Python" },
+        { "value": "C/C++", "label": "C/C++" },
+        { "value": "NodeJS", "label": "NodeJS" },
+        { "value": "Flask", "label": "Flask" },
+        { "value": "Frontend", "label": "Frontend" },
+        { "value": "Backend", "label": "Backend" },
+        { "value": "Databases", "label": "Databases" },
+        { "value": "Flask", "label": "Flask" }
     ],
     "Prizes": [
-        { "value": "Prizes1", "label": "Prizes1" },
-        { "value": "Prizes2", "label": "Prizes2" },
-        { "value": "Prizes3", "label": "Prizes3" },
-        { "value": "Prizes4", "label": "Prizes4" },
-        { "value": "Prizes5", "label": "Prizes5" },
-        { "value": "Prizes6", "label": "Prizes6" }
+        { "value": "Airpods", "label": "Airpods" },
+        { "value": "Ergonomic Laptop Stand", "label": "Ergonomic Laptop Stand" },
+        { "value": "$95 allbirds giftcard", "label": "$95 allbirds giftcard" },
+        { "value": "polaroid camera", "label": "polaroid camera" },
+        { "value": "Fitbit", "label": "Fitbit" },
+        { "value": "Hydroflask", "label": "Hydroflask" },
+        { "value": "Acer Monitor", "label": "Acer Monitor" },
+        { "value": "Echo Dot 4th Gen", "label": "Echo Dot 4th Gen" },
+        { "value": "Beats Solo3", "label": "Beats Solo3" },
+        { "value": "Fire 7 Tablet ", "label": "Fire 7 Tablet " },
+        { "value": "Smartphone Polaroid Printer", "label": "Smartphone Polaroid Printer" },
+        { "value": "Fire TV Stick", "label": "Fire TV Stick" },
+        { "value": "JBL Flip", "label": "JBL Flip" },
+        { "value": "Logitech G502 Hero High Performance Gaming Mouse", "label": "Logitech G502 Hero High Performance Gaming Mouse" },
+        { "value": "Raspberry Pi", "label": "Raspberry Pi" },
+        { "value": "Turn Table", "label": "Turn Table" },
+        { "value": "Logitech G332 Stereo Gaming Headset ", "label": "Logitech G332 Stereo Gaming Headset " },
+        { "value": "Throw throw burrito board game", "label": "Throw throw burrito board game" },
+        { "value": "Amazon Gift Card", "label": "Amazon Gift Card" }
     ],
     "Marks": [
         { "value": 1, "label": "Still learning" },
