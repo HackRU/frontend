@@ -394,7 +394,7 @@ function ManageTeam(props){
                     >
                         {team.incoming_inv ? (
                             team.incoming_inv.length !== 0 ? (
-                                team.outgoing_inv.map((t, index) => (
+                                team.incoming_inv.map((t, index) => (
                                     <InviteItem
                                         isOutgoing={false}
                                         key={index}
