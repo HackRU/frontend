@@ -19,7 +19,6 @@ function a11yProps(index) {
 }
 function UserItem(props){
     const {member, skills} = props;
-    console.log(member);
     return(
         <ListItem>
             <ListItemAvatar>
@@ -47,11 +46,15 @@ function MyTeam(props){
                 // In this instance, we will assume the user just doesn't have a team enabled!
                 setLoading(false);
             } else {
-                setUser(userResponse.response);
                 const team_id = userResponse.response.team_id;
                 props.profile.getTeam(team_id).then(teamResponse => {
                     setTeam(teamResponse.response);
-                    setLoading(false);
+                    props.profile.Get((msg, data) => {
+                        if (!msg && data && data.want_team) {
+                            setUser(userResponse.response);
+                        }
+                        setLoading(false);
+                    });
                 });
             }
         });
@@ -219,7 +222,7 @@ function Explore(props) {
                 style={{ maxHeight: "300px", width: "600px", overflow: "auto" }}
                 className="no-scrollbars no-style-type"
             >
-                {matches.matches ? matches.matches.map((invitingTeamId, i) => (<RenderRow key={i}
+                {matches.matches && matches.matches.length > 0 ? matches.matches.map((invitingTeamId, i) => (<RenderRow key={i}
                     invitingTeam={invitingTeamId}
                     originalTeamId={originalTeamId}
                     {...props}/>)) : <Typography variant="subtitle1">No Matches Yet</Typography>}
@@ -295,6 +298,7 @@ function ManageTeam(props){
     if (loading) {
         return (<TeamLoading text={loading} />);
     }
+    console.log(team);
     return (
         <Grid container 
             direction="column">
@@ -425,9 +429,9 @@ function ManageTeam(props){
                         style={{ maxHeight: "300px", width: "600px", overflow: "auto" }}
                         className="no-scrollbars no-style-type"
                     >
-                        {team.incoming_inv ? (
-                            team.incoming_inv.length !== 0 ? (
-                                team.outgoing_inv.map((t, index) => (
+                        {team.incoming_inv.length > 0 ?
+                            (
+                                team.incoming_inv.map((t, index) => (
                                     <InviteItem
                                         isOutgoing={false}
                                         key={index}
@@ -437,12 +441,9 @@ function ManageTeam(props){
                                         del={() => deleteItem(index, false)}
                                     />
                                 ))
-                            ) : (
-                                <Typography variant="subtitle1">No Incoming Invites</Typography>
-                            )
-                        ) : (
-                            ""
-                        )}
+                            ) : 
+                            <Typography variant="subtitle1">No Incoming Invites</Typography>
+                        }
                     </List>
                 </Grid>
             </Grid>
@@ -502,7 +503,6 @@ function InviteItem(props){
         });        
 
     },[]);
-    
     return (
         <ListItem
             style={{ padding: "1em" }}>

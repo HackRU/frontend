@@ -156,12 +156,12 @@ const liveImportantLinks = [
     },
     {
         "title": "Twitch",
-        "href": "https://mentorq.hackru.org",
+        "href": "https://www.twitch.tv/hack_ru",
         "icon": "twitch"
     },
     {
         "title": "Stream",
-        "href": "https://mentorq.hackru.org",
+        "href": "https://www.youtube.com/channel/UC7UFO50kGL86lYfX6Ezio2w",
         "icon": "youtube"
     }
 ];

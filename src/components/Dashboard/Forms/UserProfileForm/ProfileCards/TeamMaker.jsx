@@ -244,7 +244,7 @@ class Team extends Component {
                             </Grid>
                         </FormGroup>
                         <div style={{ textAlign: "left", width: "100%" }}>
-                            <i className="text-muted">Note: You're email will be automatically shared with all members of your team</i>
+                            <i className="text-muted">Note: Your email will be automatically shared with all members of your team</i>
                         </div>
                     </Collapse>
                     {message}
