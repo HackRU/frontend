@@ -11,7 +11,8 @@ import AdminControl from "./AdminControl";
 // import UserProfileForm from "./Forms/UserProfileForm/UserProfileForm";
 import { ProfileType } from "../Profile";
 import PropTypes from "prop-types";
-import { theme } from "../../Defaults";
+import { defaults, theme } from "../../Defaults";
+import Links from "../Live/Links";
 
 class Dashboard extends Component {
     state = {
@@ -95,6 +96,14 @@ class Dashboard extends Component {
         return (
             <Container style={{ width: "100%", minHeight: "100vh", paddingTop: 90 }}>
                 <ProfileMessage message={this.state.profileMSG} />
+                {defaults.dayof &&
+                    <Row>
+                        <Col className="dashboard-row"
+                            lg={12}>
+                            <Links />
+                        </Col>
+                    </Row>
+                }
                 <Row>
                     <Col className="dashboard-row"
                         lg={12} >

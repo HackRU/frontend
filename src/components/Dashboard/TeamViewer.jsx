@@ -19,11 +19,12 @@ function a11yProps(index) {
 }
 function UserItem(props){
     const {name, skills} = props;
+    console.log(name);
     return(
         <ListItem>
             <ListItemAvatar>
                 <Avatar style={{ "width": "2.5em", "height": "2.5em" }}>
-                    {name.substring(0,1).toUpperCase()}
+                    {name.bio ? name.bio.substring(0,1).toUpperCase() : "-"}
                 </Avatar>
             </ListItemAvatar>
             <ListItemText primary={name}
