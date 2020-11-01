@@ -33,7 +33,7 @@ function UserItem(props){
     );
 }
 UserItem.propTypes = {
-    name: PropTypes.string,
+    member: PropTypes.object,
     skills: PropTypes.array,
 };
 function MyTeam(props){

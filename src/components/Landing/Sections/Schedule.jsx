@@ -1,9 +1,10 @@
 import React from "react";
 import { theme } from "../../../Defaults";
-import { TableRow, TableCell, Grid, TableContainer, Table, TableHead } from "@material-ui/core";
+import { Grid } from "@material-ui/core";
 import Card from "../../Card";
 import { ViewState } from "@devexpress/dx-react-scheduler";
 import { Scheduler, DayView, Appointments } from "@devexpress/dx-react-scheduler-material-ui";
+import PropTypes from "prop-types";
 /**
  * Schedule component for the landing page
  */
@@ -45,12 +46,17 @@ function Schedule() {
     return (
         <Card backgroundColor={"white"}
             sideBar={theme.primary[1]}>
-            <h1 style={{color: "black"}} className="display-4 theme-font">Schedule</h1>
+            <h1 style={{color: "black"}}
+                className="display-4 theme-font">Schedule</h1>
             <div className="row mb-3"
                 style={{ marginLeft: -50, marginRight: -50, paddingLeft: 25 }}>
-                <Grid container spacing={3}>
+                <Grid container
+                    spacing={3}>
                     {schedule.map((item) => 
-                        <Grid item md={6} xs={12}>
+                        <Grid item
+                            key={item["date"]}
+                            md={6}
+                            xs={12}>
                             <Scheduler
                                 data={item["events"]}>
                                 <ViewState
@@ -68,10 +74,12 @@ function Schedule() {
                     )}
                 </Grid>
             </div>
-
         </Card>
     );
-    
 }
 
+Schedule.propTypes = {
+    children: PropTypes.object,
+    style: PropTypes.object,
+};
 export default Schedule;

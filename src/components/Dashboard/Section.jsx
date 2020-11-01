@@ -61,6 +61,6 @@ Section.propTypes = {
     title: PropTypes.string,
     color: PropTypes.string,
     hideButton: PropTypes.bool,
-    hideStrip: PropTypes.bool
+    hideTopStrip: PropTypes.bool
 };
 export default Section;

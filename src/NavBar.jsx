@@ -230,22 +230,22 @@ class NavBar extends Component {
         return (
             <React.Fragment>
                 {/* { this.props.profile._registration_status !== "unregistered" && */}
-                    <Tab
-                        style={{ color: "white", minWidth: 10, marginLeft: "25px" }}
-                        className={window.innerWidth < 768 ? "pt-3" : ""}
-                        component={Link}
-                        to={"/dashboard"}
-                        label="Dashboard"
-                    />
+                <Tab
+                    style={{ color: "white", minWidth: 10, marginLeft: "25px" }}
+                    className={window.innerWidth < 768 ? "pt-3" : ""}
+                    component={Link}
+                    to={"/dashboard"}
+                    label="Dashboard"
+                />
                 {/* } */}
                 {/* { this.props.profile._registration_status !== "unregistered" && this.props.profile._want_team && */}
-                    <Tab
-                        style={{ color: "white", minWidth: 10, marginLeft: "25px" }}
-                        className={window.innerWidth < 768 ? "pt-3" : ""}
-                        component={Link}
-                        to={"/teamviewer"}
-                        label="TeamRU"
-                    />
+                <Tab
+                    style={{ color: "white", minWidth: 10, marginLeft: "25px" }}
+                    className={window.innerWidth < 768 ? "pt-3" : ""}
+                    component={Link}
+                    to={"/teamviewer"}
+                    label="TeamRU"
+                />
                 {/* } */}
             </React.Fragment>
         );

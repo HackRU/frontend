@@ -122,7 +122,7 @@ class Dashboard extends Component {
                             title="Announcements"
                             color="red"
                             isOpen={true}>
-                                <Announcements hide={false} />
+                            <Announcements hide={false} />
                         </Section>
                     </Row>
                 }

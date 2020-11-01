@@ -71,7 +71,8 @@ export default function Background() {
         style["transform"] = transform ? transform : null;
         style["opacity"] = opacity ? opacity : 0.25;
         return (
-            <div key={index} style={style}>
+            <div key={index}
+                style={style}>
                 <img alt={icon.split("/").pop()}
                     src={icon}
                     height={height} />

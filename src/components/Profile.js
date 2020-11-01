@@ -194,7 +194,7 @@ class Profile {
                                     // Auto checkin the user
                                     this.Set({
                                         "check-in": true
-                                    }, callback)
+                                    }, callback);
                                 } else {
                                     callback();
                                 }
