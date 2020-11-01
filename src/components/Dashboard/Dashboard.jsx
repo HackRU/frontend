@@ -54,7 +54,6 @@ class Dashboard extends Component {
                 }
             }
         });
-
     }
 
     submitUser = (user) => {
@@ -98,7 +97,7 @@ class Dashboard extends Component {
         return (
             <Container style={{ width: "100%", minHeight: "100vh", paddingTop: 90 }}>
                 <ProfileMessage message={this.state.profileMSG} />
-                {defaults.dayof &&
+                {defaults.dayof & user["check-in"] &&
                     <Row>
                         <Col className="dashboard-row"
                             lg={12}>
@@ -117,7 +116,7 @@ class Dashboard extends Component {
                         </div>
                     </Col>
                 </Row>
-                {defaults.dayof &&
+                {defaults.dayof & user["check-in"] &&
                     <Row>
                         <Section
                             title="Announcements"
@@ -154,10 +153,16 @@ class Dashboard extends Component {
                         <div style={{ marginTop: 0, textAlign: "center", width: "100%" }}>
                             <ApplicationStatus onComing={() => {
                                 user.registration_status = "coming";
+                                if (defaults.dayof && defaults.autocheckin) {
+                                    user["check-in"] = true;
+                                }
                                 this.submitUser(user);
                             }}
                             onNotComing={() => {
                                 user.registration_status = "not-coming";
+                                if (defaults.dayof && defaults.autocheckin) {
+                                    user["check-in"] = false;
+                                }
                                 this.submitUser(user);
                             }}
                             travelling_from={user.travelling_from}

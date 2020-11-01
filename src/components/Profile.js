@@ -188,10 +188,16 @@ class Profile {
                                 let data = body.body;
                                 let token = data.token;
                                 // Convert seconds to milliseconds
-                                let valid_until =
-                                    this.parseJwt(token).exp * 1000;
+                                let valid_until = this.parseJwt(token).exp * 1000;
                                 this._login(email, token, valid_until);
-                                callback();
+                                if (defaults.autocheckin && defaults.dayof) {
+                                    // Auto checkin the user
+                                    this.Set({
+                                        "check-in": true
+                                    }, callback)
+                                } else {
+                                    callback();
+                                }
                             } else {
                                 callback(
                                     body.body ? body.body : "Unexpected Error"
