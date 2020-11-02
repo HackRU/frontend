@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { Button, TextField, ListItemSecondaryAction,IconButton, List, ListItemAvatar, ListItem, ListItemText, Chip, Divider, Container, Grid, Avatar, Typography, AppBar, Tabs, Tab } from "@material-ui/core";
+import { Modal, Button, TextField, ListItemSecondaryAction,IconButton, List, ListItemAvatar, ListItem, ListItemText, Chip, Divider, Container, Grid, Avatar, Typography, AppBar, Tabs, Tab } from "@material-ui/core";
 import Section from "./Section";
+import Pagination from '@material-ui/lab/Pagination';
+
 import GroupAdd from "@material-ui/icons/GroupAdd";
 import HighlightOffIcon from "@material-ui/icons/HighlightOff";
 import CheckCircleOutlineIcon from "@material-ui/icons/CheckCircleOutline";
@@ -17,6 +19,7 @@ function a11yProps(index) {
         "aria-controls": `simple-tabpanel-${index}`,
     };
 }
+
 function UserItem(props){
     const {member, skills} = props;
     return(
@@ -160,13 +163,14 @@ function MyTeam(props){
 MyTeam.propTypes = {
     invitingTeamId: PropTypes.string,
     originalTeamId: PropTypes.string,
-};
+}
+
 function RenderRow(props) {
     const { invitingTeam, originalTeamId } = props;
-
     return (
+
         <ListItem
-            style={{padding: "1em"}}>
+            style={{padding: "1em"}} style={{cursor: "pointer"}}>
             <ListItemAvatar>
                 <Avatar>
                     {invitingTeam.name ? invitingTeam.name.substring(0, 1) : ""}
@@ -192,42 +196,110 @@ RenderRow.propTypes = {
     originalTeamId: PropTypes.string,
     profile: PropTypes.object
 };
+// function TeamModal(props) {
+//     const [open, setOpen] = React.useState(props.open);
+
+//     const handleClose = () => {
+//         setOpen(false);
+//     };
+
+//     return (<Modal open={open} onClose={handleClose}>
+//         <div>
+//             <h2>Text in a modal</h2>
+//             <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</p>
+//         </div>
+//     </Modal>);
+// }
+// TeamModal.propTypes = {
+//     profile: PropTypes.object,
+//     currentTeam: PropTypes.string,
+// };
 function Explore(props) {
     const [matches, setMatches] = useState({});
     const [originalTeamId, setOriginalTeam] = useState({});
+    const [page, setPage] = React.useState(1);
+    const [allTeams, setAllTeams] = useState({});
     const [loading, setLoading] = useState("Loading your matches...");
     useEffect(() => {
         props.profile.getTeamUser().then((success) => {
             const team_id = success.response.team_id;
             setOriginalTeam(success.response.team_id);
             props.profile.matches(team_id).then((success)=>{
-                console.log(success.response);
                 setMatches(success.response);
                 setLoading(false);
             });
-
+        });
+        props.profile.getAllTeams(0, 4).then((success) => {
+            setLoading(false);
+            console.log(success.response);
+            setAllTeams(success.response);
         });
     }, []);
-
+    const handlePagination = (event, value) => {
+        setPage(value);
+        props.profile.getAllTeams(((value -1)*4), 4).then((success) => {
+            setLoading(false);
+            setAllTeams(success.response);
+        });
+    };
     if (loading) {
         return (<TeamLoading text={loading} />);
     }
     return (
-        <Grid item
-            container
-            direction="column"
-            justify="center"
-            alignItems="center">
-            <List
-                style={{ maxHeight: "300px", width: "600px", overflow: "auto" }}
-                className="no-scrollbars no-style-type"
-            >
-                {matches.matches && matches.matches.length > 0 ? matches.matches.map((invitingTeamId, i) => (<RenderRow key={i}
-                    invitingTeam={invitingTeamId}
-                    originalTeamId={originalTeamId}
-                    {...props}/>)) : <Typography variant="subtitle1">No Matches Yet</Typography>}
-            </List>
-        </Grid>
+        <>
+            <Grid item container direction="column" justify="center" alignItems="center">
+                <Typography variant="h5" style={{ marginTop: "2em" }}>
+                    Matches
+                </Typography>
+                <List
+                    style={{ maxHeight: "300px", width: "600px", overflow: "auto" }}
+                    className="no-scrollbars no-style-type"
+                >
+                    {matches.matches && matches.matches.length > 0 ? (
+                        matches.matches.map((invitingTeamId, i) => (
+                            <RenderRow
+                                key={i}
+                                invitingTeam={invitingTeamId}
+                                originalTeamId={originalTeamId}
+                                // handleClick={(s) => {
+                                //     setCurrentTeam(s);
+                                //     setIsOpen(true);
+                                //     console.log("changed", s);
+                                // }}
+                                {...props}
+                            />
+                        ))
+                    ) : (
+                        <Typography variant="subtitle1">No Matches Yet</Typography>
+                    )}
+                </List>
+                <Typography variant="h5">Explore</Typography>
+                <List
+                    style={{ maxHeight: "300px", width: "600px", overflow: "auto" }}
+                    className="no-scrollbars no-style-type"
+                >
+                    {allTeams.all_open_teams && allTeams.all_open_teams.length > 0 ? (
+                        allTeams.all_open_teams.map((invitingTeamId, i) => (
+                            <RenderRow
+                                key={i}
+                                invitingTeam={invitingTeamId}
+                                originalTeamId={originalTeamId}
+                                {...props}
+                            />
+                        ))
+                    ) : (
+                        <Typography variant="subtitle1">No Teams Yet</Typography>
+                    )}
+                </List>
+                <Pagination
+                    count={Math.ceil(allTeams.total_teams/4)}
+                    variant="outlined"
+                    page={page}
+                    onChange={handlePagination}
+                    shape="rounded"
+                />
+            </Grid>
+        </>
     );
 }
 Explore.propTypes = {
@@ -438,7 +510,7 @@ function ManageTeam(props){
                         ) : (
                             ""
                         )}
-                        }
+                        
                     </List>
                 </Grid>
             </Grid>
