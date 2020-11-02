@@ -98,19 +98,21 @@ const TEAMRU_ENDPOINTS = {
 
     teams: TEAMRU_BASE + "/teams",
 
-    matches: TEAMRU_BASE + "/matches",
+    update: TEAMRU_BASE + "/teams/team_id",
 
-    invite: "/invite",
+    invite: TEAMRU_BASE + "/teams/team_id/invite",
 
-    confirm: "/confirm",
+    confirm: TEAMRU_BASE + "/teams/team_id/confirm",
 
-    rescind: "/rescind",
+    rescind: TEAMRU_BASE + "/teams/team_id/rescind",
 
-    reject: "/reject",
+    reject: TEAMRU_BASE + "/teams/team_id/reject",
 
-    complete: "/complete",
+    complete: TEAMRU_BASE + "/teams/team_id/complete",
 
-    leave: "/leave"
+    leave: TEAMRU_BASE + "/teams/team_id/leave",
+
+    matches: TEAMRU_BASE + "/matches/team_id",
 };
 /**
  * Standard profile handler for the entire application
@@ -826,7 +828,7 @@ class Profile {
             error: "",
             response: ""
         };
-        await fetch(TEAMRU_ENDPOINTS.teams + "/" + team_id, {
+        await fetch(TEAMRU_ENDPOINTS.update.replace("team_id", team_id), {
             method: "GET",
             headers: {
                 token: this._token
@@ -852,7 +854,7 @@ class Profile {
             error: "",
             response: ""
         };
-        await fetch(TEAMRU_ENDPOINTS.teams + "/" + team_id, {
+        await fetch(TEAMRU_ENDPOINTS.update.replace("team_id", team_id), {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
@@ -882,7 +884,7 @@ class Profile {
             response: ""
         };
         await fetch(
-            TEAMRU_ENDPOINTS.teams + "/" + team_id + TEAMRU_ENDPOINTS.complete,
+            TEAMRU_ENDPOINTS.complete.replace("team_id", team_id),
             {
                 method: "PUT",
                 headers: {
@@ -912,7 +914,7 @@ class Profile {
             response: ""
         };
         await fetch(
-            TEAMRU_ENDPOINTS.teams + "/" + team_id + TEAMRU_ENDPOINTS.leave,
+            TEAMRU_ENDPOINTS.leave.replace("team_id", team_id),
             {
                 method: "PUT",
                 headers: {
@@ -942,7 +944,7 @@ class Profile {
             response: ""
         };
         await fetch(
-            TEAMRU_ENDPOINTS.teams + "/" + team_id + TEAMRU_ENDPOINTS.invite,
+            TEAMRU_ENDPOINTS.invite.replace("team_id", team_id),
             {
                 method: "POST",
                 headers: {
@@ -977,12 +979,12 @@ class Profile {
             response: ""
         };
         await fetch(
-            TEAMRU_ENDPOINTS.teams + "/" + team_id + TEAMRU_ENDPOINTS.confirm,
+            TEAMRU_ENDPOINTS.confirm.replace("team_id", team_id),
             {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
-                    token: this._token
+                    token: this._tokenreplace("team_id", team_id)
                 },
                 body: JSON.stringify({
                     team2_id: invite_id
@@ -1012,7 +1014,7 @@ class Profile {
             response: ""
         };
         await fetch(
-            TEAMRU_ENDPOINTS.teams + "/" + team_id + TEAMRU_ENDPOINTS.rescind,
+            TEAMRU_ENDPOINTS.rescind.replace("team_id", team_id),
             {
                 method: "POST",
                 headers: {
@@ -1046,7 +1048,7 @@ class Profile {
             response: ""
         };
         await fetch(
-            TEAMRU_ENDPOINTS.teams + "/" + team_id + TEAMRU_ENDPOINTS.reject,
+            TEAMRU_ENDPOINTS.reject.replace("team_id", team_id),
             {
                 method: "POST",
                 headers: {
@@ -1079,7 +1081,7 @@ class Profile {
             error: "",
             response: ""
         };
-        await fetch(TEAMRU_ENDPOINTS.matches + "/" + team_id, {
+        await fetch(TEAMRU_ENDPOINTS.matches.replace("team_id", team_id), {
             method: "GET",
             headers: {
                 token: this._token
