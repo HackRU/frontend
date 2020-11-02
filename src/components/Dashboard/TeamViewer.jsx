@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { Modal, Button, TextField, ListItemSecondaryAction,IconButton, List, ListItemAvatar, ListItem, ListItemText, Chip, Divider, Container, Grid, Avatar, Typography, AppBar, Tabs, Tab } from "@material-ui/core";
+import { Button, TextField, ListItemSecondaryAction,IconButton, List, ListItemAvatar, ListItem, ListItemText, Chip, Divider, Container, Grid, Avatar, Typography, AppBar, Tabs, Tab } from "@material-ui/core";
 import Section from "./Section";
-import Pagination from '@material-ui/lab/Pagination';
+import Pagination from "@material-ui/lab/Pagination";
 
 import GroupAdd from "@material-ui/icons/GroupAdd";
 import HighlightOffIcon from "@material-ui/icons/HighlightOff";
@@ -163,25 +163,22 @@ function MyTeam(props){
 MyTeam.propTypes = {
     invitingTeamId: PropTypes.string,
     originalTeamId: PropTypes.string,
-}
+};
 
 function RenderRow(props) {
     const { invitingTeam, originalTeamId } = props;
     return (
-
-        <ListItem
-            style={{padding: "1em"}} style={{cursor: "pointer"}}>
+        <ListItem style={{ padding: "1em", cursor: "pointer" }}>
             <ListItemAvatar>
-                <Avatar>
-                    {invitingTeam.name ? invitingTeam.name.substring(0, 1) : ""}
-                </Avatar>
+                <Avatar>{invitingTeam.name ? invitingTeam.name.substring(0, 1) : ""}</Avatar>
             </ListItemAvatar>
             <ListItemText
                 primary={invitingTeam.name ? invitingTeam.name : ""}
                 secondary={`${invitingTeam.members ? invitingTeam.members.length : ""}/4`}
             />
             <ListItemSecondaryAction>
-                <IconButton edge="end"
+                <IconButton
+                    edge="end"
                     aria-label="add"
                     onClick={() => props.profile.inviteTeam(originalTeamId, invitingTeam.team_id)}
                 >
@@ -247,8 +244,13 @@ function Explore(props) {
     }
     return (
         <>
-            <Grid item container direction="column" justify="center" alignItems="center">
-                <Typography variant="h5" style={{ marginTop: "2em" }}>
+            <Grid item
+                container
+                direction="column"
+                justify="center"
+                alignItems="center">
+                <Typography variant="h5"
+                    style={{ marginTop: "2em" }}>
                     Matches
                 </Typography>
                 <List
@@ -372,9 +374,13 @@ function ManageTeam(props){
     }
     console.log(team);
     return (
-        <Grid container direction="column">
-            <Grid item container direction="column">
-                <Grid item style={{ paddingBottom: "2em", paddingTop: "0.5em" }}>
+        <Grid container
+            direction="column">
+            <Grid item
+                container
+                direction="column">
+                <Grid item
+                    style={{ paddingBottom: "2em", paddingTop: "0.5em" }}>
                     <TextField
                         name="name"
                         id="outlined-full-width"
@@ -390,7 +396,8 @@ function ManageTeam(props){
                         className="teamViewerInput"
                     />
                 </Grid>
-                <Grid item style={{ paddingBottom: "2em", paddingTop: "1em" }}>
+                <Grid item
+                    style={{ paddingBottom: "2em", paddingTop: "1em" }}>
                     <TextField
                         name="desc"
                         id="outlined-multiline-static"
@@ -438,7 +445,8 @@ function ManageTeam(props){
                         />
                     </Grid>
                 </Grid>
-                <Grid item style={{ paddingBottom: "1em" }}>
+                <Grid item
+                    style={{ paddingBottom: "1em" }}>
                     <Button
                         variant="outlined"
                         style={{ margin: 8 }}
@@ -449,7 +457,8 @@ function ManageTeam(props){
                     </Button>
                 </Grid>
             </Grid>
-            <Grid item direction="column">
+            <Grid item
+                direction="column">
                 <Grid item>
                     <Typography variant="h5">Outgoing Invites</Typography>
                 </Grid>
@@ -481,7 +490,9 @@ function ManageTeam(props){
                     </List>
                 </Grid>
             </Grid>
-            <Grid item direction="column" style={{ paddingTop: "1em", paddingBottom: "2em" }}>
+            <Grid item
+                direction="column"
+                style={{ paddingTop: "1em", paddingBottom: "2em" }}>
                 <Grid item>
                     <Typography variant="h5">Incoming Invites</Typography>
                 </Grid>
@@ -514,8 +525,10 @@ function ManageTeam(props){
                     </List>
                 </Grid>
             </Grid>
-            <Grid item direction="column">
-                <Grid item style={{ paddingBottom: "1em" }}>
+            <Grid item
+                direction="column">
+                <Grid item
+                    style={{ paddingBottom: "1em" }}>
                     <Typography variant="h5">Danger Zone</Typography>
                 </Grid>
                 <Divider />
@@ -529,7 +542,10 @@ function ManageTeam(props){
                         padding: "1.5em",
                     }}
                 >
-                    <Grid item container direction="row" justify="space-between">
+                    <Grid item
+                        container
+                        direction="row"
+                        justify="space-between">
                         <Grid item>
                             <Typography variant="h6">Leave this team</Typography>
                             <Typography variant="subtitle">
