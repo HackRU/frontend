@@ -119,7 +119,7 @@ class About extends Component {
                                 onChange={(e) => { user.phone_number = e.target.value; this.updateUser(user); }}
                                 validate={{
                                     required: { value: true,  errorMessage: "Invalid number"},
-                                    tel: { value: true, errorMessage: "Invalid number" } }} />
+                                    pattern: { value: "^[\\+]?[0-9]{0,3}?[-\\s\\.]?[(]?[0-9]{3}[)]?[-\\s\\.]?[0-9]{3}[-\\s\\.]?[0-9]{4,6}$", errorMessage: "Invalid number" } }} />
                         </Col>
                         <Col xs={(mobile) ? 12 : 4}>
                             <AvField name="dob"
