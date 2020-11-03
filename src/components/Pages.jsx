@@ -10,7 +10,7 @@ import SponsorshipPage from "./Sponsorship/Sponsorship";
 import ProjectorPage from "./Projector/Projector";
 import E404 from "./Errors/E404";
 import TeamPage from "./Team/Team";
-import TeamViewerPage from "./Dashboard/TeamViewer";
+import TeamViewerPage from "./Dashboard/TeamViewer/TeamViewer";
 export {
     LandingPage,
     DashboardPage,
