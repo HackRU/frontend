@@ -19,13 +19,13 @@ function Explore(props) {
             setOriginalTeam(success.response.team_id);
             props.profile.matches(team_id).then((success) => {
                 setMatches(success.response);
-                setLoading(false);
+                props.profile.getAllTeams(0, 4).then((success) => {
+                    setAllTeams(success.response);
+                    setLoading(false);
+                });
             });
         });
-        props.profile.getAllTeams(0, 4).then((success) => {
-            setLoading(false);
-            setAllTeams(success.response);
-        });
+        
     }, []);
     const handlePagination = (event, value) => {
         setPage(value);
@@ -64,7 +64,7 @@ function Explore(props) {
                     <Typography variant="subtitle1">No Matches Yet</Typography>
                 )}
             </List>
-            <Typography variant="h5">Explore</Typography>
+            <Typography variant="h5">All Teams</Typography>
             <List
                 style={{ maxHeight: "300px", width: "600px", overflow: "auto" }}
                 className="no-scrollbars no-style-type"

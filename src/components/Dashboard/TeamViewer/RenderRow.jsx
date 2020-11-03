@@ -6,13 +6,14 @@ import GroupAdd from "@material-ui/icons/GroupAdd";
 function RenderRow(props) {
     const { invitingTeam, originalTeamId } = props;
     return (
-        <ListItem style={{ padding: "1em", cursor: "pointer" }}>
+        <ListItem alignItems="flex-start" 
+            style={{ padding: "1em", cursor: "pointer" }}>
             <ListItemAvatar>
                 <Avatar>{invitingTeam.name ? invitingTeam.name.substring(0, 1) : ""}</Avatar>
             </ListItemAvatar>
             <ListItemText
                 primary={invitingTeam.name ? invitingTeam.name : ""}
-                secondary={`${invitingTeam.members ? invitingTeam.members.length : ""}/4`}
+                secondary={`Size: ${invitingTeam.members ? invitingTeam.members.length : ""}/4  ;  Desc: ${invitingTeam.desc}`}
             />
             <ListItemSecondaryAction>
                 <IconButton
@@ -29,7 +30,8 @@ function RenderRow(props) {
 RenderRow.propTypes = {
     invitingTeam: PropTypes.object,
     originalTeamId: PropTypes.string,
-    profile: PropTypes.object
+    profile: PropTypes.object,
+    invited: PropTypes.bool,
 };
 
 export default RenderRow;

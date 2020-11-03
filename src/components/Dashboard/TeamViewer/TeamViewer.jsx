@@ -7,6 +7,8 @@ import Loading from "../Loading";
 import MyTeam from "./MyTeam";
 import Explore from "./Explore";
 import ManageTeam from "./ManageTeam";
+import { Redirect } from "react-router-dom";
+
 
 function a11yProps(index) {
     return {
@@ -17,8 +19,9 @@ function a11yProps(index) {
 
 
 const TeamViewer = (props) => {
-    const [value, setValue] = useState(0);
+    const [value, setValue] = useState(props.tab);
     const [user, setUser] = useState({});
+    const [profile, setProfile] = useState({});
     const [loading, setLoading] = useState("Loading your team");
 
     const handleChange = async (event, newValue) => {
@@ -27,10 +30,23 @@ const TeamViewer = (props) => {
     useEffect(() => {
         props.profile.getTeamUser().then((s) => {
             setUser(s.response);
-            setLoading(false);
+            props.profile.Get((msg, data) => {
+                if (!msg && data) {
+                    setProfile(data);
+                }
+                setLoading(false);
+            });
         }, []);
     }, []);
 
+    
+    if (!props.profile.isLoggedIn) {
+        return (<Redirect to="/login"/>);
+    }
+    if (profile.registration_status === "unregistered") {
+        props.showAlert("warning", "Please register before accessing TeamRU", 60);
+        return (<Redirect to="/profile"/>);
+    }
     if (loading) {
         return (<Loading text={loading} />);
     }
@@ -42,7 +58,7 @@ const TeamViewer = (props) => {
                     <Section
                         title="Team"
                         subtitle="Introduce yourself, don't be shy!"
-                        color="yellow"
+                        color="red"
                         hideButton={true}
                         hideTopStrip={true}
                         isOpen={true}>
@@ -55,38 +71,38 @@ const TeamViewer = (props) => {
                                 <Grid item
                                     style={{ "margin-right": "2em" }}>
                                     <Avatar style={{ width: "6em", height: "6em" }}>
-                                        {user.user_id ? user.user_id.substring(0,1) : " "}
+                                        {user.user_id ? user.user_id.substring(0,1) : ": "}
                                     </Avatar>
                                 </Grid>
                                 <Grid item
                                     direction="column">
                                     <Grid item>
-                                        <Typography variant="h5">{user.user_id}</Typography>
+                                        <Typography variant="h5">My Info</Typography>
                                     </Grid>
                                     <Grid item>
-                                        <Typography variant="h7">{user.bio}</Typography>
+                                        <Typography >{"Email: " + user.user_id}</Typography>
                                     </Grid>
                                     <Grid item>
-                                        <Typography variant="h7">
+                                        <Typography >
                                             Skills:{" "}
                                             {user.skills
-                                                ? user.skills.map((skill) => skill + " ")
+                                                ? user.skills.map((skill) => skill + ", ")
                                                 : "No Skills Listed"}
                                         </Typography>
                                     </Grid>
                                     <Grid item>
-                                        <Typography variant="h7">
+                                        <Typography >
                                             Interests:{" "}
                                             {user.interests
-                                                ? user.interests.map((interest) => interest + " ")
+                                                ? user.interests.map((interest) => interest + ", ")
                                                 : "No Interests Listed"}
                                         </Typography>
                                     </Grid>
                                     <Grid item>
-                                        <Typography variant="h7">
+                                        <Typography >
                                             Prizes:{" "}
                                             {user.prizes
-                                                ? user.prizes.map((prize) => prize + " ")
+                                                ? user.prizes.map((prize) => prize + ", ")
                                                 : "No Prizes Listed"}
                                         </Typography>
                                     </Grid>
@@ -104,7 +120,7 @@ const TeamViewer = (props) => {
                                         onChange={handleChange}>
                                         <Tab label="My Team"
                                             {...a11yProps(0)} />
-                                        <Tab label="Matches"
+                                        <Tab label="Explore"
                                             {...a11yProps(1)} />
                                         <Tab label="Manage Team"
                                             {...a11yProps(2)} />
@@ -130,5 +146,7 @@ const TeamViewer = (props) => {
 TeamViewer.propTypes = {
     profile: ProfileType,
     isMobile: PropTypes.bool,
+    showAlert: PropTypes.func,
+    tab: PropTypes.number,
 };
 export default TeamViewer;

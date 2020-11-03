@@ -164,10 +164,10 @@ function ManageTeam(props) {
                     >
                         {team.outgoing_inv ? (
                             team.outgoing_inv.length !== 0 ? (
-                                team.outgoing_inv.map((t, index) => (
+                                team.outgoing_inv.map((t) => (
                                     <InviteItem
                                         isOutgoing={true}
-                                        key={index}
+                                        key={t}
                                         invitedTeamId={t}
                                         originalTeam={team}
                                         profile={profile}
@@ -198,14 +198,14 @@ function ManageTeam(props) {
                     >
                         {team.incoming_inv ? (
                             team.incoming_inv.length !== 0 ? (
-                                team.incoming_inv.map((t, index) => (
+                                team.incoming_inv.map((t) => (
                                     <InviteItem
                                         isOutgoing={false}
-                                        key={index}
+                                        key={t}
                                         invitedTeamId={t}
                                         originalTeam={team}
                                         profile={profile}
-                                        del={() => deleteItem(index, false)}
+                                        del={() => deleteItem(t, false)}
                                     />
                                 ))
                             ) : (
@@ -241,7 +241,7 @@ function ManageTeam(props) {
                         justify="space-between">
                         <Grid item>
                             <Typography variant="h6">Leave this team</Typography>
-                            <Typography variant="subtitle">
+                            <Typography variant="subtitle1">
                                 Removes you from your current team
                             </Typography>
                         </Grid>
