@@ -1,0 +1,56 @@
+# This workflow will automatically deploy to dev.hackru.org
+
+name: Deploy to hackru.org
+
+on:
+    push:
+        branches:
+            - env/prod
+
+jobs:
+    code-quality:
+        runs-on: ubuntu-latest
+
+        strategy:
+            fail-fast: true
+            matrix:
+                node-version: [12.x, 14.x]
+
+        steps:
+            - uses: actions/checkout@v2
+            - name: Test using Node ${{ matrix.node-version }}
+              uses: actions/setup-node@v1
+              with:
+                  node-version: ${{ matrix.node-version }}
+            - run: npm install
+            - run: npm run lint
+    deploy:
+        runs-on: ubuntu-latest
+
+        strategy:
+            fail-fast: true
+            matrix:
+                node-version: [12.x]
+
+        steps:
+            - uses: actions/checkout@v2
+            - name: Test using Node ${{ matrix.node-version }}
+              uses: actions/setup-node@v1
+              with:
+                  node-version: ${{ matrix.node-version }}
+            - run: npm install
+            - run: CI=false REACT_APP_MAP_KEY=${{ secrets.MAP_KEY }} npm run build-prod
+            - name: Empty Bucket
+              run: aws s3 rm s3://hackru-frontend-prod --recursive
+              env:
+                  AWS_ACCESS_KEY_ID: ${{ secrets.S3_ACCESS_KEY_ID }}
+                  AWS_SECRET_ACCESS_KEY: ${{ secrets.S3_SECRET_ACCESS_KEY }}
+
+            - name: Upload to S3
+              run:
+                  aws s3 cp --recursive build s3://hackru-frontend-prod --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers;
+                  aws s3 cp --recursive --exclude '*' --include '*.svg' --content-type 'image/svg+xml' build s3://hackru-frontend-prod --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers;
+                  aws cloudfront create-invalidation --distribution-id "E1YIAV5VULIMY7"  --paths "/*"
+              env:
+                  AWS_ACCESS_KEY_ID: ${{ secrets.S3_ACCESS_KEY_ID }}
+                  AWS_SECRET_ACCESS_KEY: ${{ secrets.S3_SECRET_ACCESS_KEY }}

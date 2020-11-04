@@ -179,16 +179,17 @@ class App extends Component {
             renderRoutes.push(
                 <Route
                     exact
-                    path="/teamviewer"
+                    path="/teamru"
                     key="teamviewer"
-                    render={(props) => <TeamViewerPage tab={0} {...props}
+                    render={(props) => <TeamViewerPage tab={0}
+                        {...props}
                         {...componentProps} />}
                 />
             );
             renderRoutes.push(
                 <Route
                     exact
-                    path="/teamviewer/myteam"
+                    path="/teamru/myteam"
                     key="myteam"
                     render={(props) => <TeamViewerPage tab={0}
                         {...props}
@@ -198,7 +199,7 @@ class App extends Component {
             renderRoutes.push(
                 <Route
                     exact
-                    path="/teamviewer/explore"
+                    path="/teamru/explore"
                     key="explore"
                     render={(props) => <TeamViewerPage tab={1}
                         {...props}
@@ -208,7 +209,7 @@ class App extends Component {
             renderRoutes.push(
                 <Route
                     exact
-                    path="/teamviewer/manage"
+                    path="/teamru/manage"
                     key="manage"
                     render={(props) => <TeamViewerPage tab={2}
                         {...props}
