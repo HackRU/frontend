@@ -253,7 +253,7 @@ class NavBar extends Component {
 
     render() {
         let path = window.location.pathname;
-        let onDashboard = path === "/dashboard" || path === "/profile" || path === "/teamru";
+        let onDashboard = path === "/dashboard" || path === "/profile" || path.includes("/teamru");
         let onLogin = path === "/login" || path === "/signup";
         let onLanding = path === "/";
         // Show no navbar on the projector page

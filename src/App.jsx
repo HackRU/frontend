@@ -180,8 +180,38 @@ class App extends Component {
                 <Route
                     exact
                     path="/teamru"
-                    key="teamru"
-                    render={(props) => <TeamViewerPage {...props}
+                    key="teamviewer"
+                    render={(props) => <TeamViewerPage tab={0} {...props}
+                        {...componentProps} />}
+                />
+            );
+            renderRoutes.push(
+                <Route
+                    exact
+                    path="/teamru/myteam"
+                    key="myteam"
+                    render={(props) => <TeamViewerPage tab={0}
+                        {...props}
+                        {...componentProps} />}
+                />
+            );
+            renderRoutes.push(
+                <Route
+                    exact
+                    path="/teamru/explore"
+                    key="explore"
+                    render={(props) => <TeamViewerPage tab={1}
+                        {...props}
+                        {...componentProps} />}
+                />
+            );
+            renderRoutes.push(
+                <Route
+                    exact
+                    path="/teamru/manage"
+                    key="manage"
+                    render={(props) => <TeamViewerPage tab={2}
+                        {...props}
                         {...componentProps} />}
                 />
             );
@@ -196,7 +226,7 @@ class App extends Component {
                         <Alert onClose={() => {
                             this.setState({
                                 alertProps: {
-                                    duration: 6000,
+                                    duration: 60,
                                     severity: "error",
                                     message: "",
                                     open: false
