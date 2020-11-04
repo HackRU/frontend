@@ -4,7 +4,7 @@ name: Code Build Assurance
 
 on:
     pull_request:
-        branches: [env/dev]
+        branches: [env/dev, env/prod]
 
 jobs:
     build:
