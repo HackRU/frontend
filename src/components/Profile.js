@@ -89,7 +89,10 @@ const ENDPOINTS = {
 /**
  * TeamRU Base URL
  */
-const TEAMRU_BASE = defaults.rest.teamru;
+const TEAMRU_BASE = 
+    process.env.REACT_APP_MODE && process.env.REACT_APP_MODE === "development"
+        ? defaults.rest.teamru
+        : defaults.rest.teamruprod;
 
 const TEAMRU_ENDPOINTS = {
     users: TEAMRU_BASE + "/users",

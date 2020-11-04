@@ -23,13 +23,14 @@ const defaults =  {
         "prod": "https://api.hackru.org/prod",
         "resumes": "https://hackru-resumes.s3.amazonaws.com",
         "s3": "http://hackru-misc.s3-website-us-west-2.amazonaws.com/",
-        "teamru": "https://hki9olto2i.execute-api.us-east-1.amazonaws.com/dev"
+        "teamru": "https://hki9olto2i.execute-api.us-east-1.amazonaws.com/dev",
+        "teamruprod": "https://2f0yfjwjj0.execute-api.us-east-1.amazonaws.com/production"
     },
     "sponsorshipLogos": "https://s3-us-west-2.amazonaws.com/hackru-internal/sponsorship-logos/",
     "partnerLogos": "https://s3-us-west-2.amazonaws.com/hackru-internal/partners-logos/",
     "teamInfo": "https://s3-us-west-2.amazonaws.com/hackru-internal/hackru-team/",
     "freeze": false,
-    "teamru": true,
+    "teamru": false,
     "teamru_user": true,
     "volunteers": {
         "display": true,
