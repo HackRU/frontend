@@ -3,8 +3,16 @@ import { ListItemSecondaryAction, IconButton, ListItemAvatar, ListItem, ListItem
 import PropTypes from "prop-types";
 import GroupAdd from "@material-ui/icons/GroupAdd";
 
+
 function RenderRow(props) {
+
     const { invitingTeam, originalTeamId } = props;
+
+    async function handleClick() {
+        await props.profile.inviteTeam(originalTeamId, invitingTeam.team_id);
+        props.onInvite(props.index);
+    }
+
     return (
         <ListItem alignItems="flex-start" 
             style={{ padding: "1em", cursor: "pointer" }}>
@@ -17,9 +25,11 @@ function RenderRow(props) {
             />
             <ListItemSecondaryAction>
                 <IconButton
+                    disabled={invitingTeam.invited}
+                    color="primary"
                     edge="end"
                     aria-label="add"
-                    onClick={() => props.profile.inviteTeam(originalTeamId, invitingTeam.team_id)}
+                    onClick={handleClick}
                 >
                     <GroupAdd />
                 </IconButton>
@@ -31,7 +41,8 @@ RenderRow.propTypes = {
     invitingTeam: PropTypes.object,
     originalTeamId: PropTypes.string,
     profile: PropTypes.object,
-    invited: PropTypes.bool,
+    onInvite: PropTypes.func,
+    index: PropTypes.number,
 };
 
 export default RenderRow;

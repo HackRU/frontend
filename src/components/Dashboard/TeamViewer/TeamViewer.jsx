@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Container, Grid, Avatar, Typography, AppBar, Tabs, Tab } from "@material-ui/core";
+import { Container, Grid, Avatar, Typography, AppBar, Tabs, Tab, createMuiTheme, ThemeProvider } from "@material-ui/core";
 import Section from "../Section";
 import { ProfileType } from "../../Profile.js";
 import PropTypes from "prop-types";
@@ -8,6 +8,7 @@ import MyTeam from "./MyTeam";
 import Explore from "./Explore";
 import ManageTeam from "./ManageTeam";
 import { Redirect } from "react-router-dom";
+import { theme } from "../../../Defaults";
 
 
 function a11yProps(index) {
@@ -16,6 +17,17 @@ function a11yProps(index) {
         "aria-controls": `simple-tabpanel-${index}`,
     };
 }
+
+const color_theme = createMuiTheme({
+    palette: {
+        primary: {
+            main: theme.primary[1].trim(),
+        },
+        secondary: {
+            main: theme.secondary[1].trim(),
+        },
+    },
+});
 
 
 const TeamViewer = (props) => {
@@ -51,105 +63,107 @@ const TeamViewer = (props) => {
         return (<Loading text={loading} />);
     }
     return (
-        <Container maxWidth={false}
-            style={{ paddingTop: 90 }}>
-            <Grid container>
-                <Grid xs={12}>
-                    <Section
-                        title="Team"
-                        subtitle="Introduce yourself, don't be shy!"
-                        color="red"
-                        hideButton={true}
-                        hideTopStrip={true}
-                        isOpen={true}>
-                        <Grid container
-                            direction="column"
-                            alignItems="center">
+        <ThemeProvider theme={color_theme}>
+            <Container maxWidth={false}
+                style={{ paddingTop: 90 }}>
+                <Grid container>
+                    <Grid xs={12}>
+                        <Section
+                            title="Team"
+                            subtitle="Introduce yourself, don't be shy!"
+                            color="red"
+                            hideButton={true}
+                            hideTopStrip={true}
+                            isOpen={true}>
                             <Grid container
-                                direction="row"
-                                justify="center">
-                                <Grid item
-                                    style={{ "margin-right": "2em" }}>
-                                    <Avatar style={{ width: "6em", height: "6em" }}>
-                                        {user.user_id ? user.user_id.substring(0,1) : ": "}
-                                    </Avatar>
+                                direction="column"
+                                alignItems="center">
+                                <Grid container
+                                    direction="row"
+                                    justify="center">
+                                    <Grid item
+                                        style={{ "margin-right": "2em" }}>
+                                        <Avatar style={{ width: "6em", height: "6em" }}>
+                                            {user.user_id ? user.user_id.substring(0,1) : ": "}
+                                        </Avatar>
+                                    </Grid>
+                                    <Grid item
+                                        direction="column">
+                                        <Grid item>
+                                            <Typography variant="h5">My Info</Typography>
+                                        </Grid>
+                                        <Grid item>
+                                            <Typography >{"Email: " + user.user_id}</Typography>
+                                        </Grid>
+                                        <Grid item>
+                                            <Typography >
+                                                Skills:{" "}
+                                                {user.skills
+                                                    ? user.skills.map((skill) => skill + ", ")
+                                                    : "No Skills Listed"}
+                                            </Typography>
+                                        </Grid>
+                                        <Grid item>
+                                            <Typography >
+                                                Interests:{" "}
+                                                {user.interests
+                                                    ? user.interests.map((interest) => interest + ", ")
+                                                    : "No Interests Listed"}
+                                            </Typography>
+                                        </Grid>
+                                        <Grid item>
+                                            <Typography >
+                                                Prizes:{" "}
+                                                {user.prizes
+                                                    ? user.prizes.map((prize) => prize + ", ")
+                                                    : "No Prizes Listed"}
+                                            </Typography>
+                                        </Grid>
+                                    </Grid>
                                 </Grid>
                                 <Grid item
-                                    direction="column">
-                                    <Grid item>
-                                        <Typography variant="h5">My Info</Typography>
-                                    </Grid>
-                                    <Grid item>
-                                        <Typography >{"Email: " + user.user_id}</Typography>
-                                    </Grid>
-                                    <Grid item>
-                                        <Typography >
-                                            Skills:{" "}
-                                            {user.skills
-                                                ? user.skills.map((skill) => skill + ", ")
-                                                : "No Skills Listed"}
-                                        </Typography>
-                                    </Grid>
-                                    <Grid item>
-                                        <Typography >
-                                            Interests:{" "}
-                                            {user.interests
-                                                ? user.interests.map((interest) => interest + ", ")
-                                                : "No Interests Listed"}
-                                        </Typography>
-                                    </Grid>
-                                    <Grid item>
-                                        <Typography >
-                                            Prizes:{" "}
-                                            {user.prizes
-                                                ? user.prizes.map((prize) => prize + ", ")
-                                                : "No Prizes Listed"}
-                                        </Typography>
-                                    </Grid>
+                                    style={{ marginTop: "2em" }}>
+                                    <AppBar
+                                        position="static"
+                                        color="transparent"
+                                        style={{ background: "transparent", boxShadow: "none" }}>
+                                        <Tabs
+                                            value={value}
+                                            variant="fullWidth"
+                                            onChange={handleChange}>
+                                            <Tab label="My Team"
+                                                onClick={() => {
+                                                    props.history.push("/teamru/myteam");
+                                                }}
+                                                {...a11yProps(0)} />
+                                            <Tab label="Explore"
+                                                onClick={() => {
+                                                    props.history.push("/teamru/explore");                                            
+                                                }}
+                                                {...a11yProps(1)} />
+                                            <Tab label="Manage Team"
+                                                onClick={() => {
+                                                    props.history.push("/teamru/manage");                                                 
+                                                }}
+                                                {...a11yProps(2)} />
+                                        </Tabs>
+                                    </AppBar>
                                 </Grid>
                             </Grid>
-                            <Grid item
-                                style={{ marginTop: "2em" }}>
-                                <AppBar
-                                    position="static"
-                                    color="transparent"
-                                    style={{ background: "transparent", boxShadow: "none" }}>
-                                    <Tabs
-                                        value={value}
-                                        variant="fullWidth"
-                                        onChange={handleChange}>
-                                        <Tab label="My Team"
-                                            onClick={() => {
-                                                props.history.push("/teamru/myteam");
-                                            }}
-                                            {...a11yProps(0)} />
-                                        <Tab label="Explore"
-                                            onClick={() => {
-                                                props.history.push("/teamru/explore");                                            
-                                            }}
-                                            {...a11yProps(1)} />
-                                        <Tab label="Manage Team"
-                                            onClick={() => {
-                                                props.history.push("/teamru/manage");                                                 
-                                            }}
-                                            {...a11yProps(2)} />
-                                    </Tabs>
-                                </AppBar>
+                            <Grid container>
+                                {value === 0 ? (
+                                    <MyTeam {...props} />
+                                ) : value === 1 ? (
+                                    <Explore {...props} />
+                                ) : (
+                                    <ManageTeam {...props} />
+                                )}
                             </Grid>
-                        </Grid>
-                        <Grid container>
-                            {value === 0 ? (
-                                <MyTeam {...props} />
-                            ) : value === 1 ? (
-                                <Explore {...props} />
-                            ) : (
-                                <ManageTeam {...props} />
-                            )}
-                        </Grid>
-                    </Section>
+                        </Section>
+                    </Grid>
                 </Grid>
-            </Grid>
-        </Container>
+            </Container>
+        </ThemeProvider>
     );
 };
 TeamViewer.propTypes = {
