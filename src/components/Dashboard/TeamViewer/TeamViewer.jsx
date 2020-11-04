@@ -118,17 +118,20 @@ const TeamViewer = (props) => {
                                         value={value}
                                         variant="fullWidth"
                                         onChange={handleChange}>
-                                        <Tab label="My Team" onClick={() => {
-                                            props.history.push("/teamru/myteam");
-                                        }}
+                                        <Tab label="My Team"
+                                            onClick={() => {
+                                                props.history.push("/teamru/myteam");
+                                            }}
                                             {...a11yProps(0)} />
-                                        <Tab label="Explore" onClick={() => {
-                                            props.history.push("/teamru/explore");                                            
-                                        }}
+                                        <Tab label="Explore"
+                                            onClick={() => {
+                                                props.history.push("/teamru/explore");                                            
+                                            }}
                                             {...a11yProps(1)} />
-                                        <Tab label="Manage Team" onClick={() => {
-                                            props.history.push("/teamru/manage");                                                 
-                                        }}
+                                        <Tab label="Manage Team"
+                                            onClick={() => {
+                                                props.history.push("/teamru/manage");                                                 
+                                            }}
                                             {...a11yProps(2)} />
                                     </Tabs>
                                 </AppBar>
@@ -154,5 +157,6 @@ TeamViewer.propTypes = {
     isMobile: PropTypes.bool,
     showAlert: PropTypes.func,
     tab: PropTypes.number,
+    history: PropTypes.object
 };
 export default TeamViewer;

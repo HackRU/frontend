@@ -181,7 +181,8 @@ class App extends Component {
                     exact
                     path="/teamru"
                     key="teamviewer"
-                    render={(props) => <TeamViewerPage tab={0} {...props}
+                    render={(props) => <TeamViewerPage tab={0}
+                        {...props}
                         {...componentProps} />}
                 />
             );
