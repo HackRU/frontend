@@ -118,11 +118,17 @@ const TeamViewer = (props) => {
                                         value={value}
                                         variant="fullWidth"
                                         onChange={handleChange}>
-                                        <Tab label="My Team"
+                                        <Tab label="My Team" onClick={() => {
+                                            props.history.push("/teamru/myteam");
+                                        }}
                                             {...a11yProps(0)} />
-                                        <Tab label="Explore"
+                                        <Tab label="Explore" onClick={() => {
+                                            props.history.push("/teamru/explore");                                            
+                                        }}
                                             {...a11yProps(1)} />
-                                        <Tab label="Manage Team"
+                                        <Tab label="Manage Team" onClick={() => {
+                                            props.history.push("/teamru/manage");                                                 
+                                        }}
                                             {...a11yProps(2)} />
                                     </Tabs>
                                 </AppBar>
