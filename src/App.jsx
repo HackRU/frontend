@@ -179,8 +179,8 @@ class App extends Component {
             renderRoutes.push(
                 <Route
                     exact
-                    path="/teamviewer"
-                    key="teamviewer"
+                    path="/teamru"
+                    key="teamru"
                     render={(props) => <TeamViewerPage {...props}
                         {...componentProps} />}
                 />

@@ -238,22 +238,22 @@ class NavBar extends Component {
                     label="Dashboard"
                 />
                 {/* } */}
-                {/* { this.props.profile._registration_status !== "unregistered" && this.props.profile._want_team && */}
-                <Tab
-                    style={{ color: "white", minWidth: 10, marginLeft: "25px" }}
-                    className={window.innerWidth < 768 ? "pt-3" : ""}
-                    component={Link}
-                    to={"/teamviewer"}
-                    label="TeamRU"
-                />
-                {/* } */}
+                { defaults.teamru &&
+                    <Tab
+                        style={{ color: "white", minWidth: 10, marginLeft: "25px" }}
+                        className={window.innerWidth < 768 ? "pt-3" : ""}
+                        component={Link}
+                        to={"/teamru"}
+                        label="TeamRU"
+                    />
+                }
             </React.Fragment>
         );
     }
 
     render() {
         let path = window.location.pathname;
-        let onDashboard = path === "/dashboard" || path === "/profile" || path === "/teamviewer";
+        let onDashboard = path === "/dashboard" || path === "/profile" || path === "/teamru";
         let onLogin = path === "/login" || path === "/signup";
         let onLanding = path === "/";
         // Show no navbar on the projector page
