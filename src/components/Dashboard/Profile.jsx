@@ -159,6 +159,7 @@ const Profile = (props) => {
                             subtitle="Introduce yourself, don't be shy!"
                             isOpen={true} /* replaced this.state.openDetails to force true*/>
                             <Team
+                                mobile={mobile}
                                 user={set_user}
                                 hasTeam={teamUser.team_id !== ""}
                                 teamProfile={teamProfile}

@@ -3,7 +3,6 @@ import { FormGroup, Label, Button, Col, UncontrolledAlert, Input, Collapse} from
 import { AvForm, AvField } from "availity-reactstrap-validation";
 import { Slider, createMuiTheme, ThemeProvider, Grid } from "@material-ui/core";
 import { Creatable } from "react-select";
-import CustomAVInput from "../CustomAVInput";
 import { Icon } from "react-fa";
 import { theme } from "../../../../../Defaults";
 import selectorOptions from "../selectorOptions.json";
@@ -158,17 +157,15 @@ class Team extends Component {
                                         required: { value: false, errorMessage: "Invalid team name" }}} />
                             </Col>
                             <Col xs={(mobile) ? 12 : 6}>
-                                <CustomAVInput name="interests"
-                                    label="Interests">
-                                    <div className="forcestyle">
-                                        <Creatable 
-                                            isMulti
-                                            id="interests"
-                                            value={(team.interests != null) ? (team.interests.map(((val) => { return { value: val, label: val }; }))) : ([])}
-                                            onChange={(e) => { let hold = []; for (let i = 0; i < e.length; i++) { hold.push(e[i].value); }  team.interests = hold ; this.updateTeam(team); }}
-                                            options={selectorOptions["Interests"]} />
-                                    </div>
-                                </CustomAVInput>
+                                <Label for="interests">Interests</Label>
+                                <div className="forcestyle">
+                                    <Creatable 
+                                        isMulti
+                                        id="interests"
+                                        value={(team.interests != null) ? (team.interests.map(((val) => { return { value: val, label: val }; }))) : ([])}
+                                        onChange={(e) => { let hold = []; for (let i = 0; i < e.length; i++) { hold.push(e[i].value); }  team.interests = hold ; this.updateTeam(team); }}
+                                        options={selectorOptions["Interests"]} />
+                                </div>
                             </Col>
                         </FormGroup>
                         <FormGroup row>
@@ -187,30 +184,26 @@ class Team extends Component {
                                 </CustomAVInput>
                             </Col> */}
                             <Col xs={(mobile) ? 12 : 6}>
-                                <CustomAVInput name="prizes"
-                                    label="Prizes">
-                                    <div className="forcestyle">
-                                        <Creatable
-                                            isMulti
-                                            id="prizes"
-                                            value={(team.prizes != null) ? (team.prizes.map(((val) => { return { value: val, label: val }; }))) : ([])}
-                                            onChange={(e) => { let hold = []; for (let i = 0; i < e.length; i++) { hold.push(e[i].value); }  team.prizes = hold ; this.updateTeam(team); }}
-                                            options={selectorOptions["Prizes"]} />
-                                    </div>
-                                </CustomAVInput>
+                                <Label for="prizes">Prizes</Label>
+                                <div className="forcestyle">
+                                    <Creatable
+                                        isMulti
+                                        id="prizes"
+                                        value={(team.prizes != null) ? (team.prizes.map(((val) => { return { value: val, label: val }; }))) : ([])}
+                                        onChange={(e) => { let hold = []; for (let i = 0; i < e.length; i++) { hold.push(e[i].value); }  team.prizes = hold ; this.updateTeam(team); }}
+                                        options={selectorOptions["Prizes"]} />
+                                </div>
                             </Col>
                             <Col xs={(mobile) ? 12 : 6}>
-                                <CustomAVInput name="skills"
-                                    label="Skills">
-                                    <div className="forcestyle">
-                                        <Creatable
-                                            isMulti
-                                            id="skills"
-                                            value={(team.skills != null) ? (team.skills.map(((val) => { return { value: val, label: val }; }))) : ([])}
-                                            onChange={(e) => { let hold = []; for (let i = 0; i < e.length; i++) { hold.push(e[i].value); }  team.skills = hold ; this.updateTeam(team); }}
-                                            options={selectorOptions["Skills"]} />
-                                    </div>
-                                </CustomAVInput>
+                                <Label for="skills">Skills</Label>
+                                <div className="forcestyle">
+                                    <Creatable
+                                        isMulti
+                                        id="skills"
+                                        value={(team.skills != null) ? (team.skills.map(((val) => { return { value: val, label: val }; }))) : ([])}
+                                        onChange={(e) => { let hold = []; for (let i = 0; i < e.length; i++) { hold.push(e[i].value); }  team.skills = hold ; this.updateTeam(team); }}
+                                        options={selectorOptions["Skills"]} />
+                                </div>
                             </Col>
                         </FormGroup>
                         <FormGroup>
@@ -282,17 +275,17 @@ class Team extends Component {
                             </Col>
                             <Col xs={(mobile) ? 12 : 6}>
                                 <Label>Interests</Label>
-                                {field(team.interests.join(";"))}
+                                {field(team.interests.join("; "))}
                             </Col>
                         </FormGroup>
                         <FormGroup row>
                             <Col xs={(mobile) ? 12 : 6}>
                                 <Label>Prizes</Label>
-                                {field(team.prizes.join(";"))}
+                                {field(team.prizes.join("; "))}
                             </Col>
                             <Col xs={(mobile) ? 12 : 6}>
                                 <Label>Skills</Label>
-                                {field(team.skills.join(";"))}
+                                {field(team.skills.join("; "))}
                             </Col>
                         </FormGroup>
                         <FormGroup row>
