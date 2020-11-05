@@ -657,3 +657,11 @@ display: none;  /* Safari and Chrome */
 .no-style-type {
     list-style-type: none;
 }
+
+/* Material UI Specifc */
+
+.MuiAlert-filledSuccess{
+    background-color: var(--primary-color-alt);
+    color: var(--primary-color-alt);
+
+}

@@ -58,9 +58,7 @@ const LoginPage = (props) => {
     
     // Check if the user is already logged in
     if (props.profile.isLoggedIn || done) {
-        if (props.profile.registration_status === "unregistered") {
-            return (<Redirect to="/profile" />);
-        } else return (<Redirect to="/dashboard" />);
+        return (<Redirect to="/dashboard" />);
     }
 
     return (

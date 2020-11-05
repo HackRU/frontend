@@ -1,21 +1,27 @@
 import React, { useState } from "react";
 import { Container, Grid, createMuiTheme, ThemeProvider} from "@material-ui/core";
+import Alert from "@material-ui/lab/Alert";
 import { Link } from "react-router-dom";
 import { Redirect } from "react-router-dom";
 import AuthForm from "../library/AuthForm";
 import ColorButton from "../library/ColorButton";
 import WhiteTextField from "../library/WhiteTextField";
 import PropTypes from "prop-types";
+import { theme } from "../Defaults";
 
 /**
  * Forgot my password application for "/forgot"
  */
-const theme = createMuiTheme({
+const color_theme = createMuiTheme({
     
     overrides: {
-        pallate: {
-            primary: "white",
-            secondary: "green"
+        palette: {
+            primary: {
+                main: theme.primary[1].trim(),
+            },
+            secondary: {
+                main: theme.secondary[1].trim(),
+            },
         },
         MuiInputLabel: { 
             root: { 
@@ -55,7 +61,7 @@ const ForgotPage = (props) => {
     };
 
     // Check if the user is already logged in
-    if (props.profile.isLoggedIn || done) {
+    if (props.profile.isLoggedIn) {
         return (<Redirect to="/dashboard" />);
     }
 
@@ -70,6 +76,19 @@ const ForgotPage = (props) => {
             onSubmit={onSubmit}
             title="Forgot Password"
         >
+            { done ?
+                <div>
+                    <Alert variant="filled" 
+                        size="small" 
+                        severity="success" 
+                        onClose={() => {setDone(false);}}>
+                        Link Sent!
+                    </Alert> 
+                    <br/>
+                </div>
+                :
+                <div/>
+            }
             <Container
                 conponent="main" 
                 maxWidth={false}
@@ -78,7 +97,7 @@ const ForgotPage = (props) => {
                     spacing={2}>
                     <Grid item 
                         xs={12}>
-                        <ThemeProvider theme={theme}>
+                        <ThemeProvider theme={color_theme}>
                             <WhiteTextField
                                 variant="outlined"
                                 autofocus
@@ -94,13 +113,13 @@ const ForgotPage = (props) => {
                     </Grid>
                     <Grid item 
                         xs={12}>
-                        <ThemeProvider>
+                        <ThemeProvider theme={color_theme}>
                             <ColorButton
                                 size = "small"
                                 type="submit"
                                 fullWidth
                                 variant="contained"
-                                color="primary">
+                                color="secondary">
                                 Submit
                             </ColorButton>
 
@@ -112,6 +131,12 @@ const ForgotPage = (props) => {
                             <Link to="/"
                                 style={{ color: "rgba(255, 255, 255, 0.5)" }}>
                                 Return Home
+                            </Link>
+                        </div>
+                        <div>
+                            <Link to="/login"
+                                style={{ color: "rgba(255, 255, 255, 0.5)" }}>
+                                Log in
                             </Link>
                         </div>
                     </Grid>
