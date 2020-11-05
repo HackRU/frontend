@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { AppBar, Toolbar, IconButton, Button, MenuItem, Menu, Tabs, Tab } from "@material-ui/core";
+import { AppBar, Toolbar, IconButton, Button, MenuItem, Menu, Tabs, Tab, createMuiTheme, ThemeProvider,  } from "@material-ui/core";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import { Link } from "react-router-dom";
 import { navlinks, theme, defaults } from "./Defaults";
@@ -16,6 +16,17 @@ LinkSwitcher.propTypes = {
     root: PropTypes.bool,
     children: PropTypes.any,
 };
+
+const color_theme = createMuiTheme({
+    palette: {
+        primary: {
+            main: theme.primary[1].trim(),
+        },
+        secondary: {
+            main: theme.secondary[1].trim(),
+        },
+    },
+});
 
 class NavBar extends Component {
     constructor(props) {
@@ -279,41 +290,44 @@ class NavBar extends Component {
                     onBlur={this.toggleFalse}
                 >
                     <Toolbar style={{ marginLeft: "0em" }}>
-                        <Tabs
-                            style={{ marginLeft: "auto", overflowY: "hidden" }}
-                            scrollButtons="on"
-                            value={-1}
-                            variant="scrollable">
-                            <div>
-                                <div
-                                    style={{
-                                        display: "block",
-                                        paddingRight: 0,
-                                        marginTop: -25,
-                                        marginBottom: -250,
-                                        width: 200,
-                                        marginRight: -10,
-                                        marginLeft: -30,
-                                        overflowY: "hidden"
-                                    }}>
-                                    <a href="/#home"
-                                        className="logo-no-underline"
-                                        style={{ height: "10px !important", textDecoration: "none" }}
-                                        root={onLanding.toString()}>
-                                        <Logo
-                                            color="white"
-                                            repeat={false}
-                                            noCircle
-                                            style={{ marginLeft: "10px" }}
-                                            src="/assets/icons/hru-text-dyn.svg"
-                                        />
-                                    </a>
+                        <ThemeProvider theme={color_theme}>
+                            <Tabs
+                                style={{ marginLeft: "auto", overflowY: "hidden" }}
+                                scrollButtons="on"
+                                value={0}
+                                variant="scrollable"
+                                indicatorColor="secondary">
+                                <div>
+                                    <div
+                                        style={{
+                                            display: "block",
+                                            paddingRight: 0,
+                                            marginTop: -25,
+                                            marginBottom: -250,
+                                            width: 200,
+                                            marginRight: -10,
+                                            marginLeft: -30,
+                                            overflowY: "hidden"
+                                        }}>
+                                        <a href="/#home"
+                                            className="logo-no-underline"
+                                            style={{ height: "10px !important", textDecoration: "none" }}
+                                            root={onLanding.toString()}>
+                                            <Logo
+                                                color="white"
+                                                repeat={false}
+                                                noCircle
+                                                style={{ marginLeft: "10px" }}
+                                                src="/assets/icons/hru-text-dyn.svg"
+                                            />
+                                        </a>
+                                    </div>
                                 </div>
-                            </div>
-                            <div>
-                                {onLogin ? <div/> : onDashboard ? this.getDashboardNav() : this.getLandingNav()}
-                            </div>
-                        </Tabs>
+                                <div>
+                                    {onLogin ? <div/> : onDashboard ? this.getDashboardNav() : this.getLandingNav()}
+                                </div>
+                            </Tabs>
+                        </ThemeProvider>
                         {this.props.profile.isLoggedIn ? this.getDashboardButton() : this.getAuthButtons()}
                     </Toolbar>
                 </AppBar>
