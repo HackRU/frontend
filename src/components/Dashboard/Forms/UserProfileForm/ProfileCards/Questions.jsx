@@ -206,10 +206,10 @@ class Questions extends Component {
                         <Label>Anything we should account for?</Label>
                         {field(user.special_needs)}
                     </FormGroup>
-                    <FormGroup>
+                    {/* <FormGroup>
                         <Label>Are you looking for team members? </Label>
                         {field(user.want_team ? ("Yes, I am looking for team members") : ("No, I already have a team"))}
-                    </FormGroup>
+                    </FormGroup> */}
                 </div>
             );
         }
