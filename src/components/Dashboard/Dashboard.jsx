@@ -97,13 +97,17 @@ class Dashboard extends Component {
         return (
             <Container style={{ width: "100%", minHeight: "100vh", paddingTop: 90 }}>
                 <ProfileMessage message={this.state.profileMSG} />
-                {defaults.dayof & user["check-in"] &&
+                {defaults.dayof && user["check-in"]
+                    ?
                     <Row>
                         <Col className="dashboard-row"
                             lg={12}>
                             <Links />
                         </Col>
                     </Row>
+                    :
+                    <br/>
+
                 }
                 <Row>
                     <Col className="dashboard-row"
@@ -116,7 +120,8 @@ class Dashboard extends Component {
                         </div>
                     </Col>
                 </Row>
-                {defaults.dayof & user["check-in"] &&
+                {defaults.dayof && user["check-in"] 
+                    ?
                     <Row>
                         <Section
                             title="Announcements"
@@ -125,6 +130,8 @@ class Dashboard extends Component {
                             <Announcements hide={false} />
                         </Section>
                     </Row>
+                    :
+                    <br/>
                 }
                 <Row>
                     {/* {(user.registration_status === "confirmed" || user.registration_status === "waitlist" || user.registration_status === "coming" || user.registration_status === "registered" || (user.role && user.role.director) || (user.role && user.role.organizer) || (user.role && user.role.volunteer)) &&

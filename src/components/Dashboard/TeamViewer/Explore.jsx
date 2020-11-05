@@ -25,14 +25,24 @@ function Explore(props) {
                 });
             });
         });
-        
     }, []);
-    const handlePagination = (event, value) => {
+
+    const onInvite = async (id) => {
+        // let all_teams = await props.profile.getAllTeams(((page - 1) * 4), 4);
+        setAllTeams(prevState => ({
+            ...prevState,
+            all_open_teams: prevState.all_open_teams.filter(el => el != id)
+        }));
+        setMatches(prevState => ({
+            ...prevState,
+            matches: prevState.matches.filter(el => el != id)
+        }));
+    };
+
+    const handlePagination = async (event, value) => {
         setPage(value);
-        props.profile.getAllTeams(((value - 1) * 4), 4).then((success) => {
-            setLoading(false);
-            setAllTeams(success.response);
-        });
+        let all_teams = await props.profile.getAllTeams(((value - 1) * 4), 4);
+        setAllTeams(all_teams.response);
     };
     if (loading) {
         return (<TeamLoading text={loading} />);
@@ -54,9 +64,11 @@ function Explore(props) {
                 {matches.matches && matches.matches.length > 0 ? (
                     matches.matches.map((invitingTeamId, i) => (
                         <RenderRow
-                            key={i}
+                            index={invitingTeamId}
+                            key={invitingTeamId+i}
                             invitingTeam={invitingTeamId}
                             originalTeamId={originalTeamId}
+                            onInvite={onInvite}
                             {...props}
                         />
                     ))
@@ -72,9 +84,11 @@ function Explore(props) {
                 {allTeams.all_open_teams && allTeams.all_open_teams.length > 0 ? (
                     allTeams.all_open_teams.map((invitingTeamId, i) => (
                         <RenderRow
-                            key={i}
+                            index={invitingTeamId}
+                            key={invitingTeamId+i}
                             invitingTeam={invitingTeamId}
                             originalTeamId={originalTeamId}
+                            onInvite={onInvite}
                             {...props}
                         />
                     ))
