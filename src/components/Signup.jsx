@@ -60,7 +60,7 @@ const SignUpPage = (props) => {
 
     // Check if the user is already logged in
     if (props.profile.isLoggedIn || done) {
-        return (<Redirect to="/dashboard" />);
+        return (<Redirect to="/profile" />);
     }
 
     return (
