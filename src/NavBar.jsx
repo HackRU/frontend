@@ -112,7 +112,7 @@ class NavBar extends Component {
             this.setState({ landingValue: 5 });
             break;
         default:
-            this.setState({ landinvValue: 0 });
+            this.setState({ landingValue: 0 });
             break;
         }
     }
