@@ -1,20 +1,51 @@
 import React, { Component } from "react";
 import request from "request";
 import { ENDPOINTS } from "../Profile";
-import { ListGroup, ListGroupItem, ListGroupItemText, Pagination, PaginationItem, PaginationLink } from "reactstrap";
-import { SyncLoader } from "react-spinners";
+import { ListGroup } from "reactstrap";
+import { Grid } from "@material-ui/core";
+import { ViewState } from "@devexpress/dx-react-scheduler";
+import { Scheduler, DayView, Appointments, AppointmentTooltip } from "@devexpress/dx-react-scheduler-material-ui";
+import { theme } from "../../Defaults";
+import RoomIcon from "@material-ui/icons/Room";
 import PropTypes from "prop-types";
 
-const light_red = {
-    backgroundColor: "#bf4d4d",
-    border: "none !important"
+const Content = ({ appointmentData, ...restProps }) => (
+    <AppointmentTooltip.Content {...restProps}
+        appointmentData={appointmentData}>
+        <Grid container
+            alignItems="center">
+            <Grid item
+                xs={10}
+                style={{ paddingLeft: 20, paddingBottom: 10, color: "rgba(150, 150, 150, 1)" }}>
+                <RoomIcon /> <span style={{ paddingLeft: 17 }}
+                    dangerouslySetInnerHTML={{ __html: appointmentData.location ? appointmentData.location : "<i>nothing to see here</i>" }} />
+            </Grid>
+            <Grid item
+                xs={10}
+                style={{ marginLeft: 30, paddingTop: 10,  borderTop: "1px solid rgba(200, 200, 200, 1)", color: "rgba(150, 150, 150, 1)" }}>
+                <div> <span dangerouslySetInnerHTML={{ __html: appointmentData.description ? appointmentData.description : "<i>nothing to see here</i>" }} /> </div>
+            </Grid>
+        </Grid>
+    </AppointmentTooltip.Content>
+);
+Content.propTypes = {
+    appointmentData: PropTypes.object
 };
-
-const dark_red = {
-    backgroundColor: "#ad4444",
-    border: "none !important"
+const Appointment = ({ children, style, ...restProps }) => (
+    <Appointments.Appointment
+        {...restProps}
+        style={{
+            ...style,
+            backgroundColor: theme.primary[1],
+            borderRadius: 8,
+        }}>
+        {children}
+    </Appointments.Appointment>
+);
+Appointment.propTypes = {
+    children: PropTypes.object,
+    style: PropTypes.object
 };
-
 class Schedule extends Component {
     UNSAFE_componentWillMount() {
         this.setState({ events: [] });
@@ -35,10 +66,11 @@ class Schedule extends Component {
                     let events = [];
                     for (let i = 0; i < body.body.length; i++) {
                         events.push({
-                            id: i,
                             title: body.body[i].summary,
-                            start: new Date(body.body[i].start.dateTime),
-                            end: new Date(body.body[i].end.dateTime)
+                            description: body.body[i].description,
+                            location: body.body[i].location,
+                            startDate: body.body[i].start.dateTime,
+                            endDate: body.body[i].end.dateTime
                         });
                     }
                     events.sort((a, b) => {
@@ -53,76 +85,27 @@ class Schedule extends Component {
     )
 
     render() {
-        let events = [];
-        let end = this.state.start + ((!this.props.hide) ? (10) : (5));
-        if (end > this.state.events.length) {
-            end = this.state.events.length;
-        }
-        if (this.state.events.length === 0) {
-            events.push(
-                <div style={{ width: "100%", textAlign: "center" }}
-                    align="center"
-                    className="align-items-center"
-                    key={0}>
-                    <SyncLoader color="rgba(255, 255, 255, 0.25)" />
-                </div>);
-        } else {
-            for (let i = this.state.start; i < end; i++) {
-                let text = this.state.events[i].title;
-                let startTime = this.state.events[i].start.toLocaleString();
-                let endTime = this.state.events[i].end.toLocaleString();
-                let style = {};
-                if (this.props.hide) {
-                    style = { fontSize: 30 };
-                }
-                events.push(
-                    <ListGroupItem
-                        className="rounded shadow-lg"
-                        key={i}
-                        style={ i % 2 === 0 ? dark_red : light_red}>
-                        <ListGroupItemText className="pull-right live-messages-text">
-                            {startTime} - {endTime}
-                        </ListGroupItemText>
-                        <ListGroupItemText className="live-messages-text"
-                            style={style}>{text}</ListGroupItemText>
-                    </ListGroupItem>
-                );
-            }
-        }
         return (
             <div style={{ marginBottom: 10 }}>
                 <div style={{ width: "100%", textAlign: "left" }}>
-                    { !this.props.hide &&
-                        <h3>Schedule</h3>}
                     <ListGroup className="live-container"
                         flush>
-                        {events}
-                        { !this.props.hide &&
-                                    <div style={{ width: "100%", textAlign: "right" }}>
-                                        <Pagination className="live-page-container pull-right">
-                                            <PaginationItem>
-                                                <PaginationLink className="live-page-btn"
-                                                    previous
-                                                    onClick={() => {
-                                                        this.setState({
-                                                            start: (this.state.start - 10 >= 0) ? (this.state.start - 10) : (0)
-                                                        });
-                                                    }} />
-                                            </PaginationItem>
-                                            <PaginationItem>
-                                                <PaginationLink className="live-page-btn"
-                                                    next
-                                                    onClick={() => {
-                                                        this.setState({
-                                                            start: (this.state.start + 10 <= this.state.events.length - 10) ? (this.state.start + 10) : (this.state.events.length - 10)
-                                                        });
-                                                    }} />
-                                            </PaginationItem>
-                                        </Pagination>
-                                        <div className="live-page-text">
-                                                    Viewing {this.state.start} - {end}
-                                        </div>
-                                    </div>}
+                        <Scheduler
+                            data={this.state.events}>
+                            <ViewState
+                                currentDate={"11-07-2020"}
+                            />
+                            <DayView
+                                startDayHour={(new Date()).getHours()}
+                                endDayHour={(new Date()).getHours() + 6 > 24 ? 24 : (new Date()).getHours() + 4}
+                            />
+                            <Appointments
+                                appointmentComponent={Appointment}
+                            />
+                            <AppointmentTooltip
+                                contentComponent={Content}
+                            />
+                        </Scheduler>
                     </ListGroup>
                 </div>
             </div>
