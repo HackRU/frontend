@@ -51,7 +51,7 @@ class Dashboard extends Component {
                         // Auto checkin the user
                         this.props.profile.Set(
                             {
-                                "check-in": true
+                                "check-in-after": true
                             },
                             () => {
                                 this.setState({
