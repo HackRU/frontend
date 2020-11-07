@@ -93,7 +93,7 @@ class Schedule extends Component {
                         <Scheduler
                             data={this.state.events}>
                             <ViewState
-                                currentDate={"11-07-2020"}
+                                currentDate={new Date()}
                             />
                             <DayView
                                 startDayHour={(new Date()).getHours()}
