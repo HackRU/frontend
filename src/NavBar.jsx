@@ -111,6 +111,9 @@ class NavBar extends Component {
         case "numbers":
             this.setState({ landingValue: 5 });
             break;
+        default:
+            this.setState({ landinvValue: 0 });
+            break;
         }
     }
     toggleFalse() {
@@ -169,7 +172,7 @@ class NavBar extends Component {
                     color="inherit"
                     iconStyle={{ width: 80, height: 80 }}
                 >
-                    <AccountCircle style={{ fontSize: "40px" }} />
+                    <AccountCircle style={{ fontSize: "40px", color: "white" }} />
                 </IconButton>
                 <Menu
                     id="Profile"

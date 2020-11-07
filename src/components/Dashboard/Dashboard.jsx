@@ -14,6 +14,7 @@ import PropTypes from "prop-types";
 import { defaults, theme } from "../../Defaults";
 import Links from "../Live/Links";
 import Announcements from "../Live/Announcements";
+import Schedule from "../Live/Schedule";
 import Section from "./Section";
 
 class Dashboard extends Component {
@@ -91,7 +92,7 @@ class Dashboard extends Component {
         user.how_you_heard_about_hackru = user.how_you_heard_about_hackru || "";
         user.reasons = user.reasons || "";
         // boolean to show the other stuff
-        let SHOW_FLAG = defaults.dayof && user["check-in"] && (user["registration_status"] == "confirmed");
+        let SHOW_FLAG = defaults.dayof && user["check-in"] && (user["registration_status"] === "confirmed");
         // let mobile = this.props.isMobile;
         let rolesString = "";
         Object.keys(user.role).forEach((key) => { if (user.role[key]) { rolesString += `${key}, `; }});
@@ -130,6 +131,19 @@ class Dashboard extends Component {
                             color="red"
                             isOpen={true}>
                             <Announcements hide={false} />
+                        </Section>
+                    </Row>
+                    :
+                    <br/>
+                }
+                {SHOW_FLAG
+                    ?
+                    <Row>
+                        <Section
+                            title="Schedule"
+                            color="red"
+                            isOpen={true}>
+                            <Schedule />
                         </Section>
                     </Row>
                     :

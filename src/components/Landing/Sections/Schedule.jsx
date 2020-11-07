@@ -27,11 +27,11 @@ function Schedule() {
             { startDate: "2020-11-07T10:00", endDate: "2020-11-07T11:00", title: "Check-in" },
             { startDate: "2020-11-07T11:30", endDate: "2020-11-07T13:00", title: "Opening Ceremony" },
             { startDate: "2020-11-07T13:00", endDate: "2020-11-08T12:30", title: "Hacking"},
-            { startDate: "2020-11-07T15:00", endDate: "2020-11-07T15:20", title: "Blueprint Workshop"},
-            { startDate: "2020-11-07T15:30", endDate: "2020-11-07T16:30", title: "MLH CTF"},
-            { startDate: "2020-11-07T16:30", endDate: "2020-11-07T17:30", title: "RUMAD Workshop"},
-            { startDate: "2020-11-07T18:00", endDate: "2020-11-07T19:00", title: "MLH Bob Ross"},
-            { startDate: "2020-11-07T19:00", endDate: "2020-11-07T20:00", title: "WICS Live Panel"},
+            { startDate: "2020-11-07T15:00", endDate: "2020-11-07T15:20", title: "Blueprint Presents: Introduction to Figma"},
+            { startDate: "2020-11-07T15:30", endDate: "2020-11-07T16:30", title: "MLH CTF: Join MLH in a capture the flag style event"},
+            { startDate: "2020-11-07T16:30", endDate: "2020-11-07T17:30", title: "RUMAD Presents: Introduction to Kotlin and Android Studio"},
+            { startDate: "2020-11-07T18:00", endDate: "2020-11-07T19:00", title: "MLH Bob Ross: Join MLH in recreating one of Bob Ross's paintings in MS Paint"},
+            { startDate: "2020-11-07T19:00", endDate: "2020-11-07T20:00", title: "WICS Live Panel: Join us for a Q&A panel with WICS (Women in Computer Science)"},
             { startDate: "2020-11-07T20:00", endDate: "2020-11-07T21:00", title: "Cog Sci Workshop"}
         ]
     }, {
