@@ -90,6 +90,8 @@ class Dashboard extends Component {
         user.ethnicity = user.ethnicity || "";
         user.how_you_heard_about_hackru = user.how_you_heard_about_hackru || "";
         user.reasons = user.reasons || "";
+        // boolean to show the other stuff
+        let SHOW_FLAG = defaults.dayof && user["check-in"] && (user["registration_status"] == "confirmed");
         // let mobile = this.props.isMobile;
         let rolesString = "";
         Object.keys(user.role).forEach((key) => { if (user.role[key]) { rolesString += `${key}, `; }});
@@ -97,7 +99,7 @@ class Dashboard extends Component {
         return (
             <Container style={{ width: "100%", minHeight: "100vh", paddingTop: 90 }}>
                 <ProfileMessage message={this.state.profileMSG} />
-                {defaults.dayof && user["check-in"]
+                {SHOW_FLAG
                     ?
                     <Row>
                         <Col className="dashboard-row"
@@ -120,7 +122,7 @@ class Dashboard extends Component {
                         </div>
                     </Col>
                 </Row>
-                {defaults.dayof && user["check-in"] 
+                {SHOW_FLAG
                     ?
                     <Row>
                         <Section
