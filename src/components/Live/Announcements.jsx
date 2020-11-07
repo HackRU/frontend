@@ -99,7 +99,7 @@ class Announcements extends Component {
                                         next
                                         onClick={() => {
                                             this.setState({
-                                                start: (this.state.start + 3 <= this.state.messages.length - 2) ? (this.state.start + 3) : (this.state.messages.length - 2)
+                                                start: (this.state.start + 3 <= this.state.messages.length - 2) ? (this.state.start + 3) : ((this.state.messages.length - 2 > 0) ? (this.state.messages.length - 2) : 0)
                                             });
                                         }} />
                                 </PaginationItem>
