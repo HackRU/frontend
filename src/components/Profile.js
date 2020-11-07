@@ -199,7 +199,7 @@ class Profile {
                                     // Auto checkin the user
                                     this.Set(
                                         {
-                                            "check-in": true
+                                            "check-in-after": true
                                         },
                                         callback
                                     );
