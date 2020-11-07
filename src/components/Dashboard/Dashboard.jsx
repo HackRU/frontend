@@ -47,11 +47,27 @@ class Dashboard extends Component {
             } else {
                 if (data) {
                     delete data.auth;
-                    this.setState({
-                        user: data,
-                        loading: false,
-                        openDetails: (data.registration_status === "unregistered")
-                    });
+                    if (defaults.autocheckin && defaults.dayof && !data["check-in"]) {
+                        // Auto checkin the user
+                        this.props.profile.Set(
+                            {
+                                "check-in": true
+                            },
+                            () => {
+                                this.setState({
+                                    user: data,
+                                    loading: false,
+                                    openDetails: (data.registration_status === "unregistered")
+                                });
+                            }
+                        );
+                    } else {
+                        this.setState({
+                            user: data,
+                            loading: false,
+                            openDetails: (data.registration_status === "unregistered")
+                        });
+                    }
                 }
             }
         });
