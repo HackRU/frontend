@@ -47,11 +47,11 @@ class Dashboard extends Component {
             } else {
                 if (data) {
                     delete data.auth;
-                    if (defaults.autocheckin && defaults.dayof && !data["check-in"]) {
+                    if (defaults.autocheckin && defaults.dayof && !data["check-in-after"]) {
                         // Auto checkin the user
                         this.props.profile.Set(
                             {
-                                "check-in": true
+                                "check-in-after": true
                             },
                             () => {
                                 this.setState({
@@ -108,7 +108,7 @@ class Dashboard extends Component {
         user.how_you_heard_about_hackru = user.how_you_heard_about_hackru || "";
         user.reasons = user.reasons || "";
         // boolean to show the other stuff
-        let SHOW_FLAG = defaults.dayof && user["check-in"] && (user["registration_status"] === "confirmed");
+        let SHOW_FLAG = defaults.dayof && (user["check-in-after"] || user["check-in"]) && (user["registration_status"] === "confirmed");
         // let mobile = this.props.isMobile;
         let rolesString = "";
         Object.keys(user.role).forEach((key) => { if (user.role[key]) { rolesString += `${key}, `; }});
