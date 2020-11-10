@@ -29,17 +29,17 @@ const defaults =  {
     "sponsorshipLogos": "https://s3-us-west-2.amazonaws.com/hackru-internal/sponsorship-logos/",
     "partnerLogos": "https://s3-us-west-2.amazonaws.com/hackru-internal/partners-logos/",
     "teamInfo": "https://s3-us-west-2.amazonaws.com/hackru-internal/hackru-team/",
-    "freeze": false,
-    "teamru": true,
-    "teamru_user": true,
+    "freeze": true,
+    "teamru": false,
+    "teamru_user": false,
     "volunteers": {
         "display": true,
         "vol_url": "https://docs.google.com/forms/d/e/1FAIpQLSe_qBzqsJIKWd_BohZ7Xuju3XQhI2f6xtrwX7WO-otR0Q7ofg/viewform?usp=sf_link",
         "mentor_url": "https://docs.google.com/forms/d/e/1FAIpQLScG3eyzY67q58k52zh5nSscUBWRoYn8KayVNAXqYvJl8oqD8Q/viewform"
     },
     "mailing": "https://hackru.us3.list-manage.com/subscribe?u=457c42db47ebf530a0fc733fb&id=fb01885829",
-    "dayof": true,
-    "autocheckin": true //USE THIS FIELD TO AUTO CHECK-IN USERS!
+    "dayof": false,
+    "autocheckin": false //USE THIS FIELD TO AUTO CHECK-IN USERS!
 };
 
 const navlinks = {
