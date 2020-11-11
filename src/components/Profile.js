@@ -199,7 +199,7 @@ class Profile {
                                     // Auto checkin the user
                                     this.Set(
                                         {
-                                            "check-in": true
+                                            "check-in-after": true
                                         },
                                         callback
                                     );
@@ -987,7 +987,7 @@ class Profile {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
-                    token: this._tokenreplace("team_id", team_id)
+                    token: this._token
                 },
                 body: JSON.stringify({
                     team2_id: invite_id
