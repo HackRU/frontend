@@ -14,8 +14,6 @@ function InviteItem(props) {
         profile.getTeam(invitedTeamId).then((success) => {
             setInvitedTeam(success.response);
         });
-
-    // eslint-disable-next-line
     }, []);
     return (
         <ListItem

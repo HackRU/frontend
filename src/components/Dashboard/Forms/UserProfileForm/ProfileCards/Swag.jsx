@@ -51,7 +51,6 @@ const Swag = (props) => {
         } catch {
             setSwag("");
         }
-    // eslint-disable-next-line
     }, []);
     
 

@@ -12,9 +12,7 @@ function ManageTeam(props) {
     const { profile } = props;
 
     useEffect(() => {
-        // eslint-disable-next-line
         getCurrentTeam();
-    // eslint-disable-next-line
     }, []);
 
     function getCurrentTeam() {

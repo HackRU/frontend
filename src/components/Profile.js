@@ -190,11 +190,11 @@ class Profile {
                     json: true
                 })
                 .then(async res => {
-                    if (body.statusCode === 403) {
+                    if (res.statusCode === 403) {
                         resp.error = "Invalid email or password";
                         return resp;
-                    } else if (body.statusCode === 200) {
-                        let data = body.body;
+                    } else if (res.statusCode === 200) {
+                        let data = res.body;
                         let token = data.token;
                         // Convert seconds to milliseconds
                         let valid_until =
@@ -212,16 +212,16 @@ class Profile {
                         //     callback();
                         // }
                     } else {
-                        if (body.body) {
-                            return body.body;
+                        if (res.body) {
+                            return res.body;
                         } else {
                             resp.error = "Unexpected Error";
-                            return error;
+                            return resp;
                         }
                     }
                 })
                 .catch(error => {
-                    resp.error = "An error occured when attempting login";
+                    error = "An error occured when attempting login";
                     return resp;
                 })
             }
@@ -409,7 +409,7 @@ class Profile {
     Get(callback) {
         this.GetUser(callback, this._email);
     }
-    SetUser(data, user) {
+    async SetUser(data, user) {
         // console.log(JSON.stringify({
         //     updates: {
         //         $set: data
@@ -438,28 +438,23 @@ class Profile {
                 json: true
             })
             .then(async res =>  {
-                if (error) {
-                    resp.error = "An error occured when attempting to update data";
+                if (res.statusCode === 200) {
                     return resp;
                 } else {
-                    if (body.statusCode === 200) {
-                        return resp;
-                        // ?
-                        // callback();
+                    if (res.body) {
+                        return res.body;
                     } else {
-                        if (body.body) {
-                            return body.body;
-                        } else {
-                            resp.error = "Unexpected Error";
-                            return resp;
-                        }
+                        resp.error = "Unexpected Error";
+                        return resp;
                     }
                 }
             })
             .catch(error => {
-                resp.error = "Please log in";
+                resp.error = "An error occured retrieving data";
                 return resp;
             })
+        } else {
+
         }
     }
     async Set(data) {

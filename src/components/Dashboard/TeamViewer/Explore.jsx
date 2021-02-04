@@ -25,7 +25,6 @@ function Explore(props) {
                 });
             });
         });
-    // eslint-disable-next-line
     }, []);
 
     const onInvite = async (id) => {

@@ -59,9 +59,7 @@ const Profile = (props) => {
                     setOpenDetails((data.registration_status === "unregistered"));
                 }
             }
-        });
-        
-    // eslint-disable-next-line
+        })
     }, []);
 
     
