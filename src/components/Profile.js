@@ -163,57 +163,67 @@ class Profile {
         return JSON.parse(jsonPayload);
     }
 
-    Login(email, password, callback) {
+    async Login(email, password) {
+
+        let resp = {
+            error: "",
+            response: ""
+        };
+
         if (this.isLoggedIn) {
-            callback("User is already logged in");
+            resp.error = "User is already logged in";
+            return resp;
         } else {
             if (!email) {
-                callback("Invalid email");
+                resp.error = "Invalid email";
+                return resp;
             } else if (!password) {
-                callback("Invalid password");
+                resp.error = "Invalid password";
+                return resp;
             } else {
-                request(
-                    {
-                        method: "POST",
-                        uri: ENDPOINTS.login,
-                        body: {
-                            email: email,
-                            password: password
-                        },
-                        json: true
+                await fetch(ENDPOINTS.login, {
+                    method: "POST",
+                    body: {
+                        email: email,
+                        password: password
                     },
-                    (error, response, body) => {
-                        if (error) {
-                            callback("An error occured when attempting login");
-                        } else {
-                            if (body.statusCode === 403) {
-                                callback("Invalid email or password");
-                            } else if (body.statusCode === 200) {
-                                let data = body.body;
-                                let token = data.token;
-                                // Convert seconds to milliseconds
-                                let valid_until =
-                                    this.parseJwt(token).exp * 1000;
-                                this._login(email, token, valid_until);
-                                if (defaults.autocheckin && defaults.dayof) {
-                                    // Auto checkin the user
-                                    this.Set(
-                                        {
-                                            "check-in-after": true
-                                        },
-                                        callback
-                                    );
-                                } else {
-                                    callback();
+                    json: true
+                })
+                .then(async res => {
+                    if (body.statusCode === 403) {
+                        resp.error = "Invalid email or password";
+                        return resp;
+                    } else if (body.statusCode === 200) {
+                        let data = body.body;
+                        let token = data.token;
+                        // Convert seconds to milliseconds
+                        let valid_until =
+                            this.parseJwt(token).exp * 1000;
+                        this._login(email, token, valid_until);
+                        if (defaults.autocheckin && defaults.dayof) {
+                            // Auto checkin the user
+                            this.Set(
+                                {
+                                    "check-in-after": true
                                 }
-                            } else {
-                                callback(
-                                    body.body ? body.body : "Unexpected Error"
-                                );
-                            }
+                            );
+                        }
+                        // } else {
+                        //     callback();
+                        // }
+                    } else {
+                        if (body.body) {
+                            return body.body;
+                        } else {
+                            resp.error = "Unexpected Error";
+                            return error;
                         }
                     }
-                );
+                })
+                .catch(error => {
+                    resp.error = "An error occured when attempting login";
+                    return resp;
+                })
             }
         }
     }
@@ -399,7 +409,7 @@ class Profile {
     Get(callback) {
         this.GetUser(callback, this._email);
     }
-    SetUser(data, user, callback) {
+    SetUser(data, user) {
         // console.log(JSON.stringify({
         //     updates: {
         //         $set: data
@@ -408,43 +418,52 @@ class Profile {
         //     auth_email: this._email,
         //     token: this._token
         // }));
+
+        let resp = {
+            error: "",
+            response: "",
+        };
+
         if (this.isLoggedIn) {
-            request(
-                {
-                    method: "POST",
-                    uri: ENDPOINTS.update,
-                    body: {
-                        updates: {
-                            $set: data
-                        },
-                        user_email: user,
-                        auth_email: this._email,
-                        token: this._token
+            await fetch(ENDPOINTS.login, {
+                method: "POST",
+                body: {
+                    updates: {
+                        $set: data
                     },
-                    json: true
+                    user_email: user,
+                    auth_email: this._email,
+                    token: this._token
                 },
-                (error, response, body) => {
-                    if (error) {
-                        callback(
-                            "An error occured when attempting to update data"
-                        );
+                json: true
+            })
+            .then(async res =>  {
+                if (error) {
+                    resp.error = "An error occured when attempting to update data";
+                    return resp;
+                } else {
+                    if (body.statusCode === 200) {
+                        return resp;
+                        // ?
+                        // callback();
                     } else {
-                        if (body.statusCode === 200) {
-                            callback();
+                        if (body.body) {
+                            return body.body;
                         } else {
-                            callback(
-                                body.body ? body.body : "Unexpected Error"
-                            );
+                            resp.error = "Unexpected Error";
+                            return resp;
                         }
                     }
                 }
-            );
-        } else {
-            callback("Please log in");
+            })
+            .catch(error => {
+                resp.error = "Please log in";
+                return resp;
+            })
         }
     }
-    Set(data, callback) {
-        this.SetUser(data, this._email, callback);
+    async Set(data) {
+        this.SetUser(data, this._email);
     }
     Forgot(email, callback) {
         if (this.isLoggedIn) {

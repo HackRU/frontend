@@ -12,7 +12,9 @@ function ManageTeam(props) {
     const { profile } = props;
 
     useEffect(() => {
+        // eslint-disable-next-line
         getCurrentTeam();
+    // eslint-disable-next-line
     }, []);
 
     function getCurrentTeam() {
@@ -59,7 +61,7 @@ function ManageTeam(props) {
         }
         setTeam(prevState => ({
             ...prevState,
-            [name]: prevState[name].filter(el => el != id)
+            [name]: prevState[name].filter(el => el !== id)
         }));
 
     }

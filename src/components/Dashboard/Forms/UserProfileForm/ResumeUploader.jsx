@@ -13,6 +13,7 @@ const ResumeUploader = React.memo(({ edit, profile }) => {
                 success ? "Resume found" : edit ? "Choose a file to upload" : "Nothing yet"
             );
         });
+    // eslint-disable-next-line
     }, []);
 
     const onUpload = async (event) => {

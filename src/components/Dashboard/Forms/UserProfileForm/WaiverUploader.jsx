@@ -16,6 +16,7 @@ const WaiverUploader = (props) => {
                 success ? "Waiver found" : props.edit ? "Choose a file to upload" : "Nothing yet"
             );
         });
+    // eslint-disable-next-line
     }, []);
 
     const onWaiverUpload = async (event) => {

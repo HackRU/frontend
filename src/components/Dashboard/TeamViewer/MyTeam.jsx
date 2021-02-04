@@ -27,6 +27,7 @@ function MyTeam(props) {
                 });
             }
         });
+    // eslint-disable-next-line
     }, []);
     if (loading) {
         return (<TeamLoading text={loading} />);

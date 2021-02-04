@@ -43,16 +43,15 @@ const LoginPage = (props) => {
             setErrors("");
             let email = document.getElementById("email").value;
             let password = document.getElementById("password").value;
-            props.profile.Login(email, password, (msg) => {
-                if (msg) {
+            let msg = props.profile.Login(email, password);
+            if (msg) {
                     setLoading(false);
                     setErrors(msg);
-                } else {
-                    setLoading(false);
-                    setDone(true);
-                    setErrors("");
-                }
-            });
+            } else {
+                setLoading(false);
+                setDone(true);
+                setErrors("");
+            }
         }
     };
     

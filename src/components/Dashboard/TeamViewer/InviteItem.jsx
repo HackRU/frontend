@@ -15,6 +15,7 @@ function InviteItem(props) {
             setInvitedTeam(success.response);
         });
 
+    // eslint-disable-next-line
     }, []);
     return (
         <ListItem

@@ -25,17 +25,18 @@ function Explore(props) {
                 });
             });
         });
+    // eslint-disable-next-line
     }, []);
 
     const onInvite = async (id) => {
         // let all_teams = await props.profile.getAllTeams(((page - 1) * 4), 4);
         setAllTeams(prevState => ({
             ...prevState,
-            all_open_teams: prevState.all_open_teams.filter(el => el != id)
+            all_open_teams: prevState.all_open_teams.filter(el => el !== id)
         }));
         setMatches(prevState => ({
             ...prevState,
-            matches: prevState.matches.filter(el => el != id)
+            matches: prevState.matches.filter(el => el !== id)
         }));
     };
 

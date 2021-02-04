@@ -29,7 +29,7 @@ const defaults =  {
     "sponsorshipLogos": "https://s3-us-west-2.amazonaws.com/hackru-internal/sponsorship-logos/",
     "partnerLogos": "https://s3-us-west-2.amazonaws.com/hackru-internal/partners-logos/",
     "teamInfo": "https://s3-us-west-2.amazonaws.com/hackru-internal/hackru-team/",
-    "freeze": true,
+    "freeze": false,
     "teamru": false,
     "teamru_user": false,
     "volunteers": {
