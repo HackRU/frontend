@@ -217,22 +217,33 @@ class Profile {
             }
         }
     }
-    SignUp(firstname, lastname, email, password, confirmpassword, callback) {
+    async SignUp(firstname, lastname, email, password, confirmpassword, callback) {
+        let resp = {
+            error: "",
+            response: ""
+        };
         if (this.isLoggedIn) {
-            callback("User is already logged in");
+            resp.error = "User is already logged in";
+            return resp;
         } else {
             if (!firstname) {
-                callback("Invalid first name");
+                resp.error = "Invalid first name";
+                return resp;
             } else if (!lastname) {
-                callback("Invalid last name");
+                resp.error = "Invalid last name";
+                return resp;
             } else if (!email) {
-                callback("Invalid email");
+                resp.error = "Invalid email";
+                return resp;
             } else if (!password) {
-                callback("Invalid password");
+                resp.error = "Invalid password";
+                return resp;
             } else if (!confirmpassword) {
-                callback("Invalid password");
+                resp.error = "Invalid password";
+                return resp;
             } else if (password !== confirmpassword) {
-                callback("Passwords don't match");
+                resp.error = "Passwords don't match";
+                return resp;
             } else {
                 /*
                 From the legacy code. These are all of the fields of registration_status, and what they mean
@@ -250,90 +261,81 @@ class Profile {
                 };
                 ```
                 */
-                request(
-                    {
-                        method: "POST",
-                        uri: ENDPOINTS.signup,
-                        body: {
-                            email: email,
-                            password: password,
-                            registration_status: "unregistered" //"waitlist" is one of them
-                        },
-                        json: true
+                await fetch(ENDPOINTS.signup, {
+                    method: "POST",
+                    body: {
+                        email: email,
+                        password: password,
+                        registration_status: "unregistered" //"waitlist" is one of them
                     },
-                    (error, response, body) => {
-                        if (error) {
-                            callback(
-                                "An error occured when attempting signup. Failed at 1/2"
-                            );
-                        } else {
-                            if (body.statusCode === 400) {
-                                callback(
-                                    "User with email " +
-                                        email +
-                                        " already exists"
-                                );
-                            } else if (body.statusCode === 200) {
-                                // Set the first and last name
-                                let data = body.body;
-                                let token = data.token;
-                                let valid_until =
-                                    this.parseJwt(token).exp * 1000;
-                                request(
-                                    {
-                                        method: "POST",
-                                        uri: ENDPOINTS.update,
-                                        body: {
-                                            updates: {
-                                                $set: {
-                                                    first_name: firstname,
-                                                    last_name: lastname
-                                                }
-                                            },
-                                            user_email: email,
-                                            auth_email: email,
-                                            token: token
-                                        },
-                                        json: true
-                                    },
-                                    (error, response, body) => {
-                                        if (error) {
-                                            callback(
-                                                "An error occured when attempting signup. Failed at 2/2"
-                                            );
-                                        } else {
-                                            if (body.statusCode === 200) {
-                                                this._login(
-                                                    email,
-                                                    token,
-                                                    valid_until
-                                                );
-                                                /**
-                                                 * Create new TeamRU user on signup
-                                                 */
-                                                if (defaults.teamru_user)
-                                                    this.newUser({
-                                                        bio: firstname
-                                                    });
-                                                callback();
-                                            } else {
-                                                callback(
-                                                    body.body
-                                                        ? body.body
-                                                        : "Unexpected Error"
-                                                );
-                                            }
+                    json: true
+                })
+                .then(async res => {
+                    if(res.statusCode === 400) {
+                        resp.error = "User with email" + email + " already exists";
+                        return resp;
+                    } else if(res.statusCode === 200) {
+                            // Set the first and last name
+                            let data = body.body;
+                            let token = data.token;
+                            let valid_until = this.parseJwt(token).exp * 1000;
+
+                            await fetch(ENDPOINTS.update, {
+                                method: "POST",
+                                body: {
+                                    updates: {
+                                        $set: {
+                                            first_name: firstname,
+                                            last_name: lastname
                                         }
+                                    },
+                                    user_email: email,
+                                    auth_email: email,
+                                    token: token
+                                },
+                                json: true
+                            })
+                            .then(async res => {
+                                if(res.statusCode === 200) {
+                                this._login(
+                                    email,
+                                    token,
+                                    valid_until
+                                );
+                                    /**
+                                     * Create new TeamRU user on signup
+                                     */
+                                    if (defaults.teamru_user)
+                                        this.newUser({
+                                            bio: firstname
+                                        });
+                                } else {
+                                    if(res.body) {
+                                        return res.body;
+                                    } else {
+                                        resp.error = "Unexpected Error";
+                                        return resp;
                                     }
-                                );
-                            } else {
-                                callback(
-                                    body.body ? body.body : "Unexpected Error"
-                                );
-                            }
+                                }
+                            })
+                            .catch(error => {
+                                resp.error = "An error occured when attempting signup. Failed at 2/2";
+                                return resp;
+                            })
+                        
+                    } else {
+                        if(res.body) {
+                            return res.body;
+                        } else {
+                            resp.error = "Unexpected Error";
+                            return resp;
                         }
                     }
-                );
+                })
+                .catch(error => {
+                    resp.error = "An error occured when attempting signup. Failed at 1/2"
+                    return resp;
+                })
             }
         }
     }
