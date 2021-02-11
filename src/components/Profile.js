@@ -276,7 +276,7 @@ class Profile {
                         return resp;
                     } else if(res.statusCode === 200) {
                             // Set the first and last name
-                            let data = body.body;
+                            let data = res.body;
                             let token = data.token;
                             let valid_until = this.parseJwt(token).exp * 1000;
 
