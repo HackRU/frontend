@@ -183,19 +183,21 @@ class Profile {
             } else {
                 await fetch(ENDPOINTS.login, {
                     method: "POST",
-                    body: {
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
                         email: email,
                         password: password
-                    },
-                    json: true
+                    }),
+                   
                 })
                     .then(async res => {
-                        if (res.statusCode === 403) {
+                        let resJSON = await res.json(); 
+                        if (resJSON.statusCode === 403) {
                             resp.error = "Invalid email or password";
-                            return resp;
-                        } else if (res.statusCode === 200) {
-                            let data = res.body;
-                            let token = data.token;
+                        } else if (resJSON.statusCode === 200) {
+                            let token = resJSON.body.token;
                             // Convert seconds to milliseconds
                             let valid_until =
                                 this.parseJwt(token).exp * 1000;
@@ -209,20 +211,23 @@ class Profile {
                                 );
                             }
                         } else {
-                            if (res.body) {
-                                return res.body;
+                            if (resJSON.body) {
+                                resp.error = resJSON.body;
+                               
                             } else {
                                 resp.error = "Unexpected Error";
-                                return resp;
+                               
                             }
                         }
                     })
-                        .catch(error => {
+                    .catch(error => {
                         resp.error = error + "; An error occured when attempting login";
-                        return resp;
+                      
                     });
             }
         }
+
+        return resp;
     }
     SignUp(firstname, lastname, email, password, confirmpassword, callback) {
         if (this.isLoggedIn) {
@@ -424,14 +429,15 @@ class Profile {
         if (this.isLoggedIn) {
             await fetch(ENDPOINTS.login, {
                 method: "POST",
-                body: {
+
+                body: JSON.stringify({
                     updates: {
                         $set: data
                     },
                     user_email: user,
                     auth_email: this._email,
                     token: this._token
-                }
+                })
             })
                 .then(async res =>  {
                     if (res.statusCode === 200) {
