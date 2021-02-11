@@ -45,8 +45,8 @@ const LoginPage = (props) => {
             let password = document.getElementById("password").value;
             let msg = props.profile.Login(email, password);
             if (msg) {
-                    setLoading(false);
-                    setErrors(msg);
+                setLoading(false);
+                setErrors(msg);
             } else {
                 setLoading(false);
                 setDone(true);

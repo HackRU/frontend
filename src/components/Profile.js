@@ -189,41 +189,38 @@ class Profile {
                     },
                     json: true
                 })
-                .then(async res => {
-                    if (res.statusCode === 403) {
-                        resp.error = "Invalid email or password";
-                        return resp;
-                    } else if (res.statusCode === 200) {
-                        let data = res.body;
-                        let token = data.token;
-                        // Convert seconds to milliseconds
-                        let valid_until =
-                            this.parseJwt(token).exp * 1000;
-                        this._login(email, token, valid_until);
-                        if (defaults.autocheckin && defaults.dayof) {
-                            // Auto checkin the user
-                            this.Set(
-                                {
-                                    "check-in-after": true
-                                }
-                            );
-                        }
-                        // } else {
-                        //     callback();
-                        // }
-                    } else {
-                        if (res.body) {
-                            return res.body;
-                        } else {
-                            resp.error = "Unexpected Error";
+                    .then(async res => {
+                        if (res.statusCode === 403) {
+                            resp.error = "Invalid email or password";
                             return resp;
+                        } else if (res.statusCode === 200) {
+                            let data = res.body;
+                            let token = data.token;
+                            // Convert seconds to milliseconds
+                            let valid_until =
+                                this.parseJwt(token).exp * 1000;
+                            this._login(email, token, valid_until);
+                            if (defaults.autocheckin && defaults.dayof) {
+                                // Auto checkin the user
+                                this.Set(
+                                    {
+                                        "check-in-after": true
+                                    }
+                                );
+                            }
+                        } else {
+                            if (res.body) {
+                                return res.body;
+                            } else {
+                                resp.error = "Unexpected Error";
+                                return resp;
+                            }
                         }
-                    }
-                })
-                .catch(error => {
-                    error = "An error occured when attempting login";
-                    return resp;
-                })
+                    })
+                        .catch(error => {
+                        resp.error = error + "; An error occured when attempting login";
+                        return resp;
+                    });
             }
         }
     }
@@ -434,27 +431,27 @@ class Profile {
                     user_email: user,
                     auth_email: this._email,
                     token: this._token
-                },
-                json: true
-            })
-            .then(async res =>  {
-                if (res.statusCode === 200) {
-                    return resp;
-                } else {
-                    if (res.body) {
-                        return res.body;
-                    } else {
-                        resp.error = "Unexpected Error";
-                        return resp;
-                    }
                 }
             })
-            .catch(error => {
-                resp.error = "An error occured retrieving data";
-                return resp;
-            })
+                .then(async res =>  {
+                    if (res.statusCode === 200) {
+                        return resp;
+                    } else {
+                        if (res.body) {
+                            return res.body;
+                        } else {
+                            resp.error = "Unexpected Error";
+                            return resp;
+                        }
+                    }
+                })
+                .catch(error => {
+                    resp.error = error + "; An error occured retrieving data";
+                    return resp;
+                });
         } else {
-
+            resp.error = "Please log in";
+            return resp;
         }
     }
     async Set(data) {
