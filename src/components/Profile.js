@@ -217,7 +217,7 @@ class Profile {
             }
         }
     }
-    async SignUp(firstname, lastname, email, password, confirmpassword, callback) {
+    async SignUp(firstname, lastname, email, password, confirmpassword) {
         let resp = {
             error: "",
             response: ""
