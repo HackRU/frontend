@@ -45,16 +45,15 @@ const SignUpPage = (props) => {
             let email = document.getElementById("email").value;
             let password = document.getElementById("password").value;
             let confirmPassword = document.getElementById("conpassword").value;
-            props.profile.SignUp(firstName, lastName, email, password, confirmPassword, (msg) => {
-                if (msg) {
-                    setLoading(false);
-                    setErrors(msg);
-                } else {
-                    setLoading(false);
-                    setDone(true);
-                    setErrors("");
-                }
-            });
+            let msg = props.profile.SignUp(firstName, lastName, email, password, confirmPassword); 
+            if (msg) {
+                setLoading(false);
+                setErrors(msg);
+            } else {
+                setLoading(false);
+                setDone(true);
+                setErrors("");
+            }
         }
     };
 
