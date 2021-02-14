@@ -429,7 +429,9 @@ class Profile {
         if (this.isLoggedIn) {
             await fetch(ENDPOINTS.login, {
                 method: "POST",
-
+                headers: {
+                    "Content-Type": "application/json"
+                },
                 body: JSON.stringify({
                     updates: {
                         $set: data
@@ -440,25 +442,23 @@ class Profile {
                 })
             })
                 .then(async res =>  {
-                    if (res.statusCode === 200) {
-                        return resp;
-                    } else {
-                        if (res.body) {
-                            return res.body;
+                    let resJSON = await res.json();
+                    if (resJSON.statusCode !== 200) {
+                        if (resJSON.body) {
+                            res.error = resJSON.body;
                         } else {
                             resp.error = "Unexpected Error";
-                            return resp;
                         }
                     }
                 })
                 .catch(error => {
                     resp.error = error + "; An error occured retrieving data";
-                    return resp;
                 });
         } else {
             resp.error = "Please log in";
-            return resp;
         }
+        
+        return resp;
     }
     async Set(data) {
         this.SetUser(data, this._email);
