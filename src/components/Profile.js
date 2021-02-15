@@ -319,9 +319,9 @@ class Profile {
                                 }
                             })
                             .catch(error => {
-                                resp.error = "An error occured when attempting signup. Failed at 2/2";
+                                resp.error = error + "; An error occured when attempting signup. Failed at 2/2";
                                 return resp;
-                            })
+                            });
                         
                     } else {
                         if(res.body) {
@@ -333,7 +333,7 @@ class Profile {
                     }
                 })
                 .catch(error => {
-                    resp.error = "An error occured when attempting signup. Failed at 1/2";
+                    resp.error = error + "; An error occured when attempting signup. Failed at 1/2";
                     return resp;
                 });
             }
