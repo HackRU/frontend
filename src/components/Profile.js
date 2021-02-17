@@ -502,45 +502,50 @@ class Profile {
             }
         }
     }
-    Reset(email, password, conpassword, magic, callback) {
+    async Reset(email, password, conpassword, magic) {
+
+        let resp = {
+            error: "",
+            response: "",
+        };
+
         if (!password) {
-            callback("Input a new password");
+            resp.error = "Input a new password";
         } else if (!conpassword) {
-            callback("Confirm your new password");
+            resp.error = "Confirm your new password";
         } else if (password !== conpassword) {
-            callback("Passwords don't match!");
+            resp.error = "Passwords don't match!";
         } else {
-            request(
-                {
-                    method: "POST",
-                    uri: ENDPOINTS.resetpassword,
-                    body: {
-                        email: email,
-                        forgot: true,
-                        password: password,
-                        link: magic
-                    },
-                    json: true
+            await fetch(ENDPOINTS.resetpassword, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
                 },
-                (error, response, body) => {
-                    if (error) {
-                        callback(
-                            "An error occured when attempting to reset password"
-                        );
-                    } else {
-                        if (body.errorMessage) {
-                            callback(body.errorMessage);
-                        } else if (body.statusCode === 200) {
-                            callback();
+                body: JSON.stringify({
+                    email: email,
+                    forgot: true,
+                    password: password,
+                    link: magic
+                })
+            })
+                .then(async res =>  {
+                    let resJSON = await res.json();
+                    if (resJSON.body.errorMessage) {
+                        resp.error = resJSON.body.errorMessage;
+                    } else if (resJSON.statusCode !== 200) {
+                        if (resJSON.body) {
+                            resp.error = resJSON.body;
                         } else {
-                            callback(
-                                body.body ? body.body : "Unexpected Error"
-                            );
+                            resp.error = "Unexpected Error";
                         }
                     }
-                }
-            );
+                })
+                .catch(error => {
+                    resp.error = error + "; An error occured when attempting to reset password";
+                });
         }
+            
+        return resp;
     }
     Eat(magic, callback) {
         if (!magic) {
@@ -579,44 +584,49 @@ class Profile {
             );
         }
     }
-    SendMagic(emails, permissions, callback) {
+    async SendMagic(emails, permissions) {
+
+        let resp = {
+            error: "",
+            response: "",
+        };
+
         if (!emails) {
-            callback("Input a valid email list");
+            resp.error = "Input a valid email list";
         } else if (!this.isLoggedIn) {
-            callback("User needs to be logged in");
+            resp.error = "User needs to be logged in";
         } else {
-            request(
-                {
-                    method: "POST",
-                    uri: ENDPOINTS.sendmagic,
-                    body: {
-                        email: this._email,
-                        token: this._token,
-                        emailsTo: emails,
-                        permissions: permissions,
-                        numLinks: emails.length
-                    },
-                    json: true
+            await fetch(ENDPOINTS.sendmagic, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
                 },
-                (error, response, body) => {
-                    if (error) {
-                        callback(
-                            "An error occured while sending the magic links"
-                        );
-                    } else {
-                        if (body.errorMessage) {
-                            callback(body.errorMessage);
-                        } else if (body.statusCode === 200) {
-                            callback();
+                body: JSON.stringify({
+                    email: this._email,
+                    token: this._token,
+                    emailsTo: emails,
+                    permissions: permissions,
+                    numLinks: emails.length
+                })
+            })
+                .then(async res =>  {
+                    let resJSON = await res.json();
+                    if (resJSON.body.errorMessage) {
+                        resp.error = resJSON.body.errorMessage;
+                    } else if (resJSON.statusCode !== 200) {
+                        if (resJSON.body) {
+                            resp.error = resJSON.body;
                         } else {
-                            callback(
-                                body.body ? body.body : "Unexpected Error"
-                            );
+                            resp.error = "Unexpected Error";
                         }
                     }
-                }
-            );
+                })
+                .catch(error => {
+                    resp.error = error + "; AAn error occured while sending the magic links";
+                });
         }
+
+        return resp;
     }
     ClearMagic() {
         localStorage.removeItem("magic");
