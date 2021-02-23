@@ -81,21 +81,19 @@ export default function Background() {
     };
     const images = [];
     for (let i = 0; i < imageDefs.length; i++) {
-        {
-            let image = imageDefs[i];
-            images.push(renderImage(
-                i,
-                image.source,
-                image.top,
-                image.left,
-                image.bottom,
-                image.right,
-                image.height,
-                image.transform,
-                image.multiplier ? 1 - image.multiplier : 1,
-                image.opacity
-            ));
-        }
+        let image = imageDefs[i];
+        images.push(renderImage(
+            i,
+            image.source,
+            image.top,
+            image.left,
+            image.bottom,
+            image.right,
+            image.height,
+            image.transform,
+            image.multiplier ? 1 - image.multiplier : 1,
+            image.opacity
+        ));
     }
     return (
         <Grid container

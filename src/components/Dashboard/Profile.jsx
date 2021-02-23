@@ -60,8 +60,6 @@ const Profile = (props) => {
                 }
             }
         });
-        
-        
     }, []);
 
     

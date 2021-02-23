@@ -163,59 +163,70 @@ class Profile {
         return JSON.parse(jsonPayload);
     }
 
-    Login(email, password, callback) {
+    async Login(email, password) {
+
+        let resp = {
+            error: "",
+            response: ""
+        };
+
         if (this.isLoggedIn) {
-            callback("User is already logged in");
+            resp.error = "User is already logged in";
+            return resp;
         } else {
             if (!email) {
-                callback("Invalid email");
+                resp.error = "Invalid email";
+                return resp;
             } else if (!password) {
-                callback("Invalid password");
+                resp.error = "Invalid password";
+                return resp;
             } else {
-                request(
-                    {
-                        method: "POST",
-                        uri: ENDPOINTS.login,
-                        body: {
-                            email: email,
-                            password: password
-                        },
-                        json: true
+                await fetch(ENDPOINTS.login, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
                     },
-                    (error, response, body) => {
-                        if (error) {
-                            callback("An error occured when attempting login");
-                        } else {
-                            if (body.statusCode === 403) {
-                                callback("Invalid email or password");
-                            } else if (body.statusCode === 200) {
-                                let data = body.body;
-                                let token = data.token;
-                                // Convert seconds to milliseconds
-                                let valid_until =
-                                    this.parseJwt(token).exp * 1000;
-                                this._login(email, token, valid_until);
-                                if (defaults.autocheckin && defaults.dayof) {
-                                    // Auto checkin the user
-                                    this.Set(
-                                        {
-                                            "check-in-after": true
-                                        },
-                                        callback
-                                    );
-                                } else {
-                                    callback();
-                                }
-                            } else {
-                                callback(
-                                    body.body ? body.body : "Unexpected Error"
+                    body: JSON.stringify({
+                        email: email,
+                        password: password
+                    }),
+                   
+                })
+                    .then(async res => {
+                        let resJSON = await res.json(); 
+                        if (resJSON.statusCode === 403) {
+                            resp.error = "Invalid email or password";
+                        } else if (resJSON.statusCode === 200) {
+                            let token = resJSON.body.token;
+                            // Convert seconds to milliseconds
+                            let valid_until =
+                                this.parseJwt(token).exp * 1000;
+                            this._login(email, token, valid_until);
+                            if (defaults.autocheckin && defaults.dayof) {
+                                // Auto checkin the user
+                                this.Set(
+                                    {
+                                        "check-in-after": true
+                                    }
                                 );
                             }
+                        } else {
+                            if (resJSON.body) {
+                                resp.error = resJSON.body;
+                               
+                            } else {
+                                resp.error = "Unexpected Error";
+                               
+                            }
                         }
-                    }
-                );
+                    })
+                    .catch(error => {
+                        resp.error = error + "; An error occured when attempting login";
+                    });
             }
         }
+
+        return resp;
     }
     SignUp(firstname, lastname, email, password, confirmpassword, callback) {
         if (this.isLoggedIn) {
@@ -399,7 +410,7 @@ class Profile {
     Get(callback) {
         this.GetUser(callback, this._email);
     }
-    SetUser(data, user, callback) {
+    async SetUser(data, user) {
         // console.log(JSON.stringify({
         //     updates: {
         //         $set: data
@@ -408,43 +419,48 @@ class Profile {
         //     auth_email: this._email,
         //     token: this._token
         // }));
+
+        let resp = {
+            error: "",
+            response: "",
+        };
+
         if (this.isLoggedIn) {
-            request(
-                {
-                    method: "POST",
-                    uri: ENDPOINTS.update,
-                    body: {
-                        updates: {
-                            $set: data
-                        },
-                        user_email: user,
-                        auth_email: this._email,
-                        token: this._token
-                    },
-                    json: true
+            await fetch(ENDPOINTS.update, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
                 },
-                (error, response, body) => {
-                    if (error) {
-                        callback(
-                            "An error occured when attempting to update data"
-                        );
-                    } else {
-                        if (body.statusCode === 200) {
-                            callback();
+                body: JSON.stringify({
+                    updates: {
+                        $set: data
+                    },
+                    user_email: user,
+                    auth_email: this._email,
+                    token: this._token
+                })
+            })
+                .then(async res =>  {
+                    let resJSON = await res.json();
+                    if (resJSON.statusCode !== 200) {
+                        if (resJSON.body) {
+                            res.error = resJSON.body;
                         } else {
-                            callback(
-                                body.body ? body.body : "Unexpected Error"
-                            );
+                            resp.error = "Unexpected Error";
                         }
                     }
-                }
-            );
+                })
+                .catch(error => {
+                    resp.error = error + "; An error occured retrieving data";
+                });
         } else {
-            callback("Please log in");
+            resp.error = "Please log in";
         }
+        
+        return resp;
     }
-    Set(data, callback) {
-        this.SetUser(data, this._email, callback);
+    async Set(data) {
+        this.SetUser(data, this._email);
     }
     Forgot(email, callback) {
         if (this.isLoggedIn) {
@@ -485,45 +501,50 @@ class Profile {
             }
         }
     }
-    Reset(email, password, conpassword, magic, callback) {
+    async Reset(email, password, conpassword, magic) {
+
+        let resp = {
+            error: "",
+            response: "",
+        };
+
         if (!password) {
-            callback("Input a new password");
+            resp.error = "Input a new password";
         } else if (!conpassword) {
-            callback("Confirm your new password");
+            resp.error = "Confirm your new password";
         } else if (password !== conpassword) {
-            callback("Passwords don't match!");
+            resp.error = "Passwords don't match!";
         } else {
-            request(
-                {
-                    method: "POST",
-                    uri: ENDPOINTS.resetpassword,
-                    body: {
-                        email: email,
-                        forgot: true,
-                        password: password,
-                        link: magic
-                    },
-                    json: true
+            await fetch(ENDPOINTS.resetpassword, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
                 },
-                (error, response, body) => {
-                    if (error) {
-                        callback(
-                            "An error occured when attempting to reset password"
-                        );
-                    } else {
-                        if (body.errorMessage) {
-                            callback(body.errorMessage);
-                        } else if (body.statusCode === 200) {
-                            callback();
+                body: JSON.stringify({
+                    email: email,
+                    forgot: true,
+                    password: password,
+                    link: magic
+                })
+            })
+                .then(async res =>  {
+                    let resJSON = await res.json();
+                    if (resJSON.body.errorMessage) {
+                        resp.error = resJSON.body.errorMessage;
+                    } else if (resJSON.statusCode !== 200) {
+                        if (resJSON.body) {
+                            resp.error = resJSON.body;
                         } else {
-                            callback(
-                                body.body ? body.body : "Unexpected Error"
-                            );
+                            resp.error = "Unexpected Error";
                         }
                     }
-                }
-            );
+                })
+                .catch(error => {
+                    resp.error = error + "; An error occured when attempting to reset password";
+                });
         }
+            
+        return resp;
     }
     Eat(magic, callback) {
         if (!magic) {
@@ -562,44 +583,49 @@ class Profile {
             );
         }
     }
-    SendMagic(emails, permissions, callback) {
+    async SendMagic(emails, permissions) {
+
+        let resp = {
+            error: "",
+            response: "",
+        };
+
         if (!emails) {
-            callback("Input a valid email list");
+            resp.error = "Input a valid email list";
         } else if (!this.isLoggedIn) {
-            callback("User needs to be logged in");
+            resp.error = "User needs to be logged in";
         } else {
-            request(
-                {
-                    method: "POST",
-                    uri: ENDPOINTS.sendmagic,
-                    body: {
-                        email: this._email,
-                        token: this._token,
-                        emailsTo: emails,
-                        permissions: permissions,
-                        numLinks: emails.length
-                    },
-                    json: true
+            await fetch(ENDPOINTS.sendmagic, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
                 },
-                (error, response, body) => {
-                    if (error) {
-                        callback(
-                            "An error occured while sending the magic links"
-                        );
-                    } else {
-                        if (body.errorMessage) {
-                            callback(body.errorMessage);
-                        } else if (body.statusCode === 200) {
-                            callback();
+                body: JSON.stringify({
+                    email: this._email,
+                    token: this._token,
+                    emailsTo: emails,
+                    permissions: permissions,
+                    numLinks: emails.length
+                })
+            })
+                .then(async res =>  {
+                    let resJSON = await res.json();
+                    if (resJSON.body.errorMessage) {
+                        resp.error = resJSON.body.errorMessage;
+                    } else if (resJSON.statusCode !== 200) {
+                        if (resJSON.body) {
+                            resp.error = resJSON.body;
                         } else {
-                            callback(
-                                body.body ? body.body : "Unexpected Error"
-                            );
+                            resp.error = "Unexpected Error";
                         }
                     }
-                }
-            );
+                })
+                .catch(error => {
+                    resp.error = error + "; AAn error occured while sending the magic links";
+                });
         }
+
+        return resp;
     }
     ClearMagic() {
         localStorage.removeItem("magic");
@@ -610,23 +636,39 @@ class Profile {
     GetMagic() {
         return localStorage.getItem("magic");
     }
-    GetQR(callback) {
-        request(
-            {
-                method: "POST",
-                uri: ENDPOINTS.qr,
-                body: {
-                    email: this._email,
-                    background: [0xff, 0xff, 0xff],
-                    color: [0x00, 0x00, 0x00],
-                    transparentBackground: true
-                },
-                json: true
+    async GetQR() {
+        let resp = {
+            error: "",
+            response: "",
+        };
+
+        await fetch(ENDPOINTS.qr, {
+            method: "POST",
+            uri: ENDPOINTS.qr,
+            body: {
+                email: this._email,
+                background: [0xff, 0xff, 0xff],
+                color: [0x00, 0x00, 0x00],
+                transparentBackground: true
             },
-            (error, response, body) => {
-                callback(error, body);
-            }
-        );
+        })
+            .then(async res => {
+                let resJSON = await res.json();
+                if (resJSON.body.errorMessage) {
+                    resp.error = resJSON.body.errorMessage;
+                } else if (resJSON.statusCode !== 200) {
+                    if (resJSON.body) {
+                        resp.error = resJSON.body;
+                    } else {
+                        resp.error = "Unexpected error";
+                    }
+                }
+            })
+            .catch (error => {
+                resp.error = error;
+            });
+
+        return resp;
     }
     async GetResumeInfo() {
         const json = await fetch(ENDPOINTS.resume, {
@@ -647,7 +689,7 @@ class Profile {
     }
     async UploadResume(file) {
         const info = await this.GetResumeInfo();
-        return await fetch(info.upload, {
+        return fetch(info.upload, {
             method: "PUT",
             headers: {
                 "content-type": "application/pdf"

@@ -59,7 +59,7 @@ function ManageTeam(props) {
         }
         setTeam(prevState => ({
             ...prevState,
-            [name]: prevState[name].filter(el => el != id)
+            [name]: prevState[name].filter(el => el !== id)
         }));
 
     }

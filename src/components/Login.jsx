@@ -36,23 +36,22 @@ const LoginPage = (props) => {
     const [done, setDone] = useState(false);
     const [errors, setErrors] = useState("");
 
-    const onSubmit = (e) => {
+    const onSubmit = async (e) => {
         e.preventDefault();
         if (!loading) {
             setLoading(true);
             setErrors("");
             let email = document.getElementById("email").value;
             let password = document.getElementById("password").value;
-            props.profile.Login(email, password, (msg) => {
-                if (msg) {
-                    setLoading(false);
-                    setErrors(msg);
-                } else {
-                    setLoading(false);
-                    setDone(true);
-                    setErrors("");
-                }
-            });
+            let msg = await props.profile.Login(email, password);
+            if (msg.error) {
+                setLoading(false);
+                setErrors(msg.error);
+            } else {
+                setLoading(false);
+                setDone(true);
+                setErrors("");
+            }
         }
     };
     
