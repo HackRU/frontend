@@ -263,18 +263,20 @@ class Profile {
                 */
                 await fetch(ENDPOINTS.signup, {
                     method: "POST",
-                    body: {
+                    headers: {
+                        "content-type": "application/json"
+                    },
+                    body: JSON.stringify({
                         email: email,
                         password: password,
                         registration_status: "unregistered" //"waitlist" is one of them
-                    },
-                    json: true
+                    })
                 })
-                .then(async res => {
-                    if(res.statusCode === 400) {
-                        resp.error = "User with email" + email + " already exists";
-                        return resp;
-                    } else if(res.statusCode === 200) {
+                    .then(async res => {
+                        if(res.statusCode === 400) {
+                            resp.error = "User with email" + email + " already exists";
+                            return resp;
+                        } else if(res.statusCode === 200) {
                             // Set the first and last name
                             let data = res.body;
                             let token = data.token;
@@ -295,47 +297,47 @@ class Profile {
                                 },
                                 json: true
                             })
-                            .then(async res => {
-                                if(res.statusCode === 200) {
-                                this._login(
-                                    email,
-                                    token,
-                                    valid_until
-                                );
-                                    /**
+                                .then(async res => {
+                                    if(res.statusCode === 200) {
+                                        this._login(
+                                            email,
+                                            token,
+                                            valid_until
+                                        );
+                                        /**
                                      * Create new TeamRU user on signup
                                      */
-                                    if (defaults.teamru_user)
-                                        this.newUser({
-                                            bio: firstname
-                                        });
-                                } else {
-                                    if(res.body) {
-                                        return res.body;
+                                        if (defaults.teamru_user)
+                                            this.newUser({
+                                                bio: firstname
+                                            });
                                     } else {
-                                        resp.error = "Unexpected Error";
-                                        return resp;
+                                        if(res.body) {
+                                            return res.body;
+                                        } else {
+                                            resp.error = "Unexpected Error";
+                                            return resp;
+                                        }
                                     }
-                                }
-                            })
-                            .catch(error => {
-                                resp.error = error + "; An error occured when attempting signup. Failed at 2/2";
-                                return resp;
-                            });
+                                })
+                                .catch(error => {
+                                    resp.error = error + "; An error occured when attempting signup. Failed at 2/2";
+                                    return resp;
+                                });
                         
-                    } else {
-                        if(res.body) {
-                            return res.body;
                         } else {
-                            resp.error = "Unexpected Error";
-                            return resp;
+                            if(res.body) {
+                                return res.body;
+                            } else {
+                                resp.error = "Unexpected Error";
+                                return resp;
+                            }
                         }
-                    }
-                })
-                .catch(error => {
-                    resp.error = error + "; An error occured when attempting signup. Failed at 1/2";
-                    return resp;
-                });
+                    })
+                    .catch(error => {
+                        resp.error = error + "; An error occured when attempting signup. Failed at 1/2";
+                        return resp;
+                    });
             }
         }
     }
