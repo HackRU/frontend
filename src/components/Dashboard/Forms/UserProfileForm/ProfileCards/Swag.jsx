@@ -25,6 +25,7 @@ const Swag = (props) => {
 
     const submitUser = async () => {
         setLoading(true);
+        setEdit(true);
 
         let update_user = {};
         update_user.swag = {accepting_swag: want, swag_address: swag_addr};

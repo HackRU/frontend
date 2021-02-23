@@ -48,16 +48,14 @@ class Questions extends Component {
         update_user.special_needs = this.state.user.special_needs;
         update_user.want_team = this.state.user.want_team;
 
-        let update_promise = new Promise((resolve) => {
-            this.props.profile.Set(update_user, (err) => {resolve(err);} );
-        });
-
-        await update_promise;
-
-        this.setState({
-            edit: false,
-            loading: false
-        });
+        this.props.profile.Set(update_user)
+            .then(res => {
+                this.setState({
+                    edit: false,
+                    loading: false
+                });
+                return res;
+            });
     }
 
     render() {

@@ -222,7 +222,6 @@ class Profile {
                     })
                     .catch(error => {
                         resp.error = error + "; An error occured when attempting login";
-                      
                     });
             }
         }
@@ -427,7 +426,7 @@ class Profile {
         };
 
         if (this.isLoggedIn) {
-            await fetch(ENDPOINTS.login, {
+            await fetch(ENDPOINTS.update, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -637,23 +636,39 @@ class Profile {
     GetMagic() {
         return localStorage.getItem("magic");
     }
-    GetQR(callback) {
-        request(
-            {
-                method: "POST",
-                uri: ENDPOINTS.qr,
-                body: {
-                    email: this._email,
-                    background: [0xff, 0xff, 0xff],
-                    color: [0x00, 0x00, 0x00],
-                    transparentBackground: true
-                },
-                json: true
+    async GetQR() {
+        let resp = {
+            error: "",
+            response: "",
+        };
+
+        await fetch(ENDPOINTS.qr, {
+            method: "POST",
+            uri: ENDPOINTS.qr,
+            body: {
+                email: this._email,
+                background: [0xff, 0xff, 0xff],
+                color: [0x00, 0x00, 0x00],
+                transparentBackground: true
             },
-            (error, response, body) => {
-                callback(error, body);
-            }
-        );
+        })
+            .then(async res => {
+                let resJSON = await res.json();
+                if (resJSON.body.errorMessage) {
+                    resp.error = resJSON.body.errorMessage;
+                } else if (resJSON.statusCode !== 200) {
+                    if (resJSON.body) {
+                        resp.error = resJSON.body;
+                    } else {
+                        resp.error = "Unexpected error";
+                    }
+                }
+            })
+            .catch (error => {
+                resp.error = error;
+            });
+
+        return resp;
     }
     async GetResumeInfo() {
         const json = await fetch(ENDPOINTS.resume, {
@@ -674,7 +689,7 @@ class Profile {
     }
     async UploadResume(file) {
         const info = await this.GetResumeInfo();
-        return await fetch(info.upload, {
+        return fetch(info.upload, {
             method: "PUT",
             headers: {
                 "content-type": "application/pdf"
