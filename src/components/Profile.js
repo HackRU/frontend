@@ -361,12 +361,17 @@ class Profile {
         this._valid_until = null;
         this.isLoggedIn = false;
     }
-    GetUser(callback, email) {
+    async GetUser(email) {
+
+        let resp = {
+            error: "",
+            response: ""
+        };
+
         if (this.isLoggedIn) {
-            request(
+            await fetch(ENDPOINTS.userData,
                 {
                     method: "POST",
-                    uri: ENDPOINTS.userData,
                     body: {
                         email: this._email,
                         token: this._token,
@@ -375,33 +380,36 @@ class Profile {
                         }
                     },
                     json: true
-                },
-                (error, response, body) => {
-                    if (error) {
-                        callback("An error occured retrieving data", null);
+                })
+                .then(async res => {
+                    if (res.statusCode === 200) {
+                        // what to do here
+                        callback(null, body.body[0]);
+                        if (email === this._email) {
+                            this._registration_status =
+                                body.body[0].registration_status;
+                            this._want_team = body.body[0].want_team;
+                        }
                     } else {
-                        if (body.statusCode === 200) {
-                            callback(null, body.body[0]);
-                            if (email === this._email) {
-                                this._registration_status =
-                                    body.body[0].registration_status;
-                                this._want_team = body.body[0].want_team;
-                            }
+                        if(res.body) {
+                            return res.body;
                         } else {
-                            callback(
-                                body.body ? body.body : "Unexpected Error",
-                                null
-                            );
+                            resp.error = "Unexpected Error";
+                            return resp;
                         }
                     }
-                }
-            );
+                })
+                .catch(error => {
+                    resp.error = error + "An error occured retrieving data";
+                    return resp;
+                });
         } else {
-            callback("Please log in", null);
+            resp.error = "Please log in";
+            return resp;
         }
     }
-    Get(callback) {
-        this.GetUser(callback, this._email);
+    async Get() {
+        this.GetUser(this._email);
     }
     SetUser(data, user, callback) {
         // console.log(JSON.stringify({
@@ -450,42 +458,48 @@ class Profile {
     Set(data, callback) {
         this.SetUser(data, this._email, callback);
     }
-    Forgot(email, callback) {
+    async Forgot(email) {
+
+        let resp = {
+            error: "",
+            response: "",
+        };
+
         if (this.isLoggedIn) {
-            callback("User is already logged in");
+            resp.error = "User is already logged in";
+            return resp;
         } else {
             if (!email) {
-                callback("Invalid email");
+                resp.error = ("Invalid email");
+                return resp;
             } else {
-                request(
+                await fetch(ENDPOINTS.forgot, 
                     {
                         method: "POST",
-                        uri: ENDPOINTS.forgot,
                         body: {
                             email: email,
                             forgot: true
                         },
                         json: true
-                    },
-                    (error, response, body) => {
-                        if (error) {
-                            callback(
-                                "An error occured when attempting to general url"
-                            );
+                    })
+                .then(res => {
+                    if (res.statusCode === 200) {
+                        return resp;
+                    } else {
+                        if (res.errorMessage) {
+                            console.error(res.errorMessage);
+                        }
+                        if(res.body) {
+                            return res.body;
                         } else {
-                            if (body.statusCode === 200) {
-                                callback();
-                            } else {
-                                callback(
-                                    body.body ? body.body : "Unexpected Error"
-                                );
-                                if (body.errorMessage) {
-                                    console.error(body.errorMessage);
-                                }
-                            }
+                            resp.error = "Unexpected Error";
+                            return resp;
                         }
                     }
-                );
+                }).catch(error => {
+                    resp.error = error + "An error occured when attempting to general url";
+                    return resp;
+                });
             }
         }
     }
@@ -529,41 +543,49 @@ class Profile {
             );
         }
     }
-    Eat(magic, callback) {
+    aysnc Eat(magic) {
+
+        let resp = {
+            error: "",
+            response: ""
+        };
+
         if (!magic) {
-            callback("Input a valid magic link");
+            resp.error = ("Input a valid magic link");
+            return resp;
         } else if (!this.isLoggedIn) {
-            callback("User needs to be logged in");
+            resp.error = ("User needs to be logged in");
+            return resp;
         } else {
-            request(
+            await fetch(ENDPOINTS.magic, 
                 {
                     method: "POST",
-                    uri: ENDPOINTS.magic,
                     body: {
                         email: this._email,
                         link: magic,
                         token: this._token
                     },
                     json: true
-                },
-                (error, response, body) => {
-                    if (error) {
-                        callback(
-                            "An error occured while digesting the magic link"
-                        );
+                })
+            .then(async res => {
+                if (res.errorMessage) {
+                    resp.error = body.errorMessage;
+                    return resp;
+                } else if (res.statusCode === 200) {
+                    return resp;
+                } else {
+                    if(res.body) {
+                        return res.body;
                     } else {
-                        if (body.errorMessage) {
-                            callback(body.errorMessage);
-                        } else if (body.statusCode === 200) {
-                            callback();
-                        } else {
-                            callback(
-                                body.body ? body.body : "Unexpected Error"
-                            );
-                        }
+                        resp.error = "Unexpected Error";
+                        return resp;
                     }
                 }
-            );
+            })
+            .catch(error => {
+                resp.error = error + "An error occured while digesting the magic link";
+                return resp;
+            });
         }
     }
     SendMagic(emails, permissions, callback) {
