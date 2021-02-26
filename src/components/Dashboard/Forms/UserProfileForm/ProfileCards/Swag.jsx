@@ -35,14 +35,7 @@ const Swag = (props) => {
             .then( () => {
                 setLoading(false);
                 setEdit(false);
-            }
-            );
-        
-
-
-
-    
-
+            });
         
     };
 

@@ -29,7 +29,7 @@ class Register extends Component {
     }
 
     checkStatus = async (user) => {
-        console.log(user);
+        //console.log(user);
 
         let waiver_promise = new Promise( (resolve) => {
             resolve(this.props.profile.DoesWaiverExist());
@@ -78,10 +78,16 @@ class Register extends Component {
             console.log("All fields valid");
             got_user.registration_status = "registered";
             this.updateUser(got_user);
-            let update_promise = new Promise((resolve) => {
-                this.props.profile.Set(this.state.user, (err) => {resolve(err);} );
-            });
-            let error = await update_promise;
+
+            let error = await this.props.profile.Set(this.state.user)
+                .then(res => {
+                    this.setState({
+                        profileMSG: null,
+                        loading: false,
+                    });
+                    return res;
+                });
+                
             if (error) {
                 this.setState({
                     message: "An error occured!"
@@ -103,11 +109,6 @@ class Register extends Component {
             });
             this.setState({ message: null }, () => { this.setState({ message: "Please make sure all required fields are filled out." }); });
         }
-
-        this.setState({
-            profileMSG: null,
-            loading: false,
-        });
     }
 
     render() {

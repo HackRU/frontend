@@ -82,18 +82,16 @@ class Dashboard extends Component {
                         delete msg.response.auth;
                         if (defaults.autocheckin && defaults.dayof && !msg.response["check-in-after"]) {
                         // Auto checkin the user
-                            this.props.profile.Set(
-                                {
-                                    "check-in-after": true
-                                },
-                                () => {
+                            this.props.profile.Set({ "check-in-after": true })
+                                .then(res => {
+                                    // console.log(res);
                                     this.setState({
                                         user: msg.response,
                                         loading: false,
                                         openDetails: (msg.response.registration_status === "unregistered")
                                     });
-                                }
-                            );
+                                    return res;
+                                });
                         } else {
                             this.setState({
                                 user: msg.response,
@@ -104,8 +102,6 @@ class Dashboard extends Component {
                     }
                 }
             });
-        
-        
     }
         
 
@@ -115,14 +111,20 @@ class Dashboard extends Component {
             profileMSG: null,
             user,
         }, () => {
-            this.props.profile.Set(this.state.user, (err) => {
-                this.setState({
-                    loading: false,
-                    profileMSG: err ?
-                        { color: "danger", value: err } :
-                        { color: "success", value: "Profile Updated!" }
+            this.props.profile.Set(this.state.user)
+                .then(res => {
+                    console.log(res);
+                    this.setState({
+                        loading: false,
+                        profileMSG: res ?
+                            { color: "danger", value: res } :
+                            { color: "success", value: "Profile Updated!" }
+                    });
+                    return res;
                 });
-            });
+            // , (err) => {
+                
+            // });
         });
     }
     render() {
