@@ -1,4 +1,3 @@
-import request from "request";
 import { defaults } from "../Defaults";
 import PropTypes from "prop-types";
 
@@ -396,7 +395,6 @@ class Profile {
                 })
                 .then(async res => {
                     let res_json = await res.json();
-                    console.log(res_json);
                     if (res_json.statusCode === 200) {
                         // what to do here
                         resp.response = res_json.body[0];
