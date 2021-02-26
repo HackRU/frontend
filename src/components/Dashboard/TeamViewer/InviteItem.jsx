@@ -14,7 +14,6 @@ function InviteItem(props) {
         profile.getTeam(invitedTeamId).then((success) => {
             setInvitedTeam(success.response);
         });
-
     }, []);
     return (
         <ListItem

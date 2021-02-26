@@ -41,16 +41,14 @@ class UserProfileForm extends Component {
         update_user.slack_id = this.state.user.slack_id;
         update_user.github = this.state.user.github;
 
-        let update_promise = new Promise((resolve) => {
-            this.props.profile.Set(update_user, (err) => {resolve(err);} );
-        });
-
-        await update_promise;
-
-        this.setState({
-            edit: false,
-            loading: false
-        });
+        this.props.profile.Set(update_user)
+            .then(res => {
+                this.setState({
+                    edit: false,
+                    loading: false
+                });
+                return res;
+            });
     }
 
     render() {

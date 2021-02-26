@@ -25,18 +25,25 @@ const Swag = (props) => {
 
     const submitUser = async () => {
         setLoading(true);
+        setEdit(true);
 
         let update_user = {};
         update_user.swag = {accepting_swag: want, swag_address: swag_addr};
 
-        let update_promise = new Promise((resolve) => {
-            props.profile.Set(update_user, (err) => {resolve(err);} );
-        });
+        
+        props.profile.Set(update_user)
+            .then( () => {
+                setLoading(false);
+                setEdit(false);
+            }
+            );
+        
 
-        await update_promise;
 
-        setLoading(false);
-        setEdit(false);
+
+    
+
+        
     };
 
     useEffect(() => {

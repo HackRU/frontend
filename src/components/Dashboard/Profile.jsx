@@ -49,18 +49,6 @@ const Profile = (props) => {
                     props.clearMagic();
                 });
         }
-        // props.profile.Get((msg, data) => {
-        //     if (msg) {
-        //         console.error(msg);
-        //     } else {
-        //         if (data) {
-        //             delete data.auth;
-        //             setUser(data);
-        //             get_profile();
-        //             setOpenDetails((data.registration_status === "unregistered"));
-        //         }
-        //     }
-        // });
         props.profile.Get()
             .then((msg) => {
                 if (msg.error) {
@@ -74,8 +62,6 @@ const Profile = (props) => {
                     }
                 }
             });
-        
-        
     }, []);
 
     

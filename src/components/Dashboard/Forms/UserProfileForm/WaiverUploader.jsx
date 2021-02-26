@@ -22,7 +22,6 @@ const WaiverUploader = (props) => {
         setWaiverLabelText("Uploading waiver...");
         // Make the upload request
         const res = await props.profile.UploadWaiver(event.target.files[0]);
-
         props.checkWaiver(res.ok ? "Waiver uploaded successfully." : "Failed to upload waiver");
         setWaiverLabelText(res.ok ? "Waiver uploaded successfully." : "Failed to upload waiver");
     };
