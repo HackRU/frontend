@@ -27,51 +27,87 @@ class Dashboard extends Component {
     }
     UNSAFE_componentWillMount() {
         if (this.props.magic) {
-            this.props.profile.Eat(this.props.magic, (msg) => {
-                if (msg) {
-                    console.error(msg);
-                    this.setState({
-                        profileMSG: { color: "warning", value: msg }
-                    });
-                } else {
-                    this.setState({
-                        profileMSG: { color: "info", value: "Magic link applied!" }
-                    });
-                }
-                this.props.clearMagic();
-            });
-        }
-        this.props.profile.Get((msg, data) => {
-            if (msg) {
-                console.error(msg);
-            } else {
-                if (data) {
-                    delete data.auth;
-                    if (defaults.autocheckin && defaults.dayof && !data["check-in-after"]) {
-                        // Auto checkin the user
-                        this.props.profile.Set(
-                            {
-                                "check-in-after": true
-                            },
-                            () => {
-                                this.setState({
-                                    user: data,
-                                    loading: false,
-                                    openDetails: (data.registration_status === "unregistered")
-                                });
-                            }
-                        );
+            this.props.profile.Eat(this.props.magic)
+                .then((msg) => {
+                    if (msg.error) {
+                        console.error(msg.error);
+                        this.setState({
+                            profileMSG: { color: "warning", value: msg.error }
+                        });
                     } else {
                         this.setState({
-                            user: data,
-                            loading: false,
-                            openDetails: (data.registration_status === "unregistered")
+                            profileMSG: { color: "info", value: "Magic link applied!" }
                         });
                     }
+                    this.props.clearMagic();
+                });
+        }
+        // this.props.profile.Get((msg, data) => {
+        //     if (msg) {
+        //         console.error(msg);
+        //     } else {
+        //         if (data) {
+        //             delete data.auth;
+        //             if (defaults.autocheckin && defaults.dayof && !data["check-in-after"]) {
+        //                 // Auto checkin the user
+        //                 this.props.profile.Set(
+        //                     {
+        //                         "check-in-after": true
+        //                     },
+        //                     () => {
+        //                         this.setState({
+        //                             user: data,
+        //                             loading: false,
+        //                             openDetails: (data.registration_status === "unregistered")
+        //                         });
+        //                     }
+        //                 );
+        //             } else {
+        //                 this.setState({
+        //                     user: data,
+        //                     loading: false,
+        //                     openDetails: (data.registration_status === "unregistered")
+        //                 });
+        //             }
+        //         }
+        //     }
+        // });
+    
+        this.props.profile.Get()
+            .then((msg) => {
+                if (msg.error) {
+                    console.error(msg.error);
+                } else {
+                    if (msg.response) {
+                        delete msg.response.auth;
+                        if (defaults.autocheckin && defaults.dayof && !msg.response["check-in-after"]) {
+                        // Auto checkin the user
+                            this.props.profile.Set(
+                                {
+                                    "check-in-after": true
+                                },
+                                () => {
+                                    this.setState({
+                                        user: msg.response,
+                                        loading: false,
+                                        openDetails: (msg.response.registration_status === "unregistered")
+                                    });
+                                }
+                            );
+                        } else {
+                            this.setState({
+                                user: msg.response,
+                                loading: false,
+                                openDetails: (msg.response.registration_status === "unregistered")
+                            });
+                        }
+                    }
                 }
-            }
-        });
+            });
+        
+        
     }
+        
 
     submitUser = (user) => {
         this.setState({

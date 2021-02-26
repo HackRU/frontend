@@ -273,18 +273,21 @@ class Profile {
                     })
                 })
                     .then(async res => {
-                        if(res.statusCode === 400) {
-                            resp.error = "User with email" + email + " already exists";
-                            return resp;
-                        } else if(res.statusCode === 200) {
+                        let res_json = await res.json();
+                        if(res_json.statusCode === 400) {
+                            resp.error = "User with email " + email + " already exists";
+                        } else if(res_json.statusCode === 200) {
                             // Set the first and last name
-                            let data = res.body;
+                            let data = res_json.body;
                             let token = data.token;
                             let valid_until = this.parseJwt(token).exp * 1000;
 
                             await fetch(ENDPOINTS.update, {
                                 method: "POST",
-                                body: {
+                                headers: {
+                                    "content-type": "application/json"
+                                },
+                                body: JSON.stringify({
                                     updates: {
                                         $set: {
                                             first_name: firstname,
@@ -294,11 +297,11 @@ class Profile {
                                     user_email: email,
                                     auth_email: email,
                                     token: token
-                                },
-                                json: true
+                                })
                             })
                                 .then(async res => {
-                                    if(res.statusCode === 200) {
+                                    let res_json = await res.json();
+                                    if(res_json.statusCode === 200) {
                                         this._login(
                                             email,
                                             token,
@@ -312,34 +315,32 @@ class Profile {
                                                 bio: firstname
                                             });
                                     } else {
-                                        if(res.body) {
-                                            return res.body;
+                                        if(res_json.body) {
+                                            resp.error = res_json.body;
                                         } else {
                                             resp.error = "Unexpected Error";
-                                            return resp;
                                         }
                                     }
                                 })
                                 .catch(error => {
                                     resp.error = error + "; An error occured when attempting signup. Failed at 2/2";
-                                    return resp;
                                 });
                         
                         } else {
-                            if(res.body) {
-                                return res.body;
+                            if(res_json.body) {
+                                resp.error = res_json.body;
                             } else {
                                 resp.error = "Unexpected Error";
-                                return resp;
                             }
                         }
                     })
                     .catch(error => {
                         resp.error = error + "; An error occured when attempting signup. Failed at 1/2";
-                        return resp;
                     });
             }
         }
+
+        return resp;
     }
     _login(email, token, valid_until) {
         email = email.toLowerCase();
@@ -362,7 +363,6 @@ class Profile {
         this.isLoggedIn = false;
     }
     async GetUser(email) {
-
         let resp = {
             error: "",
             response: ""
@@ -372,44 +372,45 @@ class Profile {
             await fetch(ENDPOINTS.userData,
                 {
                     method: "POST",
-                    body: {
+                    headers: {
+                        "content-type": "application/json"
+                    },
+                    body: JSON.stringify({
                         email: this._email,
                         token: this._token,
                         query: {
                             email: email
                         }
-                    },
-                    json: true
+                    })
                 })
                 .then(async res => {
-                    if (res.statusCode === 200) {
+                    let res_json = await res.json();
+                    console.log(res_json);
+                    if (res_json.statusCode === 200) {
                         // what to do here
-                        callback(null, body.body[0]);
+                        resp.response = res_json.body[0];
                         if (email === this._email) {
-                            this._registration_status =
-                                body.body[0].registration_status;
-                            this._want_team = body.body[0].want_team;
+                            this._registration_status = res_json.body[0].registration_status;
+                            this._want_team = res_json.body[0].want_team;
                         }
                     } else {
-                        if(res.body) {
-                            return res.body;
+                        if(res_json.body) {
+                            resp.response = res_json.body;
                         } else {
                             resp.error = "Unexpected Error";
-                            return resp;
                         }
                     }
                 })
                 .catch(error => {
                     resp.error = error + "An error occured retrieving data";
-                    return resp;
                 });
         } else {
             resp.error = "Please log in";
-            return resp;
         }
+        return resp;
     }
     async Get() {
-        this.GetUser(this._email);
+        return await this.GetUser(this._email);
     }
     SetUser(data, user, callback) {
         // console.log(JSON.stringify({
@@ -482,24 +483,24 @@ class Profile {
                         },
                         json: true
                     })
-                .then(res => {
-                    if (res.statusCode === 200) {
-                        return resp;
-                    } else {
-                        if (res.errorMessage) {
-                            console.error(res.errorMessage);
-                        }
-                        if(res.body) {
-                            return res.body;
-                        } else {
-                            resp.error = "Unexpected Error";
+                    .then(res => {
+                        if (res.statusCode === 200) {
                             return resp;
+                        } else {
+                            if (res.errorMessage) {
+                                console.error(res.errorMessage);
+                            }
+                            if(res.body) {
+                                return res.body;
+                            } else {
+                                resp.error = "Unexpected Error";
+                                return resp;
+                            }
                         }
-                    }
-                }).catch(error => {
-                    resp.error = error + "An error occured when attempting to general url";
-                    return resp;
-                });
+                    }).catch(error => {
+                        resp.error = error + "An error occured when attempting to general url";
+                        return resp;
+                    });
             }
         }
     }
@@ -543,7 +544,7 @@ class Profile {
             );
         }
     }
-    aysnc Eat(magic) {
+    async Eat(magic) {
 
         let resp = {
             error: "",
@@ -560,33 +561,35 @@ class Profile {
             await fetch(ENDPOINTS.magic, 
                 {
                     method: "POST",
-                    body: {
+                    headers: {
+                        "content-type": "application/json"
+                    },
+                    body: JSON.stringify({
                         email: this._email,
                         link: magic,
                         token: this._token
-                    },
-                    json: true
+                    })
                 })
-            .then(async res => {
-                if (res.errorMessage) {
-                    resp.error = body.errorMessage;
-                    return resp;
-                } else if (res.statusCode === 200) {
-                    return resp;
-                } else {
-                    if(res.body) {
-                        return res.body;
+                .then(async res => {
+                    let res_json = await res.json();
+                    if (res_json.errorMessage) {
+                        resp.error = res_json.errorMessage;
+                    } else if (res_json.statusCode === 200) {
+                        resp.response = res_json.body;
                     } else {
-                        resp.error = "Unexpected Error";
-                        return resp;
+                        if(res_json.body) {
+                            resp.error = res_json.body;
+                        } else {
+                            resp.error = "Unexpected Error";
+                        }
                     }
-                }
-            })
-            .catch(error => {
-                resp.error = error + "An error occured while digesting the magic link";
-                return resp;
-            });
+                })
+                .catch(error => {
+                    resp.error = error + "An error occured while digesting the magic link";
+                });
         }
+
+        return resp;
     }
     SendMagic(emails, permissions, callback) {
         if (!emails) {

@@ -38,28 +38,42 @@ const Profile = (props) => {
         }
 
         if (props.magic) {
-            props.profile.Eat(props.magic, (msg) => {
-                if (msg) {
-                    console.error(msg);
-                    setProfileMSG({ color: "warning", value: msg });
-                } else {
-                    setProfileMSG({ color: "info", value: "Magic link applied!" });
-                }
-                props.clearMagic();
-            });
+            props.profile.Eat(props.magic)
+                .then((msg) => {
+                    if (msg.error) {
+                        console.error(msg.error);
+                        setProfileMSG({ color: "warning", value: msg.error });
+                    } else {
+                        setProfileMSG({ color: "info", value: "Magic link applied!" });
+                    }
+                    props.clearMagic();
+                });
         }
-        props.profile.Get((msg, data) => {
-            if (msg) {
-                console.error(msg);
-            } else {
-                if (data) {
-                    delete data.auth;
-                    setUser(data);
-                    get_profile();
-                    setOpenDetails((data.registration_status === "unregistered"));
+        // props.profile.Get((msg, data) => {
+        //     if (msg) {
+        //         console.error(msg);
+        //     } else {
+        //         if (data) {
+        //             delete data.auth;
+        //             setUser(data);
+        //             get_profile();
+        //             setOpenDetails((data.registration_status === "unregistered"));
+        //         }
+        //     }
+        // });
+        props.profile.Get()
+            .then((msg) => {
+                if (msg.error) {
+                    console.error(msg.error);
+                } else {
+                    if (msg.response) {
+                        delete msg.response.auth;
+                        setUser(msg.response);
+                        get_profile();
+                        setOpenDetails((msg.response.registration_status === "unregistered"));
+                    }
                 }
-            }
-        });
+            });
         
         
     }, []);

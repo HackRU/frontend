@@ -60,17 +60,8 @@ class Register extends Component {
             loading: true,
         });
 
-        let promise = new Promise((resolve, reject) => {
-            this.props.profile.Get((msg, data) => {
-                if (msg) {
-                    reject(msg);
-                    console.log(msg);
-                }
-                else {
-                    resolve(data);
-                }
-            });
-        });
+        let promise = this.props.profile.Get();
+       
 
         let got_user = await promise;
         // console.log(got_user);
