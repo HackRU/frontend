@@ -54,7 +54,7 @@ const SignUpPage = (props) => {
                     setDone(true);
                     setErrors("");
                 }
-            })
+            });
         }
     };
 
