@@ -1,4 +1,3 @@
-import request from "request";
 import { defaults } from "../Defaults";
 import PropTypes from "prop-types";
 
@@ -228,22 +227,33 @@ class Profile {
 
         return resp;
     }
-    SignUp(firstname, lastname, email, password, confirmpassword, callback) {
+    async SignUp(firstname, lastname, email, password, confirmpassword) {
+        let resp = {
+            error: "",
+            response: ""
+        };
         if (this.isLoggedIn) {
-            callback("User is already logged in");
+            resp.error = "User is already logged in";
+            return resp;
         } else {
             if (!firstname) {
-                callback("Invalid first name");
+                resp.error = "Invalid first name";
+                return resp;
             } else if (!lastname) {
-                callback("Invalid last name");
+                resp.error = "Invalid last name";
+                return resp;
             } else if (!email) {
-                callback("Invalid email");
+                resp.error = "Invalid email";
+                return resp;
             } else if (!password) {
-                callback("Invalid password");
+                resp.error = "Invalid password";
+                return resp;
             } else if (!confirmpassword) {
-                callback("Invalid password");
+                resp.error = "Invalid password";
+                return resp;
             } else if (password !== confirmpassword) {
-                callback("Passwords don't match");
+                resp.error = "Passwords don't match";
+                return resp;
             } else {
                 /*
                 From the legacy code. These are all of the fields of registration_status, and what they mean
@@ -261,92 +271,86 @@ class Profile {
                 };
                 ```
                 */
-                request(
-                    {
-                        method: "POST",
-                        uri: ENDPOINTS.signup,
-                        body: {
-                            email: email,
-                            password: password,
-                            registration_status: "unregistered" //"waitlist" is one of them
-                        },
-                        json: true
+                await fetch(ENDPOINTS.signup, {
+                    method: "POST",
+                    headers: {
+                        "content-type": "application/json"
                     },
-                    (error, response, body) => {
-                        if (error) {
-                            callback(
-                                "An error occured when attempting signup. Failed at 1/2"
-                            );
-                        } else {
-                            if (body.statusCode === 400) {
-                                callback(
-                                    "User with email " +
-                                        email +
-                                        " already exists"
-                                );
-                            } else if (body.statusCode === 200) {
-                                // Set the first and last name
-                                let data = body.body;
-                                let token = data.token;
-                                let valid_until =
-                                    this.parseJwt(token).exp * 1000;
-                                request(
-                                    {
-                                        method: "POST",
-                                        uri: ENDPOINTS.update,
-                                        body: {
-                                            updates: {
-                                                $set: {
-                                                    first_name: firstname,
-                                                    last_name: lastname
-                                                }
-                                            },
-                                            user_email: email,
-                                            auth_email: email,
-                                            token: token
-                                        },
-                                        json: true
+                    body: JSON.stringify({
+                        email: email,
+                        password: password,
+                        registration_status: "unregistered" //"waitlist" is one of them
+                    })
+                })
+                    .then(async res => {
+                        let res_json = await res.json();
+                        if(res_json.statusCode === 400) {
+                            resp.error = "User with email " + email + " already exists";
+                        } else if(res_json.statusCode === 200) {
+                            // Set the first and last name
+                            let data = res_json.body;
+                            let token = data.token;
+                            let valid_until = this.parseJwt(token).exp * 1000;
+
+                            await fetch(ENDPOINTS.update, {
+                                method: "POST",
+                                headers: {
+                                    "content-type": "application/json"
+                                },
+                                body: JSON.stringify({
+                                    updates: {
+                                        $set: {
+                                            first_name: firstname,
+                                            last_name: lastname
+                                        }
                                     },
-                                    (error, response, body) => {
-                                        if (error) {
-                                            callback(
-                                                "An error occured when attempting signup. Failed at 2/2"
-                                            );
+                                    user_email: email,
+                                    auth_email: email,
+                                    token: token
+                                })
+                            })
+                                .then(async res => {
+                                    let res_json = await res.json();
+                                    if(res_json.statusCode === 200) {
+                                        this._login(
+                                            email,
+                                            token,
+                                            valid_until
+                                        );
+                                        /**
+                                     * Create new TeamRU user on signup
+                                     */
+                                        if (defaults.teamru_user)
+                                            this.newUser({
+                                                bio: firstname
+                                            });
+                                    } else {
+                                        if(res_json.body) {
+                                            resp.error = res_json.body;
                                         } else {
-                                            if (body.statusCode === 200) {
-                                                this._login(
-                                                    email,
-                                                    token,
-                                                    valid_until
-                                                );
-                                                /**
-                                                 * Create new TeamRU user on signup
-                                                 */
-                                                if (defaults.teamru_user)
-                                                    this.newUser({
-                                                        bio: firstname
-                                                    });
-                                                callback();
-                                            } else {
-                                                callback(
-                                                    body.body
-                                                        ? body.body
-                                                        : "Unexpected Error"
-                                                );
-                                            }
+                                            resp.error = "Unexpected Error";
                                         }
                                     }
-                                );
+                                })
+                                .catch(error => {
+                                    resp.error = error + "; An error occured when attempting signup. Failed at 2/2";
+                                });
+                        
+                        } else {
+                            if(res_json.body) {
+                                resp.error = res_json.body;
                             } else {
-                                callback(
-                                    body.body ? body.body : "Unexpected Error"
-                                );
+                                resp.error = "Unexpected Error";
                             }
                         }
-                    }
-                );
+                    })
+                    .catch(error => {
+                        resp.error = error + "; An error occured when attempting signup. Failed at 1/2";
+                    });
             }
         }
+
+        return resp;
     }
     _login(email, token, valid_until) {
         email = email.toLowerCase();
@@ -368,47 +372,54 @@ class Profile {
         this._valid_until = null;
         this.isLoggedIn = false;
     }
-    GetUser(callback, email) {
+    async GetUser(email) {
+        let resp = {
+            error: "",
+            response: ""
+        };
+
         if (this.isLoggedIn) {
-            request(
+            await fetch(ENDPOINTS.userData,
                 {
                     method: "POST",
-                    uri: ENDPOINTS.userData,
-                    body: {
+                    headers: {
+                        "content-type": "application/json"
+                    },
+                    body: JSON.stringify({
                         email: this._email,
                         token: this._token,
                         query: {
                             email: email
                         }
-                    },
-                    json: true
-                },
-                (error, response, body) => {
-                    if (error) {
-                        callback("An error occured retrieving data", null);
+                    })
+                })
+                .then(async res => {
+                    let res_json = await res.json();
+                    if (res_json.statusCode === 200) {
+                        // what to do here
+                        resp.response = res_json.body[0];
+                        if (email === this._email) {
+                            this._registration_status = res_json.body[0].registration_status;
+                            this._want_team = res_json.body[0].want_team;
+                        }
                     } else {
-                        if (body.statusCode === 200) {
-                            callback(null, body.body[0]);
-                            if (email === this._email) {
-                                this._registration_status =
-                                    body.body[0].registration_status;
-                                this._want_team = body.body[0].want_team;
-                            }
+                        if(res_json.body) {
+                            resp.response = res_json.body;
                         } else {
-                            callback(
-                                body.body ? body.body : "Unexpected Error",
-                                null
-                            );
+                            resp.error = "Unexpected Error";
                         }
                     }
-                }
-            );
+                })
+                .catch(error => {
+                    resp.error = error + "An error occured retrieving data";
+                });
         } else {
-            callback("Please log in", null);
+            resp.error = "Please log in";
         }
+        return resp;
     }
-    Get(callback) {
-        this.GetUser(callback, this._email);
+    async Get() {
+        return await this.GetUser(this._email);
     }
     async SetUser(data, user) {
         // console.log(JSON.stringify({
@@ -462,42 +473,48 @@ class Profile {
     async Set(data) {
         this.SetUser(data, this._email);
     }
-    Forgot(email, callback) {
+    async Forgot(email) {
+
+        let resp = {
+            error: "",
+            response: "",
+        };
+
         if (this.isLoggedIn) {
-            callback("User is already logged in");
+            resp.error = "User is already logged in";
+            return resp;
         } else {
             if (!email) {
-                callback("Invalid email");
+                resp.error = ("Invalid email");
+                return resp;
             } else {
-                request(
+                await fetch(ENDPOINTS.forgot, 
                     {
                         method: "POST",
-                        uri: ENDPOINTS.forgot,
                         body: {
                             email: email,
                             forgot: true
                         },
                         json: true
-                    },
-                    (error, response, body) => {
-                        if (error) {
-                            callback(
-                                "An error occured when attempting to general url"
-                            );
+                    })
+                    .then(res => {
+                        if (res.statusCode === 200) {
+                            return resp;
                         } else {
-                            if (body.statusCode === 200) {
-                                callback();
+                            if (res.errorMessage) {
+                                console.error(res.errorMessage);
+                            }
+                            if(res.body) {
+                                return res.body;
                             } else {
-                                callback(
-                                    body.body ? body.body : "Unexpected Error"
-                                );
-                                if (body.errorMessage) {
-                                    console.error(body.errorMessage);
-                                }
+                                resp.error = "Unexpected Error";
+                                return resp;
                             }
                         }
-                    }
-                );
+                    }).catch(error => {
+                        resp.error = error + "An error occured when attempting to general url";
+                        return resp;
+                    });
             }
         }
     }
@@ -546,42 +563,52 @@ class Profile {
             
         return resp;
     }
-    Eat(magic, callback) {
+    async Eat(magic) {
+
+        let resp = {
+            error: "",
+            response: ""
+        };
+
         if (!magic) {
-            callback("Input a valid magic link");
+            resp.error = ("Input a valid magic link");
+            return resp;
         } else if (!this.isLoggedIn) {
-            callback("User needs to be logged in");
+            resp.error = ("User needs to be logged in");
+            return resp;
         } else {
-            request(
+            await fetch(ENDPOINTS.magic, 
                 {
                     method: "POST",
-                    uri: ENDPOINTS.magic,
-                    body: {
+                    headers: {
+                        "content-type": "application/json"
+                    },
+                    body: JSON.stringify({
                         email: this._email,
                         link: magic,
                         token: this._token
-                    },
-                    json: true
-                },
-                (error, response, body) => {
-                    if (error) {
-                        callback(
-                            "An error occured while digesting the magic link"
-                        );
+                    })
+                })
+                .then(async res => {
+                    let res_json = await res.json();
+                    if (res_json.errorMessage) {
+                        resp.error = res_json.errorMessage;
+                    } else if (res_json.statusCode === 200) {
+                        resp.response = res_json.body;
                     } else {
-                        if (body.errorMessage) {
-                            callback(body.errorMessage);
-                        } else if (body.statusCode === 200) {
-                            callback();
+                        if(res_json.body) {
+                            resp.error = res_json.body;
                         } else {
-                            callback(
-                                body.body ? body.body : "Unexpected Error"
-                            );
+                            resp.error = "Unexpected Error";
                         }
                     }
-                }
-            );
+                })
+                .catch(error => {
+                    resp.error = error + "An error occured while digesting the magic link";
+                });
         }
+
+        return resp;
     }
     async SendMagic(emails, permissions) {
 

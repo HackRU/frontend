@@ -48,16 +48,17 @@ const ForgotPage = (props) => {
             setLoading(true);
             setErrors("");
             let email = document.getElementById("email").value;
-            props.profile.Forgot(email, (msg) => {
-                if (msg) {
-                    setLoading(false);
-                    setErrors(msg);
-                } else {
-                    setLoading(false);
-                    setDone(true);
-                    setErrors("");
-                }
-            });
+            props.profile.Forgot(email)
+                .then((msg) => {
+                    if (msg.error) {
+                        setLoading(false);
+                        setErrors(msg.error);
+                    } else {
+                        setLoading(false);
+                        setDone(true);
+                        setErrors("");
+                    }
+                });
         }
     };
 

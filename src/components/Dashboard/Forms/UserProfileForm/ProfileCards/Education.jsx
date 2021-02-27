@@ -77,15 +77,6 @@ class Education extends Component {
                 });
                 return res;
             });
-        // let update_promise = new Promise((resolve) => {
-        //     this.props.profile.Set(update_user, (err) => {resolve(err);} );
-        // });
-
-        // await update_promise;
-
-        // this.setState({
-            
-        // });
     }
 
 
