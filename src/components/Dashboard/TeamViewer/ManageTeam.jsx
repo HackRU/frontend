@@ -40,6 +40,14 @@ function ManageTeam(props) {
         }));
         setSubmit(false);
     };
+
+    const handleInviteUserChange = e => {
+        const { value } = e.target;
+        profile.inviteUser(team_id, value);
+
+    }
+
+
     const onSubmit = () => {
         setSubmit(true);
         profile.updateTeam(team, team_id);
@@ -150,6 +158,37 @@ function ManageTeam(props) {
                     </Button>
                 </Grid>
             </Grid>
+            <Grid item>
+            <Typography variant="h5">Invite Users Via Email</Typography>
+            </Grid>
+            <Divider />
+            <Grid item
+                    style={{ paddingBottom: "2em", paddingTop: "0.5em" }}>
+                    <TextField
+                        name="inviteUser"
+                        id="outlined-full-width"
+                        label="User Email"
+                        style={{ margin: 8 }}
+                        margin="normal"
+                        value=""
+                        variant="outlined"
+                        onChange={handleInviteUserChange}
+                        InputLabelProps={{
+                            shrink: true,
+                        }}
+                        className="teamViewerInput"
+                    />
+                </Grid>
+                <Grid item
+                    style={{ paddingBottom: "1em" }}>
+                    <Button
+                        variant="outlined"
+                        style={{ margin: 8 }}
+                        onClick={handleInviteUserChange}
+                    >
+                        Submit
+                    </Button>
+                </Grid>
             <Grid item
                 direction="column">
                 <Grid item>
