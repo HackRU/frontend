@@ -8,6 +8,7 @@ function ManageTeam(props) {
     const [team, setTeam] = useState({});
     const [team_id, setTeamId] = useState("");
     const [isSubmitted, setSubmit] = useState(true);
+    const [userEmail, setUserEmail] = useState("");
     const [loading, setLoading] = useState("Loading your team info...");
     const { profile } = props;
 
@@ -43,10 +44,12 @@ function ManageTeam(props) {
 
     const handleInviteUserChange = e => {
         const { value } = e.target;
-        profile.inviteUser(team_id, value);
-
+        setUserEmail(value);
     }
 
+    const onInviteUserSubmit = () => {
+        profile.inviteUser(team_id, userEmail);
+    }
 
     const onSubmit = () => {
         setSubmit(true);
@@ -162,7 +165,13 @@ function ManageTeam(props) {
             <Typography variant="h5">Invite Users Via Email</Typography>
             </Grid>
             <Divider />
-            <Grid item
+            <Grid
+                item
+                container
+                direction="row"
+                style={{ paddingBottom: "0.5em", paddingTop: "2em" }}
+            >
+                <Grid item
                     style={{ paddingBottom: "2em", paddingTop: "0.5em" }}>
                     <TextField
                         name="inviteUser"
@@ -170,7 +179,7 @@ function ManageTeam(props) {
                         label="User Email"
                         style={{ margin: 8 }}
                         margin="normal"
-                        value=""
+                        value={userEmail}
                         variant="outlined"
                         onChange={handleInviteUserChange}
                         InputLabelProps={{
@@ -180,15 +189,17 @@ function ManageTeam(props) {
                     />
                 </Grid>
                 <Grid item
-                    style={{ paddingBottom: "1em" }}>
+                    style={{ paddingBottom: "0.5em", paddingTop: "0.5em" }}>
                     <Button
                         variant="outlined"
                         style={{ margin: 8 }}
-                        onClick={handleInviteUserChange}
+                        disabled={userEmail === ""}
+                        onClick={onInviteUserSubmit}
                     >
                         Submit
                     </Button>
                 </Grid>
+            </Grid>
             <Grid item
                 direction="column">
                 <Grid item>
