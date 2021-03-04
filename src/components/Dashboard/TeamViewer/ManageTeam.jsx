@@ -41,16 +41,13 @@ function ManageTeam(props) {
         }));
         setSubmit(false);
     };
-
     const handleInviteUserChange = e => {
         const { value } = e.target;
         setUserEmail(value);
-    }
-
+    };
     const onInviteUserSubmit = () => {
         profile.inviteUser(team_id, userEmail);
-    }
-
+    };
     const onSubmit = () => {
         setSubmit(true);
         profile.updateTeam(team, team_id);
@@ -162,7 +159,7 @@ function ManageTeam(props) {
                 </Grid>
             </Grid>
             <Grid item>
-            <Typography variant="h5">Invite Users Via Email</Typography>
+                <Typography variant="h5">Invite Users Via Email</Typography>
             </Grid>
             <Divider />
             <Grid

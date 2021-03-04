@@ -1056,29 +1056,29 @@ class Profile {
         await fetch(
             TEAMRU_ENDPOINTS.inviteUser.replace("team_id", team_id),
             {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                token: this._token
-            },
-            body: JSON.stringify({
-                user_email: invited_user_email
-            })
-        }
-    )
-        .then(async res => {
-            if (res.status === 200) {
-                resp.response = await res.json();
-            } else {
-                if (res.status === 403) resp.error = await res.json();
-                if (res.status === 404) resp.error = await res.json();
-                if (res.status === 409) resp.error = await res.json();
-                else resp.error = await res.text();
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    token: this._token
+                },
+                body: JSON.stringify({
+                    user_email: invited_user_email
+                })
             }
-        })
-        .catch(error => {
-            resp.error = error;
-        });
+        )
+            .then(async res => {
+                if (res.status === 200) {
+                    resp.response = await res.json();
+                } else {
+                    if (res.status === 403) resp.error = await res.json();
+                    if (res.status === 404) resp.error = await res.json();
+                    if (res.status === 409) resp.error = await res.json();
+                    else resp.error = await res.text();
+                }
+            })
+            .catch(error => {
+                resp.error = error;
+            });
         return resp;
     }
 
