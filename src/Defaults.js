@@ -8,8 +8,8 @@ import FAQs from "./components/Landing/Sections/Faqs";
 import Footer from "./components/Landing/Sections/Footer";
 
 const defaults =  {
-    "title": "HackRU Fall 2020",
-    "dateText": "November 7th-8th",
+    "title": "HackRU Spring 2021",
+    "dateText": "April 17th-18th",
     "locationText": "Virtual",
     "universityText": "Rutgers University",
     "slogan": "hack all knight",

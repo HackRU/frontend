@@ -61,7 +61,7 @@ class Freeze extends Component {
                                 </div>
                             </div>
                             <hr style={{borderTop: "15px dotted", width: 75, backgroundColor: "rgba(255, 255, 255, 0)", marginBottom: 100, marginTop: -75}} /> 
-                            <div style={{ marginBottom: 25  , textAlign: "center" }}>Stay Tuned for Registration</div>
+                            <div style={{ marginBottom: 25  , textAlign: "center" }}>Registration opens March 14</div>
                         </Grid>
                     </div>
                 </Grid>
