@@ -39,7 +39,7 @@ function About() {
                     <div style={{ position: "absolute", left: 190, height: 10, backgroundColor: theme.accent[0], width: "calc(100% - 190px)" }}></div>
                     <h2 className="display-6"
                         style={{ display: "inline-block", marginTop: -25, marginBottom: 25, backgroundColor: theme.accent[1], padding: 10, marginLeft: -50, paddingLeft: 50, borderTopRightRadius: 25, borderBottomRightRadius: 25, paddingRight: 25 }}><Icon name="location-arrow" /> Where?</h2>
-                    <p className="lead">Your own home! HackRU is virtual for Fall 2020!</p>
+                    <p className="lead">Your own home! HackRU is virtual for Spring 2021!</p>
                     {/* <iframe title="about-map"
                         frameBorder={0}
                         src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3033.7706684548116!2d-74.4528017!3d40.502454!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c3c6555ac2d7f7%3A0x8820e7c83ea74250!2sCollege%20Avenue%20Student%20Center!5e0!3m2!1sen!2sus!4v1581870536811!5m2!1sen!2sus"
