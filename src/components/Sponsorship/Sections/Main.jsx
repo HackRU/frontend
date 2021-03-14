@@ -69,7 +69,7 @@ class Main extends Component {
                                     alt="logo"></img></div>
                             </div>
                             <h2 style={{ marginTop: -10, color: "#FFF5e8" }}
-                                className="display-5 theme-font">Sponsor HackRU Fall 2019</h2>
+                                className="display-5 theme-font">Sponsor HackRU Spring 2021</h2>
                             <h2 style={{ marginTop: 25, color: "#fff5e8", opacity: 0.9}}
                                 className="lead theme-font"><Icon style={{ marginRight: 5 }}
                                     name="map-marker" /> {defaults.locationText}</h2>
