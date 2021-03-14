@@ -1,6 +1,6 @@
 import React from "react";
 import { theme } from "../../../Defaults";
-import { Grid } from "@material-ui/core";
+import { Grid, Typography } from "@material-ui/core";
 import Card from "../../Card";
 import { ViewState } from "@devexpress/dx-react-scheduler";
 import { Scheduler, DayView, Appointments } from "@devexpress/dx-react-scheduler-material-ui";
@@ -22,7 +22,7 @@ function Schedule() {
     );
     
     const schedule = [{
-        "date": "2020-11-07",
+        "date": "2021-04-17",
         "events": [
             { startDate: "2020-11-07T10:00", endDate: "2020-11-07T11:00", title: "Check-in" },
             { startDate: "2020-11-07T11:30", endDate: "2020-11-07T13:00", title: "Opening Ceremony" },
@@ -35,7 +35,7 @@ function Schedule() {
             { startDate: "2020-11-07T20:00", endDate: "2020-11-07T21:00", title: "Cog Sci Workshop"}
         ]
     }, {
-        "date": "2020-11-08",
+        "date": "2021-04-18",
         "events": [
             { startDate: "2020-11-07T13:00", endDate: "2020-11-08T12:30", title: "Hacking"},
             { startDate: "2020-11-08T13:30", endDate: "2020-11-08T15:00", title: "Judging"},
@@ -48,7 +48,7 @@ function Schedule() {
             sideBar={theme.primary[1]}>
             <h1 style={{color: "black"}}
                 className="display-4 theme-font">Schedule</h1>
-            <div className="row mb-3"
+            {/* <div className="row mb-3"
                 style={{ marginLeft: -50, marginRight: -50, paddingLeft: 25 }}>
                 <Grid container
                     spacing={3}>
@@ -73,7 +73,10 @@ function Schedule() {
                         </Grid>
                     )}
                 </Grid>
-            </div>
+            </div> */}
+            <Typography style={{ color: "black" }}>
+                To be announced! Check again soon!
+            </Typography>
         </Card>
     );
 }
