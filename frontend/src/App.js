@@ -1,18 +1,28 @@
 import { CoreProvider } from "@hackru/frontend-core";
-import { Test } from "./testModule";
-import Linker from "./core/Linker";
-import Config from "./core/Config";
-import {defaults, theme, navLinks} from "./Defaults";
+import LandingLinker from "./core/Landing/LandingLinker";
+import LandingConfig from "./core/Landing/LandingConfig";
+import { defaults, theme, navlinks } from "./Defaults";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import NavBar from "./NavBar";
 function App() {
-    let i = 0;
     return (
-        <CoreProvider Store={{
-            defaults,
-            theme,
-            navLinks
-        }} Linker={Linker}>
-            {Config}
-        </CoreProvider>
+        <BrowserRouter>
+            <NavBar />
+            <Switch>
+                <Route exact path="/">
+                    <CoreProvider
+                        Store={{
+                            defaults,
+                            theme,
+                            navlinks,
+                        }}
+                        Linker={LandingLinker}
+                    >
+                        {LandingConfig}
+                    </CoreProvider>
+                </Route>
+            </Switch>
+        </BrowserRouter>
     );
 }
 
