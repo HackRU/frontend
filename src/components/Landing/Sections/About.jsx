@@ -32,7 +32,7 @@ function About() {
                     <div style={{ position: "absolute", left: 190, height: 10, backgroundColor: theme.accent[0], width: "calc(100% - 190px)" }}></div>
                     <h2 className="display-6"
                         style={{ display: "inline-block", marginTop: -25, marginBottom: 25, backgroundColor: theme.accent[1], padding: 10, marginLeft: -50, paddingLeft: 50, borderTopRightRadius: 25, borderBottomRightRadius: 25, paddingRight: 25 }}><Icon name="calendar" /> When?</h2>
-                    <p className="lead">HackRU is from November 7th-8th, 2020.</p>
+                    <p className="lead">HackRU is from April 17th-18th, 2021.</p>
                 </div>
                 <div style={{ color: "white", padding: 50 }}
                     className="col-xs-12 col-sm-12">
