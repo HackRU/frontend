@@ -133,7 +133,7 @@ class About extends Component {
                                             value: "01/01/1920"
                                         },
                                         end: {
-                                            value: "11/05/2002"
+                                            value: "04/17/2003"
                                         }
                                     } }} />
                         </Col>
