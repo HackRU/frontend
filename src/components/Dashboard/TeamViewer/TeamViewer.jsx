@@ -42,12 +42,13 @@ const TeamViewer = (props) => {
     useEffect(() => {
         props.profile.getTeamUser().then((s) => {
             setUser(s.response);
-            props.profile.Get((msg, data) => {
-                if (!msg && data) {
-                    setProfile(data);
-                }
-                setLoading(false);
-            });
+            props.profile.Get()
+                .then((msg) => {
+                    if (!msg.error && msg.response) {
+                        setProfile(msg.response);
+                    }
+                    setLoading(false);
+                });
         }, []);
     }, []);
 

@@ -39,7 +39,8 @@ class Team extends Component {
             loading: false,
             message: null
         });
-        // console.log(this.props.team);
+
+        //console.log(this.props.team);
     }
 
     updateTeam(team) {
@@ -56,10 +57,16 @@ class Team extends Component {
             team,
         });
 
-        let update_user = new Promise((resolve) => {
-            this.props.profile.Set({want_team: this.state.want}, (err) => {resolve(err);} );
-        });
-        await update_user;
+        this.props.profile.Set({want_team: this.state.want})
+            .then(res => {
+                this.setState({
+                    profileMSG: null,
+                    loading: false,
+                    edit: false,
+                    team,
+                });
+                return res;
+            });
 
         await this.props.profile.updateUser(team);
 
@@ -91,17 +98,7 @@ class Team extends Component {
                 }
             }
         }
-
-
         // console.log(this.state.team);
-
-        this.setState({
-            profileMSG: null,
-            loading: false,
-            edit: false,
-            team,
-        });
-
     }
 
 

@@ -18,12 +18,13 @@ function MyTeam(props) {
                 const team_id = userResponse.response.team_id;
                 props.profile.getTeam(team_id).then(teamResponse => {
                     setTeam(teamResponse.response);
-                    props.profile.Get((msg, data) => {
-                        if (!msg && data && data.want_team) {
-                            setUser(userResponse.response);
-                        }
-                        setLoading(false);
-                    });
+                    props.profile.Get()
+                        .then((msg) => {
+                            if (!msg.error && msg.response && msg.response.want_team) {
+                                setUser(userResponse.response);
+                            }
+                            setLoading(false);
+                        });
                 });
             }
         });

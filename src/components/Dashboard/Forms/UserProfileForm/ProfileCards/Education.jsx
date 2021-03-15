@@ -69,17 +69,14 @@ class Education extends Component {
         update_user.level_of_study = this.state.user.level_of_study;
         update_user.major = this.state.user.major;
 
-
-        let update_promise = new Promise((resolve) => {
-            this.props.profile.Set(update_user, (err) => {resolve(err);} );
-        });
-
-        await update_promise;
-
-        this.setState({
-            edit: false,
-            loading: false
-        });
+        this.props.profile.Set(update_user)
+            .then(res => {
+                this.setState({
+                    edit: false,
+                    loading: false
+                });
+                return res;
+            });
     }
 
 

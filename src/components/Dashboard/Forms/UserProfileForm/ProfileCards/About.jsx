@@ -50,18 +50,15 @@ class About extends Component {
         update_user.gender = this.state.user.gender;
         update_user.ethnicity = this.state.user.ethnicity;
         update_user.hackathon_count = this.state.user.hackathon_count;
-
-        let update_promise = new Promise((resolve) => {
-            this.props.profile.Set(update_user, (err) => {resolve(err);} );
-        });
-
-        await update_promise;
-        // console.log(test);
-
-        this.setState({
-            edit: false,
-            loading: false
-        });
+        
+        this.props.profile.Set(update_user)
+            .then(res => {
+                this.setState({
+                    edit: false,
+                    loading: false
+                });
+                return res;
+            });
     }
 
 
@@ -136,7 +133,7 @@ class About extends Component {
                                             value: "01/01/1920"
                                         },
                                         end: {
-                                            value: "11/05/2002"
+                                            value: "04/17/2003"
                                         }
                                     } }} />
                         </Col>
