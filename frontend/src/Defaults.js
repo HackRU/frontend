@@ -1,4 +1,4 @@
-import React from "react";
+// import React from "react";
 // import About from "./components/Landing/Sections/About";
 // import Schedule from "./components/Landing/Sections/Schedule";
 // // import Sponsors from "./components/Landing/Sections/Sponsors/Sponsors.jsx";
