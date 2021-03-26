@@ -41,7 +41,7 @@ const FAQTextOne = {
 const FAQTextTwo = {
     one: {
         title: "Who can come?",
-        text: [<p key={1}>HackRU welcomes undergraduate and graduate students of all majors, backgrounds, and skill levels to come create. Additionally, high school students who will be 18 by HackRU are allowed to register. <i>Unfortunately, if you are under 18, you will not be able to attend, unless you are also a Rutgers student.</i></p>]
+        text: [<p key={1}>HackRU welcomes undergraduate and graduate students of all majors, backgrounds, and skill levels to come create. Additionally, high school students who will be 18 by HackRU are allowed to register. <i>Unfortunately, if you are under 18, you will not be able to attend.</i></p>]
     },
     two: {
         title: "I'm new. What should I do?",
