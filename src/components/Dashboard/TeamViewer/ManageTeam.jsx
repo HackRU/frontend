@@ -1,14 +1,18 @@
 import React, { useState, useEffect } from "react";
-import { Button, TextField, List, Divider, Grid, Typography } from "@material-ui/core";
+import { Button, TextField, List, Divider, Grid, Typography, Collapse } from "@material-ui/core";
 import PropTypes from "prop-types";
 import ChipInput from "material-ui-chip-input";
 import TeamLoading from "../TeamLoading";
 import InviteItem from "./InviteItem";
+import Alert from "@material-ui/lab/Alert";
 function ManageTeam(props) {
     const [team, setTeam] = useState({});
     const [team_id, setTeamId] = useState("");
     const [isSubmitted, setSubmit] = useState(true);
     const [userEmail, setUserEmail] = useState("");
+    const [inviteUserResults, setInviteUserResults] = useState("");
+    const [isAlertOpen, setisAlertOpen] = useState(false);
+    const [alertColor, setAlertColor] = useState("");
     const [loading, setLoading] = useState("Loading your team info...");
     const { profile } = props;
 
@@ -45,8 +49,17 @@ function ManageTeam(props) {
         const { value } = e.target;
         setUserEmail(value);
     };
-    const onInviteUserSubmit = () => {
-        profile.inviteUser(team_id, userEmail);
+    const onInviteUserSubmit = async () => {
+        let msg = await profile.inviteUser(team_id, userEmail);
+        if (msg.error) {
+            setInviteUserResults("Failed: "+msg.error.message);
+            setAlertColor("error");
+        } else {
+            setInviteUserResults("Success");
+            setAlertColor("success");
+        }
+        setisAlertOpen(true);
+        setUserEmail("");
     };
     const onSubmit = () => {
         setSubmit(true);
@@ -162,6 +175,14 @@ function ManageTeam(props) {
                 <Typography variant="h5">Invite Users Via Email</Typography>
             </Grid>
             <Divider />
+            <Collapse in={isAlertOpen}>
+                <Alert
+                    onClose = {() => {setisAlertOpen(false);}}
+                    color = {alertColor}
+                >
+                    {inviteUserResults}
+                </Alert>
+            </Collapse>
             <Grid
                 item
                 container

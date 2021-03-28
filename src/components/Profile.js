@@ -1070,9 +1070,12 @@ class Profile {
                 if (res.status === 200) {
                     resp.response = await res.json();
                 } else {
-                    if (res.status === 403) resp.error = await res.json();
-                    if (res.status === 404) resp.error = await res.json();
-                    if (res.status === 409) resp.error = await res.json();
+                    if (res.status === 400 || 
+                        res.status === 403 || 
+                        res.status === 404 || 
+                        res.status === 409) {
+                        resp.error = await res.json();
+                    }
                     else resp.error = await res.text();
                 }
             })
