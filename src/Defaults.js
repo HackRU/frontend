@@ -165,11 +165,11 @@ const liveImportantLinks = [
         "href": "https://www.youtube.com/channel/UC7UFO50kGL86lYfX6Ezio2w",
         "icon": "youtube"
     },
-    {
-        "title": "CTF",
-        "href": "https://ctf.hackru.org",
-        "icon": "flag"
-    }
+    // {
+    //     "title": "CTF",
+    //     "href": "https://ctf.hackru.org",
+    //     "icon": "flag"
+    // }
 ];
 
 export {

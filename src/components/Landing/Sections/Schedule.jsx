@@ -30,7 +30,7 @@ function Schedule() {
             { startDate: "2021-04-17T16:00", endDate: "2021-04-17T16:45", title: "Blueprint Presents: Introduction to Flutter"},
             { startDate: "2021-04-17T17:00", endDate: "2021-04-17T18:00", title: "Rutgers QFC Presents: Dimensionality Reduction and Manifold Learning"},
             { startDate: "2021-04-17T19:30", endDate: "2021-04-17T20:00", title: "WICS Live Panel: Join us for a Q&A panel with WICS (Women in Computer Science)"},
-            { startDate: "2021-04-17T20:15", endDate: "2021-04-17T21:15", title: "HackRU CTF"},
+            // { startDate: "2021-04-17T20:15", endDate: "2021-04-17T21:15", title: "HackRU CTF"},
             { startDate: "2021-04-17T22:00", endDate: "2021-04-17T22:45", title: "RU COGS Presents: Game Dev 101"},
         ]
     }, {
