@@ -17,7 +17,7 @@ import Announcements from "../Live/Announcements";
 import Schedule from "../Live/Schedule";
 import Section from "./Section";
 
-import { Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Button, useRadioGroup } from "@material-ui/core";
+import { Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Button } from "@material-ui/core";
 
 class Dashboard extends Component {
     state = {
@@ -58,11 +58,11 @@ class Dashboard extends Component {
                             // this.props.profile.Set({ "check-in": true })
                             //     .then(res => {
                             //         // console.log(res);
-                                    this.setState({
-                                        user: msg.response,
-                                        loading: false,
-                                        openDetails: (msg.response.registration_status === "unregistered")
-                                    });
+                            this.setState({
+                                user: msg.response,
+                                loading: false,
+                                openDetails: (msg.response.registration_status === "unregistered")
+                            });
                             //         return res;
                             //     });
                         } else {
@@ -181,33 +181,35 @@ class Dashboard extends Component {
                     <Dialog
                         open={true}
                         onClose={() => {
-                            console.log("thought you could close me?")
+                            console.log("thought you could close me?");
                         }}
                         aria-labelledby="Check in"
                         aria-describedby="HackRU Spring 2021 Check In">
-                            <DialogTitle id="title">{"Check-in to HackRU Spring 2021"}</DialogTitle>
-                            <DialogContent>
-                                <DialogContentText id="check-in description">
+                        <DialogTitle id="title">{"Check-in to HackRU Spring 2021"}</DialogTitle>
+                        <DialogContent>
+                            <DialogContentText id="check-in description">
                                     Click the button below to check-in to HackRU. Note: If you are a Rutgers student, you must also confirm your attendance with Rutgers getInvolved.
-                                </DialogContentText>
-                            </DialogContent>
-                            <DialogActions>
-                                <Button onClick={() => {
-                                    let getInvolved = "https://rutgers.campuslabs.com/engage/event/7067129/attend?Vud=4/21/2021&Vut=19:30:00&Hash=jsP7dirY_azWDZ1Wik2BMX5mPV7R9LYYKm6yYEfTRHorrBVTChprrj-66bjTIfPBGNGZKaWk2e_ADXbzUwcmtntRXOXLGX_xom7hm9640Xe0pAC-SMF0J6be6rXd7IltWLCBhRSQiy8RtMxSawvkPTSsOpnpDtTL6v1w2Ru13YJp0b7mjCX5cXXvfOAKOPEaJVwb8SdXEh9672xx_tSYN-ynrb2XgSsPelBBbxvtVX7F_oMiU5ojWUkTqDZfzAkYDYfUVuBrTk_jHgjgrnZ-Jmvkb4UysLdloa8fM9yIOz9v3ihi1BW2UNMbp4Y-Khi1RgJ8VVaC2L-HiYvzyZotaQ";
-                                    console.log(user.school);
-                                    if (user.school.toLowerCase().includes("rutgers")) {
-                                        window.open(getInvolved, "name");
-                                    }
-                                    this.props.profile.Set({ "check-in": Date.now() })
-                                        .then(res => {
-                                            setTimeout(() => {
-                                                window.location.reload();
-                                            }, 1);
-                                        });
-                                }} color="primary" autoFocus>
+                            </DialogContentText>
+                        </DialogContent>
+                        <DialogActions>
+                            <Button onClick={() => {
+                                let getInvolved = "https://rutgers.campuslabs.com/engage/event/7067129/attend?Vud=4/21/2021&Vut=19:30:00&Hash=jsP7dirY_azWDZ1Wik2BMX5mPV7R9LYYKm6yYEfTRHorrBVTChprrj-66bjTIfPBGNGZKaWk2e_ADXbzUwcmtntRXOXLGX_xom7hm9640Xe0pAC-SMF0J6be6rXd7IltWLCBhRSQiy8RtMxSawvkPTSsOpnpDtTL6v1w2Ru13YJp0b7mjCX5cXXvfOAKOPEaJVwb8SdXEh9672xx_tSYN-ynrb2XgSsPelBBbxvtVX7F_oMiU5ojWUkTqDZfzAkYDYfUVuBrTk_jHgjgrnZ-Jmvkb4UysLdloa8fM9yIOz9v3ihi1BW2UNMbp4Y-Khi1RgJ8VVaC2L-HiYvzyZotaQ";
+                                console.log(user.school);
+                                if (user.school.toLowerCase().includes("rutgers")) {
+                                    window.open(getInvolved, "name");
+                                }
+                                this.props.profile.Set({ "check-in": Date.now() })
+                                    .then(() => {
+                                        setTimeout(() => {
+                                            window.location.reload();
+                                        }, 1);
+                                    });
+                            }}
+                            color="primary"
+                            autoFocus>
                                     Check-In
-                                </Button>
-                            </DialogActions>
+                            </Button>
+                        </DialogActions>
                     </Dialog>
                 }
                 <Row>
