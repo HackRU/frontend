@@ -17,6 +17,8 @@ import Announcements from "../Live/Announcements";
 import Schedule from "../Live/Schedule";
 import Section from "./Section";
 
+import { Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Button, useRadioGroup } from "@material-ui/core";
+
 class Dashboard extends Component {
     state = {
         loading: "Loading your personal dashboard...",
@@ -42,37 +44,7 @@ class Dashboard extends Component {
                     this.props.clearMagic();
                 });
         }
-        // this.props.profile.Get((msg, data) => {
-        //     if (msg) {
-        //         console.error(msg);
-        //     } else {
-        //         if (data) {
-        //             delete data.auth;
-        //             if (defaults.autocheckin && defaults.dayof && !data["check-in-after"]) {
-        //                 // Auto checkin the user
-        //                 this.props.profile.Set(
-        //                     {
-        //                         "check-in-after": true
-        //                     },
-        //                     () => {
-        //                         this.setState({
-        //                             user: data,
-        //                             loading: false,
-        //                             openDetails: (data.registration_status === "unregistered")
-        //                         });
-        //                     }
-        //                 );
-        //             } else {
-        //                 this.setState({
-        //                     user: data,
-        //                     loading: false,
-        //                     openDetails: (data.registration_status === "unregistered")
-        //                 });
-        //             }
-        //         }
-        //     }
-        // });
-    
+  
         this.props.profile.Get()
             .then((msg) => {
                 if (msg.error) {
@@ -81,17 +53,18 @@ class Dashboard extends Component {
                     if (msg.response) {
                         delete msg.response.auth;
                         if (defaults.autocheckin && defaults.dayof && !msg.response["check-in-after"]) {
-                        // Auto checkin the user
-                            this.props.profile.Set({ "check-in-after": true })
-                                .then(res => {
-                                    // console.log(res);
+                            // Auto checkin the user
+                            // YUPP we gonna comment this out for now, and make it an actual button cause  auto doing stuff for ppl is apparently too confusing :(
+                            // this.props.profile.Set({ "check-in": true })
+                            //     .then(res => {
+                            //         // console.log(res);
                                     this.setState({
                                         user: msg.response,
                                         loading: false,
                                         openDetails: (msg.response.registration_status === "unregistered")
                                     });
-                                    return res;
-                                });
+                            //         return res;
+                            //     });
                         } else {
                             this.setState({
                                 user: msg.response,
@@ -203,6 +176,40 @@ class Dashboard extends Component {
                     :
                     <br/>
                 }
+                {!SHOW_FLAG
+                    &&
+                    <Dialog
+                        open={true}
+                        onClose={() => {
+                            console.log("thought you could close me?")
+                        }}
+                        aria-labelledby="Check in"
+                        aria-describedby="HackRU Spring 2021 Check In">
+                            <DialogTitle id="title">{"Check-in to HackRU Spring 2021"}</DialogTitle>
+                            <DialogContent>
+                                <DialogContentText id="check-in description">
+                                    Click the button below to check-in to HackRU. Note: If you are a Rutgers student, you must also confirm your attendance with Rutgers getInvolved.
+                                </DialogContentText>
+                            </DialogContent>
+                            <DialogActions>
+                                <Button onClick={() => {
+                                    let getInvolved = "https://rutgers.campuslabs.com/engage/event/7067129/attend?Vud=4/21/2021&Vut=19:30:00&Hash=jsP7dirY_azWDZ1Wik2BMX5mPV7R9LYYKm6yYEfTRHorrBVTChprrj-66bjTIfPBGNGZKaWk2e_ADXbzUwcmtntRXOXLGX_xom7hm9640Xe0pAC-SMF0J6be6rXd7IltWLCBhRSQiy8RtMxSawvkPTSsOpnpDtTL6v1w2Ru13YJp0b7mjCX5cXXvfOAKOPEaJVwb8SdXEh9672xx_tSYN-ynrb2XgSsPelBBbxvtVX7F_oMiU5ojWUkTqDZfzAkYDYfUVuBrTk_jHgjgrnZ-Jmvkb4UysLdloa8fM9yIOz9v3ihi1BW2UNMbp4Y-Khi1RgJ8VVaC2L-HiYvzyZotaQ";
+                                    console.log(user.school);
+                                    if (user.school.toLowerCase().includes("rutgers")) {
+                                        window.open(getInvolved, "name");
+                                    }
+                                    this.props.profile.Set({ "check-in": Date.now() })
+                                        .then(res => {
+                                            setTimeout(() => {
+                                                window.location.reload();
+                                            }, 1);
+                                        });
+                                }} color="primary" autoFocus>
+                                    Check-In
+                                </Button>
+                            </DialogActions>
+                    </Dialog>
+                }
                 <Row>
                     {/* {(user.registration_status === "confirmed" || user.registration_status === "waitlist" || user.registration_status === "coming" || user.registration_status === "registered" || (user.role && user.role.director) || (user.role && user.role.organizer) || (user.role && user.role.volunteer)) &&
                         <Col className="dashboard-row"
@@ -231,14 +238,14 @@ class Dashboard extends Component {
                             <ApplicationStatus onComing={() => {
                                 user.registration_status = "coming";
                                 if (defaults.dayof && defaults.autocheckin) {
-                                    user["check-in"] = true;
+                                    // user["check-in"] = true;
                                 }
                                 this.submitUser(user);
                             }}
                             onNotComing={() => {
                                 user.registration_status = "not-coming";
                                 if (defaults.dayof && defaults.autocheckin) {
-                                    user["check-in"] = false;
+                                    // user["check-in"] = false;
                                 }
                                 this.submitUser(user);
                             }}
