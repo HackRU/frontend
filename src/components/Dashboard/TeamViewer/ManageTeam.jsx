@@ -1,13 +1,18 @@
 import React, { useState, useEffect } from "react";
-import { Button, TextField, List, Divider, Grid, Typography } from "@material-ui/core";
+import { Button, TextField, List, Divider, Grid, Typography, Collapse } from "@material-ui/core";
 import PropTypes from "prop-types";
 import ChipInput from "material-ui-chip-input";
 import TeamLoading from "../TeamLoading";
 import InviteItem from "./InviteItem";
+import Alert from "@material-ui/lab/Alert";
 function ManageTeam(props) {
     const [team, setTeam] = useState({});
     const [team_id, setTeamId] = useState("");
     const [isSubmitted, setSubmit] = useState(true);
+    const [userEmail, setUserEmail] = useState("");
+    const [inviteUserResults, setInviteUserResults] = useState("");
+    const [isAlertOpen, setisAlertOpen] = useState(false);
+    const [alertColor, setAlertColor] = useState("");
     const [loading, setLoading] = useState("Loading your team info...");
     const { profile } = props;
 
@@ -39,6 +44,22 @@ function ManageTeam(props) {
             [name]: [...prevState[name], e]
         }));
         setSubmit(false);
+    };
+    const handleInviteUserChange = e => {
+        const { value } = e.target;
+        setUserEmail(value);
+    };
+    const onInviteUserSubmit = async () => {
+        let msg = await profile.inviteUser(team_id, userEmail);
+        if (msg.error) {
+            setInviteUserResults("Failed: "+msg.error.message);
+            setAlertColor("error");
+        } else {
+            setInviteUserResults("Success");
+            setAlertColor("success");
+        }
+        setisAlertOpen(true);
+        setUserEmail("");
     };
     const onSubmit = () => {
         setSubmit(true);
@@ -145,6 +166,53 @@ function ManageTeam(props) {
                         style={{ margin: 8 }}
                         disabled={isSubmitted ? true : false}
                         onClick={onSubmit}
+                    >
+                        Submit
+                    </Button>
+                </Grid>
+            </Grid>
+            <Grid item>
+                <Typography variant="h5">Invite Users Via Email</Typography>
+            </Grid>
+            <Divider />
+            <Collapse in={isAlertOpen}>
+                <Alert
+                    onClose = {() => {setisAlertOpen(false);}}
+                    color = {alertColor}
+                >
+                    {inviteUserResults}
+                </Alert>
+            </Collapse>
+            <Grid
+                item
+                container
+                direction="row"
+                style={{ paddingBottom: "0.5em", paddingTop: "2em" }}
+            >
+                <Grid item
+                    style={{ paddingBottom: "2em", paddingTop: "0.5em" }}>
+                    <TextField
+                        name="inviteUser"
+                        id="outlined-full-width"
+                        label="User Email"
+                        style={{ margin: 8 }}
+                        margin="normal"
+                        value={userEmail}
+                        variant="outlined"
+                        onChange={handleInviteUserChange}
+                        InputLabelProps={{
+                            shrink: true,
+                        }}
+                        className="teamViewerInput"
+                    />
+                </Grid>
+                <Grid item
+                    style={{ paddingBottom: "0.5em", paddingTop: "0.5em" }}>
+                    <Button
+                        variant="outlined"
+                        style={{ margin: 8 }}
+                        disabled={userEmail === ""}
+                        onClick={onInviteUserSubmit}
                     >
                         Submit
                     </Button>

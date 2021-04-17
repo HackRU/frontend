@@ -38,8 +38,8 @@ const defaults =  {
         "mentor_url": "https://docs.google.com/forms/d/e/1FAIpQLScG3eyzY67q58k52zh5nSscUBWRoYn8KayVNAXqYvJl8oqD8Q/viewform"
     },
     "mailing": "https://hackru.us3.list-manage.com/subscribe?u=457c42db47ebf530a0fc733fb&id=fb01885829",
-    "dayof": false,
-    "autocheckin": false //USE THIS FIELD TO AUTO CHECK-IN USERS!
+    "dayof": true,
+    "autocheckin": true //USE THIS FIELD TO AUTO CHECK-IN USERS!
 };
 
 const navlinks = {
@@ -142,12 +142,12 @@ varList.forEach((element) => {
 const liveImportantLinks = [
     {
         "title": "Devpost",
-        "href": "http://hackru-f20.devpost.com",
+        "href": "https://hackru-s21.devpost.com/",
         "icon": "code"
     },
     {
         "title": "Slack",
-        "href": "https://hackru-f20.slack.com/",
+        "href": "https://hackru-s21.slack.com/",
         "icon": "slack"
     },
     {
@@ -157,7 +157,7 @@ const liveImportantLinks = [
     },
     {
         "title": "Twitch",
-        "href": "https://www.twitch.tv/hack_ru",
+        "href": "https://www.twitch.tv/hackru_",
         "icon": "twitch"
     },
     {
@@ -165,11 +165,11 @@ const liveImportantLinks = [
         "href": "https://www.youtube.com/channel/UC7UFO50kGL86lYfX6Ezio2w",
         "icon": "youtube"
     },
-    {
-        "title": "CTF",
-        "href": "https://ctf.hackru.org",
-        "icon": "flag"
-    }
+    // {
+    //     "title": "CTF",
+    //     "href": "https://ctf.hackru.org",
+    //     "icon": "flag"
+    // }
 ];
 
 export {
