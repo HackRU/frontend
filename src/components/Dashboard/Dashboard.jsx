@@ -176,7 +176,7 @@ class Dashboard extends Component {
                     :
                     <br/>
                 }
-                {!SHOW_FLAG
+                {!SHOW_FLAG && user.registration_status == "confirmed"
                     &&
                     <Dialog
                         open={true}
@@ -194,15 +194,14 @@ class Dashboard extends Component {
                         <DialogActions>
                             <Button onClick={() => {
                                 let getInvolved = "https://rutgers.campuslabs.com/engage/event/7067129/attend?Vud=4/21/2021&Vut=19:30:00&Hash=jsP7dirY_azWDZ1Wik2BMX5mPV7R9LYYKm6yYEfTRHorrBVTChprrj-66bjTIfPBGNGZKaWk2e_ADXbzUwcmtntRXOXLGX_xom7hm9640Xe0pAC-SMF0J6be6rXd7IltWLCBhRSQiy8RtMxSawvkPTSsOpnpDtTL6v1w2Ru13YJp0b7mjCX5cXXvfOAKOPEaJVwb8SdXEh9672xx_tSYN-ynrb2XgSsPelBBbxvtVX7F_oMiU5ojWUkTqDZfzAkYDYfUVuBrTk_jHgjgrnZ-Jmvkb4UysLdloa8fM9yIOz9v3ihi1BW2UNMbp4Y-Khi1RgJ8VVaC2L-HiYvzyZotaQ";
-                                console.log(user.school);
-                                if (user.school.toLowerCase().includes("rutgers")) {
-                                    window.open(getInvolved, "name");
-                                }
                                 this.props.profile.Set({ "check-in": Date.now() })
                                     .then(() => {
                                         setTimeout(() => {
+                                            if (user.school.toLowerCase().includes("rutgers")) {
+                                                window.open(getInvolved, "name");
+                                            }
                                             window.location.reload();
-                                        }, 1);
+                                        }, 2);
                                     });
                             }}
                             color="primary"
