@@ -157,7 +157,7 @@ const liveImportantLinks = [
     },
     {
         "title": "Twitch",
-        "href": "https://www.twitch.tv/hack_ru",
+        "href": "https://www.twitch.tv/hackru_",
         "icon": "twitch"
     },
     {
