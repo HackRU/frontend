@@ -8,7 +8,7 @@ import FAQs from "./components/Landing/Sections/Faqs";
 import Footer from "./components/Landing/Sections/Footer";
 
 const defaults =  {
-    "title": "HackRU Spring 2021",
+    "title": "HackRU",
     "dateText": "April 17th-18th",
     "locationText": "Virtual",
     "universityText": "Rutgers University",
@@ -29,7 +29,7 @@ const defaults =  {
     "sponsorshipLogos": "https://s3-us-west-2.amazonaws.com/hackru-internal/sponsorship-logos/",
     "partnerLogos": "https://s3-us-west-2.amazonaws.com/hackru-internal/partners-logos/",
     "teamInfo": "https://s3-us-west-2.amazonaws.com/hackru-internal/hackru-team/",
-    "freeze": false,
+    "freeze": true,
     "teamru": false,
     "teamru_user": false,
     "volunteers": {
@@ -38,8 +38,8 @@ const defaults =  {
         "mentor_url": "https://docs.google.com/forms/d/e/1FAIpQLScG3eyzY67q58k52zh5nSscUBWRoYn8KayVNAXqYvJl8oqD8Q/viewform"
     },
     "mailing": "https://hackru.us3.list-manage.com/subscribe?u=457c42db47ebf530a0fc733fb&id=fb01885829",
-    "dayof": true,
-    "autocheckin": true //USE THIS FIELD TO AUTO CHECK-IN USERS!
+    "dayof": false,
+    "autocheckin": false //USE THIS FIELD TO AUTO CHECK-IN USERS!
 };
 
 const navlinks = {
