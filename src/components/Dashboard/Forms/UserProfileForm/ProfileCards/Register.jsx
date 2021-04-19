@@ -76,8 +76,7 @@ class Register extends Component {
 
         if (validated) {
             console.log("All fields valid");
-            got_user.registration_status = "registered";
-            this.updateUser(got_user);
+            this.updateUser({registration_status: "registered"});
 
             let error = await this.props.profile.Set(this.state.user)
                 .then(res => {
