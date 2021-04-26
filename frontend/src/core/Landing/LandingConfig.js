@@ -1,11 +1,76 @@
 const LandingConfig = [
     {
-        module: "TEST",
+        module: "LANDING",
         params: {
-            text: "wrapped module",
-            garbage: "YAS",
+            loggedOut: false,
+            isMobile: false,
         },
-        children: [],
+        children: [
+            {
+                module: "HOME",
+                params: {
+                    loggedOut: false,
+                    isMobile: false,
+                },
+                children: [],
+            },
+            {
+                module: "ABOUT",
+                params: {
+                    loggedOut: false,
+                    isMobile: false,
+                },
+                children: [],
+            },
+            {
+                module: "SCHEDULE",
+                params: {
+                    loggedOut: false,
+                    isMobile: false,
+                },
+                children: [],
+            },
+            {
+                module: "SPONSORS",
+                params: {
+                    loggedOut: false,
+                    isMobile: false,
+                },
+                children: [],
+            },
+            {
+                module: "PARTNERS",
+                params: {
+                    loggedOut: false,
+                    isMobile: false,
+                },
+                children: [],
+            },
+            {
+                module: "STATS",
+                params: {
+                    loggedOut: false,
+                    isMobile: false,
+                },
+                children: [],
+            },
+            {
+                module: "FAQS",
+                params: {
+                    loggedOut: false,
+                    isMobile: false,
+                },
+                children: [],
+            },
+            {
+                module: "FOOTER",
+                params: {
+                    loggedOut: false,
+                    isMobile: false,
+                },
+                children: [],
+            },
+        ],
     },
 ];
 

@@ -1,0 +1,684 @@
+@import url("https://fonts.googleapis.com/css?family=Titillium+Web&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i");
+
+/* Variables */
+:root {
+    /* Theme Colors */
+    --primary-color: #fff5e8; /* Logo, link colors, text */
+    --primary-color-alt: #4fab5f; /* Form body bg, form headers text */
+    --secondary-color: #000000; /* Barely used accent color...combine this and primary-color-alt...? */
+    --secondary-color-alt: #c85151; /* Background color */
+    --accent-color: #f1ba43; /* Logout, Live button color */
+    --accent-color-alt: #f1ba43; /* Dashboard button color NOTE:  Dashboard colors are different across navbar on different pages */
+    --disabled-color: #00000055; /* Unsure.... */
+    --hover-color: #f1ba43;
+    --hover-background-color: #df897f;
+    --active-color: rgba(255, 255, 255, 0.5);
+    --active-background-color: #5a7a96a0;
+    /* Fonts */
+    --header-font: "Titillium Web", sans-serif;
+    --text-font: "Titillium Web", sans-serif;
+
+    /*'Open Sans', sans-serif;  */
+    /* Form Inputs */
+    --input-background: #c8515111;
+    --input-placeholder: rgba(0, 0, 0, 0.3);
+    --input-border: none;
+    --input-color: rgba(0, 0, 0, 1);
+    --input-border-radius: 0px;
+    --select-background: #c85151;
+    --select-color: rgba(0, 0, 0, 1);
+    /* Hero Image */
+    --hero-width: 1000px;
+    --hero-height: 100px;
+    --hero-border-radius: 35%;
+    --hero-background: radial-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0));
+    /* Sponsor Colors */
+    --sponsors-title-color: var(--primary-color);
+    --sponsors-platinum-color: #d8d8d8;
+    --sponsors-gold-color: #ffdf00;
+    --sponsors-silver-color: #b7b7b7;
+    --sponsors-bronze-color: #c96f0d;
+}
+
+/* Global look and feel */
+body::-webkit-scrollbar {
+    display: none;
+}
+html,
+body {
+    overflow-x: hidden;
+}
+body {
+    font-family: var(--text-font) !important;
+}
+::selection {
+    background-color: var(--secondary-color-alt);
+}
+::placeholder {
+    color: var(--input-placeholder) !important;
+}
+a:link {
+    color: var(--accent-color);
+    transition: color 0.5s ease;
+}
+a:link:hover {
+    color: var(--hover-color);
+    text-decoration: none;
+}
+a:visited {
+    color: var(--accent-color);
+}
+a:visited:hover {
+    color: var(--hover-color);
+    text-decoration: none;
+}
+.primary-link {
+    color: var(--primary-color) !important;
+    transition: color 0.5s ease;
+}
+.primary-link:hover {
+    color: var(--hover-color) !important;
+    transition: color 0.5s ease;
+}
+.pill-btn {
+    text-transform: uppercase;
+    color: var(--primary-color) !important;
+    border: none !important;
+    border-radius: 100px !important;
+    font-weight: bold;
+}
+.pill-btn:focus {
+    outline: none;
+}
+.btn:hover {
+    transition: background-color 0.5s;
+    background-color: var(--hover-background-color) !important;
+    color: var(--hover-color) !important;
+}
+.btn:active {
+    transition: background-color 0.5s;
+    background-color: var(--active-background-color) !important;
+    color: var(--active-color) !important;
+}
+.bg-gradient-left a,
+.bg-gradient-right a {
+    color: var(--secondary-color-alt);
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    font-family: var(--text-font);
+}
+hr {
+    background-color: rgba(255, 255, 255, 0.5);
+}
+/* Theme Nav/Font */
+.theme-font {
+    font-family: var(--header-font);
+}
+.theme-home-link {
+    position: relative;
+}
+.theme-home-link:before {
+    content: "";
+    position: absolute;
+    width: 150%;
+    height: 35px;
+    bottom: -5%;
+    left: -25%;
+    background: linear-gradient(to left, #fff5e855, #fff5e855, #fff5e855);
+    visibility: hidden;
+    -webkit-transform: scaleX(0);
+    transform: scaleX(0);
+    -webkit-transition: all 0.3s ease-in-out 0s;
+    transition: all 0.3s ease-in-out 0s;
+}
+.theme-home-link:hover:before {
+    visibility: visible;
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+}
+.theme-background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    left: 0px;
+    top: 0px;
+    opacity: 0.5;
+}
+/* Background Control */
+.bg-gradient-right {
+    background: var(--secondary-color-alt);
+    width: 100vw;
+    z-index: 10;
+    color: var(--secondary-color);
+}
+.bg-gradient-left {
+    background: var(--primary-color);
+    width: 100vw;
+    z-index: 10;
+    color: var(--secondary-color);
+}
+.bg-no-gradient {
+    width: 100vw;
+    z-index: 10;
+}
+.skew-right,
+.skew-left {
+    padding-top: 3em;
+    padding-bottom: 2em;
+}
+.skew-none {
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+.skew-right {
+    transform: skew(0deg, -4deg);
+}
+.skew-left {
+    transform: skew(0deg, 4deg);
+}
+
+/* Landing Page */
+.footer {
+    margin-top: 30px;
+    padding-top: 20px;
+}
+.footer .text-vcenter {
+    margin: 0;
+    line-height: 10vh;
+}
+.footer .social-links {
+    color: #ffffff;
+    font-size: 100%;
+}
+.footer .social-links:hover {
+    color: var(--hover-color);
+}
+.footer a {
+    color: var(--primary-color);
+    line-height: 10vh;
+    padding: 15px 10px;
+}
+.footer a:hover {
+    color: var(--hover-color);
+}
+.footer .footer-logo {
+    display: inline-block;
+    height: calc(10vh * 0.45);
+}
+#navigation-link {
+    font-family: var(--text-font);
+    color: white;
+    text-align: center;
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+#landing-section {
+    color: white;
+}
+.table {
+    background-color: inherit !important;
+    color: inherit !important;
+}
+.table-hover tbody tr:hover td,
+.table-hover tbody tr:hover th {
+    color: var(--primary-color);
+}
+
+/* Form Inputs (Dashboard/Login/Signup/Magic/Forgot) */
+input,
+textarea,
+.custom-file-label {
+    border-radius: var(--input-border-radius) !important;
+    background: var(--input-background) !important ;
+    border: var(--input-border) !important;
+    color: var(--input-color) !important;
+    z-index: 0 !important;
+}
+.teamViewerInput textarea {
+    background: none !important;
+}
+.teamViewerInput input {
+    background: none !important;
+}
+.forcestyle div[class^="css-"] {
+    background: var(--input-background);
+    border-radius: var(--input-border-radius);
+    border: var(--input-border);
+    color: var(--input-color);
+}
+.forcestyle div[class^="css-"] div[class^="css-"] {
+    background: none;
+    border: none;
+    box-shadow: none;
+    margin-top: 0px;
+    padding-top: 0px;
+}
+.forcestyle div[class^="css-"] div[class^="css-"] div[class^="css-"] div[class^="css-"] {
+    background: transparent;
+    border-radius: var(--input-border-radius);
+    border: var(--input-border);
+    color: var(--input-color);
+}
+.forcestyle div[class^="css-"] div[class^="css-"] div[class^="css-"]:last-child div[class^="css-"] {
+    padding-top: 10px;
+}
+.forcestyle div[class^="css-"] div[class^="css-"] div[class^="css-"] div[class^="css-"] input {
+    background: transparent !important;
+}
+.forcestyle div[id^="react-select-"] {
+    background: var(--select-background) !important;
+    color: var(--select-color) !important;
+}
+.custom-checkbox .custom-control-input:checked ~ .custom-control-label::before {
+    background-color: var(--accent-color) !important;
+}
+.custom-av-checkbox div {
+    background-color: transparent;
+}
+.custom-av-checkbox div div label p {
+    color: var(--input-color);
+}
+form .btn,
+form btn-secondary {
+    color: var(--primary-color) !important;
+}
+
+/* Form validator */
+.avfield-hide-inner {
+    visibility: hidden;
+}
+.invalid-feedback,
+.text-danger label {
+    color: var(--accent-color) !important;
+}
+.custom-av-checkbox .is-invalid div label p {
+    color: var(--accent-color) !important;
+}
+
+.sponsor-item-image {
+    transition: all 0.2s ease-in-out;
+    max-width: 100%;
+}
+
+.sponsor-item-image:hover {
+    transform: scale(1.05);
+}
+
+/* Dashboard QR */
+
+.qr {
+    max-width: 90%;
+    border-radius: 10px;
+    margin: 10px;
+    transition: transform 0.8s ease-in-out;
+}
+.qr:hover {
+    transform: rotate(360deg);
+    border-radius: 10px;
+}
+
+/* Dashboard Alerts */
+.profile-alert {
+    border: none !important;
+    color: white !important;
+}
+.profile-alert.profile-alert-success {
+    background: var(--primary-color-alt) !important;
+}
+.profile-alert.profile-alert-danger {
+    background: var(--secondary-color-alt) !important;
+}
+.profile-alert.profile-alert-info {
+    background: rgba(0, 255, 255, 1) !important;
+}
+.profile-alert.profile-alert-warning {
+    background: var(--accent-color) !important;
+}
+
+/* Live */
+.live-links {
+    width: 200px;
+    font-variant: small-caps;
+    border-radius: 10px !important;
+    background: var(--secondary-color-alt) !important;
+    margin: 10px;
+    text-shadow: 0px 0px 2px var(--primary-color);
+    border: none !important;
+}
+.live-messages {
+    color: var(--primary-color) !important;
+    background-color: transparent !important;
+    border: none !important;
+}
+.live-messages-text {
+    color: var(--primary-color) !important;
+}
+.live-page-btn {
+    background-color: var(--input-background) !important;
+    border: 0px solid black !important;
+    color: var(--primary-color) !important;
+}
+.live-page-btn:hover {
+    transition: background-color 0.5s;
+    background-color: var(--hover-background-color) !important;
+    color: var(--hover-color) !important;
+}
+.live-page-btn:active {
+    transition: background-color 0.5s;
+    background-color: var(--active-background-color) !important;
+    color: var(--active-color) !important;
+}
+.live-page-container {
+    margin-bottom: 10px;
+    margin-left: 10px;
+}
+.live-page-text {
+    padding-top: 5px;
+}
+
+/* Sponsorship Page */
+
+/* Sponsorship Landing Sepcifics */
+.bronze {
+    color: #ffa038 !important;
+}
+
+.silver {
+    color: #b7b7b7 !important;
+}
+
+.gold {
+    color: #ffdf00 !important;
+}
+
+.plat {
+    color: #d8d8d8 !important;
+}
+
+.titlepack {
+    color: var(--primary-color) !important;
+}
+
+.hpanel .panel-body {
+    border: 1px solid var(--accent-color);
+    border-radius: 5px;
+    padding: 2px;
+    position: relative;
+}
+
+.table td {
+    border-top: none !important;
+}
+
+.pd {
+    padding-top: 25px;
+}
+.fa-check-square-o {
+    padding-right: 5px !important;
+}
+.zoom {
+    font-size: 5vw;
+}
+
+.testimo-panel img {
+    width: 100px;
+    height: 100px;
+    border-color: var(--primary-color-alt);
+    border-style: double;
+}
+.testimo-panel p {
+    font-size: 14px;
+    line-height: 25px;
+    margin-bottom: 20px;
+}
+.img-circle {
+    border-radius: 50%;
+}
+
+@media screen and (max-width: 550px) {
+    .disappear img {
+        display: none;
+    }
+}
+
+.react-toggle {
+    touch-action: pan-x;
+
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    background-color: transparent;
+    border: 0;
+    padding: 0;
+
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-tap-highlight-color: transparent;
+}
+
+.react-toggle-screenreader-only {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+.react-toggle--disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+    -webkit-transition: opacity 0.25s;
+    transition: opacity 0.25s;
+}
+
+.react-toggle-track {
+    width: 50px;
+    height: 24px;
+    padding: 0;
+    border-radius: 30px;
+    background-color: #4d4d4d;
+    -webkit-transition: all 0.2s ease;
+    -moz-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+
+.react-toggle:hover:not(.react-toggle--disabled) .react-toggle-track {
+    background-color: #000000;
+}
+
+.react-toggle--checked .react-toggle-track {
+    background-color: #19ab27;
+}
+
+.react-toggle--checked:hover:not(.react-toggle--disabled) .react-toggle-track {
+    background-color: #128d15;
+}
+
+.react-toggle-track-check {
+    position: absolute;
+    width: 14px;
+    height: 10px;
+    top: 0px;
+    bottom: 0px;
+    margin-top: auto;
+    margin-bottom: auto;
+    line-height: 0;
+    left: 8px;
+    opacity: 0;
+    -webkit-transition: opacity 0.25s ease;
+    -moz-transition: opacity 0.25s ease;
+    transition: opacity 0.25s ease;
+}
+
+.react-toggle--checked .react-toggle-track-check {
+    opacity: 1;
+    -webkit-transition: opacity 0.25s ease;
+    -moz-transition: opacity 0.25s ease;
+    transition: opacity 0.25s ease;
+}
+
+.react-toggle-track-x {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    top: 0px;
+    bottom: 0px;
+    margin-top: auto;
+    margin-bottom: auto;
+    line-height: 0;
+    right: 10px;
+    opacity: 1;
+    -webkit-transition: opacity 0.25s ease;
+    -moz-transition: opacity 0.25s ease;
+    transition: opacity 0.25s ease;
+}
+
+.react-toggle--checked .react-toggle-track-x {
+    opacity: 0;
+}
+
+.react-toggle-thumb {
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    width: 22px;
+    height: 22px;
+    border: 1px solid #4d4d4d;
+    border-radius: 50%;
+    background-color: #fafafa;
+
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+
+    -webkit-transition: all 0.25s ease;
+    -moz-transition: all 0.25s ease;
+    transition: all 0.25s ease;
+}
+
+.react-toggle--checked .react-toggle-thumb {
+    left: 27px;
+    border-color: #19ab27;
+}
+
+.react-toggle--focus .react-toggle-thumb {
+    -webkit-box-shadow: 0px 0px 3px 2px #0099e0;
+    -moz-box-shadow: 0px 0px 3px 2px #0099e0;
+    box-shadow: 0px 0px 2px 3px #0099e0;
+}
+
+.react-toggle:active:not(.react-toggle--disabled) .react-toggle-thumb {
+    -webkit-box-shadow: 0px 0px 5px 5px #0099e0;
+    -moz-box-shadow: 0px 0px 5px 5px #0099e0;
+    box-shadow: 0px 0px 5px 5px #0099e0;
+}
+
+.dashboard-card {
+    background-color: white;
+    box-shadow: 0px 0px 100px rgba(0, 0, 0, 0.1);
+    padding: 50px;
+    height: 100%;
+}
+
+.dashboard-card > *::selection {
+    color: white !important;
+}
+
+.dashboard-left-strip {
+    position: absolute;
+    left: calc(15px);
+    top: 0px;
+    height: 100%;
+    width: 10px;
+}
+
+.dashboard-strip-yellow {
+    background-color: var(--accent-color);
+}
+
+.dashboard-strip-red {
+    background-color: var(--secondary-color-alt);
+}
+
+.dashboard-strip-green {
+    background-color: var(--primary-color-alt);
+}
+
+.dashboard-row {
+    margin-bottom: 25px;
+}
+
+.dashboard-header {
+    display: block;
+    text-align: left;
+    margin-bottom: 25px;
+    padding: 10px;
+    margin-left: -50px;
+    padding-left: 50px;
+    padding-right: 25px;
+    margin-right: -50px;
+    color: white;
+}
+
+.auth {
+    background-color: rgba(255, 255, 255, 0.5) !important;
+}
+
+.sponsor-card {
+    background-color: var(--secondary-color-alt);
+    color: #c85151f0;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    padding: 50px;
+    height: 100%;
+}
+
+.stat-number {
+    font-size: 5vw;
+}
+@media screen and (min-width: 1600px) {
+    .stat-number {
+        font-size: 100px;
+    }
+}
+
+@media screen and (max-width: 575px) {
+    .stat-number {
+        font-size: 50px;
+    }
+}
+
+.no-scrollbars {
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
+}
+.no-scrollbars::-webkit-scrollbar {
+    display: none; /* Safari and Chrome */
+}
+.no-style-type {
+    list-style-type: none;
+}
+
+/* Material UI Specifc */
+
+.MuiAlert-filledSuccess {
+    background-color: var(--primary-color-alt);
+    color: var(--primary-color-alt);
+}

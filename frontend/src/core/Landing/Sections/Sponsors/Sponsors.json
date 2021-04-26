@@ -1,0 +1,101 @@
+{
+    "sections": [
+        {
+            "name": "TITLE",
+            "color": "sponsors-title-color",
+            "enabled": false,
+            "size": {
+                "width": 1000,
+                "height": 1000
+            },
+            "root": "title/",
+            "children": []
+        },
+        {
+            "name": "PLATINUM",
+            "color": "sponsors-platinum-color",
+            "enabled": false,
+            "size": {
+                "width": 800,
+                "height": 800
+            },
+            "root": "platinum/",
+            "children": []
+        },
+        {
+            "name": "GOLD",
+            "color": "sponsors-gold-color",
+            "enabled": false,
+            "size": {
+                "width": 600,
+                "height": 600
+            },
+            "root": "gold/",
+            "children": []
+        },
+        {
+            "name": "SILVER",
+            "color": "sponsors-silver-color",
+            "enabled": true,
+            "size": {
+                "width": 300,
+                "height": 300
+            },
+            "root": "silver/",
+            "children": [
+                {
+                    "name": "iCIMS",
+                    "image": "icims.png",
+                    "url": "https://www.icims.com/"
+                },
+                {
+                    "name": "Siemens",
+                    "image": "Siemens.png",
+                    "url": "https://www.siemens.com/us/en/home.html"
+                },
+                {
+                    "name": "Twilio",
+                    "image": "twilio.png",
+                    "url": "https://www.twilio.com/"
+                },
+                {
+                    "name": "iCIMS",
+                    "image": "icims.png",
+                    "url": "https://www.icims.com/"
+                },
+                {
+                    "name": "Siemens",
+                    "image": "Siemens.png",
+                    "url": "https://www.siemens.com/us/en/home.html"
+                },
+                {
+                    "name": "Twilio",
+                    "image": "twilio.png",
+                    "url": "https://www.twilio.com/"
+                }
+            ]
+        },
+        {
+            "name": "BRONZE",
+            "color": "sponsors-bronze-color",
+            "enabled": true,
+            "size": {
+                "width": 200,
+                "height": 200
+            },
+            "root": "/bronze/",
+            "children": [
+                {
+                    "name": "Two Six Labs",
+                    "image": "twosixlabs.png",
+                    "url": "https://www.twosixlabs.com/"
+                },
+                {
+                    "name": "Linode",
+                    "image": "linode.png",
+                    "url": "https://www.linode.com/"
+                }
+            ]
+        }
+    ]
+}

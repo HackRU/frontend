@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from "react";
-import { Container, Grid} from "@material-ui/core";
+import { Container, Grid } from "@material-ui/core";
 import Home from "./Sections/Home";
 import Freeze from "./Sections/Freeze";
 import { defaults, navlinks } from "../../Defaults";
@@ -13,7 +13,6 @@ import MLHBadge from "../../MLHBadge";
  * things that need to be shown on the homepage
  */
 class LandingPage extends Component {
-
     render() {
         let sectionClasses = "col-lg-10 offset-lg-1 col-xs-12 offset-xs-0 color-priority";
         let rows = [];
@@ -37,45 +36,48 @@ class LandingPage extends Component {
                 if (navlinks[keys[i]].fullHeight) {
                     style["minHeight"] = "100vh";
                 }
-                rows.push((
-                    <ScrollableAnchor key={url}
-                        id={url}>
+                rows.push(
+                    <ScrollableAnchor key={url} id={url}>
                         <div>
-                            <Grid className="section"
-                                style={style}>
-                                <Container fluid
+                            <Grid className="section" style={style}>
+                                <Container
+                                    fluid
                                     className={className}
                                     maxWidth={false}
-                                    disableGutters={true} >
-                                    <div className={sectionClasses}>
-                                        {component}
-                                    </div>
+                                    disableGutters={true}
+                                >
+                                    <div className={sectionClasses}>{component}</div>
                                 </Container>
                             </Grid>
                         </div>
                     </ScrollableAnchor>
-                ));
+                );
             }
         }
         return (
             <Fragment>
-                <MLHBadge/>
-                <Container id="LandingPage"
+                <MLHBadge />
+                <Container
+                    id="LandingPage"
                     className="section"
                     fluid
                     maxWidth={false}
                     disableGutters={true}
-                    style={{ }}>
+                    style={{}}
+                >
                     <ScrollableAnchor id="home">
                         <div>
-                            <Grid container
-                                className="section">
-                                { !defaults.freeze ?
-                                    <Home isMobile={this.props.isMobile}
+                            <Grid container className="section">
+                                {!defaults.freeze ? (
+                                    <Home
+                                        isMobile={this.props.isMobile}
                                         profile={this.props.profile}
                                         loggedout={this.props.loggedout}
-                                        dismissAlert={this.props.dismissAlert} /> :
-                                    <Freeze isMobile={this.props.isMobile} />}
+                                        dismissAlert={this.props.dismissAlert}
+                                    />
+                                ) : (
+                                    <Freeze isMobile={this.props.isMobile} />
+                                )}
                             </Grid>
                         </div>
                     </ScrollableAnchor>
@@ -90,7 +92,7 @@ LandingPage.propTypes = {
     isMobile: PropTypes.bool,
     profile: ProfileType,
     loggedout: PropTypes.bool,
-    dismissAlert: PropTypes.func
+    dismissAlert: PropTypes.func,
 };
 
 export default LandingPage;
