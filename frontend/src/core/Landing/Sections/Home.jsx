@@ -13,7 +13,7 @@ import ScrollableAnchor from "react-scrollable-anchor";
 /**
  * Home component for the landing page
  */
-function Home(props) {
+const Home = (props) => {
     const [open, setOpen] = useState(true);
     let loggoutMsg = null;
     console.log("home");
@@ -751,7 +751,7 @@ function Home(props) {
         );
         return packagedHome(returnedMessage);
     }
-}
+};
 const packagedHome = (comp) => {
     return (
         <ScrollableAnchor id="home">
