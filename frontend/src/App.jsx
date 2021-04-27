@@ -3,11 +3,12 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import NavBar from "./NavBar";
 import RouteLinker from "./RouteLinker";
 import React, { Component } from "react";
-
+import Background from "./Background";
 function App() {
     return (
-        <BrowserRouter>
+        <BrowserRouter style={{ width: "100%" }}>
             <div>
+                {/* <Background /> */}
                 <NavBar />
                 <Switch>
                     {RouteLinker.map((link) => {

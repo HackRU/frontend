@@ -308,7 +308,9 @@ const Home = (props) => {
                 </Motion>
                 <Grid
                     style={{ minWidth: "100%", minHeight: "100vh" }}
-                    className="d-flex align-items-center"
+                    container
+                    alignItems="center"
+                    // className="d-flex align-items-center"
                 >
                     <Grid xs={2}></Grid>
                     <Grid xs={8} style={{ display: "block" }}>

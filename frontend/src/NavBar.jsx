@@ -328,7 +328,6 @@ class NavBar extends Component {
                                                 color="white"
                                                 repeat={false}
                                                 noCircle
-                                                style={{ marginTop: "25px", marginLeft: "10px" }}
                                                 src="/assets/icons/hru-text-dyn.svg"
                                             />
                                         </a>

@@ -12,7 +12,8 @@ function Stats() {
             <Grid
                 container
                 spacing={3}
-                className="d-flex align-items-center"
+                alignItems="center"
+                // className="d-flex align-items-center"
                 style={{ textAlign: "center" }}
             >
                 <Grid item xs>
