@@ -1,3 +1,5 @@
+import { navlinks } from "../../Defaults";
+
 const LandingConfig = [
     {
         module: "LANDING",
@@ -11,6 +13,7 @@ const LandingConfig = [
                 params: {
                     loggedOut: false,
                     isMobile: false,
+                    linkProps: navlinks.HOME,
                 },
                 children: [],
             },
@@ -19,6 +22,8 @@ const LandingConfig = [
                 params: {
                     loggedOut: false,
                     isMobile: false,
+                    linkProps: navlinks.ABOUT,
+
                 },
                 children: [],
             },
@@ -27,6 +32,8 @@ const LandingConfig = [
                 params: {
                     loggedOut: false,
                     isMobile: false,
+                    linkProps: navlinks.SCHEDULE,
+
                 },
                 children: [],
             },
@@ -35,6 +42,8 @@ const LandingConfig = [
                 params: {
                     loggedOut: false,
                     isMobile: false,
+                    linkProps: navlinks.SPONSORS,
+
                 },
                 children: [],
             },
@@ -43,6 +52,8 @@ const LandingConfig = [
                 params: {
                     loggedOut: false,
                     isMobile: false,
+                    linkProps: navlinks.PARTNERS,
+
                 },
                 children: [],
             },
@@ -51,6 +62,8 @@ const LandingConfig = [
                 params: {
                     loggedOut: false,
                     isMobile: false,
+                    linkProps: navlinks.STATS,
+
                 },
                 children: [],
             },
@@ -59,6 +72,8 @@ const LandingConfig = [
                 params: {
                     loggedOut: false,
                     isMobile: false,
+                    linkProps: navlinks.FAQS,
+
                 },
                 children: [],
             },
@@ -67,6 +82,8 @@ const LandingConfig = [
                 params: {
                     loggedOut: false,
                     isMobile: false,
+                    linkProps: navlinks.FOOTER,
+
                 },
                 children: [],
             },

@@ -8,7 +8,7 @@ function App() {
     return (
         <BrowserRouter style={{ width: "100%" }}>
             <div>
-                {/* <Background /> */}
+                <Background />
                 <NavBar />
                 <Switch>
                     {RouteLinker.map((link) => {
