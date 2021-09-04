@@ -178,7 +178,7 @@ class App extends Component {
         if(defaults.teamru){
             renderRoutes.push(
                 <Route
-                    exact
+                    // exact
                     path="/teamru"
                     key="teamviewer"
                     render={(props) => <TeamViewerPage tab={0}
@@ -186,36 +186,36 @@ class App extends Component {
                         {...componentProps} />}
                 />
             );
-            renderRoutes.push(
-                <Route
-                    exact
-                    path="/teamru/myteam"
-                    key="myteam"
-                    render={(props) => <TeamViewerPage tab={0}
-                        {...props}
-                        {...componentProps} />}
-                />
-            );
-            renderRoutes.push(
-                <Route
-                    exact
-                    path="/teamru/explore"
-                    key="explore"
-                    render={(props) => <TeamViewerPage tab={1}
-                        {...props}
-                        {...componentProps} />}
-                />
-            );
-            renderRoutes.push(
-                <Route
-                    exact
-                    path="/teamru/manage"
-                    key="manage"
-                    render={(props) => <TeamViewerPage tab={2}
-                        {...props}
-                        {...componentProps} />}
-                />
-            );
+            // renderRoutes.push(
+            //     <Route
+            //         exact
+            //         path="/teamru/myteam"
+            //         key="myteam"
+            //         render={(props) => <TeamViewerPage tab={0}
+            //             {...props}
+            //             {...componentProps} />}
+            //     />
+            // );
+            // renderRoutes.push(
+            //     <Route
+            //         exact
+            //         path="/teamru/explore"
+            //         key="explore"
+            //         render={(props) => <TeamViewerPage tab={1}
+            //             {...props}
+            //             {...componentProps} />}
+            //     />
+            // );
+            // renderRoutes.push(
+            //     <Route
+            //         exact
+            //         path="/teamru/manage"
+            //         key="manage"
+            //         render={(props) => <TeamViewerPage tab={2}
+            //             {...props}
+            //             {...componentProps} />}
+            //     />
+            // );
         }
         return (
             <BrowserRouter style={{ width: "100%" }}>
