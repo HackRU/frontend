@@ -5,7 +5,7 @@ import { useRef, useEffect } from "react";
  */
 const useCancellablePromise = (dependencies = []) => {
 
-    const lastPromise = useRef<Promise<any>>(null);
+    const lastPromise = useRef(null);
 
     useEffect(() => {
         return () => {

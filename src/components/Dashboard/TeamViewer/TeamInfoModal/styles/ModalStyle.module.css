@@ -1,0 +1,122 @@
+.modal-container {
+    z-index: 10 !important;
+    width: 80%;
+    height: 80%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: fixed;
+    background-color: #ffffff;
+    border-left: 0.5rem solid rgb(200, 81, 81);
+    box-sizing: border-box;
+    box-shadow: 0px 5px 10px 5px rgba(0, 0, 0, 0.2);
+    border-radius: 0.3rem;
+    overflow: hidden;
+}
+
+.backdrop {
+    z-index: 5 !important;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    opacity: 0.5;
+}
+
+.header {
+    width: 100%;
+    height: 5rem;
+    background-color: rgb(200, 81, 81);
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 1rem;
+}
+
+.inline-title {
+    display: inline-block;
+    vertical-align: baseline;
+}
+
+.header > span .inline-title:nth-child(1) {
+    color: #ffffff;
+    margin-right: 0.5rem;
+}
+
+.header > span .inline-title:nth-child(2) {
+    color: #eeb844;
+}
+
+.header button {
+    background: none;
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+
+.header button > svg {
+    width: 2.5rem;
+    height: 2.5rem;
+    fill: #ffffff;
+    opacity: 0.5;
+    transition: opacity 0.2s;
+}
+
+.header button:hover svg {
+    opacity: 1;
+}
+
+.content-container {
+    box-sizing: border-box;
+    width: 90%;
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+    margin: auto;
+    height: calc(100% - 5rem);
+    overflow: scroll;
+}
+
+.content-container li {
+    list-style: none;
+}
+
+.entry-list {
+    max-height: 300px;
+    overflow: auto;
+    padding: 0.3rem;
+    margin: 0;
+    margin-left: 3rem;
+}
+
+.entry-card {
+    padding: 0px;
+    margin: 0px;
+    margin-bottom: 0.5rem;
+    height: 5rem;
+    box-sizing: border-box;
+}
+
+.entry-card:last-child {
+    margin-bottom: 0px;
+}
+
+.teamcard-title {
+    display: flex;
+    justify-content: space-between;
+}
+
+.teamcard-title span:nth-child(1) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.teamcard-bio {
+    margin-left: 1rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
