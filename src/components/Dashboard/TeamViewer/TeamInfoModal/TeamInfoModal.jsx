@@ -2,7 +2,7 @@ import { Typography } from "@material-ui/core";
 import { CancelPresentation } from "@material-ui/icons";
 import PropTypes from "prop-types";
 import React, { useEffect, useState, useReducer, useCallback } from "react";
-import { useCancellablePromise } from "../../../../hooks/CancellablePromise";
+import { useCancellablePromise } from "../../../../hooks/CancellablePromise/CancellablePromise";
 import TeamLoading from "../../TeamLoading";
 import GenericList from "./GenericList";
 import TeamMemberList from "./TeamMemberList";

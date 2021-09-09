@@ -15,9 +15,9 @@ const useCancellablePromise = (dependencies = []) => {
 
     /**
      * @param {Promise} curPromise the promise that may take some time to resolve/reject
-     * @param {(res: any) => void} successFn the function to utilize when the promise has successfully resolved
-     * @param {(err: any) => void} failFn the function to utilize when the promise has been rejected
-     * @return {void}
+     * @param {(res: any) => Promise<void>} successFn the function to utilize when the promise has successfully resolved
+     * @param {(err: any) => Promise<void>} failFn the function to utilize when the promise has been rejected
+     * @return {Promise<void>}
      */
     const cancellablePromise = async (curPromise, successFn, failFn) => {
         lastPromise.current = curPromise;
@@ -30,6 +30,7 @@ const useCancellablePromise = (dependencies = []) => {
             });
     };
     return {
+        lastPromise,
         cancellablePromise,
     };
 };
@@ -37,8 +38,8 @@ const useCancellablePromise = (dependencies = []) => {
 /**
  * 
  * @param {Promise} p the promise that may take some time to resolve/reject
- * @param {(res: any) => void} successFn the function to utilize when the promise has successfully resolved
- * @param {(err: any) => void} failFn the function to utilize when the promise has been rejected
+ * @param {(res: any) => Promise<void>} successFn the function to utilize when the promise has successfully resolved
+ * @param {(err: any) => Promise<void>} failFn the function to utilize when the promise has been rejected
  * @returns {{
  *  cancel: () => void,
  *  promiseStatus : {
@@ -97,10 +98,10 @@ const useCancellablePromises = (dependencies = []) => {
      * Will push the promise into a list of promises to be resolved/rejected
      * 
      * @param {Promise<any>} curPromise the promise that may take some time to resolve/reject
-     * @param {(res: any) => void} successFn the function to utilize when the promise resolves
-     * @param {(err: any) => void} failFn the function to utilize when the promise rejects
+     * @param {(res: any) => Promise<void>} successFn the function to utilize when the promise resolves
+     * @param {(err: any) => Promise<void>} failFn the function to utilize when the promise rejects
      * 
-     * @returns {void}
+     * @returns {Promise<void>}
      */
     const cancellablePromises = async (curPromise, successFn, failFn) => {
         promises.current = promises.current.filter( entry => !entry.promiseStatus.isCancelled && !entry.promiseStatus.isFinished);
@@ -108,8 +109,9 @@ const useCancellablePromises = (dependencies = []) => {
     };
 
     return {
+        promises,
         cancellablePromises,
     };
 };
 
-export {useCancellablePromise, useCancellablePromises};
+export {useCancellablePromise, useCancellablePromises, makeCancellablePromise};
