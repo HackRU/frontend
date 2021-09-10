@@ -4,15 +4,12 @@ import PropTypes from "prop-types";
 
 function UserItem(props) {
     const { member, skills } = props;
+    console.log(member);
     return (
         <ListItem>
-            <ListItemAvatar>
-                <Avatar style={{ "width": "2.5em", "height": "2.5em" }}>
-                    {member.user_id ? member.user_id.substring(0, 1).toUpperCase() : "-"}
-                </Avatar>
-            </ListItemAvatar>
-            <ListItemText primary={member.user_id}
-                secondary={skills} />
+           
+            <ListItemText primary={member.bio}
+                secondary={member.user_id} />
         </ListItem>
     );
 }

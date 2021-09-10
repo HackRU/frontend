@@ -75,7 +75,7 @@ function MyTeam(props) {
                                 Skills
                             </Typography>
                             <div>
-                                {team.skills
+                                {team.skills.length != 0
                                     ? team.skills.map((skill, index) => (
                                         <Chip label={skill}
                                             key={index} />
@@ -86,12 +86,13 @@ function MyTeam(props) {
                         <Divider variant="middle" />
 
                         <div style={{ marginTop: "0.5em", marginBottom: "0.5em" }}>
+                            {console.log(team.prizes)}
                             <Typography gutterBottom
                                 variant="body1">
                                 Prizes
                             </Typography>
                             <div>
-                                {team.prizes
+                                {team.prizes.length != 0 
                                     ? team.prizes.map((prize, index) => (
                                         <Chip label={prize}
                                             key={index} />
@@ -104,7 +105,12 @@ function MyTeam(props) {
                 <Grid container
                     direction="column"
                     xs={6}>
+                    <Typography variant="h5">
+                        Members:
+                        </Typography>
+                    {/* Iterating through members  */}
                     <List style={{ width: "100%", maxWidth: 360 }}>
+
                         {team.members
                             ? team.members.map((member, index) => (
                                 <UserItem member={member}
