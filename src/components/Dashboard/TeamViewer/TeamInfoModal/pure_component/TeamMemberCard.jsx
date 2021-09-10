@@ -21,10 +21,10 @@ const TeamMemberCard = (props) => {
 
 TeamMemberCard.propTypes = {
     member : PropTypes.shape({
-        user_id : PropTypes.string,
-        seriousness: PropTypes.number,
-        bio: PropTypes.string,
-    })
+        user_id : PropTypes.string.isRequired,
+        seriousness: PropTypes.number.isRequired,
+        bio: PropTypes.string.isRequired,
+    }).isRequired,
 };
 
 export default TeamMemberCard;

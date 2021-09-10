@@ -1,13 +1,12 @@
-import { Typography } from "@material-ui/core";
-import { CancelPresentation } from "@material-ui/icons";
 import PropTypes from "prop-types";
 import React, { useEffect, useState, useReducer, useCallback } from "react";
 import { useCancellablePromise } from "../../../../hooks/CancellablePromise/CancellablePromise";
 import TeamLoading from "../../TeamLoading";
-import GenericList from "./GenericList";
-import TeamMemberList from "./TeamMemberList";
-
-import modalstyles from "./styles/ModalStyle.module.css";
+import GenericList from "./pure_component/GenericList";
+import PureModal from "./pure_component/PureModal";
+import TeamMemberList from "./pure_component/TeamMemberList";
+import ModalBackground from "./pure_component/ModalBackground";
+import PureSection from "./pure_component/PureSection";
 
 const teamInfoReducer = (state, action) => {
     switch (action.type) {
@@ -34,70 +33,43 @@ const TeamInfoModal = (props) => {
         fetchTeamInfo(profile.getTeam(teamId), handleTeamInfoRequest, async (resp) => { console.log(resp); });
     }, [teamName]);
 
-    return (<>
-        <ModalBackground onClose={onClose}/>
-        <div className={modalstyles["modal-container"]}>
-            <header className={modalstyles["header"]}>
-                <span>
-                    <Typography className={modalstyles["inline-title"]}
-                        variant="h5">
-                        {teamName}:
-                    </Typography>
-                    <Typography className={modalstyles["inline-title"]}
-                        variant="h6">
-                        {teamId}
-                    </Typography>
-                </span>
-                <span>
-                    <button onClick={onClose}>
-                        <CancelPresentation/>
-                    </button>
-                </span>
-            </header>
-            {
-                isLoading ?
-                    <TeamLoading text={"Loading team info..."}/>
-                    :
-                    <div className={modalstyles["content-container"]}>
-                        <div>
-                            <div>
-                                <Typography variant="h5">
-                                    Members
-                                </Typography>
-                            </div>
-                            <TeamMemberList members={teamInfoState.members}/>
-                        </div>
-                        {
-                            teamInfoState.skills ? 
-                                <GenericList header={"Skills"}
-                                    entries={teamInfoState.skills}/>
-                                :
-                                <></>
-                        }
-                        {
-                            teamInfoState.prizes ?
-                                <GenericList header={"Prizes"}
-                                    entries={teamInfoState.prizes}/>
-                                :
-                                <></>
-                        }
-                    </div>
-            }
-        </div>
-    </>);
-};
-
-const ModalBackground = (props) => {
-    const {onClose} = props;
-
     return (
-        <div className={modalstyles["backdrop"]} 
-            onClick={onClose}/>
+        <>
+            <ModalBackground onClick={onClose}/>
+            <PureModal header={teamName} 
+                subHeader={teamId}
+                onClick={onClose}>
+                <>
+                    {
+                        isLoading ?
+                            <TeamLoading text={"Loading team info..."}/>
+                            :
+                            <>
+                                <PureSection sectionHeader={"Members"}>
+                                    <TeamMemberList members={teamInfoState.members}/>
+                                </PureSection>
+                                {
+                                    teamInfoState.skills ? 
+                                        <PureSection sectionHeader={"Skills"}>
+                                            <GenericList entries={teamInfoState.skills}/>
+                                        </PureSection>
+                                        :
+                                        <></>
+                                }
+                                {
+                                    teamInfoState.prizes ?
+                                        <PureSection sectionHeader={"Prizes"}>
+                                            <GenericList entries={teamInfoState.prizes}/>
+                                        </PureSection>
+                                        :
+                                        <></>
+                                }
+                            </>
+                    }
+                </>
+            </PureModal>
+        </>
     );
-};
-
-ModalBackground.propTypes = {
-    onClose : PropTypes.func,
 };
 
 TeamInfoModal.propTypes = {
