@@ -1,9 +1,9 @@
 import React from "react";
-import { ListItemAvatar, ListItem, ListItemText, Avatar } from "@material-ui/core";
+import {  ListItem, ListItemText, } from "@material-ui/core";
 import PropTypes from "prop-types";
 
 function UserItem(props) {
-    const { member, skills } = props;
+    const { member } = props;
     console.log(member);
     return (
         <ListItem>

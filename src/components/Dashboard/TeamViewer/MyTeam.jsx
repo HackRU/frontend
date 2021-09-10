@@ -107,7 +107,7 @@ function MyTeam(props) {
                     xs={6}>
                     <Typography variant="h5">
                         Members:
-                        </Typography>
+                    </Typography>
                     {/* Iterating through members  */}
                     <List style={{ width: "100%", maxWidth: 360 }}>
 
