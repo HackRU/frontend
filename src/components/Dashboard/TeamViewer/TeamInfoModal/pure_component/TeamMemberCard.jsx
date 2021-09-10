@@ -2,7 +2,7 @@ import { Avatar } from "@material-ui/core";
 import PropTypes from "prop-types";
 import React from "react";
 
-import modalstyles from "./styles/ModalStyle.module.css";
+import modalstyles from "../styles/ModalStyle.module.css";
 
 const TeamMemberCard = (props) => {
     const {user_id, seriousness, bio} = props.member;

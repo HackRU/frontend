@@ -15,7 +15,7 @@ const PureModal = (props) => {
                         {header}
                     </Typography>
                     <Typography className={modalstyles["sub-header"]}
-                        variant="h6">
+                        variant="h7">
                         {subHeader}
                     </Typography>
                 </span>

@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import modalstyles from "./styles/ModalStyle.module.css";
+import modalstyles from "../styles/ModalStyle.module.css";
 
 const GenericList = (props) => {
     const {entries} = props;

@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import TeamMemberCard from "./TeamMemberCard";
 
-import modalstyles from "./styles/ModalStyle.module.css";
+import modalstyles from "../styles/ModalStyle.module.css";
 
 const TeamMemberList = (props) => {
     const {members} = props;
