@@ -1,4 +1,3 @@
-import { Avatar } from "@material-ui/core";
 import PropTypes from "prop-types";
 import React from "react";
 
@@ -9,11 +8,11 @@ const TeamMemberCard = (props) => {
     return (
         <li className={modalstyles["entry-card"]}>
             <div className={modalstyles["teamcard-title"]}>
-                <span><Avatar>{user_id.length === 0 ? "" : user_id.substring(0, 1)}</Avatar>{user_id}</span>
+                <span>
+                    <div>{bio}</div>
+                    <div>{user_id}</div>
+                </span>
                 <span>Seriousness : {seriousness}</span>
-            </div>
-            <div className={modalstyles["teamcard-bio"]}>
-                Bio: {bio}
             </div>
         </li>
     );

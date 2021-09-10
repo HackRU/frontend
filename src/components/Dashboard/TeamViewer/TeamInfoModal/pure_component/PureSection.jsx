@@ -1,12 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Typography } from "@material-ui/core";
+import modalstyles from "../styles/ModalStyle.module.css";
 
 const PureSection = (props) => {
     const {sectionHeader, children} = props;
     return (
         <>
-            <div>
+            <div className={modalstyles["tile"]}>
                 <div>
                     <Typography variant="h5">
                         {sectionHeader}

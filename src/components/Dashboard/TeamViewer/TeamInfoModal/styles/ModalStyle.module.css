@@ -6,7 +6,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     position: fixed;
-    background-color: #ffffff;
+    background-color: hsl(55, 5%, 98%);
     border-left: 0.5rem solid rgb(200, 81, 81);
     box-sizing: border-box;
     box-shadow: 0px 5px 10px 5px rgba(0, 0, 0, 0.2);
@@ -80,16 +80,14 @@
 
 .content-container {
     box-sizing: border-box;
-    width: 90%;
+    width: 100%;
     padding-top: 2.5rem;
     padding-bottom: 2.5rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
     margin: auto;
     height: calc(100% - 5rem);
-    overflow: scroll;
-}
-
-.content-container li {
-    list-style: none;
+    overflow: auto;
 }
 
 .entry-list {
@@ -97,7 +95,8 @@
     overflow: auto;
     padding: 0.3rem;
     margin: 0;
-    margin-left: 3rem;
+    margin-left: 1.5rem;
+    list-style: none;
 }
 
 .entry-card {
@@ -115,17 +114,71 @@
 .teamcard-title {
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 .teamcard-title span:nth-child(1) {
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    align-items: center;
     gap: 0.5rem;
 }
 
-.teamcard-bio {
+.teamcard-title span:nth-child(1) div:nth-child(1) {
+    font-weight: 600;
+    font-size: large;
+}
+
+.teamcard-title span:nth-child(1) div:nth-child(2) {
     margin-left: 1rem;
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
+    color: gray;
+}
+
+.over-grid {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-rows: minmax(auto, 10rem) 1fr;
+    overflow: auto;
+    gap: 1rem;
+    box-sizing: border-box;
+}
+
+.members-skills-prizes-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.tile {
+    padding: 0.5rem;
+    background-color: #ffffff;
+    width: 100%;
+    height: 100%;
+}
+
+.skills-prizes-grid {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    gap: 1rem;
+}
+
+@media only screen and (max-width: 769px){
+   .over-grid {
+       display: flex;
+       flex-direction: column;
+       row-gap: 1rem;
+   } 
+   .members-skills-prizes-grid {
+       display: flex;
+       flex-direction: column;
+       row-gap: 1rem;
+   }
+   .skills-prizes-grid {
+       display: flex;
+       flex-direction: column;
+       row-gap: 1rem;
+   }
 }

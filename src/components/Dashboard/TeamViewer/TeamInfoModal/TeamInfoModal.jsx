@@ -2,11 +2,9 @@ import PropTypes from "prop-types";
 import React, { useEffect, useState, useReducer, useCallback } from "react";
 import { useCancellablePromise } from "../../../../hooks/CancellablePromise/CancellablePromise";
 import TeamLoading from "../../TeamLoading";
-import GenericList from "./pure_component/GenericList";
 import PureModal from "./pure_component/PureModal";
-import TeamMemberList from "./pure_component/TeamMemberList";
 import ModalBackground from "./pure_component/ModalBackground";
-import PureSection from "./pure_component/PureSection";
+import TeamInfoPure from "./pure_component/TeamInfoPure";
 
 const teamInfoReducer = (state, action) => {
     switch (action.type) {
@@ -37,7 +35,6 @@ const TeamInfoModal = (props) => {
         <>
             <ModalBackground onClick={onClose}/>
             <PureModal header={teamName} 
-                subHeader={teamId}
                 onClick={onClose}>
                 <>
                     {
@@ -45,25 +42,7 @@ const TeamInfoModal = (props) => {
                             <TeamLoading text={"Loading team info..."}/>
                             :
                             <>
-                                <PureSection sectionHeader={"Members"}>
-                                    <TeamMemberList members={teamInfoState.members}/>
-                                </PureSection>
-                                {
-                                    teamInfoState.skills ? 
-                                        <PureSection sectionHeader={"Skills"}>
-                                            <GenericList entries={teamInfoState.skills}/>
-                                        </PureSection>
-                                        :
-                                        <></>
-                                }
-                                {
-                                    teamInfoState.prizes ?
-                                        <PureSection sectionHeader={"Prizes"}>
-                                            <GenericList entries={teamInfoState.prizes}/>
-                                        </PureSection>
-                                        :
-                                        <></>
-                                }
+                                <TeamInfoPure teamInfo={teamInfoState}/>
                             </>
                     }
                 </>

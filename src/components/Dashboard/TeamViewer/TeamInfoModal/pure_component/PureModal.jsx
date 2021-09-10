@@ -5,7 +5,7 @@ import { Typography } from "@material-ui/core";
 import { CancelPresentation } from "@material-ui/icons";
 
 const PureModal = (props) => {
-    const { header, subHeader, children, onClick } = props;
+    const { header, children, onClick } = props;
     return (
         <div className={modalstyles["modal-container"]}>
             <header className={modalstyles["header"]}>
@@ -14,10 +14,13 @@ const PureModal = (props) => {
                         variant="h5">
                         {header}
                     </Typography>
-                    <Typography className={modalstyles["sub-header"]}
-                        variant="h7">
-                        {subHeader}
-                    </Typography>
+                    {
+                        props.subHeader && 
+                        <Typography className={modalstyles["sub-header"]}
+                            variant="subtitle1">
+                            {props.subHeader}
+                        </Typography>
+                    }
                 </span>
                 <span className={modalstyles["button"]}>
                     <button onClick={onClick}>
@@ -34,7 +37,7 @@ const PureModal = (props) => {
 
 PureModal.propTypes = {
     header : PropTypes.string.isRequired,
-    subHeader : PropTypes.string.isRequired,
+    subHeader : PropTypes.string,
     children : PropTypes.node.isRequired,
     onClick : PropTypes.func.isRequired,
 };
