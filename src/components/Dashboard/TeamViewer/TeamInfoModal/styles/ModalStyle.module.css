@@ -139,7 +139,6 @@
     height: 100%;
     display: grid;
     grid-template-rows: minmax(auto, 10rem) 1fr;
-    overflow: auto;
     gap: 1rem;
     box-sizing: border-box;
 }
@@ -180,5 +179,6 @@
        display: flex;
        flex-direction: column;
        row-gap: 1rem;
+       margin-bottom: 1rem;
    }
 }
