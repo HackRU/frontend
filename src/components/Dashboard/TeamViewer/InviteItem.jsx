@@ -6,7 +6,7 @@ import CheckCircleOutlineIcon from "@material-ui/icons/CheckCircleOutline";
 import LinkOffOutlinedIcon from "@material-ui/icons/LinkOffOutlined";
 import PropTypes from "prop-types";
 import TeamInfoModal from "./TeamInfoModal";
-import ConfirmationModal from "./TeamInfoModal/pure_component/ConfirmationModal";
+import { ConfirmationModal } from "./TeamInfoModal";
 import { useCancellablePromise } from "../../../hooks/CancellablePromise/CancellablePromise";
 
 function InviteItem(props) {

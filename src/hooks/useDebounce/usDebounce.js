@@ -5,12 +5,12 @@ import {useEffect, useRef} from "react";
  * 
  * @param {Function} fn the function to be debounced
  * @param {number} wait amount of time in milliseconds to wait before can call function again
- * @param {boolean} immediate whether to immediately call fn when triggered (true), or to wait to call fn (false)
+ * @param {boolean} immediate whether to immediately call fn when triggered (true), or to wait to call fn (false) - default true
  * @param {boolean} lenient default is false
- * @param {any[]} dependencies optional list of dependencies that, when changed, will
+ * @param {any[]} dependencies optional list of dependencies that, when changed, will - default []
  */
 const useDebounce = (fn, wait, immediate = true, lenient = false, dependencies = []) => {
-    let timer = useRef(null);
+    const timer = useRef(null);
     useEffect(() => {
         return () => {
             timer.current && clearTimeout(timer.current);
@@ -26,7 +26,7 @@ const useDebounce = (fn, wait, immediate = true, lenient = false, dependencies =
         const runNow = !timer.current && immediate;
         const later = () => {
             timer.current = null;
-            !runNow && fn(...args);
+            !immediate && fn(...args);
         };
         if (!lenient) {
             timer.current && clearTimeout(timer.current);
