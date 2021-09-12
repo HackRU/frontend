@@ -1,7 +1,5 @@
-.modal-container {
+.master-container {
     z-index: 10 !important;
-    width: 80%;
-    height: 80%;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -12,6 +10,15 @@
     box-shadow: 0px 5px 10px 5px rgba(0, 0, 0, 0.2);
     border-radius: 0.3rem;
     overflow: hidden;
+}
+
+.modal-container {
+    width: 80%;
+    height: 80%;
+}
+
+.prompt-container {
+    width: 50%;
 }
 
 .backdrop {
@@ -164,6 +171,37 @@
     gap: 1rem;
 }
 
+.confirm-cancel-buttons {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.confirm-cancel-buttons button {
+    margin: 0.5rem;
+    padding: 0.3rem;
+    font-size: larger;
+    border: none;
+    background-color: hsl(55, 5%, 90%);
+    border-radius: 0.5rem;
+    transition: transform ease 0.4s;
+    transition: background-color ease 0.4s;
+}
+
+.confirm-cancel-buttons button:hover {
+    background-color: rgb(200, 81, 81);
+    transform: translateY(-5%);
+}
+
+.confirm-content-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
 @media only screen and (max-width: 769px){
    .over-grid {
        display: flex;
@@ -180,5 +218,8 @@
        flex-direction: column;
        row-gap: 1rem;
        margin-bottom: 1rem;
+   }
+   .confirm-cancel-buttons {
+       flex-direction: column;
    }
 }

@@ -7,7 +7,7 @@ import { CancelPresentation } from "@material-ui/icons";
 const PureModal = (props) => {
     const { header, children, onClick } = props;
     return (
-        <div className={modalstyles["modal-container"]}>
+        <div className={`${modalstyles["master-container"]} ${ props.isPrompt ? modalstyles["prompt-container"] : modalstyles["modal-container"]}`}>
             <header className={modalstyles["header"]}>
                 <span className={modalstyles["header-title"]}>
                     <Typography className={modalstyles["main-header"]}
@@ -40,6 +40,7 @@ PureModal.propTypes = {
     subHeader : PropTypes.string,
     children : PropTypes.node.isRequired,
     onClick : PropTypes.func.isRequired,
+    isPrompt : PropTypes.bool,
 };
 
 export default PureModal;
