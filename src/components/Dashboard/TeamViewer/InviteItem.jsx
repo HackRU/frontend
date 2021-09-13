@@ -7,7 +7,7 @@ import LinkOffOutlinedIcon from "@material-ui/icons/LinkOffOutlined";
 import PropTypes from "prop-types";
 import TeamInfoModal from "./TeamInfoModal";
 import { ConfirmationModal } from "./TeamInfoModal";
-import { useCancellablePromise } from "../../../hooks/CancellablePromise/CancellablePromise";
+import { useCancellablePromise } from "../../../hooks/CancellablePromise";
 
 function InviteItem(props) {
     const { isOutgoing, invitedTeamId, originalTeam, profile, del } = props;

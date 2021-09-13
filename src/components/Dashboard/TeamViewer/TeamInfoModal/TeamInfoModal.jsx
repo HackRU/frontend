@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import React, { useEffect, useState, useReducer, useCallback } from "react";
-import { useCancellablePromise } from "../../../../hooks/CancellablePromise/CancellablePromise";
+import { useCancellablePromise } from "../../../../hooks/CancellablePromise";
 import TeamLoading from "../../TeamLoading";
 import PureModal from "./pure_component/PureModal";
 import ModalBackground from "./pure_component/ModalBackground";
