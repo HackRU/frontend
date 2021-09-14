@@ -4,7 +4,7 @@ import React from "react";
 import modalstyles from "../styles/ModalStyle.module.css";
 
 const TeamMemberCard = (props) => {
-    const {user_id, seriousness, bio} = props.member;
+    const {user_id, bio} = props.member;
     return (
         <li className={modalstyles["entry-card"]}>
             <div className={modalstyles["teamcard-title"]}>
@@ -12,7 +12,6 @@ const TeamMemberCard = (props) => {
                     <div>{bio}</div>
                     <div>{user_id}</div>
                 </span>
-                <span>Seriousness : {seriousness}</span>
             </div>
         </li>
     );
@@ -21,7 +20,7 @@ const TeamMemberCard = (props) => {
 TeamMemberCard.propTypes = {
     member : PropTypes.shape({
         user_id : PropTypes.string.isRequired,
-        seriousness: PropTypes.number.isRequired,
+        seriousness: PropTypes.number,
         bio: PropTypes.string.isRequired,
     }).isRequired,
 };

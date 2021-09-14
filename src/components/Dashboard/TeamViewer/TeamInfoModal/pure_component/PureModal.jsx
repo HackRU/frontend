@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import modalstyles from "../styles/ModalStyle.module.css";
 import { Typography } from "@material-ui/core";
-import { CancelPresentation } from "@material-ui/icons";
+import { HighlightOff } from "@material-ui/icons";
 
 const PureModal = (props) => {
     const { header, children, onClick } = props;
@@ -24,7 +24,7 @@ const PureModal = (props) => {
                 </span>
                 <span className={modalstyles["button"]}>
                     <button onClick={onClick}>
-                        <CancelPresentation/>
+                        <HighlightOff/>
                     </button>
                 </span>
             </header>

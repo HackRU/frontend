@@ -16,7 +16,7 @@ const ConfirmationModal = (props) => {
             >
                 <div className={modalstyles["confirm-content-container"]}>
                     {
-                        props.message && <div>{props.message}</div>
+                        props.message && <div className={modalstyles["prompt-message"]}>{props.message}</div>
                     }
                     <div className={modalstyles["confirm-cancel-buttons"]}>
                         <button className={modalstyles["confirm"]}

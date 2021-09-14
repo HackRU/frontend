@@ -46,7 +46,7 @@ function InviteItem(props) {
                 />
             }
             <ListItem
-                style={{ padding: "1em" }}>
+                style={{ padding: "1em", cursor: "pointer" }}>
                 <ListItemAvatar>
                     <Avatar>
                         {invitedTeam.name ? invitedTeam.name.substring(0, 1) : ""}
