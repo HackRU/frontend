@@ -9,8 +9,8 @@ const TeamMemberCard = (props) => {
         <li className={modalstyles["entry-card"]}>
             <div className={modalstyles["teamcard-title"]}>
                 <span>
-                    <div>{bio}</div>
                     <div>{user_id}</div>
+                    <div>{bio}</div>
                 </span>
             </div>
         </li>

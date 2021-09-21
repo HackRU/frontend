@@ -36,6 +36,7 @@ function InviteItem(props) {
             {
                 showConfirmation && <ConfirmationModal 
                     message={msg}
+                    title={"Confirm Decision"}
                     onCancel={() => setShowConfirmation(false)}
                     onConfirm={
                         () => {
