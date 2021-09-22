@@ -6,6 +6,7 @@ import PropTypes from "prop-types";
 import TeamLoading from "../TeamLoading";
 
 import RenderRow from "./RenderRow";
+import ExploreSearchBox from "./ExploreSearchBox";
 
 function Explore(props) {
     const [matches, setMatches] = useState({});
@@ -13,6 +14,7 @@ function Explore(props) {
     const [page, setPage] = React.useState(1);
     const [allTeams, setAllTeams] = useState({});
     const [loading, setLoading] = useState("Loading your matches...");
+    const [searchText, setSearchText] = useState("");
     useEffect(() => {
         props.profile.getTeamUser().then((success) => {
             const team_id = success.response.team_id;
@@ -26,6 +28,10 @@ function Explore(props) {
             });
         });
     }, []);
+
+    useEffect(() => {
+        console.log(searchText);
+    }, [searchText]);
 
     const onInvite = async (id) => {
         // let all_teams = await props.profile.getAllTeams(((page - 1) * 4), 4);
@@ -77,6 +83,7 @@ function Explore(props) {
                 )}
             </List>
             <Typography variant="h5">All Teams</Typography>
+            <ExploreSearchBox setSearchText={setSearchText} />
             <List
                 style={{ maxHeight: "300px", width: "600px", overflow: "auto" }}
                 className="no-scrollbars no-style-type"
