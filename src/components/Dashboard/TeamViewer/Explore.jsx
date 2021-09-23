@@ -9,10 +9,13 @@ import RenderRow from "./RenderRow";
 import ExploreSearchBox from "./ExploreSearchBox";
 
 function Explore(props) {
-    const [matches, setMatches] = useState({});
+    const [matches, setMatches] = useState({}); // all matches
     const [originalTeamId, setOriginalTeam] = useState({});
-    const [page, setPage] = React.useState(1);
-    const [allTeams, setAllTeams] = useState({});
+    const [teamPage, setTeamPage] = React.useState(1); // all teams page
+    const [teamPageCount, setTeamPageCount] = React.useState(1); // all teams total page count
+    const [allTeams, setAllTeams] = useState({}); // all teams
+    const [totalSearchTeams, setTotalSearchTeams] = useState({}); // all teams matching input
+    const [sliceSearchTeams, setSliceSearchTeams] = useState({}); // all teams matching input shown on single pagination
     const [loading, setLoading] = useState("Loading your matches...");
     const [searchText, setSearchText] = useState("");
     useEffect(() => {
@@ -21,17 +24,48 @@ function Explore(props) {
             setOriginalTeam(success.response.team_id);
             props.profile.matches(team_id).then((success) => {
                 setMatches(success.response);
+
                 props.profile.getAllTeams(0, 4).then((success) => {
-                    setAllTeams(success.response);
+                    setSliceSearchTeams(success.response.all_open_teams);
                     setLoading(false);
+                });
+
+                props.profile.getAllTeams().then((success) => {
+                    setAllTeams(success.response);
+                    setTeamPageCount(Math.ceil(success.response.total_teams / 4));
+                    setTotalSearchTeams(success.response.all_open_teams);
                 });
             });
         });
     }, []);
 
     useEffect(() => {
+        if (allTeams.all_open_teams !== undefined) {
+            const checkTeam = (team) => {
+                const lowerTeam = team.name.toLowerCase();
+                const upperTeam = team.name.toUpperCase();
+                if (lowerTeam.includes(searchText.toLowerCase()))
+                    return lowerTeam.includes(searchText.toLowerCase());
+                else if (upperTeam.includes(searchText.toUpperCase()))
+                    return upperTeam.includes(searchText.toUpperCase());
+            };
+            setSliceSearchTeams(allTeams.all_open_teams.filter(checkTeam).slice(((teamPage - 1) * 4), teamPage * 4));
+            setTotalSearchTeams(allTeams.all_open_teams.filter(checkTeam));
+        }
         console.log(searchText);
-    }, [searchText]);
+    }, [searchText]); // Runs on search box change
+
+    useEffect(() => {
+        console.log(totalSearchTeams);
+        setTeamPageCount(Math.ceil(totalSearchTeams.length / 4));
+    }, [totalSearchTeams]); // Runs on search box change
+
+    // Checks if user searches while past total search teams page count
+    useEffect(() => {
+        if (teamPage > teamPageCount) {
+            handleTeamPagination(null, 1);
+        }
+    }, [teamPageCount]); // Runs on search box change
 
     const onInvite = async (id) => {
         // let all_teams = await props.profile.getAllTeams(((page - 1) * 4), 4);
@@ -45,10 +79,10 @@ function Explore(props) {
         }));
     };
 
-    const handlePagination = async (event, value) => {
-        setPage(value);
-        let all_teams = await props.profile.getAllTeams(((value - 1) * 4), 4);
-        setAllTeams(all_teams.response);
+    const handleTeamPagination = async (event, value) => {
+        setTeamPage(value);
+        let sliceTeams = totalSearchTeams.slice(((value - 1) * 4), value * 4);
+        setSliceSearchTeams(sliceTeams);
     };
     if (loading) {
         return (<TeamLoading text={loading} />);
@@ -89,7 +123,7 @@ function Explore(props) {
                 className="no-scrollbars no-style-type"
             >
                 {allTeams.all_open_teams && allTeams.all_open_teams.length > 0 ? (
-                    allTeams.all_open_teams.map((invitingTeamId, i) => (
+                    sliceSearchTeams.map((invitingTeamId, i) => (
                         <RenderRow
                             index={invitingTeamId}
                             key={invitingTeamId+i}
@@ -104,10 +138,10 @@ function Explore(props) {
                 )}
             </List>
             <Pagination
-                count={Math.ceil(allTeams.total_teams / 4)}
+                count={teamPageCount}
                 variant="outlined"
-                page={page}
-                onChange={handlePagination}
+                page={teamPage}
+                onChange={handleTeamPagination}
                 shape="rounded"
             />
         </Grid>
