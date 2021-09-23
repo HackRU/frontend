@@ -18,7 +18,7 @@ function Explore(props) {
     const [teamPageCount, setTeamPageCount] = React.useState(0); // all teams total page count
     const [allTeams, setAllTeams] = useState({}); // all teams
     const [totalSearchTeams, setTotalSearchTeams] = useState({}); // all teams matching input
-    const [sliceSearchTeams, setSliceSearchTeams] = useState({}); // all teams matching input shown on single pagination
+    const [sliceSearchTeams, setSliceSearchTeams] = useState([{}]); // all teams matching input shown on single pagination
     const [loading, setLoading] = useState("Loading your matches...");
     const [searchText, setSearchText] = useState("");
     
@@ -29,7 +29,7 @@ function Explore(props) {
             setOriginalTeam(success.response.team_id);
             props.profile.matches(team_id).then((success) => {
                 setMatches(success.response);
-                if (success.response.matches !== undefined) {
+                if (success.response.matches) {
                     setSliceMatches(success.response.matches.slice(0, 4));
                     setMatchesPageCount(Math.ceil(success.response.matches.length / 4));
                     setMatchesPage(1);
@@ -91,17 +91,36 @@ function Explore(props) {
         }));
     };
 
+    // Request new slice of matches
     const handleMatchesPagination = async (event, value) => {
         setMatchesPage(value);
-        let sliceMatches = matches.matches.slice(((value - 1) * 4), value * 4);
-        setSliceMatches(sliceMatches);
+        props.profile.getTeamUser().then((success) => {
+            const team_id = success.response.team_id;
+            props.profile.matches(team_id).then((success) => {
+                if (success.response.matches && !JSON.stringify(matches.matches) == JSON.stringify(success.response.matches)) {
+                    setMatches(success.response);
+                    setSliceMatches(success.response.matches.slice(((value - 1) * 4), value * 4));
+                } else {
+                    setSliceMatches(matches.matches.slice(((value - 1) * 4), value * 4));
+                }
+            });
+        });
     };
 
+    // Request new slice of teams
     const handleTeamPagination = async (event, value) => {
         setTeamPage(value);
         if (totalSearchTeams) {
-            let sliceTeams = totalSearchTeams.slice(((value - 1) * 4), value * 4);
-            setSliceSearchTeams(sliceTeams);
+            props.profile.getAllTeams(((value - 1) * 4), 4).then((success) => {
+                if (success.response.all_open_teams && !JSON.stringify(success.response.all_open_teams) == JSON.stringify(totalSearchTeams.slice(((value - 1) * 4), value * 4))) {
+                    setSliceSearchTeams(success.response.all_open_teams);
+                    props.profile.getAllTeams().then((success) => {
+                        setTotalSearchTeams(success.response.all_open_teams);
+                    });
+                } else {
+                    setSliceSearchTeams(totalSearchTeams.slice(((value - 1) * 4), value * 4));
+                }
+            });
         }
     };
     if (loading) {

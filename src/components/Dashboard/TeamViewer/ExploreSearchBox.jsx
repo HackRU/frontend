@@ -16,6 +16,11 @@ function ExploreSearchBox(props) {
             onChange={(e) => {
                 props.setSearchText(e.target.value);
             }}
+            onKeyPress={(e) => { // Prevent page from reloading on Enter
+                if (e.key === "Enter") {
+                    e.preventDefault();
+                }
+            }}
         >
             <TextField id="outlined-basic"
                 label="Search by team name"
