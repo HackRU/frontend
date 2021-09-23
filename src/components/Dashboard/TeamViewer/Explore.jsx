@@ -60,18 +60,20 @@ function Explore(props) {
             setSliceSearchTeams(allTeams.all_open_teams.filter(checkTeam).slice(((teamPage - 1) * 4), teamPage * 4));
             setTotalSearchTeams(allTeams.all_open_teams.filter(checkTeam));
         }
-    }, [searchText]); // Runs on search box change
+    }, [searchText]);
 
     useEffect(() => {
-        setTeamPageCount(Math.ceil(totalSearchTeams.length / 4));
-    }, [totalSearchTeams]); // Runs on search box change
+        if (allTeams.all_open_teams && allTeams.all_open_teams.length !== 0) {
+            setTeamPageCount(Math.ceil(totalSearchTeams.length / 4));
+        }
+    }, [totalSearchTeams]);
 
     // Checks if user searches while past total search teams page count
     useEffect(() => {
         if (teamPage > teamPageCount) {
             handleTeamPagination(null, 1);
         }
-    }, [teamPageCount]); // Runs on search box change
+    }, [teamPageCount]);
 
     const onInvite = async (id) => {
         // let all_teams = await props.profile.getAllTeams(((page - 1) * 4), 4);
@@ -93,7 +95,7 @@ function Explore(props) {
 
     const handleTeamPagination = async (event, value) => {
         setTeamPage(value);
-        if (totalSearchTeams !== undefined) {
+        if (totalSearchTeams) {
             let sliceTeams = totalSearchTeams.slice(((value - 1) * 4), value * 4);
             setSliceSearchTeams(sliceTeams);
         }
