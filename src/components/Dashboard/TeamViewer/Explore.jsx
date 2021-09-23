@@ -101,11 +101,8 @@ function Explore(props) {
             const team_id = success.response.team_id;
             props.profile.matches(team_id).then((success) => {
                 setMatches(success.response);
-                if (success.response.matches && !JSON.stringify(matches.matches) == JSON.stringify(success.response.matches)) {
+                if (success.response.matches)
                     setSliceMatches(success.response.matches.slice(((value - 1) * 4), value * 4));
-                } else {
-                    setSliceMatches(matches.matches.slice(((value - 1) * 4), value * 4));
-                }
             });
         });
     };
