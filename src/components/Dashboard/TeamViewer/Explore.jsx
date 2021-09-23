@@ -10,9 +10,12 @@ import ExploreSearchBox from "./ExploreSearchBox";
 
 function Explore(props) {
     const [matches, setMatches] = useState({}); // all matches
+    const [matchesPage, setMatchesPage] = React.useState(0); // matches page
+    const [matchesPageCount, setMatchesPageCount] = React.useState(0); // matches total page count
+    const [sliceMatches, setSliceMatches] = useState({});
     const [originalTeamId, setOriginalTeam] = useState({});
-    const [teamPage, setTeamPage] = React.useState(1); // all teams page
-    const [teamPageCount, setTeamPageCount] = React.useState(1); // all teams total page count
+    const [teamPage, setTeamPage] = React.useState(0); // all teams page
+    const [teamPageCount, setTeamPageCount] = React.useState(0); // all teams total page count
     const [allTeams, setAllTeams] = useState({}); // all teams
     const [totalSearchTeams, setTotalSearchTeams] = useState({}); // all teams matching input
     const [sliceSearchTeams, setSliceSearchTeams] = useState({}); // all teams matching input shown on single pagination
@@ -24,7 +27,11 @@ function Explore(props) {
             setOriginalTeam(success.response.team_id);
             props.profile.matches(team_id).then((success) => {
                 setMatches(success.response);
-
+                if (success.response.matches !== undefined) {
+                    setSliceMatches(success.response.matches.slice(0, 4));
+                    setMatchesPageCount(Math.ceil(success.response.matches.length / 4));
+                    setMatchesPage(1);
+                }
                 props.profile.getAllTeams(0, 4).then((success) => {
                     setSliceSearchTeams(success.response.all_open_teams);
                     setLoading(false);
@@ -34,6 +41,7 @@ function Explore(props) {
                     setAllTeams(success.response);
                     setTeamPageCount(Math.ceil(success.response.total_teams / 4));
                     setTotalSearchTeams(success.response.all_open_teams);
+                    setTeamPage(1);
                 });
             });
         });
@@ -52,11 +60,9 @@ function Explore(props) {
             setSliceSearchTeams(allTeams.all_open_teams.filter(checkTeam).slice(((teamPage - 1) * 4), teamPage * 4));
             setTotalSearchTeams(allTeams.all_open_teams.filter(checkTeam));
         }
-        console.log(searchText);
     }, [searchText]); // Runs on search box change
 
     useEffect(() => {
-        console.log(totalSearchTeams);
         setTeamPageCount(Math.ceil(totalSearchTeams.length / 4));
     }, [totalSearchTeams]); // Runs on search box change
 
@@ -79,10 +85,18 @@ function Explore(props) {
         }));
     };
 
+    const handleMatchesPagination = async (event, value) => {
+        setMatchesPage(value);
+        let sliceMatches = matches.matches.slice(((value - 1) * 4), value * 4);
+        setSliceMatches(sliceMatches);
+    };
+
     const handleTeamPagination = async (event, value) => {
         setTeamPage(value);
-        let sliceTeams = totalSearchTeams.slice(((value - 1) * 4), value * 4);
-        setSliceSearchTeams(sliceTeams);
+        if (totalSearchTeams !== undefined) {
+            let sliceTeams = totalSearchTeams.slice(((value - 1) * 4), value * 4);
+            setSliceSearchTeams(sliceTeams);
+        }
     };
     if (loading) {
         return (<TeamLoading text={loading} />);
@@ -98,11 +112,11 @@ function Explore(props) {
                 Matches
             </Typography>
             <List
-                style={{ maxHeight: "300px", width: "600px", overflow: "auto" }}
+                style={{ maxHeight: "400px", width: "600px", overflow: "auto" }}
                 className="no-scrollbars no-style-type"
             >
                 {matches.matches && matches.matches.length > 0 ? (
-                    matches.matches.map((invitingTeamId, i) => (
+                    sliceMatches.map((invitingTeamId, i) => (
                         <RenderRow
                             index={invitingTeamId}
                             key={invitingTeamId+i}
@@ -116,13 +130,21 @@ function Explore(props) {
                     <Typography variant="subtitle1">No Matches Yet</Typography>
                 )}
             </List>
-            <Typography variant="h5">All Teams</Typography>
+            <Pagination
+                count={matchesPageCount}
+                variant="outlined"
+                page={matchesPage}
+                onChange={handleMatchesPagination}
+                shape="rounded"
+            />
+            <Typography variant="h5" 
+                style={{ marginTop: "2em", marginBottom: "1em" }} >All Teams</Typography>
             <ExploreSearchBox setSearchText={setSearchText} />
             <List
-                style={{ maxHeight: "300px", width: "600px", overflow: "auto" }}
+                style={{ maxHeight: "400px", width: "600px", overflow: "auto" }}
                 className="no-scrollbars no-style-type"
             >
-                {allTeams.all_open_teams && allTeams.all_open_teams.length > 0 ? (
+                {totalSearchTeams && totalSearchTeams.length > 0 ? (
                     sliceSearchTeams.map((invitingTeamId, i) => (
                         <RenderRow
                             index={invitingTeamId}
