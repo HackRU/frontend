@@ -12,7 +12,7 @@ function Explore(props) {
     const [matches, setMatches] = useState({}); // all matches
     const [matchesPage, setMatchesPage] = React.useState(0); // matches page
     const [matchesPageCount, setMatchesPageCount] = React.useState(0); // matches total page count
-    const [sliceMatches, setSliceMatches] = useState({});
+    const [sliceMatches, setSliceMatches] = useState({}); // matches shown on single pagination
     const [originalTeamId, setOriginalTeam] = useState({});
     const [teamPage, setTeamPage] = React.useState(0); // all teams page
     const [teamPageCount, setTeamPageCount] = React.useState(0); // all teams total page count
@@ -21,6 +21,8 @@ function Explore(props) {
     const [sliceSearchTeams, setSliceSearchTeams] = useState({}); // all teams matching input shown on single pagination
     const [loading, setLoading] = useState("Loading your matches...");
     const [searchText, setSearchText] = useState("");
+    
+    // On page load
     useEffect(() => {
         props.profile.getTeamUser().then((success) => {
             const team_id = success.response.team_id;
@@ -47,6 +49,7 @@ function Explore(props) {
         });
     }, []);
 
+    // On page load and search box change, set the paginated and total teams that match search
     useEffect(() => {
         if (allTeams.all_open_teams !== undefined) {
             const checkTeam = (team) => {
@@ -62,6 +65,7 @@ function Explore(props) {
         }
     }, [searchText]);
 
+    // Set total number of team pages
     useEffect(() => {
         if (allTeams.all_open_teams && allTeams.all_open_teams.length !== 0) {
             setTeamPageCount(Math.ceil(totalSearchTeams.length / 4));
