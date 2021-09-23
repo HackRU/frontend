@@ -51,6 +51,9 @@ function Explore(props) {
 
     // On page load and search box change, set the paginated and total teams that match search
     useEffect(() => {
+        props.profile.getAllTeams().then((success) => {
+            setAllTeams(success.response);
+        });
         if (allTeams.all_open_teams !== undefined) {
             const checkTeam = (team) => {
                 const lowerTeam = team.name.toLowerCase();
@@ -97,8 +100,8 @@ function Explore(props) {
         props.profile.getTeamUser().then((success) => {
             const team_id = success.response.team_id;
             props.profile.matches(team_id).then((success) => {
+                setMatches(success.response);
                 if (success.response.matches && !JSON.stringify(matches.matches) == JSON.stringify(success.response.matches)) {
-                    setMatches(success.response);
                     setSliceMatches(success.response.matches.slice(((value - 1) * 4), value * 4));
                 } else {
                     setSliceMatches(matches.matches.slice(((value - 1) * 4), value * 4));
@@ -111,15 +114,11 @@ function Explore(props) {
     const handleTeamPagination = async (event, value) => {
         setTeamPage(value);
         if (totalSearchTeams) {
+            props.profile.getAllTeams().then((success) => {
+                setAllTeams(success.response);
+            });
             props.profile.getAllTeams(((value - 1) * 4), 4).then((success) => {
-                if (success.response.all_open_teams && !JSON.stringify(success.response.all_open_teams) == JSON.stringify(totalSearchTeams.slice(((value - 1) * 4), value * 4))) {
-                    setSliceSearchTeams(success.response.all_open_teams);
-                    props.profile.getAllTeams().then((success) => {
-                        setTotalSearchTeams(success.response.all_open_teams);
-                    });
-                } else {
-                    setSliceSearchTeams(totalSearchTeams.slice(((value - 1) * 4), value * 4));
-                }
+                setSliceSearchTeams(success.response.all_open_teams);
             });
         }
     };
