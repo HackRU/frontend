@@ -56,13 +56,13 @@ const navlinks = {
         fullHeight: false,
         component: (props) => <About {...props} />,
     },
-    SCHEDULE: {
-        url: "#schedule",
-        enabled: !defaults.freeze,
-        hideLink: false,
-        fullHeight: false,
-        component: (props) => <Schedule {...props} />,
-    },
+    // SCHEDULE: {
+    //     url: "#schedule",
+    //     enabled: !defaults.freeze,
+    //     hideLink: false,
+    //     fullHeight: false,
+    //     component: (props) => <Schedule {...props} />,
+    // },
     // "SPONSORS": {
     //     "url": "#sponsors",
     //     "enabled": !defaults.freeze,
