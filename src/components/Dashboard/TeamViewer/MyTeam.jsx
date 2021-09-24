@@ -4,7 +4,6 @@ import PropTypes from "prop-types";
 import TeamLoading from "../TeamLoading";
 import UserItem from "./UserItem";
 import Alert from "@material-ui/lab/Alert";
-import { View, StyleSheet, Text } from 'react';
 
 
 function MyTeam(props) {
@@ -166,7 +165,7 @@ function MyTeam(props) {
                         name="inviteUser"
                         id="outlined-basic"
                         label="User Email"
-                        style={{ textAlign: 'center' }}
+                        style={{ textAlign: "center" }}
                         margin="normal"
                         value={userEmail}
                         variant="outlined"
@@ -177,39 +176,41 @@ function MyTeam(props) {
                         className="teamViewerInput"
                     />
                     <Button
-                    variant="outlined"
-                    style={{ margin: 8 }}
-                    disabled={userEmail === ""}
-                    onClick={onInviteUserSubmit}
-                >
+                        variant="outlined"
+                        style={{ margin: 8 }}
+                        disabled={userEmail === ""}
+                        onClick={onInviteUserSubmit}
+                    >
                         Submit
                     </Button>
                     <Collapse in={isAlertOpen}>
-                <Alert
-                    onClose = {() => {setisAlertOpen(false);}}
-                    color = {alertColor}
-                >
-                    {inviteUserResults}
-                </Alert>
-            </Collapse>
+                        <Alert
+                            onClose = {() => {setisAlertOpen(false);}}
+                            color = {alertColor}
+                        >
+                            {inviteUserResults}
+                        </Alert>
+                    </Collapse>
 
                 </Grid>
-            <Grid container direction="row" alignItems="right">
-                <Grid item></Grid>
+                <Grid container
+                    direction="row"
+                    alignItems="right">
+                    <Grid item></Grid>
                     
-            </Grid>
-            <Divider />
-            <Grid
-                item
-                container
-                direction="row"
-                style={{ paddingBottom: "0.5em", paddingTop: "0.5em" }}
-            >
+                </Grid>
+                <Divider />
+                <Grid
+                    item
+                    container
+                    direction="row"
+                    style={{ paddingBottom: "0.5em", paddingTop: "0.5em" }}
+                >
+                    <Grid item
+                        style={{ paddingBottom: "0.5em", paddingTop: "0.5em" }}></Grid>
+                </Grid>
                 <Grid item
-                    style={{ paddingBottom: "0.5em", paddingTop: "0.5em" }}></Grid>
-            </Grid>
-            <Grid item
-                style={{paddingBottom: "0 em", paddingTop: "0 em"}} >
+                    style={{paddingBottom: "0 em", paddingTop: "0 em"}} >
                 </Grid>
             </Grid>
         );
