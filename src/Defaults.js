@@ -162,11 +162,11 @@ const liveImportantLinks = [
         href: "https://mentorq.hackru.org",
         icon: "stack-overflow",
     },
-    {
-        title: "Twitch",
-        href: "https://www.twitch.tv/hackru_",
-        icon: "twitch",
-    },
+    // {
+    //     title: "Twitch",
+    //     href: "https://www.twitch.tv/hackru_",
+    //     icon: "twitch",
+    // },
     {
         title: "Stream",
         href: "https://www.youtube.com/channel/UC7UFO50kGL86lYfX6Ezio2w",
