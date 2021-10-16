@@ -1,6 +1,6 @@
 import React from "react";
 import About from "./components/Landing/Sections/About";
-// import Schedule from "./components/Landing/Sections/Schedule";
+import Schedule from "./components/Landing/Sections/Schedule";
 // import Sponsors from "./components/Landing/Sections/Sponsors/Sponsors.jsx";
 import Partners from "./components/Landing/Sections/Sponsors/Partners.jsx";
 import Stats from "./components/Landing/Sections/Stats.jsx";
@@ -25,7 +25,7 @@ const defaults = {
         s3: "http://hackru-misc.s3-website-us-west-2.amazonaws.com/",
         teamru: "https://hki9olto2i.execute-api.us-east-1.amazonaws.com/dev",
         teamruprod:
-            "https://2f0yfjwjj0.execute-api.us-east-1.amazonaws.com/production",
+            "https://s3wupzvn65.execute-api.us-east-1.amazonaws.com/prod",
     },
     sponsorshipLogos:
         "https://s3-us-west-2.amazonaws.com/hackru-internal/sponsorship-logos/",
@@ -33,7 +33,7 @@ const defaults = {
         "https://s3-us-west-2.amazonaws.com/hackru-internal/partners-logos/",
     teamInfo: "https://s3-us-west-2.amazonaws.com/hackru-internal/hackru-team/",
     freeze: false,
-    teamru: false,
+    teamru: true,
     teamru_user: false,
     volunteers: {
         display: true,
@@ -44,7 +44,7 @@ const defaults = {
     },
     mailing:
         "https://hackru.us3.list-manage.com/subscribe?u=457c42db47ebf530a0fc733fb&id=fb01885829",
-    dayof: false,
+    dayof: true,
     autocheckin: false, //USE THIS FIELD TO AUTO CHECK-IN USERS!
 };
 
@@ -56,13 +56,13 @@ const navlinks = {
         fullHeight: false,
         component: (props) => <About {...props} />,
     },
-    // SCHEDULE: {
-    //     url: "#schedule",
-    //     enabled: !defaults.freeze,
-    //     hideLink: false,
-    //     fullHeight: false,
-    //     component: (props) => <Schedule {...props} />,
-    // },
+    SCHEDULE: {
+        url: "#schedule",
+        enabled: !defaults.freeze,
+        hideLink: false,
+        fullHeight: false,
+        component: (props) => <Schedule {...props} />,
+    },
     // "SPONSORS": {
     //     "url": "#sponsors",
     //     "enabled": !defaults.freeze,
@@ -149,12 +149,12 @@ varList.forEach((element) => {
 const liveImportantLinks = [
     {
         title: "Devpost",
-        href: "https://hackru-s21.devpost.com/",
+        href: "https://hackru-fall-2021.devpost.com",
         icon: "code",
     },
     {
         title: "Slack",
-        href: "https://hackru-s21.slack.com/",
+        href: "https://hackru-f21.slack.com/",
         icon: "slack",
     },
     {
@@ -162,11 +162,11 @@ const liveImportantLinks = [
         href: "https://mentorq.hackru.org",
         icon: "stack-overflow",
     },
-    {
-        title: "Twitch",
-        href: "https://www.twitch.tv/hackru_",
-        icon: "twitch",
-    },
+    // {
+    //     title: "Twitch",
+    //     href: "https://www.twitch.tv/hackru_",
+    //     icon: "twitch",
+    // },
     {
         title: "Stream",
         href: "https://www.youtube.com/channel/UC7UFO50kGL86lYfX6Ezio2w",
