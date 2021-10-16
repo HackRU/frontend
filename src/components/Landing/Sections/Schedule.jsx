@@ -20,25 +20,26 @@ function Schedule() {
             {children}
         </Appointments.Appointment>
     );
-    
+
     const schedule = [{
-        "date": "2021-04-17",
+        "date": "2021-10-16",
         "events": [
-            { startDate: "2021-04-17T10:00", endDate: "2021-04-17T11:00", title: "Check-in" },
-            { startDate: "2021-04-17T11:30", endDate: "2021-04-17T13:00", title: "Opening Ceremony" },
-            { startDate: "2021-04-17T13:00", endDate: "2021-04-18T12:59", title: "Hacking"},
-            { startDate: "2021-04-17T16:00", endDate: "2021-04-17T16:45", title: "Blueprint Presents: Introduction to Flutter"},
-            { startDate: "2021-04-17T17:00", endDate: "2021-04-17T18:00", title: "Rutgers QFC Presents: Dimensionality Reduction and Manifold Learning"},
-            { startDate: "2021-04-17T19:30", endDate: "2021-04-17T20:00", title: "WICS Live Panel: Join us for a Q&A panel with WICS (Women in Computer Science)"},
-            // { startDate: "2021-04-17T20:15", endDate: "2021-04-17T21:15", title: "HackRU CTF"},
-            { startDate: "2021-04-17T22:00", endDate: "2021-04-17T22:45", title: "RU COGS Presents: Game Dev 101"},
+            { startDate: "2021-10-16T10:00", endDate: "2021-10-16T11:30", title: "Check-in" },
+            { startDate: "2021-10-16T11:30", endDate: "2021-10-16T13:00", title: "Opening Ceremony" },
+            { startDate: "2021-10-16T13:00", endDate: "2021-10-17T12:59", title: "Hacking"},
+            { startDate: "2021-10-16T15:00", endDate: "2021-10-16T15:30", title: "MLH CTF"},
+            { startDate: "2021-10-16T15:30", endDate: "2021-10-16T16:30", title: "MLH Mini-Event"},
+            { startDate: "2021-10-16T17:00", endDate: "2021-10-16T18:00", title: "WiCS Kahoot + Discussion"},
+            { startDate: "2021-10-16T18:30", endDate: "2021-10-16T19:30", title: "RnD Workshop"},
+            { startDate: "2021-10-16T19:30", endDate: "2021-10-16T20:30", title: "Blueprint Workshop"},
         ]
     }, {
-        "date": "2021-04-18",
+        "date": "2021-10-17",
         "events": [
-            { startDate: "2021-04-17T13:00", endDate: "2021-04-18T12:59", title: "Hacking"},
-            { startDate: "2021-04-18T13:00", endDate: "2021-04-18T15:00", title: "Judging"},
-            { startDate: "2021-04-18T15:30", endDate: "2021-04-18T16:00", title: "Closing Ceremony"},
+            { startDate: "2021-10-17T10:00", endDate: "2021-10-17T10:00", title: "Submission Reminder"},
+            { startDate: "2021-10-16T13:00", endDate: "2021-10-17T12:59", title: "Hacking"},
+            { startDate: "2021-10-17T13:00", endDate: "2021-10-17T15:00", title: "Judging"},
+            { startDate: "2021-10-17T15:30", endDate: "2021-10-17T16:00", title: "Closing Ceremony"},
         ]
     }];
     return (

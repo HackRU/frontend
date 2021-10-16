@@ -1,6 +1,6 @@
 import React from "react";
 import About from "./components/Landing/Sections/About";
-// import Schedule from "./components/Landing/Sections/Schedule";
+import Schedule from "./components/Landing/Sections/Schedule";
 // import Sponsors from "./components/Landing/Sections/Sponsors/Sponsors.jsx";
 import Partners from "./components/Landing/Sections/Sponsors/Partners.jsx";
 import Stats from "./components/Landing/Sections/Stats.jsx";
@@ -56,13 +56,13 @@ const navlinks = {
         fullHeight: false,
         component: (props) => <About {...props} />,
     },
-    // SCHEDULE: {
-    //     url: "#schedule",
-    //     enabled: !defaults.freeze,
-    //     hideLink: false,
-    //     fullHeight: false,
-    //     component: (props) => <Schedule {...props} />,
-    // },
+    SCHEDULE: {
+        url: "#schedule",
+        enabled: !defaults.freeze,
+        hideLink: false,
+        fullHeight: false,
+        component: (props) => <Schedule {...props} />,
+    },
     // "SPONSORS": {
     //     "url": "#sponsors",
     //     "enabled": !defaults.freeze,
@@ -149,12 +149,12 @@ varList.forEach((element) => {
 const liveImportantLinks = [
     {
         title: "Devpost",
-        href: "https://hackru-s21.devpost.com/",
+        href: "https://hackru-fall-2021.devpost.com",
         icon: "code",
     },
     {
         title: "Slack",
-        href: "https://hackru-s21.slack.com/",
+        href: "https://hackru-f21.slack.com/",
         icon: "slack",
     },
     {
