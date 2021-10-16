@@ -25,7 +25,7 @@ const defaults = {
         s3: "http://hackru-misc.s3-website-us-west-2.amazonaws.com/",
         teamru: "https://hki9olto2i.execute-api.us-east-1.amazonaws.com/dev",
         teamruprod:
-            "https://2f0yfjwjj0.execute-api.us-east-1.amazonaws.com/production",
+            "https://s3wupzvn65.execute-api.us-east-1.amazonaws.com/prod",
     },
     sponsorshipLogos:
         "https://s3-us-west-2.amazonaws.com/hackru-internal/sponsorship-logos/",
@@ -33,7 +33,7 @@ const defaults = {
         "https://s3-us-west-2.amazonaws.com/hackru-internal/partners-logos/",
     teamInfo: "https://s3-us-west-2.amazonaws.com/hackru-internal/hackru-team/",
     freeze: false,
-    teamru: false,
+    teamru: true,
     teamru_user: false,
     volunteers: {
         display: true,
