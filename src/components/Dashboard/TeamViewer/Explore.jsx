@@ -39,7 +39,8 @@ function Explore(props) {
                     setLoading(false);
                 });
 
-                props.profile.getAllTeams().then((success) => {
+                props.profile.getAllTeams(0, 500).then((success) => {
+                    console.log(success.response);
                     setAllTeams(success.response);
                     setTeamPageCount(Math.ceil(success.response.total_teams / 4));
                     setTotalSearchTeams(success.response.all_open_teams);
@@ -51,7 +52,7 @@ function Explore(props) {
 
     // On page load and search box change, set the paginated and total teams that match search
     useEffect(() => {
-        props.profile.getAllTeams().then((success) => {
+        props.profile.getAllTeams(0, 500).then((success) => {
             setAllTeams(success.response);
         });
         if (allTeams.all_open_teams !== undefined) {
@@ -111,7 +112,7 @@ function Explore(props) {
     const handleTeamPagination = async (event, value) => {
         setTeamPage(value);
         if (totalSearchTeams) {
-            props.profile.getAllTeams().then((success) => {
+            props.profile.getAllTeams(0, 500).then((success) => {
                 setAllTeams(success.response);
             });
             props.profile.getAllTeams(((value - 1) * 4), 4).then((success) => {
