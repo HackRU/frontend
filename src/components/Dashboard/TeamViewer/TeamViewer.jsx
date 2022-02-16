@@ -10,6 +10,7 @@ import ManageTeam from "./ManageTeam";
 import { Redirect, Route, Switch } from "react-router-dom";
 import { theme } from "../../../Defaults";
 import E404 from "../../Errors/E404";
+import TeamPosts from "./TeamPosts";
 
 
 function a11yProps(index) {
@@ -34,7 +35,7 @@ const color_theme = createMuiTheme({
 const TeamViewer = (props) => {
     const location = props.location;
 
-    const tab_val = ["/teamru/myteam", "/teamru/explore", "/teamru/manage"].findIndex((el) => el === location.pathname);
+    const tab_val = ["/teamru/myteam", "/teamru/explore", "/teamru/manage", "/teamru/posts"].findIndex((el) => el === location.pathname);
 
     const [value, setValue] = useState(tab_val !== - 1 ? tab_val : 0);
     const [user, setUser] = useState({});
@@ -61,7 +62,7 @@ const TeamViewer = (props) => {
         // };
     }, []);
 
-    if (!["/teamru", "/teamru/myteam", "/teamru/explore", "/teamru/manage"].includes(location.pathname)) {
+    if (!["/teamru", "/teamru/myteam", "/teamru/explore", "/teamru/manage", "/teamru/posts"].includes(location.pathname)) {
         return (<E404/>);
     }
 
@@ -159,6 +160,11 @@ const TeamViewer = (props) => {
                                                     props.history.push("/teamru/manage");                                                 
                                                 }}
                                                 {...a11yProps(2)} />
+                                            <Tab label="Posts"
+                                                onClick={() => {
+                                                    props.history.push("/teamru/posts");
+                                                }}
+                                                {...a11yProps(3)} />
                                         </Tabs>
                                     </AppBar>
                                 </Grid>
@@ -184,6 +190,11 @@ const TeamViewer = (props) => {
                                         exact
                                         path="/teamru/manage">
                                         <ManageTeam {...props}/>
+                                    </Route>
+                                    <Route
+                                        exact
+                                        path="/teamru/posts">
+                                        <TeamPosts {...props}/>
                                     </Route>
                                 </Switch>
                                 {/* {value === 0 ? (
