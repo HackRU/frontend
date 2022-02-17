@@ -7,3 +7,5 @@ export const POST = {
     post_comment : "",
     post_post : "",
 }
+
+export const HOST = "";

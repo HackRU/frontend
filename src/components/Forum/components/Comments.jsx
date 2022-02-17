@@ -2,30 +2,97 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import { useCancellablePromise } from "../../../hooks/CancellablePromise";
-import {GET, POST} from "../endpoints";
 import CommentView from "../view/CommentView";
+import ReplyBoxView from "../view/ReplyBoxView";
 
 const base_offset = 0.5;
 
 const Comments = (props) => {
-    const {parent_class, parent_uuid, level, base_comments} = props;
+    const {parent_class, parent_uuid, base_comments} = props;
     return (
-        <ul style={{marginLeft : `${base_offset + base_offset*level} rem`}}>
-            {base_comments.map((c) => 
-                <li>
-                    <CommentView poster={c.poster} content={c.content} poster_profile_action={() => {
-                    window.open(`/user/${c.poster}`, "_blank").focus();
-                    }}/>
-                </li>)
-            }
+        <ul style={{marginLeft : `${base_offset} rem`}}>
+            {base_comments.map((c) => <CommentRow comment={c} parent_class={parent_class}/>)}
         </ul>
     );
 };
 
+ const errReducer = (state, action) => {
+    switch(action.type) {
+        default: return {
+            ...action.payload,
+        }
+    }
+ };
+
+const CommentRow = (props) => {
+    const {comment, parent_class} = props;
+    const [reply, setReply] = React.useState(false);
+    const {cancellablePromise} = useCancellablePromise([comment.uuid]);
+    const [subcomments, setSubComments] = React.useState([]);
+    const [loadreplies, setLoadReplies] = React.useState(false);
+
+    const [errState, dispatchErrState] = React.useReducer(errReducer, {err_msg : "", display_err : false});
+
+    const submission_validator = parent_class !== "post" ? () => {} : (text) => {
+        const result = !!(text.trim().length);
+        if (!result) 
+            dispatchErrState({type : "do", payload: {err_msg : "Must enter something", display_err : true}})
+        else
+            dispatchErrState({type : "do", payload : {display_err : false}});
+        return result;
+    }
+
+    //need to modify Profile.js to include method to hit the backend for post request
+    const submission_action = parent_class !== "post" ? () => {} : (text) => {
+        cancellablePromise(() => {}, async (res) => {
+            setSubComments(it => {
+                const _it = [...it];
+                _it.unshift([res]);
+                return _it;
+            });
+        }, async (err) => {
+            dispatchErrState({type : "do", payload : {err_msg : err.err_msg, display_err : true}})
+        });
+    }
+    //need to modify Profile.js to include method to hit backend for get request
+    const loadReplies = parent_class !== "post" ? () => {} : (uuid) => {
+        cancellablePromise(() => {}, async (res) => {
+            setSubComments(res);
+        }, async (err) => setLoadReplies(false));
+    }
+
+    return (
+        <li>
+            <CommentView poster={comment.poster} content={comment.content}/>
+            {parent_class === "post" && !reply && <div onClick={() => setReply(true)}>Reply</div>}
+            {reply && <ReplyBoxView 
+                submission_action={submission_action}
+                submission_validator={submission_validator}
+                submission_cancel={() => setReply(false)}
+                display_err={errState.display_err}
+                err_msg={errState.err_msg}
+                />}
+            {parent_class === "post" && !loadreplies && <div onClick={() => {
+                setLoadReplies(true);
+                loadReplies(comment.uuid);
+            }}>Load Replies</div>}
+            {!!subcomments.length && <Comments parent_class={"comment"} parent_uuid={comment.uuid} base_comments={subcomments}/>}
+        </li>
+    );
+};
+
+CommentRow.propTypes = {
+    parent_class : PropTypes.oneOf(["post", "comment"]).isRequired,
+    comment : PropTypes.shape({
+        poster : PropTypes.string.isRequired,
+        content : PropTypes.string.isRequired,
+        uuid : PropTypes.string.isRequired,
+    }).isRequired,
+}
+
 Comments.propTypes = {
     parent_uuid : PropTypes.string.isRequired, //the id of the parent
     parent_class : PropTypes.oneOf(["post, comment"]).isRequired,
-    level : PropTypes.number.isRequired, //level 0 is highest level comment, increasing levels means lower level comments and determines offset from left border
     base_comments : PropTypes.arrayOf(PropTypes.shape({
         poster : PropTypes.string.isRequired,
         content : PropTypes.string.isRequired,

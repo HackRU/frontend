@@ -5,7 +5,7 @@ import {Typography} from "@material-ui/core";
 import replyboxstyle from "../styles/ForumStyle.module.css";
 
 const ReplyBoxView = (props) => {
-    const {submission_action, submission_validator, display_err, err_msg} = props;
+    const {submission_action, submission_validator, display_err, err_msg, submission_cancel} = props;
     const [text, setText] = React.useState("");
     return (
         <>
@@ -16,7 +16,10 @@ const ReplyBoxView = (props) => {
             }}>
                 <label htmlFor="reply-box"><Typography variant="">Reply</Typography></label>
                 <textarea className={`${replyboxstyle["reply-text-input"]} ${display_err ? replyboxstyle["reply-text-input-err"] : ""}`} onChange={(e) => setText(e.target.value)} value={text}/>
-                <button className={`${replyboxstyle["button"]}`} type="submit">Reply</button>
+                <div className={`${replyboxstyle["button"]}`}>
+                    <button className={`${replyboxstyle["cancel"]}`} onClick={() => submission_cancel()}>Cancel</button>
+                    <button className={`${replyboxstyle["confirm"]}`} type="submit">Reply</button>
+                </div>
             </form>
         </>
     );
@@ -25,6 +28,7 @@ const ReplyBoxView = (props) => {
 ReplyBox.propTypes = {
     submission_validator : PropTypes.func.isRequired, //returns true or false dependent on validation results
     submission_action : PropTypes.func.isRequired, //what happens after passes validation
+    submission_cancel : PropTypes.func.isRequired,
     display_err : PropTypes.bool,
     err_msg : PropTypes.string,
 };

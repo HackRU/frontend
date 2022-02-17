@@ -5,11 +5,11 @@ import {Typography} from "@material-ui/core";
 import forumstyles from "../styles/ForumStyle.module.css";
 
 const ForumPostView = (props) => {
-    const {poster, header, content, poster_profile_action} = props;
+    const {poster, header, content} = props;
     return (
         <div className={`${forumstyles["forum-post-container"]}`}>
             <header className={`${forumstyles["forum-post-header"]}`}>
-                <div className={`${forumstyles["profile-circle"]}`} onClick={poster_profile_action}>
+                <div className={`${forumstyles["profile-circle"]}`}>
                     <Typography className={`${forumstyles["profile-circle-text"]}`} variant="subtitle1">
                         {poster}
                     </Typography>
@@ -27,7 +27,6 @@ const ForumPostView = (props) => {
 
 ForumPostView.propTypes = {
     poster : PropTypes.string.isRequired,
-    poster_profile_action : PropTypes.func.isRequired,
     header : PropTypes.string.isRequired,
     content : PropTypes.string.isRequired
 }

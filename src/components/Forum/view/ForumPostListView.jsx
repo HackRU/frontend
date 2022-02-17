@@ -13,7 +13,9 @@ const ForumPostListView = (props) => {
                 <ul>
                     {posts_list.map((p) => 
                         <li>
-                            <header onClick={() => post_click_action(p.uuid)}>{p.title}</header>
+                            <header onClick={() => post_click_action(p.uuid)}>
+                                {p.title} - {p.poster}
+                            </header>
                         </li>
                     )}
                 </ul> 
@@ -24,6 +26,7 @@ const ForumPostListView = (props) => {
 
 ForumPostListView.propTypes = {
     posts_list : PropTypes.arrayOf(PropTypes.shape({
+        poster : PropTypes.string.isRequired,
         title : PropTypes.string.isRequired,
         uuid : PropTypes.string.isRequired, //passed into the onclick action
     })).isRequired,

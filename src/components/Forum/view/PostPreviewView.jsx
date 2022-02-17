@@ -21,7 +21,9 @@ const PostPreviewView = (props) => {
                 <input type="text" value={title} onChange={(e) => setTitle(e.target.value)}></input>
                 <label htmlFor="content"><Typography variant="">Content</Typography></label>
                 <textarea className={`${postpreviewstyles["reply-text-input"]} ${display_err ? postpreviewstyles["reply-text-input-err"] : ""}`} onChange={(e) => setContent(content)}></textarea>
-                <button className={`${postpreviewstyles["button"]}`} type="submit">Post</button>
+                <div className={`${postpreviewstyles["button"]}`}>
+                    <button className={`${postpreviewstyles["confirm"]}`} type="submit">Post</button>
+                </div>
             </form>
         </>
     )

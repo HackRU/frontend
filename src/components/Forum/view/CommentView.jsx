@@ -5,11 +5,11 @@ import {Typography} from "@material-ui/core";
 import commentstyles from "../styles/ForumStyle.module.css";
 
 const CommentView = (props) => {
-    const {poster, poster_profile_action, content} = props;
+    const {poster, content} = props;
     return (
         <div className={`${commentstyles["comment-container"]}`}>
             <header className={`${commentstyles["comment-header"]}`}>
-                <div className={`${commentstyles["profile-circle"]}`} onClick={poster_profile_action}>
+                <div className={`${commentstyles["profile-circle"]}`}>
                     <Typography className={`${commentstyles["profile-circle-text"]}`} variant="subtitle1">
                         {poster}
                     </Typography>
@@ -24,7 +24,6 @@ const CommentView = (props) => {
 
 CommentView.propTypes = {
     poster : PropTypes.string.isRequired,
-    poster_profile_action : PropTypes.func.isRequired,
     content : PropTypes.string.isRequired,
 };
 
