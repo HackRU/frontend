@@ -14,8 +14,8 @@ const PostPreviewView = (props) => {
                 {display_err && <div className={`${postpreviewstyles["reply-err-msg"]}`}>{err_msg}</div>}
             </>
             <form className={`${postpreviewstyles["reply-container"]}`} onSubmit={() => {
-                if (submission_validator(title, text))
-                    submission_action(title, text)
+                if (submission_validator(title, content))
+                    submission_action(title, content)
             }}>
                 <label htmlFor="title"><Typography variant="">Title</Typography></label>
                 <input type="text" value={title} onChange={(e) => setTitle(e.target.value)}></input>

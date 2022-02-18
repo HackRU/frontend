@@ -1189,6 +1189,32 @@ class Profile {
 
         return resp;
     }
+
+    async postForumPost(title, text) {
+        const payload = {
+            poster : this._email,
+            header : title,
+            content : text,
+        };
+        // eslint-disable-next-line no-unused-vars
+        const init = {
+            method : "POST",
+            headers : {
+                "Content-Type" : "application/json",
+                token : this._token,
+            },
+            body : JSON.stringify(payload),
+        };
+        return 123;
+    }
+
+    async getMyForumPosts(){
+        return Array(10).map((it, idx) => {return {poster : this._email, header :  `header ${idx}`, uuid : idx};});
+    }
+
+    async getAllForumPosts(){
+        return Array(30).map((it, idx) => {return {poster : `email ${idx}`, header : `header ${idx}`, uuid : idx};});
+    }
 }
 
 const ProfileType = PropTypes.shape({
