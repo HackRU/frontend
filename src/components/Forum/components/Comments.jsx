@@ -8,10 +8,10 @@ import ReplyBoxView from "../view/ReplyBoxView";
 const base_offset = 0.5;
 
 const Comments = (props) => {
-    const {parent_class, parent_uuid, base_comments} = props;
+    const {parent_class, parent_uuid, base_comments, profile} = props;
     return (
         <ul style={{marginLeft : `${base_offset} rem`}}>
-            {base_comments.map((c) => <CommentRow comment={c} parent_class={parent_class}/>)}
+            {base_comments.map((c) => <CommentRow comment={c} parent_class={parent_class} profile={profile}/>)}
         </ul>
     );
 };
@@ -25,7 +25,7 @@ const Comments = (props) => {
  };
 
 const CommentRow = (props) => {
-    const {comment, parent_class} = props;
+    const {comment, parent_class, profile} = props;
     const [reply, setReply] = React.useState(false);
     const {cancellablePromise} = useCancellablePromise([comment.uuid]);
     const [subcomments, setSubComments] = React.useState([]);
@@ -44,7 +44,7 @@ const CommentRow = (props) => {
 
     //need to modify Profile.js to include method to hit the backend for post request
     const submission_action = parent_class !== "post" ? () => {} : (text) => {
-        cancellablePromise(() => {}, async (res) => {
+        cancellablePromise(profile.postComment(text, comment.uuid), async (res) => {
             setSubComments(it => {
                 const _it = [...it];
                 _it.unshift([res]);
@@ -56,7 +56,7 @@ const CommentRow = (props) => {
     }
     //need to modify Profile.js to include method to hit backend for get request
     const loadReplies = parent_class !== "post" ? () => {} : (uuid) => {
-        cancellablePromise(() => {}, async (res) => {
+        cancellablePromise(profile.getComments(comment.uuid), async (res) => {
             setSubComments(res);
         }, async (err) => setLoadReplies(false));
     }
@@ -76,7 +76,7 @@ const CommentRow = (props) => {
                 setLoadReplies(true);
                 loadReplies(comment.uuid);
             }}>Load Replies</div>}
-            {!!subcomments.length && <Comments parent_class={"comment"} parent_uuid={comment.uuid} base_comments={subcomments}/>}
+            {!!subcomments.length && <Comments parent_class={"comment"} parent_uuid={comment.uuid} base_comments={subcomments} profile={profile}/>}
         </li>
     );
 };
@@ -88,6 +88,10 @@ CommentRow.propTypes = {
         content : PropTypes.string.isRequired,
         uuid : PropTypes.string.isRequired,
     }).isRequired,
+    profile : PropTypes.shape({
+        postComment : PropTypes.func,
+        getComments : PropTypes.func,
+    })
 }
 
 Comments.propTypes = {
@@ -98,6 +102,10 @@ Comments.propTypes = {
         content : PropTypes.string.isRequired,
         uuid : PropTypes.string.isRequired,
     })).isRequired,
+    profile : PropTypes.shape({
+        postComment : PropTypes.func,
+        getComments : PropTypes.func,
+    })
 };
 
 export default Comments;
