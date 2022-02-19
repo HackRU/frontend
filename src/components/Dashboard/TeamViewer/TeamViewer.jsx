@@ -10,7 +10,7 @@ import ManageTeam from "./ManageTeam";
 import { Redirect, Route, Switch } from "react-router-dom";
 import { theme } from "../../../Defaults";
 import E404 from "../../Errors/E404";
-import TeamPosts from "./TeamPosts";
+import TeamPosts from "./TeamPosts/TeamPosts";
 
 
 function a11yProps(index) {

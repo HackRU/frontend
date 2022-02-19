@@ -18,7 +18,7 @@ const PostPreviewView = (props) => {
                     submission_action(title, content)
             }}>
                 <label htmlFor="title"><Typography variant="">Title</Typography></label>
-                <input type="text" value={title} onChange={(e) => setTitle(e.target.value)}></input>
+                <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} className={postpreviewstyles["title-input"]}></input>
                 <label htmlFor="content"><Typography variant="">Content</Typography></label>
                 <textarea className={`${postpreviewstyles["reply-text-input"]} ${display_err ? postpreviewstyles["reply-text-input-err"] : ""}`} onChange={(e) => setContent(content)}></textarea>
                 <div className={`${postpreviewstyles["button"]}`}>

@@ -27,7 +27,7 @@ const ForumPostView = (props) => {
 
 ForumPostView.propTypes = {
     poster : PropTypes.string.isRequired,
-    header : PropTypes.string.isRequired,
+    title : PropTypes.string.isRequired,
     content : PropTypes.string.isRequired
 }
 

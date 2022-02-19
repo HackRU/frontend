@@ -1193,7 +1193,7 @@ class Profile {
     async postForumPost(title, text) {
         const payload = {
             poster : this._email,
-            header : title,
+            title : title,
             content : text,
         };
         // eslint-disable-next-line no-unused-vars
@@ -1209,11 +1209,13 @@ class Profile {
     }
 
     async getMyForumPosts(){
-        return Array(10).map((it, idx) => {return {poster : this._email, header :  `header ${idx}`, uuid : idx};});
+        console.log("getMyForumPosts");
+        return [...Array(10)].map((it, idx) => {return {poster : this._email, title :  `header ${idx}`, uuid : idx};});
     }
 
     async getAllForumPosts(){
-        return Array(30).map((it, idx) => {return {poster : `email ${idx}`, header : `header ${idx}`, uuid : idx};});
+        console.log("getAllForumPosts");
+        return [...Array(30)].map((it, idx) => {return {poster : `email ${idx}`, title : `header ${idx}`, uuid : idx};});
     }
 }
 

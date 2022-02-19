@@ -8,13 +8,12 @@ const ForumPostListView = (props) => {
     const {posts_list, post_click_action} = props;
     return (
         <div className={`${forumpostliststyle["posts-master-container"]}`}>
-            <header className={`${forumpostliststyle["title"]}`}><Typography variant="">Posts</Typography></header>
             <div className={`${forumpostliststyle["posts-list-container"]}`}>
                 <ul>
                     {posts_list.map((p) => 
                         <li>
                             <header onClick={() => post_click_action(p.uuid)}>
-                                {p.title} - {p.poster}
+                                <span>{p.title}</span> <span>- by {p.poster}</span>
                             </header>
                         </li>
                     )}
