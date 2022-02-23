@@ -28,15 +28,14 @@ const CommentRow = (props) => {
     const {comment, parent_class, profile} = props;
     const [reply, setReply] = React.useState(false);
     const {cancellablePromise} = useCancellablePromise([comment.uuid]);
-    const [subcomments, setSubComments] = React.useState([]);
-    const [loadreplies, setLoadReplies] = React.useState(false);
+    const [subcomments, setSubComments] = React.useState(comment.subcomments && comment.subcomments.length ? comment.subcomments : []);
 
     const [errState, dispatchErrState] = React.useReducer(errReducer, {err_msg : "", display_err : false});
 
     const submission_validator = parent_class !== "post" ? () => {} : (text) => {
         const result = !!(text.trim().length);
         if (!result) 
-            dispatchErrState({type : "do", payload: {err_msg : "Must enter something", display_err : true}})
+            dispatchErrState({type : "do", payload: {err_msg : "Must enter something", display_err : true}});
         else
             dispatchErrState({type : "do", payload : {display_err : false}});
         return result;
@@ -45,20 +44,15 @@ const CommentRow = (props) => {
     //need to modify Profile.js to include method to hit the backend for post request
     const submission_action = parent_class !== "post" ? () => {} : (text) => {
         cancellablePromise(profile.postComment(text, comment.uuid), async (res) => {
+            console.log(res);
             setSubComments(it => {
                 const _it = [...it];
-                _it.unshift([res]);
+                _it.unshift(res);
                 return _it;
             });
         }, async (err) => {
             dispatchErrState({type : "do", payload : {err_msg : err.err_msg, display_err : true}})
         });
-    }
-    //need to modify Profile.js to include method to hit backend for get request
-    const loadReplies = parent_class !== "post" ? () => {} : (uuid) => {
-        cancellablePromise(profile.getComments(comment.uuid), async (res) => {
-            setSubComments(res);
-        }, async (err) => setLoadReplies(false));
     }
 
     return (
@@ -72,10 +66,6 @@ const CommentRow = (props) => {
                 display_err={errState.display_err}
                 err_msg={errState.err_msg}
                 />}
-            {parent_class === "post" && !loadreplies && <div onClick={() => {
-                setLoadReplies(true);
-                loadReplies(comment.uuid);
-            }}>Load Replies</div>}
             {!!subcomments.length && <Comments parent_class={"comment"} parent_uuid={comment.uuid} base_comments={subcomments} profile={profile}/>}
         </li>
     );
@@ -87,6 +77,7 @@ CommentRow.propTypes = {
         poster : PropTypes.string.isRequired,
         content : PropTypes.string.isRequired,
         uuid : PropTypes.string.isRequired,
+        subcomments : PropTypes.any,
     }).isRequired,
     profile : PropTypes.shape({
         postComment : PropTypes.func,
@@ -101,6 +92,7 @@ Comments.propTypes = {
         poster : PropTypes.string.isRequired,
         content : PropTypes.string.isRequired,
         uuid : PropTypes.string.isRequired,
+        subcomments : PropTypes.any,
     })).isRequired,
     profile : PropTypes.shape({
         postComment : PropTypes.func,

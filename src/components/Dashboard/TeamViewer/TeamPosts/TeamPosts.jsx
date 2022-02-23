@@ -7,7 +7,7 @@ import ForumPostListView from "../../../Forum/view/ForumPostListView";
 import teampostsstyle from "./TeamPosts.module.css";
 
 const openForumPost = (post_uuid) => {
-    window.open(`/post/${post_uuid}`, "_blank").focus();
+    window.open(`/forum/post/${post_uuid}`, "_blank").focus();
 };
 
 const errReducer = (_state, action) => {
@@ -47,7 +47,7 @@ const TeamPosts = (props) => {
     const [allPostsState, dispatchAllPosts] = React.useReducer(postsReducer, {posts : [], display_err : false, is_loading : true});
 
     const submission_validator = (title, text) => {
-        const result = !!(title.trim().length) && !!(text.trim().length);
+        const result = (!!title.trim().length) && (!!text.trim().length);
         if (!result)
             dispatchErrState({type : "do", payload : {err_msg : "Must not have empty inputs to either fields", display_err : true}});
         else

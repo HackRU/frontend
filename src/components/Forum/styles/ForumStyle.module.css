@@ -70,3 +70,18 @@
     border : none;
     box-sizing : border-box;
 }
+
+.forum-container {
+    background-color: whitesmoke;
+    width: 50%;
+    margin: auto;
+    margin-top: 64px;
+    z-index: auto;
+    position: relative;
+    box-sizing: border-box;
+    padding: 1rem;
+}
+
+.forum-post-container {
+    width: 100%;
+}

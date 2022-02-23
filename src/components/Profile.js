@@ -1217,6 +1217,28 @@ class Profile {
         console.log("getAllForumPosts");
         return [...Array(30)].map((it, idx) => {return {poster : `email ${idx}`, title : `header ${idx}`, uuid : idx};});
     }
+
+    // eslint-disable-next-line no-unused-vars
+    async getForumPost(post_uuid){
+        return {
+            poster : "steve",
+            title : "steve",
+            content : "steve",
+        };
+    }
+
+    // eslint-disable-next-line no-unused-vars
+    async getComments(post_uuid){
+        return [...Array(30)].map((it, idx) => {return {poster : `${idx}`, content : "hello", uuid : idx};});
+    }
+
+    async postComment(text, parent_uuid){
+        return {
+            poster : `${parent_uuid}'s child`,
+            content : text,
+            uuid : "jellyfish",
+        };
+    }
 }
 
 const ProfileType = PropTypes.shape({

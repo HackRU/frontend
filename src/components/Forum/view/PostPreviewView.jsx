@@ -13,14 +13,18 @@ const PostPreviewView = (props) => {
             <>
                 {display_err && <div className={`${postpreviewstyles["reply-err-msg"]}`}>{err_msg}</div>}
             </>
-            <form className={`${postpreviewstyles["reply-container"]}`} onSubmit={() => {
+            <form className={`${postpreviewstyles["reply-container"]}`} onSubmit={(e) => {
+                e.preventDefault();
                 if (submission_validator(title, content))
                     submission_action(title, content)
+                else
+                    !content.trim().length && setContent("");
+                    !title.trim().length && setTitle("");
             }}>
                 <label htmlFor="title"><Typography variant="">Title</Typography></label>
                 <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} className={postpreviewstyles["title-input"]}></input>
                 <label htmlFor="content"><Typography variant="">Content</Typography></label>
-                <textarea className={`${postpreviewstyles["reply-text-input"]} ${display_err ? postpreviewstyles["reply-text-input-err"] : ""}`} onChange={(e) => setContent(content)}></textarea>
+                <textarea className={`${postpreviewstyles["reply-text-input"]} ${display_err ? postpreviewstyles["reply-text-input-err"] : ""}`} onChange={(e) => setContent(e.target.value)} value={content}></textarea>
                 <div className={`${postpreviewstyles["button"]}`}>
                     <button className={`${postpreviewstyles["confirm"]}`} type="submit">Post</button>
                 </div>

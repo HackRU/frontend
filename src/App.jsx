@@ -20,6 +20,8 @@ import Background from "./Background";
 import NavBar from "./NavBar";
 import { defaults } from "./Defaults"; // Get a handle to the default application settings
 import { Profile } from "./components/Profile"; // User profile storage
+import ForumPost from "./components/Forum";
+
 // import Background from "./Background"; // Standard background objects
 
 /**
@@ -184,7 +186,13 @@ class App extends Component {
                     render={(props) => <TeamViewerPage tab={0}
                         {...props}
                         {...componentProps} />}
-                />
+                />,
+                <Route
+                    path="/forum/post/:post_uuid"
+                    key="forum"
+                    render={(props) => <ForumPost
+                        {...props}
+                        {...componentProps}/>}/>
             );
             // renderRoutes.push(
             //     <Route
