@@ -32,7 +32,7 @@ const defaults = {
     partnerLogos:
         "https://s3-us-west-2.amazonaws.com/hackru-internal/partners-logos/",
     teamInfo: "https://s3-us-west-2.amazonaws.com/hackru-internal/hackru-team/",
-    freeze: true,
+    freeze: false,
     teamru: true,
     teamru_user: false,
     volunteers: {
