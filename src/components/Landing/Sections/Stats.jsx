@@ -4,7 +4,7 @@ import { theme } from "../../../Defaults";
 import { Icon } from "react-fa";
 import CountUp from "react-countup";
 import PropTypes from "prop-types";
-import Card from "../../Card";
+import HackRUCard from "../../HackRUCard";
 
 function Stats(){
     return(
@@ -47,7 +47,7 @@ function Stats(){
 }
 
 const Stat = ({ number, text, back, accent, icon, decoration }) => (
-    <Card backgroundColor={back}>
+    <HackRUCard backgroundColor={back}>
         {/* <div style={{ position: "absolute", left: "calc(15px)", top: 25, height: "calc(100% - 25px)", backgroundColor: accent, width: 10 }}></div> */}
 
         <div>
@@ -63,7 +63,7 @@ const Stat = ({ number, text, back, accent, icon, decoration }) => (
         <Icon name={icon}
             style={{ fontSize: "10vh", marginRight: 10, color: accent }} />
 
-    </Card>
+    </HackRUCard>
 );
 
 Stat.propTypes = {

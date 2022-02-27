@@ -3,7 +3,7 @@ import { Container, Grid } from "@material-ui/core";
 import { theme } from "../../../Defaults";
 import FaqsCollapse from "./FaqsCollapse";
 import PropTypes from "prop-types";
-import Card from "../../Card";
+import HackRUCard from "../../HackRUCard";
 
 /**
  * FAQs component for the landing page
@@ -110,7 +110,7 @@ class FAQs extends Component {
     render() {
         // let cols = (this.props.isMobile) ? (12) : (6);
         return (
-            <Card
+            <HackRUCard
                 backgroundColor={theme.secondary[1]}
                 sideBar={theme.primary[1]}
                 style={{ marginTop: 25 }}
@@ -151,7 +151,7 @@ class FAQs extends Component {
                         </Grid>
                     </Grid>
                 </Container>
-            </Card>
+            </HackRUCard>
         );
     }
 }

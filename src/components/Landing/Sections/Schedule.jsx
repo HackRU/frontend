@@ -1,7 +1,7 @@
 import React from "react";
 import { theme } from "../../../Defaults";
 import { Grid } from "@material-ui/core";
-import Card from "../../Card";
+import HackRUCard from "../../HackRUCard";
 import { ViewState } from "@devexpress/dx-react-scheduler";
 import { Scheduler, DayView, Appointments } from "@devexpress/dx-react-scheduler-material-ui";
 import PropTypes from "prop-types";
@@ -43,7 +43,7 @@ function Schedule() {
         ]
     }];
     return (
-        <Card backgroundColor={"white"}
+        <HackRUCard backgroundColor={"white"}
             sideBar={theme.primary[1]}>
             <h1 style={{color: "black"}}
                 className="display-4 theme-font">Schedule</h1>
@@ -73,7 +73,7 @@ function Schedule() {
                     )}
                 </Grid>
             </div>
-        </Card>
+        </HackRUCard>
     );
 }
 

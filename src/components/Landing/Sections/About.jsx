@@ -1,11 +1,11 @@
 import React from "react";
 import { theme } from "../../../Defaults";
 import { Icon } from "react-fa";
-import Card from "../../Card";
+import HackRUCard from "../../HackRUCard";
 
 function About() {
     return (
-        <Card backgroundColor={theme.secondary[1]} sideBar={theme.accent[0]}>
+        <HackRUCard backgroundColor={theme.secondary[1]} sideBar={theme.accent[0]}>
             <div
                 style={{
                     position: "absolute",
@@ -143,7 +143,7 @@ function About() {
                         style={{ minHeight: "300px" }}></iframe> */}
                 </div>
             </div>
-        </Card>
+        </HackRUCard>
     );
 }
 
