@@ -14,7 +14,7 @@ const LottieFile = (props) => {
 };
 
 LottieFile.propTypes = {
-    lottieData: PropTypes.object.isRequired,
+    data: PropTypes.object.isRequired,
 };
 
 export default LottieFile;
