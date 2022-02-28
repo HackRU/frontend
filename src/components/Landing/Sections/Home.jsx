@@ -8,6 +8,8 @@ import { ProfileType } from "../../Profile";
 import PropTypes from "prop-types";
 import { Motion, spring } from "react-motion";
 import { Link } from "react-router-dom";
+import LottieFile from "./LottieFile";
+import reel from "./reel.json";
 
 /**
  * Home component for the landing page
@@ -64,7 +66,7 @@ class Home extends Component {
                         minHeight: "100vh",
                         textAlign: "center",
                         userSelect: "none",
-                        backgroundColor: theme.secondary[1],
+                        backgroundColor: theme.dark[0],
                     }}
                 >
                     <Motion
@@ -108,7 +110,7 @@ class Home extends Component {
                                     >
                                         <img
                                             alt="background"
-                                            src={"./assets/background/target_green.svg"}
+                                            src={"./assets/background/target_red.svg"}
                                             height={window.innerHeight / 2}
                                         />
                                     </div>
@@ -213,7 +215,7 @@ class Home extends Component {
                                     >
                                         <img
                                             alt="background"
-                                            src={"./assets/background/circle_green.svg"}
+                                            src={"./assets/background/circle_red.svg"}
                                             height={window.innerHeight / 3}
                                         />
                                     </div>
@@ -284,7 +286,7 @@ class Home extends Component {
                                     >
                                         <img
                                             alt="background"
-                                            src={"./assets/background/cross_green.svg"}
+                                            src={"./assets/background/cross_red.svg"}
                                             height={window.innerHeight / 10}
                                         />
                                     </div>
@@ -320,14 +322,10 @@ class Home extends Component {
                                 defaultStyle={{ opacity: 0 }}
                                 style={{ opacity: spring(1, { stiffness: 1, damping: 1 }) }}
                             >
-                                {({ opacity }) => (
-                                    <Logo
-                                        repeat={true}
-                                        style={{ opacity }}
-                                        noCircle
-                                        src="./assets/icons/hru-text.svg"
-                                    />
-                                )}
+                                {() => (
+                                    <LottieFile data={reel} />
+                                )
+                                }
                             </Motion>
                             {/* <h1 style={{ color: theme.accent[0], marginTop: -100, marginBottom: 100 }}>hack all knight</h1> */}
                             <Motion
@@ -340,7 +338,7 @@ class Home extends Component {
                                 {({ opacity, top }) => (
                                     <h2
                                         style={{
-                                            marginTop: -50 + top,
+                                            marginTop: -150 + top,
                                             color: theme.accent[0],
                                             opacity: opacity,
                                         }}
@@ -483,7 +481,7 @@ class Home extends Component {
                         minHeight: "100vh",
                         textAlign: "center",
                         userSelect: "none",
-                        backgroundColor: theme.secondary[1],
+                        backgroundColor: theme.dark[0],
                     }}
                 >
                     <Motion
@@ -527,7 +525,7 @@ class Home extends Component {
                                     >
                                         <img
                                             alt="background"
-                                            src={"./assets/background/target_green.svg"}
+                                            src={"./assets/background/target_red.svg"}
                                             height={window.innerHeight / 2}
                                         />
                                     </div>
@@ -580,7 +578,7 @@ class Home extends Component {
                                     >
                                         <img
                                             alt="background"
-                                            src={"./assets/background/circle_green.svg"}
+                                            src={"./assets/background/circle_red.svg"}
                                             height={window.innerHeight / 3}
                                         />
                                     </div>
@@ -615,7 +613,7 @@ class Home extends Component {
                                     >
                                         <img
                                             alt="background"
-                                            src={"./assets/background/cross_green.svg"}
+                                            src={"./assets/background/cross_red.svg"}
                                             height={window.innerHeight / 10}
                                         />
                                     </div>

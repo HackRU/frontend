@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from "react";
 import { Grid } from "@material-ui/core";
+import { theme } from "../../Defaults";
 import Home from "./Sections/Home";
 import Freeze from "./Sections/Freeze";
 import { defaults, navlinks } from "../../Defaults";
@@ -49,7 +50,7 @@ class LandingPage extends Component {
         return (
             <Fragment>
                 <MLHBadge/>
-                <Grid container spacing={5} justify="space-around" justifyContent="center" alignItems="center">
+                <Grid container spacing={5} justify="space-around" justifyContent="center" alignItems="center" style={{ backgroundColor: theme.dark[0] }}>
                     <ScrollableAnchor id="home">
                         <Grid container
                             className="section">

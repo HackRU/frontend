@@ -116,6 +116,9 @@ const theme = {
         computedStyle.getPropertyValue("--accent-color"),
         computedStyle.getPropertyValue("--accent-color-alt"),
     ],
+    dark: [
+        computedStyle.getPropertyValue("--dark-color"),
+    ],
     disabled: [computedStyle.getPropertyValue("--disabled-color")],
 };
 // Populate the theme variable with css variables

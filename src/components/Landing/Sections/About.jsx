@@ -5,7 +5,7 @@ import HackRUCard from "../../HackRUCard";
 
 function About() {
     return (
-        <HackRUCard backgroundColor={theme.secondary[1]} sideBar={theme.accent[0]}>
+        <HackRUCard backgroundColor={theme.primary[0]} sideBar={theme.secondary[1]}>
             <div
                 style={{
                     position: "absolute",
@@ -19,17 +19,17 @@ function About() {
             >
                 <img
                     alt="background"
-                    src={"./assets/background/shape_green.svg"}
+                    src={"./assets/background/shape_red.svg"}
                     height={100}
                 />
             </div>
-            <h1 className="display-4 theme-font">About HackRU</h1>
+            <h1 style={{ color: "black" }} className="display-4 theme-font">About HackRU</h1>
             <div
                 className="row mb-3"
                 style={{ marginLeft: -50, marginRight: -50 }}
             >
                 <div
-                    style={{ color: "white", padding: 50, paddingBottom: 0 }}
+                    style={{ color: "black", padding: 50, paddingBottom: 0 }}
                     className="col-xs-12 col-sm-12"
                 >
                     <div
@@ -37,7 +37,7 @@ function About() {
                             position: "absolute",
                             left: 190,
                             height: 10,
-                            backgroundColor: theme.accent[0],
+                            backgroundColor: theme.secondary[1],
                             width: "calc(100% - 190px)",
                             marginTop: 25,
                         }}
@@ -47,7 +47,7 @@ function About() {
                         style={{
                             display: "inline-block",
                             marginBottom: 25,
-                            backgroundColor: theme.accent[1],
+                            backgroundColor: theme.secondary[1],
                             padding: 10,
                             marginLeft: -50,
                             paddingLeft: 50,
@@ -70,7 +70,7 @@ function About() {
                     </p>
                 </div>
                 <div
-                    style={{ color: "white", padding: 50, paddingBottom: 0 }}
+                    style={{ color: "black", padding: 50, paddingBottom: 0 }}
                     className="col-xs-12 col-sm-12"
                 >
                     <div
@@ -78,7 +78,7 @@ function About() {
                             position: "absolute",
                             left: 190,
                             height: 10,
-                            backgroundColor: theme.accent[0],
+                            backgroundColor: theme.secondary[1],
                             width: "calc(100% - 190px)",
                         }}
                     ></div>
@@ -88,7 +88,7 @@ function About() {
                             display: "inline-block",
                             marginTop: -25,
                             marginBottom: 25,
-                            backgroundColor: theme.accent[1],
+                            backgroundColor: theme.secondary[1],
                             padding: 10,
                             marginLeft: -50,
                             paddingLeft: 50,
@@ -104,7 +104,7 @@ function About() {
                     </p>
                 </div>
                 <div
-                    style={{ color: "white", padding: 50 }}
+                    style={{ color: "black", padding: 50 }}
                     className="col-xs-12 col-sm-12"
                 >
                     <div
@@ -112,7 +112,7 @@ function About() {
                             position: "absolute",
                             left: 190,
                             height: 10,
-                            backgroundColor: theme.accent[0],
+                            backgroundColor: theme.secondary[1],
                             width: "calc(100% - 190px)",
                         }}
                     ></div>
@@ -122,7 +122,7 @@ function About() {
                             display: "inline-block",
                             marginTop: -25,
                             marginBottom: 25,
-                            backgroundColor: theme.accent[1],
+                            backgroundColor: theme.secondary[1],
                             padding: 10,
                             marginLeft: -50,
                             paddingLeft: 50,
