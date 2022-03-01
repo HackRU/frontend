@@ -15,7 +15,7 @@ function Stats(){
                 style={{ textAlign: "center" }}>
                 <Grid item
                     xs>
-                    <Stat back={theme.primary[1]}
+                    <Stat back={theme.secondary[1]}
                         accent={theme.accent[0]}
                         text="Hackers"
                         decoration=""
@@ -24,7 +24,7 @@ function Stats(){
                 </Grid>
                 <Grid item
                     xs>
-                    <Stat back={theme.primary[1]}
+                    <Stat back={theme.secondary[1]}
                         accent={theme.accent[0]}
                         text="In Prizes"
                         decoration="$"
@@ -33,7 +33,7 @@ function Stats(){
                 </Grid>
                 <Grid item
                     xs>
-                    <Stat back={theme.primary[1]}
+                    <Stat back={theme.secondary[1]}
                         accent={theme.accent[0]}
                         text="Projects"
                         decoration=""

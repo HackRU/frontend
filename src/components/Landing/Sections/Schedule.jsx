@@ -14,7 +14,7 @@ function Schedule() {
             {...restProps}
             style={{
                 ...style,
-                backgroundColor: theme.primary[1],
+                backgroundColor: theme.secondary[1],
                 borderRadius: 8,
             }}>
             {children}
