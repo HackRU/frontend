@@ -10,7 +10,7 @@ import Footer from "./components/Landing/Sections/Footer";
 const defaults = {
     title: "HackRU Spring 2022",
     dateText: "April 1st - 3rd",
-    locationText: "Virtual",
+    locationText: "Rutgers College Ave Student Center",
     universityText: "Rutgers University",
     slogan: "hack all knight",
     mobileWidthThresholdSensitive: 1500,

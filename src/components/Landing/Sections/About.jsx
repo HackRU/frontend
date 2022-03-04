@@ -136,7 +136,7 @@ function About() {
                         <Icon name="location-arrow" /> Where?
                     </h2>
                     <p className="lead">
-                        Your own home! HackRU is virtual for Spring 2022!
+                        HackRU is at The Rutgers College Ave Student Center for Spring 2022!
                     </p>
                     {/* <iframe title="about-map"
                         frameBorder={0}
