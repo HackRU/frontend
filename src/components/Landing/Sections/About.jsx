@@ -102,7 +102,7 @@ function About() {
                         <Icon name="calendar" /> When?
                     </h2>
                     <p className="lead">
-                        HackRU is from October 16th-17th, 2021.
+                        HackRU is from April 1st-3rd, 2022.
                     </p>
                 </div>
                 <div
@@ -136,7 +136,7 @@ function About() {
                         <Icon name="location-arrow" /> Where?
                     </h2>
                     <p className="lead">
-                        Your own home! HackRU is virtual for Fall 2021!
+                        Your own home! HackRU is virtual for Spring 2022!
                     </p>
                     {/* <iframe title="about-map"
                         frameBorder={0}
