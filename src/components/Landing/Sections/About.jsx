@@ -102,7 +102,7 @@ function About() {
                         <Icon name="calendar" /> When?
                     </h2>
                     <p className="lead">
-                        HackRU is from April 1st-3rd, 2022.
+                        HackRU is from April 2nd-3rd, 2022.
                     </p>
                 </div>
                 <div
