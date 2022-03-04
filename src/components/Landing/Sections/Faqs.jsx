@@ -131,9 +131,12 @@ class FAQs extends Component {
                 >
                     FAQs
                 </h1>
-                <Container fluid maxWidth={false}>
-                    <Grid container spacing={3}>
-                        <Grid item xs>
+                <Container fluid
+                    maxWidth={false}>
+                    <Grid container
+                        spacing={3}>
+                        <Grid item
+                            xs>
                             {Object.keys(FAQTextOne).map((key, index) => (
                                 <FaqsCollapse
                                     key={index + "1"}
@@ -141,7 +144,8 @@ class FAQs extends Component {
                                 />
                             ))}
                         </Grid>
-                        <Grid item xs>
+                        <Grid item
+                            xs>
                             {Object.keys(FAQTextTwo).map((key, index) => (
                                 <FaqsCollapse
                                     key={index + "2"}

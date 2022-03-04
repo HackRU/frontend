@@ -8,8 +8,8 @@ import FAQs from "./components/Landing/Sections/Faqs";
 import Footer from "./components/Landing/Sections/Footer";
 
 const defaults = {
-    title: "HackRU Fall 2021",
-    dateText: "October 16th - 17th",
+    title: "HackRU Spring 2022",
+    dateText: "April 1st - 3rd",
     locationText: "Virtual",
     universityText: "Rutgers University",
     slogan: "hack all knight",
@@ -32,7 +32,7 @@ const defaults = {
     partnerLogos:
         "https://s3-us-west-2.amazonaws.com/hackru-internal/partners-logos/",
     teamInfo: "https://s3-us-west-2.amazonaws.com/hackru-internal/hackru-team/",
-    freeze: true,
+    freeze: false,
     teamru: true,
     teamru_user: false,
     volunteers: {

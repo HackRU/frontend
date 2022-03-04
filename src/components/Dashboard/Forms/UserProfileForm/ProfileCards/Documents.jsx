@@ -4,6 +4,7 @@ import { AvForm } from "availity-reactstrap-validation";
 import { Icon } from "react-fa";
 import ResumeUploader from "../ResumeUploader";
 import WaiverUploader from "../WaiverUploader";
+import VaccineUploader from "../VaccineUploader";
 
 // import { theme } from "../../../../Defaults";
 import { ProfileType } from "../../../../Profile";
@@ -42,6 +43,11 @@ class UserProfileForm extends Component {
     checkWaiver = (message) => {
         this.setState({
             waiver_message: message
+        });
+    }
+    checkVacciner = (message) => {
+        this.setState({
+            vaccine_message: message
         });
     }
 
@@ -90,6 +96,11 @@ class UserProfileForm extends Component {
                         profile={this.props.profile} />
                     
                     {message}
+                    <div>Vaccine Card Upload</div>
+                    <VaccineUploader edit={this.state.edit}
+                        profile={this.props.profile} />
+
+
                     <div style={{ width: "100%" }} 
                         align="right">
                         <Button color="success" 
@@ -132,10 +143,15 @@ class UserProfileForm extends Component {
                     <WaiverUploader edit={this.state.edit} 
                         profile={this.props.profile}
                         checkWaiver={this.checkWaiver}  />
-                    <div> Resume </div>
+                    <div>Resume</div>
                     <ResumeUploader edit={this.state.edit} 
                         profile={this.props.profile} />
+                    <div>Vaccine Card Upload</div>
+                    <VaccineUploader edit={this.state.edit} 
+                        profile={this.props.profile} />
                 </div>
+
+                
             );
         }
     }
