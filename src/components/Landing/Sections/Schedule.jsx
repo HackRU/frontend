@@ -21,27 +21,31 @@ function Schedule() {
         </Appointments.Appointment>
     );
 
-    const schedule = [{
-        "date": "2021-10-16",
-        "events": [
-            { startDate: "2021-10-16T10:00", endDate: "2021-10-16T11:30", title: "Check-in" },
-            { startDate: "2021-10-16T11:30", endDate: "2021-10-16T13:00", title: "Opening Ceremony" },
-            { startDate: "2021-10-16T13:00", endDate: "2021-10-17T12:00", title: "Hacking"},
-            { startDate: "2021-10-16T15:00", endDate: "2021-10-16T15:30", title: "MLH CTF"},
-            { startDate: "2021-10-16T15:30", endDate: "2021-10-16T16:30", title: "MLH Mini-Event"},
-            { startDate: "2021-10-16T17:00", endDate: "2021-10-16T18:00", title: "WiCS Kahoot + Discussion"},
-            { startDate: "2021-10-16T18:30", endDate: "2021-10-16T19:30", title: "RnD Workshop"},
-            { startDate: "2021-10-16T19:30", endDate: "2021-10-16T20:30", title: "Blueprint Workshop"},
-        ]
-    }, {
-        "date": "2021-10-17",
-        "events": [
-            { startDate: "2021-10-17T10:00", endDate: "2021-10-17T10:00", title: "Submission Reminder"},
-            { startDate: "2021-10-16T13:00", endDate: "2021-10-17T12:00", title: "Hacking"},
-            { startDate: "2021-10-17T13:00", endDate: "2021-10-17T15:00", title: "Judging"},
-            { startDate: "2021-10-17T15:30", endDate: "2021-10-17T16:00", title: "Closing Ceremony"},
-        ]
-    }];
+    // const schedule = [{
+    //     "date": "2021-10-16",
+    //     "events": [
+    //         { startDate: "2021-10-16T10:00", endDate: "2021-10-16T11:30", title: "Check-in" },
+    //         { startDate: "2021-10-16T11:30", endDate: "2021-10-16T13:00", title: "Opening Ceremony" },
+    //         { startDate: "2021-10-16T13:00", endDate: "2021-10-17T12:00", title: "Hacking"},
+    //         { startDate: "2021-10-16T15:00", endDate: "2021-10-16T15:30", title: "MLH CTF"},
+    //         { startDate: "2021-10-16T15:30", endDate: "2021-10-16T16:30", title: "MLH Mini-Event"},
+    //         { startDate: "2021-10-16T17:00", endDate: "2021-10-16T18:00", title: "WiCS Kahoot + Discussion"},
+    //         { startDate: "2021-10-16T18:30", endDate: "2021-10-16T19:30", title: "RnD Workshop"},
+    //         { startDate: "2021-10-16T19:30", endDate: "2021-10-16T20:30", title: "Blueprint Workshop"},
+    //     ]
+    // }, {
+    //     "date": "2021-10-17",
+    //     "events": [
+    //         { startDate: "2021-10-17T10:00", endDate: "2021-10-17T10:00", title: "Submission Reminder"},
+    //         { startDate: "2021-10-16T13:00", endDate: "2021-10-17T12:00", title: "Hacking"},
+    //         { startDate: "2021-10-17T13:00", endDate: "2021-10-17T15:00", title: "Judging"},
+    //         { startDate: "2021-10-17T15:30", endDate: "2021-10-17T16:00", title: "Closing Ceremony"},
+    //     ]
+    // }];
+    const schedule = [
+        {"date": "2022-04-02"},
+        {"date": "2022-04-03"}
+    ];
     return (
         <Card backgroundColor={"white"}
             sideBar={theme.primary[1]}>
