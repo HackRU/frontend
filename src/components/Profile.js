@@ -84,6 +84,7 @@ const ENDPOINTS = {
     resume: BASE + "/resume",
     waiver: BASE + "/waiver",
     sendmagic: BASE + "/createmagiclink",
+    vaccine: BASE + "/vaccine",
 };
 /**
  * TeamRU Base URL
@@ -742,6 +743,36 @@ class Profile {
     }
     async UploadWaiver(file) {
         const info = await this.GetWaiverInfo();
+        return await fetch(info.upload, {
+            method: "PUT",
+            headers: {
+                "content-type": "application/pdf",
+            },
+            body: file,
+        });
+    }
+
+
+
+    async GetVaccineInfo() {
+        const json = await fetch(ENDPOINTS.vaccine, {
+            method: "POST",
+            headers: {
+                "content-type": "application/json",
+            },
+            body: JSON.stringify({
+                email: this._email,
+                token: this._token,
+            }),
+        }).then((res) => res.json());
+        return json.body;
+    }
+    async DoesVaccineExist() {
+        const info = await this.GetVaccineInfo();
+        return info.exists;
+    }
+    async UploadVaccine(file) {
+        const info = await this.GetVaccineInfo();
         return await fetch(info.upload, {
             method: "PUT",
             headers: {

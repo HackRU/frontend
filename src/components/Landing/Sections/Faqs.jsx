@@ -31,7 +31,7 @@ const FAQTextOne = {
     three: {
         title: "What is the application process like?",
         text:
-            "Because we are virtual this semester, all applications will be accepted!",
+            "HackRU will be back in person this Spring! We will be accepting anywhere between 300-500 hackers based on when you register for the event. After you register, you'll get a notification 1-2 weeks before the hackathon whether we have accepted you or not to the hackathon. You then will have to let us know if you plan on coming or not and then you're all set!",
     },
     // four: {
     //     title: "Are there travel reimbursements?",
@@ -131,9 +131,12 @@ class FAQs extends Component {
                 >
                     FAQs
                 </h1>
-                <Container fluid maxWidth={false}>
-                    <Grid container spacing={3}>
-                        <Grid item xs>
+                <Container fluid
+                    maxWidth={false}>
+                    <Grid container
+                        spacing={3}>
+                        <Grid item
+                            xs>
                             {Object.keys(FAQTextOne).map((key, index) => (
                                 <FaqsCollapse
                                     key={index + "1"}
@@ -141,7 +144,8 @@ class FAQs extends Component {
                                 />
                             ))}
                         </Grid>
-                        <Grid item xs>
+                        <Grid item
+                            xs>
                             {Object.keys(FAQTextTwo).map((key, index) => (
                                 <FaqsCollapse
                                     key={index + "2"}

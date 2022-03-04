@@ -160,7 +160,8 @@ class Dashboard extends Component {
                 <ProfileMessage message={this.state.profileMSG} />
                 {SHOW_FLAG ? (
                     <Row>
-                        <Col className="dashboard-row" lg={12}>
+                        <Col className="dashboard-row"
+                            lg={12}>
                             <Links />
                         </Col>
                     </Row>
@@ -168,7 +169,8 @@ class Dashboard extends Component {
                     <br />
                 )}
                 <Row>
-                    <Col className="dashboard-row" lg={12}>
+                    <Col className="dashboard-row"
+                        lg={12}>
                         <div className="dashboard-card">
                             <div className="dashboard-left-strip dashboard-strip-red"></div>
                             <h1
@@ -208,7 +210,9 @@ class Dashboard extends Component {
                 )}
                 {SHOW_FLAG ? (
                     <Row>
-                        <Section title="Schedule" color="red" isOpen={true}>
+                        <Section title="Schedule"
+                            color="red"
+                            isOpen={true}>
                             <Schedule />
                         </Section>
                     </Row>
@@ -290,7 +294,8 @@ class Dashboard extends Component {
                                 </div>
                             </div>
                         </Col>} */}
-                    <Section title={"Application Status"} isOpen={true}>
+                    <Section title={"Application Status"}
+                        isOpen={true}>
                         <div
                             style={{
                                 marginTop: 0,
