@@ -758,7 +758,7 @@ class Profile {
         const json = await fetch(ENDPOINTS.vaccine, {
             method: "POST",
             headers: {
-                "content-type": "application/form-data",
+                "content-type": "application/json",
             },
             body: JSON.stringify({
                 email: this._email,
@@ -776,7 +776,7 @@ class Profile {
         return await fetch(info.upload, {
             method: "PUT",
             headers: {
-                "content-type": "application/form-data",
+                "content-type": "application/pdf",
             },
             body: file,
         });

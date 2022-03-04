@@ -123,14 +123,6 @@ const Profile = (props) => {
                             profile={props.profile}
                         />
                     </Section>
-                    <Section title="Documents"
-                        subtitle="Introduce yourself, don't be shy!"
-                        isOpen={true} /* replaced this.state.openDetails to force true*/>
-                        <Documents mobile={mobile}
-                            user={set_user}
-                            profile={props.profile}
-                        />
-                    </Section>
                 </Grid>
                 <Grid item
                     xs={12}

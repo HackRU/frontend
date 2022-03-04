@@ -5,7 +5,8 @@ import Card from "../../Card";
 
 function About() {
     return (
-        <Card backgroundColor={theme.secondary[1]} sideBar={theme.accent[0]}>
+        <Card backgroundColor={theme.secondary[1]}
+            sideBar={theme.accent[0]}>
             <div
                 style={{
                     position: "absolute",
@@ -58,7 +59,8 @@ function About() {
                     >
                         <Icon name="question-circle" /> What?
                     </h2>
-                    <p style={{ display: "inline-block" }} className="lead">
+                    <p style={{ display: "inline-block" }}
+                        className="lead">
                         HackRU is a 24-hour hackathon at Rutgers University. We
                         welcome hundreds of students to join us in building
                         awesome tech projects. Industry experts and mentors help
