@@ -143,7 +143,13 @@ class UserProfileForm extends Component {
                     <div> Resume </div>
                     <ResumeUploader edit={this.state.edit} 
                         profile={this.props.profile} />
+
+<                   div> Vaccine Card Upload </div>
+                    <VaccineUploader edit={this.state.edit} 
+                        profile={this.props.profile} />
                 </div>
+
+                
             );
         }
     }
