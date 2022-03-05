@@ -28,6 +28,7 @@ class UserProfileForm extends Component {
             })),
             checkedState1: (this.props.user.registration_status !== "unregistered"),
             checkedState2: (this.props.user.registration_status !== "unregistered"),
+            checkedState3: (this.props.user.registration_status !== "unregistered"),
             message: null
         });
         request.get("https://raw.githubusercontent.com/MLH/mlh-policies/master/schools.csv", {}, (_err, _resp, body) => {
@@ -55,6 +56,9 @@ class UserProfileForm extends Component {
         }
         if (this.state.checkedState2) {
             mlhnotices.push("mlh2");
+        }
+        if (this.state.checkedState3) {
+            mlhnotices.push("mlh3");
         }
         let polls = [];
         if (user.want_bus) {
@@ -353,6 +357,11 @@ class UserProfileForm extends Component {
                             onChange={() => { this.setState({ checkedState2: !this.state.checkedState2 }); }}
                             label={<p>I authorize you to share my application/registration information for event administration, ranking, MLH administration, pre- and post-event informational e-mails, and occasional messages about hackathons in-line with the <a href="https://mlh.io/privacy">MLH Privacy Policy</a>. Further, I agree to the terms of both the <a href="https://github.com/MLH/mlh-policies/blob/master/prize-terms-and-conditions/contest-terms.md">MLH Contest Terms and Conditions</a> and the <a href="https://mlh.io/privacy">MLH Privacy Policy</a>.</p>}
                             value={"mlh2"} />
+                        <AvCheckbox name="mlh3"
+                            customInput
+                            onChange={() => { this.setState({ checkedState3: !this.state.checkedState3 }); }}
+                            label={<p>I agree that I will show proof of vaccination or proof of a negative test by uploading the appropriate document(s) (i.e. vaccination card) to submit for approval on my HackRU profile by 1-2 days before the event.</p>}
+                            value={"mlh3"} />
                     </AvCheckboxGroup>
                     {message}
                     <div style={{ width: "100%" }}
