@@ -143,7 +143,7 @@ class Register extends Component {
                             onChange={() => { this.setState({ checkedState1: !this.state.checkedState1 }); }}
                             label={<p>I have read and agree to the <a href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf" 
                                 rel="noopener noreferrer"
-                                target="_blank">MLH Code of Conduct</a></p>}
+                                target="_blank">MLH Code of Conduct</a>.</p>}
                             value={"mlh1"} />
                         <AvCheckbox name="mlh2"
                             customInput
@@ -157,7 +157,7 @@ class Register extends Component {
                                     target="_blank">MLH Contest Terms and Conditions</a> and the{" "} 
                                 <a href="https://mlh.io/privacy"
                                     rel="noopener noreferrer"
-                                    target="_blank">MLH Privacy Policy</a>.</p>}
+                                    target="_blank">MLH Privacy Policy</a>. NOTE: Proof of vaccination or a negative test result 1-2 days before the event must be shown for entry.</p>}
                             value={"mlh2"} />
                     </AvCheckboxGroup>
                     <h4>Registration</h4>
@@ -202,7 +202,7 @@ class Register extends Component {
                             {" "}and the{" "} 
                             <a href="https://mlh.io/privacy"
                                 rel="noopener noreferrer"
-                                target="_blank">MLH Privacy Policy</a>.</p>
+                                target="_blank">MLH Privacy Policy</a>. NOTE: Proof of vaccination or a negative test result 1-2 days before the event must be shown for entry.</p>
                     </FormGroup>
                     <div style={{ width: "100%" }}
                         align="right">
