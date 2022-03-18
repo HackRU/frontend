@@ -1,4 +1,5 @@
 import React from "react";
+import CurtainsAbout from "./components/Landing/Sections/CurtainsAbout";
 import About from "./components/Landing/Sections/About";
 import Schedule from "./components/Landing/Sections/Schedule";
 // import Sponsors from "./components/Landing/Sections/Sponsors/Sponsors.jsx";
@@ -54,7 +55,8 @@ const navlinks = {
         enabled: !defaults.freeze,
         hideLink: false,
         fullHeight: false,
-        component: (props) => <About {...props} />,
+        component: (props) => <CurtainsAbout {...props} />,
+        // component: (props) => <About {...props} />,
     },
     SCHEDULE: {
         url: "#schedule",

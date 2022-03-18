@@ -7,6 +7,8 @@ const LottieFile = (props) => {
         <React.Fragment>
             <Lottie 
                 animationData={props.data}
+                style={props.style}
+                interactivity={props.interactivity}
                 loop="true"
             />
         </React.Fragment>
@@ -15,6 +17,8 @@ const LottieFile = (props) => {
 
 LottieFile.propTypes = {
     data: PropTypes.object.isRequired,
+    style: PropTypes.object,
+    interactivity: PropTypes.object,
 };
 
 export default LottieFile;
