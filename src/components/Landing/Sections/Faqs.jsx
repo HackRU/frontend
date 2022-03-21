@@ -43,6 +43,10 @@ const FAQTextOne = {
             "Yes! We'll release more information about prizes as the event draws near.",
     },
     six: {
+        title: "Will there be a mask mandate?",
+        text: "Yes, HackRU will have a mask mandate throughout the duration of the event."
+    },
+    seven: {
         title: "I have more questions!",
         text: [
             <span key={1}>

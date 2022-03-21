@@ -17,6 +17,7 @@ class Register extends Component {
             user: this.props.user,
             checkedState1: (this.props.user.registration_status !== "unregistered"),
             checkedState2: (this.props.user.registration_status !== "unregistered"),
+            checkedState3: (this.props.user.registration_status !== "unregistered"),
             message: null
         });
     }
@@ -119,6 +120,9 @@ class Register extends Component {
         if (this.state.checkedState2) {
             mlhnotices.push("mlh2");
         }
+        if (this.state.checkedState3) {
+            mlhnotices.push("mlh3");
+        }
         let model = { mlhnotices };
         let message = null;
         if (this.state.message) {
@@ -137,7 +141,7 @@ class Register extends Component {
                         className="custom-av-checkbox"
                         label={<h4>MLH Notices</h4>}
                         required
-                        validate={{ required: { value: true, errorMessage: "Please review these MLH guidelines" }, min: { value: 2, errorMessage: "You must select both of these checkboxes" } }}>
+                        validate={{ required: { value: true, errorMessage: "Please review these MLH guidelines" }, min: { value: 3, errorMessage: "You must select all of the checkboxes" } }}>
                         <AvCheckbox name="mlh1"
                             customInput
                             onChange={() => { this.setState({ checkedState1: !this.state.checkedState1 }); }}
@@ -151,14 +155,19 @@ class Register extends Component {
                             label={<p>I authorize you to share my application/registration information for event administration, ranking, MLH administration, pre- and post-event informational e-mails, and occasional messages about hackathons in-line with the{" "} 
                                 <a href="https://mlh.io/privacy" 
                                     rel="noopener noreferrer"
-                                    target="_blank">MLH Privacy Policy</a>. Further, I agree to the terms of both the{" "} 
+                                    target="_blank">MLH Privacy Policy</a>.</p>}
+                            value={"mlh2"} />
+                        <AvCheckbox name="mlh3" 
+                            customInput
+                            onChange={() => { this.setState({ checkedState2: !this.state.checkedState2 }); }}
+                            label={<p> Further, I agree to the terms of both the{" "}
                                 <a href="https://github.com/MLH/mlh-policies/blob/master/prize-terms-and-conditions/contest-terms.md" 
                                     rel="noopener noreferrer"
                                     target="_blank">MLH Contest Terms and Conditions</a> and the{" "} 
                                 <a href="https://mlh.io/privacy"
                                     rel="noopener noreferrer"
                                     target="_blank">MLH Privacy Policy</a>. NOTE: Proof of vaccination or a negative test result 1-2 days before the event must be shown for entry.</p>}
-                            value={"mlh2"} />
+                            value={"mlh3"} />
                     </AvCheckboxGroup>
                     <h4>Registration</h4>
                     <p>After filling out all required parts in About and Education, please make sure you have uploaded a filled and signed{" "}
