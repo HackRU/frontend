@@ -1229,7 +1229,333 @@ class Profile {
 
     // eslint-disable-next-line no-unused-vars
     async getComments(post_uuid){
-        return [...Array(30)].map((it, idx) => {return {poster : `${idx}`, content : "hello", uuid : idx, subcomments : [...Array(5).map((it, idx) => {return {poster : `subposter-${idx}`, content : "world", uuid : idx, subcomments : []};})]};});
+        return [
+            {
+                poster : "John Doe", content : "hello", uuid : 123, subcomments : [
+                    {
+                        poster : "Jane Doe", content : "world", uuid : 456,
+                    },
+                    {
+                        poster : "Jane Doe", content : "world", uuid : 456,
+                    },
+                    {
+                        poster : "Jane Doe", content : "world", uuid : 456,
+                    },
+                    {
+                        poster : "Jane Doe", content : "world", uuid : 456,
+                    },
+                    {
+                        poster : "Jane Doe", content : "world", uuid : 456,
+                    },
+                    {
+                        poster : "Jane Doe", content : "world", uuid : 456,
+                    },
+                    {
+                        poster : "Jane Doe", content : "world", uuid : 456,
+                    },
+                    {
+                        poster : "Jane Doe", content : "world", uuid : 456,
+                    },
+                ], 
+            },{
+                poster : "John Doe", content : "hello", uuid : 123, subcomments : [
+                    {
+                        poster : "Jane Doe", content : "world", uuid : 456,
+                    },
+                    {
+                        poster : "Jane Doe", content : "world", uuid : 456,
+                    },
+                    {
+                        poster : "Jane Doe", content : "world", uuid : 456,
+                    },
+                    {
+                        poster : "Jane Doe", content : "world", uuid : 456,
+                    },
+                    {
+                        poster : "Jane Doe", content : "world", uuid : 456,
+                    },
+                    {
+                        poster : "Jane Doe", content : "world", uuid : 456,
+                    },
+                    {
+                        poster : "Jane Doe", content : "world", uuid : 456,
+                    },
+                    {
+                        poster : "Jane Doe", content : "world", uuid : 456,
+                    },
+                ], 
+            },{
+                poster : "John Doe", content : "hello", uuid : 123, subcomments : [
+                    {
+                        poster : "Jane Doe", content : "world", uuid : 456,
+                    },
+                    {
+                        poster : "Jane Doe", content : "world", uuid : 456,
+                    },
+                    {
+                        poster : "Jane Doe", content : "world", uuid : 456,
+                    },
+                    {
+                        poster : "Jane Doe", content : "world", uuid : 456,
+                    },
+                    {
+                        poster : "Jane Doe", content : "world", uuid : 456,
+                    },
+                    {
+                        poster : "Jane Doe", content : "world", uuid : 456,
+                    },
+                    {
+                        poster : "Jane Doe", content : "world", uuid : 456,
+                    },
+                    {
+                        poster : "Jane Doe", content : "world", uuid : 456,
+                    },
+                ], 
+            },{
+                poster : "John Doe", content : "hello", uuid : 123, subcomments : [
+                    {
+                        poster : "Jane Doe", content : "world", uuid : 456,
+                    },
+                    {
+                        poster : "Jane Doe", content : "world", uuid : 456,
+                    },
+                    {
+                        poster : "Jane Doe", content : "world", uuid : 456,
+                    },
+                    {
+                        poster : "Jane Doe", content : "world", uuid : 456,
+                    },
+                    {
+                        poster : "Jane Doe", content : "world", uuid : 456,
+                    },
+                    {
+                        poster : "Jane Doe", content : "world", uuid : 456,
+                    },
+                    {
+                        poster : "Jane Doe", content : "world", uuid : 456,
+                    },
+                    {
+                        poster : "Jane Doe", content : "world", uuid : 456,
+                    },
+                ], 
+            },{
+                poster : "John Doe", content : "hello", uuid : 123, subcomments : [
+                    {
+                        poster : "Jane Doe", content : "world", uuid : 456,
+                    },
+                    {
+                        poster : "Jane Doe", content : "world", uuid : 456,
+                    },
+                    {
+                        poster : "Jane Doe", content : "world", uuid : 456,
+                    },
+                    {
+                        poster : "Jane Doe", content : "world", uuid : 456,
+                    },
+                    {
+                        poster : "Jane Doe", content : "world", uuid : 456,
+                    },
+                    {
+                        poster : "Jane Doe", content : "world", uuid : 456,
+                    },
+                    {
+                        poster : "Jane Doe", content : "world", uuid : 456,
+                    },
+                    {
+                        poster : "Jane Doe", content : "world", uuid : 456,
+                    },
+                ], 
+            },{
+                poster : "John Doe", content : "hello", uuid : 123, subcomments : [
+                    {
+                        poster : "Jane Doe", content : "world", uuid : 456,
+                    },
+                    {
+                        poster : "Jane Doe", content : "world", uuid : 456,
+                    },
+                    {
+                        poster : "Jane Doe", content : "world", uuid : 456,
+                    },
+                    {
+                        poster : "Jane Doe", content : "world", uuid : 456,
+                    },
+                    {
+                        poster : "Jane Doe", content : "world", uuid : 456,
+                    },
+                    {
+                        poster : "Jane Doe", content : "world", uuid : 456,
+                    },
+                    {
+                        poster : "Jane Doe", content : "world", uuid : 456,
+                    },
+                    {
+                        poster : "Jane Doe", content : "world", uuid : 456,
+                    },
+                ], 
+            },{
+                poster : "John Doe", content : "hello", uuid : 123, subcomments : [
+                    {
+                        poster : "Jane Doe", content : "world", uuid : 456,
+                    },
+                    {
+                        poster : "Jane Doe", content : "world", uuid : 456,
+                    },
+                    {
+                        poster : "Jane Doe", content : "world", uuid : 456,
+                    },
+                    {
+                        poster : "Jane Doe", content : "world", uuid : 456,
+                    },
+                    {
+                        poster : "Jane Doe", content : "world", uuid : 456,
+                    },
+                    {
+                        poster : "Jane Doe", content : "world", uuid : 456,
+                    },
+                    {
+                        poster : "Jane Doe", content : "world", uuid : 456,
+                    },
+                    {
+                        poster : "Jane Doe", content : "world", uuid : 456,
+                    },
+                ], 
+            },{
+                poster : "John Doe", content : "hello", uuid : 123, subcomments : [
+                    {
+                        poster : "Jane Doe", content : "world", uuid : 456,
+                    },
+                    {
+                        poster : "Jane Doe", content : "world", uuid : 456,
+                    },
+                    {
+                        poster : "Jane Doe", content : "world", uuid : 456,
+                    },
+                    {
+                        poster : "Jane Doe", content : "world", uuid : 456,
+                    },
+                    {
+                        poster : "Jane Doe", content : "world", uuid : 456,
+                    },
+                    {
+                        poster : "Jane Doe", content : "world", uuid : 456,
+                    },
+                    {
+                        poster : "Jane Doe", content : "world", uuid : 456,
+                    },
+                    {
+                        poster : "Jane Doe", content : "world", uuid : 456,
+                    },
+                ], 
+            },{
+                poster : "John Doe", content : "hello", uuid : 123, subcomments : [
+                    {
+                        poster : "Jane Doe", content : "world", uuid : 456,
+                    },
+                    {
+                        poster : "Jane Doe", content : "world", uuid : 456,
+                    },
+                    {
+                        poster : "Jane Doe", content : "world", uuid : 456,
+                    },
+                    {
+                        poster : "Jane Doe", content : "world", uuid : 456,
+                    },
+                    {
+                        poster : "Jane Doe", content : "world", uuid : 456,
+                    },
+                    {
+                        poster : "Jane Doe", content : "world", uuid : 456,
+                    },
+                    {
+                        poster : "Jane Doe", content : "world", uuid : 456,
+                    },
+                    {
+                        poster : "Jane Doe", content : "world", uuid : 456,
+                    },
+                ], 
+            },{
+                poster : "John Doe", content : "hello", uuid : 123, subcomments : [
+                    {
+                        poster : "Jane Doe", content : "world", uuid : 456,
+                    },
+                    {
+                        poster : "Jane Doe", content : "world", uuid : 456,
+                    },
+                    {
+                        poster : "Jane Doe", content : "world", uuid : 456,
+                    },
+                    {
+                        poster : "Jane Doe", content : "world", uuid : 456,
+                    },
+                    {
+                        poster : "Jane Doe", content : "world", uuid : 456,
+                    },
+                    {
+                        poster : "Jane Doe", content : "world", uuid : 456,
+                    },
+                    {
+                        poster : "Jane Doe", content : "world", uuid : 456,
+                    },
+                    {
+                        poster : "Jane Doe", content : "world", uuid : 456,
+                    },
+                ], 
+            },{
+                poster : "John Doe", content : "hello", uuid : 123, subcomments : [
+                    {
+                        poster : "Jane Doe", content : "world", uuid : 456,
+                    },
+                    {
+                        poster : "Jane Doe", content : "world", uuid : 456,
+                    },
+                    {
+                        poster : "Jane Doe", content : "world", uuid : 456,
+                    },
+                    {
+                        poster : "Jane Doe", content : "world", uuid : 456,
+                    },
+                    {
+                        poster : "Jane Doe", content : "world", uuid : 456,
+                    },
+                    {
+                        poster : "Jane Doe", content : "world", uuid : 456,
+                    },
+                    {
+                        poster : "Jane Doe", content : "world", uuid : 456,
+                    },
+                    {
+                        poster : "Jane Doe", content : "world", uuid : 456,
+                    },
+                ], 
+            },{
+                poster : "John Doe", content : "hello", uuid : 123, subcomments : [
+                    {
+                        poster : "Jane Doe", content : "world", uuid : 456,
+                    },
+                    {
+                        poster : "Jane Doe", content : "world", uuid : 456,
+                    },
+                    {
+                        poster : "Jane Doe", content : "world", uuid : 456,
+                    },
+                    {
+                        poster : "Jane Doe", content : "world", uuid : 456,
+                    },
+                    {
+                        poster : "Jane Doe", content : "world", uuid : 456,
+                    },
+                    {
+                        poster : "Jane Doe", content : "world", uuid : 456,
+                    },
+                    {
+                        poster : "Jane Doe", content : "world", uuid : 456,
+                    },
+                    {
+                        poster : "Jane Doe", content : "world", uuid : 456,
+                    },
+                ], 
+            },
+        ];
     }
 
     async postComment(text, parent_uuid){
