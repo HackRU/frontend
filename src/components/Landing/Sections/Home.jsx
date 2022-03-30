@@ -3,7 +3,7 @@ import { Container, Grid, Button, ButtonGroup, Collapse } from "@material-ui/cor
 import Alert from "@material-ui/lab/Alert";
 import { defaults, theme } from "../../../Defaults";
 import { Icon } from "react-fa";
-import Logo from "./Logo";
+// import Logo from "./Logo";
 import { ProfileType } from "../../Profile";
 import PropTypes from "prop-types";
 import { Motion, spring } from "react-motion";
@@ -630,7 +630,7 @@ class Home extends Component {
                     >
                         <Grid style={{ display: "block" }}>
                             {loggoutMsg}
-                            <Motion
+                            {/* <Motion
                                 defaultStyle={{ opacity: 0 }}
                                 style={{ opacity: spring(1, { stiffness: 1, damping: 1 }) }}
                             >
@@ -642,18 +642,26 @@ class Home extends Component {
                                         src="./assets/icons/hru-text.svg"
                                     />
                                 )}
+                            </Motion> */}
+                            <Motion
+                                defaultStyle={{ opacity: 0 }}
+                                style={{ opacity: spring(1, { stiffness: 1, damping: 1 }) }}
+                            >
+                                {() => (
+                                    <LottieFile data={reel} style={{ width: "80%", height: "100%", marginLeft: "auto", marginRight: "auto" }} />
+                                )
+                                }
                             </Motion>
                             <Motion
-                                defaultStyle={{ opacity: 0, top: 1000 }}
+                                defaultStyle={{ opacity: 0 }}
                                 style={{
                                     opacity: spring(1, { stiffness: 1, damping: 1 }),
                                     top: spring(0, { stiffness: 20, damping: 4 }),
                                 }}
                             >
-                                {({ opacity, top }) => (
+                                {({ opacity }) => (
                                     <h2
                                         style={{
-                                            marginTop: "calc(" + (-100 + top) + "px + 20vw)",
                                             color: theme.accent[0],
                                             opacity: opacity,
                                         }}
