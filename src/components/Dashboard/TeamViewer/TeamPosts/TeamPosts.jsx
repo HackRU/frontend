@@ -65,25 +65,13 @@ const TeamPosts = (props) => {
 
     React.useEffect(() => {
         // eslint-disable-next-line no-unused-vars
-        myForumPostsUtil(profile.getMyForumPosts(), async (posts) => dispatchMyPosts({type : "success", payload : {posts : posts}}), async (_err) => dispatchMyPosts({type : "error", payload : {}}));
-        // eslint-disable-next-line no-unused-vars
         allForumPostsUtil(profile.getAllForumPosts(), async (posts) => dispatchAllPosts({type : "success", payload : {posts : posts}}), async (_err) => dispatchAllPosts({type : "error", payload : {}}));
+        // eslint-disable-next-line no-unused-vars
+        myForumPostsUtil(profile.getMyForumPosts(), async (posts) => dispatchMyPosts({type : "success", payload : {posts : posts}}), async (_err) => dispatchMyPosts({type : "error", payload : {}}));
     }, []);
 
     return (
         <div className={teampostsstyle["container"]}>
-            <div className={teampostsstyle["my-forum-posts"]}>
-                <header>My Forum Posts</header>
-                {!myPostsState.is_loading && !myPostsState.display_err ?
-                    <ForumPostListView posts_list={myPostsState.posts}
-                        post_click_action={openForumPost}/>
-                    :
-                    myPostsState.display_err ?
-                        <div>Error</div>
-                        :
-                        <div>Loading</div>
-                }
-            </div>
             <div className={teampostsstyle["all-forum-posts"]}>
                 <header>All Forum Posts</header>
                 {!allPostsState.is_loading && !allPostsState.display_err ?
@@ -91,6 +79,18 @@ const TeamPosts = (props) => {
                         post_click_action={openForumPost}/>
                     :
                     allPostsState.display_err ?
+                        <div>Error</div>
+                        :
+                        <div>Loading</div>
+                }
+            </div>
+            <div className={teampostsstyle["my-forum-posts"]}>
+                <header>My Forum Posts</header>
+                {!myPostsState.is_loading && !myPostsState.display_err ?
+                    <ForumPostListView posts_list={myPostsState.posts}
+                        post_click_action={openForumPost}/>
+                    :
+                    myPostsState.display_err ?
                         <div>Error</div>
                         :
                         <div>Loading</div>

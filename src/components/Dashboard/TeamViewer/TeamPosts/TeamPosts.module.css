@@ -1,56 +1,65 @@
 .padder {
-    padding : 1rem;
+  padding: 1rem;
 }
 
 .all-forum-posts {
-    grid-area : all-forum-posts;
-    background-color: whitesmoke;
-    composes : padder;
-    border-radius: 1rem;
+  grid-area: all-forum-posts;
+  background-color: whitesmoke;
+  composes: padder;
+  border-radius: 1rem;
+  font-size: 20px;
+  color: #c85151;
+  font-weight: bold;
 }
 
 .my-forum-posts {
-    grid-area : my-forum-posts;
-    background-color: whitesmoke;
-    composes : padder;
-    border-radius: 1rem;
+  grid-area: my-forum-posts;
+  background-color: whitesmoke;
+  composes: padder;
+  border-radius: 1rem;
+  font-size: 20px;
+  color: #eeb844;
+  font-weight: bold;
 }
 
 .post-preview {
-    grid-area : post-preview;
-    background-color: whitesmoke;
-    composes : padder;
-    border-radius: 1rem;
-    display: flex;
-    flex-direction: column;
+  grid-area: post-preview;
+  background-color: whitesmoke;
+  composes: padder;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  font-size: 20px;
+  color: #4fab5f;
+  font-weight: bold;
 }
 
 .container {
-    margin-top: 1rem;
-    box-sizing: border-box;
-    width: 100%;
-    height : 100%;
-    display : grid;
-    row-gap : 1rem;
-    column-gap : 1rem;
-    grid-template-columns: 1fr 1fr;
-    grid-template-areas :
-        "my-forum-posts post-preview"
-        "all-forum-posts post-preview";
+  margin-top: 1rem;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  row-gap: 1rem;
+  column-gap: 1rem;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+    "all-forum-posts post-preview"
+    "my-forum-posts post-preview";
 }
 
 @media only screen and (max-width: 720px) {
-    .container {
-        margin-top: 1rem;
-        box-sizing: border-box;
-        width: 100%;
-        height: 100%;
-        display : grid;
-        row-gap : 1rem;
-        grid-template-columns: 1fr;
-        grid-template-areas :
-            "my-forum-posts"
-            "all-forum-posts"
-            "post-preview";
-    }
+  .container {
+    margin-top: 1rem;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    row-gap: 1rem;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "all-forum-posts"
+      "my-forum-posts"
+      "post-preview";
+  }
 }
