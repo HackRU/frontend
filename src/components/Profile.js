@@ -1300,7 +1300,12 @@ class Profile {
             throw Error();
         } else {
             const data = await res.json();
-            return data;
+            return {
+                poster : this._email,
+                content : text,
+                uuid : data.uuid,
+                subcomments : [],
+            };
         }
     }
 
@@ -1322,7 +1327,12 @@ class Profile {
             throw Error();
         } else {
             const data = await res.json();
-            return data;
+            return {
+                poster : this._email,
+                content : text,
+                uuid : data.uuid,
+                subcomments : [], 
+            };
         }
     }
 }
