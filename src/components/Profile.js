@@ -1221,6 +1221,8 @@ class Profile {
             body : JSON.stringify(payload),
         };
         const res = await fetch(TEAMRU_ENDPOINTS.postForum, init);
+        if (!res.ok)
+            throw Error();
         const data = await res.json();
         return data.uuid;
     }
@@ -1233,6 +1235,8 @@ class Profile {
                 token : this._token,
             }
         });
+        if (!res.ok)
+            throw Error();
         const data = await res.json();
         return data.posts;
     }
@@ -1245,6 +1249,8 @@ class Profile {
                 token : this._token,
             }
         });
+        if (!res.ok)
+            throw Error();
         const data = await res.json();
         return data.posts;
     }
