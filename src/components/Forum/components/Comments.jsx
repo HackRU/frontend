@@ -11,18 +11,20 @@ const Comments = (props) => {
     const {parent_class, parent_uuid, base_comments, profile} = props;
     return (
         <ul style={{marginLeft : `${base_offset} rem`}}>
-            {base_comments.map((c) => <CommentRow comment={c} parent_class={parent_class} profile={profile}/>)}
+            {base_comments.map((c) => <CommentRow comment={c}
+                parent_class={parent_class}
+                profile={profile}/>)}
         </ul>
     );
 };
 
- const errReducer = (state, action) => {
+const errReducer = (state, action) => {
     switch(action.type) {
-        default: return {
-            ...action.payload,
-        }
+    default: return {
+        ...action.payload,
+    };
     }
- };
+};
 
 const CommentRow = (props) => {
     const {comment, parent_class, profile} = props;
@@ -39,11 +41,11 @@ const CommentRow = (props) => {
         else
             dispatchErrState({type : "do", payload : {display_err : false}});
         return result;
-    }
+    };
 
     //need to modify Profile.js to include method to hit the backend for post request
     const submission_action = parent_class !== "post" ? () => {} : (text) => {
-        cancellablePromise(profile.postComment(text, comment.uuid), async (res) => {
+        cancellablePromise(profile.postSubComment(text, comment.uuid), async (res) => {
             console.log(res);
             setSubComments(it => {
                 const _it = [...it];
@@ -51,13 +53,14 @@ const CommentRow = (props) => {
                 return _it;
             });
         }, async (err) => {
-            dispatchErrState({type : "do", payload : {err_msg : err.err_msg, display_err : true}})
+            dispatchErrState({type : "do", payload : {err_msg : err.err_msg, display_err : true}});
         });
-    }
+    };
 
     return (
         <li>
-            <CommentView poster={comment.poster} content={comment.content}/>
+            <CommentView poster={comment.poster}
+                content={comment.content}/>
             {parent_class === "post" && !reply && <div onClick={() => setReply(true)}>Reply</div>}
             {reply && <ReplyBoxView 
                 submission_action={submission_action}
@@ -65,8 +68,11 @@ const CommentRow = (props) => {
                 submission_cancel={() => setReply(false)}
                 display_err={errState.display_err}
                 err_msg={errState.err_msg}
-                />}
-            {!!subcomments.length && <Comments parent_class={"comment"} parent_uuid={comment.uuid} base_comments={subcomments} profile={profile}/>}
+            />}
+            {!!subcomments.length && <Comments parent_class={"comment"}
+                parent_uuid={comment.uuid}
+                base_comments={subcomments}
+                profile={profile}/>}
         </li>
     );
 };
@@ -80,10 +86,10 @@ CommentRow.propTypes = {
         subcomments : PropTypes.any,
     }).isRequired,
     profile : PropTypes.shape({
-        postComment : PropTypes.func,
-        getComments : PropTypes.func,
+        postSubComment : PropTypes.func,
+        getSubComments : PropTypes.func,
     })
-}
+};
 
 Comments.propTypes = {
     parent_uuid : PropTypes.string.isRequired, //the id of the parent
@@ -95,8 +101,8 @@ Comments.propTypes = {
         subcomments : PropTypes.any,
     })).isRequired,
     profile : PropTypes.shape({
-        postComment : PropTypes.func,
-        getComments : PropTypes.func,
+        postSubComment : PropTypes.func,
+        getSubComments : PropTypes.func,
     })
 };
 

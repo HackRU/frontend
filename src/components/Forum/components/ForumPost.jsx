@@ -59,7 +59,7 @@ const ForumPost = (props) => {
     };
 
     const submission_action = (text) => {
-        postCommentUtil(profile.postComment(text, post_uuid), async (res) => {
+        postCommentUtil(profile.postForumComment(text, post_uuid), async (res) => {
             dispatchCommentsState({type : "prepend", payload : {new_comment : res}});
         // eslint-disable-next-line no-unused-vars
         }, async (err) => 
@@ -75,7 +75,7 @@ const ForumPost = (props) => {
         }, async (_err) => {
             dispatchPostState({type : "do", payload : {post_loaded : false, post_load_err : true, poster : "", title : "", content : ""}});
         });
-        loadCommentsUtil(profile.getComments(post_uuid), async (res) => {
+        loadCommentsUtil(profile.getForumComments(post_uuid), async (res) => {
             dispatchCommentsState({type : "do", payload : {comments_loaded : true, comments_loaded_err : false, comments : res}});
         // eslint-disable-next-line no-unused-vars
         }, async (_err) => {
@@ -124,8 +124,8 @@ const ForumPost = (props) => {
 ForumPost.propTypes = {
     post_uuid : PropTypes.string.isRequired,
     profile : PropTypes.shape({
-        getComments : PropTypes.func,
-        postComment : PropTypes.func,
+        getForumComments : PropTypes.func,
+        postForumComment : PropTypes.func,
         getForumPost : PropTypes.func,
     })
 };
