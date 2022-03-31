@@ -6,7 +6,7 @@ import ApplicationStatus from "./ApplicationStatus";
 import Loading from "./Loading";
 import ProfileMessage from "./ProfileMessage";
 import AdminControl from "./AdminControl";
-// import QR from "./QR";
+import QR from "./QR";
 // import TravelReimbursementsForm from "./Forms/TravelReimbursementsForm";
 // import UserProfileForm from "./Forms/UserProfileForm/UserProfileForm";
 import { ProfileType } from "../Profile";
@@ -195,6 +195,27 @@ class Dashboard extends Component {
                         </div>
                     </Col>
                 </Row>
+                {SHOW_FLAG ? (
+                    <Row>
+                        <Section
+                            title="Check-in"
+                            color="red"
+                            isOpen={true}
+                        >
+                            <div
+                                style={{
+                                    marginTop: 0,
+                                    textAlign: "center",
+                                    width: "100%",
+                                }}
+                            >
+                                <QR email={this.props.profile._email} />
+                            </div>
+                        </Section>
+                    </Row>
+                ) : (
+                    <br />
+                )}
                 {SHOW_FLAG ? (
                     <Row>
                         <Section
