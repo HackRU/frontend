@@ -149,12 +149,12 @@ varList.forEach((element) => {
 const liveImportantLinks = [
     {
         title: "Devpost",
-        href: "https://hackru-fall-2021.devpost.com",
+        href: "https://hackru-s22.devpost.com/",
         icon: "code",
     },
     {
         title: "Slack",
-        href: "https://hackru-f21.slack.com/",
+        href: "https://hackruspring2022.slack.com/",
         icon: "slack",
     },
     {
