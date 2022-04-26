@@ -7,8 +7,10 @@ import Loading from "../Loading";
 import MyTeam from "./MyTeam";
 import Explore from "./Explore";
 import ManageTeam from "./ManageTeam";
-import { Redirect } from "react-router-dom";
+import { Redirect, Route, Switch } from "react-router-dom";
 import { theme } from "../../../Defaults";
+import E404 from "../../Errors/E404";
+import TeamPosts from "./TeamPosts/TeamPosts";
 
 
 function a11yProps(index) {
@@ -31,10 +33,15 @@ const color_theme = createMuiTheme({
 
 
 const TeamViewer = (props) => {
-    const [value, setValue] = useState(props.tab);
+    const location = props.location;
+
+    const tab_val = ["/teamru/myteam", "/teamru/explore", "/teamru/manage", "/teamru/posts"].findIndex((el) => el === location.pathname);
+
+    const [value, setValue] = useState(tab_val !== - 1 ? tab_val : 0);
     const [user, setUser] = useState({});
     const [profile, setProfile] = useState({});
     const [loading, setLoading] = useState("Loading your team");
+
 
     const handleChange = async (event, newValue) => {
         setValue(newValue);
@@ -50,9 +57,15 @@ const TeamViewer = (props) => {
                     setLoading(false);
                 });
         }, []);
+        // return () => {
+        //     console.log("Unmounting");
+        // };
     }, []);
 
-    
+    if (!["/teamru", "/teamru/myteam", "/teamru/explore", "/teamru/manage", "/teamru/posts"].includes(location.pathname)) {
+        return (<E404/>);
+    }
+
     if (!props.profile.isLoggedIn) {
         return (<Redirect to="/login"/>);
     }
@@ -147,18 +160,50 @@ const TeamViewer = (props) => {
                                                     props.history.push("/teamru/manage");                                                 
                                                 }}
                                                 {...a11yProps(2)} />
+                                            <Tab label="Posts"
+                                                onClick={() => {
+                                                    props.history.push("/teamru/posts");
+                                                }}
+                                                {...a11yProps(3)} />
                                         </Tabs>
                                     </AppBar>
                                 </Grid>
                             </Grid>
                             <Grid container>
-                                {value === 0 ? (
+                                <Switch>
+                                    <Route 
+                                        exact 
+                                        path="/teamru">
+                                        <MyTeam {...props}/>
+                                    </Route>
+                                    <Route 
+                                        exact
+                                        path="/teamru/myteam">
+                                        <MyTeam {...props}/>
+                                    </Route>
+                                    <Route
+                                        exact
+                                        path="/teamru/explore">
+                                        <Explore {...props}/>
+                                    </Route>
+                                    <Route 
+                                        exact
+                                        path="/teamru/manage">
+                                        <ManageTeam {...props}/>
+                                    </Route>
+                                    <Route
+                                        exact
+                                        path="/teamru/posts">
+                                        <TeamPosts {...props}/>
+                                    </Route>
+                                </Switch>
+                                {/* {value === 0 ? (
                                     <MyTeam {...props} />
                                 ) : value === 1 ? (
                                     <Explore {...props} />
                                 ) : (
                                     <ManageTeam {...props} />
-                                )}
+                                )} */}
                             </Grid>
                         </Section>
                     </Grid>
@@ -172,6 +217,7 @@ TeamViewer.propTypes = {
     isMobile: PropTypes.bool,
     showAlert: PropTypes.func,
     tab: PropTypes.number,
-    history: PropTypes.object
+    history: PropTypes.object,
+    location: PropTypes.object,
 };
 export default TeamViewer;

@@ -20,6 +20,8 @@ import Background from "./Background";
 import NavBar from "./NavBar";
 import { defaults } from "./Defaults"; // Get a handle to the default application settings
 import { Profile } from "./components/Profile"; // User profile storage
+import ForumPost from "./components/Forum";
+
 // import Background from "./Background"; // Standard background objects
 
 /**
@@ -178,44 +180,50 @@ class App extends Component {
         if(defaults.teamru){
             renderRoutes.push(
                 <Route
-                    exact
+                    // exact
                     path="/teamru"
                     key="teamviewer"
                     render={(props) => <TeamViewerPage tab={0}
                         {...props}
                         {...componentProps} />}
-                />
-            );
-            renderRoutes.push(
+                />,
                 <Route
-                    exact
-                    path="/teamru/myteam"
-                    key="myteam"
-                    render={(props) => <TeamViewerPage tab={0}
+                    path="/forum/post/:post_uuid"
+                    key="forum"
+                    render={(props) => <ForumPost
                         {...props}
-                        {...componentProps} />}
-                />
+                        {...componentProps}/>}/>
             );
-            renderRoutes.push(
-                <Route
-                    exact
-                    path="/teamru/explore"
-                    key="explore"
-                    render={(props) => <TeamViewerPage tab={1}
-                        {...props}
-                        {...componentProps} />}
-                />
-            );
-            renderRoutes.push(
-                <Route
-                    exact
-                    path="/teamru/manage"
-                    key="manage"
-                    render={(props) => <TeamViewerPage tab={2}
-                        {...props}
-                        {...componentProps} />}
-                />
-            );
+            // renderRoutes.push(
+            //     <Route
+            //         exact
+            //         path="/teamru/myteam"
+            //         key="myteam"
+            //         render={(props) => <TeamViewerPage tab={0}
+            //             {...props}
+            //             {...componentProps} />}
+            //     />
+            // );
+            // renderRoutes.push(
+            //     <Route
+            //         exact
+            //         path="/teamru/explore"
+            //         key="explore"
+            //         render={(props) => <TeamViewerPage tab={1}
+            //             {...props}
+            //             {...componentProps} />}
+            //     />
+            // );
+            // renderRoutes.push(
+            //     <Route
+            //         exact
+            //         path="/teamru/manage"
+            //         key="manage"
+            //         render={(props) => <TeamViewerPage tab={2}
+            //             {...props}
+            //             {...componentProps} />}
+            //     />
+            // );
         }
         return (
             <BrowserRouter style={{ width: "100%" }}>

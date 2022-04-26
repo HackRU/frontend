@@ -20,27 +20,26 @@ function Schedule() {
             {children}
         </Appointments.Appointment>
     );
-    
+
     const schedule = [{
-        "date": "2020-11-07",
+        "date": "2021-10-16",
         "events": [
-            { startDate: "2020-11-07T10:00", endDate: "2020-11-07T11:00", title: "Check-in" },
-            { startDate: "2020-11-07T11:30", endDate: "2020-11-07T13:00", title: "Opening Ceremony" },
-            { startDate: "2020-11-07T13:00", endDate: "2020-11-08T12:30", title: "Hacking"},
-            { startDate: "2020-11-07T15:00", endDate: "2020-11-07T15:20", title: "Blueprint Presents: Introduction to Figma"},
-            { startDate: "2020-11-07T15:30", endDate: "2020-11-07T16:30", title: "MLH CTF: Join MLH in a capture the flag style event"},
-            { startDate: "2020-11-07T16:30", endDate: "2020-11-07T17:30", title: "RUMAD Presents: Introduction to Kotlin and Android Studio"},
-            { startDate: "2020-11-07T18:00", endDate: "2020-11-07T19:00", title: "MLH Bob Ross: Join MLH in recreating one of Bob Ross's paintings in MS Paint"},
-            { startDate: "2020-11-07T19:00", endDate: "2020-11-07T20:00", title: "WICS Live Panel: Join us for a Q&A panel with WICS (Women in Computer Science)"},
-            { startDate: "2020-11-07T20:00", endDate: "2020-11-07T21:00", title: "Cog Sci Workshop"}
+            { startDate: "2021-10-16T10:00", endDate: "2021-10-16T11:30", title: "Check-in" },
+            { startDate: "2021-10-16T11:30", endDate: "2021-10-16T13:00", title: "Opening Ceremony" },
+            { startDate: "2021-10-16T13:00", endDate: "2021-10-17T12:00", title: "Hacking"},
+            { startDate: "2021-10-16T15:00", endDate: "2021-10-16T15:30", title: "MLH CTF"},
+            { startDate: "2021-10-16T15:30", endDate: "2021-10-16T16:30", title: "MLH Mini-Event"},
+            { startDate: "2021-10-16T17:00", endDate: "2021-10-16T18:00", title: "WiCS Kahoot + Discussion"},
+            { startDate: "2021-10-16T18:30", endDate: "2021-10-16T19:30", title: "RnD Workshop"},
+            { startDate: "2021-10-16T19:30", endDate: "2021-10-16T20:30", title: "Blueprint Workshop"},
         ]
     }, {
-        "date": "2020-11-08",
+        "date": "2021-10-17",
         "events": [
-            { startDate: "2020-11-07T13:00", endDate: "2020-11-08T12:30", title: "Hacking"},
-            { startDate: "2020-11-08T13:30", endDate: "2020-11-08T15:00", title: "Judging"},
-            { startDate: "2020-11-08T15:00", endDate: "2020-11-08T16:00", title: "Presentations"},
-            { startDate: "2020-11-08T16:00", endDate: "2020-11-08T17:00", title: "Closing Ceremony"},
+            { startDate: "2021-10-17T10:00", endDate: "2021-10-17T10:00", title: "Submission Reminder"},
+            { startDate: "2021-10-16T13:00", endDate: "2021-10-17T12:00", title: "Hacking"},
+            { startDate: "2021-10-17T13:00", endDate: "2021-10-17T15:00", title: "Judging"},
+            { startDate: "2021-10-17T15:30", endDate: "2021-10-17T16:00", title: "Closing Ceremony"},
         ]
     }];
     return (
@@ -64,7 +63,7 @@ function Schedule() {
                                 />
                                 <DayView
                                     startDayHour={9}
-                                    endDayHour={22}
+                                    endDayHour={23}
                                 />
                                 <Appointments
                                     appointmentComponent={Appointment}

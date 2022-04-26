@@ -153,7 +153,7 @@ const Profile = (props) => {
                         />
                     </Section>
                 </Grid>
-                { defaults.teamru ?
+                { (defaults.teamru && (Object.keys(teamUser).length !== 0)) ?
                     <Grid xs={12}>
                         <Section title="Make a Team!"
                             subtitle="Introduce yourself, don't be shy!"

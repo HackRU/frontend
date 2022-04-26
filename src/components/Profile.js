@@ -83,12 +83,12 @@ const ENDPOINTS = {
     qr: BASE + "/qr",
     resume: BASE + "/resume",
     waiver: BASE + "/waiver",
-    sendmagic: BASE + "/createmagiclink"
+    sendmagic: BASE + "/createmagiclink",
 };
 /**
  * TeamRU Base URL
  */
-const TEAMRU_BASE = 
+const TEAMRU_BASE =
     process.env.REACT_APP_MODE && process.env.REACT_APP_MODE === "development"
         ? defaults.rest.teamru
         : defaults.rest.teamruprod;
@@ -117,6 +117,22 @@ const TEAMRU_ENDPOINTS = {
     leave: TEAMRU_BASE + "/teams/team_id/leave",
 
     matches: TEAMRU_BASE + "/matches/team_id",
+
+    postForum: TEAMRU_BASE + "/forum/post",
+
+    postComment: TEAMRU_BASE + "/forum/<oid>/comment",
+
+    postSubcomment: TEAMRU_BASE + "/forum/<oid>/subcomment",
+
+    getAllPosts: TEAMRU_BASE + "/forum/all_posts",
+
+    getAllComments: TEAMRU_BASE + "/forum/all_comments/<oid>",
+
+    getAllSubcomments: TEAMRU_BASE + "/forum/all_subcomments/<oid>",
+
+    getAllPostsFromUser: TEAMRU_BASE + "/forum/user_posts/<email>",
+
+    getForum: TEAMRU_BASE + "/forum/post",
 };
 /**
  * Standard profile handler for the entire application
@@ -165,10 +181,9 @@ class Profile {
     }
 
     async Login(email, password) {
-
         let resp = {
             error: "",
-            response: ""
+            response: "",
         };
 
         if (this.isLoggedIn) {
@@ -185,44 +200,39 @@ class Profile {
                 await fetch(ENDPOINTS.login, {
                     method: "POST",
                     headers: {
-                        "Content-Type": "application/json"
+                        "Content-Type": "application/json",
                     },
                     body: JSON.stringify({
                         email: email,
-                        password: password
+                        password: password,
                     }),
-                   
                 })
-                    .then(async res => {
-                        let resJSON = await res.json(); 
+                    .then(async (res) => {
+                        let resJSON = await res.json();
                         if (resJSON.statusCode === 403) {
                             resp.error = "Invalid email or password";
                         } else if (resJSON.statusCode === 200) {
                             let token = resJSON.body.token;
                             // Convert seconds to milliseconds
-                            let valid_until =
-                                this.parseJwt(token).exp * 1000;
+                            let valid_until = this.parseJwt(token).exp * 1000;
                             this._login(email, token, valid_until);
                             if (defaults.autocheckin && defaults.dayof) {
                                 // Auto checkin the user
-                                this.Set(
-                                    {
-                                        "check-in-after": true
-                                    }
-                                );
+                                this.Set({
+                                    "check-in-after": true,
+                                });
                             }
                         } else {
                             if (resJSON.body) {
                                 resp.error = resJSON.body;
-                               
                             } else {
                                 resp.error = "Unexpected Error";
-                               
                             }
                         }
                     })
-                    .catch(error => {
-                        resp.error = error + "; An error occured when attempting login";
+                    .catch((error) => {
+                        resp.error =
+                            error + "; An error occured when attempting login";
                     });
             }
         }
@@ -232,7 +242,7 @@ class Profile {
     async SignUp(firstname, lastname, email, password, confirmpassword) {
         let resp = {
             error: "",
-            response: ""
+            response: "",
         };
         if (this.isLoggedIn) {
             resp.error = "User is already logged in";
@@ -276,19 +286,20 @@ class Profile {
                 await fetch(ENDPOINTS.signup, {
                     method: "POST",
                     headers: {
-                        "content-type": "application/json"
+                        "content-type": "application/json",
                     },
                     body: JSON.stringify({
                         email: email,
                         password: password,
-                        registration_status: "unregistered" //"waitlist" is one of them
-                    })
+                        registration_status: "unregistered", //"waitlist" is one of them
+                    }),
                 })
-                    .then(async res => {
+                    .then(async (res) => {
                         let res_json = await res.json();
-                        if(res_json.statusCode === 400) {
-                            resp.error = "User with email " + email + " already exists";
-                        } else if(res_json.statusCode === 200) {
+                        if (res_json.statusCode === 400) {
+                            resp.error =
+                                "User with email " + email + " already exists";
+                        } else if (res_json.statusCode === 200) {
                             // Set the first and last name
                             let data = res_json.body;
                             let token = data.token;
@@ -297,57 +308,56 @@ class Profile {
                             await fetch(ENDPOINTS.update, {
                                 method: "POST",
                                 headers: {
-                                    "content-type": "application/json"
+                                    "content-type": "application/json",
                                 },
                                 body: JSON.stringify({
                                     updates: {
                                         $set: {
                                             first_name: firstname,
-                                            last_name: lastname
-                                        }
+                                            last_name: lastname,
+                                        },
                                     },
                                     user_email: email,
                                     auth_email: email,
-                                    token: token
-                                })
+                                    token: token,
+                                }),
                             })
-                                .then(async res => {
+                                .then(async (res) => {
                                     let res_json = await res.json();
-                                    if(res_json.statusCode === 200) {
-                                        this._login(
-                                            email,
-                                            token,
-                                            valid_until
-                                        );
+                                    if (res_json.statusCode === 200) {
+                                        this._login(email, token, valid_until);
                                         /**
-                                     * Create new TeamRU user on signup
-                                     */
+                                         * Create new TeamRU user on signup
+                                         */
                                         if (defaults.teamru_user)
                                             this.newUser({
-                                                bio: firstname
+                                                bio: firstname,
                                             });
                                     } else {
-                                        if(res_json.body) {
+                                        if (res_json.body) {
                                             resp.error = res_json.body;
                                         } else {
                                             resp.error = "Unexpected Error";
                                         }
                                     }
                                 })
-                                .catch(error => {
-                                    resp.error = error + "; An error occured when attempting signup. Failed at 2/2";
+                                .catch((error) => {
+                                    resp.error =
+                                        error +
+                                        "; An error occured when attempting signup. Failed at 2/2";
                                 });
-                        
                         } else {
-                            if(res_json.body) {
+                            if (res_json.body) {
                                 resp.error = res_json.body;
                             } else {
                                 resp.error = "Unexpected Error";
                             }
                         }
                     })
-                    .catch(error => {
-                        resp.error = error + "; An error occured when attempting signup. Failed at 1/2";
+                    .catch((error) => {
+                        resp.error =
+                            error +
+                            "; An error occured when attempting signup. Failed at 1/2";
                     });
             }
         }
@@ -377,42 +387,42 @@ class Profile {
     async GetUser(email) {
         let resp = {
             error: "",
-            response: ""
+            response: "",
         };
 
         if (this.isLoggedIn) {
-            await fetch(ENDPOINTS.userData,
-                {
-                    method: "POST",
-                    headers: {
-                        "content-type": "application/json"
+            await fetch(ENDPOINTS.userData, {
+                method: "POST",
+                headers: {
+                    "content-type": "application/json",
+                },
+                body: JSON.stringify({
+                    email: this._email,
+                    token: this._token,
+                    query: {
+                        email: email,
                     },
-                    body: JSON.stringify({
-                        email: this._email,
-                        token: this._token,
-                        query: {
-                            email: email
-                        }
-                    })
-                })
-                .then(async res => {
+                }),
+            })
+                .then(async (res) => {
                     let res_json = await res.json();
                     if (res_json.statusCode === 200) {
                         // what to do here
                         resp.response = res_json.body[0];
                         if (email === this._email) {
-                            this._registration_status = res_json.body[0].registration_status;
+                            this._registration_status =
+                                res_json.body[0].registration_status;
                             this._want_team = res_json.body[0].want_team;
                         }
                     } else {
-                        if(res_json.body) {
+                        if (res_json.body) {
                             resp.response = res_json.body;
                         } else {
                             resp.error = "Unexpected Error";
                         }
                     }
                 })
-                .catch(error => {
+                .catch((error) => {
                     resp.error = error + "An error occured retrieving data";
                 });
         } else {
@@ -442,18 +452,18 @@ class Profile {
             await fetch(ENDPOINTS.update, {
                 method: "POST",
                 headers: {
-                    "Content-Type": "application/json"
+                    "Content-Type": "application/json",
                 },
                 body: JSON.stringify({
                     updates: {
-                        $set: data
+                        $set: data,
                     },
                     user_email: user,
                     auth_email: this._email,
-                    token: this._token
-                })
+                    token: this._token,
+                }),
             })
-                .then(async res =>  {
+                .then(async (res) => {
                     let resJSON = await res.json();
                     if (resJSON.statusCode !== 200) {
                         if (resJSON.body) {
@@ -463,20 +473,19 @@ class Profile {
                         }
                     }
                 })
-                .catch(error => {
+                .catch((error) => {
                     resp.error = error + "; An error occured retrieving data";
                 });
         } else {
             resp.error = "Please log in";
         }
-        
+
         return resp;
     }
     async Set(data) {
         this.SetUser(data, this._email);
     }
     async Forgot(email) {
-
         let resp = {
             error: "",
             response: "",
@@ -487,41 +496,42 @@ class Profile {
             return resp;
         } else {
             if (!email) {
-                resp.error = ("Invalid email");
+                resp.error = "Invalid email";
                 return resp;
             } else {
-                await fetch(ENDPOINTS.forgot, 
-                    {
-                        method: "POST",
-                        body: {
-                            email: email,
-                            forgot: true
-                        },
-                        json: true
-                    })
-                    .then(res => {
+                await fetch(ENDPOINTS.forgot, {
+                    method: "POST",
+                    body: {
+                        email: email,
+                        forgot: true,
+                    },
+                    json: true,
+                })
+                    .then((res) => {
                         if (res.statusCode === 200) {
                             return resp;
                         } else {
                             if (res.errorMessage) {
                                 console.error(res.errorMessage);
                             }
-                            if(res.body) {
+                            if (res.body) {
                                 return res.body;
                             } else {
                                 resp.error = "Unexpected Error";
                                 return resp;
                             }
                         }
-                    }).catch(error => {
-                        resp.error = error + "An error occured when attempting to general url";
+                    })
+                    .catch((error) => {
+                        resp.error =
+                            error +
+                            "An error occured when attempting to general url";
                         return resp;
                     });
             }
         }
     }
     async Reset(email, password, conpassword, magic) {
-
         let resp = {
             error: "",
             response: "",
@@ -537,16 +547,16 @@ class Profile {
             await fetch(ENDPOINTS.resetpassword, {
                 method: "POST",
                 headers: {
-                    "Content-Type": "application/json"
+                    "Content-Type": "application/json",
                 },
                 body: JSON.stringify({
                     email: email,
                     forgot: true,
                     password: password,
-                    link: magic
-                })
+                    link: magic,
+                }),
             })
-                .then(async res =>  {
+                .then(async (res) => {
                     let resJSON = await res.json();
                     if (resJSON.body.errorMessage) {
                         resp.error = resJSON.body.errorMessage;
@@ -558,62 +568,63 @@ class Profile {
                         }
                     }
                 })
-                .catch(error => {
-                    resp.error = error + "; An error occured when attempting to reset password";
+                .catch((error) => {
+                    resp.error =
+                        error +
+                        "; An error occured when attempting to reset password";
                 });
         }
-            
+
         return resp;
     }
     async Eat(magic) {
-
         let resp = {
             error: "",
-            response: ""
+            response: "",
         };
 
         if (!magic) {
-            resp.error = ("Input a valid magic link");
+            resp.error = "Input a valid magic link";
             return resp;
         } else if (!this.isLoggedIn) {
-            resp.error = ("User needs to be logged in");
+            resp.error = "User needs to be logged in";
             return resp;
         } else {
-            await fetch(ENDPOINTS.magic, 
-                {
-                    method: "POST",
-                    headers: {
-                        "content-type": "application/json"
-                    },
-                    body: JSON.stringify({
-                        email: this._email,
-                        link: magic,
-                        token: this._token
-                    })
-                })
-                .then(async res => {
+            await fetch(ENDPOINTS.magic, {
+                method: "POST",
+                headers: {
+                    "content-type": "application/json",
+                },
+                body: JSON.stringify({
+                    email: this._email,
+                    link: magic,
+                    token: this._token,
+                }),
+            })
+                .then(async (res) => {
                     let res_json = await res.json();
                     if (res_json.errorMessage) {
                         resp.error = res_json.errorMessage;
                     } else if (res_json.statusCode === 200) {
                         resp.response = res_json.body;
                     } else {
-                        if(res_json.body) {
+                        if (res_json.body) {
                             resp.error = res_json.body;
                         } else {
                             resp.error = "Unexpected Error";
                         }
                     }
                 })
-                .catch(error => {
-                    resp.error = error + "An error occured while digesting the magic link";
+                .catch((error) => {
+                    resp.error =
+                        error +
+                        "An error occured while digesting the magic link";
                 });
         }
 
         return resp;
     }
     async SendMagic(emails, permissions) {
-
         let resp = {
             error: "",
             response: "",
@@ -627,17 +638,17 @@ class Profile {
             await fetch(ENDPOINTS.sendmagic, {
                 method: "POST",
                 headers: {
-                    "Content-Type": "application/json"
+                    "Content-Type": "application/json",
                 },
                 body: JSON.stringify({
                     email: this._email,
                     token: this._token,
                     emailsTo: emails,
                     permissions: permissions,
-                    numLinks: emails.length
-                })
+                    numLinks: emails.length,
+                }),
             })
-                .then(async res =>  {
+                .then(async (res) => {
                     let resJSON = await res.json();
                     if (resJSON.body.errorMessage) {
                         resp.error = resJSON.body.errorMessage;
@@ -649,8 +660,10 @@ class Profile {
                         }
                     }
                 })
-                .catch(error => {
-                    resp.error = error + "; AAn error occured while sending the magic links";
+                .catch((error) => {
+                    resp.error =
+                        error +
+                        "; AAn error occured while sending the magic links";
                 });
         }
 
@@ -678,10 +691,10 @@ class Profile {
                 email: this._email,
                 background: [0xff, 0xff, 0xff],
                 color: [0x00, 0x00, 0x00],
-                transparentBackground: true
+                transparentBackground: true,
             },
         })
-            .then(async res => {
+            .then(async (res) => {
                 let resJSON = await res.json();
                 if (resJSON.body.errorMessage) {
                     resp.error = resJSON.body.errorMessage;
@@ -693,7 +706,7 @@ class Profile {
                     }
                 }
             })
-            .catch (error => {
+            .catch((error) => {
                 resp.error = error;
             });
 
@@ -703,13 +716,13 @@ class Profile {
         const json = await fetch(ENDPOINTS.resume, {
             method: "POST",
             headers: {
-                "content-type": "application/json"
+                "content-type": "application/json",
             },
             body: JSON.stringify({
                 email: this._email,
-                token: this._token
-            })
-        }).then(res => res.json());
+                token: this._token,
+            }),
+        }).then((res) => res.json());
         return json.body;
     }
     async DoesResumeExist() {
@@ -721,22 +734,22 @@ class Profile {
         return fetch(info.upload, {
             method: "PUT",
             headers: {
-                "content-type": "application/pdf"
+                "content-type": "application/pdf",
             },
-            body: file
+            body: file,
         });
     }
     async GetWaiverInfo() {
         const json = await fetch(ENDPOINTS.waiver, {
             method: "POST",
             headers: {
-                "content-type": "application/json"
+                "content-type": "application/json",
             },
             body: JSON.stringify({
                 email: this._email,
-                token: this._token
-            })
-        }).then(res => res.json());
+                token: this._token,
+            }),
+        }).then((res) => res.json());
         return json.body;
     }
     async DoesWaiverExist() {
@@ -748,9 +761,9 @@ class Profile {
         return await fetch(info.upload, {
             method: "PUT",
             headers: {
-                "content-type": "application/pdf"
+                "content-type": "application/pdf",
             },
-            body: file
+            body: file,
         });
     }
 
@@ -760,15 +773,15 @@ class Profile {
     async getTeamUser() {
         let resp = {
             error: "",
-            response: ""
+            response: "",
         };
         await fetch(TEAMRU_ENDPOINTS.profile, {
             method: "GET",
             headers: {
-                token: this._token
-            }
+                token: this._token,
+            },
         })
-            .then(async res => {
+            .then(async (res) => {
                 if (res.status === 200) {
                     resp.response = await res.json();
                 } else {
@@ -776,7 +789,7 @@ class Profile {
                     else resp.error = await res.text();
                 }
             })
-            .catch(error => {
+            .catch((error) => {
                 resp.error = error;
             });
 
@@ -786,17 +799,17 @@ class Profile {
     async newUser(user) {
         let resp = {
             error: "",
-            response: ""
+            response: "",
         };
         await fetch(TEAMRU_ENDPOINTS.users, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                token: this._token
+                token: this._token,
             },
-            body: JSON.stringify(user)
+            body: JSON.stringify(user),
         })
-            .then(async res => {
+            .then(async (res) => {
                 if (res.status === 200) {
                     resp.response = await res.json();
                 } else {
@@ -804,7 +817,7 @@ class Profile {
                     else resp.error = await res.text();
                 }
             })
-            .catch(error => {
+            .catch((error) => {
                 resp.error = error;
             });
 
@@ -814,17 +827,17 @@ class Profile {
     async updateUser(user) {
         let resp = {
             error: "",
-            response: ""
+            response: "",
         };
         await fetch(TEAMRU_ENDPOINTS.profile, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
-                token: this._token
+                token: this._token,
             },
-            body: JSON.stringify(user)
+            body: JSON.stringify(user),
         })
-            .then(async res => {
+            .then(async (res) => {
                 if (res.status === 200) {
                     resp.response = await res.json();
                 } else {
@@ -832,7 +845,7 @@ class Profile {
                     else resp.error = await res.text();
                 }
             })
-            .catch(error => {
+            .catch((error) => {
                 resp.error = error;
             });
 
@@ -842,17 +855,17 @@ class Profile {
     async newTeam(team) {
         let resp = {
             error: "",
-            response: ""
+            response: "",
         };
         await fetch(TEAMRU_ENDPOINTS.teams, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                token: this._token
+                token: this._token,
             },
-            body: JSON.stringify(team)
+            body: JSON.stringify(team),
         })
-            .then(async res => {
+            .then(async (res) => {
                 if (res.status === 201) {
                     resp.response = await res.json();
                 } else {
@@ -861,7 +874,7 @@ class Profile {
                     else resp.error = await res.text();
                 }
             })
-            .catch(error => {
+            .catch((error) => {
                 resp.error = error;
             });
 
@@ -871,18 +884,18 @@ class Profile {
     async getAllTeams(offset, limit) {
         let resp = {
             error: "",
-            response: ""
+            response: "",
         };
         await fetch(
             TEAMRU_ENDPOINTS.teams + "?limit=" + limit + "&offset=" + offset,
             {
                 method: "GET",
                 headers: {
-                    token: this._token
-                }
+                    token: this._token,
+                },
             }
         )
-            .then(async res => {
+            .then(async (res) => {
                 if (res.status === 200) {
                     resp.response = await res.json();
                 } else {
@@ -890,7 +903,7 @@ class Profile {
                     else resp.error = await res.text();
                 }
             })
-            .catch(error => {
+            .catch((error) => {
                 resp.error = error;
             });
 
@@ -900,15 +913,15 @@ class Profile {
     async getTeam(team_id) {
         let resp = {
             error: "",
-            response: ""
+            response: "",
         };
         await fetch(TEAMRU_ENDPOINTS.update.replace("team_id", team_id), {
             method: "GET",
             headers: {
-                token: this._token
-            }
+                token: this._token,
+            },
         })
-            .then(async res => {
+            .then(async (res) => {
                 if (res.status === 200) {
                     resp.response = await res.json();
                 } else {
@@ -917,7 +930,7 @@ class Profile {
                     else resp.error = await res.text();
                 }
             })
-            .catch(error => {
+            .catch((error) => {
                 resp.error = error;
             });
         return resp;
@@ -926,17 +939,17 @@ class Profile {
     async updateTeam(team, team_id) {
         let resp = {
             error: "",
-            response: ""
+            response: "",
         };
         await fetch(TEAMRU_ENDPOINTS.update.replace("team_id", team_id), {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
-                token: this._token
+                token: this._token,
             },
-            body: JSON.stringify(team)
+            body: JSON.stringify(team),
         })
-            .then(async res => {
+            .then(async (res) => {
                 if (res.status === 200) {
                     resp.response = await res.json();
                 } else {
@@ -945,7 +958,7 @@ class Profile {
                     else resp.error = await res.text();
                 }
             })
-            .catch(error => {
+            .catch((error) => {
                 resp.error = error;
             });
 
@@ -955,18 +968,15 @@ class Profile {
     async completeTeam(team_id) {
         let resp = {
             error: "",
-            response: ""
+            response: "",
         };
-        await fetch(
-            TEAMRU_ENDPOINTS.complete.replace("team_id", team_id),
-            {
-                method: "PUT",
-                headers: {
-                    token: this._token
-                }
-            }
-        )
-            .then(async res => {
+        await fetch(TEAMRU_ENDPOINTS.complete.replace("team_id", team_id), {
+            method: "PUT",
+            headers: {
+                token: this._token,
+            },
+        })
+            .then(async (res) => {
                 if (res.status === 200) {
                     resp.response = await res.json();
                 } else {
@@ -975,7 +985,7 @@ class Profile {
                     else resp.error = await res.text();
                 }
             })
-            .catch(error => {
+            .catch((error) => {
                 resp.error = error;
             });
 
@@ -985,18 +995,15 @@ class Profile {
     async leaveTeam(team_id) {
         let resp = {
             error: "",
-            response: ""
+            response: "",
         };
-        await fetch(
-            TEAMRU_ENDPOINTS.leave.replace("team_id", team_id),
-            {
-                method: "PUT",
-                headers: {
-                    token: this._token
-                }
-            }
-        )
-            .then(async res => {
+        await fetch(TEAMRU_ENDPOINTS.leave.replace("team_id", team_id), {
+            method: "PUT",
+            headers: {
+                token: this._token,
+            },
+        })
+            .then(async (res) => {
                 if (res.status === 200) {
                     resp.response = await res.json();
                 } else {
@@ -1005,7 +1012,7 @@ class Profile {
                     else resp.error = await res.text();
                 }
             })
-            .catch(error => {
+            .catch((error) => {
                 resp.error = error;
             });
 
@@ -1015,23 +1022,20 @@ class Profile {
     async inviteTeam(team_id, invite_id) {
         let resp = {
             error: "",
-            response: ""
+            response: "",
         };
 
-        await fetch(
-            TEAMRU_ENDPOINTS.invite.replace("team_id", team_id),
-            {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    token: this._token
-                },
-                body: JSON.stringify({
-                    team2_id: invite_id
-                })
-            }
-        )
-            .then(async res => {
+        await fetch(TEAMRU_ENDPOINTS.invite.replace("team_id", team_id), {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                token: this._token,
+            },
+            body: JSON.stringify({
+                team2_id: invite_id,
+            }),
+        })
+            .then(async (res) => {
                 if (res.status === 200) {
                     resp.response = await res.json();
                 } else {
@@ -1041,7 +1045,7 @@ class Profile {
                     else resp.error = await res.text();
                 }
             })
-            .catch(error => {
+            .catch((error) => {
                 resp.error = error;
             });
 
@@ -1051,35 +1055,33 @@ class Profile {
     async inviteUser(team_id, invited_user_email) {
         let resp = {
             error: "",
-            response: ""
+            response: "",
         };
-        await fetch(
-            TEAMRU_ENDPOINTS.inviteUser.replace("team_id", team_id),
-            {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    token: this._token
-                },
-                body: JSON.stringify({
-                    user_email: invited_user_email
-                })
-            }
-        )
-            .then(async res => {
+        await fetch(TEAMRU_ENDPOINTS.inviteUser.replace("team_id", team_id), {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                token: this._token,
+            },
+            body: JSON.stringify({
+                user_email: invited_user_email,
+            }),
+        })
+            .then(async (res) => {
                 if (res.status === 200) {
                     resp.response = await res.json();
                 } else {
-                    if (res.status === 400 || 
-                        res.status === 403 || 
-                        res.status === 404 || 
-                        res.status === 409) {
+                    if (
+                        res.status === 400 ||
+                        res.status === 403 ||
+                        res.status === 404 ||
+                        res.status === 409
+                    ) {
                         resp.error = await res.json();
-                    }
-                    else resp.error = await res.text();
+                    } else resp.error = await res.text();
                 }
             })
-            .catch(error => {
+            .catch((error) => {
                 resp.error = error;
             });
         return resp;
@@ -1088,22 +1090,19 @@ class Profile {
     async confirmInvite(team_id, invite_id) {
         let resp = {
             error: "",
-            response: ""
+            response: "",
         };
-        await fetch(
-            TEAMRU_ENDPOINTS.confirm.replace("team_id", team_id),
-            {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    token: this._token
-                },
-                body: JSON.stringify({
-                    team2_id: invite_id
-                })
-            }
-        )
-            .then(async res => {
+        await fetch(TEAMRU_ENDPOINTS.confirm.replace("team_id", team_id), {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                token: this._token,
+            },
+            body: JSON.stringify({
+                team2_id: invite_id,
+            }),
+        })
+            .then(async (res) => {
                 if (res.status === 200) {
                     resp.response = await res.json();
                 } else {
@@ -1113,7 +1112,7 @@ class Profile {
                     else resp.error = await res.text();
                 }
             })
-            .catch(error => {
+            .catch((error) => {
                 resp.error = error;
             });
 
@@ -1123,22 +1122,19 @@ class Profile {
     async rescindInvite(team_id, invite_id) {
         let resp = {
             error: "",
-            response: ""
+            response: "",
         };
-        await fetch(
-            TEAMRU_ENDPOINTS.rescind.replace("team_id", team_id),
-            {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    token: this._token
-                },
-                body: JSON.stringify({
-                    team2_id: invite_id
-                })
-            }
-        )
-            .then(async res => {
+        await fetch(TEAMRU_ENDPOINTS.rescind.replace("team_id", team_id), {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                token: this._token,
+            },
+            body: JSON.stringify({
+                team2_id: invite_id,
+            }),
+        })
+            .then(async (res) => {
                 if (res.status === 200) {
                     resp.response = await res.json();
                 } else {
@@ -1147,7 +1143,7 @@ class Profile {
                     else resp.error = await res.text();
                 }
             })
-            .catch(error => {
+            .catch((error) => {
                 resp.error = error;
             });
 
@@ -1157,22 +1153,19 @@ class Profile {
     async rejectInvite(team_id, invite_id) {
         let resp = {
             error: "",
-            response: ""
+            response: "",
         };
-        await fetch(
-            TEAMRU_ENDPOINTS.reject.replace("team_id", team_id),
-            {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    token: this._token
-                },
-                body: JSON.stringify({
-                    team2_id: invite_id
-                })
-            }
-        )
-            .then(async res => {
+        await fetch(TEAMRU_ENDPOINTS.reject.replace("team_id", team_id), {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                token: this._token,
+            },
+            body: JSON.stringify({
+                team2_id: invite_id,
+            }),
+        })
+            .then(async (res) => {
                 if (res.status === 200) {
                     resp.response = await res.json();
                 } else {
@@ -1181,7 +1174,7 @@ class Profile {
                     else resp.error = await res.text();
                 }
             })
-            .catch(error => {
+            .catch((error) => {
                 resp.error = error;
             });
 
@@ -1191,26 +1184,162 @@ class Profile {
     async matches(team_id) {
         let resp = {
             error: "",
-            response: ""
+            response: "",
         };
         await fetch(TEAMRU_ENDPOINTS.matches.replace("team_id", team_id), {
             method: "GET",
             headers: {
-                token: this._token
-            }
+                token: this._token,
+            },
         })
-            .then(async res => {
+            .then(async (res) => {
                 if (res.status === 200) {
                     resp.response = await res.json();
                 } else {
                     resp.error = await res.text();
                 }
             })
-            .catch(error => {
+            .catch((error) => {
                 resp.error = error;
             });
 
         return resp;
+    }
+
+    async postForumPost(title, text) {
+        const payload = {
+            poster : this._email,
+            title : title,
+            content : text,
+        };
+        const init = {
+            method : "POST",
+            headers : {
+                "Content-Type" : "application/json",
+                token : this._token,
+            },
+            body : JSON.stringify(payload),
+        };
+        const res = await fetch(TEAMRU_ENDPOINTS.postForum, init);
+        if (!res.ok)
+            throw Error();
+        const data = await res.json();
+        return data.uuid;
+    }
+
+    async getMyForumPosts(){
+        const res = await fetch(TEAMRU_ENDPOINTS.getAllPostsFromUser.replace("<email>", this._email), {
+            method : "GET",
+            headers : {
+                "Content-Type" : "application/json",
+                token : this._token,
+            }
+        });
+        if (!res.ok)
+            throw Error();
+        const data = await res.json();
+        return data.posts;
+    }
+
+    async getAllForumPosts(){
+        const res = await fetch(TEAMRU_ENDPOINTS.getAllPosts, {
+            method : "GET",
+            headers : {
+                "Content-Type" : "application/json",
+                token : this._token,
+            }
+        });
+        if (!res.ok)
+            throw Error();
+        const data = await res.json();
+        return data.posts;
+    }
+
+    async getForumPost(post_uuid){
+        const res = await fetch(TEAMRU_ENDPOINTS.getForumPost, {
+            method : "GET",
+            headers : {
+                "Content-Type" : "application/json",
+                token : this._token,
+            },
+            body : JSON.stringify({ uuid : post_uuid}),
+        });
+        if (!res.ok) {
+            throw Error();
+        } else {
+            const data = await res.json();
+            return data;
+        }
+    }
+
+    async getForumComments(post_uuid){
+        const res = await fetch(TEAMRU_ENDPOINTS.getAllComments.replace("<oid>", post_uuid), {
+            method : "GET",
+            headers : {
+                "Content-Type" : "application/json",
+                token : this._token
+            },
+        });
+        if (!res.ok) {
+            throw Error();
+        } else {
+            const data = await res.json();
+            return data;
+        }
+    }
+
+    async postForumComment(text, parent_uuid){
+        const payload = {
+            poster : this._email,
+            content : text,
+        };
+        const init = {
+            method : "POST",
+            headers : {
+                "Content-Type" : "application/json",
+                token : this._token,
+            },
+            body : JSON.stringify(payload),
+        };
+        const res = await fetch(TEAMRU_ENDPOINTS.postComment.replace("<oid>", parent_uuid), init);
+        if (!res.ok) {
+            throw Error();
+        } else {
+            const data = await res.json();
+            return {
+                poster : this._email,
+                content : text,
+                uuid : data.uuid,
+                subcomments : [],
+            };
+        }
+    }
+
+    async postSubComment(text, parent_uuid) {
+        const payload = {
+            poster : this._email,
+            content : text,
+        };
+        const init = {
+            method : "POST",
+            headers : {
+                "Content-Type" : "application/json",
+                token : this._token,
+            },
+            body : JSON.stringify(payload),
+        };
+        const res = await fetch(TEAMRU_ENDPOINTS.postSubcomment.replace("<oid>", parent_uuid), init);
+        if (!res.ok) {
+            throw Error();
+        } else {
+            const data = await res.json();
+            return {
+                poster : this._email,
+                content : text,
+                uuid : data.uuid,
+                subcomments : [], 
+            };
+        }
     }
 }
 
@@ -1224,7 +1353,7 @@ const ProfileType = PropTypes.shape({
     _valid_until: PropTypes.number,
     isLoggedIn: PropTypes.bool,
     DoesResumeExist: PropTypes.func,
-    UploadResume: PropTypes.func
+    UploadResume: PropTypes.func,
 });
 
 export { Profile, ProfileType, ENDPOINTS };
