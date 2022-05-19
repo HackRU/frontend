@@ -32,7 +32,7 @@ const defaults = {
     partnerLogos:
         "https://s3-us-west-2.amazonaws.com/hackru-internal/partners-logos/",
     teamInfo: "https://s3-us-west-2.amazonaws.com/hackru-internal/hackru-team/",
-    freeze: false,
+    freeze: true,
     teamru: false,
     teamru_user: false,
     volunteers: {
@@ -44,7 +44,7 @@ const defaults = {
     },
     mailing:
         "https://hackru.us3.list-manage.com/subscribe?u=457c42db47ebf530a0fc733fb&id=fb01885829",
-    dayof: true,
+    dayof: false,
     autocheckin: false, //USE THIS FIELD TO AUTO CHECK-IN USERS!
 };
 
