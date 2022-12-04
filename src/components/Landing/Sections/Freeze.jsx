@@ -60,11 +60,16 @@ class Freeze extends Component {
                                     {/* NOV 7-8 <br/> */}
                                 </div>
                             </div>
-                            <hr style={{borderTop: "15px dotted", width: 75, backgroundColor: "rgba(255, 255, 255, 0)", marginBottom: 100, marginTop: -75}} /> 
+                            <hr style={{borderTop: "15px dotted", width: 75, backgroundColor: "rgba(255, 255, 255, 0)", marginBottom: 100, marginTop: -75}} />
                             <div style={{textAlign: "center" }}>Stay Tuned for Registration</div>
+                            <div style={{ textAlign: "center" }}>
+                                Want to join our team? Apply{" "}
+                                <a href={defaults.applicationLink}>here</a>!
+                            </div>
                             <div style={{ marginBottom: 25  , textAlign: "center" }}>
                                 Want to receive updates? Subscribe{" "}
-                                <a href={defaults.mailing}>here</a>!</div>
+                                <a href={defaults.mailing}>here</a>!
+                            </div>
                         </Grid>
                     </div>
                 </Grid>
