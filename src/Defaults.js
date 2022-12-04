@@ -32,6 +32,7 @@ const defaults = {
     partnerLogos:
         "https://s3-us-west-2.amazonaws.com/hackru-internal/partners-logos/",
     teamInfo: "https://s3-us-west-2.amazonaws.com/hackru-internal/hackru-team/",
+    applicationLink: "https://docs.google.com/forms/d/e/1FAIpQLSfcsPoOmfFzSY94FB9f55RI-UKVLJ-tZuW7tdDm8zAx6Hjo5w/viewform?usp=sf_link",
     freeze: false,
     teamru: false,
     teamru_user: false,
