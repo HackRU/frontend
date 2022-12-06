@@ -8,8 +8,8 @@ import FAQs from "./components/Landing/Sections/Faqs";
 import Footer from "./components/Landing/Sections/Footer";
 
 const defaults = {
-    title: "HackRU Spring 2022",
-    dateText: "April 2nd - 3rd",
+    title: "HackRU Spring 2023",
+    dateText: "February 25th - 26th, 2023",
     locationText: "Rutgers College Ave Student Center",
     universityText: "Rutgers University",
     slogan: "hack all knight",
