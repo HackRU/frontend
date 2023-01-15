@@ -1,0 +1,68 @@
+* {
+  font-family: 'Titillium Web', 'Arial', sans-serif;
+}
+
+.glow {
+  text-shadow:1px 1px 6px #fff;
+}
+
+.glow-symbol {
+  box-shadow:1px 1px 6px #fff;
+}
+
+.glow-subtitles {
+  text-shadow:1px 1px 20px #4bbede;
+}
+
+.transparent-black-background {
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.floating {
+  animation-name: floating;
+
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  margin-left: 30px;
+  margin-top: 5px;
+}
+
+@keyframes floating {
+  0% { transform: translate(0,  0px); }
+  50%  { transform: translate(0, 15px); }
+  100%   { transform: translate(0, -0px); }
+}
+
+/* Table Header */
+.MainLayout-stickyElement.MainLayout-header.MainLayout-flexRow {
+  background-color: transparent;
+}
+
+.MainLayout-background.MainLayout-inlineFlex.MainLayout-ordinaryHeaderBorder {
+  background-color: transparent;
+}
+
+.MainLayout-stickyElement.MainLayout-leftPanel.MainLayout-dayScaleEmptyCell.MainLayout-ordinaryLeftPanelBorder {
+  background-color: transparent;
+}
+
+/* Table Side Bar */
+.MainLayout-flexRow.MainLayout-stickyElement.MainLayout-leftPanel.MainLayout-ordinaryLeftPanelBorder {
+  background-color: transparent;
+}
+
+/* Day of Week */
+.css-1675apn-MuiTableCell-root .Cell-dayOfWeek {
+  color: #d1e9ef !important;
+}
+
+/* Day of Month */
+.css-1675apn-MuiTableCell-root .Cell-dayOfMonth {
+  color: #d1e9ef !important;
+
+}
+
+/* Time Labels */
+.css-1fbp63r .Label-text {
+  color: #d1e9ef !important;
+}

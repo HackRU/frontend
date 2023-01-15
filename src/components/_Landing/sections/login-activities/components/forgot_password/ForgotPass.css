@@ -1,0 +1,58 @@
+.title{
+    color: #d1e9ef;
+    text-shadow: 1px 1px 10px #fff, 1px 1px 10px #ccc;
+    font-size: 55px;
+    font-family: "Titillium Web";
+}
+.subtext{
+    font-size: 40px;
+    margin: 20px 0px;
+}
+@media only screen and (max-width: 760px) {
+    .title{
+        font-size: 30px;
+    }
+    .subtext{
+        font-size: 20px;
+        margin: 10px 0px;
+    }
+}
+@media only screen and (max-width: 573px) {
+    .title{
+        font-size: 25px;
+    }
+    .subtext{
+        font-size: 20px;
+    }
+}
+@media only screen and (max-width: 549px) {
+    .title{
+        font-size: 20px;
+    }
+    .subtext{
+        font-size: 20px;
+    }
+}
+@media only screen and (max-width: 480px) {
+    .title{
+        font-size: 20px;
+    }
+    .subtext{
+        font-size: 15px;
+    }
+}
+@media only screen and (max-width: 447px) {
+    .title{
+        font-size: 20px;
+    }
+    .subtext{
+        font-size: 15px;
+    }
+}@media only screen and (max-width: 350px) {
+    .title{
+        font-size: 20px;
+    }
+    .subtext{
+        font-size: 15px;
+    }
+}

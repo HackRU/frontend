@@ -1,0 +1,33 @@
+
+.glowing-moon-container {
+    position: absolute;
+    top: 55%;
+    left: 65%;
+    transform: translate(-50%, -50%);
+    width: 0.2rem;
+    height: 0.2rem;
+    border-radius: 50%;
+    background-color: #d1e9ef;
+    box-shadow: 0 0 30px 10px #d1e9ef;
+}
+
+.navbar-button:hover {
+  text-shadow:1px 1px 10px #4bbede;
+}
+
+/* KEYFRAMES */
+
+@keyframes animateCloud {
+    0% {
+        margin-left: -34rem;
+    }
+    100% {
+        margin-left: 100%;
+    }
+}
+
+/* ANIMATIONS */
+
+.cloud {
+	animation: animateCloud 400s linear infinite;
+}
