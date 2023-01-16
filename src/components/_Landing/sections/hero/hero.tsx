@@ -3,13 +3,13 @@ import React from "react";
 import MainHeroContent from "./MainHeroContent";
 import "./hero.css";
 import Navbar from "./Navbar";
-import rabbit from "../../../public/assets/landingPage//suminRabbit2.png";
-import cloud from "../../../public/assets/landingPage//clouds/cloud1.svg";
-import cloud2 from "../../../public/assets/landingPage//clouds/cloud2.svg";
-import cloud3 from "../../../public/assets/landingPage//clouds/cloud3.svg";
-import cloud4 from "../../../public/assets/landingPage//clouds/cloud4.svg";
+import rabbit from "../../assets/suminRabbit2.png";
+import cloud from "../../assets/clouds/cloud1.svg";
+import cloud2 from "../../assets/clouds/cloud2.svg";
+import cloud3 from "../../assets/clouds/cloud3.svg";
+import cloud4 from "../../assets/clouds/cloud4.svg";
 import { FaArrowDown } from "react-icons/fa";
-import { userScrolled } from "./utilities";
+import { useUserScrolled } from "./utilities";
 
 function Rabbit() {
     return (
@@ -21,7 +21,7 @@ function Rabbit() {
 }
 
 function Hero() {
-    const userHasScrolled = userScrolled(20);
+    const userHasScrolled = useUserScrolled(20);
 
     return (
         <div className="w-[100%] h-[100vh] p-5

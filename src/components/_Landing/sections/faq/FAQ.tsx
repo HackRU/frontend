@@ -1,9 +1,9 @@
 import React from "react";
 import QuestionContainer from "./QuestionContainer";
-import catPATH from "../../../public/assets/landingPage//judyCat.png";
-import dogPATH from "../../../public/assets/landingPage//judyDog4.png";
-import cloud from "../../../public/assets/landingPage//clouds/cloud1.svg";
-import cloud3 from "../../../public/assets/landingPage//clouds/cloud3.svg";
+import catPATH from "../../assets/judyCat.png";
+import dogPATH from "../../assets/judyDog4.png";
+import cloud from "../../assets/clouds/cloud1.svg";
+import cloud3 from "../../assets/clouds/cloud3.svg";
 
 function FAQ() {
     return (

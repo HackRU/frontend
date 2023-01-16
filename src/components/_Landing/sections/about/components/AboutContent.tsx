@@ -4,9 +4,9 @@ import { BsFillCalendarCheckFill } from 'react-icons/bs'
 import { MdLocationOn } from 'react-icons/md'
 import Card from "../../../global_components/CardAbout";
 import { theme } from '../../../Default';
-import squirrel from '../../../assets/ananyaSquirrel.png';
-import bear from '../../../assets/judyBear.png';
-import hedgehog from '../../../assets/katrinaHedgehog.png';
+import squirrel from '../../..../../assets/ananyaSquirrel.png';
+import bear from '../../..../../assets/judyBear.png';
+import hedgehog from '../../..../../assets/katrinaHedgehog.png';
 import useAboutConfig from "../hooks/useConfigAbout";
 import "./AboutContent.css";
 import { defaults } from '../../../Default';

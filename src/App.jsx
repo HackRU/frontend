@@ -1,7 +1,7 @@
 import React, { Component } from "react"; // Default react imports for the component
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom"; // React router components
 import {
-    LandingPage,
+    // LandingPage,
     DashboardPage,
     LoginPage,
     ForgotPage,
@@ -11,9 +11,10 @@ import {
     SponsorshipPage,
     TeamPage,
     ProjectorPage,
-    E404, 
-    ProfilePage, 
+    E404,
+    ProfilePage,
     TeamViewerPage} from "./components/Pages"; // Router Pages
+import LandingPage from "./components/_Landing/Landing";
 import { Snackbar } from "@material-ui/core"; // Alert messages
 import { Alert } from "@material-ui/lab"; // Alert messages
 import Background from "./Background";
@@ -220,8 +221,8 @@ class App extends Component {
         return (
             <BrowserRouter style={{ width: "100%" }}>
                 {/* BrowserRouter wil allow us to switch between the different pages in our SPA based on the URL routing */}
-                <div>     
-                    {/* Application alert messages go here */}               
+                <div>
+                    {/* Application alert messages go here */}
                     <Snackbar open={this.state.alertProps.open}
                         autoHideDuration={this.state.alertProps.duration}>
                         <Alert onClose={() => {
@@ -249,8 +250,11 @@ class App extends Component {
                         {/* This is where the URL routing magic actually happens */}
                         <Route exact
                             path="/"
-                            render={(props) => <LandingPage {...props}
-                                {...componentProps} />} />
+                            // render={(props) => <LandingPage {...props}
+                            //     {...componentProps} />}
+                            // eslint-disable-next-line no-unused-vars
+                            render={(props) => <LandingPage />}
+                        />
                         <Route exact
                             path="/team"
                             render={(props) => <TeamPage {...props}

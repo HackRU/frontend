@@ -1,8 +1,8 @@
 import React from "react";
-import rutgersLogo from "../../../public/assets/landingPage/rutgers.png";
-import pig from "../../../public/assets/landingPage/sammiPig.png";
-import cloud3 from "../../../public/assets/landingPage/clouds//cloud3.svg";
-import cloud2 from "../../../public/assets/landingPage/clouds//cloud2.svg";
+import rutgersLogo from "../../assets/rutgers.png";
+import pig from "../../assets/sammiPig.png";
+import cloud3 from "../../assets/clouds/cloud3.svg";
+import cloud2 from "../../assets/clouds/cloud2.svg";
 
 function Sponsors() {
     return (
