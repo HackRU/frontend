@@ -250,10 +250,10 @@ class App extends Component {
                         {/* This is where the URL routing magic actually happens */}
                         <Route exact
                             path="/"
-                            // render={(props) => <LandingPage {...props}
-                            //     {...componentProps} />}
+                            render={(props) => <LandingPage {...props}
+                                {...componentProps} />}
                             // eslint-disable-next-line no-unused-vars
-                            render={(props) => <LandingPage />}
+                            // render={(props) => <LandingPage />}
                         />
                         <Route exact
                             path="/team"

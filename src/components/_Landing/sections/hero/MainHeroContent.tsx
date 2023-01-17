@@ -2,16 +2,19 @@ import React from "react";
 import { IoMoon } from "react-icons/io5";
 import { Link } from "react-router-dom";
 
-function LoginAndRegister() {
+function LoginAndRegister(props: { isLoggedIn: boolean }) {
+    const { isLoggedIn } = props;
     return (
         <div className="z-10 p-10 rounded-3xl flex flex-row justify-center space-x-10 sm:space-x-24">
             <div className="transparent-black-background font-extrabold
                     w-32 h-16 rounded-2xl text-text glow-subtitles flex items-center justify-center">
-                <Link to="/login">LOG IN</Link>
+                {!isLoggedIn && <Link to="/login">Log In</Link>}
+                {isLoggedIn && <Link to="/login">Dashboard</Link>}
             </div>
             <div className="transparent-black-background font-extrabold
                     w-32 h-16 rounded-2xl text-text glow-subtitles flex items-center justify-center">
-                <Link to="/sign-in">REGISTER</Link>
+                {!isLoggedIn && <Link to="/signup">Sign Up</Link>}
+                {isLoggedIn && <Link to="/logout">Sign out</Link>}
             </div>
         </div>
     );
@@ -42,7 +45,7 @@ function HeroTitle() {
     );
 }
 
-function CenterContent() {
+function CenterContent({ isLoggedIn }: { isLoggedIn: boolean }) {
     return (
         <div className="w-full flex flex-col justify-start items-center
                     pt-10 z-30
@@ -50,7 +53,7 @@ function CenterContent() {
                     md:pt-32">
             <div className="flex flex-col space-y-1">
                 <HeroTitle />
-                <LoginAndRegister />
+                <LoginAndRegister isLoggedIn={isLoggedIn} />
             </div>
         </div>
     );

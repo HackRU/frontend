@@ -10,6 +10,7 @@ import cloud3 from "../../assets/clouds/cloud3.svg";
 import cloud4 from "../../assets/clouds/cloud4.svg";
 import { FaArrowDown } from "react-icons/fa";
 import { useUserScrolled } from "./utilities";
+import { Profile } from "../../../Profile";
 
 function Rabbit() {
     return (
@@ -20,8 +21,9 @@ function Rabbit() {
     );
 }
 
-function Hero() {
+function Hero(props: { profile: Profile }) {
     const userHasScrolled = useUserScrolled(20);
+    const { isLoggedIn } = props.profile;
 
     return (
         <div className="w-[100%] h-[100vh] p-5
@@ -35,7 +37,7 @@ function Hero() {
             }}
         >
             <Navbar />
-            <MainHeroContent />
+            <MainHeroContent isLoggedIn={isLoggedIn} />
             <Rabbit />
 
             <FaArrowDown className={`fixed z-10 bottom-5 text-white text-4xl
