@@ -24,10 +24,6 @@ function useVerifyPreset() {
     return !(preset > configs.length || preset < 0 || !configs[preset]);
 }
 
-function getAboutConfig(): AboutConfig {
-    const preset: AboutConfigPresets = useContext(AboutContext);
-    return configs[preset];
-}
 /**
   This is the hero config hook used by hero components to retrieve configuration.
   The configuration they receive is determined by the HeroContext provider.
@@ -38,7 +34,8 @@ function useAboutConfig(): AboutConfig {
     if (!useVerifyPreset()) {
         throw new Error("Invalid preset. ");
     }
-    return getAboutConfig();
+    const preset: AboutConfigPresets = useContext(AboutContext);
+    return configs[preset];
 }
 
 export default useAboutConfig;

@@ -1,5 +1,3 @@
-import "../src/index.css";
-
 let computedStyle = getComputedStyle(document.body);
 
 const defaults = {
