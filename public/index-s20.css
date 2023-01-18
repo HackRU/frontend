@@ -41,6 +41,10 @@
     --sponsors-bronze-color: #C96F0D;
 }
 
+a {
+    color: unset !important;
+}
+
 /* Global look and feel */
 body::-webkit-scrollbar {
     display: none;
@@ -57,7 +61,7 @@ body {
 ::placeholder {
     color: var(--input-placeholder) !important;
 }
-a:link {
+/* a:link {
     color: var(--accent-color);
     transition: color 0.5s ease;
 }
@@ -71,7 +75,8 @@ a:visited {
 a:visited:hover {
     color: var(--hover-color);
     text-decoration: none;
-}
+} */
+
 .primary-link {
     color: var(--primary-color) !important;
     transition: color 0.5s ease;
