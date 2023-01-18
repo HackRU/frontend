@@ -50,7 +50,7 @@ function CenterContent({ isLoggedIn }: { isLoggedIn: boolean }) {
         <div className="w-full flex flex-col justify-start items-center
                     pt-10 z-30
                     md:items-start relative
-                    md:pt-32">
+                    md:pt-20">
             <div className="flex flex-col space-y-1">
                 <HeroTitle />
                 <LoginAndRegister isLoggedIn={isLoggedIn} />
