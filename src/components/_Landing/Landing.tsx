@@ -7,7 +7,6 @@ import FAQ from "./sections/faq/FAQ";
 import Hero from "./sections/hero/hero";
 import Schedule from "./sections/schedule/Schedule";
 import Sponsors from "./sections/sponsors/Sponsors";
-import ParticleBackground from "./assets/Particles";
 import { randomizeAnimationDurations } from "./utilities";
 
 function LandingPage(props: any) {
@@ -19,7 +18,6 @@ function LandingPage(props: any) {
 
     return (
         <div className="w-full h-fit bg-gradient-to-b from-mainBg to-endBg">
-            <ParticleBackground />
             <Hero profile={props.profile} />
             <About />
             <Schedule />
