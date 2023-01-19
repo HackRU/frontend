@@ -666,8 +666,28 @@ display: none;  /* Safari and Chrome */
 
 /* Material UI Specifc */
 
-.MuiAlert-filledSuccess{
+/* .MuiAlert-filledSuccess{
     background-color: var(--primary-color-alt);
     color: var(--primary-color-alt);
 
+} */
+
+.makeStyles-background-14 {
+    background: transparent !important;
+}
+
+.makeStyles-stickyElement-3 {
+    background: transparent !important;
+}
+
+.Cell-dayOfWeek-20 {
+    color: #d1e9ef !important;
+}
+
+.Cell-dayOfMonth-21 {
+    color: #d1e9ef !important;
+}
+
+.Label-text-32 {
+    color: #d1e9ef !important;
 }
