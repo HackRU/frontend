@@ -1,14 +1,15 @@
 @import url('https://fonts.googleapis.com/css?family=Titillium+Web&display=swap');
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i");
 
-/* Variables */
 :root {
     /* Theme Colors */
     --primary-color: #FFF5e8; /* Logo, link colors, text */
     --primary-color-alt: #4fab5f;  /* Form body bg, form headers text */
     --secondary-color: #000000; /* Barely used accent color...combine this and primary-color-alt...? */
-    --secondary-color-alt: #C85151; /* Background color */
+    --secondary-color-alt:#ba5452; /* Background color */
     --accent-color: #F1BA43; /* Logout, Live button color */
+    /* split card colors */
+    --splitCard-color:#000000;
     --accent-color-alt: #F1BA43; /* Dashboard button color NOTE:  Dashboard colors are different across navbar on different pages */
     --disabled-color: #00000055; /* Unsure.... */
     --hover-color: #F1BA43;
@@ -41,9 +42,13 @@
     --sponsors-bronze-color: #C96F0D;
 }
 
+a {
+    color: unset !important;
+}
+
 /* Global look and feel */
-body::-webkit-scrollbar { 
-    display: none; 
+body::-webkit-scrollbar {
+    display: none;
 }
 html, body {
     overflow-x: hidden;
@@ -57,7 +62,7 @@ body {
 ::placeholder {
     color: var(--input-placeholder) !important;
 }
-a:link {
+/* a:link {
     color: var(--accent-color);
     transition: color 0.5s ease;
 }
@@ -71,7 +76,8 @@ a:visited {
 a:visited:hover {
     color: var(--hover-color);
     text-decoration: none;
-}
+} */
+
 .primary-link {
     color: var(--primary-color) !important;
     transition: color 0.5s ease;
@@ -123,7 +129,7 @@ hr {
     height: 35px;
     bottom: -5%;
     left: -25%;
-    background:  linear-gradient(to left, #FFF5E855, #FFF5E855, #FFF5E855); 
+    background:  linear-gradient(to left, #FFF5E855, #FFF5E855, #FFF5E855);
     visibility: hidden;
     -webkit-transform: scaleX(0);
     transform: scaleX(0);
@@ -147,13 +153,13 @@ hr {
 /* Background Control */
 .bg-gradient-right {
     background: var(--secondary-color-alt);
-    width: 100vw; 
+    width: 100vw;
     z-index: 10;
     color: var(--secondary-color);
 }
 .bg-gradient-left {
     background: var(--primary-color);
-    width: 100vw; 
+    width: 100vw;
     z-index: 10;
     color: var(--secondary-color);
 }
@@ -169,7 +175,7 @@ hr {
     padding-top: 100px;
     padding-bottom: 100px;
 }
-.skew-right { 
+.skew-right {
     transform: skew(0deg, -4deg);
 }
 .skew-left {
@@ -183,11 +189,11 @@ hr {
 }
 .footer .text-vcenter {
     margin: 0;
-    line-height: 10vh; 
+    line-height: 10vh;
 }
 .footer .social-links {
     color: #ffffff;
-    font-size: 100%; 
+    font-size: 100%;
 }
 .footer .social-links:hover{
     color: var(--hover-color);
@@ -195,14 +201,14 @@ hr {
 .footer a {
     color: var(--primary-color);
     line-height: 10vh;
-    padding: 15px 10px; 
+    padding: 15px 10px;
 }
 .footer a:hover {
    color: var(--hover-color);
 }
 .footer .footer-logo {
     display: inline-block;
-    height: calc(10vh*0.45); 
+    height: calc(10vh*0.45);
 }
 #navigation-link {
     font-family: var(--text-font);
@@ -345,7 +351,7 @@ form .btn, form btn-secondary {
 .live-messages {
     color: var(--primary-color) !important;
     background-color: transparent !important;
-    border: none !important; 
+    border: none !important;
 }
 .live-messages-text {
     color: var(--primary-color) !important;
@@ -373,25 +379,25 @@ form .btn, form btn-secondary {
     padding-top: 5px;
 }
 
-/* Sponsorship Page */ 
+/* Sponsorship Page */
 
 /* Sponsorship Landing Sepcifics */
 .bronze {
-    color: #FFA038 !important; 
+    color: #FFA038 !important;
 }
-  
+
 .silver {
     color: #B7B7B7 !important;
 }
-  
+
 .gold {
     color: #FFDF00 !important;
 }
-  
+
 .plat {
-    color: #D8D8D8 !important; 
+    color: #D8D8D8 !important;
 }
-  
+
 .titlepack {
     color: var(--primary-color) !important;
 }
@@ -404,7 +410,7 @@ form .btn, form btn-secondary {
 }
 
 .table td {
-    border-top: none !important; 
+    border-top: none !important;
 }
 
 .pd {padding-top: 25px;}
@@ -651,7 +657,7 @@ form .btn, form btn-secondary {
     scrollbar-color: transparent transparent;
 
 }
-.no-scrollbars::-webkit-scrollbar { 
+.no-scrollbars::-webkit-scrollbar {
 display: none;  /* Safari and Chrome */
 }
 .no-style-type {
