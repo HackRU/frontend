@@ -1,14 +1,15 @@
 @import url('https://fonts.googleapis.com/css?family=Titillium+Web&display=swap');
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i");
 
-/* Variables */
 :root {
     /* Theme Colors */
     --primary-color: #FFF5e8; /* Logo, link colors, text */
     --primary-color-alt: #4fab5f;  /* Form body bg, form headers text */
     --secondary-color: #000000; /* Barely used accent color...combine this and primary-color-alt...? */
-    --secondary-color-alt: #C85151; /* Background color */
+    --secondary-color-alt:#ba5452; /* Background color */
     --accent-color: #F1BA43; /* Logout, Live button color */
+    /* split card colors */
+    --splitCard-color:#000000;
     --accent-color-alt: #F1BA43; /* Dashboard button color NOTE:  Dashboard colors are different across navbar on different pages */
     --disabled-color: #00000055; /* Unsure.... */
     --hover-color: #F1BA43;
