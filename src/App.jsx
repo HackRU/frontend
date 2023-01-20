@@ -17,7 +17,7 @@ import {
 import LandingPage from "./components/_Landing/Landing";
 import { Snackbar } from "@material-ui/core"; // Alert messages
 import { Alert } from "@material-ui/lab"; // Alert messages
-// import Background from "./Background";
+import ParticleBackground from "./components/_Landing/assets/Particles";
 import NavBar from "./NavBar";
 import { defaults } from "./Defaults"; // Get a handle to the default application settings
 import { Profile } from "./components/Profile"; // User profile storage
@@ -222,6 +222,7 @@ class App extends Component {
             <BrowserRouter style={{ width: "100%" }}>
                 {/* BrowserRouter wil allow us to switch between the different pages in our SPA based on the URL routing */}
                 <div className="bg-gradient-to-b from-mainBg to-endBg">
+                    <ParticleBackground />
                     {/* Application alert messages go here */}
                     <Snackbar open={this.state.alertProps.open}
                         autoHideDuration={this.state.alertProps.duration}>

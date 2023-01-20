@@ -28,7 +28,7 @@ function HeroTitle() {
                     HACKRU
                 </div>
                 <div className="w-full flex justify-center">
-                    <div className="text-2xl font-extrabold md:text-4xl lg:text-4xl glow-subtitles text-text mb-10 flex">
+                    <div className="text-2xl font-extrabold md:text-4xl lg:text-4xl glow-subtitles text-text flex">
                         Hack All Knight &nbsp;
                         <span className="relative mt-1 md:mt-0">
                             <div className="glowing-moon-container" />
@@ -49,8 +49,7 @@ function CenterContent({ isLoggedIn }: { isLoggedIn: boolean }) {
     return (
         <div className="w-full flex flex-col justify-start items-center
                     pt-10 z-30
-                    md:items-start relative
-                    md:pt-20">
+                    md:items-start relative">
             <div className="flex flex-col space-y-1">
                 <HeroTitle />
                 <LoginAndRegister isLoggedIn={isLoggedIn} />
