@@ -195,7 +195,7 @@ class NavBar extends Component {
                         component={Link}
                         to="/profile"
                     >
-                        Profile
+                        Dashboard
                     </MenuItem>
                     <MenuItem
                         onClick={this.handleClose}

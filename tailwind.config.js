@@ -6,7 +6,7 @@ module.exports = {
     theme: {
         extend: {
             screens: {
-                "xs": "480px",
+                "xs-about": "300px",
                 //replace this with section specific breakpoints
                 "sm-about": "320px",
                 "md-about": "900px",
