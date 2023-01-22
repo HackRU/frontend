@@ -22,7 +22,7 @@ function LoginAndRegister(props: { isLoggedIn: boolean }) {
 
 function HeroTitle() {
     return (
-        <div className="w-full px-3">
+        <div className="w-full px-3 md:mt-16">
             <div className="z-30 rounded-3xl w-full h-full p-10 transparent-black-background">
                 <div className="text-text glow-subtitles font-bold text-[4rem] sm:text-9xl md:text-10xl lg:text-12xl">
                     HACKRU
@@ -48,7 +48,7 @@ function HeroTitle() {
 function CenterContent({ isLoggedIn }: { isLoggedIn: boolean }) {
     return (
         <div className="w-full flex flex-col justify-start items-center
-                    pt-2 z-30
+                    z-30
                     md:items-start relative">
             <div className="flex flex-col space-y-1">
                 <HeroTitle />
