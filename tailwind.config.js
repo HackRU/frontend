@@ -8,7 +8,7 @@ module.exports = {
             screens: {
                 "xs": "480px",
                 //replace this with section specific breakpoints
-                "sm-about": "320px",
+                "sm-about": "300px",
                 "md-about": "900px",
                 "lg-about": "1000px",
                 "xl-about": "1440px"

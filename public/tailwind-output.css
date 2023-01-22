@@ -563,9 +563,9 @@ video {
   width: 100%;
 }
 
-@media (min-width: 320px) {
+@media (min-width: 300px) {
   .container {
-    max-width: 320px;
+    max-width: 300px;
   }
 }
 
@@ -1431,7 +1431,7 @@ video {
   --tw-ring-opacity: 0.75;
 }
 
-@media (min-width: 320px) {
+@media (min-width: 300px) {
   .sm-about\:order-1 {
     order: 1;
   }
@@ -1561,16 +1561,12 @@ video {
     margin-bottom: 0px;
   }
 
-  .md\:mt-10 {
-    margin-top: 2.5rem;
+  .md\:mt-16 {
+    margin-top: 4rem;
   }
 
   .md\:mt-0 {
     margin-top: 0px;
-  }
-
-  .md\:mt-16 {
-    margin-top: 4rem;
   }
 
   .md\:flex {
