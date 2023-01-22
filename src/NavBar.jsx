@@ -275,7 +275,7 @@ class NavBar extends Component {
                     style={{
                         width: "100%",
                         zIndex: "20",
-                        backgroundColor: "#1583d2",
+                        backgroundColor: "#1f6aa0",
                         
                         opacity: this.state.shouldRender | !onLanding,
                         pointerEvents: this.state.shouldRender | !onLanding ? "auto" : "none",
