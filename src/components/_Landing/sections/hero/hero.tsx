@@ -9,7 +9,7 @@ import cloud2 from "../../assets/clouds/cloud2.svg";
 import cloud3 from "../../assets/clouds/cloud3.svg";
 import cloud4 from "../../assets/clouds/cloud4.svg";
 import { FaArrowDown } from "react-icons/fa";
-import { useUserScrolled } from "./utilities";
+import { scrollToSectionName, useUserScrolled } from "./utilities";
 import { Profile } from "../../../Profile";
 
 function Rabbit() {
@@ -40,8 +40,11 @@ function Hero(props: { profile: Profile }) {
             <MainHeroContent isLoggedIn={isLoggedIn} />
             <Rabbit />
 
-            <FaArrowDown className={`fixed z-10 bottom-5 text-white text-4xl
-      floating ${!userHasScrolled ? "visible" : "invisible"}`} />
+            <FaArrowDown
+                className={`fixed z-10 bottom-5 text-white text-4xl hover:cursor-pointer
+                    floating ${!userHasScrolled ? "visible" : "invisible"}`}
+                onClick={() => scrollToSectionName("About")}
+            />
 
             <div className="absolute z-0 w-96 top-[30rem] left-[20rem] opacity-50
           md:top-44 md:left-[30rem]

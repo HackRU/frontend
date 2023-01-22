@@ -2,10 +2,7 @@ import React from "react";
 import { MdOutlineMenu } from "react-icons/md";
 import { Menu, Transition } from "@headlessui/react";
 import { Fragment } from "react";
-
-const handleClick = (sectionName: string) => {
-    document.getElementById(sectionName)?.scrollIntoView({ behavior: "smooth" });
-};
+import { scrollToSectionName } from "./utilities";
 
 function MenuItem(props: { sectionName: string }) {
     const { sectionName } = props;
@@ -15,7 +12,7 @@ function MenuItem(props: { sectionName: string }) {
                 <button
                     className={`${active ? "bg-blue-300 text-white" : "text-gray-900"}
                     group flex w-full items-center rounded-md px-2 py-2 text-lg`}
-                    onClick={() => handleClick(sectionName)}
+                    onClick={() => scrollToSectionName(sectionName)}
                 >
                     {sectionName}
                 </button>
@@ -80,7 +77,7 @@ function Navbar() {
                     sections.map((section) => {
                         return (
                             <button className="glow-center font-medium uppercase"
-                                onClick={() => handleClick(section)}
+                                onClick={() => scrollToSectionName(section)}
                                 key={section}>
                                 {section}
                             </button>
