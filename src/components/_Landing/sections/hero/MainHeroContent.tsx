@@ -48,7 +48,7 @@ function HeroTitle() {
 function CenterContent({ isLoggedIn }: { isLoggedIn: boolean }) {
     return (
         <div className="w-full flex flex-col justify-start items-center
-                    pt-10 z-30
+                    pt-2 z-30
                     md:items-start relative">
             <div className="flex flex-col space-y-1">
                 <HeroTitle />
