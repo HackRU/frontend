@@ -7,7 +7,7 @@
     --primary-color-alt: #4fab5f;  /* Form body bg, form headers text */
     --secondary-color: #000000; /* Barely used accent color...combine this and primary-color-alt...? */
     --secondary-color-alt:#1f6aa0; /* Background color */
-    --accent-color: #F1BA43; /* Logout, Live button color */
+    --accent-color:  #4bbede;; /* Logout, Live button color */
     /* split card colors */
     --splitCard-color:#000000;
     --accent-color-alt: #F1BA43; /* Dashboard button color NOTE:  Dashboard colors are different across navbar on different pages */
@@ -22,12 +22,12 @@
 
     /*'Open Sans', sans-serif;  */
     /* Form Inputs */
-    --input-background: #C8515111;
+    --input-background: #516b7311;
     --input-placeholder: rgba(0, 0, 0, 0.3);
     --input-border: none;
     --input-color: rgba(0, 0, 0, 1);
     --input-border-radius: 0px;
-    --select-background: #C85151;
+    --select-background: #4bbede;
     --select-color: rgba(0, 0, 0, 1);
     /* Hero Image */
     --hero-width: 1000px;
