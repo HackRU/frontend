@@ -7,13 +7,13 @@
     --primary-color-alt: #4fab5f;  /* Form body bg, form headers text */
     --secondary-color: #000000; /* Barely used accent color...combine this and primary-color-alt...? */
     --secondary-color-alt:#1f6aa0; /* Background color */
-    --accent-color:  #4bbede;; /* Logout, Live button color */
+    --accent-color:  #4bbede; /* Logout, Live button color */
     /* split card colors */
     --splitCard-color:#000000;
     --accent-color-alt: #F1BA43; /* Dashboard button color NOTE:  Dashboard colors are different across navbar on different pages */
     --disabled-color: #00000055; /* Unsure.... */
     --hover-color: #F1BA43;
-    --hover-background-color: #df897f;
+    --hover-background-color: #4bbede;
     --active-color: rgba(255, 255, 255, 0.5);
     --active-background-color: #5A7A96A0;
     /* Fonts */
