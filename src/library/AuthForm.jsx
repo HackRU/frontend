@@ -2,7 +2,6 @@ import React from "react";
 import { Alert } from "reactstrap";
 import { Grid } from "@material-ui/core";
 import { RingLoader } from "react-spinners";
-import { theme } from "../Defaults.js";
 import PropTypes from "prop-types";
 
 /*
@@ -23,12 +22,13 @@ const AuthForm = ({ children, errors, label, loading, isMobile, onSubmit, title 
         justify="center"
         alignItems="center"
         style={{ width: "100%", minHeight: "100vh", textAlign: "center" }}
-        className="d-flex align-items-center">
+        className="d-flex align-items-center ">
         { isMobile ? null : <Grid /> }
         <Grid
-            item 
+            item
             xs={isMobile ? 10 : 3}
-            style={{ display: "block", zIndex: 3, backgroundColor: theme.secondary[1], color: "white", boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.5)" }}>
+            className = "transparent-black-background"
+            style={{ display: "block", zIndex: 3, borderRadius: "18px", color: "white",  boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.5)" }}>
             <div style={{ padding: 30 }}>
                 <h1 className="display-4 theme-font">{ title }</h1>
                 <p className="lead">{loading ? label: ""}</p>
@@ -57,14 +57,14 @@ AuthForm.propTypes = {
 const renderSpinner = () => (
     <div style={{ display: "block", width: "100%" }}
         align="center">
-        <RingLoader color={theme.primary[0]} />
+        <RingLoader color="#1583d2"/>
     </div>
 );
 
 const renderErrors = (errors) => (
     errors !== ""
         ? (<Alert
-            style={{ background: "rgba(255, 0, 0, 0.25)", border: "none", color: "white" }}
+            style={{ background: "#1583d2", border: "none", color: "white" }}
             color="danger">
             {errors}
         </Alert>)

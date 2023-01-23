@@ -11,6 +11,12 @@
   font-size: 25px;
   font-family: "Titillium Web";
 }
+@media only screen and (max-width: 1226px) {
+  
+  .titleClass{
+    padding-bottom: 40px;
+  }
+}
 /* medium screen  for split card*/
 @media only screen and (max-width: 769px) {
     .HeaderText{
@@ -19,6 +25,9 @@
     .textStyle{
       font-size: 25px;
     }
+    .titleClass{
+      padding-bottom: 0px;
+    }
   }
 
 /* small screen for split card*/
@@ -26,5 +35,6 @@
     .textStyle{
       font-size: 20px;
     }
+    
   }
 
