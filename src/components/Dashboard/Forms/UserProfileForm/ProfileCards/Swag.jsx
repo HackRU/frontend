@@ -98,7 +98,7 @@ const Swag = (props) => {
                 <p>Note: Swag will only be given to those who provide a valid address and explicitly check the box!</p>
                 <div style={{ width: "100%", marginTop: 20 }}
                     align="right">
-                    <Button color="success"
+                    <Button color="info"
                         onClick={() => {
                             // console.log(set_user);
                             submitUser(set_user);

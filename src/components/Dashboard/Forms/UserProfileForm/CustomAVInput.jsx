@@ -27,6 +27,7 @@ class CustomAVInput extends Component {s
             <div>
                 <div ref="avfield">
                     <AvField className="avfield-hide-inner"
+                        
                         name={this.props.name}
                         label={this.props.label}
                         type="text"

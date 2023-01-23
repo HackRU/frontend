@@ -103,7 +103,7 @@ class UserProfileForm extends Component {
 
                     <div style={{ width: "100%" }} 
                         align="right">
-                        <Button color="success" 
+                        <Button color="info" 
                             className="pill-btn" 
                             type="submit">
                             Update

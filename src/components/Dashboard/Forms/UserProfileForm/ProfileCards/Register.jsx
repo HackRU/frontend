@@ -181,7 +181,7 @@ class Register extends Component {
                     {message}
                     <div style={{ width: "100%" }}
                         align="right">
-                        <Button color="success"
+                        <Button color="info"
                             className="pill-btn"
                             type="submit"> { this.state.loading ?  <PulseLoader color={theme.accent[0]} /> : "Register" } </Button> 
                     </div>
