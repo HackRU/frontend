@@ -12,35 +12,35 @@ interface AboutConfig {
 }
 
 const aboutOriginal: AboutConfig = {
-  mainComponent: {
-    sidebarVisible: true,
-    horizontalBarsVisible: true,
-    headerTextBubblesVisible: true,
-    headerTextAlignment: "left",
-    subTextAlignment: "left",
-    useSplitCards: false,
-  },
+    mainComponent: {
+        sidebarVisible: true,
+        horizontalBarsVisible: true,
+        headerTextBubblesVisible: true,
+        headerTextAlignment: "left",
+        subTextAlignment: "left",
+        useSplitCards: false,
+    },
 };
 const aboutMiddleFocus: AboutConfig = {
-  mainComponent: {
-    sidebarVisible: false,
-    horizontalBarsVisible: false,
-    headerTextBubblesVisible: true,
-    headerTextAlignment: "middle",
-    subTextAlignment: "middle",
-    useSplitCards: false,
-  },
+    mainComponent: {
+        sidebarVisible: false,
+        horizontalBarsVisible: false,
+        headerTextBubblesVisible: true,
+        headerTextAlignment: "middle",
+        subTextAlignment: "middle",
+        useSplitCards: false,
+    },
 };
 
 const aboutMIT: AboutConfig = {
-  mainComponent: {
-    sidebarVisible: false,
-    horizontalBarsVisible: false,
-    headerTextBubblesVisible: false,
-    headerTextAlignment: "NA",
-    subTextAlignment: "NA",
-    useSplitCards: true,
-  },
+    mainComponent: {
+        sidebarVisible: false,
+        horizontalBarsVisible: false,
+        headerTextBubblesVisible: false,
+        headerTextAlignment: "NA",
+        subTextAlignment: "NA",
+        useSplitCards: true,
+    },
 };
 export { aboutOriginal, aboutMiddleFocus, aboutMIT };
 export type { AboutConfig, AboutConfigPresets };

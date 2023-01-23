@@ -14,12 +14,13 @@ const Loading = ({ text }) => (
         justify="center"
         alignItems="center"
         style={{ width: "100%", minHeight: "100vh", textAlign: "center" }}
-        className="d-flex align-items-center">
+        className="d-flex align-items-center ">
         <Grid
             item
             xs={6}
-            style={{ display: "block", zIndex: 3, backgroundColor: theme.secondary[1], color: "white", boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.5)" }}>
-            <div style={{ width: "100%", color: theme.accent[0] }}
+            
+            style={{ display: "block",zIndex: 3, borderRadius: "18px", backgroundColor:"black-transparent" , color: "white", boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.5)"  }}>
+            <div style={{ width: "100%", color: "white"}}
                 align="center">
                 <div style={{ display: "inline-block" }}>
                     <h1 className="display-1">L</h1>

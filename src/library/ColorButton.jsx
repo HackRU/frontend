@@ -3,9 +3,9 @@ import { Button, withStyles } from "@material-ui/core";
 const ColorButton = withStyles(() => ({
     root: {
         color: "white",
-        backgroundColor: "#4fab5f",
+        backgroundColor: "#1583d2",
         "&:hover": {
-            backgroundColor: "#4fab5f",
+            backgroundColor: "#1583d2",
         },
     },
 }))(Button);
