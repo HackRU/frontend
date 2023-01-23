@@ -94,7 +94,7 @@ class UserProfileForm extends Component {
                     {this.state.error ? <UncontrolledAlert color="danger">{this.state.message}</UncontrolledAlert> : ""}
                     <div style={{ width: "100%" }} 
                         align="right">
-                        <Button color="success" 
+                        <Button color="info" 
                             className="pill-btn" 
                             type="submit"> { this.state.loading ?  <PulseLoader color={theme.accent[0]} /> : "Update" } </Button>
                     </div>

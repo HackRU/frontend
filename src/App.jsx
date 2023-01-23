@@ -1,7 +1,7 @@
 import React, { Component } from "react"; // Default react imports for the component
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom"; // React router components
 import {
-    LandingPage,
+    // LandingPage,
     DashboardPage,
     LoginPage,
     ForgotPage,
@@ -11,16 +11,33 @@ import {
     SponsorshipPage,
     TeamPage,
     ProjectorPage,
-    E404, 
-    ProfilePage, 
+    E404,
+    ProfilePage,
     TeamViewerPage} from "./components/Pages"; // Router Pages
+import LandingPage from "./components/_Landing/Landing";
 import { Snackbar } from "@material-ui/core"; // Alert messages
 import { Alert } from "@material-ui/lab"; // Alert messages
-import Background from "./Background";
+import ParticleBackground from "./components/_Landing/assets/Particles";
 import NavBar from "./NavBar";
 import { defaults } from "./Defaults"; // Get a handle to the default application settings
 import { Profile } from "./components/Profile"; // User profile storage
-// import Background from "./Background"; // Standard background objects
+
+const updateStateOnURLChange =  (component) => {
+    let previousUrl = "";
+
+    const observer = new MutationObserver(() => {
+        if (window.location.href && window.location.href !== previousUrl) {
+            previousUrl = window.location.href;
+            component.forceUpdate();
+        }
+    });
+    const config = { subtree: true, childList: true };
+
+    // start observing change
+    observer.observe(document, config);
+
+};
+
 
 /**
  * Root application class. This is the object rendered in <div id="root" />
@@ -56,6 +73,8 @@ class App extends Component {
      */
     UNSAFE_componentWillMount() {
         this._event_onResize();
+        updateStateOnURLChange(this);
+
         let prof = new Profile();
         this.setState({
             profile: prof,
@@ -77,8 +96,7 @@ class App extends Component {
         this.state.profile.SetMagic(magic);
         this.setState({ magic });
     }
-    /**
-     * Reset the magic link in both the state and cookies
+    /** * Reset the magic link in both the state and cookies
      */
     clearMagic() {
         this.state.profile.ClearMagic();
@@ -220,8 +238,9 @@ class App extends Component {
         return (
             <BrowserRouter style={{ width: "100%" }}>
                 {/* BrowserRouter wil allow us to switch between the different pages in our SPA based on the URL routing */}
-                <div>     
-                    {/* Application alert messages go here */}               
+                <div className="bg-gradient-to-b from-mainBg to-endBg">
+                    <ParticleBackground />
+                    {/* Application alert messages go here */}
                     <Snackbar open={this.state.alertProps.open}
                         autoHideDuration={this.state.alertProps.duration}>
                         <Alert onClose={() => {
@@ -239,9 +258,10 @@ class App extends Component {
                             {this.state.alertProps.message}
                         </Alert>
                     </Snackbar>
+
+                    {window.location.pathname !== "/" && <NavBar profile={this.state.profile}/>}
+
                     {/* We need to show this on our webpage at all times, so we're just going to dump it in the root */}
-                    <Background />
-                    <NavBar profile={this.state.profile}/>
                     {/* We put the background here so that even after the page reroutes to different urls, the flying
                         logos will stay constant, allowing for a seemless user experience. First, we render the logos
                         then we render the background ontop of them, allowing the logos to fly behind the clouds */}
@@ -250,7 +270,10 @@ class App extends Component {
                         <Route exact
                             path="/"
                             render={(props) => <LandingPage {...props}
-                                {...componentProps} />} />
+                                {...componentProps} />}
+                            // eslint-disable-next-line no-unused-vars
+                            // render={(props) => <LandingPage />}
+                        />
                         <Route exact
                             path="/team"
                             render={(props) => <TeamPage {...props}
