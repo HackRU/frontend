@@ -21,7 +21,23 @@ import ParticleBackground from "./components/_Landing/assets/Particles";
 import NavBar from "./NavBar";
 import { defaults } from "./Defaults"; // Get a handle to the default application settings
 import { Profile } from "./components/Profile"; // User profile storage
-// import Background from "./Background"; // Standard background objects
+
+const updateStateOnURLChange =  (component) => {
+    let previousUrl = "";
+
+    const observer = new MutationObserver(() => {
+        if (window.location.href && window.location.href !== previousUrl) {
+            previousUrl = window.location.href;
+            component.forceUpdate();
+        }
+    });
+    const config = { subtree: true, childList: true };
+
+    // start observing change
+    observer.observe(document, config);
+
+};
+
 
 /**
  * Root application class. This is the object rendered in <div id="root" />
@@ -57,6 +73,8 @@ class App extends Component {
      */
     UNSAFE_componentWillMount() {
         this._event_onResize();
+        updateStateOnURLChange(this);
+
         let prof = new Profile();
         this.setState({
             profile: prof,
@@ -78,8 +96,7 @@ class App extends Component {
         this.state.profile.SetMagic(magic);
         this.setState({ magic });
     }
-    /**
-     * Reset the magic link in both the state and cookies
+    /** * Reset the magic link in both the state and cookies
      */
     clearMagic() {
         this.state.profile.ClearMagic();
