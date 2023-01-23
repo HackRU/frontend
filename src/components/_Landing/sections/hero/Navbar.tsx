@@ -52,7 +52,7 @@ function CollapsedMenu() {
                             <MenuItem sectionName="About" />
                             <MenuItem sectionName="Schedule" />
                             <MenuItem sectionName="FAQ" />
-                            <MenuItem sectionName="Sponsors" />
+                            {/* <MenuItem sectionName="Sponsors" /> */}
                             <MenuItem sectionName="Contact" />
                         </div>
                     </Menu.Items>
@@ -68,7 +68,7 @@ function CollapsedMenu() {
 
 function Navbar() {
 
-    const sections = ["Home", "About", "Schedule", "FAQ", "Sponsors"];
+    const sections = ["Home", "About", "Schedule", "FAQ"];
 
     return (
         <div className="flex justify-end w-[100%]">

@@ -2,7 +2,6 @@ import React from "react";
 import { Alert } from "reactstrap";
 import { Grid } from "@material-ui/core";
 import { RingLoader } from "react-spinners";
-import { theme } from "../Defaults.js";
 import PropTypes from "prop-types";
 
 /*
@@ -26,7 +25,7 @@ const AuthForm = ({ children, errors, label, loading, isMobile, onSubmit, title 
         className="d-flex align-items-center ">
         { isMobile ? null : <Grid /> }
         <Grid
-            item 
+            item
             xs={isMobile ? 10 : 3}
             className = "transparent-black-background"
             style={{ display: "block", zIndex: 3, borderRadius: "18px", color: "white",  boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.5)" }}>
