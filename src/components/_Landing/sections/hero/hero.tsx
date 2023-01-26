@@ -14,7 +14,7 @@ import { Profile } from "../../../Profile";
 
 function Rabbit() {
     return (
-        <div className="absolute z-10 w-[27rem] sm:w-128 bottom-0 -right-32 md:top-80 md:-right-10 lg:w-144 floating">
+        <div className="absolute z-10 w-[27rem] sm:w-128 bottom-[20rem] -right-32 md:top-60 md:-right-10 lg:w-144 floating">
             <img src={rabbit}
                 alt="rabbit" />
         </div>

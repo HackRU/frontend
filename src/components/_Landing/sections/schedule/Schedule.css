@@ -18,12 +18,12 @@
 }
 
 /* Day of Week */
-.css-1675apn-MuiTableCell-root .Cell-dayOfWeek {
+.Cell-dayOfWeek {
   color: #d1e9ef !important;
 }
 
 /* Day of Month */
-.css-1675apn-MuiTableCell-root .Cell-dayOfMonth {
+.Cell-dayOfMonth {
   color: #d1e9ef !important;
 
 }

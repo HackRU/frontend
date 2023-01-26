@@ -23,7 +23,7 @@ function MenuItem(props: { sectionName: string }) {
 
 function CollapsedMenu() {
     return (
-        <div className="text-right top-5 right-10 z-40 md:hidden">
+        <div className="text-right bg-cyan-100: z-40 -mr-8 md:hidden">
             <Menu as="div"
                 className="relative inline-block text-left">
                 <div>
