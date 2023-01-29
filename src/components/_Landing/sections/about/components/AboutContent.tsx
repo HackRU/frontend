@@ -16,43 +16,43 @@ import { defaults } from "../../../Default";
 
 const Introduction = (headerTextAlignment: string) => {
     switch (headerTextAlignment) {
-        case 'left':
-            return 'text-5xl theme-font ml-6';
-        case 'middle':
-            return 'text-5xl theme-font ml-6 text-center pr-5'
+        case "left":
+            return "text-5xl theme-font ml-6";
+        case "middle":
+            return "text-5xl theme-font ml-6 text-center pr-5";
         default:
 
     }
-}
+};
 
 const subTextAlignmentPosition = (subTextAlignment: string) => {
     switch (subTextAlignment) {
-        case 'left':
-            return 'text-left';
-        case 'middle':
-            return 'text-center';
-        case 'right':
-            return 'text-right';
+        case "left":
+            return "text-left";
+        case "middle":
+            return "text-center";
+        case "right":
+            return "text-right";
         default:
-            return '';
+            return "";
     }
-}
+};
 
 const showHorizontalLine = (horizontalBar: boolean) => {
     switch (horizontalBar) {
         case true:
             return;
         default:
-            return 'hidden';
+            return "hidden";
     }
-}
+};
 
 function TypeOfIcon(props: {
     type: string
 }) {
     const { type } = props;
     switch (type) {
-        case 'questionmark':
+        case "questionmark":
             return (<div style={{
                 display: "flex",
 
@@ -65,7 +65,7 @@ function TypeOfIcon(props: {
                 </span>
 
             </div>);
-        case 'calendar':
+        case "calendar":
             return (<div style={{
                 display: "flex",
 
@@ -101,7 +101,7 @@ function HeaderTextAlignmentFunc(props: {
 }) {
     const { subTextAlignment, icon } = props;
     switch (subTextAlignment) {
-        case 'left':
+        case "left":
             return (<h2
                 className="display-6 text-4xl"
                 style={{
@@ -118,7 +118,7 @@ function HeaderTextAlignmentFunc(props: {
             >
                 <TypeOfIcon type={icon} />
             </h2>);
-        case 'middle':
+        case "middle":
             return (
                 <h2
                     className="display-6 text-4xl"
@@ -181,16 +181,18 @@ function AboutContent() {
         return (
             <div className="grid sm-about:grid-cols-1 lg-about:grid-cols-2 xl-about:grid-cols-2 max-w-[120rem]">
                 {/* Header Text */}
-                <div className="glow basis-1 lg-about:col-span-2 flex HeaderText text-7xl text-text glow-subtitles font-semibold" style={{
-                    margin: "60px 100px 0px 100px"
-                }}>
+                <div className="glow basis-1 lg-about:col-span-2 flex HeaderText text-7xl text-text glow-subtitles font-semibold"
+                    style={{
+                        margin: "60px 100px 0px 100px"
+                    }}>
                     About
                 </div>
 
                 {/* first row */}
-                <div className='sm-about:order-1 lg-about:order-1' style={{
-                    margin: "auto"
-                }}>
+                <div className='sm-about:order-1 lg-about:order-1'
+                    style={{
+                        margin: "auto"
+                    }}>
                     <Card backgroundColor={theme.splitCard[0]}>
                         <div style={{}}>
                             <h1 className="glow text-6xl text-text">
@@ -210,19 +212,24 @@ function AboutContent() {
                 </div>
 
                 <div className="flex justify-center sm-about:order-2 lg-about:order-2" >
-                    <img src={bear} className="imgClass floating" alt="problem" />
+                    <img src={bear}
+                        className="imgClass floating"
+                        alt="problem" />
                 </div>
 
                 {/* second row */}
                 {/* xsm is created because the order reverts back in 300px measurements idk why. */}
                 {/* there is not sm/xs ordering. IDK why but once after merge with main, it didn't work */}
                 <div className="flex justify-center sm-about:order-4 lg-about:order-3" >
-                    <img src={hedgehog} className="imgClass floating" alt="problem" />
+                    <img src={hedgehog}
+                        className="imgClass floating"
+                        alt="problem" />
                 </div>
 
-                <div className='sm-about:order-3 lg-about:order-4' style={{
-                    margin: 'auto'
-                }}>
+                <div className='sm-about:order-3 lg-about:order-4'
+                    style={{
+                        margin: "auto"
+                    }}>
                     <Card backgroundColor={theme.splitCard[0]}>
                         <div style={{}}>
                             <h1 className="glow text-6xl text-text">
@@ -238,9 +245,10 @@ function AboutContent() {
 
 
                 {/* third row */}
-                <div className='sm-about:order-5  lg-about:order-5' style={{
-                    margin: "auto"
-                }}>
+                <div className='sm-about:order-5  lg-about:order-5'
+                    style={{
+                        margin: "auto"
+                    }}>
                     <Card backgroundColor={theme.splitCard[0]}>
                         <div style={{}}>
                             <h1 className="glow text-6xl text-text">
@@ -249,21 +257,26 @@ function AboutContent() {
                             <p className="textStyle">
                                 <div>
                                     Want to help? Sign up to{" "}
-                                    <a className="underline" href={defaults.volunteers.vol_url}>volunteer</a> or{" "}
-                                    <a className="underline" href={defaults.volunteers.mentor_url}>mentor</a>!
+                                    <a className="underline"
+                                        href={defaults.volunteers.vol_url}>volunteer</a> or{" "}
+                                    <a className="underline"
+                                        href={defaults.volunteers.mentor_url}>mentor</a>!
                                 </div>
                             </p>
                             <p className="textStyle">
                                 <div>
                                     Want to receive updates? Subscribe{" "}
-                                    <a className="underline" href={defaults.mailing}>here</a>!
+                                    <a className="underline"
+                                        href={defaults.mailing}>here</a>!
                                 </div>
                             </p>
                         </div>
                     </Card>
                 </div>
                 <div className="flex justify-center sm-about:order-6 lg-about:order-6" >
-                    <img src={squirrel} className="imgClass floating" alt="problem" />
+                    <img src={squirrel}
+                        className="imgClass floating"
+                        alt="problem" />
                 </div>
             </div>
 
@@ -271,7 +284,8 @@ function AboutContent() {
     }
     else {
         return (
-            <Card backgroundColor={theme.secondary[1]} sideBar={theme.accent[0]}>
+            <Card backgroundColor={theme.secondary[1]}
+                sideBar={theme.accent[0]}>
                 <>
                     <div
                         style={{
@@ -287,7 +301,8 @@ function AboutContent() {
                     </div>
                     <h1 className={`${Introduction(headerTextAlignment)}`}>About HackRU</h1>
                     {/* entire card besides "About HackRU" */}
-                    <div className="flex flex-wrap  mb-3" style={{ marginLeft: -20 }}>
+                    <div className="flex flex-wrap  mb-3"
+                        style={{ marginLeft: -20 }}>
 
                         {/* What Section */}
                         <div
@@ -306,8 +321,10 @@ function AboutContent() {
                                 }}
                             ></div>
                             {/* bubble of header text */}
-                            <HeaderTextAlignmentFunc subTextAlignment={subTextAlignment} icon="questionmark" />
-                            <p style={{ display: "inline-block" }} className={` text-xl font-light ${subTextAlignmentPosition(subTextAlignment)}`}>
+                            <HeaderTextAlignmentFunc subTextAlignment={subTextAlignment}
+                                icon="questionmark" />
+                            <p style={{ display: "inline-block" }}
+                                className={` text-xl font-light ${subTextAlignmentPosition(subTextAlignment)}`}>
                                 HackRU is a 24-hour hackathon at Rutgers University. We welcome
                                 hundreds of students to join us in building awesome tech projects.
                                 Industry experts and mentors help foster an atmosphere of learning
@@ -334,7 +351,8 @@ function AboutContent() {
                                 }}
                             ></div>
                             {/* bubble of header text */}
-                            <HeaderTextAlignmentFunc subTextAlignment={subTextAlignment} icon="calendar" />
+                            <HeaderTextAlignmentFunc subTextAlignment={subTextAlignment}
+                                icon="calendar" />
                             <p className={` text-xl font-light ${subTextAlignmentPosition(subTextAlignment)}`}>HackRU is from February 25th- 26th, 2023.</p>
                         </div>
                         {/* Where Section */}
@@ -355,7 +373,8 @@ function AboutContent() {
                                 }}
                             ></div>
                             {/* bubble of header text */}
-                            <HeaderTextAlignmentFunc subTextAlignment={subTextAlignment} icon="location" />
+                            <HeaderTextAlignmentFunc subTextAlignment={subTextAlignment}
+                                icon="location" />
                             <p className={` text-xl font-light ${subTextAlignmentPosition(subTextAlignment)}`}>
                                 HackRU is at The Rutgers College Ave Student Center for Spring 2023!
                             </p>
