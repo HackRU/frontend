@@ -666,14 +666,6 @@ video {
   left: 24rem;
 }
 
-.top-5 {
-  top: 1.25rem;
-}
-
-.right-10 {
-  right: 2.5rem;
-}
-
 .right-0 {
   right: 0px;
 }
@@ -742,10 +734,6 @@ video {
   left: -20rem;
 }
 
-.right-5 {
-  right: 1.25rem;
-}
-
 .z-40 {
   z-index: 40;
 }
@@ -782,6 +770,14 @@ video {
   order: 6;
 }
 
+.order-4 {
+  order: 4;
+}
+
+.order-3 {
+  order: 3;
+}
+
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
@@ -805,6 +801,10 @@ video {
   margin-top: 1rem;
 }
 
+.-mr-8 {
+  margin-right: -2rem;
+}
+
 .mt-2 {
   margin-top: 0.5rem;
 }
@@ -819,22 +819,6 @@ video {
 
 .ml-6 {
   margin-left: 1.5rem;
-}
-
-.-mr-4 {
-  margin-right: -1rem;
-}
-
-.-mr-10 {
-  margin-right: -2.5rem;
-}
-
-.-mr-5 {
-  margin-right: -1.25rem;
-}
-
-.-mr-8 {
-  margin-right: -2rem;
 }
 
 .block {
@@ -1122,14 +1106,14 @@ video {
   background-color: rgb(147 197 253 / var(--tw-bg-opacity));
 }
 
-.bg-white {
-  --tw-bg-opacity: 1;
-  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
-}
-
 .bg-cyan-100 {
   --tw-bg-opacity: 1;
   background-color: rgb(207 250 254 / var(--tw-bg-opacity));
+}
+
+.bg-white {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
 .bg-gradient-to-b {
@@ -1241,14 +1225,6 @@ video {
 
 .pl-4 {
   padding-left: 1rem;
-}
-
-.pt-0 {
-  padding-top: 0px;
-}
-
-.pt-2 {
-  padding-top: 0.5rem;
 }
 
 .text-left {
@@ -1491,6 +1467,22 @@ video {
     order: 4;
   }
 
+  .sm-about\:order-1 {
+    order: 1;
+  }
+
+  .sm-about\:order-2 {
+    order: 2;
+  }
+
+  .sm-about\:order-5 {
+    order: 5;
+  }
+
+  .sm-about\:order-6 {
+    order: 6;
+  }
+
   .sm-about\:w-full {
     width: 100%;
   }
@@ -1555,8 +1547,8 @@ video {
     left: -6rem;
   }
 
-  .md\:top-80 {
-    top: 20rem;
+  .md\:top-60 {
+    top: 15rem;
   }
 
   .md\:-right-10 {
@@ -1569,6 +1561,10 @@ video {
 
   .md\:left-\[30rem\] {
     left: 30rem;
+  }
+
+  .md\:top-80 {
+    top: 20rem;
   }
 
   .md\:left-\[60rem\] {
@@ -1601,18 +1597,6 @@ video {
 
   .md\:left-\[-20rem\] {
     left: -20rem;
-  }
-
-  .md\:-top-72 {
-    top: -18rem;
-  }
-
-  .md\:top-72 {
-    top: 18rem;
-  }
-
-  .md\:top-60 {
-    top: 15rem;
   }
 
   .md\:my-0 {
@@ -1685,6 +1669,22 @@ video {
 
   .lg-about\:order-3 {
     order: 3;
+  }
+
+  .lg-about\:order-1 {
+    order: 1;
+  }
+
+  .lg-about\:order-2 {
+    order: 2;
+  }
+
+  .lg-about\:order-5 {
+    order: 5;
+  }
+
+  .lg-about\:order-6 {
+    order: 6;
   }
 
   .lg-about\:col-span-2 {
