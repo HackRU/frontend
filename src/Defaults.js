@@ -39,9 +39,9 @@ const defaults = {
     volunteers: {
         display: true,
         vol_url:
-            "https://docs.google.com/forms/d/e/1FAIpQLSe_qBzqsJIKWd_BohZ7Xuju3XQhI2f6xtrwX7WO-otR0Q7ofg/viewform?usp=sf_link",
+            "https://forms.gle/E5vYLKRV7BnCQ97c9",
         mentor_url:
-            "https://docs.google.com/forms/d/e/1FAIpQLScG3eyzY67q58k52zh5nSscUBWRoYn8KayVNAXqYvJl8oqD8Q/viewform",
+            "https://forms.gle/59f4Bzzrv1Anomss5",
     },
     mailing:
         "https://hackru.us3.list-manage.com/subscribe?u=457c42db47ebf530a0fc733fb&id=fb01885829",

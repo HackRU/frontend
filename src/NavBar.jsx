@@ -189,14 +189,7 @@ class NavBar extends Component {
                     open={this.state.open}
                     onClose={this.handleClose}
                 >
-                    <MenuItem
-                        onClick={this.handleClose}
-                        style={{ color: "black" }}
-                        component={Link}
-                        to="/profile"
-                    >
-                        Profile
-                    </MenuItem>
+                    
                     <MenuItem
                         onClick={this.handleClose}
                         style={{ color: "black" }}
@@ -254,7 +247,7 @@ class NavBar extends Component {
                 {/* } */}
                 { defaults.teamru &&
                     <Tab
-                        style={{ color: "white", minWidth: 10, marginLeft: "25px" }}
+                        style={{ color: "white", minWidth: 10, marginLeft: "px" }}
                         className={window.innerWidth < 768 ? "pt-3" : ""}
                         component={Link}
                         to={"/teamru"}
@@ -277,11 +270,13 @@ class NavBar extends Component {
         if (!defaults.freeze) {
             return (
                 <AppBar
+                    className = "transparent-black-background"
                     id="navbar"
                     style={{
                         width: "100%",
                         zIndex: "20",
-                        backgroundColor: theme.secondary[1],
+                        backgroundColor: "#1f6aa0",
+                        
                         opacity: this.state.shouldRender | !onLanding,
                         pointerEvents: this.state.shouldRender | !onLanding ? "auto" : "none",
                         transition: !onLanding ? "" : "opacity 0.5s",

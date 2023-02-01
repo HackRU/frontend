@@ -1,0 +1,41 @@
+.imgClass{
+  min-width: 100px;
+  min-height: 100px;
+  max-width: 600px;
+  max-height: 600px;
+  margin: 60px 20px 60px 20px;
+}
+
+.textStyle{
+  color: #d1e9ef;
+  font-size: 25px;
+  font-family: "Titillium Web";
+}
+
+@media only screen and (max-width: 1226px) {
+
+  .titleClass{
+    padding-bottom: 40px;
+  }
+}
+/* medium screen  for split card*/
+@media only screen and (max-width: 769px) {
+    .HeaderText{
+        justify-content: center;
+    }
+    .textStyle{
+      font-size: 25px;
+    }
+    .titleClass{
+      padding-bottom: 0px;
+    }
+  }
+
+/* small screen for split card*/
+@media only screen and (max-width: 480px) {
+    .textStyle{
+      font-size: 20px;
+    }
+
+  }
+
