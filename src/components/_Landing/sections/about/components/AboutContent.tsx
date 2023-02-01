@@ -179,18 +179,17 @@ function AboutContent() {
 
     if (useSplitCards) {
         return (
-            <div className="grid sm-about:grid-cols-1 sm-about:grid-rows-6 lg-about:grid-cols-2 lg-about:grid-rows-3 xl-about:grid-cols-2 xl-about:grid-rows-3 grid-flow-col max-w-[120rem]">
+            <div className="grid sm-about:grid-cols-1 lg-about:grid-cols-2 xl-about:grid-cols-2 max-w-[120rem]">
                 {/* Header Text */}
-                <div className="glow basis-1 lg-about:col-span-2 flex HeaderText text-7xl text-text glow-subtitles font-semibold titleClass"
+                <div className="glow basis-1 lg-about:col-span-2 flex HeaderText text-7xl text-text glow-subtitles font-semibold"
                     style={{
-                        margin: "60px 100px 0px 100px",
-                        
+                        margin: "60px 100px 0px 100px"
                     }}>
                     About
                 </div>
 
                 {/* first row */}
-                <div className='flex order-1'
+                <div className='sm-about:order-1 lg-about:order-1'
                     style={{
                         margin: "auto"
                     }}>
@@ -212,15 +211,22 @@ function AboutContent() {
                     </Card>
                 </div>
 
-                <div className="flex justify-center order-2" >
+                <div className="flex justify-center sm-about:order-2 lg-about:order-2" >
                     <img src={bear}
                         className="imgClass floating"
                         alt="problem" />
                 </div>
 
                 {/* second row */}
-               
-                <div className='flex xs-about:order-3 sm-about:order-3 lg-about:order-4'
+                {/* xsm is created because the order reverts back in 300px measurements idk why. */}
+                {/* there is not sm/xs ordering. IDK why but once after merge with main, it didn't work */}
+                <div className="flex justify-center sm-about:order-4 lg-about:order-3" >
+                    <img src={hedgehog}
+                        className="imgClass floating"
+                        alt="problem" />
+                </div>
+
+                <div className='sm-about:order-3 lg-about:order-4'
                     style={{
                         margin: "auto"
                     }}>
@@ -236,14 +242,10 @@ function AboutContent() {
                     </Card>
                 </div>
 
-                <div className="flex justify-center xs-about:order-4 sm-about:order-4 lg-about:order-3" >
-                    <img src={hedgehog}
-                        className="imgClass floating"
-                        alt="problem" />
-                </div>
+
 
                 {/* third row */}
-                <div className='flex order-5'
+                <div className='sm-about:order-5  lg-about:order-5'
                     style={{
                         margin: "auto"
                     }}>
@@ -271,7 +273,7 @@ function AboutContent() {
                         </div>
                     </Card>
                 </div>
-                <div className="flex justify-center order-6" >
+                <div className="flex justify-center sm-about:order-6 lg-about:order-6" >
                     <img src={squirrel}
                         className="imgClass floating"
                         alt="problem" />

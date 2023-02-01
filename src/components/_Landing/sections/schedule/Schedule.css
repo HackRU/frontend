@@ -1,0 +1,34 @@
+
+/* Table Header */
+.MainLayout-stickyElement.MainLayout-header.MainLayout-flexRow {
+  background-color: transparent;
+}
+
+.MainLayout-background.MainLayout-inlineFlex.MainLayout-ordinaryHeaderBorder {
+  background-color: transparent;
+}
+
+.MainLayout-stickyElement.MainLayout-leftPanel.MainLayout-dayScaleEmptyCell.MainLayout-ordinaryLeftPanelBorder {
+  background-color: transparent;
+}
+
+/* Table Side Bar */
+.MainLayout-flexRow.MainLayout-stickyElement.MainLayout-leftPanel.MainLayout-ordinaryLeftPanelBorder {
+  background-color: transparent;
+}
+
+/* Day of Week */
+.Cell-dayOfWeek {
+  color: #d1e9ef !important;
+}
+
+/* Day of Month */
+.Cell-dayOfMonth {
+  color: #d1e9ef !important;
+
+}
+
+/* Time Labels */
+.css-1fbp63r .Label-text {
+  color: #d1e9ef !important;
+}

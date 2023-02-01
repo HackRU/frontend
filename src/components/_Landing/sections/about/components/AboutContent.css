@@ -11,8 +11,9 @@
   font-size: 25px;
   font-family: "Titillium Web";
 }
+
 @media only screen and (max-width: 1226px) {
-  
+
   .titleClass{
     padding-bottom: 40px;
   }
@@ -35,6 +36,6 @@
     .textStyle{
       font-size: 20px;
     }
-    
+
   }
 
