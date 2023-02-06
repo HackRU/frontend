@@ -1,96 +1,91 @@
-import { Grid } from "@material-ui/core";
-import { ViewState } from "@devexpress/dx-react-scheduler";
-import { Scheduler, DayView, Appointments } from "@devexpress/dx-react-scheduler-material-ui";
-import PropTypes from "prop-types";
-import React, { PropsWithChildren } from "react";
+import React from "react";
 
-/**
- * Schedule component for the landing page
- */
+const schedule = [
+    {
+        "day": "Saturday",
+        "times": [
+            { "time": "2:00 PM", "event": "Check-in starts" },
+            { "time": "3:00 PM", "event": "Opening Ceremony" },
+            { "time": "3:25 PM", "event": "Team Building Event" },
+            { "time": "4:00 PM", "event": "Hacking Starts" },
+            { "time": "4:25 PM", "event": "Event" },
+            { "time": "6:00 PM", "event": "Rutgers Ethitech Presentation" },
+            { "time": "7:00 PM", "event": "WiCS Presentation" },
+            { "time": "8:00 PM", "event": "Dinner & Another Event" },
+            { "time": "11:45 PM", "event": "T-Shirts!" },
+        ],
+    },
 
-function Schedule() {
+    {
+        "day": "Sunday",
+        "times": [
+            { "time": "8:00 AM", "event": "Breakfast" },
+            { "time": "9:00 AM", "event": "RUMad Presentation" },
+            { "time": "11:00 AM", "event": "Event" },
+            { "time": "12:00 PM", "event": "Lunch" },
+            { "time": "5:00 PM", "event": "Submissions Due" },
+            { "time": "5:30 PM", "event": "Submissions Due (Hard Deadline)" },
+            { "time": "6:30 PM", "event": "Judging Begins" },
+            { "time": "7:00 PM", "event": "Dinner" },
+            { "time": "7:30 PM", "event": "Judging Ends" },
+            { "time": "8:00 PM", "event": "Closing Ceremony" },
+            // { "time": "9:00 PM", "event": "Venue closes" },
+        ],
+    }
+];
 
-    const Appointment: React.FC<PropsWithChildren<any>> = ({ children, style, ...restProps }: any) => (
-        <Appointments.Appointment
-            {...restProps}
-            style={{
-                ...style,
-                backgroundColor: "#1f6aa0",
-                borderRadius: 8,
-            }}>
-            {children}
-        </Appointments.Appointment>
+interface DayInfo {
+    day: string,
+    times: { time: string, event: string }[]
+}
+
+function ScheduleOfTheDay(props: { dayInfo: DayInfo }) {
+    const { dayInfo } = props;
+    const { day, times } = dayInfo;
+
+    return (
+        <div className="flex flex-col w-full my-5">
+            <div className="text-5xl w-full text-center mb-4 font-semibold glow-subtitles text-textSubtitle">{dayInfo.day}</div>
+
+            <div className="w-full">
+                {times.map((timeInfo, index) => (
+                    <div className="flex flex-row w-full text-xl font-semibold my-2 md:my-5 md:px-3"
+                        key={`${day}-${index}`}
+                    >
+                        <div className="w-1/2 h-fit text-right pr-5">{timeInfo.time}</div>
+                        <div className="w-1/2">{timeInfo.event}</div>
+                    </div>
+                ))}
+            </div>
+        </div>
     );
 
-    const schedule = [{
-        "date": "2023-02-25",
-        "events": [
-            { startDate: "2021-10-16T10:00", endDate: "2021-10-16T11:30", title: "Check-in" },
-            { startDate: "2021-10-16T11:30", endDate: "2021-10-16T13:00", title: "Opening Ceremony" },
-            { startDate: "2021-10-16T13:00", endDate: "2021-10-17T12:00", title: "Hacking" },
-            { startDate: "2021-10-16T15:00", endDate: "2021-10-16T15:30", title: "MLH CTF" },
-            { startDate: "2021-10-16T15:30", endDate: "2021-10-16T16:30", title: "MLH Mini-Event" },
-            { startDate: "2021-10-16T17:00", endDate: "2021-10-16T18:00", title: "WiCS Kahoot + Discussion" },
-            { startDate: "2021-10-16T18:30", endDate: "2021-10-16T19:30", title: "RnD Workshop" },
-            { startDate: "2021-10-16T19:30", endDate: "2021-10-16T20:30", title: "Blueprint Workshop" },
-        ]
-    }, {
-        "date": "2023-02-26",
-        "events": [
-            { startDate: "2021-10-17T10:00", endDate: "2021-10-17T10:00", title: "Submission Reminder" },
-            { startDate: "2021-10-16T13:00", endDate: "2021-10-17T12:00", title: "Hacking" },
-            { startDate: "2021-10-17T13:00", endDate: "2021-10-17T15:00", title: "Judging" },
-            { startDate: "2021-10-17T15:30", endDate: "2021-10-17T16:00", title: "Closing Ceremony" },
-        ]
-    }];
-    /*const schedule = [
-        {"date": "2022-04-02"},
-        {"date": "2022-04-03"}
-    ];*/
+
+}
+
+function Schedule() {
+    // TOOD: ADD THE FOX ASSET
+    // TOOD: ADD EMOJIS
+    // TODO INCREASE FONT SIZE WHEN WIDTH INCREASES
+    // TOOD: FIX SCHEDULE SCROLL BUTTON
+
     return (
-        <div
-            id="Schedule"
-            className="w-full flex h-fit
-        relative overflow-hidden
-        flex-col items-center justify-start min-h-[600px]">
-            <div className="text-7xl text-text glow-subtitles font-semibold">Schedule</div>
+        <div className="w-full flex justify-center px-4 my-14">
+            <div className="w-full max-w-7xl h-fit flex flex-col items-center">
+                <div className="text-7xl text-text glow-subtitles font-semibold">Schedule</div>
 
-            <div className="max-w-7xl rounded-3xl transparent-black-background relative flex flex-col items-center mt-10 p-10">
-
-                <div className="row mb-3"
-                    style={{ marginLeft: "5%", marginRight: "5%" }}>
-                    <Grid container
-                        spacing={3}>
-                        {schedule.map((item) =>
-                            <Grid item
-                                key={item["date"]}
-                                md={6}
-                                xs={12}
-                            >
-                                <Scheduler
-                                    data={item["events"]}>
-                                    <ViewState
-                                        currentDate={item["date"]}
-                                    />
-                                    <DayView
-                                        startDayHour={9}
-                                        endDayHour={23}
-                                    />
-                                    <Appointments
-                                        appointmentComponent={Appointment}
-                                    />
-                                </Scheduler>
-                            </Grid>
-                        )}
-                    </Grid>
+                <div className="transparent-black-background w-full text-text rounded-3xl mt-10 flex flex-col
+                                md:flex-row">
+                    {schedule.map((dayInfo, index) => (
+                        <ScheduleOfTheDay
+                            dayInfo={dayInfo}
+                            key={index}
+                        />
+                    ))}
                 </div>
             </div>
         </div>
     );
 }
 
-Schedule.propTypes = {
-    children: PropTypes.object,
-    style: PropTypes.object,
-};
 export default Schedule;
