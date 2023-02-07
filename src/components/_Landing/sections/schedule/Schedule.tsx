@@ -1,42 +1,60 @@
 import React from "react";
+import { BsFillExclamationTriangleFill } from "react-icons/bs";
+import { FaHourglassStart, FaPizzaSlice, FaTshirt, FaUtensils } from "react-icons/fa";
+import { MdCelebration, MdFreeBreakfast, MdLunchDining } from "react-icons/md";
+import fox from "../../assets/kimFox2.png";
 
-const schedule = [
+interface DayInfo {
+    day: string,
+    times: { time: string, event: string, reactIcon?: JSX.Element }[]
+}
+
+const schedule: DayInfo[] = [
     {
         "day": "Saturday",
         "times": [
             { "time": "2:00 PM", "event": "Check-in starts" },
-            { "time": "3:00 PM", "event": "Opening Ceremony" },
+            { "time": "3:00 PM", "event": "Opening Ceremony", "reactIcon": <MdCelebration /> },
             { "time": "3:25 PM", "event": "Team Building Event" },
-            { "time": "4:00 PM", "event": "Hacking Starts" },
+            { "time": "4:00 PM", "event": "Hacking Starts", "reactIcon": <FaHourglassStart /> },
             { "time": "4:25 PM", "event": "Event" },
             { "time": "6:00 PM", "event": "Rutgers Ethitech Presentation" },
             { "time": "7:00 PM", "event": "WiCS Presentation" },
-            { "time": "8:00 PM", "event": "Dinner & Another Event" },
-            { "time": "11:45 PM", "event": "T-Shirts!" },
+            { "time": "8:00 PM", "event": "Dinner & Another Event", "reactIcon": <FaPizzaSlice /> },
+            { "time": "11:45 PM", "event": "T-Shirts!", "reactIcon": <FaTshirt /> },
         ],
     },
 
     {
         "day": "Sunday",
         "times": [
-            { "time": "8:00 AM", "event": "Breakfast" },
+            { "time": "8:00 AM", "event": "Breakfast", "reactIcon": <MdFreeBreakfast /> },
             { "time": "9:00 AM", "event": "RUMad Presentation" },
             { "time": "11:00 AM", "event": "Event" },
-            { "time": "12:00 PM", "event": "Lunch" },
-            { "time": "5:00 PM", "event": "Submissions Due" },
+            { "time": "12:00 PM", "event": "Lunch", "reactIcon": <MdLunchDining /> },
+            { "time": "5:00 PM", "event": "Submissions Due", "reactIcon": <BsFillExclamationTriangleFill /> },
             { "time": "5:30 PM", "event": "Submissions Due (Hard Deadline)" },
             { "time": "6:30 PM", "event": "Judging Begins" },
-            { "time": "7:00 PM", "event": "Dinner" },
+            { "time": "7:00 PM", "event": "Dinner", "reactIcon": <FaUtensils /> },
             { "time": "7:30 PM", "event": "Judging Ends" },
-            { "time": "8:00 PM", "event": "Closing Ceremony" },
+            { "time": "8:00 PM", "event": "Closing Ceremony", "reactIcon": <MdCelebration /> },
             // { "time": "9:00 PM", "event": "Venue closes" },
         ],
     }
 ];
 
-interface DayInfo {
-    day: string,
-    times: { time: string, event: string }[]
+function Fox() {
+    return (
+        <div className="absolute z-10
+        w-[12rem] sm:w-[14rem] md:w-[17rem] lg:w-[24rem]
+        top-10 lg:-top-24
+        right-0
+        md:-top-10 md:-right-10 lg:right-0
+        floating">
+            <img src={fox}
+                alt="Fox" />
+        </div>
+    );
 }
 
 function ScheduleOfTheDay(props: { dayInfo: DayInfo }) {
@@ -45,7 +63,7 @@ function ScheduleOfTheDay(props: { dayInfo: DayInfo }) {
 
     return (
         <div className="flex flex-col w-full my-5">
-            <div className="text-5xl w-full text-center mb-4 font-semibold glow-subtitles text-textSubtitle">{dayInfo.day}</div>
+            <div className="text-5xl md:text-7xl w-full text-center mb-4 font-semibold glow-subtitles text-textSubtitle">{dayInfo.day}</div>
 
             <div className="w-full">
                 {times.map((timeInfo, index) => (
@@ -53,7 +71,12 @@ function ScheduleOfTheDay(props: { dayInfo: DayInfo }) {
                         key={`${day}-${index}`}
                     >
                         <div className="w-1/2 h-fit text-right pr-5">{timeInfo.time}</div>
-                        <div className="w-1/2">{timeInfo.event}</div>
+                        <div className="w-1/2">
+                            {timeInfo.event}
+                            &nbsp;&nbsp;
+                            <span className="inline-block">{timeInfo.reactIcon !== null && timeInfo.reactIcon}</span >
+                        </div>
+
                     </div>
                 ))}
             </div>
@@ -64,15 +87,13 @@ function ScheduleOfTheDay(props: { dayInfo: DayInfo }) {
 }
 
 function Schedule() {
-    // TOOD: ADD THE FOX ASSET
-    // TOOD: ADD EMOJIS
-    // TODO INCREASE FONT SIZE WHEN WIDTH INCREASES
-    // TOOD: FIX SCHEDULE SCROLL BUTTON
 
     return (
-        <div className="w-full flex justify-center px-4 my-14">
+        <div className="w-full flex justify-center px-4 my-24 relative"
+            id="Schedule">
+            <Fox />
             <div className="w-full max-w-7xl h-fit flex flex-col items-center">
-                <div className="text-7xl text-text glow-subtitles font-semibold">Schedule</div>
+                <div className="text-7xl text-text glow-subtitles font-semibold z-30">Schedule</div>
 
                 <div className="transparent-black-background w-full text-text rounded-3xl mt-10 flex flex-col
                                 md:flex-row">
