@@ -52,7 +52,7 @@
     },
     "scripts": {
         "tailwind-watch": "npx tailwindcss -i ./src/index.css -o ./public/tailwind-output.css --watch",
-        "start": "npm run tailwind-watch & env-cmd development react-scripts start",
+        "start": "env-cmd development react-scripts start",
         "build-dev": "env-cmd build-dev react-scripts build",
         "build-prod": "env-cmd build-prod react-scripts build",
         "test": "react-scripts test",
