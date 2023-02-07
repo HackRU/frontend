@@ -74,7 +74,11 @@ function ScheduleOfTheDay(props: { dayInfo: DayInfo }) {
                         <div className="w-1/2">
                             {timeInfo.event}
                             &nbsp;&nbsp;
-                            <span className="inline-block">{timeInfo.reactIcon !== null && timeInfo.reactIcon}</span >
+                            {timeInfo.reactIcon &&
+                                <span className="inline-block relative w-4">
+                                    <div className="absolute -top-4">{timeInfo.reactIcon}</div >
+                                </span >
+                            }
                         </div>
 
                     </div>
