@@ -64,7 +64,6 @@ function ScheduleOfTheDay(props: { dayInfo: DayInfo }) {
     return (
         <div className="flex flex-col w-full my-5">
             <div className="text-5xl md:text-7xl w-full text-center mb-4 font-semibold glow-subtitles text-textSubtitle">{dayInfo.day}</div>
-
             <div className="w-full">
                 {times.map((timeInfo, index) => (
                     <div className="flex flex-row w-full text-xl font-semibold my-2 md:my-5 md:px-3"
@@ -91,9 +90,8 @@ function ScheduleOfTheDay(props: { dayInfo: DayInfo }) {
 }
 
 function Schedule() {
-
     return (
-        <div className="w-full flex justify-center px-4 my-24 relative"
+        <div className="w-full flex justify-center px-4 mb-32 mt-40 relative"
             id="Schedule">
             <Fox />
             <div className="w-full max-w-7xl h-fit flex flex-col items-center">
