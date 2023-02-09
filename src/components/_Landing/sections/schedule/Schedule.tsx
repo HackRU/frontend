@@ -91,7 +91,7 @@ function ScheduleOfTheDay(props: { dayInfo: DayInfo }) {
 
 function Schedule() {
     return (
-        <div className="w-full flex justify-center px-4 mb-32 mt-40 relative"
+        <div className="w-full flex justify-center px-4 mb-20 mt-40 sm:mt-24 md:mt-40 relative"
             id="Schedule">
             <Fox />
             <div className="w-full max-w-7xl h-fit flex flex-col items-center">
