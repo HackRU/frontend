@@ -66,11 +66,11 @@ function ScheduleOfTheDay(props: { dayInfo: DayInfo }) {
             <div className="text-5xl md:text-7xl w-full text-center mb-4 font-semibold glow-subtitles text-textSubtitle">{dayInfo.day}</div>
             <div className="w-full">
                 {times.map((timeInfo, index) => (
-                    <div className="flex flex-row w-full text-xl font-semibold my-2 md:my-5 md:px-3"
+                    <div className="flex flex-row w-full text-xl font-semibold my-2 md:my-5 md:px-3 pr-4"
                         key={`${day}-${index}`}
                     >
-                        <div className="w-1/2 h-fit text-right pr-5">{timeInfo.time}</div>
-                        <div className="w-1/2">
+                        <div className="w-2/5 h-fit text-right pr-5">{timeInfo.time}</div>
+                        <div className="w-3/5">
                             {timeInfo.event}
                             &nbsp;&nbsp;
                             {timeInfo.reactIcon &&
