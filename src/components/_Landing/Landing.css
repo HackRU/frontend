@@ -10,6 +10,10 @@
   box-shadow:1px 1px 6px #fff;
 }
 
+.glow-subtitle-color {
+  box-shadow: 1px 1px 6px #4bbede;
+}
+
 .glow-subtitles {
   text-shadow:1px 1px 20px #4bbede;
 }

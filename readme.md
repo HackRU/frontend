@@ -18,7 +18,7 @@ TODO: create wiki pages with resources for learning web development in general, 
 
 To get started with installing the repo, you should [install a recent verison of npm and node.js](https://nodejs.org/en/). NPM is what we use to install and manage the dependencies for the frontend repository. Make sure it's installed correctly with `npm -v`.
 
-Next clone the frontend git repository somewhere on your computer, and navigate to it with a terminal session. Use the command `npm install` to pull down the resources needed to build and run the project. Once this completes, you're off to the races: use `npm run start` to launch the development web server. It should give you a link to open in your browser, where you should see your development copy of the HackRU website!
+Next clone the frontend git repository somewhere on your computer, and navigate to it with a terminal session. Use the command `npm install` to pull down the resources needed to build and run the project. Once this completes, you're off to the races: use `npm run start` and `npm run tailwind-watch` to launch the development web server. It should give you a link to open in your browser, where you should see your development copy of the HackRU website!
 
 If any of the steps above have an error, **please ask for help!** We're always ready to help out, and an error probably means the next step is going to wrong in a bizarre fashion.
 
@@ -54,5 +54,5 @@ In case something goes wrong, or in case of a fire, or in case you feel overwhel
 4. After it's passed, we'll all sit down and discuss the reason for what happened. Huge breaks and long error logs can be the result of innocent mistakes or even non-mistakes that have been handled a specific way by the library/framework/language in use. We will all benefit from learning what happened and from implementing a procedure to prevent it from happening again. A good principle is to review the documentation given and to also write some of your own.
 5. Remember that communication is key, and that we are all very appreciative of your efforts and contributions. If you need to stop working on HackRU, we will understand and adapt as necessary. We just ask that you be courteous and tell of us any and all issues/questions that you have."
 
-The web team has cooled off a bit in the time since (less taking-down-production or critical bugs) but this is still very important. HackRU should not come before school, or work if it's applicable. It's ok for this not to be your first, second, third, whatever priority. The most important thing is communication: don't over-commit on what you can do, but also don't reach out to ask for help. 
+The web team has cooled off a bit in the time since (less taking-down-production or critical bugs) but this is still very important. HackRU should not come before school, or work if it's applicable. It's ok for this not to be your first, second, third, whatever priority. The most important thing is communication: don't over-commit on what you can do, but also don't reach out to ask for help.
 
