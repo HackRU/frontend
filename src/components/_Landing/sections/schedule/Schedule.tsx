@@ -100,7 +100,7 @@ function Schedule() {
                 <div className="transparent-black-background w-full text-text rounded-3xl mt-10
                                 flex flex-col items-center md:flex-row md:items-start relative">
                     <ScheduleOfTheDay dayInfo={schedule["Saturday"]} />
-                    <div className="w-20 h-2 bg-text md:invisible md:absolute" />
+                    <div className="w-20 h-2 bg-text md:invisible md:absolute glow-subtitle-color rounded-sm" />
                     <ScheduleOfTheDay dayInfo={schedule["Sunday"]} />
                 </div>
             </div>
