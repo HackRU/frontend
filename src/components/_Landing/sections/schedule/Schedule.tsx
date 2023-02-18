@@ -9,8 +9,8 @@ interface DayInfo {
     times: { time: string, event: string, reactIcon?: JSX.Element }[]
 }
 
-const schedule: DayInfo[] = [
-    {
+const schedule: { [day: string]: DayInfo } = {
+    "Saturday": {
         "day": "Saturday",
         "times": [
             { "time": "2:00 PM", "event": "Check-in starts" },
@@ -25,7 +25,7 @@ const schedule: DayInfo[] = [
         ],
     },
 
-    {
+    "Sunday": {
         "day": "Sunday",
         "times": [
             { "time": "8:00 AM", "event": "Breakfast", "reactIcon": <MdFreeBreakfast /> },
@@ -41,7 +41,7 @@ const schedule: DayInfo[] = [
             // { "time": "9:00 PM", "event": "Venue closes" },
         ],
     }
-];
+};
 
 function Fox() {
     return (
@@ -66,10 +66,10 @@ function ScheduleOfTheDay(props: { dayInfo: DayInfo }) {
             <div className="text-5xl md:text-7xl w-full text-center mb-4 font-semibold glow-subtitles text-textSubtitle">{dayInfo.day}</div>
             <div className="w-full">
                 {times.map((timeInfo, index) => (
-                    <div className="flex flex-row w-full text-xl font-semibold my-2 md:my-5 md:px-3 pr-4"
+                    <div className="flex flex-row w-full text-xl my-2 md:my-5 md:px-3 pr-4"
                         key={`${day}-${index}`}
                     >
-                        <div className="w-2/5 h-fit text-right pr-5">{timeInfo.time}</div>
+                        <div className="w-2/5 h-fit text-right pr-2 font-black">{timeInfo.time}</div>
                         <div className="w-3/5">
                             {timeInfo.event}
                             &nbsp;&nbsp;
@@ -97,14 +97,11 @@ function Schedule() {
             <div className="w-full max-w-7xl h-fit flex flex-col items-center">
                 <div className="text-7xl text-text glow-subtitles font-semibold z-30">Schedule</div>
 
-                <div className="transparent-black-background w-full text-text rounded-3xl mt-10 flex flex-col
-                                md:flex-row">
-                    {schedule.map((dayInfo, index) => (
-                        <ScheduleOfTheDay
-                            dayInfo={dayInfo}
-                            key={index}
-                        />
-                    ))}
+                <div className="transparent-black-background w-full text-text rounded-3xl mt-10
+                                flex flex-col items-center md:flex-row md:items-start relative">
+                    <ScheduleOfTheDay dayInfo={schedule["Saturday"]} />
+                    <div className="w-20 h-2 bg-text md:invisible md:absolute" />
+                    <ScheduleOfTheDay dayInfo={schedule["Sunday"]} />
                 </div>
             </div>
         </div>
