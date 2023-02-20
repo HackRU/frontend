@@ -56,8 +56,8 @@ function CenterContent({ isLoggedIn }: { isLoggedIn: boolean }) {
                     isLoggedIn={isLoggedIn}
                     registrationOpen={false}
                 />
-            </div>
-        </div>
+            </div >
+        </div >
     );
 }
 
