@@ -2,8 +2,8 @@ import React from "react";
 import { IoMoon } from "react-icons/io5";
 import { Link } from "react-router-dom";
 
-function LoginAndRegister(props: { isLoggedIn: boolean }) {
-    const { isLoggedIn } = props;
+function LoginAndRegister(props: { isLoggedIn: boolean, registrationOpen: false, }) {
+    const { isLoggedIn, registrationOpen } = props;
     return (
         <div className="z-10 p-10 rounded-3xl flex flex-row justify-center space-x-10 sm:space-x-24">
             <div className="transparent-black-background font-extrabold
@@ -12,8 +12,9 @@ function LoginAndRegister(props: { isLoggedIn: boolean }) {
                 {isLoggedIn && <Link to="/login">Dashboard</Link>}
             </div>
             <div className="transparent-black-background font-extrabold
-                    w-32 h-16 rounded-2xl text-text glow-subtitles flex items-center justify-center">
-                {!isLoggedIn && <Link to="/signup">Sign Up</Link>}
+                    w-fit p-4 h-16 rounded-2xl text-text glow-subtitles flex items-center justify-center">
+                {!isLoggedIn && registrationOpen && <Link to="/signup">Sign Up</Link>}
+                {!isLoggedIn && !registrationOpen && <span>Registration Closed</span>}
                 {isLoggedIn && <Link to="/logout">Sign out</Link>}
             </div>
         </div>
@@ -51,7 +52,10 @@ function CenterContent({ isLoggedIn }: { isLoggedIn: boolean }) {
                     md:items-start relative">
             <div className="flex flex-col space-y-1">
                 <HeroTitle />
-                <LoginAndRegister isLoggedIn={isLoggedIn} />
+                <LoginAndRegister
+                    isLoggedIn={isLoggedIn}
+                    registrationOpen={false}
+                />
             </div>
         </div>
     );
