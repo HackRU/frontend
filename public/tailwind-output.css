@@ -905,6 +905,12 @@ video {
   width: 8rem;
 }
 
+.w-fit {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
 .w-56 {
   width: 14rem;
 }
@@ -943,12 +949,6 @@ video {
 
 .w-64 {
   width: 16rem;
-}
-
-.w-fit {
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
 }
 
 .max-w-lg {
