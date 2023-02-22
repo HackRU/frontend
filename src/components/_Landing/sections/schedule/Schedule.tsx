@@ -106,5 +106,4 @@ function Schedule() {
         </div>
     );
 }
-
 export default Schedule;
