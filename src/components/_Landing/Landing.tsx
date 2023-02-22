@@ -5,8 +5,8 @@ import Footer from "./sections/footer/Footer";
 import About from "./sections/about/about";
 import FAQ from "./sections/faq/FAQ";
 import Hero from "./sections/hero/hero";
-import Schedule from "./sections/schedule/Schedule";
 import { randomizeAnimationDurations } from "./utilities";
+import Schedule from "./sections/schedule/Schedule";
 
 function LandingPage(props: any) {
 
