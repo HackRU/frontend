@@ -1537,6 +1537,7 @@ video {
 
   .sm-about\:order-2 {
     order: 2;
+  }
   .xs-about\:order-3 {
     order: 3;
   }
@@ -1555,6 +1556,7 @@ video {
 
   .sm-about\:order-3 {
     order: 3;
+  }
   .sm-about\:order-1 {
     order: 1;
   }
@@ -1793,6 +1795,7 @@ video {
 
   .lg-about\:order-2 {
     order: 2;
+  }
   .lg-about\:order-4 {
     order: 4;
 
@@ -1803,6 +1806,7 @@ video {
   }
   .lg-about\:order-4 {
     order: 4;
+  }
   .lg-about\:order-1 {
     order: 1;
   }
