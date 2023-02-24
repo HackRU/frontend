@@ -1,5 +1,7 @@
 import React from "react";
-import rutgersLogo from "../../assets/rutgers.png";
+import echo_3d from "../../assets/sponsors/echo_3d.png";
+import nj_transit from "../../assets/sponsors/nj_transit.png";
+import merck from "../../assets/sponsors/merck.png";
 import pig from "../../assets/sammiPig.png";
 import cloud3 from "../../assets/clouds/cloud3.svg";
 import cloud2 from "../../assets/clouds/cloud2.svg";
@@ -39,26 +41,18 @@ function Sponsors() {
           lg:w-144 lg:left-[-20rem]
           cloud"/>
 
-                <div className="w-full py-12 px-5 transparent-black-background mt-10 rounded-lg flex flex-row flex-wrap justify-center z-20 relative">
-                    <img src={rutgersLogo}
-                        alt="Rutgers Logo"
-                        className="max-w-xs md:max-w-md" />
-                    {/* <img src={rutgersLogo2} alt="Rutgers Logo" className="max-w-xl" /> */}
-                    <img src={rutgersLogo}
-                        alt="Rutgers Logo"
-                        className="max-w-xs md:max-w-md" />
-                    <img src={rutgersLogo}
-                        alt="Rutgers Logo"
-                        className="max-w-xs md:max-w-md" />
-                    <img src={rutgersLogo}
-                        alt="Rutgers Logo"
-                        className="max-w-xs md:max-w-md" />
-                    <img src={rutgersLogo}
-                        alt="Rutgers Logo"
-                        className="max-w-xs md:max-w-md" />
-                    <img src={rutgersLogo}
-                        alt="Rutgers Logo"
-                        className="max-w-xs md:max-w-md" />
+                <div className="w-full py-12 px-5
+                                transparent-black-background mt-10 rounded-lg flex flex-row
+                                flex-wrap justify-center items-center z-20 relative">
+                    <img src={echo_3d}
+                        alt="Echo 3D"
+                        className="w-[20rem] h-[4rem] sm:w-[24rem] sm:h-[5rem] md:w-[35rem] md:h-auto m-10" />
+                    <img src={nj_transit}
+                        alt="NJ Transit"
+                        className="w-44 h-auto m-10" />
+                    <img src={merck}
+                        alt="Merck"
+                        className="m-10 -mt-5" />
                 </div>
             </div>
         </div>
