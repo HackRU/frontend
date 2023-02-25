@@ -18,10 +18,10 @@ const schedule: { [day: string]: DayInfo } = {
             { "time": "4:00 PM", "event": "Team Building Event" },
             { "time": "4:00 PM", "event": "Hacking Starts", "reactIcon": <FaHourglassStart /> },
             { "time": "5:00 PM", "event": "NJ Transit Tech Talk", "reactIcon": <MdOutlineDirectionsTransitFilled /> },
-            { "time": "6:00 PM", "event": "Intro to Ethical Technology and React by EthiTech" },
-            { "time": "7:00 PM", "event": "Building Your First MERN Stack App by WiCS" },
+            { "time": "6:00 PM", "event": "\"Intro to Ethical Technology and React\" by EthiTech" },
+            { "time": "7:00 PM", "event": "\"Building Your First MERN Stack App\" by WiCS" },
             { "time": "8:00 PM", "event": "Dinner & Another Event", "reactIcon": <FaPizzaSlice /> },
-            { "time": "11:45 PM", "event": "T-Shirts!", "reactIcon": <FaTshirt /> },
+            { "time": "11:45 PM", "event": "Midnight Surprise" },
         ],
     },
 
