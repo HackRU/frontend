@@ -70,6 +70,11 @@ const applicationBody = (status, onComing, onNotComing, travelling_from) => {
             <h1> Delayed Entry </h1>
             <p> Your application has been placed on the delayed entry list. If there is space on the day of the event, you may check in. </p>
         </div>);
+    case "checked_in":
+        return (<div>
+            <h1> Checked In </h1>
+            <p> You're now in HackRu</p>
+        </div>);
     // TODO: Before day-of, add checked_in
     default:
         return (<div>

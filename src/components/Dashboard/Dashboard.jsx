@@ -142,9 +142,7 @@ class Dashboard extends Component {
         // boolean to show the other stuff
         let SHOW_FLAG =
             defaults.dayof &&
-            user["check-in-after"] &&
-            user["check-in"] &&
-            user["registration_status"] === "confirmed";
+            user["registration_status"] == "checked-in" || user["registration_status"] == "confirmed";
         // let mobile = this.props.isMobile;
         let rolesString = "";
         Object.keys(user.role).forEach((key) => {
