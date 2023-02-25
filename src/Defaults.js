@@ -45,7 +45,7 @@ const defaults = {
     },
     mailing:
         "https://hackru.us3.list-manage.com/subscribe?u=457c42db47ebf530a0fc733fb&id=fb01885829",
-    dayof: false,
+    dayof: true,
     autocheckin: false, //USE THIS FIELD TO AUTO CHECK-IN USERS!
 };
 
