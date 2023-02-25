@@ -7,6 +7,8 @@ import FAQ from "./sections/faq/FAQ";
 import Hero from "./sections/hero/hero";
 import { randomizeAnimationDurations } from "./utilities";
 import Schedule from "./sections/schedule/Schedule";
+import Sponsors from "./sections/sponsors/Sponsors";
+
 
 function LandingPage(props: any) {
 
@@ -20,8 +22,8 @@ function LandingPage(props: any) {
             <Hero profile={props.profile} />
             <About />
             <Schedule />
+            <Sponsors />
             <FAQ />
-            {/* <Sponsors /> */}
             <Footer />
         </div>
     );
