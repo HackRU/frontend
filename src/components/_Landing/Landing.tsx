@@ -9,6 +9,7 @@ import { randomizeAnimationDurations } from "./utilities";
 import Schedule from "./sections/schedule/Schedule";
 import Sponsors from "./sections/sponsors/Sponsors";
 
+
 function LandingPage(props: any) {
 
     useEffect(() => {
