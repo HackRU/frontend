@@ -1,6 +1,6 @@
 import React from "react";
 import { BsFillExclamationTriangleFill } from "react-icons/bs";
-import { FaHourglassStart, FaPizzaSlice, FaTshirt, FaUtensils } from "react-icons/fa";
+import { FaHourglassStart, FaPizzaSlice, FaUtensils } from "react-icons/fa";
 import { MdCelebration, MdFreeBreakfast, MdLunchDining, MdOutlineDirectionsTransitFilled } from "react-icons/md";
 import fox from "../../assets/kimFox2.png";
 
