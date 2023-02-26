@@ -30,7 +30,7 @@ const schedule: { [day: string]: DayInfo } = {
         "day": "Sunday",
         "times": [
             { "time": "8:00 AM", "event": "Breakfast", "reactIcon": <MdFreeBreakfast /> },
-            { "time": "9:00 AM", "event": "RUMad Presentation" },
+            { "time": "9:00 AM", "event": "\"Basics in Backend App Development\" by RUMAD" },
             // { "time": "11:00 AM", "event": "Event" },
             { "time": "12:00 PM", "event": "Lunch", "reactIcon": <MdLunchDining /> },
             { "time": "5:00 PM", "event": "Submissions Due", "reactIcon": <BsFillExclamationTriangleFill /> },
