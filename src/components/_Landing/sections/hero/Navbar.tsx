@@ -68,15 +68,16 @@ function Navbar() {
     const sections = ["Home", "About", "Schedule", "FAQ"];
 
     return (
-        <div className="flex justify-end w-[100%]">
+        <div className="fixed z-40  w-[100%] ">
             <CollapsedMenu />
             <div
                 className={`absolute top-0 font-light text-text
-        hidden md:flex space-x-12 text-lg pt-8 right-12 z-40`}>
+        hidden md:flex s text-lg pt-8 z-40 
+        transparent-black-background w-full justify-end`}>
                 {
                     sections.map((section) => {
                         return (
-                            <button className="glow-center font-medium uppercase"
+                            <button className="glow-center font-medium uppercase mr-5"
                                 onClick={() => scrollToSectionName(section)}
                                 key={section}>
                                 {section}
@@ -85,6 +86,7 @@ function Navbar() {
                     })
                 }
             </div>
+
         </div>
     );
 }
