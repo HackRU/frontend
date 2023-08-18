@@ -23,7 +23,7 @@ function MenuItem(props: { sectionName: string }) {
 
 function CollapsedMenu() {
     return (
-        <div className="text-right bg-cyan-100: z-40 -mr-8 md:hidden">
+        <div className="text-right bg-cyan-100: z-40  md:hidden">
             <Menu as="div"
                 className="relative inline-block text-left">
                 <div>
@@ -50,7 +50,7 @@ function CollapsedMenu() {
                             <MenuItem sectionName="Schedule" />
                             <MenuItem sectionName="FAQ" />
                             {/* <MenuItem sectionName="Sponsors" /> */}
-                            <MenuItem sectionName="Contact" />
+                            {/* <MenuItem sectionName="Contact" /> */}
                         </div>
                     </Menu.Items>
                 </Transition>
@@ -68,12 +68,10 @@ function Navbar() {
     const sections = ["Home", "About", "Schedule", "FAQ"];
 
     return (
-        <div className="fixed z-40  w-[100%] ">
+        <div className="flex fixed justify-end z-40 w-[100%]">
             <CollapsedMenu />
             <div
-                className={`absolute top-0 font-light text-text
-        hidden md:flex s text-lg pt-8 z-40 
-        transparent-black-background w-full justify-end`}>
+                className={"absolute top-0 font-light text-text hidden md:flex s text-lg pt-8 z-40 bg-gradient-to-b from-black  w-[100%] justify-end"}>
                 {
                     sections.map((section) => {
                         return (
