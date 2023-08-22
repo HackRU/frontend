@@ -31,19 +31,14 @@ function Footer() {
                     style={{ display: "inline-block", marginRight: "1vh" }}
                     rel="noopener noreferrer"><FaInstagram size="1.5em" />
                 </a>
-                <a href="https://medium.com/the-hackru"
-                    className="social-links"
-                    target="_blank"
-                    style={{ display: "inline-block", marginRight: "1vh" }}
-                    rel="noopener noreferrer"><FaMediumM size="1.5em" />
-                </a>
                 <a href="https://twitter.com/theHackRU"
                     className="social-links"
                     target="_blank"
-                    style={{ display: "inline-block", marginRight: "1vh" }}
+                    style={{ display: "inline-block", marginRight: "" }}
                     rel="noopener noreferrer"><FaTwitter size="1.5em" />
                 </a>
             </div>
+            <a className="text-subtitles glow-subtitles font-semibold" href="https://linktr.ee/thehackru">https://linktr.ee/thehackru</a>
             <div className="text-subtitles glow-subtitles font-semibold">Ⓒ HackRU 2023</div>
         </div>
     );
