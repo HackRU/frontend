@@ -26,7 +26,7 @@ function Hero(props: { profile: Profile }) {
     const { isLoggedIn } = props.profile;
 
     return (
-        <div className="w-[100%] h-[100vh] px-5 pt-4
+        <div className="w-[100%] h-[100vh] px-5
                         flex text-white space-y-3 overflow-hidden
                         flex-col items-center text-center justify-start md:justify-start relative
                         md:min-h-[1060px] min-h-[940px]
