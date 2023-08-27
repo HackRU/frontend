@@ -1,14 +1,14 @@
 import React, { useState } from "react";
- import { Container, Grid, createMuiTheme, ThemeProvider} from "@material-ui/core";
+import { Container, Grid, createMuiTheme, ThemeProvider} from "@material-ui/core";
 //import { Container, Grid } from "@material-ui/core";
 import Alert from "@material-ui/lab/Alert";
 import { Link } from "react-router-dom";
 import { Redirect } from "react-router-dom";
 import AuthForm from "../library/AuthForm";
 import ColorButton from "../library/ColorButton";
- import WhiteTextField from "../library/WhiteTextField";
+import WhiteTextField from "../library/WhiteTextField";
 import PropTypes from "prop-types";
- import { theme } from "../Defaults";
+import { theme } from "../Defaults";
 
 /**
  * Forgot my password application for "/forgot"
