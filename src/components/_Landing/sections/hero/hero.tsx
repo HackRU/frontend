@@ -3,11 +3,11 @@ import React from "react";
 import MainHeroContent from "./MainHeroContent";
 import "./hero.css";
 import Navbar from "./Navbar";
-import rabbit from "../../assets/suminRabbit2.png";
-import cloud from "../../assets/clouds/cloud1.svg";
-import cloud2 from "../../assets/clouds/cloud2.svg";
-import cloud3 from "../../assets/clouds/cloud3.svg";
-import cloud4 from "../../assets/clouds/cloud4.svg";
+import rabbit from "../../assets/whale.png";
+import cloud from "../../assets/clouds/cloud1.png";
+import cloud2 from "../../assets/clouds/cloud2.png";
+import cloud3 from "../../assets/clouds/cloud3.png";
+import cloud4 from "../../assets/clouds/cloud4.png";
 import { FaArrowDown } from "react-icons/fa";
 import { scrollToSectionName, useUserScrolled } from "./utilities";
 import { Profile } from "../../../Profile";
@@ -33,7 +33,7 @@ function Hero(props: { profile: Profile }) {
                         "
             style={{
                 minWidth: "372px",
-                maxHeight: "1500px"
+                maxHeight: "100px"
             }}
         >
             <Navbar />

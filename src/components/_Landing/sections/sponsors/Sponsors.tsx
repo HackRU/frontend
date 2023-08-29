@@ -3,8 +3,8 @@ import echo_3d from "../../assets/sponsors/echo_3d.png";
 import nj_transit from "../../assets/sponsors/nj_transit.png";
 import merck from "../../assets/sponsors/merck.png";
 import pig from "../../assets/sammiPig.png";
-import cloud3 from "../../assets/clouds/cloud3.svg";
-import cloud2 from "../../assets/clouds/cloud2.svg";
+import cloud3 from "../../assets/clouds/cloud3.png";
+import cloud2 from "../../assets/clouds/cloud2.png";
 
 function Sponsors() {
     return (

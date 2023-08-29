@@ -2,8 +2,8 @@ import React from "react";
 import QuestionContainer from "./QuestionContainer";
 import catPATH from "../../assets/judyCat.png";
 import dogPATH from "../../assets/judyDog4.png";
-import cloud from "../../assets/clouds/cloud1.svg";
-import cloud3 from "../../assets/clouds/cloud3.svg";
+import cloud from "../../assets/clouds/cloud1.png";
+import cloud3 from "../../assets/clouds/cloud3.png";
 
 function FAQ() {
     return (

@@ -19,7 +19,7 @@ function placeStarRandomly(){
 function animateStars() {
     const stars = document.querySelectorAll(".star");
     Array.prototype.forEach.call(stars, function(el,){
-        TweenMax.to(el, Math.random() * 0.4 + 0.4, {opacity: Math.random(), onComplete: animateStars});
+        TweenMax.to(el, Math.random() * 0.5 + 0.5, {opacity: Math.random(), onComplete: animateStars});
     });
 }
 
