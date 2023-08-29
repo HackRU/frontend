@@ -1,7 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { defaults } from "../../../../Defaults";
 
-function LoginAndRegister(props: { isLoggedIn: boolean, registrationOpen: false, }) {
+function LoginAndRegister(props: { isLoggedIn: boolean, registrationOpen: boolean, }) {
     const { isLoggedIn, registrationOpen } = props;
     return (
         <div className="z-10 p-10 rounded-3xl flex flex-row justify-center space-x-10 sm:space-x-24">
@@ -49,7 +50,7 @@ function CenterContent({ isLoggedIn }: { isLoggedIn: boolean }) {
                 <HeroTitle />
                 <LoginAndRegister
                     isLoggedIn={isLoggedIn}
-                    registrationOpen={false}
+                    registrationOpen={defaults.registrationOpen}
                 />
             </div >
         </div >
