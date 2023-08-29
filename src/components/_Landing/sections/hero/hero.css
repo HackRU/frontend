@@ -19,15 +19,16 @@
 
 @keyframes animateCloud {
     0% {
-        margin-left: -34rem;
+        transform: translateX(-34rem);
     }
     100% {
-        margin-left: 100%;
+        transform: translateX(100vw);
     }
 }
 
 /* ANIMATIONS */
 
 .cloud {
+    will-change: transform;
 	animation: animateCloud 400s linear infinite;
 }
