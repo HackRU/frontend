@@ -1,4 +1,3 @@
-
 import { FaFacebookF } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
@@ -39,7 +38,8 @@ function Footer() {
                     </a>
                 </div>
                 <div>
-                    <a className="text-subtitles  font-semibold pl-2" href="https://linktr.ee/thehackru">linktr.ee/thehackru</a>
+                    <a className="text-subtitles  font-semibold pl-2"
+                        href="https://linktr.ee/thehackru">linktr.ee/thehackru</a>
 
                 </div>
             </div>

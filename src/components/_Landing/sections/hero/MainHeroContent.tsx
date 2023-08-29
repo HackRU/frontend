@@ -1,5 +1,4 @@
 import React from "react";
-import { IoMoon } from "react-icons/io5";
 import { Link } from "react-router-dom";
 
 function LoginAndRegister(props: { isLoggedIn: boolean, registrationOpen: false, }) {
