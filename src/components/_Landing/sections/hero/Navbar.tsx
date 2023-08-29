@@ -3,6 +3,7 @@ import { MdOutlineMenu } from "react-icons/md";
 import { Menu, Transition } from "@headlessui/react";
 import { Fragment } from "react";
 import { scrollToSectionName } from "./utilities";
+import yellowHackRULogo from "../../assets/yellow_hackru.png";
 
 function MenuItem(props: { sectionName: string }) {
     const { sectionName } = props;
@@ -68,7 +69,8 @@ function Navbar() {
     const sections = ["Home", "About", "Schedule", "FAQ"];
 
     return (
-        <div className="flex fixed justify-end z-50 w-[100%]">
+        <div className="flex fixed justify-end z-40 w-[100%]">
+            <img src={yellowHackRULogo} alt="yellow hackru logo" className="w-24 absolute top-2 left-4 z-50" />
             <CollapsedMenu />
             <div
                 className="absolute top-0 font-light text-text hidden md:flex
