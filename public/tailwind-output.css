@@ -642,6 +642,10 @@ video {
   position: sticky;
 }
 
+.top-0 {
+  top: 0px;
+}
+
 .-left-48 {
   left: -12rem;
 }
@@ -668,10 +672,6 @@ video {
 
 .right-0 {
   right: 0px;
-}
-
-.top-0 {
-  top: 0px;
 }
 
 .bottom-\[20rem\] {
@@ -865,6 +865,10 @@ video {
   height: 100%;
 }
 
+.h-\[900vh\] {
+  height: 900vh;
+}
+
 .h-5 {
   height: 1.25rem;
 }
@@ -899,6 +903,10 @@ video {
 
 .w-full {
   width: 100%;
+}
+
+.w-\[100vw\] {
+  width: 100vw;
 }
 
 .w-\[24rem\] {

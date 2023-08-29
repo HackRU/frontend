@@ -31,10 +31,6 @@ function HeroTitle() {
                 <div className="w-full flex justify-center">
                     <div className="text-2xl font-extrabold md:text-4xl lg:text-4xl glow-subtitles text-text flex">
                         Hack All Knight &nbsp;
-                        <span className="relative mt-1 md:mt-0">
-                            <div className="glowing-moon-container" />
-                            <IoMoon className="rotate-[270deg]" />
-                        </span>
                     </div>
                 </div>
                 <div className="text-2xl font-extrabold md:text-4xl lg:text-4xl glow-subtitles text-textSubtitle mt-4 flex flex-col md:flex-row md:justify-center md:items-center">

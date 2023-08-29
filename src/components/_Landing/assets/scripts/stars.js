@@ -1,38 +1,29 @@
-
-
-// Twinkling Star Animation
-// https://codepen.io/cliffgurney/pen/GNpzdx
-//
+import { TweenMax } from "gsap/TweenMax";
 
 // Amount of stars
-// function createStars(i) {
-//     var i = i;
-//     while(i){
-//         drawStars();
-//         i-=1;
-//     }
-// }
-// // Create Stars
-// function drawStars(){
-//     var tmpStar = document.createElement("figure");
-//     tmpStar.className = "star";
-//     tmpStar.style.top = 100*Math.random()+"%";
-//     tmpStar.style.left = 100*Math.random()+"%";
-//     document.getElementById("sky").appendChild(tmpStar);
-// }
-// // Animate Stars
-// function selectStars() {
-//     stars = document.querySelectorAll(".star");
-//     console.log(stars);
-// }
-// function animateStars() {
-//     Array.prototype.forEach.call(stars, function(el, i){
-//         TweenMax.to(el, Math.random() * 0.4 + 0.4, {opacity: Math.random(), onComplete: animateStars});
-//     });
-// }
+function createStars(numberOfStars) {
+    for (let i = 0; i < numberOfStars; i++) {
+        placeStarRandomly();
+    }
+}
+// Create Stars
+function placeStarRandomly(){
+    const tmpStar = document.createElement("figure");
+    tmpStar.className = "star";
+    tmpStar.style.top = 100*Math.random()+"%";
+    tmpStar.style.left = 100*Math.random()+"%";
+    document.getElementById("starryBackground").appendChild(tmpStar);
+}
 
-// createStars(500);
-// selectStars();
-// animateStars();
+function animateStars() {
+    const stars = document.querySelectorAll(".star");
+    Array.prototype.forEach.call(stars, function(el,){
+        TweenMax.to(el, Math.random() * 0.4 + 0.4, {opacity: Math.random(), onComplete: animateStars});
+    });
+}
 
 
+export default function initStars(numberOfStars) {
+    createStars(numberOfStars);
+    animateStars();
+}
