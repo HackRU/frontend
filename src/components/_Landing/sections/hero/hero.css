@@ -8,7 +8,7 @@
     height: 0.2rem;
     border-radius: 50%;
     background-color: #d1e9ef;
-    box-shadow: 0 0 30px 10px #d1e9ef;
+    /* box-shadow: 0 0 30px 10px #d1e9ef; */
 }
 
 .navbar-button:hover {

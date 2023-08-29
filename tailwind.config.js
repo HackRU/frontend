@@ -16,8 +16,13 @@ module.exports = {
             colors: {
                 "mainBg": "#1f6aa0",
                 "endBg": "#0f3854",
-                "text": " #d1e9ef",
-                "textSubtitle": "#95dcf0"
+                "text": "#f1e192",
+                "textSubtitle": "#f1e192",
+
+                "f23-darkGreen": "#133d35",
+                "f23-mediumGreen": "#3e8169",
+                "f23-lightGreen": "#8db67e",
+                "f23-yellowGreen": "#f1e192"
             },
             fontSize: {
                 "10xl": "9rem",
