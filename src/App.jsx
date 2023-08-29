@@ -91,7 +91,7 @@ class App extends Component {
     }
 
     componentDidMount() {
-        initStars(100);
+        initStars(500);
     }
 
     /**
