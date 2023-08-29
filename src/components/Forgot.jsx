@@ -48,7 +48,7 @@ const ForgotPage = (props) => {
             setLoading(true);
             setErrors("");
             let email = document.getElementById("email").value;
-            let msg = await props.profile.Forgot(email)
+            let msg = await props.profile.Forgot(email);
             if (msg.error) {
                 setLoading(false);
                 setErrors(msg.error);

@@ -1,4 +1,4 @@
-import { ControlCameraSharp } from "@material-ui/icons";
+//import { ControlCameraSharp } from "@material-ui/icons";
 import { defaults } from "../Defaults";
 import PropTypes from "prop-types";
 
