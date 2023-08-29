@@ -21,6 +21,14 @@
   background-color: rgba(0, 0, 0, 0.4);
 }
 
+.star {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 2px;
+  background: white;
+}
+
 .floating {
   animation-name: floating;
 
