@@ -4,9 +4,9 @@
       position: absolute;
       width: 100px;
       height: 100px;
-      z-index: 100;
+      z-index: 1;
       opacity: 80%;
-      animation: rotateSun 15s infinite alternate ;
+      animation: rotateSun 15s infinite alternate;
 }
 
 @keyframes rotateSun {

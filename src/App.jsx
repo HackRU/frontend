@@ -21,7 +21,7 @@ import { Alert } from "@material-ui/lab"; // Alert messages
 import NavBar from "./NavBar";
 import { defaults } from "./Defaults"; // Get a handle to the default application settings
 import { Profile } from "./components/Profile"; // User profile storage
-import StarryBackground from "./components/_Landing/assets/scripts/StarryBackground";
+import initStars from "./components/_Landing/assets/scripts/stars";
 
 const updateStateOnURLChange =  (component) => {
     let previousUrl = "";
@@ -89,6 +89,11 @@ class App extends Component {
             }
         });
     }
+
+    componentDidMount() {
+        initStars(100);
+    }
+
     /**
      * Set the application magic link
      * @param {String} magic Magic link from lcs
@@ -239,8 +244,7 @@ class App extends Component {
         return (
             <BrowserRouter style={{ width: "100%" }}>
                 {/* BrowserRouter wil allow us to switch between the different pages in our SPA based on the URL routing */}
-                <div className="bg-gradient-to-b from-mainBg to-endBg relative">
-                    <StarryBackground />
+                <div className="bg-gradient-to-b from-mainBg to-endBg relative" id="starryBackground">
                     {/* Application alert messages go here */}
                     <Snackbar open={this.state.alertProps.open}
                         autoHideDuration={this.state.alertProps.duration}>
