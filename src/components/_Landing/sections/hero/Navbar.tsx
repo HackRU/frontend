@@ -68,7 +68,7 @@ function Navbar() {
     const sections = ["Home", "About", "Schedule", "FAQ"];
 
     return (
-        <div className="flex fixed justify-end z-40 w-[100%]">
+        <div className="flex fixed justify-end z-50 w-[100%]">
             <CollapsedMenu />
             <div
                 className="absolute top-0 font-light text-text hidden md:flex

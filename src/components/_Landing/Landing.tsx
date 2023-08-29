@@ -10,7 +10,6 @@ import Schedule from "./sections/schedule/Schedule";
 import Sponsors from "./sections/sponsors/Sponsors";
 import Sun from "./assets/sun/sun";
 
-
 function LandingPage(props: any) {
 
     useEffect(() => {
@@ -19,7 +18,8 @@ function LandingPage(props: any) {
     }, []);
 
     return (
-        <div className="w-full h-fit bg-gradient-to-b
+        <div
+            className="w-full h-fit bg-gradient-to-b
         from-f23-lightGreen via-f23-mediumGreen to-f23-darkGreen
         to-f23-">
             <Sun />
