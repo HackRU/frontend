@@ -3,6 +3,7 @@ import { MdOutlineMenu } from "react-icons/md";
 import { Menu, Transition } from "@headlessui/react";
 import { Fragment } from "react";
 import { scrollToSectionName } from "./utilities";
+import yellowHackRULogo from "../../assets/yellow_hackru.png";
 
 function MenuItem(props: { sectionName: string }) {
     const { sectionName } = props;
@@ -10,7 +11,7 @@ function MenuItem(props: { sectionName: string }) {
         <Menu.Item>
             {({ active }) => (
                 <button
-                    className={`${active ? "bg-blue-300 text-white" : "text-gray-900"}
+                    className={`${active ? "bg-f23-lightGreen text-white" : "text-gray-900"}
                     group flex w-full items-center rounded-md px-2 py-2 text-lg`}
                     onClick={() => scrollToSectionName(sectionName)}
                 >
@@ -23,7 +24,7 @@ function MenuItem(props: { sectionName: string }) {
 
 function CollapsedMenu() {
     return (
-        <div className="text-right bg-cyan-100: z-40  md:hidden">
+        <div className="text-right bg-f23-mediumGreen rounded-md z-40 md:hidden absolute right-4 top-4">
             <Menu as="div"
                 className="relative inline-block text-left">
                 <div>
@@ -68,10 +69,14 @@ function Navbar() {
     const sections = ["Home", "About", "Schedule", "FAQ"];
 
     return (
-        <div className="flex fixed justify-end z-40 w-[100%]">
+        <div className="flex md:fixed justify-end z-40 w-[100%]">
+            <img src={yellowHackRULogo}
+                alt="yellow hackru logo"
+                className="w-24 absolute top-2 left-4 z-50" />
             <CollapsedMenu />
             <div
-                className={"absolute top-0 font-light text-text hidden md:flex s text-lg pt-8 z-40 bg-gradient-to-b from-black  w-[100%] justify-end"}>
+                className="absolute top-0 font-light text-text hidden md:flex
+                text-lg pt-8 z-40 bg-gradient-to-b from-f23-lightGreen  w-[100%] justify-end">
                 {
                     sections.map((section) => {
                         return (
