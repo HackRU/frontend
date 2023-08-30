@@ -244,7 +244,8 @@ class App extends Component {
         return (
             <BrowserRouter style={{ width: "100%" }}>
                 {/* BrowserRouter wil allow us to switch between the different pages in our SPA based on the URL routing */}
-                <div className="bg-gradient-to-b from-mainBg to-endBg relative" id="starryBackground">
+                <div className="bg-gradient-to-b
+        from-f23-lightGreen via-f23-mediumGreen to-f23-darkGreen relative" id="starryBackground">
                     {/* Application alert messages go here */}
                     <Snackbar open={this.state.alertProps.open}
                         autoHideDuration={this.state.alertProps.duration}>

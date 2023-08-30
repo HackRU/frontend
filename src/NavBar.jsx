@@ -189,7 +189,7 @@ class NavBar extends Component {
                     open={this.state.open}
                     onClose={this.handleClose}
                 >
-                    
+
                     <MenuItem
                         onClick={this.handleClose}
                         style={{ color: "black" }}
@@ -275,8 +275,8 @@ class NavBar extends Component {
                     style={{
                         width: "100%",
                         zIndex: "20",
-                        backgroundColor: "#1f6aa0",
-                        
+                        backgroundColor: "#3e8169",
+
                         opacity: this.state.shouldRender | !onLanding,
                         pointerEvents: this.state.shouldRender | !onLanding ? "auto" : "none",
                         transition: !onLanding ? "" : "opacity 0.5s",

@@ -14,8 +14,8 @@ import { Profile } from "../../../Profile";
 
 function Rabbit() {
     return (
-        <div className="absolute z-10 w-[27rem] sm:w-128 bottom-[15rem]
-         -right-32 md:top-60 md:-right-10 lg:w-[45em] lg:-right-44 xl:w-[60rem] xl:top-[7rem] floating">
+        <div className="absolute z-10 w-[27rem] sm:w-128 bottom-[3rem]
+         -right-32 md:w-[40rem] md:top-[25rem] md:-right-22 lg:w-[45em] lg:-right-44 xl:w-[60rem] xl:top-[7rem] floating">
             <img src={rabbit}
                 alt="rabbit" />
         </div>
@@ -28,7 +28,7 @@ function Hero(props: { profile: Profile }) {
 
     return (
         <div className="w-[100%] h-[100vh] px-5
-                        flex text-white space-y-3
+                        flex text-white
                         flex-col items-center text-center justify-start md:justify-start relative
                         md:min-h-[1060px] min-h-[940px]
                         "
@@ -61,14 +61,14 @@ function Hero(props: { profile: Profile }) {
                 <img src={cloud2}
                     alt="cloud" />
             </div>
-
+            {/*
             <div className="absolute z-0 w-96 top-[10rem] left-[45rem]
        opacity-50 md:opacity-50 md:top-[30rem] md:left-[40rem]
        lg:top-[40rem] lg:left-[50rem]
        lg:w-144 cloud">
                 <img src={cloud3}
                     alt="cloud" />
-            </div>
+            </div> */}
 
             <div className="absolute z-0 w-96 top-[10rem] left-[-10rem]
        opacity-50 md:opacity-80 md:top-[30rem] md:left-[-10rem]

@@ -19,9 +19,7 @@ function LandingPage(props: any) {
 
     return (
         <div
-            className="w-full h-fit bg-gradient-to-b
-        from-f23-lightGreen via-f23-mediumGreen to-f23-darkGreen
-        to-f23-">
+            className="w-full h-fit">
             <Sun />
             <Hero profile={props.profile} />
             <About />
