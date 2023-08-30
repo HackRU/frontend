@@ -165,9 +165,6 @@ function HeaderTextAlignmentFunc(props: {
     }
 }
 
-
-
-
 function AboutContent() {
     const { mainComponent } = useAboutConfig();
     const {
@@ -196,16 +193,16 @@ function AboutContent() {
                     <Card backgroundColor={theme.splitCard[0]}>
                         <div style={{}}>
                             <h1 className="glow text-6xl text-text">
-                                What
+                                WHAT
                             </h1>
                             <p className="textStyle">
-                                HackRU is a 24-hour hackathon at Rutgers University. We welcome
-                                hundreds of students to join us in building awesome tech projects.
-                                Industry experts and mentors help foster an atmosphere of learning
-                                through tech-talks and one-on-one guidance. We encourage all
-                                students, no matter their experience level or educational
-                                background, to challenge themselves and expand their creative,
-                                technical, and collaboration skills at HackRU.
+                                HackRU is a <b>24-hour hackathon</b> at Rutgers University. We welcome
+                                <b> hundreds of students</b> to join us in building <b>awesome tech projects.
+                                    Industry experts</b> and <b>mentors</b> help foster an atmosphere of <b>learning </b>
+                                through <b>tech-talks</b> and <b>one-on-one guidance</b>. We encourage <b>all
+                                    students</b>, no matter their experience level or educational
+                                background, to <b>challenge themselves</b> and expand their creative,
+                                technical, and collaboration skills <b>at HackRU</b>.
                             </p>
                         </div>
                     </Card>
@@ -233,10 +230,17 @@ function AboutContent() {
                     <Card backgroundColor={theme.splitCard[0]}>
                         <div style={{}}>
                             <h1 className="glow text-6xl text-text">
-                                Where
+                                TRACKS
                             </h1>
                             <p className="textStyle">
-                                HackRU is at The Rutgers College Ave Student Center for Spring 2023!
+                                <b>Social Good</b>: Hacks that better the community. <br />
+                                <b>Health</b>: Hacks that improves the mind or body, aiding with health, wellness, and fitness. <br />
+                                <b>Education</b>: Hacks that focus on building an education community.<br />
+                                <b>Maverick</b>: Any other hack! The opportunities are limitless.
+                                <br />
+                                And more <b>sponsor prizes</b>!
+
+
                             </p>
                         </div>
                     </Card>
@@ -252,17 +256,36 @@ function AboutContent() {
                     <Card backgroundColor={theme.splitCard[0]}>
                         <div style={{}}>
                             <h1 className="glow text-6xl text-text">
-                                Join Us!
+                                JOIN US!
                             </h1>
+
+                            <p className="textStyle">
+                                <div>
+                                    <b>Apply</b> to attend our <b>Fall 2023 HackRU</b>! The event
+                                    will be on <b>October 7th-8th</b> at the <b>College Avenue
+                                        Student Center.</b>
+                                </div>
+                            </p>
+
+                            <div className="rectangle-container">
+                                <div className="rectangle"></div>
+                            </div>
+
                             <p className="textStyle">
                                 <div>
                                     Want to help? Sign up to{" "}
                                     <a className="underline"
-                                        href={defaults.volunteers.vol_url}>volunteer</a> or{" "}
+                                        href={defaults.volunteers.vol_url}>volunteer</a> and/or{" "}
                                     <a className="underline"
                                         href={defaults.volunteers.mentor_url}>mentor</a>!
+                                    To know when organizer applications open, subscribe to our newsletter!
                                 </div>
                             </p>
+
+                            <div className="rectangle-container">
+                                <div className="rectangle"></div>
+                            </div>
+
                             <p className="textStyle">
                                 <div>
                                     Want to receive updates? Subscribe{" "}
