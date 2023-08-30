@@ -35,7 +35,6 @@ function LandingPage(props: any) {
             <SectionTitle title="FAQ" />
             <FAQ />
 
-            <SectionTitle title="FOOTER" />
             <Footer />
         </div>
     );
