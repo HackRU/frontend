@@ -1,18 +1,19 @@
 import React from "react";
 import { IoMoon } from "react-icons/io5";
 import { Link } from "react-router-dom";
+import SocialMediaComponent from "../../global_components/SocialMediaComponent";
 
 function LoginAndRegister(props: { isLoggedIn: boolean, registrationOpen: false, }) {
     const { isLoggedIn, registrationOpen } = props;
     return (
-        <div className="z-10 p-10 rounded-3xl flex flex-row justify-center space-x-10 sm:space-x-24">
-            <div className="transparent-black-background font-extrabold
+        <div className="z-10 py-10 px-10 sm:px-20 rounded-3xl flex flex-row justify-center space-x-10 sm:space-x-10">
+            <div className="transparent-black-background font-extrabold grow
                     w-32 h-16 rounded-2xl text-text glow-subtitles flex items-center justify-center">
                 {!isLoggedIn && <Link to="/login">Log In</Link>}
                 {isLoggedIn && <Link to="/login">Dashboard</Link>}
             </div>
             <div className="transparent-black-background font-extrabold
-                    w-fit p-4 h-16 rounded-2xl text-text glow-subtitles flex items-center justify-center">
+                    w-fit p-4 h-16 rounded-2xl text-text glow-subtitles flex grow items-center justify-center">
                 {!isLoggedIn && registrationOpen && <Link to="/signup">Sign Up</Link>}
                 {!isLoggedIn && !registrationOpen && <span>Registration Closed</span>}
                 {isLoggedIn && <Link to="/logout">Sign out</Link>}
@@ -56,6 +57,7 @@ function CenterContent({ isLoggedIn }: { isLoggedIn: boolean }) {
                     isLoggedIn={isLoggedIn}
                     registrationOpen={false}
                 />
+                <SocialMediaComponent />
             </div >
         </div >
     );
