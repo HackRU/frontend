@@ -10,12 +10,9 @@ function Sponsors() {
         <div
             id="Sponsors"
             className="w-full h-fit
-                    p-24 relative overflow-hidden
+                    pb-24 relative overflow-hidden
                     flex flex-col items-center px-6">
             <div className="w-full max-w-6xl relative ">
-                <div className="text-text glow-subtitles font-semibold text-5xl sm:text-7xl text-left w-full">
-                    Sponsors
-                </div>
                 <img src={cloud3}
                     alt="cloud"
                     className="absolute z-0 w-96 top-[30rem] left-[30rem] opacity-50
@@ -32,7 +29,7 @@ function Sponsors() {
           cloud"/>
 
                 <div className="w-full py-12 px-5
-                                transparent-black-background mt-10 rounded-lg flex flex-row
+                                transparent-black-background rounded-lg flex flex-row
                                 flex-wrap justify-center items-center z-20 relative">
                     <img src={echo_3d}
                         alt="Echo 3D"

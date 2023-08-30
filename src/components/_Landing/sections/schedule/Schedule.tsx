@@ -77,15 +77,13 @@ function ScheduleOfTheDay(props: { dayInfo: DayInfo }) {
 
 function Schedule() {
     return (
-        <div className="w-full flex justify-center px-4 mb-20 mt-40 sm:mt-24 md:mt-40 relative"
+        <div className="w-full flex justify-center px-4 mb-20 relative"
             id="Schedule">
             <div className="w-full max-w-7xl h-fit flex flex-col items-center">
-                <div className="text-7xl text-text glow-subtitles font-semibold z-30">Schedule</div>
-
-                <div className="transparent-black-background w-full text-text rounded-3xl mt-10
+                <div className="transparent-black-background w-full text-text rounded-3xl
                                 flex flex-col items-center md:flex-row md:items-start relative">
                     <ScheduleOfTheDay dayInfo={schedule["Saturday"]} />
-                    <div className="w-20 h-2 bg-text md:invisible md:absolute glow-subtitle-color rounded-sm" />
+                    <div className="w-20 h-2 bg-text md:invisible md:absolute rounded-sm" />
                     <ScheduleOfTheDay dayInfo={schedule["Sunday"]} />
                 </div>
             </div>

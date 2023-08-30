@@ -11,8 +11,7 @@ function FAQ() {
             className="w-full flex h-fit
     relative overflow-hidden items-center
     flex-col justify-start min-h-[600px]">
-            <div className="w-full h-full max-w-7xl relative flex flex-col items-center pt-64 pb-[24rem]">
-                <div className="text-7xl text-text glow-subtitles font-semibold z-30">FAQs</div>
+            <div className="w-full h-full max-w-7xl relative flex flex-col items-center pb-[24rem]">
                 <QuestionContainer />
                 <img src={owl}
                     loading="lazy"
