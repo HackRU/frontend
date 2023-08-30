@@ -6,7 +6,6 @@ import Navbar from "./Navbar";
 import rabbit from "../../assets/animals/whale.png";
 import cloud from "../../assets/clouds/cloud1.png";
 import cloud2 from "../../assets/clouds/cloud2.png";
-import cloud3 from "../../assets/clouds/cloud3.png";
 import cloud4 from "../../assets/clouds/cloud4.png";
 import { FaArrowDown } from "react-icons/fa";
 import { scrollToSectionName, useUserScrolled } from "./utilities";
@@ -61,14 +60,6 @@ function Hero(props: { profile: Profile }) {
                 <img src={cloud2}
                     alt="cloud" />
             </div>
-            {/*
-            <div className="absolute z-0 w-96 top-[10rem] left-[45rem]
-       opacity-50 md:opacity-50 md:top-[30rem] md:left-[40rem]
-       lg:top-[40rem] lg:left-[50rem]
-       lg:w-144 cloud">
-                <img src={cloud3}
-                    alt="cloud" />
-            </div> */}
 
             <div className="absolute z-0 w-96 top-[10rem] left-[-10rem]
        opacity-50 md:opacity-80 md:top-[30rem] md:left-[-10rem]
