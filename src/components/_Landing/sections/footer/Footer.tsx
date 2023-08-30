@@ -11,11 +11,7 @@ function Footer() {
     return (
         <div className="text-white flex flex-col items-center py-2">
             <div className="pb-4 flex-col justify-center">
-<<<<<<< HEAD
-                <div>
-=======
                 <div className="ml-1">
->>>>>>> fall-2023
                     <a href="mailto:info@hackru.org"
                         className="social-links"
                         target="_blank"
@@ -42,12 +38,8 @@ function Footer() {
                     </a>
                 </div>
                 <div>
-<<<<<<< HEAD
-                    <a className="text-subtitles  font-semibold pl-2" href="https://linktr.ee/thehackru">linktr.ee/thehackru</a>
-=======
                     <a className="text-subtitles  font-semibold"
                         href="https://linktr.ee/thehackru">linktr.ee/thehackru</a>
->>>>>>> fall-2023
 
                 </div>
             </div>
