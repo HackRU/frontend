@@ -9,7 +9,7 @@ function FAQ() {
         <div
             id="FAQ"
             className="w-full flex h-fit
-    relative overflow-hidden items-center
+    relative overflow-visible items-center
     flex-col justify-start min-h-[600px]">
             <div className="w-full h-full max-w-7xl relative flex flex-col items-center pb-[24rem]">
                 <QuestionContainer />
@@ -17,10 +17,10 @@ function FAQ() {
                     loading="lazy"
                     alt="owl"
                     className="absolute owl w-[24rem] z-20
-                    -left-[7rem] top-[10rem]
+                    -left-[7rem] -top-[7rem]
                     md:w-[28rem]
-                    lg:w-[32rem] lg:-left-[10rem] lg:top-[10rem]
-                    xl:w-[40rem] xl:-left-[15rem] xl:top-[10rem]
+                    lg:w-[32rem] lg:-left-[10rem] lg:-top-[8rem]
+                    xl:w-[40rem] xl:-left-[15rem] xl:-top-[8rem]
                     floating" />
                 <img src={cloud}
                     className="absolute cloud w-[24rem] z-10" />
