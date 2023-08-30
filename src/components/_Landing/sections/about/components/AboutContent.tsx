@@ -198,9 +198,9 @@ function AboutContent() {
                             <p className="textStyle">
                                 HackRU is a <b>24-hour hackathon</b> at Rutgers University. We welcome
                                 <b> hundreds of students</b> to join us in building <b>awesome tech projects.
-                                Industry experts</b> and <b>mentors</b> help foster an atmosphere of <b>learning </b>
+                                    Industry experts</b> and <b>mentors</b> help foster an atmosphere of <b>learning </b>
                                 through <b>tech-talks</b> and <b>one-on-one guidance</b>. We encourage <b>all
-                                students</b>, no matter their experience level or educational
+                                    students</b>, no matter their experience level or educational
                                 background, to <b>challenge themselves</b> and expand their creative,
                                 technical, and collaboration skills <b>at HackRU</b>.
                             </p>
@@ -233,13 +233,14 @@ function AboutContent() {
                                 TRACKS
                             </h1>
                             <p className="textStyle">
-                            <b>Social Good</b>: Hacks that better the community. <br/>
-                            <b>Health</b>: Hacks that improves the mind or body, aiding with health, wellness, and fitness. <br/> 
-                            <b>Education</b>: Hacks that focus on building an education community.<br/>
-                            <b>Maverick</b>: Any other hack! The opportunities are limitless.
-                            And more <b>sponsor prizes</b>
-                            
-                            
+                                <b>Social Good</b>: Hacks that better the community. <br />
+                                <b>Health</b>: Hacks that improves the mind or body, aiding with health, wellness, and fitness. <br />
+                                <b>Education</b>: Hacks that focus on building an education community.<br />
+                                <b>Maverick</b>: Any other hack! The opportunities are limitless.
+                                <br />
+                                And more <b>sponsor prizes</b>!
+
+
                             </p>
                         </div>
                     </Card>
@@ -262,13 +263,13 @@ function AboutContent() {
                                 <div>
                                     <b>Apply</b> to attend our <b>Fall 2023 HackRU</b>! The event
                                     will be on <b>October 7th-8th</b> at the <b>College Avenue
-                                    Student Center.</b>
+                                        Student Center.</b>
                                 </div>
                             </p>
 
-                        <div className = "rectangle-container">
-                            <div className="rectangle"></div>
-                        </div>
+                            <div className="rectangle-container">
+                                <div className="rectangle"></div>
+                            </div>
 
                             <p className="textStyle">
                                 <div>
@@ -281,9 +282,9 @@ function AboutContent() {
                                 </div>
                             </p>
 
-                        <div className = "rectangle-container">
-                            <div className="rectangle"></div>
-                        </div>
+                            <div className="rectangle-container">
+                                <div className="rectangle"></div>
+                            </div>
 
                             <p className="textStyle">
                                 <div>
@@ -408,6 +409,6 @@ function AboutContent() {
         );
     }
 
-} 
+}
 
 export default AboutContent;
