@@ -22,7 +22,7 @@ function LoginAndRegister(props: { isLoggedIn: boolean, registrationOpen: false,
 
 function HeroTitle() {
     return (
-        <div className="w-full px-3 md:mt-16">
+        <div className="w-full px-3 md:mt-28">
             <div className="z-30 rounded-3xl w-full h-full p-10 transparent-black-background">
                 <div className="text-text glow-subtitles font-bold text-[4rem] sm:text-9xl md:text-10xl lg:text-12xl">
                     HACKRU

@@ -11,7 +11,7 @@ function placeStarRandomly(){
     const tmpStar = document.createElement("div");
     tmpStar.className = "star";
     tmpStar.style.position = "absolute";
-    tmpStar.style.top = 100*Math.random()+"%";
+    tmpStar.style.top = 98*Math.random()+"%";
     tmpStar.style.left = 100*Math.random()+"%";
     document.getElementById("starryBackground").appendChild(tmpStar);
 }
@@ -19,7 +19,7 @@ function placeStarRandomly(){
 function animateStars() {
     const stars = document.querySelectorAll(".star");
     Array.prototype.forEach.call(stars, function(el,){
-        TweenMax.to(el, Math.random() * 0.4 + 0.4, {opacity: Math.random(), onComplete: animateStars});
+        TweenMax.to(el, Math.random() * 0.5 + 0.5, {opacity: Math.random(), onComplete: animateStars});
     });
 }
 

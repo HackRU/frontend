@@ -11,7 +11,7 @@ function Footer() {
     return (
         <div className="text-white flex flex-col items-center py-2">
             <div className="pb-4 flex-col justify-center">
-                <div>
+                <div className="ml-1">
                     <a href="mailto:info@hackru.org"
                         className="social-links"
                         target="_blank"
@@ -38,7 +38,7 @@ function Footer() {
                     </a>
                 </div>
                 <div>
-                    <a className="text-subtitles  font-semibold pl-2"
+                    <a className="text-subtitles  font-semibold"
                         href="https://linktr.ee/thehackru">linktr.ee/thehackru</a>
 
                 </div>

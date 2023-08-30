@@ -61,8 +61,8 @@ after opening ceremonies for people who are looking for teammates.`;
 
 function QuestionContainer() {
     return (
-        <div className="w-full px-4 pt-16 z-40 max-w-[88rem]">
-            <div className="mx-auto w-full max-w-3xl rounded-2xl transparent-black-background p-10 sm:grid sm:grid-cols-2">
+        <div className="pt-16 ml-22 z-40">
+            <div className="max-w-3xl rounded-2xl transparent-black-background p-10 sm:grid sm:grid-cols-2">
                 <div>
                     <Question question="What is HackRU?"
                         answer={whatIsHackRUAnswer} />
