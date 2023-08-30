@@ -13,7 +13,7 @@ function Question(props: { question: string, answer: string }) {
     return (
         <Disclosure>
             {({ open }) => (
-                <div className="flex flex-col border-b-white border-b-2 hover:bg-sky-900 rounded-t-lg">
+                <div className="flex flex-col border-b-white border-b-2 hover:bg-f23-mediumGreen rounded-t-lg">
                     <Disclosure.Button className="flex w-full justify-between
             p-4 text-left text-md text-textSubtitle
             focus:outline-none focus-visible:ring
