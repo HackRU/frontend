@@ -12,8 +12,6 @@ import rabbit from "../../../assets/animals/rabbit-min.png";
 import useAboutConfig from "../hooks/useConfigAbout";
 import "./AboutContent.css";
 import { defaults } from "../../../Default";
-import SectionTitle from "../../../global_components/SectionTitle";
-
 
 const Introduction = (headerTextAlignment: string) => {
     switch (headerTextAlignment) {
