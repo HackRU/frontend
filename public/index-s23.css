@@ -6,7 +6,7 @@
     --primary-color: #FFF5e8; /* Logo, link colors, text */
     --primary-color-alt: #4fab5f;  /* Form body bg, form headers text */
     --secondary-color: #000000; /* Barely used accent color...combine this and primary-color-alt...? */
-    --secondary-color-alt:#1f6aa0; /* Background color */
+    --secondary-color-alt: #8db67e; /* Background color */
     --accent-color:  #4bbede; /* Logout, Live button color */
     /* split card colors */
     --splitCard-color:#000000;

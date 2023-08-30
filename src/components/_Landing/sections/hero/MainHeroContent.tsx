@@ -1,5 +1,4 @@
 import React from "react";
-import { IoMoon } from "react-icons/io5";
 import { Link } from "react-router-dom";
 
 function LoginAndRegister(props: { isLoggedIn: boolean, registrationOpen: false, }) {
@@ -23,7 +22,7 @@ function LoginAndRegister(props: { isLoggedIn: boolean, registrationOpen: false,
 
 function HeroTitle() {
     return (
-        <div className="w-full px-3 md:mt-16">
+        <div className="w-full px-3 md:mt-28">
             <div className="z-30 rounded-3xl w-full h-full p-10 transparent-black-background">
                 <div className="text-text glow-subtitles font-bold text-[4rem] sm:text-9xl md:text-10xl lg:text-12xl">
                     HACKRU
@@ -31,10 +30,6 @@ function HeroTitle() {
                 <div className="w-full flex justify-center">
                     <div className="text-2xl font-extrabold md:text-4xl lg:text-4xl glow-subtitles text-text flex">
                         Hack All Knight &nbsp;
-                        <span className="relative mt-1 md:mt-0">
-                            <div className="glowing-moon-container" />
-                            <IoMoon className="rotate-[270deg]" />
-                        </span>
                     </div>
                 </div>
                 <div className="text-2xl font-extrabold md:text-4xl lg:text-4xl glow-subtitles text-textSubtitle mt-4 flex flex-col md:flex-row md:justify-center md:items-center">
@@ -48,7 +43,7 @@ function HeroTitle() {
 function CenterContent({ isLoggedIn }: { isLoggedIn: boolean }) {
     return (
         <div className="w-full flex flex-col justify-start items-center
-                    z-30
+                    z-30 mt-[8rem] md:mt-0
                     md:items-start relative">
             <div className="flex flex-col space-y-1">
                 <HeroTitle />

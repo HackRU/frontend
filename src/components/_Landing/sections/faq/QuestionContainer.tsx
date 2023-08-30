@@ -13,7 +13,7 @@ function Question(props: { question: string, answer: string }) {
     return (
         <Disclosure>
             {({ open }) => (
-                <div className="flex flex-col border-b-white border-b-2 hover:bg-sky-900 rounded-t-lg">
+                <div className="flex flex-col border-b-white border-b-2 hover:bg-f23-mediumGreen rounded-t-lg">
                     <Disclosure.Button className="flex w-full justify-between
             p-4 text-left text-md text-textSubtitle
             focus:outline-none focus-visible:ring
@@ -61,8 +61,8 @@ after opening ceremonies for people who are looking for teammates.`;
 
 function QuestionContainer() {
     return (
-        <div className="w-full px-4 pt-16 z-40 max-w-[88rem]">
-            <div className="mx-auto w-full max-w-3xl rounded-2xl transparent-black-background p-10 sm:grid sm:grid-cols-2">
+        <div className="pt-16 ml-22 z-40">
+            <div className="max-w-3xl rounded-2xl transparent-black-background p-10 sm:grid sm:grid-cols-2">
                 <div>
                     <Question question="What is HackRU?"
                         answer={whatIsHackRUAnswer} />

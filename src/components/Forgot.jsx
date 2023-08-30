@@ -36,6 +36,7 @@ const color_theme = createMuiTheme({
 });
 
 
+
 const ForgotPage = (props) => {
 
     const [loading, setLoading] = useState(false);
@@ -68,7 +69,7 @@ const ForgotPage = (props) => {
 
 
     return (
-        
+
         <AuthForm
             errors={errors}
             label="A link is being sent to your email"
@@ -79,24 +80,27 @@ const ForgotPage = (props) => {
         >
             { done ?
                 <div>
-                    <Alert variant="filled" 
-                        size="small" 
-                        severity="success" 
+                    <Alert variant="filled"
+                        size="small"
+                        severity="success"
                         onClose={() => {setDone(false);}}>
                         Link Sent!
-                    </Alert> 
+                    </Alert>
                     <br/>
                 </div>
                 :
                 <div/>
             }
             <Container
-                conponent="main" 
+                conponent="main"
+                style={{
+                    zIndex: 2,
+                }}
                 maxWidth={false}
                 disableGutters={true}>
-                <Grid container 
+                <Grid container
                     spacing={2}>
-                    <Grid item 
+                    <Grid item
                         xs={12}>
                         {<ThemeProvider theme={color_theme}>
                             <WhiteTextField
@@ -116,7 +120,7 @@ const ForgotPage = (props) => {
                         Please reach out to rnd@hackru.org to reset password
                         </div>*/}
                     </Grid>
-                    <Grid item 
+                    <Grid item
                         xs={12}>
                         {<ThemeProvider theme={color_theme}>
                             <ColorButton
@@ -131,7 +135,7 @@ const ForgotPage = (props) => {
                         </ThemeProvider> }
                         {/*
                         <a href="mailto:rnd@hackru.org?subject=[HackRU Password Reset]"
-                            target="_blank" 
+                            target="_blank"
                             rel="noopener noreferrer">
                             <ColorButton
                                 size = "small"
@@ -144,7 +148,7 @@ const ForgotPage = (props) => {
                     
                         </a>*/}
                     </Grid>
-                    <Grid item 
+                    <Grid item
                         xs={12}>
                         <div>
                             <Link to="/"
@@ -160,13 +164,13 @@ const ForgotPage = (props) => {
                         </div>
                     </Grid>
                 </Grid>
-               
+
             </Container>
 
         </AuthForm>
     );
 
-    
+
 };
 
 ForgotPage.propTypes = {

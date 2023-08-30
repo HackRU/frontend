@@ -57,14 +57,14 @@ AuthForm.propTypes = {
 const renderSpinner = () => (
     <div style={{ display: "block", width: "100%" }}
         align="center">
-        <RingLoader color="#1583d2"/>
+        <RingLoader color="#8db67e"/>
     </div>
 );
 
 const renderErrors = (errors) => (
     errors !== ""
         ? (<Alert
-            style={{ background: "#1583d2", border: "none", color: "white" }}
+            style={{ background: "#8db67e", border: "none", color: "white" }}
             color="danger">
             {errors}
         </Alert>)
