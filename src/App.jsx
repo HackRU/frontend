@@ -17,10 +17,11 @@ import {
 import LandingPage from "./components/_Landing/Landing";
 import { Snackbar } from "@material-ui/core"; // Alert messages
 import { Alert } from "@material-ui/lab"; // Alert messages
-import ParticleBackground from "./components/_Landing/assets/Particles";
+// import ParticleBackground from "./components/_Landing/assets/Particles";
 import NavBar from "./NavBar";
 import { defaults } from "./Defaults"; // Get a handle to the default application settings
 import { Profile } from "./components/Profile"; // User profile storage
+import initStars from "./components/_Landing/assets/scripts/stars";
 
 const updateStateOnURLChange =  (component) => {
     let previousUrl = "";
@@ -88,6 +89,11 @@ class App extends Component {
             }
         });
     }
+
+    componentDidMount() {
+        initStars(500);
+    }
+
     /**
      * Set the application magic link
      * @param {String} magic Magic link from lcs
@@ -238,8 +244,8 @@ class App extends Component {
         return (
             <BrowserRouter style={{ width: "100%" }}>
                 {/* BrowserRouter wil allow us to switch between the different pages in our SPA based on the URL routing */}
-                <div className="bg-gradient-to-b from-mainBg to-endBg">
-                    <ParticleBackground />
+                <div className="bg-gradient-to-b
+        from-f23-lightGreen via-f23-mediumGreen to-f23-darkGreen relative" id="starryBackground">
                     {/* Application alert messages go here */}
                     <Snackbar open={this.state.alertProps.open}
                         autoHideDuration={this.state.alertProps.duration}>

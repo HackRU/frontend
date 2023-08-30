@@ -3,7 +3,7 @@
 } */
 
 .glow {
-  text-shadow:1px 1px 6px #fff;
+  /* text-shadow:1px 1px 6px #fff; */
 }
 
 .glow-symbol {
@@ -14,11 +14,19 @@
   box-shadow: 1px 1px 6px #4bbede;
 }
 .glow-subtitles {
-  text-shadow:1px 1px 20px #4bbede;
+  /* text-shadow:1px 1px 20px #f1e192; */
 }
 
 .transparent-black-background {
   background-color: rgba(0, 0, 0, 0.4);
+}
+
+.star {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 2px;
+  background: white;
 }
 
 .floating {

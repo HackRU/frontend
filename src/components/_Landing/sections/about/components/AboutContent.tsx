@@ -6,9 +6,9 @@ import { BsFillCalendarCheckFill } from "react-icons/bs";
 import { MdLocationOn } from "react-icons/md";
 import Card from "../../../global_components/CardAbout";
 import { theme } from "../../../Default";
-import squirrel from "../../../assets/ananyaSquirrel.png";
-import bear from "../../../assets/judyBear.png";
-import hedgehog from "../../../assets/katrinaHedgehog.png";
+import frog from "../../../assets/animals/frog-min.png";
+import racoon from "../../../assets/animals/racoon-min.png";
+import rabbit from "../../../assets/animals/rabbit-min.png";
 import useAboutConfig from "../hooks/useConfigAbout";
 import "./AboutContent.css";
 import { defaults } from "../../../Default";
@@ -209,8 +209,8 @@ function AboutContent() {
                 </div>
 
                 <div className="flex justify-center sm-about:order-2 lg-about:order-2" >
-                    <img src={bear}
-                        className="imgClass floating"
+                    <img src={racoon}
+                        className="imgClass floating w-full object-contain"
                         alt="problem" />
                 </div>
 
@@ -218,7 +218,7 @@ function AboutContent() {
                 {/* xsm is created because the order reverts back in 300px measurements idk why. */}
                 {/* there is not sm/xs ordering. IDK why but once after merge with main, it didn't work */}
                 <div className="flex justify-center sm-about:order-4 lg-about:order-3" >
-                    <img src={hedgehog}
+                    <img src={rabbit}
                         className="imgClass floating"
                         alt="problem" />
                 </div>
@@ -297,7 +297,7 @@ function AboutContent() {
                     </Card>
                 </div>
                 <div className="flex justify-center sm-about:order-6 lg-about:order-6" >
-                    <img src={squirrel}
+                    <img src={frog}
                         className="imgClass floating"
                         alt="problem" />
                 </div>

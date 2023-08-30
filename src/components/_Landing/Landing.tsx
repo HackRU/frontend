@@ -8,7 +8,7 @@ import Hero from "./sections/hero/hero";
 import { randomizeAnimationDurations } from "./utilities";
 import Schedule from "./sections/schedule/Schedule";
 import Sponsors from "./sections/sponsors/Sponsors";
-
+import Sun from "./assets/sun/sun";
 
 function LandingPage(props: any) {
 
@@ -18,7 +18,9 @@ function LandingPage(props: any) {
     }, []);
 
     return (
-        <div className="w-full h-fit bg-gradient-to-b from-mainBg to-endBg">
+        <div
+            className="w-full h-fit">
+            <Sun />
             <Hero profile={props.profile} />
             <About />
             <Schedule />
