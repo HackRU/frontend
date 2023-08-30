@@ -13,7 +13,6 @@ import useAboutConfig from "../hooks/useConfigAbout";
 import "./AboutContent.css";
 import { defaults } from "../../../Default";
 
-
 const Introduction = (headerTextAlignment: string) => {
     switch (headerTextAlignment) {
         case "left":
@@ -178,12 +177,12 @@ function AboutContent() {
         return (
             <div className="grid sm-about:grid-cols-1 lg-about:grid-cols-2 xl-about:grid-cols-2 max-w-[120rem]">
                 {/* Header Text */}
-                <div className="glow basis-1 lg-about:col-span-2 flex HeaderText text-7xl text-text glow-subtitles font-semibold"
+                {/* <div className="glow basis-1 lg-about:col-span-2 flex HeaderText text-7xl text-text glow-subtitles font-semibold"
                     style={{
                         margin: "60px 100px 0px 100px"
                     }}>
                     About
-                </div>
+                </div> */}
 
                 {/* first row */}
                 <div className='sm-about:order-1 lg-about:order-1'
@@ -192,10 +191,10 @@ function AboutContent() {
                     }}>
                     <Card backgroundColor={theme.splitCard[0]}>
                         <div style={{}}>
-                            <h1 className="glow text-6xl text-text">
+                            <h1 className="glow text-6xl text-text font-bold">
                                 WHAT
                             </h1>
-                            <p className="textStyle">
+                            <p className="textStyle text-text">
                                 HackRU is a <b>24-hour hackathon</b> at Rutgers University. We welcome
                                 <b> hundreds of students</b> to join us in building <b>awesome tech projects.
                                     Industry experts</b> and <b>mentors</b> help foster an atmosphere of <b>learning </b>
@@ -229,7 +228,7 @@ function AboutContent() {
                     }}>
                     <Card backgroundColor={theme.splitCard[0]}>
                         <div style={{}}>
-                            <h1 className="glow text-6xl text-text">
+                            <h1 className="glow text-6xl text-text font-bold">
                                 TRACKS
                             </h1>
                             <p className="textStyle">
@@ -255,7 +254,7 @@ function AboutContent() {
                     }}>
                     <Card backgroundColor={theme.splitCard[0]}>
                         <div style={{}}>
-                            <h1 className="glow text-6xl text-text">
+                            <h1 className="glow text-6xl text-text font-bold">
                                 JOIN US!
                             </h1>
 

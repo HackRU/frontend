@@ -72,7 +72,7 @@ function Navbar() {
         <div className="flex md:fixed justify-end z-40 w-[100%]">
             <img src={yellowHackRULogo}
                 alt="yellow hackru logo"
-                className="w-24 absolute top-2 left-4 z-50" />
+                className="w-24 absolute top-0 left-4 z-50" />
             <CollapsedMenu />
             <div
                 className="absolute top-0 font-light text-text hidden md:flex
