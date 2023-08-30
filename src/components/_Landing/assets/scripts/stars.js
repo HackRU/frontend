@@ -11,7 +11,7 @@ function placeStarRandomly(){
     const tmpStar = document.createElement("div");
     tmpStar.className = "star";
     tmpStar.style.position = "absolute";
-    tmpStar.style.top = 100*Math.random()+"%";
+    tmpStar.style.top = 98*Math.random()+"%";
     tmpStar.style.left = 100*Math.random()+"%";
     document.getElementById("starryBackground").appendChild(tmpStar);
 }

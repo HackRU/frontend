@@ -3,7 +3,7 @@ import React from "react";
 import MainHeroContent from "./MainHeroContent";
 import "./hero.css";
 import Navbar from "./Navbar";
-import rabbit from "../../assets/whale.png";
+import rabbit from "../../assets/animals/whale.png";
 import cloud from "../../assets/clouds/cloud1.png";
 import cloud2 from "../../assets/clouds/cloud2.png";
 import cloud3 from "../../assets/clouds/cloud3.png";
