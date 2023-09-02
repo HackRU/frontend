@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import SocialMediaComponent from "../../global_components/SocialMediaComponent";
 
-function LoginAndRegister(props: { isLoggedIn: boolean, registrationOpen: false, }) {
+function LoginAndRegister(props: { isLoggedIn: boolean, registrationOpen: true, }) {
     const { isLoggedIn, registrationOpen } = props;
     return (
         <div className="z-10 py-10 px-10 sm:px-20 rounded-3xl flex flex-row justify-center space-x-10 sm:space-x-10">
@@ -50,7 +50,7 @@ function CenterContent({ isLoggedIn }: { isLoggedIn: boolean }) {
                 <HeroTitle />
                 <LoginAndRegister
                     isLoggedIn={isLoggedIn}
-                    registrationOpen={false}
+                    registrationOpen={true}
                 />
                 <SocialMediaComponent />
             </div >

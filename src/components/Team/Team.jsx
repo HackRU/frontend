@@ -70,8 +70,8 @@ class Team extends Component {
                                 (
                                     <p> Our organizing teams are not currently accepting applications, but please keep in touch with us by visiting our website, hackru.org, and checking out our social media! </p>
                                 )}
-				
-                            {!defaults.volunteers ? 
+
+                            {!defaults.volunteers ?
                                 (
                                     <div>
                                         <p> Interested in volunteering? Volunteers help HackRU run smoothly by assisting the organizing team during the event. Sign up to <a href={defaults.volunteers.vol_url}>volunteer</a>.</p>
@@ -84,7 +84,7 @@ class Team extends Component {
                                         <p>The VHX team will release volunteer and mentor sign-ups and hold training sessions for volunteers prior to the event.</p>
                                     </div>)}
 
-                            {!defaults.volunteers ? 
+                            {!defaults.volunteers ?
                                 (
                                     <div>
                                         <p> Interested in volunteering? Volunteers help HackRU run smoothly by assisting the organizing team during the event. Sign up to <a href={defaults.volunteers.vol_url}>volunteer</a>.</p>

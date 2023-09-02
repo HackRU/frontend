@@ -3,6 +3,9 @@ module.exports = {
     content: [
         "./src/**/*.{js,jsx,ts,tsx}",
     ],
+    blocklist: [
+        "collapse",
+    ],
     theme: {
         extend: {
             screens: {
