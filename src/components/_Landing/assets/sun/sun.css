@@ -1,0 +1,179 @@
+#sun-container {
+      left: 15%;
+      top: -250px;
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      z-index: 1;
+      animation: rotateSun 15s infinite alternate;
+}
+
+@keyframes rotateSun {
+  0% {
+      transform: rotate(0deg);
+  }
+  100% {
+      transform: rotate(5deg);
+  }
+}
+
+#sun {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300px;
+  height: 300px;
+  background-color: #c1e8da;
+  opacity: 30%;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+
+
+#sun2 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 500px;
+  height: 500px;
+  background-color: #c1e8da;
+  opacity: 15%;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+
+#sun3 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 700px;
+  height: 700px;
+  background-color: #c1e8da;
+  opacity: 10%;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+
+/* Start of First Ray Styling (and sub-rays) */
+
+
+#ray {
+  position: absolute;
+  z-index: -1000;
+  top: 50%;
+  left: -450%;
+
+  width: 1000px;
+  height: 3000px;
+
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  transform-origin: bottom left;
+  transform: rotate(deg);
+  background: linear-gradient(to top, transparent 50%, #c1e8da);
+  opacity: 20%;
+}
+
+#ray2 {
+  position: absolute;
+  z-index: -1000;
+  top: 50%;
+  left: -450%;
+
+  width: 1000px;
+  height: 3000px;
+
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  transform-origin: bottom left;
+  transform: rotate(deg);
+  background: linear-gradient(to top, transparent 60%, #c1e8da);
+  opacity: 20%;
+}
+
+#ray3 {
+  position: absolute;
+  z-index: -1000;
+  top: 50%;
+  left: -450%;
+
+  width: 1000px;
+  height: 3000px;
+
+    clip-path: polygon(50% 0%, 0% 55%, 100% 55%);
+  /* animation: animateClipPath 3s alternate 2; */
+  /* animation-iteration-count: 4; */
+  transform-origin: bottom left;
+  /* transform: rotate(deg); */
+  background: linear-gradient(to top, transparent 80%, #c1e8da);
+  opacity: 20%;
+}
+
+
+/* Start of Second Ray Styling (and sub-rays) */
+#ray4 {
+  position: absolute;
+  z-index: -1000;
+  top: -500%;
+  left: 1800%;
+
+  width: 1000px;
+  height: 3000px;
+
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  transform-origin: bottom left;
+  transform: rotate(-45deg);
+  background: linear-gradient(to top, transparent 50%, #c1e8da);
+  opacity: 14%;
+}
+
+#ray5 {
+  position: absolute;
+  z-index: -1000;
+  top: -500%;
+  left: 1800%;
+
+  width: 1000px;
+  height: 3000px;
+
+  clip-path: polygon(50% 0%, 0% 55%, 100% 63%);
+  transform-origin: bottom left;
+  transform: rotate(-45deg);
+  background: linear-gradient(to top, transparent 50%, #c1e8da);
+  opacity: 20%;
+}
+
+#ray6 {
+  position: absolute;
+  z-index: -1000;
+  top: -500%;
+  left: 1800%;
+
+  width: 1000px;
+  height: 3000px;
+
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  transform-origin: bottom left;
+  transform: rotate(-45deg);
+  background: linear-gradient(to top, transparent 50%, #c1e8da);
+  opacity: 20%;
+}
+
+/* Start of Third Ray Styling (and sub-rays) */
+
+#ray7 {
+  position: absolute;
+  z-index: -1000;
+  top: -1400%;
+  left: -2000%;
+
+  width: 1000px;
+  height: 3000px;
+
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  transform-origin: bottom left;
+  transform: rotate(40deg);
+  background: linear-gradient(to top, transparent 50%, #c1e8da);
+  opacity: 20%;
+}

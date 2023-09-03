@@ -8,7 +8,8 @@ import Hero from "./sections/hero/hero";
 import { randomizeAnimationDurations } from "./utilities";
 import Schedule from "./sections/schedule/Schedule";
 import Sponsors from "./sections/sponsors/Sponsors";
-
+import Sun from "./assets/sun/sun";
+import SectionTitle from "./global_components/SectionTitle";
 
 function LandingPage(props: any) {
 
@@ -18,12 +19,22 @@ function LandingPage(props: any) {
     }, []);
 
     return (
-        <div className="w-full h-fit bg-gradient-to-b from-mainBg to-endBg">
+        <div
+            className="w-full h-fit">
+            <Sun />
             <Hero profile={props.profile} />
+            <SectionTitle title="ABOUT" />
             <About />
+
+            <SectionTitle title="SCHEDULE" />
             <Schedule />
+
+            <SectionTitle title="SPONSORS" />
             <Sponsors />
+
+            <SectionTitle title="FAQ" />
             <FAQ />
+
             <Footer />
         </div>
     );

@@ -2,30 +2,17 @@ import React from "react";
 import echo_3d from "../../assets/sponsors/echo_3d.png";
 import nj_transit from "../../assets/sponsors/nj_transit.png";
 import merck from "../../assets/sponsors/merck.png";
-import pig from "../../assets/sammiPig.png";
-import cloud3 from "../../assets/clouds/cloud3.svg";
-import cloud2 from "../../assets/clouds/cloud2.svg";
+import cloud3 from "../../assets/clouds/cloud3.png";
+import cloud2 from "../../assets/clouds/cloud2.png";
 
 function Sponsors() {
     return (
         <div
             id="Sponsors"
             className="w-full h-fit
-                    p-24 relative overflow-hidden
+                    pb-24 relative overflow-hidden
                     flex flex-col items-center px-6">
             <div className="w-full max-w-6xl relative ">
-                <div className="text-text glow-subtitles font-semibold text-5xl sm:text-7xl text-left w-full">
-                    Sponsors
-                </div>
-
-                <img src={pig}
-                    alt="pig"
-                    className="absolute -top-44 -right-10 w-64
-          sm:-top-40 sm:-right-20 sm:w-96
-          md:right-0 md:-top-40
-          lg:right-20 lg:w-128 lg:-top-60
-          z-40 floating" />
-
                 <img src={cloud3}
                     alt="cloud"
                     className="absolute z-0 w-96 top-[30rem] left-[30rem] opacity-50
@@ -42,7 +29,7 @@ function Sponsors() {
           cloud"/>
 
                 <div className="w-full py-12 px-5
-                                transparent-black-background mt-10 rounded-lg flex flex-row
+                                transparent-black-background rounded-lg flex flex-row
                                 flex-wrap justify-center items-center z-20 relative">
                     <img src={echo_3d}
                         alt="Echo 3D"

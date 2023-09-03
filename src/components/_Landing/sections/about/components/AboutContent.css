@@ -7,9 +7,25 @@
 }
 
 .textStyle{
-  color: #d1e9ef;
+  color: #f1e192;
   font-size: 25px;
   font-family: "Titillium Web";
+  text-align: center;
+}
+
+.text-text {
+  text-align: center;
+}
+
+.rectangle-container {
+  display: flex;
+  justify-content: center;
+}
+.rectangle {
+  background-color: #f0e192;
+  width: 45%;
+  height: 3px;
+  margin-bottom: 10px;
 }
 
 @media only screen and (max-width: 1226px) {

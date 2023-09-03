@@ -2,7 +2,6 @@ import React from "react";
 import { BsFillExclamationTriangleFill } from "react-icons/bs";
 import { FaHourglassStart, FaPizzaSlice, FaUtensils } from "react-icons/fa";
 import { MdCelebration, MdFreeBreakfast, MdLunchDining, MdOutlineDirectionsTransitFilled } from "react-icons/md";
-import fox from "../../assets/kimFox2.png";
 
 interface DayInfo {
     day: string,
@@ -44,20 +43,6 @@ const schedule: { [day: string]: DayInfo } = {
     }
 };
 
-function Fox() {
-    return (
-        <div className="absolute z-10
-        w-[12rem] sm:w-[14rem] md:w-[17rem] lg:w-[24rem]
-        top-10 lg:-top-24
-        right-0
-        md:-top-10 md:-right-10 lg:right-0
-        floating">
-            <img src={fox}
-                alt="Fox" />
-        </div>
-    );
-}
-
 function ScheduleOfTheDay(props: { dayInfo: DayInfo }) {
     const { dayInfo } = props;
     const { day, times } = dayInfo;
@@ -92,16 +77,13 @@ function ScheduleOfTheDay(props: { dayInfo: DayInfo }) {
 
 function Schedule() {
     return (
-        <div className="w-full flex justify-center px-4 mb-20 mt-40 sm:mt-24 md:mt-40 relative"
+        <div className="w-full flex justify-center px-4 mb-20 relative"
             id="Schedule">
-            <Fox />
             <div className="w-full max-w-7xl h-fit flex flex-col items-center">
-                <div className="text-7xl text-text glow-subtitles font-semibold z-30">Schedule</div>
-
-                <div className="transparent-black-background w-full text-text rounded-3xl mt-10
+                <div className="transparent-black-background w-full text-text rounded-3xl
                                 flex flex-col items-center md:flex-row md:items-start relative">
                     <ScheduleOfTheDay dayInfo={schedule["Saturday"]} />
-                    <div className="w-20 h-2 bg-text md:invisible md:absolute glow-subtitle-color rounded-sm" />
+                    <div className="w-20 h-2 bg-text md:invisible md:absolute rounded-sm" />
                     <ScheduleOfTheDay dayInfo={schedule["Sunday"]} />
                 </div>
             </div>

@@ -1,3 +1,4 @@
+//import { ControlCameraSharp } from "@material-ui/icons";
 import { defaults } from "../Defaults";
 import PropTypes from "prop-types";
 
@@ -486,24 +487,23 @@ class Profile {
             } else {
                 await fetch(ENDPOINTS.forgot, {
                     method: "POST",
-                    body: {
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
                         email: email,
                         forgot: true,
-                    },
-                    json: true,
+                    }),
                 })
-                    .then((res) => {
-                        if (res.statusCode === 200) {
+                    .then(async (res) => {
+                        let resJSON = await res.json();
+                        if (resJSON.statusCode === 200) {
                             return resp;
                         } else {
-                            if (res.errorMessage) {
-                                console.error(res.errorMessage);
-                            }
-                            if (res.body) {
-                                return res.body;
+                            if (resJSON.body) {
+                                resp.error = resJSON.body;
                             } else {
                                 resp.error = "Unexpected Error";
-                                return resp;
                             }
                         }
                     })
@@ -511,9 +511,9 @@ class Profile {
                         resp.error =
                             error +
                             "An error occured when attempting to general url";
-                        return resp;
                     });
             }
+            return resp;
         }
     }
     async Reset(email, password, conpassword, magic) {

@@ -6,13 +6,12 @@ import { BsFillCalendarCheckFill } from "react-icons/bs";
 import { MdLocationOn } from "react-icons/md";
 import Card from "../../../global_components/CardAbout";
 import { theme } from "../../../Default";
-import squirrel from "../../../assets/ananyaSquirrel.png";
-import bear from "../../../assets/judyBear.png";
-import hedgehog from "../../../assets/katrinaHedgehog.png";
+import frog from "../../../assets/animals/frog-min.png";
+import racoon from "../../../assets/animals/racoon-min.png";
+import rabbit from "../../../assets/animals/rabbit-min.png";
 import useAboutConfig from "../hooks/useConfigAbout";
 import "./AboutContent.css";
 import { defaults } from "../../../Default";
-
 
 const Introduction = (headerTextAlignment: string) => {
     switch (headerTextAlignment) {
@@ -165,9 +164,6 @@ function HeaderTextAlignmentFunc(props: {
     }
 }
 
-
-
-
 function AboutContent() {
     const { mainComponent } = useAboutConfig();
     const {
@@ -181,12 +177,12 @@ function AboutContent() {
         return (
             <div className="grid sm-about:grid-cols-1 lg-about:grid-cols-2 xl-about:grid-cols-2 max-w-[120rem]">
                 {/* Header Text */}
-                <div className="glow basis-1 lg-about:col-span-2 flex HeaderText text-7xl text-text glow-subtitles font-semibold"
+                {/* <div className="glow basis-1 lg-about:col-span-2 flex HeaderText text-7xl text-text glow-subtitles font-semibold"
                     style={{
                         margin: "60px 100px 0px 100px"
                     }}>
                     About
-                </div>
+                </div> */}
 
                 {/* first row */}
                 <div className='sm-about:order-1 lg-about:order-1'
@@ -195,25 +191,25 @@ function AboutContent() {
                     }}>
                     <Card backgroundColor={theme.splitCard[0]}>
                         <div style={{}}>
-                            <h1 className="glow text-6xl text-text">
-                                What
+                            <h1 className="glow text-6xl text-text font-bold">
+                                WHAT
                             </h1>
-                            <p className="textStyle">
-                                HackRU is a 24-hour hackathon at Rutgers University. We welcome
-                                hundreds of students to join us in building awesome tech projects.
-                                Industry experts and mentors help foster an atmosphere of learning
-                                through tech-talks and one-on-one guidance. We encourage all
-                                students, no matter their experience level or educational
-                                background, to challenge themselves and expand their creative,
-                                technical, and collaboration skills at HackRU.
+                            <p className="textStyle text-text">
+                                HackRU is a <b>24-hour hackathon</b> at Rutgers University. We welcome
+                                <b> hundreds of students</b> to join us in building <b>awesome tech projects.
+                                    Industry experts</b> and <b>mentors</b> help foster an atmosphere of <b>learning </b>
+                                through <b>tech-talks</b> and <b>one-on-one guidance</b>. We encourage <b>all
+                                    students</b>, no matter their experience level or educational
+                                background, to <b>challenge themselves</b> and expand their creative,
+                                technical, and collaboration skills <b>at HackRU</b>.
                             </p>
                         </div>
                     </Card>
                 </div>
 
                 <div className="flex justify-center sm-about:order-2 lg-about:order-2" >
-                    <img src={bear}
-                        className="imgClass floating"
+                    <img src={racoon}
+                        className="imgClass floating w-full object-contain"
                         alt="problem" />
                 </div>
 
@@ -221,7 +217,7 @@ function AboutContent() {
                 {/* xsm is created because the order reverts back in 300px measurements idk why. */}
                 {/* there is not sm/xs ordering. IDK why but once after merge with main, it didn't work */}
                 <div className="flex justify-center sm-about:order-4 lg-about:order-3" >
-                    <img src={hedgehog}
+                    <img src={rabbit}
                         className="imgClass floating"
                         alt="problem" />
                 </div>
@@ -232,11 +228,18 @@ function AboutContent() {
                     }}>
                     <Card backgroundColor={theme.splitCard[0]}>
                         <div style={{}}>
-                            <h1 className="glow text-6xl text-text">
-                                Where
+                            <h1 className="glow text-6xl text-text font-bold">
+                                TRACKS
                             </h1>
                             <p className="textStyle">
-                                HackRU is at The Rutgers College Ave Student Center for Spring 2023!
+                                <b>Social Good</b>: Hacks that better the community. <br />
+                                <b>Health</b>: Hacks that improves the mind or body, aiding with health, wellness, and fitness. <br />
+                                <b>Education</b>: Hacks that focus on building an education community.<br />
+                                <b>Maverick</b>: Any other hack! The opportunities are limitless.
+                                <br />
+                                And more <b>sponsor prizes</b>!
+
+
                             </p>
                         </div>
                     </Card>
@@ -251,18 +254,37 @@ function AboutContent() {
                     }}>
                     <Card backgroundColor={theme.splitCard[0]}>
                         <div style={{}}>
-                            <h1 className="glow text-6xl text-text">
-                                Join Us!
+                            <h1 className="glow text-6xl text-text font-bold">
+                                JOIN US!
                             </h1>
+
+                            <p className="textStyle">
+                                <div>
+                                    <b>Apply</b> to attend our <b>Fall 2023 HackRU</b>! The event
+                                    will be on <b>October 7th-8th</b> at the <b>College Avenue
+                                        Student Center.</b>
+                                </div>
+                            </p>
+
+                            <div className="rectangle-container">
+                                <div className="rectangle"></div>
+                            </div>
+
                             <p className="textStyle">
                                 <div>
                                     Want to help? Sign up to{" "}
                                     <a className="underline"
-                                        href={defaults.volunteers.vol_url}>volunteer</a> or{" "}
+                                        href={defaults.volunteers.vol_url}>volunteer</a> and/or{" "}
                                     <a className="underline"
                                         href={defaults.volunteers.mentor_url}>mentor</a>!
+                                    To know when organizer applications open, subscribe to our newsletter!
                                 </div>
                             </p>
+
+                            <div className="rectangle-container">
+                                <div className="rectangle"></div>
+                            </div>
+
                             <p className="textStyle">
                                 <div>
                                     Want to receive updates? Subscribe{" "}
@@ -274,7 +296,7 @@ function AboutContent() {
                     </Card>
                 </div>
                 <div className="flex justify-center sm-about:order-6 lg-about:order-6" >
-                    <img src={squirrel}
+                    <img src={frog}
                         className="imgClass floating"
                         alt="problem" />
                 </div>
