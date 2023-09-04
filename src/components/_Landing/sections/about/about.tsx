@@ -2,6 +2,7 @@ import React from "react";
 import Error from "../error";
 import AboutContent from "./components/AboutContent";
 import useAboutConfig, { useVerifyPreset } from "./hooks/useConfigAbout";
+import cloud4 from "../../assets/clouds/cloud4.png";
 
 function About() {
     const validPreset = useVerifyPreset();
@@ -22,6 +23,7 @@ function About() {
             <div className="flex flex-col items-center"
                 id="About">
                 <AboutContent />
+
             </div>
         );
     } else {

@@ -7,14 +7,14 @@ import rabbit from "../../assets/animals/whale.png";
 import cloud from "../../assets/clouds/cloud1.png";
 import cloud2 from "../../assets/clouds/cloud2.png";
 import cloud4 from "../../assets/clouds/cloud4.png";
-import { FaArrowDown } from "react-icons/fa";
-import { scrollToSectionName, useUserScrolled } from "./utilities";
+// import { FaArrowDown } from "react-icons/fa";
+// import { scrollToSectionName, useUserScrolled } from "./utilities";
 import { Profile } from "../../../Profile";
 
 function Rabbit() {
     return (
-        <div className="absolute z-10 w-[27rem] sm:w-128 bottom-[3rem]
-         -right-32 md:w-[40rem] md:top-[25rem] md:-right-22 lg:w-[45em] lg:-right-44 xl:w-[60rem] xl:top-[7rem] floating">
+        <div className="absolute z-10 w-[27rem] sm:w-128 bottom-[12rem]
+         -right-48 md:w-[40rem] md:top-[17rem] md:-right-22 lg:w-[45em] lg:-right-44 xl:w-[60rem] xl:top-[7rem] floating">
             <img src={rabbit}
                 alt="rabbit" />
         </div>
@@ -22,7 +22,6 @@ function Rabbit() {
 }
 
 function Hero(props: { profile: Profile }) {
-    const userHasScrolled = useUserScrolled(20);
     const { isLoggedIn } = props.profile;
 
     return (
@@ -39,11 +38,12 @@ function Hero(props: { profile: Profile }) {
             <MainHeroContent isLoggedIn={isLoggedIn} />
             <Rabbit />
 
-            <FaArrowDown
-                className={`fixed z-10 bottom-9 text-f23-yellowGreen text-6xl hover:cursor-pointer
+            {/* <FaArrowDown
+                className={`fixed z-30 bottom-9 text-f23-yellowGreen text-6xl hover:cursor-pointer
+                    right:0 left-auto
                     floating ${!userHasScrolled ? "visible" : "invisible"}`}
                 onClick={() => scrollToSectionName("About")}
-            />
+            /> */}
 
             <div className="absolute z-0 w-96 top-[30rem] left-[20rem] opacity-50
           md:top-44 md:left-[30rem]
