@@ -247,7 +247,6 @@ class App extends Component {
                 <div className="relative"
                     id="starryBackground"
                     style={{
-                        "background": "rgb(141,182,126)",
                         "background": "linear-gradient(180deg, rgba(141,182,126,1) 5%, rgba(19,61,53,1) 23%)"
                     }}>
                     {/* Application alert messages go here */}
