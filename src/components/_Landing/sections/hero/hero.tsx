@@ -56,8 +56,9 @@ function Hero(props: { profile: Profile }) {
                 onClick={() => scrollToSectionName("About")}
             /> */}
 
-            <div className="absolute w-[27rem] sm:w-128 bottom-[12rem] z-0 opacity-40
-         right-0 md:w-[40rem] md:top-[17rem] md:-right-22 lg:w-[45em] lg:-right-44 xl:w-[60rem] xl:top-[7rem]">
+            <div className="absolute w-[27rem] sm:w-128 bottom-[12rem] top-[24rem] z-0
+            sm:top-[20rem]
+         right-0 md:w-[40rem] md:top-[24rem] md:right-0 lg:w-[45em] lg:right-0 xl:w-[60rem] xl:top-[24rem]">
                 <img src={cloudWhale}
                     alt="rabbit" />
             </div>
