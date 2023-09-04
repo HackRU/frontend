@@ -10,8 +10,11 @@ import Schedule from "./sections/schedule/Schedule";
 import Sponsors from "./sections/sponsors/Sponsors";
 import Sun from "./assets/sun/sun";
 import SectionTitle from "./global_components/SectionTitle";
+import { scrollToSectionName, useUserScrolled } from "./sections/hero/utilities";
+import { FaArrowDown } from "react-icons/fa";
 
 function LandingPage(props: any) {
+    const userHasScrolled = useUserScrolled(7);
 
     useEffect(() => {
         randomizeAnimationDurations("floating", 5, 9);
@@ -22,6 +25,14 @@ function LandingPage(props: any) {
         <div
             className="w-full h-fit">
             <Sun />
+
+            <FaArrowDown
+                className={`fixed z-50 bottom-9 text-f23-yellowGreen text-6xl hover:cursor-pointer
+                    left-[46vw] ml-0 opacity-90
+                    floating ${!userHasScrolled ? "visible" : "invisible"}`}
+                onClick={() => scrollToSectionName("About")}
+            />
+
             <Hero profile={props.profile} />
             <SectionTitle title="ABOUT" />
             <About />

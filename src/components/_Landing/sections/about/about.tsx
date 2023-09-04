@@ -22,6 +22,7 @@ function About() {
             <div className="flex flex-col items-center"
                 id="About">
                 <AboutContent />
+
             </div>
         );
     } else {

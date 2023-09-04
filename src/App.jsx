@@ -221,7 +221,7 @@ class App extends Component {
             //     />
             // );
             // renderRoutes.push(
-            //     <Route
+            //     <Routew
             //         exact
             //         path="/teamru/explore"
             //         key="explore"
@@ -244,8 +244,11 @@ class App extends Component {
         return (
             <BrowserRouter style={{ width: "100%" }}>
                 {/* BrowserRouter wil allow us to switch between the different pages in our SPA based on the URL routing */}
-                <div className="bg-gradient-to-b
-        from-f23-lightGreen via-f23-mediumGreen to-f23-darkGreen relative" id="starryBackground">
+                <div className="relative"
+                    id="starryBackground"
+                    style={{
+                        "background": "linear-gradient(180deg, rgba(141,182,126,1) 5%, rgba(19,61,53,1) 23%)"
+                    }}>
                     {/* Application alert messages go here */}
                     <Snackbar open={this.state.alertProps.open}
                         autoHideDuration={this.state.alertProps.duration}>
