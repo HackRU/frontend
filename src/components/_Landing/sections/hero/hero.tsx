@@ -32,7 +32,6 @@ function Hero(props: { profile: Profile }) {
                         md:min-h-[1060px] min-h-[940px]
                         "
             style={{
-                minWidth: "372px",
                 maxHeight: "1300px"
             }}
         >

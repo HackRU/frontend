@@ -69,7 +69,7 @@ function Navbar() {
     const sections = ["Home", "About", "Schedule", "FAQ"];
 
     return (
-        <div className="flex md:fixed justify-end z-40 w-[100%]">
+        <div className="flex md:fixed justify-end z-40 w-fit">
             <img src={yellowHackRULogo}
                 alt="yellow hackru logo"
                 className="w-24 absolute top-0 left-4 z-50" />
