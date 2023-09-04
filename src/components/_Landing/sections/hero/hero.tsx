@@ -10,6 +10,8 @@ import cloud2 from "../../assets/clouds/cloud2.png";
 import cloud4 from "../../assets/clouds/cloud4.png";
 import cloudWhale from "../../assets/animals/cloud-whale.png";
 import { Profile } from "../../../Profile";
+import { FaArrowDown } from "react-icons/fa";
+import { scrollToSectionName, useUserScrolled } from "./utilities";
 
 function Rabbit() {
     return (
@@ -34,8 +36,9 @@ function SecondaryWhale() {
 function Hero(props: { profile: Profile }) {
     const { isLoggedIn } = props.profile;
 
+
     return (
-        <div className="w-[100%] h-[100vh] px-5s
+        <div className="w-[100%] h-[100vh] px-5
                         flex text-white
                         flex-col items-center text-center justify-start md:justify-start relative
                         md:min-h-[1060px] min-h-[940px]
@@ -48,13 +51,6 @@ function Hero(props: { profile: Profile }) {
             <MainHeroContent isLoggedIn={isLoggedIn} />
             <Rabbit />
             <SecondaryWhale />
-
-            {/* <FaArrowDown
-                className={`fixed z-30 bottom-9 text-f23-yellowGreen text-6xl hover:cursor-pointer
-                    right:0 left-auto
-                    floating ${!userHasScrolled ? "visible" : "invisible"}`}
-                onClick={() => scrollToSectionName("About")}
-            /> */}
 
             <div className="absolute z-0 w-[34rem] -bottom-[2rem] -right-10
             sm:-bottom-[6rem] sm:w-[50rem]
