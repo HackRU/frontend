@@ -37,7 +37,8 @@ function FAQ() {
                 <img src={cloud}
                     className="absolute cloud w-[24rem] z-10" />
                 <img src={cloud3}
-                    className="absolute top-[44rem] left-96 cloud w-[20rem] z-10 opacity-40" />
+                    className="absolute top-[44rem] left-96 cloud w-[20rem] z-10 opacity-40
+                lg:left-[120rem]" />
             </div>
         </div>
     );

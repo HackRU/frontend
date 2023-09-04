@@ -14,6 +14,7 @@ import "./AboutContent.css";
 import { defaults } from "../../../Default";
 import cloud4 from "../../../assets/clouds/cloud4.png";
 import cloud6 from "../../../assets/clouds/cloud6.png";
+import cloud5 from "../../../assets/clouds/cloud5.png";
 
 const Introduction = (headerTextAlignment: string) => {
     switch (headerTextAlignment) {
@@ -182,9 +183,19 @@ function AboutContent() {
        opacity-50 md:opacity-80 md:top-[30rem] md:left-[32rem]
        lg:top-[40rem] lg:left-[32rem]
        lg:w-144 cloud">
+                    <img src={cloud5}
+                        alt="cloud" />
+                </div>
+
+                <div className="absolute z-0 w-96 top-[-10rem] left-[40rem]
+       opacity-40 md:opacity-80 md:top-[0rem] md:left-[60rem]
+       lg:top-[-8rem] lg:left-[60]
+       lg:w-144 cloud">
                     <img src={cloud4}
                         alt="cloud" />
                 </div>
+
+
 
                 <div className="absolute z-0 w-96 top-[95rem] left-[30rem]
        md:opacity-80 md:top-[95rem] md:left-[40rem]

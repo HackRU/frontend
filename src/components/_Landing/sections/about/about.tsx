@@ -2,7 +2,6 @@ import React from "react";
 import Error from "../error";
 import AboutContent from "./components/AboutContent";
 import useAboutConfig, { useVerifyPreset } from "./hooks/useConfigAbout";
-import cloud4 from "../../assets/clouds/cloud4.png";
 
 function About() {
     const validPreset = useVerifyPreset();
