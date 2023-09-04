@@ -10,8 +10,6 @@ import cloud2 from "../../assets/clouds/cloud2.png";
 import cloud4 from "../../assets/clouds/cloud4.png";
 import cloudWhale from "../../assets/animals/cloud-whale.png";
 import { Profile } from "../../../Profile";
-import { FaArrowDown } from "react-icons/fa";
-import { scrollToSectionName, useUserScrolled } from "./utilities";
 
 function Rabbit() {
     return (
