@@ -790,6 +790,30 @@ video {
   top: 24rem;
 }
 
+.-right-10 {
+  right: -2.5rem;
+}
+
+.bottom-\[20rem\] {
+  bottom: 20rem;
+}
+
+.bottom-\[4rem\] {
+  bottom: 4rem;
+}
+
+.bottom-\[0rem\] {
+  bottom: 0rem;
+}
+
+.-bottom-\[4rem\] {
+  bottom: -4rem;
+}
+
+.-bottom-\[2rem\] {
+  bottom: -2rem;
+}
+
 .z-50 {
   z-index: 50;
 }
@@ -1061,6 +1085,10 @@ video {
 
 .w-44 {
   width: 11rem;
+}
+
+.w-\[34rem\] {
+  width: 34rem;
 }
 
 .max-w-lg {
@@ -1680,6 +1708,50 @@ video {
     top: 20rem;
   }
 
+  .sm\:-bottom-\[5rem\] {
+    bottom: -5rem;
+  }
+
+  .sm\:bottom-\[0rem\] {
+    bottom: 0rem;
+  }
+
+  .sm\:bottom-\[4rem\] {
+    bottom: 4rem;
+  }
+
+  .sm\:bottom-\[2rem\] {
+    bottom: 2rem;
+  }
+
+  .sm\:bottom-\[8rem\] {
+    bottom: 8rem;
+  }
+
+  .sm\:bottom-\[3rem\] {
+    bottom: 3rem;
+  }
+
+  .sm\:-bottom-\[7rem\] {
+    bottom: -7rem;
+  }
+
+  .sm\:-bottom-\[10rem\] {
+    bottom: -10rem;
+  }
+
+  .sm\:-bottom-\[17rem\] {
+    bottom: -17rem;
+  }
+
+  .sm\:-bottom-\[13rem\] {
+    bottom: -13rem;
+  }
+
+  .sm\:-bottom-\[6rem\] {
+    bottom: -6rem;
+  }
+
   .sm\:grid {
     display: grid;
   }
@@ -1694,6 +1766,14 @@ video {
 
   .sm\:w-\[24rem\] {
     width: 24rem;
+  }
+
+  .sm\:w-\[30rem\] {
+    width: 30rem;
+  }
+
+  .sm\:w-\[50rem\] {
+    width: 50rem;
   }
 
   .sm\:grid-cols-2 {
@@ -1873,6 +1953,14 @@ video {
     width: 35rem;
   }
 
+  .md\:w-\[50rem\] {
+    width: 50rem;
+  }
+
+  .md\:w-\[60rem\] {
+    width: 60rem;
+  }
+
   .md\:flex-row {
     flex-direction: row;
   }
@@ -2032,6 +2120,22 @@ video {
     right: 0px;
   }
 
+  .lg\:top-\[30rem\] {
+    top: 30rem;
+  }
+
+  .lg\:top-\[60rem\] {
+    top: 60rem;
+  }
+
+  .lg\:top-\[25rem\] {
+    top: 25rem;
+  }
+
+  .lg\:top-\[23rem\] {
+    top: 23rem;
+  }
+
   .lg\:w-\[32rem\] {
     width: 32rem;
   }
@@ -2050,6 +2154,14 @@ video {
 
   .lg\:w-144 {
     width: 36rem;
+  }
+
+  .lg\:w-\[50em\] {
+    width: 50em;
+  }
+
+  .lg\:w-\[60em\] {
+    width: 60em;
   }
 
   .lg\:text-12xl {
@@ -2093,6 +2205,22 @@ video {
 
   .xl\:top-\[24rem\] {
     top: 24rem;
+  }
+
+  .xl\:top-\[60rem\] {
+    top: 60rem;
+  }
+
+  .xl\:top-\[50rem\] {
+    top: 50rem;
+  }
+
+  .xl\:top-\[30rem\] {
+    top: 30rem;
+  }
+
+  .xl\:top-\[25rem\] {
+    top: 25rem;
   }
 
   .xl\:w-\[40rem\] {
