@@ -4,7 +4,6 @@ import { AvForm } from "availity-reactstrap-validation";
 import { Icon } from "react-fa";
 import ResumeUploader from "../ResumeUploader";
 import WaiverUploader from "../WaiverUploader";
-import VaccineUploader from "../VaccineUploader";
 
 // import { theme } from "../../../../Defaults";
 import { ProfileType } from "../../../../Profile";
@@ -45,11 +44,6 @@ class UserProfileForm extends Component {
             waiver_message: message
         });
     }
-    checkVacciner = (message) => {
-        this.setState({
-            vaccine_message: message
-        });
-    }
 
 
     render() {
@@ -70,7 +64,7 @@ class UserProfileForm extends Component {
                                 this.setState({ message: "Please upload a waiver" });
                             });
                         }
-                        
+
                     }}
                     onInvalidSubmit={() => {
                         this.setState({ message: null }, () => {
@@ -88,23 +82,20 @@ class UserProfileForm extends Component {
                         </a>
                         {" "}*
                     </div>
-                    <WaiverUploader edit={this.state.edit} 
+                    <WaiverUploader edit={this.state.edit}
                         profile={this.props.profile}
                         checkWaiver={this.checkWaiver} />
                     <div> Upload Resume </div>
-                    <ResumeUploader edit={this.state.edit} 
+                    <ResumeUploader edit={this.state.edit}
                         profile={this.props.profile} />
-                    
+
                     {message}
-                    <div>Vaccine Card Upload</div>
-                    <VaccineUploader edit={this.state.edit}
-                        profile={this.props.profile} />
 
 
-                    <div style={{ width: "100%" }} 
+                    <div style={{ width: "100%" }}
                         align="right">
-                        <Button color="info" 
-                            className="pill-btn" 
+                        <Button color="info"
+                            className="pill-btn"
                             type="submit">
                             Update
                         </Button>
@@ -140,18 +131,15 @@ class UserProfileForm extends Component {
                             Waiver
                         </a>
                     </div>
-                    <WaiverUploader edit={this.state.edit} 
+                    <WaiverUploader edit={this.state.edit}
                         profile={this.props.profile}
                         checkWaiver={this.checkWaiver}  />
                     <div>Resume</div>
-                    <ResumeUploader edit={this.state.edit} 
-                        profile={this.props.profile} />
-                    <div>Vaccine Card Upload</div>
-                    <VaccineUploader edit={this.state.edit} 
+                    <ResumeUploader edit={this.state.edit}
                         profile={this.props.profile} />
                 </div>
 
-                
+
             );
         }
     }
