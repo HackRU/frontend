@@ -43,12 +43,12 @@ class Recap extends Component {
         const legendOpts2 = {display: true,position: "bottom",fullWidth: true,reverse: false,labels: {fontColor: "#FFFFFF", fontSize: 16, padding: 14}};
         const legendOpts3 = {display: true,position: "bottom",fullWidth: true,reverse: false,labels: {fontColor: "#FFFFFF", fontSize: 16, padding: 14}};
         const legendOpts4 = {display: false};
- 
+
         return(
-     
+
             <div className="content">
                 <div>
-                    <h1 className="display-4 theme-font">Recap Spring 2019</h1><hr />
+                    <h1 className="display-4 theme-font">Recap Fall 2023</h1><hr />
                 </div>
 
                 <div className="row">

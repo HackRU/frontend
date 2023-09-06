@@ -426,7 +426,7 @@ function AboutContent() {
                             <HeaderTextAlignmentFunc subTextAlignment={subTextAlignment}
                                 icon="location" />
                             <p className={` text-xl font-light ${subTextAlignmentPosition(subTextAlignment)}`}>
-                                HackRU is at The Rutgers College Ave Student Center for Spring 2023!
+                                HackRU is at The Rutgers College Ave Student Center for Fall 2023!
                             </p>
                         </div>
                     </div>
