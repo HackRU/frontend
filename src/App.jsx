@@ -5,6 +5,7 @@ import {
     DashboardPage,
     LoginPage,
     ForgotPage,
+    ContactPage,
     SignUpPage,
     MagicPage,
     LivePage,
@@ -168,6 +169,11 @@ class App extends Component {
                 path="/forgot"
                 key="forgot"
                 render={(props) => <ForgotPage {...props}
+                    {...componentProps} />} />,
+            <Route exact
+                path="/contact"
+                key="contact"
+                render={(props) => <ContactPage {...props}
                     {...componentProps} />} />,
             <Route exact
                 path="/magic/:mlurl"

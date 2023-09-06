@@ -4,6 +4,7 @@ import ProfilePage from "./Dashboard/Profile";
 import LoginPage from "./Login";
 import SignUpPage from "./Signup";
 import ForgotPage from "./Forgot";
+import ContactPage from "./Contact";
 import MagicPage from "./Magic";
 import LivePage from "./Live/Live";
 import SponsorshipPage from "./Sponsorship/Sponsorship";
@@ -19,6 +20,7 @@ export {
     SignUpPage,
     MagicPage,
     ForgotPage,
+    ContactPage,
     LivePage,
     TeamPage,
     SponsorshipPage,

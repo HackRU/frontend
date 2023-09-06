@@ -3,6 +3,7 @@ import { MdOutlineMenu } from "react-icons/md";
 import { Menu, Transition } from "@headlessui/react";
 import { Fragment } from "react";
 import { scrollToSectionName } from "./utilities";
+import { Link } from "react-router-dom";
 import yellowHackRULogo from "../../assets/yellow_hackru.png";
 
 function MenuItem(props: { sectionName: string }) {
@@ -17,6 +18,23 @@ function MenuItem(props: { sectionName: string }) {
                 >
                     {sectionName}
                 </button>
+            )}
+        </Menu.Item>
+    );
+}
+function OtherPageMenuItem(props: { sectionName: string }) {
+    const { sectionName } = props;
+    return (
+        <Menu.Item>
+            {({ active }) => (
+
+                <button
+                    className={`${active ? "bg-f23-lightGreen text-white" : "text-gray-900"}
+                    group flex w-full items-center rounded-md px-2 py-2 text-lg`}
+                >
+                    <Link to="/contact">{sectionName}</Link>
+                </button>
+
             )}
         </Menu.Item>
     );
@@ -51,7 +69,7 @@ function CollapsedMenu() {
                             <MenuItem sectionName="Schedule" />
                             <MenuItem sectionName="FAQ" />
                             {/* <MenuItem sectionName="Sponsors" /> */}
-                            {/* <MenuItem sectionName="Contact" /> */}
+                            {<OtherPageMenuItem sectionName="Contact" />}
                         </div>
                     </Menu.Items>
                 </Transition>
@@ -87,7 +105,14 @@ function Navbar() {
                             </button>
                         );
                     })
-                }
+                    
+                }                
+                <Link to="/contact">
+                    <button className="glow-center font-medium uppercase mr-5">
+                    Contact
+                    </button>
+                </Link>
+
             </div>
 
         </div>
