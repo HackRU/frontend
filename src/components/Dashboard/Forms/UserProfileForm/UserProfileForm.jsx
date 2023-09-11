@@ -133,7 +133,7 @@ class UserProfileForm extends Component {
                                             value: "01/01/1920"
                                         },
                                         end: {
-                                            value: "04/17/2003"
+                                            value: "10/07/2005"
                                         }
                                     } }} />
                         </Col>
