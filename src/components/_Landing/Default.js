@@ -4,9 +4,9 @@ const defaults = {
     volunteers: {
         display: true,
         vol_url:
-            "https://forms.gle/E5vYLKRV7BnCQ97c9",
+            "https://forms.gle/Ysdpkv96v7ACY4w56",
         mentor_url:
-            "https://forms.gle/59f4Bzzrv1Anomss5",
+            "https://forms.gle/5uqL314eHmZybgiR7",
     },
     mailing:
         "https://hackru.us3.list-manage.com/subscribe?u=457c42db47ebf530a0fc733fb&id=fb01885829",
