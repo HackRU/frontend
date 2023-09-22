@@ -49,11 +49,10 @@ const defaults = {
     autocheckin: false, //USE THIS FIELD TO AUTO CHECK-IN USERS!
     openApplications:
     [
-    //{
-    //applicationTitle: "Organizer Application",
-    //applicationURL: "the URL to the application"
-    //},
-
+        {
+            applicationTitle: "HackRU Mentor",
+            applicationURL: "https://google.com"
+        },
     ]
 };
 

@@ -171,11 +171,6 @@ class App extends Component {
                 render={(props) => <ForgotPage {...props}
                     {...componentProps} />} />,
             <Route exact
-                path="/contact"
-                key="contact"
-                render={(props) => <ContactPage {...props}
-                    {...componentProps} />} />,
-            <Route exact
                 path="/magic/:mlurl"
                 key="magic"
                 render={(props) => <MagicPage {...props}
@@ -253,7 +248,7 @@ class App extends Component {
                 <div className="relative"
                     id="starryBackground"
                     style={{
-                        "background": "linear-gradient(180deg, rgba(141,182,126,1) 5%, rgba(19,61,53,1) 23%)"
+                        "background": "linear-gradient(180deg, rgba(141,182,126,1) 5%, rgba(19,61,53,1) 23%)",
                     }}>
                     {/* Application alert messages go here */}
                     <Snackbar open={this.state.alertProps.open}
@@ -274,7 +269,8 @@ class App extends Component {
                         </Alert>
                     </Snackbar>
 
-                    {window.location.pathname !== "/" && <NavBar profile={this.state.profile}/>}
+                    {(window.location.pathname !== "/" && window.location.pathname !== "/contact")
+                    && <NavBar profile={this.state.profile}/>}
 
                     {/* We need to show this on our webpage at all times, so we're just going to dump it in the root */}
                     {/* We put the background here so that even after the page reroutes to different urls, the flying
@@ -289,6 +285,11 @@ class App extends Component {
                             // eslint-disable-next-line no-unused-vars
                             // render={(props) => <LandingPage />}
                         />
+                        <Route exact
+                            path="/contact"
+                            key="contact"
+                            render={(props) => <ContactPage {...props}
+                                {...componentProps} />} />,
                         <Route exact
                             path="/team"
                             render={(props) => <TeamPage {...props}

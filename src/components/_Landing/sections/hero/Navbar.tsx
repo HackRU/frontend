@@ -3,7 +3,7 @@ import { MdOutlineMenu } from "react-icons/md";
 import { Menu, Transition } from "@headlessui/react";
 import { Fragment } from "react";
 import { scrollToSectionName } from "./utilities";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import yellowHackRULogo from "../../assets/yellow_hackru.png";
 
 function MenuItem(props: { sectionName: string }) {
@@ -24,6 +24,8 @@ function MenuItem(props: { sectionName: string }) {
 }
 function OtherPageMenuItem(props: { sectionName: string }) {
     const { sectionName } = props;
+    const history = useHistory();
+
     return (
         <Menu.Item>
             {({ active }) => (
@@ -31,9 +33,13 @@ function OtherPageMenuItem(props: { sectionName: string }) {
                 <button
                     className={`${active ? "bg-f23-lightGreen text-white" : "text-gray-900"}
                     group flex w-full items-center rounded-md px-2 py-2 text-lg`}
+                    onClick={() => {
+                        history.push("/contact");
+                    }}
                 >
-                    <Link to="/contact">{sectionName}</Link>
+                    {sectionName}
                 </button>
+
 
             )}
         </Menu.Item>
@@ -82,8 +88,10 @@ function CollapsedMenu() {
  * TODO: Make navbar sticky and then change the glow to the section that is currently present ??
  */
 
-function Navbar() {
-
+function Navbar(props: {
+    isContactPage: boolean;
+}) {
+    const { isContactPage } = props;
     const sections = ["Home", "About", "Schedule", "FAQ"];
 
     return (
@@ -95,24 +103,36 @@ function Navbar() {
             <div
                 className="absolute top-0 font-light text-text hidden md:flex
                 text-lg pt-8 z-40 bg-gradient-to-b from-f23-lightGreen  w-[100%] justify-end">
-                {
-                    sections.map((section) => {
-                        return (
-                            <button className="glow-center font-medium uppercase mr-5"
-                                onClick={() => scrollToSectionName(section)}
-                                key={section}>
-                                {section}
-                            </button>
-                        );
-                    })
-                    
-                }                
-                <Link to="/contact">
-                    <button className="glow-center font-medium uppercase mr-5">
-                    Contact
-                    </button>
-                </Link>
 
+                {!isContactPage && (<>
+                    {
+                        sections.map((section) => {
+                            return (
+                                <button className="glow-center font-medium uppercase mr-5"
+                                    onClick={() => scrollToSectionName(section)}
+                                    key={section}>
+                                    {section}
+                                </button>
+                            );
+                        })
+                    }
+                    <Link to="/contact">
+                        <button className="glow-center font-medium uppercase mr-5">
+                            Contact
+                        </button>
+                    </Link>
+                </>)
+                }
+
+                {
+                    isContactPage && (
+                        <Link to="/">
+                            <button className="glow-center font-medium uppercase mr-5">
+                                Home
+                            </button>
+                        </Link>
+                    )
+                }
             </div>
 
         </div>
