@@ -37,7 +37,7 @@ awesome software and hardware projects. Industry experts and mentors come from a
 an environment that fosters an atmosphere of learning through teck talks and one-on-one guidance.
 We encourage beginner and advanced hackers alike to challenge themselves and expand their skills.`;
 
-const whatIsApplicationAnswer = `HackRU will be back in person this Spring! We will be accepting anywhere between 300-500 hackers based on
+const whatIsApplicationAnswer = `HackRU will be back in person this Fall 2023! We will be accepting anywhere between 300-500 hackers based on
 when you register for the event. After you register, you'll get a notification 1-2 weeks before the hackathon whether we have accepted you or
 not to the hackathon. You will then have to let us know if you plan on coming or not and then you're all set!`;
 

@@ -895,10 +895,13 @@ video {
   margin-left: 1.5rem;
 }
 
+<<<<<<< HEAD:public/tailwind-output.css
 .mt-20 {
   margin-top: 5rem;
 }
 
+=======
+>>>>>>> env/dev:public/tailwind-output-f23.css
 .block {
   display: block;
 }
@@ -1063,10 +1066,13 @@ video {
   width: 11rem;
 }
 
+<<<<<<< HEAD:public/tailwind-output.css
 .max-w-\[120rem\] {
   max-width: 120rem;
 }
 
+=======
+>>>>>>> env/dev:public/tailwind-output-f23.css
 .max-w-lg {
   max-width: 32rem;
 }
@@ -1404,10 +1410,13 @@ video {
   padding-left: 1rem;
 }
 
+<<<<<<< HEAD:public/tailwind-output.css
 .pt-32 {
   padding-top: 8rem;
 }
 
+=======
+>>>>>>> env/dev:public/tailwind-output-f23.css
 .text-left {
   text-align: left;
 }
@@ -1424,11 +1433,14 @@ video {
   vertical-align: middle;
 }
 
+<<<<<<< HEAD:public/tailwind-output.css
 .text-5xl {
   font-size: 3rem;
   line-height: 1;
 }
 
+=======
+>>>>>>> env/dev:public/tailwind-output-f23.css
 .text-6xl {
   font-size: 3.75rem;
   line-height: 1;
@@ -1458,6 +1470,14 @@ video {
   line-height: 1.75rem;
 }
 
+<<<<<<< HEAD:public/tailwind-output.css
+=======
+.text-5xl {
+  font-size: 3rem;
+  line-height: 1;
+}
+
+>>>>>>> env/dev:public/tailwind-output-f23.css
 .text-xl {
   font-size: 1.25rem;
   line-height: 1.75rem;
@@ -1498,6 +1518,11 @@ video {
 
 .capitalize {
   text-transform: capitalize;
+}
+
+.text-f23-yellowGreen {
+  --tw-text-opacity: 1;
+  color: rgb(241 225 146 / var(--tw-text-opacity));
 }
 
 .text-text {
