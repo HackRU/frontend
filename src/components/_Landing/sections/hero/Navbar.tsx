@@ -88,10 +88,8 @@ function CollapsedMenu() {
  * TODO: Make navbar sticky and then change the glow to the section that is currently present ??
  */
 
-function Navbar(props: {
-    isContactPage: boolean;
-}) {
-    const { isContactPage } = props;
+function Navbar() {
+    const isContactPage = window.location.pathname === "/contact";
     const sections = ["Home", "About", "Schedule", "FAQ"];
 
     return (

@@ -31,7 +31,7 @@ class ContactPage extends Component {
 
         return (
             <div>
-                <Navbar isContactPage={true} />
+                <Navbar />
                 <div className="pt-32 grid sm-about:grid-cols-1 lg-about:grid-cols-2 xl-about:grid-cols-2 max-w-[120rem] relative h-fit min-h-screen">
 
                     <div className='sm-about:order-1 lg-about:order-1'>
