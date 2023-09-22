@@ -19,8 +19,8 @@ const defaults = {
     enableFlyingLogo: false,
     poc: true,
     rest: {
-        dev: "https://api.hackru.org/dev",
-        prod: "https://api.hackru.org/prod",
+        dev: "https://0olunwar6j.execute-api.us-east-1.amazonaws.com/dev",
+        prod: "https://yiftrx6aek.execute-api.us-east-1.amazonaws.com/prod",
         resumes: "https://hackru-resumes.s3.amazonaws.com",
         s3: "http://hackru-misc.s3-website-us-west-2.amazonaws.com/",
         teamru: "https://hki9olto2i.execute-api.us-east-1.amazonaws.com/dev",

@@ -248,7 +248,9 @@ class App extends Component {
                 <div className="relative"
                     id="starryBackground"
                     style={{
-                        "background": "linear-gradient(180deg, rgba(141,182,126,1) 5%, rgba(19,61,53,1) 23%)",
+                        "background":
+                            window.location.pathname === "/" ? "linear-gradient(180deg, rgba(141,182,126,1) 5%, rgba(19,61,53,1) 23%)" :
+                                "rgba(19,61,53,1)"
                     }}>
                     {/* Application alert messages go here */}
                     <Snackbar open={this.state.alertProps.open}
