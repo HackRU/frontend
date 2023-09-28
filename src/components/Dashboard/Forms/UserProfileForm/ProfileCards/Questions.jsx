@@ -123,14 +123,7 @@ class Questions extends Component {
                             value={user.short_answer}
                             onChange={(e) => { user.short_answer = e.target.value; this.updateUser(user); }} />
                     </FormGroup>
-                    <FormGroup>
-                        <Label for="sa">What are your initial thoughts on a virtual hackathon?</Label>
-                        <Input id="sa"
-                            type="textarea"
-                            placeholder=""
-                            value={user.virtual_short_answer}
-                            onChange={(e) => { user.virtual_short_answer = e.target.value; this.updateUser(user); }} />
-                    </FormGroup>
+                   
                     <FormGroup>
                         <Label for="sn">Anything we should account for?</Label>
                         <Input id="sn"
@@ -195,10 +188,6 @@ class Questions extends Component {
                     <FormGroup>
                         <Label>What are you hoping to experience at HackRU?</Label>
                         {field(user.short_answer)}
-                    </FormGroup>
-                    <FormGroup>
-                        <Label>What are your initial thoughts on a virtual hackathon?</Label>
-                        {field(user.virtual_short_answer)}
                     </FormGroup>
                     <FormGroup>
                         <Label>Anything we should account for?</Label>
