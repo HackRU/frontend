@@ -10,6 +10,8 @@ import { ProfileType } from "../../../../Profile";
 import PropTypes from "prop-types";
 import { PulseLoader } from "react-spinners";
 
+import countryList from 'react-select-country-list'
+
 
 class About extends Component {
     // constructor(props) {
@@ -50,6 +52,7 @@ class About extends Component {
         update_user.gender = this.state.user.gender;
         update_user.ethnicity = this.state.user.ethnicity;
         update_user.hackathon_count = this.state.user.hackathon_count;
+        update_user.country_of_residence = this.state.user.country_of_residence;
         
         this.props.profile.Set(update_user)
             .then(res => {
@@ -180,6 +183,19 @@ class About extends Component {
                             </CustomAVInput>
                         </Col>
                     </FormGroup>
+                    <FormGroup >
+                            <CustomAVInput name="country_of_residence"
+                                label="Country of Residence*"
+                                value={user.country_of_residence}
+                                validate={{ required: { value: true, errorMessage: "Invalid input" } }}>
+                                <div className="forcestyle">
+                                    <Creatable id="country_of_residence"
+                                        value={{ value: user.country_of_residence, label: user.country_of_residence }}
+                                        onChange={(e) => { user.country_of_residence = e.value; this.updateUser(user); }}
+                                        options={countryList().getData()} />
+                                </div>
+                            </CustomAVInput>
+                    </FormGroup>
                     <FormGroup>
                         <AvField name="hackathon_count"
                             label="How many hackathons have you attended? *"
@@ -249,6 +265,10 @@ class About extends Component {
                             <Label>Ethnicity</Label>
                             {field(user.ethnicity)}
                         </Col>
+                    </FormGroup>
+                    <FormGroup>
+                        <Label>Country of Residence</Label>
+                        {field(user.country_of_residence)}
                     </FormGroup>
                     <FormGroup>
                         <Label>How many hackathons have you attended?</Label>
