@@ -4,7 +4,7 @@ import { AvForm, AvField } from "availity-reactstrap-validation";
 import Select, { Creatable } from "react-select";
 import CustomAVInput from "../CustomAVInput";
 import { Icon } from "react-fa";
-import { theme } from "../../../../../Defaults";
+import { theme, defaults } from "../../../../../Defaults";
 import selectorOptions from "../selectorOptions.json";
 import { ProfileType } from "../../../../Profile";
 import PropTypes from "prop-types";
@@ -13,7 +13,7 @@ import { PulseLoader } from "react-spinners";
 
 class About extends Component {
     // constructor(props) {
-    //     super(props);
+    //     super(props
     //     this.updateUser = this.updateUser.bind(this);
     // }
     UNSAFE_componentWillMount() {
@@ -69,6 +69,8 @@ class About extends Component {
         if (this.state.message) {
             message = (<UncontrolledAlert color="danger">{this.state.message}</UncontrolledAlert>);
         }
+        let tempdate =  new Date(defaults.startdate);
+        tempdate.setFullYear((tempdate.getFullYear()) - 18);
         if (this.state.edit) {
             return (
                 <AvForm
@@ -133,8 +135,9 @@ class About extends Component {
                                             value: "01/01/1920"
                                         },
                                         end: {
-                                            value: "02/25/2005"
+                                            value:  tempdate.toLocaleDateString()
                                         }
+                                    
                                     } }} />
                         </Col>
                         <Col xs={(mobile) ? 12 : 4}>
