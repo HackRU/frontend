@@ -97,6 +97,11 @@ function Navbar() {
             <img src={yellowHackRULogo}
                 alt="yellow hackru logo"
                 className="w-24 absolute top-0 left-4 z-50" />
+
+            <img className="w-24 absolute top-0 left-32 z-50"
+                src="https://s3.amazonaws.com/logged-assets/trust-badge/2024/mlh-trust-badge-2024-white.svg"
+                alt="Major League Hacking 2024 Hackathon Season" />
+
             <CollapsedMenu />
             <div
                 className="absolute top-0 font-light text-text hidden md:flex
