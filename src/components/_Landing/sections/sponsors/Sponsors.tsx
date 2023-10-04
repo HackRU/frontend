@@ -31,10 +31,6 @@ function Sponsors() {
                 <div className="w-full py-12 px-5
                                 transparent-black-background rounded-lg flex flex-row
                                 flex-wrap justify-center items-center z-20 relative">
-                    <img src={echo_3d}
-                        alt="Echo 3D"
-                        className="w-[20rem] h-[4rem] sm:w-[24rem] sm:h-[5rem] md:w-[35rem] md:h-auto m-10" />
-
                     <a href="https://www.njtransit.com/hackathons"
                         target="_blank"
                         rel="noopener noreferrer">
