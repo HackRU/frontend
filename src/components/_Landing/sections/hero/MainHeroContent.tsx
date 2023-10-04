@@ -34,7 +34,7 @@ function HeroTitle() {
                     </div>
                 </div>
                 <div className="text-2xl font-extrabold md:text-4xl lg:text-4xl glow-subtitles text-textSubtitle mt-4 flex flex-col md:flex-row md:justify-center md:items-center">
-                    Spring 2023 <span className="text-sm mx-5 my-4 md:my-0 text-text ">&#9679;</span> Feb 25 - 26
+                    Fall 2023 <span className="text-sm mx-5 my-4 md:my-0 text-text ">&#9679;</span> Oct 7-8
                 </div>
             </div>
         </div>

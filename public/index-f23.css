@@ -52,7 +52,8 @@ body::-webkit-scrollbar {
 }
 html, body {
     overflow-x: hidden;
-    min-width: 380px;
+    min-width: 320px;
+    width: auto !important;
 }
 body {
     font-family: var(--text-font) !important;

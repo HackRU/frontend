@@ -8,7 +8,7 @@ import FAQs from "./components/Landing/Sections/Faqs";
 import Footer from "./components/Landing/Sections/Footer";
 
 const defaults = {
-    title: "HackRU Spring 2023",
+    title: "HackRU Fall 2023",
     dateText: "February 25th - 26th, 2023",
     locationText: "Rutgers College Ave Student Center",
     universityText: "Rutgers University",
@@ -19,8 +19,8 @@ const defaults = {
     enableFlyingLogo: false,
     poc: true,
     rest: {
-        dev: "https://api.hackru.org/dev",
-        prod: "https://api.hackru.org/prod",
+        dev: "https://0olunwar6j.execute-api.us-east-1.amazonaws.com/dev",
+        prod: "https://yiftrx6aek.execute-api.us-east-1.amazonaws.com/prod",
         resumes: "https://hackru-resumes.s3.amazonaws.com",
         s3: "http://hackru-misc.s3-website-us-west-2.amazonaws.com/",
         teamru: "https://hki9olto2i.execute-api.us-east-1.amazonaws.com/dev",
@@ -39,14 +39,18 @@ const defaults = {
     volunteers: {
         display: true,
         vol_url:
-            "https://forms.gle/E5vYLKRV7BnCQ97c9",
+            "https://forms.gle/Ysdpkv96v7ACY4w56",
         mentor_url:
-            "https://forms.gle/59f4Bzzrv1Anomss5",
+            "https://forms.gle/5uqL314eHmZybgiR7",
     },
     mailing:
         "https://hackru.us3.list-manage.com/subscribe?u=457c42db47ebf530a0fc733fb&id=fb01885829",
     dayof: true,
     autocheckin: false, //USE THIS FIELD TO AUTO CHECK-IN USERS!
+    openApplications:
+    [
+
+    ]
 };
 
 const navlinks = {

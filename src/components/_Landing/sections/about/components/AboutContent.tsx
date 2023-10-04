@@ -12,6 +12,9 @@ import rabbit from "../../../assets/animals/rabbit-min.png";
 import useAboutConfig from "../hooks/useConfigAbout";
 import "./AboutContent.css";
 import { defaults } from "../../../Default";
+import cloud4 from "../../../assets/clouds/cloud4.png";
+import cloud6 from "../../../assets/clouds/cloud6.png";
+import cloud5 from "../../../assets/clouds/cloud5.png";
 
 const Introduction = (headerTextAlignment: string) => {
     switch (headerTextAlignment) {
@@ -175,7 +178,32 @@ function AboutContent() {
 
     if (useSplitCards) {
         return (
-            <div className="grid sm-about:grid-cols-1 lg-about:grid-cols-2 xl-about:grid-cols-2 max-w-[120rem]">
+            <div className="grid sm-about:grid-cols-1 lg-about:grid-cols-2 xl-about:grid-cols-2 max-w-[120rem] relative">
+                <div className="absolute z-0 w-96 top-[20rem] left-[24rem]
+       opacity-50 md:opacity-80 md:top-[30rem] md:left-[32rem]
+       lg:top-[40rem] lg:left-[32rem]
+       lg:w-144 cloud">
+                    <img src={cloud5}
+                        alt="cloud" />
+                </div>
+
+                <div className="absolute z-0 w-96 top-[-10rem] left-[40rem]
+       opacity-40 md:opacity-80 md:top-[0rem] md:left-[60rem]
+       lg:top-[-8rem] lg:left-[60]
+       lg:w-144 cloud">
+                    <img src={cloud4}
+                        alt="cloud" />
+                </div>
+
+
+
+                <div className="absolute z-0 w-96 top-[95rem] left-[30rem]
+       md:opacity-80 md:top-[95rem] md:left-[40rem]
+       lg:top-[95rem] lg:left-[70rem] opacity-40
+       lg:w-144 cloud">
+                    <img src={cloud6}
+                        alt="cloud" />
+                </div>
                 {/* Header Text */}
                 {/* <div className="glow basis-1 lg-about:col-span-2 flex HeaderText text-7xl text-text glow-subtitles font-semibold"
                     style={{
@@ -398,7 +426,7 @@ function AboutContent() {
                             <HeaderTextAlignmentFunc subTextAlignment={subTextAlignment}
                                 icon="location" />
                             <p className={` text-xl font-light ${subTextAlignmentPosition(subTextAlignment)}`}>
-                                HackRU is at The Rutgers College Ave Student Center for Spring 2023!
+                                HackRU is at The Rutgers College Ave Student Center for Fall 2023!
                             </p>
                         </div>
                     </div>

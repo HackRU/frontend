@@ -9,7 +9,7 @@ on:
 
 jobs:
     code-quality:
-        runs-on: ubuntu-18.04
+        runs-on: ubuntu-latest
 
         strategy:
             fail-fast: true
@@ -25,7 +25,7 @@ jobs:
             - run: npm install
             - run: npm run lint
     deploy:
-        runs-on: ubuntu-18.04
+        runs-on: ubuntu-latest
 
         strategy:
             fail-fast: true

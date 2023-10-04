@@ -31,7 +31,7 @@ const FAQTextOne = {
     three: {
         title: "What is the application process like?",
         text:
-            "HackRU will be back in person this Spring! We will be accepting anywhere between 300-500 hackers based on when you register for the event. After you register, you'll get a notification 1-2 weeks before the hackathon whether we have accepted you or not to the hackathon. You then will have to let us know if you plan on coming or not and then you're all set!",
+            "HackRU will be back in person this Fall! We will be accepting anywhere between 300-500 hackers based on when you register for the event. After you register, you'll get a notification 1-2 weeks before the hackathon whether we have accepted you or not to the hackathon. You then will have to let us know if you plan on coming or not and then you're all set!",
     },
     // four: {
     //     title: "Are there travel reimbursements?",

@@ -5,6 +5,7 @@ import {
     DashboardPage,
     LoginPage,
     ForgotPage,
+    ContactPage,
     SignUpPage,
     MagicPage,
     LivePage,
@@ -221,7 +222,7 @@ class App extends Component {
             //     />
             // );
             // renderRoutes.push(
-            //     <Route
+            //     <Routew
             //         exact
             //         path="/teamru/explore"
             //         key="explore"
@@ -244,8 +245,13 @@ class App extends Component {
         return (
             <BrowserRouter style={{ width: "100%" }}>
                 {/* BrowserRouter wil allow us to switch between the different pages in our SPA based on the URL routing */}
-                <div className="bg-gradient-to-b
-        from-f23-lightGreen via-f23-mediumGreen to-f23-darkGreen relative" id="starryBackground">
+                <div className="relative"
+                    id="starryBackground"
+                    style={{
+                        "background":
+                            window.location.pathname === "/" ? "linear-gradient(180deg, rgba(141,182,126,1) 5%, rgba(19,61,53,1) 23%)" :
+                                "rgba(19,61,53,1)"
+                    }}>
                     {/* Application alert messages go here */}
                     <Snackbar open={this.state.alertProps.open}
                         autoHideDuration={this.state.alertProps.duration}>
@@ -265,7 +271,8 @@ class App extends Component {
                         </Alert>
                     </Snackbar>
 
-                    {window.location.pathname !== "/" && <NavBar profile={this.state.profile}/>}
+                    {(window.location.pathname !== "/" && window.location.pathname !== "/contact")
+                    && <NavBar profile={this.state.profile}/>}
 
                     {/* We need to show this on our webpage at all times, so we're just going to dump it in the root */}
                     {/* We put the background here so that even after the page reroutes to different urls, the flying
@@ -280,6 +287,11 @@ class App extends Component {
                             // eslint-disable-next-line no-unused-vars
                             // render={(props) => <LandingPage />}
                         />
+                        <Route exact
+                            path="/contact"
+                            key="contact"
+                            render={(props) => <ContactPage {...props}
+                                {...componentProps} />} />,
                         <Route exact
                             path="/team"
                             render={(props) => <TeamPage {...props}

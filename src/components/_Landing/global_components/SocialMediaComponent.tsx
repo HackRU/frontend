@@ -7,7 +7,7 @@ import { FaFacebookF } from "react-icons/fa";
 function SocialMediaComponent() {
 
     return (
-        <div className="m-auto mt-5 h-6 bg-gray-800 p-6 w-36">
+        <div className="m-auto mt-5 h-6 transparent-black-background p-6 w-36 rounded-2xl">
             <a href="https://www.instagram.com/thehackru/" target="_blank" >< FaInstagram style={{ marginTop: "-11px", marginLeft: "-8px" }} size="25px" color="white" /></a>
             <a href="https://twitter.com/theHackRU" target="_blank" >< FaTwitter style={{ marginTop: "-24px", marginLeft: "41px" }} size="22px" color="white" /></a>
             <a href="https://www.facebook.com/theHackRU/" target="_blank" >< FaFacebookF style={{ marginTop: "-24px", marginLeft: "82px" }} size="23px" color="white" /></a>
