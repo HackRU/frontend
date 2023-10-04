@@ -37,7 +37,7 @@ function Sponsors() {
 
                     <a href="https://www.njtransit.com/hackathons"
                         target="_blank"
-                        rel="noreferrer">
+                        rel="noopener noreferrer">
                         <img src={nj_transit}
                             alt="NJ Transit"
                             className="w-44 h-auto m-10" />
