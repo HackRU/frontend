@@ -50,7 +50,7 @@ class About extends Component {
         update_user.gender = this.state.user.gender;
         update_user.ethnicity = this.state.user.ethnicity;
         update_user.hackathon_count = this.state.user.hackathon_count;
-        
+
         this.props.profile.Set(update_user)
             .then(res => {
                 this.setState({
@@ -69,8 +69,8 @@ class About extends Component {
         if (this.state.message) {
             message = (<UncontrolledAlert color="danger">{this.state.message}</UncontrolledAlert>);
         }
-        let tempdate =  new Date(defaults.startdate);
-        tempdate.setFullYear((tempdate.getFullYear()) - 18);
+        let tempDate =  new Date(defaults.startdate);
+        tempDate.setFullYear((tempDate.getFullYear()) - 18);
         if (this.state.edit) {
             return (
                 <AvForm
@@ -135,9 +135,9 @@ class About extends Component {
                                             value: "01/01/1920"
                                         },
                                         end: {
-                                            value:  tempdate.toLocaleDateString()
+                                            value:  tempDate.toLocaleDateString()
                                         }
-                                    
+
                                     } }} />
                         </Col>
                         <Col xs={(mobile) ? 12 : 4}>

@@ -5,7 +5,7 @@ import Select, { Creatable, AsyncCreatable } from "react-select";
 import ResumeUploader from "./ResumeUploader";
 import CustomAVInput from "./CustomAVInput";
 import { Icon } from "react-fa";
-import { theme } from "../../../../Defaults";
+import { theme, defaults } from "../../../../Defaults";
 import request from "request";
 import majors from "./majors.json";
 import selectorOptions from "./selectorOptions.json";
@@ -47,6 +47,9 @@ class UserProfileForm extends Component {
         this.props.onChange(user);
     }
     render() {
+        let tempDate =  new Date(defaults.startdate);
+        tempDate.setFullYear((tempDate.getFullYear()) - 18);
+
         let mobile = this.props.mobile;
         let user = this.state.user;
         let mlhnotices = [];
@@ -133,7 +136,7 @@ class UserProfileForm extends Component {
                                             value: "01/01/1920"
                                         },
                                         end: {
-                                            value: "10/07/2005"
+                                            value: tempDate.toLocaleDateString()
                                         }
                                     } }} />
                         </Col>
