@@ -36,7 +36,9 @@ function Hero(props: { profile: Profile }) {
 
 
     return (
-        <div className="w-[100%] h-[100vh] px-5
+        <div
+            id="Home"
+            className="w-[100%] h-[100vh] px-5
                         flex text-white
                         flex-col items-center text-center justify-start md:justify-start relative
                         md:min-h-[1060px] min-h-[940px]
