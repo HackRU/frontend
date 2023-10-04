@@ -34,16 +34,26 @@ function LandingPage(props: any) {
             />
 
             <Hero profile={props.profile} />
-            <SectionTitle title="ABOUT" />
+            <div id="About"
+                className="pt-3">
+                <SectionTitle title="ABOUT" />
+            </div>
             <About />
 
-            <SectionTitle title="SCHEDULE" />
+            <div id="Schedule"
+                className="pt-3">
+                <SectionTitle title="SCHEDULE" />
+            </div>
             <Schedule />
-
-            <SectionTitle title="SPONSORS" />
+            <div id="Sponsors"
+                className="pt-3">
+                <SectionTitle title="SPONSORS" />
+            </div>
             <Sponsors />
-
-            <SectionTitle title="FAQ" />
+            <div id="FAQ"
+                className="pt-3">
+                <SectionTitle title="FAQ" />
+            </div>
             <FAQ />
 
             <Footer />

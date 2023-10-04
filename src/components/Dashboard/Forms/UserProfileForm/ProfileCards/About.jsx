@@ -10,6 +10,8 @@ import { ProfileType } from "../../../../Profile";
 import PropTypes from "prop-types";
 import { PulseLoader } from "react-spinners";
 
+import countryList from "react-select-country-list";
+
 
 class About extends Component {
     // constructor(props) {
@@ -50,7 +52,7 @@ class About extends Component {
         update_user.gender = this.state.user.gender;
         update_user.ethnicity = this.state.user.ethnicity;
         update_user.hackathon_count = this.state.user.hackathon_count;
-
+        update_user.country_of_residence = this.state.user.country_of_residence;
         this.props.profile.Set(update_user)
             .then(res => {
                 this.setState({
@@ -92,7 +94,8 @@ class About extends Component {
                                     required: { value: true, errorMessage: "Invalid first name" },
                                     pattern: { value: "^[A-Za-z0-9]+$", errorMessage: "Invalid character" },
                                     minLength: { value: 1, errorMessage: "Invalid length" },
-                                    maxLength: { value: 100, errorMessage: "Invalid length" } }} />
+                                    maxLength: { value: 100, errorMessage: "Invalid length" }
+                                }} />
                         </Col>
                         <Col xs={(mobile) ? 12 : 6}>
                             <AvField name="last"
@@ -105,7 +108,8 @@ class About extends Component {
                                     required: { value: true, errorMessage: "Invalid last name" },
                                     pattern: { value: "^[A-Za-z0-9]+$", errorMessage: "Invalid character" },
                                     minLength: { value: 1, errorMessage: "Invalid length" },
-                                    maxLength: { value: 100, errorMessage: "Invalid length" } }} />
+                                    maxLength: { value: 100, errorMessage: "Invalid length" }
+                                }} />
                         </Col>
                     </FormGroup>
                     <FormGroup row>
@@ -117,8 +121,9 @@ class About extends Component {
                                 value={user.phone_number}
                                 onChange={(e) => { user.phone_number = e.target.value; this.updateUser(user); }}
                                 validate={{
-                                    required: { value: true,  errorMessage: "Invalid number"},
-                                    pattern: { value: "^[\\+]?[0-9]{0,3}?[-\\s\\.]?[(]?[0-9]{3}[)]?[-\\s\\.]?[0-9]{3}[-\\s\\.]?[0-9]{4,6}$", errorMessage: "Invalid number" } }} />
+                                    required: { value: true, errorMessage: "Invalid number" },
+                                    pattern: { value: "^[\\+]?[0-9]{0,3}?[-\\s\\.]?[(]?[0-9]{3}[)]?[-\\s\\.]?[0-9]{3}[-\\s\\.]?[0-9]{4,6}$", errorMessage: "Invalid number" }
+                                }} />
                         </Col>
                         <Col xs={(mobile) ? 12 : 4}>
                             <AvField name="dob"
@@ -137,7 +142,6 @@ class About extends Component {
                                         end: {
                                             value:  tempDate.toLocaleDateString()
                                         }
-
                                     } }} />
                         </Col>
                         <Col xs={(mobile) ? 12 : 4}>
@@ -160,7 +164,7 @@ class About extends Component {
                             <CustomAVInput name="gender"
                                 label="Gender *"
                                 value={user.gender}
-                                validate={{ required: { value: true, errorMessage: "Invalid input"} }}>
+                                validate={{ required: { value: true, errorMessage: "Invalid input" } }}>
                                 <div className="forcestyle">
                                     <Creatable id="gender"
                                         value={{ value: user.gender, label: user.gender }}
@@ -183,6 +187,19 @@ class About extends Component {
                             </CustomAVInput>
                         </Col>
                     </FormGroup>
+                    <FormGroup >
+                        <CustomAVInput name="country_of_residence"
+                            label="Country of Residence*"
+                            value={user.country_of_residence}
+                            validate={{ required: { value: true, errorMessage: "Invalid input" } }}>
+                            <div className="forcestyle">
+                                <Creatable id="country_of_residence"
+                                    value={{ value: user.country_of_residence, label: user.country_of_residence }}
+                                    onChange={(e) => { user.country_of_residence = e.value; this.updateUser(user); }}
+                                    options={countryList().getData()} />
+                            </div>
+                        </CustomAVInput>
+                    </FormGroup>
                     <FormGroup>
                         <AvField name="hackathon_count"
                             label="How many hackathons have you attended? *"
@@ -192,14 +209,15 @@ class About extends Component {
                             onChange={(e) => { user.hackathon_count = e.target.value; this.updateUser(user); }}
                             validate={{
                                 required: { value: true, errorMessage: "Invalid hackathon count" },
-                                min: { value: 0, errorMessage: "Hackathon count must be non-negative" } }} />
+                                min: { value: 0, errorMessage: "Hackathon count must be non-negative" }
+                            }} />
                     </FormGroup>
                     {message}
                     <div style={{ width: "100%" }}
                         align="right">
                         <Button color="info"
                             className="pill-btn"
-                            type="submit"> { this.state.loading ?  <PulseLoader color={theme.accent[0]} /> : "Update" } </Button>
+                            type="submit"> {this.state.loading ? <PulseLoader color={theme.accent[0]} /> : "Update"} </Button>
                     </div>
                 </AvForm>
             );
@@ -208,7 +226,7 @@ class About extends Component {
                 color: theme.disabled[0], padding: 5, minHeight: 35
             };
             let field = (text) => {
-                return <p style={pStyle}>{(text) ? text : <i>unanswered</i> }</p>;
+                return <p style={pStyle}>{(text) ? text : <i>unanswered</i>}</p>;
             };
             return (
                 <div>
@@ -252,6 +270,10 @@ class About extends Component {
                             <Label>Ethnicity</Label>
                             {field(user.ethnicity)}
                         </Col>
+                    </FormGroup>
+                    <FormGroup>
+                        <Label>Country of Residence</Label>
+                        {field(user.country_of_residence)}
                     </FormGroup>
                     <FormGroup>
                         <Label>How many hackathons have you attended?</Label>

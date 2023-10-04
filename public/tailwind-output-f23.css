@@ -715,6 +715,10 @@ video {
   bottom: 8rem;
 }
 
+.left-32 {
+  left: 8rem;
+}
+
 .left-4 {
   left: 1rem;
 }
@@ -797,6 +801,14 @@ video {
 
 .top-\[95rem\] {
   top: 95rem;
+}
+
+.right-24 {
+  right: 6rem;
+}
+
+.right-28 {
+  right: 7rem;
 }
 
 .z-0 {
@@ -918,6 +930,10 @@ video {
 
 .mt-\[8rem\] {
   margin-top: 8rem;
+}
+
+.mr-24 {
+  margin-right: 6rem;
 }
 
 .block {
@@ -1393,6 +1409,10 @@ video {
   padding-right: 0.5rem;
 }
 
+.pr-20 {
+  padding-right: 5rem;
+}
+
 .pr-4 {
   padding-right: 1rem;
 }
@@ -1423,6 +1443,10 @@ video {
 
 .pt-8 {
   padding-top: 2rem;
+}
+
+.pr-24 {
+  padding-right: 6rem;
 }
 
 .text-left {
