@@ -34,9 +34,15 @@ function Sponsors() {
                     <img src={echo_3d}
                         alt="Echo 3D"
                         className="w-[20rem] h-[4rem] sm:w-[24rem] sm:h-[5rem] md:w-[35rem] md:h-auto m-10" />
-                    <img src={nj_transit}
-                        alt="NJ Transit"
-                        className="w-44 h-auto m-10" />
+
+                    <a href="https://www.njtransit.com/hackathons"
+                        target="_blank"
+                        rel="noopener noreferrer">
+                        <img src={nj_transit}
+                            alt="NJ Transit"
+                            className="w-44 h-auto m-10" />
+                    </a>
+
                     <img src={merck}
                         alt="Merck"
                         className="m-10 -mt-5" />
