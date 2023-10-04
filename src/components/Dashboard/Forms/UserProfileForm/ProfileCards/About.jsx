@@ -4,7 +4,7 @@ import { AvForm, AvField } from "availity-reactstrap-validation";
 import Select, { Creatable } from "react-select";
 import CustomAVInput from "../CustomAVInput";
 import { Icon } from "react-fa";
-import { theme } from "../../../../../Defaults";
+import { theme, defaults } from "../../../../../Defaults";
 import selectorOptions from "../selectorOptions.json";
 import { ProfileType } from "../../../../Profile";
 import PropTypes from "prop-types";
@@ -14,8 +14,8 @@ import countryList from "react-select-country-list";
 
 
 class About extends Component {
-    // constructor(props) {npm 
-    //     super(props);
+    // constructor(props) {
+    //     super(props
     //     this.updateUser = this.updateUser.bind(this);
     // }
     UNSAFE_componentWillMount() {
@@ -53,7 +53,6 @@ class About extends Component {
         update_user.ethnicity = this.state.user.ethnicity;
         update_user.hackathon_count = this.state.user.hackathon_count;
         update_user.country_of_residence = this.state.user.country_of_residence;
-
         this.props.profile.Set(update_user)
             .then(res => {
                 this.setState({
@@ -72,6 +71,8 @@ class About extends Component {
         if (this.state.message) {
             message = (<UncontrolledAlert color="danger">{this.state.message}</UncontrolledAlert>);
         }
+        let tempDate =  new Date(defaults.startdate);
+        tempDate.setFullYear((tempDate.getFullYear()) - 18);
         if (this.state.edit) {
             return (
                 <AvForm
@@ -139,10 +140,9 @@ class About extends Component {
                                             value: "01/01/1920"
                                         },
                                         end: {
-                                            value: "02/25/2005"
+                                            value:  tempDate.toLocaleDateString()
                                         }
-                                    }
-                                }} />
+                                    } }} />
                         </Col>
                         <Col xs={(mobile) ? 12 : 4}>
                             <CustomAVInput name="size"
