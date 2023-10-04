@@ -25,7 +25,6 @@ function MenuItem(props: { sectionName: string }) {
 function OtherPageMenuItem(props: { sectionName: string }) {
     const { sectionName } = props;
     const history = useHistory();
-
     return (
         <Menu.Item>
             {({ active }) => (
@@ -48,7 +47,7 @@ function OtherPageMenuItem(props: { sectionName: string }) {
 
 function CollapsedMenu() {
     return (
-        <div className="text-right bg-f23-mediumGreen rounded-md z-40 md:hidden absolute right-4 top-4">
+        <div className="text-right bg-f23-mediumGreen rounded-md z-40 md:hidden absolute right-28 top-4 ">
             <Menu as="div"
                 className="relative inline-block text-left">
                 <div>
@@ -98,14 +97,21 @@ function Navbar() {
                 alt="yellow hackru logo"
                 className="w-24 absolute top-0 left-4 z-50" />
 
-            <img className="w-24 absolute top-0 left-32 z-50"
-                src="https://s3.amazonaws.com/logged-assets/trust-badge/2024/mlh-trust-badge-2024-white.svg"
-                alt="Major League Hacking 2024 Hackathon Season" />
+            <a
+                href="https://mlh.io/na?utm_source=na-hackathon&utm_medium=TrustBadge&utm_campaign=2024-season&utm_content=white"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+
+                <img className="w-24 absolute top-0 right-0 z-50"
+                    src="https://s3.amazonaws.com/logged-assets/trust-badge/2024/mlh-trust-badge-2024-yellow.svg"
+                    alt="Major League Hacking 2024 Hackathon Season" />
+            </a>
 
             <CollapsedMenu />
             <div
                 className="absolute top-0 font-light text-text hidden md:flex
-                text-lg pt-8 z-40 bg-gradient-to-b from-f23-lightGreen  w-[100%] justify-end">
+                text-lg pt-8 pr-20 z-40 bg-gradient-to-b from-f23-lightGreen  w-[100%] justify-end">
 
                 {!isContactPage && (<>
                     {
