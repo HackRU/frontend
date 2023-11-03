@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BsFillExclamationTriangleFill } from "react-icons/bs";
 import { FaHourglassStart, FaPizzaSlice, FaUtensils } from "react-icons/fa";
 import { MdCelebration, MdFreeBreakfast, MdLunchDining, MdOutlineDirectionsTransitFilled } from "react-icons/md";
+import { defaults } from "../../../../Defaults";
 
 interface DayInfo {
     day: string,
@@ -17,11 +18,10 @@ const schedule: { [day: string]: DayInfo } = {
             { "time": "12:00 PM", "event": "Team Building Event" },
             { "time": "12:00 PM", "event": "Hacking Starts", "reactIcon": <FaHourglassStart /> },
             { "time": "12:30 PM", "event": "Lunch", "reactIcon": <FaHourglassStart /> },
-            { "time": "1:30 PM", "event": "Workshop 1" },
-            { "time": "2:00 PM", "event": "Workshop 2" },
-            { "time": "2:30 PM", "event": "Workshop 3" },
-            { "time": "6:00 PM", "event": "Workshop 4" },
-            { "time": "7:00 PM", "event": "Workshop 5" },
+            { "time": "1:30 PM", "event": "NJ TRANSIT API Demo" },
+            { "time": "2:00 PM", "event": "Algorithms in Society Workshop by Ethitech" },
+            { "time": "2:30 PM", "event": "MLH Mini Event" },
+            { "time": "5:30 PM", "event": "Tech Talk by NJ TRANSIT" },
             { "time": "8:00 PM", "event": "Dinner" },
 
         ],
