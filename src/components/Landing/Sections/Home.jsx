@@ -216,6 +216,12 @@ class Home extends Component {
                                             src={"./assets/background/circle_green.svg"}
                                             height={window.innerHeight / 3}
                                         />
+                                        <img
+                                            alt="background"
+                                            src={"./assets/background/camera.svg"}
+                                            height={window.innerHeight / 5}
+                                        />
+                                        
                                     </div>
                                     <div
                                         style={{
@@ -287,6 +293,26 @@ class Home extends Component {
                                             src={"./assets/background/cross_green.svg"}
                                             height={window.innerHeight / 10}
                                         />
+                                        
+                                    </div>
+                                    <div
+                                        style={{
+                                            opacity,
+                                            position: "absolute",
+                                            bottom: window.innerHeight / 2.5,
+                                            left: window.innerWidth / 10 - movement / 10,
+                                            userSelect: "none",
+                                            pointerEvents: "none",
+                                            zIndex: 10,
+                                            transform: "rotate(-30deg)",
+                                        }}
+                                    >
+                                        <img
+                                            alt="background"
+                                            src={"./assets/background/camera.svg"}
+                                            height={window.innerHeight / 5}
+                                        />
+                                        
                                     </div>
                                     <div
                                         style={{
